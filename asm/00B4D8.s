@@ -731,6 +731,7 @@ glabel func_0010BC80
     /* BE34 0010BDB4 00000000 */  nop
     /* BE38 0010BDB8 00000000 */  nop
     /* BE3C 0010BDBC 00000000 */  nop
+  glabel D_0010BDC0
     /* BE40 0010BDC0 00600140 */  mfc0       $at, $12 /* handwritten instruction */
     /* BE44 0010BDC4 E4FF1A24 */  addiu      $k0, $zero, -0x1C /* handwritten instruction */
     /* BE48 0010BDC8 24083A00 */  and        $at, $at, $k0

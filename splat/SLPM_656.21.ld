@@ -2017,11 +2017,10 @@ SECTIONS
     .data 0x100000 : AT(data_ROM_START)
     {
         FILL(0x00000000);
-        data_DATA_START = .;
-        data_bin = .;
-        build/assets/data.bin.o(.data);
-        data_DATA_END = .;
-        data_DATA_SIZE = ABSOLUTE(data_DATA_END - data_DATA_START);
+        data_RODATA_START = .;
+        build/asm/data/data.rodata.s.o(.rodata);
+        data_RODATA_END = .;
+        data_RODATA_SIZE = ABSOLUTE(data_RODATA_END - data_RODATA_START);
     }
     __romPos += SIZEOF(.data);
     data_ROM_END = __romPos;

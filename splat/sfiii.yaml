@@ -422,7 +422,7 @@ segments:
     - [0x29519C, pad, nops_29519C]
 
   - name: data
-    type: bin
+    type: rodata
     start: 0x00295200
     vram: 0x00100000
 
