@@ -157,26 +157,3 @@ glabel func_001159B8
     /* 15C30 00115BB0 2D380000 */   daddu     $a3, $zero, $zero
     /* 15C34 00115BB4 00000000 */  nop
 .size func_001159B8, . - func_001159B8
-
-glabel func_00115BB8
-    /* 15C38 00115BB8 A0FFBD27 */  addiu      $sp, $sp, -0x60
-    /* 15C3C 00115BBC 4000A4FF */  sd         $a0, 0x40($sp)
-    /* 15C40 00115BC0 4800A5FF */  sd         $a1, 0x48($sp)
-    /* 15C44 00115BC4 5800BFFF */  sd         $ra, 0x58($sp)
-    /* 15C48 00115BC8 4000A427 */  addiu      $a0, $sp, 0x40
-    /* 15C4C 00115BCC 5000B0FF */  sd         $s0, 0x50($sp)
-    /* 15C50 00115BD0 E254040C */  jal        func_00115388
-    /* 15C54 00115BD4 2D28A003 */   daddu     $a1, $sp, $zero
-    /* 15C58 00115BD8 2000B027 */  addiu      $s0, $sp, 0x20
-    /* 15C5C 00115BDC 4800A427 */  addiu      $a0, $sp, 0x48
-    /* 15C60 00115BE0 E254040C */  jal        func_00115388
-    /* 15C64 00115BE4 2D280002 */   daddu     $a1, $s0, $zero
-    /* 15C68 00115BE8 2D280002 */  daddu      $a1, $s0, $zero
-    /* 15C6C 00115BEC AE56040C */  jal        func_00115AB8
-    /* 15C70 00115BF0 2D20A003 */   daddu     $a0, $sp, $zero
-    /* 15C74 00115BF4 5000B0DF */  ld         $s0, 0x50($sp)
-    /* 15C78 00115BF8 5800BFDF */  ld         $ra, 0x58($sp)
-    /* 15C7C 00115BFC 0800E003 */  jr         $ra
-    /* 15C80 00115C00 6000BD27 */   addiu     $sp, $sp, 0x60
-    /* 15C84 00115C04 00000000 */  nop
-.size func_00115BB8, . - func_00115BB8
