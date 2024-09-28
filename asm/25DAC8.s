@@ -238,10 +238,10 @@ glabel func_0035DD48
 
 glabel func_0035DD88
     /* 25DE08 0035DD88 E0FFBD27 */  addiu      $sp, $sp, -0x20
-    /* 25DE0C 0035DD8C 4300023C */  lui        $v0, %hi(D_433C68)
+    /* 25DE0C 0035DD8C 4300023C */  lui        $v0, %hi(D_00433C68)
     /* 25DE10 0035DD90 1800BFFF */  sd         $ra, 0x18($sp)
     /* 25DE14 0035DD94 0000B0FF */  sd         $s0, 0x0($sp)
-    /* 25DE18 0035DD98 683C5024 */  addiu      $s0, $v0, %lo(D_433C68)
+    /* 25DE18 0035DD98 683C5024 */  addiu      $s0, $v0, %lo(D_00433C68)
     /* 25DE1C 0035DD9C 0800B1FF */  sd         $s1, 0x8($sp)
     /* 25DE20 0035DDA0 0F001124 */  addiu      $s1, $zero, 0xF
     /* 25DE24 0035DDA4 1000B2FF */  sd         $s2, 0x10($sp)

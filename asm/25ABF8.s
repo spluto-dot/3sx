@@ -9,9 +9,9 @@
 
 glabel func_0035AB78
     /* 25ABF8 0035AB78 F0FFBD27 */  addiu      $sp, $sp, -0x10
-    /* 25ABFC 0035AB7C 4300023C */  lui        $v0, (0x430000 >> 16)
+    /* 25ABFC 0035AB7C 4300023C */  lui        $v0, %hi(D_0042B6C8)
     /* 25AC00 0035AB80 0000BFFF */  sd         $ra, 0x0($sp)
-    /* 25AC04 0035AB84 C8B640AC */  sw         $zero, -0x4938($v0)
+    /* 25AC04 0035AB84 C8B640AC */  sw         $zero, %lo(D_0042B6C8)($v0)
     /* 25AC08 0035AB88 0000BFDF */  ld         $ra, 0x0($sp)
     /* 25AC0C 0035AB8C 7E6A0D08 */  j          func_0035A9F8
     /* 25AC10 0035AB90 1000BD27 */   addiu     $sp, $sp, 0x10

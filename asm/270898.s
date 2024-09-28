@@ -98,9 +98,9 @@ glabel func_00370928
     /* 2709D8 00370958 2D282002 */   daddu     $a1, $s1, $zero
     /* 2709DC 0037095C 70DB0D0C */  jal        func_00376DC0
     /* 2709E0 00370960 2D202002 */   daddu     $a0, $s1, $zero
-    /* 2709E4 00370964 4E00053C */  lui        $a1, %hi(D_4DDC28)
+    /* 2709E4 00370964 4E00053C */  lui        $a1, %hi(D_004DDC28)
     /* 2709E8 00370968 23800202 */  subu       $s0, $s0, $v0
-    /* 2709EC 0037096C 28DCA524 */  addiu      $a1, $a1, %lo(D_4DDC28)
+    /* 2709EC 0037096C 28DCA524 */  addiu      $a1, $a1, %lo(D_004DDC28)
     /* 2709F0 00370970 FFFF0626 */  addiu      $a2, $s0, -0x1
     /* 2709F4 00370974 BEDB0D0C */  jal        func_00376EF8
     /* 2709F8 00370978 2D202002 */   daddu     $a0, $s1, $zero
@@ -163,9 +163,9 @@ glabel func_003709C0
     /* 270AC8 00370A48 06000224 */  addiu      $v0, $zero, 0x6
   .L00370A4C:
     /* 270ACC 00370A4C 03000216 */  bne        $s0, $v0, .L00370A5C
-    /* 270AD0 00370A50 4E00043C */   lui       $a0, %hi(D_4DDC30)
+    /* 270AD0 00370A50 4E00043C */   lui       $a0, %hi(D_004DDC30)
     /* 270AD4 00370A54 D6C10D0C */  jal        func_00370758
-    /* 270AD8 00370A58 30DC8424 */   addiu     $a0, $a0, %lo(D_4DDC30)
+    /* 270AD8 00370A58 30DC8424 */   addiu     $a0, $a0, %lo(D_004DDC30)
   .L00370A5C:
     /* 270ADC 00370A5C 66C10D0C */  jal        func_00370598
     /* 270AE0 00370A60 00000000 */   nop
@@ -191,9 +191,9 @@ glabel func_00370A90
     /* 270B24 00370AA4 1000BFFF */  sd         $ra, 0x10($sp)
     /* 270B28 00370AA8 04004014 */  bnez       $v0, .L00370ABC
     /* 270B2C 00370AAC 2D808000 */   daddu     $s0, $a0, $zero
-    /* 270B30 00370AB0 4E00043C */  lui        $a0, %hi(D_4DDC60)
+    /* 270B30 00370AB0 4E00043C */  lui        $a0, %hi(D_004DDC60)
     /* 270B34 00370AB4 D6C10D0C */  jal        func_00370758
-    /* 270B38 00370AB8 60DC8424 */   addiu     $a0, $a0, %lo(D_4DDC60)
+    /* 270B38 00370AB8 60DC8424 */   addiu     $a0, $a0, %lo(D_004DDC60)
   .L00370ABC:
     /* 270B3C 00370ABC 60C10D0C */  jal        func_00370580
     /* 270B40 00370AC0 00000000 */   nop

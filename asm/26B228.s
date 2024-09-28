@@ -11,9 +11,9 @@ glabel func_0036B1A8
     /* 26B228 0036B1A8 F0FFBD27 */  addiu      $sp, $sp, -0x10
     /* 26B22C 0036B1AC 06008014 */  bnez       $a0, .L0036B1C8
     /* 26B230 0036B1B0 0000BFFF */   sd        $ra, 0x0($sp)
-    /* 26B234 0036B1B4 4E00043C */  lui        $a0, %hi(D_4DCD98)
+    /* 26B234 0036B1B4 4E00043C */  lui        $a0, %hi(D_004DCD98)
     /* 26B238 0036B1B8 0000BFDF */  ld         $ra, 0x0($sp)
-    /* 26B23C 0036B1BC 98CD8424 */  addiu      $a0, $a0, %lo(D_4DCD98)
+    /* 26B23C 0036B1BC 98CD8424 */  addiu      $a0, $a0, %lo(D_004DCD98)
     /* 26B240 0036B1C0 A8AD0D08 */  j          func_0036B6A0
     /* 26B244 0036B1C4 1000BD27 */   addiu     $sp, $sp, 0x10
   .L0036B1C8:

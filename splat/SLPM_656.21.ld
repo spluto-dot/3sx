@@ -1601,6 +1601,7 @@ SECTIONS
         build/asm/2876F8.s.o(.rodata);
         build/asm/287928.s.o(.rodata);
         build/asm/287E28.s.o(.rodata);
+        build/asm/data/data.rodata.s.o(.rodata);
         . = ALIGN(., 16);
         main_RODATA_END = .;
         main_RODATA_SIZE = ABSOLUTE(main_RODATA_END - main_RODATA_START);
@@ -2011,20 +2012,6 @@ SECTIONS
     . = ALIGN(., 16);
     main_ROM_END = __romPos;
     main_VRAM_END = .;
-
-    data_ROM_START = __romPos;
-    data_VRAM = ADDR(.data);
-    .data 0x100000 : AT(data_ROM_START)
-    {
-        FILL(0x00000000);
-        data_RODATA_START = .;
-        build/asm/data/data.rodata.s.o(.rodata);
-        data_RODATA_END = .;
-        data_RODATA_SIZE = ABSOLUTE(data_RODATA_END - data_RODATA_START);
-    }
-    __romPos += SIZEOF(.data);
-    data_ROM_END = __romPos;
-    data_VRAM_END = .;
 
     /DISCARD/ :
     {

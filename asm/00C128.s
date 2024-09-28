@@ -65,9 +65,9 @@ glabel func_0010C130
 .size func_0010C130, . - func_0010C130
 
 glabel func_0010C140
-    /* C1C0 0010C140 3E00023C */  lui        $v0, (0x3E7CF8 >> 16)
+    /* C1C0 0010C140 3E00023C */  lui        $v0, %hi(D_003E7CF8)
     /* C1C4 0010C144 E0FFBD27 */  addiu      $sp, $sp, -0x20
-    /* C1C8 0010C148 F87C458C */  lw         $a1, (0x3E7CF8 & 0xFFFF)($v0)
+    /* C1C8 0010C148 F87C458C */  lw         $a1, %lo(D_003E7CF8)($v0)
     /* C1CC 0010C14C 80180400 */  sll        $v1, $a0, 2
     /* C1D0 0010C150 1000BFFF */  sd         $ra, 0x10($sp)
     /* C1D4 0010C154 2D20A003 */  daddu      $a0, $sp, $zero

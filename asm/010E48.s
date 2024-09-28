@@ -26,9 +26,9 @@ glabel func_00110DC8
     /* 10E84 00110E04 2E000010 */  b          .L00110EC0
     /* 10E88 00110E08 9CFF0224 */   addiu     $v0, $zero, -0x64
   .L00110E0C:
-    /* 10E8C 00110E0C 3F00123C */  lui        $s2, (0x3F0000 >> 16)
+    /* 10E8C 00110E0C 3F00123C */  lui        $s2, %hi(D_003EA88C)
     /* 10E90 00110E10 FC0B040C */  jal        func_00102FF0
-    /* 10E94 00110E14 8CA8448E */   lw        $a0, -0x5774($s2)
+    /* 10E94 00110E14 8CA8448E */   lw        $a0, %lo(D_003EA88C)($s2)
     /* 10E98 00110E18 29004004 */  bltz       $v0, .L00110EC0
     /* 10E9C 00110E1C 38FF0224 */   addiu     $v0, $zero, -0xC8
     /* 10EA0 00110E20 04002012 */  beqz       $s1, .L00110E34
@@ -38,7 +38,7 @@ glabel func_00110DC8
     /* 10EB0 00110E30 5000103C */   lui       $s0, %hi(D_502FC4)
   .L00110E34:
     /* 10EB4 00110E34 F00B040C */  jal        func_00102FC0
-    /* 10EB8 00110E38 8CA8448E */   lw        $a0, -0x5774($s2)
+    /* 10EB8 00110E38 8CA8448E */   lw        $a0, %lo(D_003EA88C)($s2)
     /* 10EBC 00110E3C 20000010 */  b          .L00110EC0
     /* 10EC0 00110E40 2EFF0224 */   addiu     $v0, $zero, -0xD2
   .L00110E44:
@@ -66,13 +66,13 @@ glabel func_00110DC8
     /* 10F18 00110E98 04000A24 */   addiu     $t2, $zero, 0x4
     /* 10F1C 00110E9C 2D804000 */  daddu      $s0, $v0, $zero
     /* 10F20 00110EA0 04000016 */  bnez       $s0, .L00110EB4
-    /* 10F24 00110EA4 3F00033C */   lui       $v1, (0x3F0000 >> 16)
+    /* 10F24 00110EA4 3F00033C */   lui       $v1, %hi(D_003EA888)
     /* 10F28 00110EA8 0F000224 */  addiu      $v0, $zero, 0xF
     /* 10F2C 00110EAC 03000010 */  b          .L00110EBC
-    /* 10F30 00110EB0 88A862AC */   sw        $v0, -0x5778($v1)
+    /* 10F30 00110EB0 88A862AC */   sw        $v0, %lo(D_003EA888)($v1)
   .L00110EB4:
     /* 10F34 00110EB4 F00B040C */  jal        func_00102FC0
-    /* 10F38 00110EB8 8CA8448E */   lw        $a0, -0x5774($s2)
+    /* 10F38 00110EB8 8CA8448E */   lw        $a0, %lo(D_003EA88C)($s2)
   .L00110EBC:
     /* 10F3C 00110EBC 2D100002 */  daddu      $v0, $s0, $zero
   .L00110EC0:

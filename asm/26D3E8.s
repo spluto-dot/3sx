@@ -32,10 +32,10 @@ glabel func_0036D398
     /* 26D430 0036D3B0 829D0D0C */  jal        func_00367608
     /* 26D434 0036D3B4 2D400000 */   daddu     $t0, $zero, $zero
     /* 26D438 0036D3B8 0000BFDF */  ld         $ra, 0x0($sp)
-    /* 26D43C 0036D3BC 4400033C */  lui        $v1, (0x440000 >> 16)
-    /* 26D440 0036D3C0 4400023C */  lui        $v0, (0x440000 >> 16)
-    /* 26D444 0036D3C4 0CB360AC */  sw         $zero, -0x4CF4($v1)
-    /* 26D448 0036D3C8 10B340AC */  sw         $zero, -0x4CF0($v0)
+    /* 26D43C 0036D3BC 4400033C */  lui        $v1, %hi(D_0043B30C)
+    /* 26D440 0036D3C0 4400023C */  lui        $v0, %hi(D_0043B310)
+    /* 26D444 0036D3C4 0CB360AC */  sw         $zero, %lo(D_0043B30C)($v1)
+    /* 26D448 0036D3C8 10B340AC */  sw         $zero, %lo(D_0043B310)($v0)
     /* 26D44C 0036D3CC 0800E003 */  jr         $ra
     /* 26D450 0036D3D0 1000BD27 */   addiu     $sp, $sp, 0x10
     /* 26D454 0036D3D4 00000000 */  nop

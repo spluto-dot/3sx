@@ -160,8 +160,8 @@ glabel func_00101D60
 .size func_00101D60, . - func_00101D60
 
 glabel func_00101DB8
-    /* 1E38 00101DB8 3E00083C */  lui        $t0, %hi(D_3E7590)
-    /* 1E3C 00101DBC 90750825 */  addiu      $t0, $t0, %lo(D_3E7590)
+    /* 1E38 00101DB8 3E00083C */  lui        $t0, %hi(D_003E7590)
+    /* 1E3C 00101DBC 90750825 */  addiu      $t0, $t0, %lo(D_003E7590)
     /* 1E40 00101DC0 000005D9 */  lqc2       $vf5, 0x0($t0)
     /* 1E44 00101DC4 3D33264A */  vmr32.w    $vf6, $vf6
     /* 1E48 00101DC8 0001064B */  vaddx.x    $vf4, $vf0, $vf6x

@@ -9,14 +9,14 @@
 
 glabel func_0036BD18
     /* 26BD98 0036BD18 F0FFBD27 */  addiu      $sp, $sp, -0x10
-    /* 26BD9C 0036BD1C 4400043C */  lui        $a0, %hi(D_43A2F0)
+    /* 26BD9C 0036BD1C 4400043C */  lui        $a0, %hi(D_0043A2F0)
     /* 26BDA0 0036BD20 0000BFFF */  sd         $ra, 0x0($sp)
-    /* 26BDA4 0036BD24 F0A28424 */  addiu      $a0, $a0, %lo(D_43A2F0)
+    /* 26BDA4 0036BD24 F0A28424 */  addiu      $a0, $a0, %lo(D_0043A2F0)
     /* 26BDA8 0036BD28 68010624 */  addiu      $a2, $zero, 0x168
     /* 26BDAC 0036BD2C F0D30D0C */  jal        func_00374FC0
     /* 26BDB0 0036BD30 2D288000 */   daddu     $a1, $a0, $zero
-    /* 26BDB4 0036BD34 4400033C */  lui        $v1, %hi(D_43A320)
-    /* 26BDB8 0036BD38 20A36324 */  addiu      $v1, $v1, %lo(D_43A320)
+    /* 26BDB4 0036BD34 4400033C */  lui        $v1, %hi(D_0043A320)
+    /* 26BDB8 0036BD38 20A36324 */  addiu      $v1, $v1, %lo(D_0043A320)
     /* 26BDBC 0036BD3C 0000BFDF */  ld         $ra, 0x0($sp)
     /* 26BDC0 0036BD40 0000628C */  lw         $v0, 0x0($v1)
     /* 26BDC4 0036BD44 01004224 */  addiu      $v0, $v0, 0x1

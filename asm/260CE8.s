@@ -13,9 +13,9 @@ glabel func_00360C68
     /* 260CF0 00360C70 2D808000 */  daddu      $s0, $a0, $zero
     /* 260CF4 00360C74 06000016 */  bnez       $s0, .L00360C90
     /* 260CF8 00360C78 0800BFFF */   sd        $ra, 0x8($sp)
-    /* 260CFC 00360C7C 4E00043C */  lui        $a0, %hi(D_4DAD28)
+    /* 260CFC 00360C7C 4E00043C */  lui        $a0, %hi(D_004DAD28)
     /* 260D00 00360C80 44620D0C */  jal        func_00358910
-    /* 260D04 00360C84 28AD8424 */   addiu     $a0, $a0, %lo(D_4DAD28)
+    /* 260D04 00360C84 28AD8424 */   addiu     $a0, $a0, %lo(D_004DAD28)
     /* 260D08 00360C88 0E000010 */  b          .L00360CC4
     /* 260D0C 00360C8C FFFF0224 */   addiu     $v0, $zero, -0x1
   .L00360C90:

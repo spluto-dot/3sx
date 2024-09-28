@@ -36,8 +36,8 @@ glabel func_0035BC20
 .size func_0035BC20, . - func_0035BC20
 
 glabel func_0035BC60
-    /* 25BCE0 0035BC60 4300033C */  lui        $v1, (0x430000 >> 16)
-    /* 25BCE4 0035BC64 24C3628C */  lw         $v0, -0x3CDC($v1)
+    /* 25BCE0 0035BC60 4300033C */  lui        $v1, %hi(D_0042C324)
+    /* 25BCE4 0035BC64 24C3628C */  lw         $v0, %lo(D_0042C324)($v1)
     /* 25BCE8 0035BC68 0800E003 */  jr         $ra
     /* 25BCEC 0035BC6C 2B100200 */   sltu      $v0, $zero, $v0
 .size func_0035BC60, . - func_0035BC60

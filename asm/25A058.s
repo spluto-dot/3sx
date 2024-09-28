@@ -12,9 +12,9 @@ glabel func_00359FD8
     /* 25A05C 00359FDC 3F00C230 */  andi       $v0, $a2, 0x3F
     /* 25A060 00359FE0 09004010 */  beqz       $v0, .L0035A008
     /* 25A064 00359FE4 0000BFFF */   sd        $ra, 0x0($sp)
-    /* 25A068 00359FE8 4E00043C */  lui        $a0, %hi(D_4D9A48)
+    /* 25A068 00359FE8 4E00043C */  lui        $a0, %hi(D_004D9A48)
     /* 25A06C 00359FEC 44620D0C */  jal        func_00358910
-    /* 25A070 00359FF0 489A8424 */   addiu     $a0, $a0, %lo(D_4D9A48)
+    /* 25A070 00359FF0 489A8424 */   addiu     $a0, $a0, %lo(D_004D9A48)
     /* 25A074 00359FF4 FDFF0224 */  addiu      $v0, $zero, -0x3
     /* 25A078 00359FF8 0000BFDF */  ld         $ra, 0x0($sp)
     /* 25A07C 00359FFC 0800E003 */  jr         $ra

@@ -232,17 +232,17 @@ glabel func_00356AB0
 .size func_00356AB0, . - func_00356AB0
 
 glabel func_00356C50
-    /* 256CD0 00356C50 4E00053C */  lui        $a1, %hi(D_4D95F8)
+    /* 256CD0 00356C50 4E00053C */  lui        $a1, %hi(D_004D95F8)
     /* 256CD4 00356C54 F0FFBD27 */  addiu      $sp, $sp, -0x10
     /* 256CD8 00356C58 04000624 */  addiu      $a2, $zero, 0x4
-    /* 256CDC 00356C5C F895A524 */  addiu      $a1, $a1, %lo(D_4D95F8)
+    /* 256CDC 00356C5C F895A524 */  addiu      $a1, $a1, %lo(D_004D95F8)
     /* 256CE0 00356C60 0000B0FF */  sd         $s0, 0x0($sp)
     /* 256CE4 00356C64 0800BFFF */  sd         $ra, 0x8($sp)
     /* 256CE8 00356C68 F0D30D0C */  jal        func_00374FC0
     /* 256CEC 00356C6C 2D808000 */   daddu     $s0, $a0, $zero
-    /* 256CF0 00356C70 4E00053C */  lui        $a1, %hi(D_4D9600)
+    /* 256CF0 00356C70 4E00053C */  lui        $a1, %hi(D_004D9600)
     /* 256CF4 00356C74 08000426 */  addiu      $a0, $s0, 0x8
-    /* 256CF8 00356C78 0096A524 */  addiu      $a1, $a1, %lo(D_4D9600)
+    /* 256CF8 00356C78 0096A524 */  addiu      $a1, $a1, %lo(D_004D9600)
     /* 256CFC 00356C7C 08004014 */  bnez       $v0, .L00356CA0
     /* 256D00 00356C80 04000624 */   addiu     $a2, $zero, 0x4
     /* 256D04 00356C84 F0D30D0C */  jal        func_00374FC0

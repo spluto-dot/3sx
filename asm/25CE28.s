@@ -17,11 +17,11 @@ glabel func_0035CDA8
 .size func_0035CDA8, . - func_0035CDA8
 
 glabel func_0035CDC0
-    /* 25CE40 0035CDC0 4E00043C */  lui        $a0, %hi(D_4DA7C8)
+    /* 25CE40 0035CDC0 4E00043C */  lui        $a0, %hi(D_004DA7C8)
     /* 25CE44 0035CDC4 F0FFBD27 */  addiu      $sp, $sp, -0x10
     /* 25CE48 0035CDC8 0000BFFF */  sd         $ra, 0x0($sp)
     /* 25CE4C 0035CDCC 7214040C */  jal        func_001051C8
-    /* 25CE50 0035CDD0 C8A78424 */   addiu     $a0, $a0, %lo(D_4DA7C8)
+    /* 25CE50 0035CDD0 C8A78424 */   addiu     $a0, $a0, %lo(D_004DA7C8)
     /* 25CE54 0035CDD4 00000000 */  nop
   .L0035CDD8:
     /* 25CE58 0035CDD8 00000000 */  nop
