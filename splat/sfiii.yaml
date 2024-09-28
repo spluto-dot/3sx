@@ -1,0 +1,34 @@
+# Docs: https://github.com/ethteck/splat/wiki/Configuration
+
+name: "Street Fighter III: Third Strike"
+sha1: ac99c97e9379bc4ac865c0f076a48ae543f127a9
+options:
+  basename: SLPM_656.21
+  target_path: ../SLPM_656.21
+  base_path: .
+  platform: ps2
+  compiler: EEGCC
+  asm_path: ../asm
+  src_path: ../src
+  build_path: ../build
+  find_file_boundaries: True
+  section_order: [".text", ".data", ".rodata", ".bss"]
+  subalign: null
+  # disasm_unknown: True
+  # named_regs_for_c_funcs: False
+segments:
+  - [0, bin, elf_header]
+
+  # - name: main
+  #   type: code
+  #   start: 0x80
+  #   # vram: 0x100000
+  #   # bss_size: 0x1E0F80
+  #   subsegments:
+  #   - [0x80, asm]
+
+  - [0x80, bin, code]
+
+  - [0x003f8580, databin, data]
+  - [0x003f85ad, textbin, comment] # comment
+  - [0x003f85d8]
