@@ -2013,6 +2013,34 @@ SECTIONS
     main_ROM_END = __romPos;
     main_VRAM_END = .;
 
+    comment_ROM_START = __romPos;
+    comment_VRAM = ADDR(.comment);
+    .comment : AT(comment_ROM_START)
+    {
+        FILL(0x00000000);
+        comment_TEXT_START = .;
+        build/asm/data/comment.s.o(.text);
+        comment_TEXT_END = .;
+        comment_TEXT_SIZE = ABSOLUTE(comment_TEXT_END - comment_TEXT_START);
+    }
+    __romPos += SIZEOF(.comment);
+    comment_ROM_END = __romPos;
+    comment_VRAM_END = .;
+
+    reginfo_ROM_START = __romPos;
+    reginfo_VRAM = ADDR(.reginfo);
+    .reginfo : AT(reginfo_ROM_START)
+    {
+        FILL(0x00000000);
+        reginfo_TEXT_START = .;
+        build/asm/data/reginfo.s.o(.text);
+        reginfo_TEXT_END = .;
+        reginfo_TEXT_SIZE = ABSOLUTE(reginfo_TEXT_END - reginfo_TEXT_START);
+    }
+    __romPos += SIZEOF(.reginfo);
+    reginfo_ROM_END = __romPos;
+    reginfo_VRAM_END = .;
+
     /DISCARD/ :
     {
         *(*);

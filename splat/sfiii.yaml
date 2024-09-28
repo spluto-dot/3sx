@@ -16,6 +16,7 @@ options:
   subalign: null
   # disasm_unknown: True
   # named_regs_for_c_funcs: False
+
 segments:
   - [0x0, databin, elf_header]
 
@@ -423,7 +424,7 @@ segments:
 
     - [0x295200, rodata, data]
 
-  - [0x003f85ad]
+  - [0x3F85AD, textbin, comment]
+  - [0x3F85D8, textbin, reginfo]
 
-  # - [0x003f85ad, textbin, comment] # comment
-  # - [0x003f85d8]
+  - [0x3F85F0]
