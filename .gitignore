@@ -1,3 +1,12 @@
+# Python
+
 venv
+
+# Assets
+
 SLPM_656.21
 splat/assets
+
+# macOS
+
+.DS_Store
