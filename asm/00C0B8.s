@@ -27,20 +27,20 @@ glabel func_0010C050
     /* C0E8 0010C068 0800A2AF */  sw         $v0, 0x8($sp)
     /* C0EC 0010C06C E80B040C */  jal        func_00102FA0
     /* C0F0 0010C070 2400A2AF */   sw        $v0, 0x24($sp)
-    /* C0F4 0010C074 3E00033C */  lui        $v1, %hi(D_003E7D10)
+    /* C0F4 0010C074 3E00033C */  lui        $v1, (0x3E7D10 >> 16)
     /* C0F8 0010C078 2000A427 */  addiu      $a0, $sp, 0x20
     /* C0FC 0010C07C E80B040C */  jal        func_00102FA0
-    /* C100 0010C080 107D62AC */   sw        $v0, %lo(D_003E7D10)($v1)
-    /* C104 0010C084 3E00033C */  lui        $v1, %hi(D_003E7D14)
+    /* C100 0010C080 107D62AC */   sw        $v0, (0x3E7D10 & 0xFFFF)($v1)
+    /* C104 0010C084 3E00033C */  lui        $v1, (0x3E7D14 >> 16)
     /* C108 0010C088 4000BFDF */  ld         $ra, 0x40($sp)
-    /* C10C 0010C08C 147D62AC */  sw         $v0, %lo(D_003E7D14)($v1)
+    /* C10C 0010C08C 147D62AC */  sw         $v0, (0x3E7D14 & 0xFFFF)($v1)
     /* C110 0010C090 0800E003 */  jr         $ra
     /* C114 0010C094 5000BD27 */   addiu     $sp, $sp, 0x50
 .size func_0010C050, . - func_0010C050
 
 glabel func_0010C098
-    /* C118 0010C098 3E00033C */  lui        $v1, %hi(D_003E7D14)
+    /* C118 0010C098 3E00033C */  lui        $v1, (0x3E7D14 >> 16)
     /* C11C 0010C09C 0800E003 */  jr         $ra
-    /* C120 0010C0A0 147D628C */   lw        $v0, %lo(D_003E7D14)($v1)
+    /* C120 0010C0A0 147D628C */   lw        $v0, (0x3E7D14 & 0xFFFF)($v1)
     /* C124 0010C0A4 00000000 */  nop
 .size func_0010C098, . - func_0010C098

@@ -20,9 +20,9 @@ glabel func_00375A38
     /* 275ADC 00375A5C 08004010 */  beqz       $v0, .L00375A80
     /* 275AE0 00375A60 2000BFFF */   sd        $ra, 0x20($sp)
     /* 275AE4 00375A64 80100200 */  sll        $v0, $v0, 2
-    /* 275AE8 00375A68 4E00063C */  lui        $a2, %hi(D_004DDFD4)
+    /* 275AE8 00375A68 4E00063C */  lui        $a2, (0x4E0000 >> 16)
     /* 275AEC 00375A6C 2130C200 */  addu       $a2, $a2, $v0
-    /* 275AF0 00375A70 D4DFC68C */  lw         $a2, %lo(D_004DDFD4)($a2)
+    /* 275AF0 00375A70 D4DFC68C */  lw         $a2, -0x202C($a2)
     /* 275AF4 00375A74 1ED50D0C */  jal        func_00375478
     /* 275AF8 00375A78 2D380000 */   daddu     $a3, $zero, $zero
     /* 275AFC 00375A7C 2D904000 */  daddu      $s2, $v0, $zero

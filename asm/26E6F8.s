@@ -19,9 +19,9 @@ glabel func_0036E680
 
 glabel func_0036E688
     /* 26E708 0036E688 F0FFBD27 */  addiu      $sp, $sp, -0x10
-    /* 26E70C 0036E68C 4E00043C */  lui        $a0, %hi(D_004DDAA0)
+    /* 26E70C 0036E68C 4E00043C */  lui        $a0, %hi(D_4DDAA0)
     /* 26E710 0036E690 0000BFFF */  sd         $ra, 0x0($sp)
-    /* 26E714 0036E694 A0DA8424 */  addiu      $a0, $a0, %lo(D_004DDAA0)
+    /* 26E714 0036E694 A0DA8424 */  addiu      $a0, $a0, %lo(D_4DDAA0)
     /* 26E718 0036E698 0000BFDF */  ld         $ra, 0x0($sp)
     /* 26E71C 0036E69C 4EB80D08 */  j          func_0036E138
     /* 26E720 0036E6A0 1000BD27 */   addiu     $sp, $sp, 0x10

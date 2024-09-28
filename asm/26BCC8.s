@@ -36,10 +36,10 @@ glabel func_0036BC60
 .size func_0036BC60, . - func_0036BC60
 
 glabel func_0036BCA0
-    /* 26BD20 0036BCA0 4400023C */  lui        $v0, %hi(D_0043A324)
-    /* 26BD24 0036BCA4 4400033C */  lui        $v1, %hi(D_0043A328)
-    /* 26BD28 0036BCA8 24A344AC */  sw         $a0, %lo(D_0043A324)($v0)
+    /* 26BD20 0036BCA0 4400023C */  lui        $v0, (0x440000 >> 16)
+    /* 26BD24 0036BCA4 4400033C */  lui        $v1, (0x440000 >> 16)
+    /* 26BD28 0036BCA8 24A344AC */  sw         $a0, -0x5CDC($v0)
     /* 26BD2C 0036BCAC 0800E003 */  jr         $ra
-    /* 26BD30 0036BCB0 28A365AC */   sw        $a1, %lo(D_0043A328)($v1)
+    /* 26BD30 0036BCB0 28A365AC */   sw        $a1, -0x5CD8($v1)
     /* 26BD34 0036BCB4 00000000 */  nop
 .size func_0036BCA0, . - func_0036BCA0

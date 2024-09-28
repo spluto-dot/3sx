@@ -94,9 +94,9 @@ glabel func_0010B240
 glabel func_0010B260
     /* B2E0 0010B260 2D30A000 */  daddu      $a2, $a1, $zero
     /* B2E4 0010B264 F0FFBD27 */  addiu      $sp, $sp, -0x10
-    /* B2E8 0010B268 4600053C */  lui        $a1, %hi(D_00459BD8)
+    /* B2E8 0010B268 4600053C */  lui        $a1, %hi(D_459BD8)
     /* B2EC 0010B26C 0000BFFF */  sd         $ra, 0x0($sp)
-    /* B2F0 0010B270 D89BA524 */  addiu      $a1, $a1, %lo(D_00459BD8)
+    /* B2F0 0010B270 D89BA524 */  addiu      $a1, $a1, %lo(D_459BD8)
     /* B2F4 0010B274 4E2C040C */  jal        func_0010B138
     /* B2F8 0010B278 01000724 */   addiu     $a3, $zero, 0x1
     /* B2FC 0010B27C 0000BFDF */  ld         $ra, 0x0($sp)

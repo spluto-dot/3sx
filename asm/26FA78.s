@@ -247,13 +247,13 @@ glabel func_0036FCD0
 
 glabel func_0036FD38
     /* 26FDB8 0036FD38 F0FFBD27 */  addiu      $sp, $sp, -0x10
-    /* 26FDBC 0036FD3C 4400023C */  lui        $v0, %hi(D_0044395C)
+    /* 26FDBC 0036FD3C 4400023C */  lui        $v0, %hi(D_44395C)
     /* 26FDC0 0036FD40 0000B0FF */  sd         $s0, 0x0($sp)
-    /* 26FDC4 0036FD44 5C395024 */  addiu      $s0, $v0, %lo(D_0044395C)
+    /* 26FDC4 0036FD44 5C395024 */  addiu      $s0, $v0, %lo(D_44395C)
     /* 26FDC8 0036FD48 0800BFFF */  sd         $ra, 0x8($sp)
-    /* 26FDCC 0036FD4C 4400033C */  lui        $v1, %hi(D_00443958)
+    /* 26FDCC 0036FD4C 4400033C */  lui        $v1, %hi(D_443958)
     /* 26FDD0 0036FD50 0000048E */  lw         $a0, 0x0($s0)
-    /* 26FDD4 0036FD54 58396324 */  addiu      $v1, $v1, %lo(D_00443958)
+    /* 26FDD4 0036FD54 58396324 */  addiu      $v1, $v1, %lo(D_443958)
     /* 26FDD8 0036FD58 0000628C */  lw         $v0, 0x0($v1)
     /* 26FDDC 0036FD5C 05008014 */  bnez       $a0, .L0036FD74
     /* 26FDE0 0036FD60 01008224 */   addiu     $v0, $a0, 0x1
@@ -271,9 +271,9 @@ glabel func_0036FD38
 
 glabel func_0036FD88
     /* 26FE08 0036FD88 F0FFBD27 */  addiu      $sp, $sp, -0x10
-    /* 26FE0C 0036FD8C 4400033C */  lui        $v1, %hi(D_0044395C)
+    /* 26FE0C 0036FD8C 4400033C */  lui        $v1, %hi(D_44395C)
     /* 26FE10 0036FD90 0000BFFF */  sd         $ra, 0x0($sp)
-    /* 26FE14 0036FD94 5C396324 */  addiu      $v1, $v1, %lo(D_0044395C)
+    /* 26FE14 0036FD94 5C396324 */  addiu      $v1, $v1, %lo(D_44395C)
     /* 26FE18 0036FD98 0000628C */  lw         $v0, 0x0($v1)
     /* 26FE1C 0036FD9C FFFF4224 */  addiu      $v0, $v0, -0x1
     /* 26FE20 0036FDA0 05004014 */  bnez       $v0, .L0036FDB8

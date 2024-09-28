@@ -58,8 +58,8 @@ glabel func_0036C008
     /* 26C088 0036C008 F0FFBD27 */  addiu      $sp, $sp, -0x10
     /* 26C08C 0036C00C 2DC08000 */  daddu      $t8, $a0, $zero
     /* 26C090 0036C010 0000B0FF */  sd         $s0, 0x0($sp)
-    /* 26C094 0036C014 4E000D3C */  lui        $t5, %hi(D_004DCEE0)
-    /* 26C098 0036C018 E0CEAD25 */  addiu      $t5, $t5, %lo(D_004DCEE0)
+    /* 26C094 0036C014 4E000D3C */  lui        $t5, %hi(D_4DCEE0)
+    /* 26C098 0036C018 E0CEAD25 */  addiu      $t5, $t5, %lo(D_4DCEE0)
     /* 26C09C 0036C01C 002C0500 */  sll        $a1, $a1, 16
     /* 26C0A0 0036C020 1C00038F */  lw         $v1, 0x1C($t8)
     /* 26C0A4 0036C024 032C0500 */  sra        $a1, $a1, 16

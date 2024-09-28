@@ -9,12 +9,12 @@
 
 glabel func_0010A888
     /* A908 0010A888 F0FFBD27 */  addiu      $sp, $sp, -0x10
-    /* A90C 0010A88C 3E00023C */  lui        $v0, %hi(D_003E76A0)
+    /* A90C 0010A88C 3E00023C */  lui        $v0, (0x3E76A0 >> 16)
     /* A910 0010A890 FFFF0324 */  addiu      $v1, $zero, -0x1
     /* A914 0010A894 5000043C */  lui        $a0, %hi(D_4FF328)
     /* A918 0010A898 0000BFFF */  sd         $ra, 0x0($sp)
     /* A91C 0010A89C 28F38424 */  addiu      $a0, $a0, %lo(D_4FF328)
-    /* A920 0010A8A0 A07643AC */  sw         $v1, %lo(D_003E76A0)($v0)
+    /* A920 0010A8A0 A07643AC */  sw         $v1, (0x3E76A0 & 0xFFFF)($v0)
     /* A924 0010A8A4 2D280000 */  daddu      $a1, $zero, $zero
     /* A928 0010A8A8 84D40D0C */  jal        func_00375210
     /* A92C 0010A8AC 04000624 */   addiu     $a2, $zero, 0x4

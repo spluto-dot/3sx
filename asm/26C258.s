@@ -13,7 +13,7 @@ glabel func_0036C1D8
     /* 26C260 0036C1E0 0000B0FF */  sd         $s0, 0x0($sp)
     /* 26C264 0036C1E4 2D800000 */  daddu      $s0, $zero, $zero
     /* 26C268 0036C1E8 0800B1FF */  sd         $s1, 0x8($sp)
-    /* 26C26C 0036C1EC 4E00023C */  lui        $v0, %hi(D_004DCEE0)
+    /* 26C26C 0036C1EC 4E00023C */  lui        $v0, %hi(D_4DCEE0)
     /* 26C270 0036C1F0 1000B2FF */  sd         $s2, 0x10($sp)
     /* 26C274 0036C1F4 00801224 */  addiu      $s2, $zero, -0x8000
     /* 26C278 0036C1F8 1800B3FF */  sd         $s3, 0x18($sp)
@@ -28,7 +28,7 @@ glabel func_0036C1D8
     /* 26C29C 0036C21C D6071724 */  addiu      $s7, $zero, 0x7D6
     /* 26C2A0 0036C220 4000BEFF */  sd         $fp, 0x40($sp)
     /* 26C2A4 0036C224 EF0D1E24 */  addiu      $fp, $zero, 0xDEF
-    /* 26C2A8 0036C228 E0CE5124 */  addiu      $s1, $v0, %lo(D_004DCEE0)
+    /* 26C2A8 0036C228 E0CE5124 */  addiu      $s1, $v0, %lo(D_4DCEE0)
     /* 26C2AC 0036C22C 0C00F98D */  lw         $t9, 0xC($t7)
     /* 26C2B0 0036C230 0800F88D */  lw         $t8, 0x8($t7)
     /* 26C2B4 0036C234 00000000 */  nop

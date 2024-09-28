@@ -29,14 +29,14 @@ glabel func_0035F388
     /* 25F408 0035F388 E0FFBD27 */  addiu      $sp, $sp, -0x20
     /* 25F40C 0035F38C 3600023C */  lui        $v0, %hi(func_0035F370)
     /* 25F410 0035F390 0000B0FF */  sd         $s0, 0x0($sp)
-    /* 25F414 0035F394 4E00103C */  lui        $s0, %hi(D_004DA870)
+    /* 25F414 0035F394 4E00103C */  lui        $s0, %hi(D_4DA870)
     /* 25F418 0035F398 0800B1FF */  sd         $s1, 0x8($sp)
     /* 25F41C 0035F39C 2D888000 */  daddu      $s1, $a0, $zero
     /* 25F420 0035F3A0 2D280000 */  daddu      $a1, $zero, $zero
     /* 25F424 0035F3A4 1000BFFF */  sd         $ra, 0x10($sp)
     /* 25F428 0035F3A8 0A930D0C */  jal        func_00364C28
     /* 25F42C 0035F3AC 70F34424 */   addiu     $a0, $v0, %lo(func_0035F370)
-    /* 25F430 0035F3B0 70A81026 */  addiu      $s0, $s0, %lo(D_004DA870)
+    /* 25F430 0035F3B0 70A81026 */  addiu      $s0, $s0, %lo(D_4DA870)
     /* 25F434 0035F3B4 3700053C */  lui        $a1, %hi(func_00369108)
     /* 25F438 0035F3B8 0891A524 */  addiu      $a1, $a1, %lo(func_00369108)
     /* 25F43C 0035F3BC 2D200002 */  daddu      $a0, $s0, $zero

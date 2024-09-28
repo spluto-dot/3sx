@@ -9,16 +9,16 @@
 
 glabel func_0036E6A8
     /* 26E728 0036E6A8 F0FFBD27 */  addiu      $sp, $sp, -0x10
-    /* 26E72C 0036E6AC 4400023C */  lui        $v0, %hi(D_0043EB08)
+    /* 26E72C 0036E6AC 4400023C */  lui        $v0, %hi(D_43EB08)
     /* 26E730 0036E6B0 0000B0FF */  sd         $s0, 0x0($sp)
-    /* 26E734 0036E6B4 08EB4224 */  addiu      $v0, $v0, %lo(D_0043EB08)
+    /* 26E734 0036E6B4 08EB4224 */  addiu      $v0, $v0, %lo(D_43EB08)
     /* 26E738 0036E6B8 0800BFFF */  sd         $ra, 0x8($sp)
     /* 26E73C 0036E6BC 42B80D0C */  jal        func_0036E108
     /* 26E740 0036E6C0 0000438C */   lw        $v1, 0x0($v0)
-    /* 26E744 0036E6C4 4400023C */  lui        $v0, %hi(D_0043EB40)
-    /* 26E748 0036E6C8 4400043C */  lui        $a0, %hi(D_0043EB48)
-    /* 26E74C 0036E6CC 40EB5024 */  addiu      $s0, $v0, %lo(D_0043EB40)
-    /* 26E750 0036E6D0 48EB8424 */  addiu      $a0, $a0, %lo(D_0043EB48)
+    /* 26E744 0036E6C4 4400023C */  lui        $v0, %hi(D_43EB40)
+    /* 26E748 0036E6C8 4400043C */  lui        $a0, %hi(D_43EB48)
+    /* 26E74C 0036E6CC 40EB5024 */  addiu      $s0, $v0, %lo(D_43EB40)
+    /* 26E750 0036E6D0 48EB8424 */  addiu      $a0, $a0, %lo(D_43EB48)
     /* 26E754 0036E6D4 0000028E */  lw         $v0, 0x0($s0)
     /* 26E758 0036E6D8 2D280000 */  daddu      $a1, $zero, $zero
     /* 26E75C 0036E6DC 04004014 */  bnez       $v0, .L0036E6F0
@@ -40,10 +40,10 @@ glabel func_0036E708
     /* 26E78C 0036E70C 0000BFFF */  sd         $ra, 0x0($sp)
     /* 26E790 0036E710 42B80D0C */  jal        func_0036E108
     /* 26E794 0036E714 00000000 */   nop
-    /* 26E798 0036E718 4400033C */  lui        $v1, %hi(D_0043EB40)
-    /* 26E79C 0036E71C 4400043C */  lui        $a0, %hi(D_0043EB48)
-    /* 26E7A0 0036E720 40EB6324 */  addiu      $v1, $v1, %lo(D_0043EB40)
-    /* 26E7A4 0036E724 48EB8424 */  addiu      $a0, $a0, %lo(D_0043EB48)
+    /* 26E798 0036E718 4400033C */  lui        $v1, %hi(D_43EB40)
+    /* 26E79C 0036E71C 4400043C */  lui        $a0, %hi(D_43EB48)
+    /* 26E7A0 0036E720 40EB6324 */  addiu      $v1, $v1, %lo(D_43EB40)
+    /* 26E7A4 0036E724 48EB8424 */  addiu      $a0, $a0, %lo(D_43EB48)
     /* 26E7A8 0036E728 0000628C */  lw         $v0, 0x0($v1)
     /* 26E7AC 0036E72C 2D280000 */  daddu      $a1, $zero, $zero
     /* 26E7B0 0036E730 00400624 */  addiu      $a2, $zero, 0x4000

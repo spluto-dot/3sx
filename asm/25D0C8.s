@@ -9,7 +9,7 @@
 
 glabel func_0035D048
     /* 25D0C8 0035D048 C0FFBD27 */  addiu      $sp, $sp, -0x40
-    /* 25D0CC 0035D04C 4300073C */  lui        $a3, %hi(D_00433C68)
+    /* 25D0CC 0035D04C 4300073C */  lui        $a3, %hi(D_433C68)
     /* 25D0D0 0035D050 1800B3FF */  sd         $s3, 0x18($sp)
     /* 25D0D4 0035D054 2D98A000 */  daddu      $s3, $a1, $zero
     /* 25D0D8 0035D058 2000B4FF */  sd         $s4, 0x20($sp)
@@ -17,7 +17,7 @@ glabel func_0035D048
     /* 25D0E0 0035D060 2800B5FF */  sd         $s5, 0x28($sp)
     /* 25D0E4 0035D064 2DA88000 */  daddu      $s5, $a0, $zero
     /* 25D0E8 0035D068 0000B0FF */  sd         $s0, 0x0($sp)
-    /* 25D0EC 0035D06C 683CE324 */  addiu      $v1, $a3, %lo(D_00433C68)
+    /* 25D0EC 0035D06C 683CE324 */  addiu      $v1, $a3, %lo(D_433C68)
     /* 25D0F0 0035D070 0800B1FF */  sd         $s1, 0x8($sp)
     /* 25D0F4 0035D074 2D200000 */  daddu      $a0, $zero, $zero
     /* 25D0F8 0035D078 1000B2FF */  sd         $s2, 0x10($sp)
@@ -41,7 +41,7 @@ glabel func_0035D048
     /* 25D138 0035D0B8 37008310 */  beq        $a0, $v1, .L0035D198
     /* 25D13C 0035D0BC 2D100000 */   daddu     $v0, $zero, $zero
     /* 25D140 0035D0C0 80100400 */  sll        $v0, $a0, 2
-    /* 25D144 0035D0C4 683CE324 */  addiu      $v1, $a3, %lo(D_00433C68)
+    /* 25D144 0035D0C4 683CE324 */  addiu      $v1, $a3, %lo(D_433C68)
     /* 25D148 0035D0C8 21104400 */  addu       $v0, $v0, $a0
     /* 25D14C 0035D0CC 2D200002 */  daddu      $a0, $s0, $zero
     /* 25D150 0035D0D0 40110200 */  sll        $v0, $v0, 5

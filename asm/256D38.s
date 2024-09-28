@@ -36,9 +36,9 @@ glabel func_00356CB8
 .size func_00356CB8, . - func_00356CB8
 
 glabel func_00356D10
-    /* 256D90 00356D10 4300023C */  lui        $v0, %hi(D_00428AB8)
+    /* 256D90 00356D10 4300023C */  lui        $v0, (0x430000 >> 16)
     /* 256D94 00356D14 0800E003 */  jr         $ra
-    /* 256D98 00356D18 B88A40AC */   sw        $zero, %lo(D_00428AB8)($v0)
+    /* 256D98 00356D18 B88A40AC */   sw        $zero, -0x7548($v0)
     /* 256D9C 00356D1C 00000000 */  nop
 .size func_00356D10, . - func_00356D10
 

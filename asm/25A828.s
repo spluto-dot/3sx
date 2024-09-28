@@ -14,8 +14,8 @@ glabel func_0035A7A8
     /* 25A834 0035A7B4 01008280 */  lb         $v0, 0x1($a0)
     /* 25A838 0035A7B8 05004314 */  bne        $v0, $v1, .L0035A7D0
     /* 25A83C 0035A7BC 0000BFDF */   ld        $ra, 0x0($sp)
-    /* 25A840 0035A7C0 4E00043C */  lui        $a0, %hi(D_004D9CB0)
-    /* 25A844 0035A7C4 B09C8424 */  addiu      $a0, $a0, %lo(D_004D9CB0)
+    /* 25A840 0035A7C0 4E00043C */  lui        $a0, %hi(D_4D9CB0)
+    /* 25A844 0035A7C4 B09C8424 */  addiu      $a0, $a0, %lo(D_4D9CB0)
     /* 25A848 0035A7C8 44620D08 */  j          func_00358910
     /* 25A84C 0035A7CC 1000BD27 */   addiu     $sp, $sp, 0x10
   .L0035A7D0:

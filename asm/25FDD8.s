@@ -71,10 +71,10 @@ glabel func_0035FE20
     /* 25FEBC 0035FE3C 08002016 */  bnez       $s1, .L0035FE60
     /* 25FEC0 0035FE40 00000000 */   nop
   .L0035FE44:
-    /* 25FEC4 0035FE44 4E00043C */  lui        $a0, %hi(D_004DA920)
+    /* 25FEC4 0035FE44 4E00043C */  lui        $a0, %hi(D_4DA920)
     /* 25FEC8 0035FE48 0000B0DF */  ld         $s0, 0x0($sp)
     /* 25FECC 0035FE4C 0800B1DF */  ld         $s1, 0x8($sp)
-    /* 25FED0 0035FE50 20A98424 */  addiu      $a0, $a0, %lo(D_004DA920)
+    /* 25FED0 0035FE50 20A98424 */  addiu      $a0, $a0, %lo(D_4DA920)
     /* 25FED4 0035FE54 1000BFDF */  ld         $ra, 0x10($sp)
     /* 25FED8 0035FE58 44620D08 */  j          func_00358910
     /* 25FEDC 0035FE5C 2000BD27 */   addiu     $sp, $sp, 0x20

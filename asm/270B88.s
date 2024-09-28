@@ -20,22 +20,22 @@ glabel func_00370B08
     /* 270BAC 00370B2C 2000BFFF */  sd         $ra, 0x20($sp)
     /* 270BB0 00370B30 04004014 */  bnez       $v0, .L00370B44
     /* 270BB4 00370B34 2D808000 */   daddu     $s0, $a0, $zero
-    /* 270BB8 00370B38 4E00043C */  lui        $a0, %hi(D_004DDC80)
+    /* 270BB8 00370B38 4E00043C */  lui        $a0, %hi(D_4DDC80)
     /* 270BBC 00370B3C D6C10D0C */  jal        func_00370758
-    /* 270BC0 00370B40 80DC8424 */   addiu     $a0, $a0, %lo(D_004DDC80)
+    /* 270BC0 00370B40 80DC8424 */   addiu     $a0, $a0, %lo(D_4DDC80)
   .L00370B44:
     /* 270BC4 00370B44 03000006 */  bltz       $s0, .L00370B54
     /* 270BC8 00370B48 0800222A */   slti      $v0, $s1, 0x8
     /* 270BCC 00370B4C 04004014 */  bnez       $v0, .L00370B60
     /* 270BD0 00370B50 00000000 */   nop
   .L00370B54:
-    /* 270BD4 00370B54 4E00043C */  lui        $a0, %hi(D_004DDCA8)
+    /* 270BD4 00370B54 4E00043C */  lui        $a0, %hi(D_4DDCA8)
     /* 270BD8 00370B58 D6C10D0C */  jal        func_00370758
-    /* 270BDC 00370B5C A8DC8424 */   addiu     $a0, $a0, %lo(D_004DDCA8)
+    /* 270BDC 00370B5C A8DC8424 */   addiu     $a0, $a0, %lo(D_4DDCA8)
   .L00370B60:
     /* 270BE0 00370B60 60C10D0C */  jal        func_00370580
     /* 270BE4 00370B64 00000000 */   nop
-    /* 270BE8 00370B68 4E00043C */  lui        $a0, %hi(D_004DDCD0)
+    /* 270BE8 00370B68 4E00043C */  lui        $a0, %hi(D_4DDCD0)
     /* 270BEC 00370B6C 40101000 */  sll        $v0, $s0, 1
     /* 270BF0 00370B70 21105000 */  addu       $v0, $v0, $s0
     /* 270BF4 00370B74 40100200 */  sll        $v0, $v0, 1
@@ -46,7 +46,7 @@ glabel func_00370B08
     /* 270C08 00370B88 21800202 */  addu       $s0, $s0, $v0
     /* 270C0C 00370B8C 0000038E */  lw         $v1, 0x0($s0)
     /* 270C10 00370B90 03006010 */  beqz       $v1, .L00370BA0
-    /* 270C14 00370B94 D0DC8424 */   addiu     $a0, $a0, %lo(D_004DDCD0)
+    /* 270C14 00370B94 D0DC8424 */   addiu     $a0, $a0, %lo(D_4DDCD0)
     /* 270C18 00370B98 D6C10D0C */  jal        func_00370758
     /* 270C1C 00370B9C 00000000 */   nop
   .L00370BA0:

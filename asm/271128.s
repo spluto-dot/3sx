@@ -52,8 +52,8 @@ glabel func_00371110
     /* 2711A4 00371124 2D80A000 */  daddu      $s0, $a1, $zero
     /* 2711A8 00371128 20002012 */  beqz       $s1, .L003711AC
     /* 2711AC 0037112C 00000000 */   nop
-    /* 2711B0 00371130 4E00043C */  lui        $a0, %hi(D_004DDD60)
-    /* 2711B4 00371134 60DD8424 */  addiu      $a0, $a0, %lo(D_004DDD60)
+    /* 2711B0 00371130 4E00043C */  lui        $a0, %hi(D_4DDD60)
+    /* 2711B4 00371134 60DD8424 */  addiu      $a0, $a0, %lo(D_4DDD60)
     /* 2711B8 00371138 06D90D0C */  jal        func_00376418
     /* 2711BC 0037113C 00000000 */   nop
     /* 2711C0 00371140 00088427 */  addiu      $a0, $gp, %gp_rel(D_800)
@@ -70,8 +70,8 @@ glabel func_00371110
     /* 2711EC 0037116C 10000624 */  addiu      $a2, $zero, 0x10
     /* 2711F0 00371170 84D40D0C */  jal        func_00375210
     /* 2711F4 00371174 00000000 */   nop
-    /* 2711F8 00371178 4E00023C */  lui        $v0, %hi(D_004DDD80)
-    /* 2711FC 0037117C 80DD4224 */  addiu      $v0, $v0, %lo(D_004DDD80)
+    /* 2711F8 00371178 4E00023C */  lui        $v0, %hi(D_4DDD80)
+    /* 2711FC 0037117C 80DD4224 */  addiu      $v0, $v0, %lo(D_4DDD80)
     /* 271200 00371180 D00782AF */  sw         $v0, 0x7D0($gp) /* Failed to symbolize address 0x000007D0 for %gp_rel. Make sure this address is within the recognized valid address space */
     /* 271204 00371184 20000224 */  addiu      $v0, $zero, 0x20
     /* 271208 00371188 D40782AF */  sw         $v0, 0x7D4($gp) /* Failed to symbolize address 0x000007D4 for %gp_rel. Make sure this address is within the recognized valid address space */
@@ -86,8 +86,8 @@ glabel func_00371110
   .L003711AC:
     /* 27122C 003711AC 24000012 */  beqz       $s0, .L00371240
     /* 271230 003711B0 00000000 */   nop
-    /* 271234 003711B4 4E00043C */  lui        $a0, %hi(D_004DDD90)
-    /* 271238 003711B8 90DD8424 */  addiu      $a0, $a0, %lo(D_004DDD90)
+    /* 271234 003711B4 4E00043C */  lui        $a0, %hi(D_4DDD90)
+    /* 271238 003711B8 90DD8424 */  addiu      $a0, $a0, %lo(D_4DDD90)
     /* 27123C 003711BC 06D90D0C */  jal        func_00376418
     /* 271240 003711C0 00000000 */   nop
     /* 271244 003711C4 E0078427 */  addiu      $a0, $gp, %gp_rel(D_7E0)
@@ -99,8 +99,8 @@ glabel func_00371110
     /* 27125C 003711DC E0078427 */  addiu      $a0, $gp, %gp_rel(D_7E0)
     /* 271260 003711E0 367C0D0C */  jal        func_0035F0D8
     /* 271264 003711E4 00000000 */   nop
-    /* 271268 003711E8 4E00043C */  lui        $a0, %hi(D_004DDDB0)
-    /* 27126C 003711EC B0DD8424 */  addiu      $a0, $a0, %lo(D_004DDDB0)
+    /* 271268 003711E8 4E00043C */  lui        $a0, %hi(D_4DDDB0)
+    /* 27126C 003711EC B0DD8424 */  addiu      $a0, $a0, %lo(D_4DDDB0)
     /* 271270 003711F0 06D90D0C */  jal        func_00376418
     /* 271274 003711F4 00000000 */   nop
     /* 271278 003711F8 C0078427 */  addiu      $a0, $gp, %gp_rel(D_7C0)
@@ -108,8 +108,8 @@ glabel func_00371110
     /* 271280 00371200 10000624 */  addiu      $a2, $zero, 0x10
     /* 271284 00371204 84D40D0C */  jal        func_00375210
     /* 271288 00371208 00000000 */   nop
-    /* 27128C 0037120C 4E00023C */  lui        $v0, %hi(D_004DDD80)
-    /* 271290 00371210 80DD4224 */  addiu      $v0, $v0, %lo(D_004DDD80)
+    /* 27128C 0037120C 4E00023C */  lui        $v0, %hi(D_4DDD80)
+    /* 271290 00371210 80DD4224 */  addiu      $v0, $v0, %lo(D_4DDD80)
     /* 271294 00371214 C00782AF */  sw         $v0, 0x7C0($gp) /* Failed to symbolize address 0x000007C0 for %gp_rel. Make sure this address is within the recognized valid address space */
     /* 271298 00371218 20000224 */  addiu      $v0, $zero, 0x20
     /* 27129C 0037121C C40782AF */  sw         $v0, 0x7C4($gp) /* Failed to symbolize address 0x000007C4 for %gp_rel. Make sure this address is within the recognized valid address space */
@@ -144,11 +144,11 @@ glabel func_00371270
     /* 271300 00371280 CA720D0C */  jal        func_0035CB28
     /* 271304 00371284 00000000 */   nop
   .L00371288:
-    /* 271308 00371288 4E00043C */  lui        $a0, %hi(D_004DDDD0)
-    /* 27130C 0037128C D0DD8424 */  addiu      $a0, $a0, %lo(D_004DDDD0)
+    /* 271308 00371288 4E00043C */  lui        $a0, %hi(D_4DDDD0)
+    /* 27130C 0037128C D0DD8424 */  addiu      $a0, $a0, %lo(D_4DDDD0)
     /* 271310 00371290 28000524 */  addiu      $a1, $zero, 0x28
-    /* 271314 00371294 4E00063C */  lui        $a2, %hi(D_004DDE00)
-    /* 271318 00371298 00DEC624 */  addiu      $a2, $a2, %lo(D_004DDE00)
+    /* 271314 00371294 4E00063C */  lui        $a2, %hi(D_4DDE00)
+    /* 271318 00371298 00DEC624 */  addiu      $a2, $a2, %lo(D_4DDE00)
     /* 27131C 0037129C 3E2C040C */  jal        func_0010B0F8
     /* 271320 003712A0 00000000 */   nop
     /* 271324 003712A4 F8FF4004 */  bltz       $v0, .L00371288
@@ -944,13 +944,13 @@ glabel func_00371E00
 glabel func_00371E20
     /* 271EA0 00371E20 E0FFBD27 */  addiu      $sp, $sp, -0x20
     /* 271EA4 00371E24 0000B0FF */  sd         $s0, 0x0($sp)
-    /* 271EA8 00371E28 4400103C */  lui        $s0, %hi(D_00444890)
+    /* 271EA8 00371E28 4400103C */  lui        $s0, %hi(D_444890)
     /* 271EAC 00371E2C 0800B1FF */  sd         $s1, 0x8($sp)
     /* 271EB0 00371E30 2D88A000 */  daddu      $s1, $a1, $zero
     /* 271EB4 00371E34 1000B2FF */  sd         $s2, 0x10($sp)
     /* 271EB8 00371E38 2D908000 */  daddu      $s2, $a0, $zero
     /* 271EBC 00371E3C 1800BFFF */  sd         $ra, 0x18($sp)
-    /* 271EC0 00371E40 90481026 */  addiu      $s0, $s0, %lo(D_00444890)
+    /* 271EC0 00371E40 90481026 */  addiu      $s0, $s0, %lo(D_444890)
     /* 271EC4 00371E44 B4D40D0C */  jal        func_003752D0
     /* 271EC8 00371E48 0000048E */   lw        $a0, 0x0($s0)
     /* 271ECC 00371E4C 0000048E */  lw         $a0, 0x0($s0)

@@ -2,6 +2,21 @@ SECTIONS
 {
     __romPos = 0;
     _gp = 0x0;
+    elf_header_ROM_START = __romPos;
+    elf_header_VRAM = ADDR(.elf_header);
+    .elf_header : AT(elf_header_ROM_START)
+    {
+        FILL(0x00000000);
+        elf_header_DATA_START = .;
+        elf_header_s = .;
+        build/asm/data/elf_header.s.o(.data);
+        elf_header_DATA_END = .;
+        elf_header_DATA_SIZE = ABSOLUTE(elf_header_DATA_END - elf_header_DATA_START);
+    }
+    __romPos += SIZEOF(.elf_header);
+    elf_header_ROM_END = __romPos;
+    elf_header_VRAM_END = .;
+
     main_ROM_START = __romPos;
     main_VRAM = ADDR(.main);
     .main 0x100000 : AT(main_ROM_START)
@@ -1189,6 +1204,7 @@ SECTIONS
         build/asm/287928.s.o(.data);
         _287E28_s = .;
         build/asm/287E28.s.o(.data);
+        . += 0x64;
         . = ALIGN(., 16);
         main_DATA_END = .;
         main_DATA_SIZE = ABSOLUTE(main_DATA_END - main_DATA_START);
@@ -1998,7 +2014,7 @@ SECTIONS
 
     data_ROM_START = __romPos;
     data_VRAM = ADDR(.data);
-    .data 0x665D80 : AT(data_ROM_START)
+    .data 0x100000 : AT(data_ROM_START)
     {
         FILL(0x00000000);
         data_DATA_START = .;

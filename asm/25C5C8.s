@@ -18,9 +18,9 @@ glabel func_0035C548
 
 glabel func_0035C560
     /* 25C5E0 0035C560 F0FFBD27 */  addiu      $sp, $sp, -0x10
-    /* 25C5E4 0035C564 4300023C */  lui        $v0, %hi(D_0042C3CC)
+    /* 25C5E4 0035C564 4300023C */  lui        $v0, %hi(D_42C3CC)
     /* 25C5E8 0035C568 0000B0FF */  sd         $s0, 0x0($sp)
-    /* 25C5EC 0035C56C CCC35024 */  addiu      $s0, $v0, %lo(D_0042C3CC)
+    /* 25C5EC 0035C56C CCC35024 */  addiu      $s0, $v0, %lo(D_42C3CC)
     /* 25C5F0 0035C570 0800BFFF */  sd         $ra, 0x8($sp)
     /* 25C5F4 0035C574 C06D0D0C */  jal        func_0035B700
     /* 25C5F8 0035C578 0000048E */   lw        $a0, 0x0($s0)
@@ -32,10 +32,10 @@ glabel func_0035C560
   .L0035C590:
     /* 25C610 0035C590 E06E0D0C */  jal        func_0035BB80
     /* 25C614 0035C594 00000000 */   nop
-    /* 25C618 0035C598 4300033C */  lui        $v1, %hi(D_0042C3D0)
+    /* 25C618 0035C598 4300033C */  lui        $v1, %hi(D_42C3D0)
     /* 25C61C 0035C59C 01000424 */  addiu      $a0, $zero, 0x1
     /* 25C620 0035C5A0 0D004414 */  bne        $v0, $a0, .L0035C5D8
-    /* 25C624 0035C5A4 D0C37024 */   addiu     $s0, $v1, %lo(D_0042C3D0)
+    /* 25C624 0035C5A4 D0C37024 */   addiu     $s0, $v1, %lo(D_42C3D0)
     /* 25C628 0035C5A8 0000048E */  lw         $a0, 0x0($s0)
     /* 25C62C 0035C5AC C06D0D0C */  jal        func_0035B700
     /* 25C630 0035C5B0 00000000 */   nop
@@ -58,17 +58,17 @@ glabel func_0035C560
 
 glabel func_0035C5E8
     /* 25C668 0035C5E8 B0FFBD27 */  addiu      $sp, $sp, -0x50
-    /* 25C66C 0035C5EC 4300023C */  lui        $v0, %hi(D_0042C37C)
+    /* 25C66C 0035C5EC 4300023C */  lui        $v0, %hi(D_42C37C)
     /* 25C670 0035C5F0 3800B1FF */  sd         $s1, 0x38($sp)
-    /* 25C674 0035C5F4 7CC35124 */  addiu      $s1, $v0, %lo(D_0042C37C)
+    /* 25C674 0035C5F4 7CC35124 */  addiu      $s1, $v0, %lo(D_42C37C)
     /* 25C678 0035C5F8 0000238E */  lw         $v1, 0x0($s1)
     /* 25C67C 0035C5FC 01000424 */  addiu      $a0, $zero, 0x1
     /* 25C680 0035C600 3000B0FF */  sd         $s0, 0x30($sp)
     /* 25C684 0035C604 12006414 */  bne        $v1, $a0, .L0035C650
     /* 25C688 0035C608 4000BFFF */   sd        $ra, 0x40($sp)
-    /* 25C68C 0035C60C 4300023C */  lui        $v0, %hi(D_0042C3C8)
+    /* 25C68C 0035C60C 4300023C */  lui        $v0, %hi(D_42C3C8)
     /* 25C690 0035C610 2D28A003 */  daddu      $a1, $sp, $zero
-    /* 25C694 0035C614 C8C35024 */  addiu      $s0, $v0, %lo(D_0042C3C8)
+    /* 25C694 0035C614 C8C35024 */  addiu      $s0, $v0, %lo(D_42C3C8)
     /* 25C698 0035C618 A80B040C */  jal        func_00102EA0
     /* 25C69C 0035C61C 0000048E */   lw        $a0, 0x0($s0)
     /* 25C6A0 0035C620 0000A38F */  lw         $v1, 0x0($sp)

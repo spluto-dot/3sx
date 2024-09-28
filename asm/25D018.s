@@ -24,8 +24,8 @@ glabel func_0035CFB8
     /* 25D040 0035CFC0 AC530D0C */  jal        func_00354EB0
     /* 25D044 0035CFC4 00000000 */   nop
     /* 25D048 0035CFC8 0000BFDF */  ld         $ra, 0x0($sp)
-    /* 25D04C 0035CFCC 4300043C */  lui        $a0, %hi(D_00433C68)
-    /* 25D050 0035CFD0 683C8424 */  addiu      $a0, $a0, %lo(D_00433C68)
+    /* 25D04C 0035CFCC 4300043C */  lui        $a0, %hi(D_433C68)
+    /* 25D050 0035CFD0 683C8424 */  addiu      $a0, $a0, %lo(D_433C68)
     /* 25D054 0035CFD4 2D280000 */  daddu      $a1, $zero, $zero
     /* 25D058 0035CFD8 000A0624 */  addiu      $a2, $zero, 0xA00
     /* 25D05C 0035CFDC 84D40D08 */  j          func_00375210

@@ -9,16 +9,16 @@
 
 glabel func_00364C28
     /* 264CA8 00364C28 05008014 */  bnez       $a0, .L00364C40
-    /* 264CAC 00364C2C 4300023C */   lui       $v0, %hi(D_004359E4)
-    /* 264CB0 00364C30 4300033C */  lui        $v1, %hi(D_004359E8)
-    /* 264CB4 00364C34 E45940AC */  sw         $zero, %lo(D_004359E4)($v0)
+    /* 264CAC 00364C2C 4300023C */   lui       $v0, (0x4359E4 >> 16)
+    /* 264CB0 00364C30 4300033C */  lui        $v1, (0x4359E8 >> 16)
+    /* 264CB4 00364C34 E45940AC */  sw         $zero, (0x4359E4 & 0xFFFF)($v0)
     /* 264CB8 00364C38 0800E003 */  jr         $ra
-    /* 264CBC 00364C3C E85960AC */   sw        $zero, %lo(D_004359E8)($v1)
+    /* 264CBC 00364C3C E85960AC */   sw        $zero, (0x4359E8 & 0xFFFF)($v1)
   .L00364C40:
-    /* 264CC0 00364C40 4300033C */  lui        $v1, %hi(D_004359E8)
-    /* 264CC4 00364C44 E45944AC */  sw         $a0, %lo(D_004359E4)($v0)
+    /* 264CC0 00364C40 4300033C */  lui        $v1, (0x4359E8 >> 16)
+    /* 264CC4 00364C44 E45944AC */  sw         $a0, (0x4359E4 & 0xFFFF)($v0)
     /* 264CC8 00364C48 0800E003 */  jr         $ra
-    /* 264CCC 00364C4C E85965AC */   sw        $a1, %lo(D_004359E8)($v1)
+    /* 264CCC 00364C4C E85965AC */   sw        $a1, (0x4359E8 & 0xFFFF)($v1)
 .size func_00364C28, . - func_00364C28
 
 glabel func_00364C50
@@ -27,23 +27,23 @@ glabel func_00364C50
     /* 264CD8 00364C58 2D800000 */  daddu      $s0, $zero, $zero
     /* 264CDC 00364C5C 06008014 */  bnez       $a0, .L00364C78
     /* 264CE0 00364C60 0800BFFF */   sd        $ra, 0x8($sp)
-    /* 264CE4 00364C64 4E00043C */  lui        $a0, %hi(D_004DBAF0)
+    /* 264CE4 00364C64 4E00043C */  lui        $a0, %hi(D_4DBAF0)
     /* 264CE8 00364C68 EA8C0D0C */  jal        func_003633A8
-    /* 264CEC 00364C6C F0BA8424 */   addiu     $a0, $a0, %lo(D_004DBAF0)
+    /* 264CEC 00364C6C F0BA8424 */   addiu     $a0, $a0, %lo(D_4DBAF0)
     /* 264CF0 00364C70 0C000010 */  b          .L00364CA4
     /* 264CF4 00364C74 2D100000 */   daddu     $v0, $zero, $zero
   .L00364C78:
     /* 264CF8 00364C78 0000828C */  lw         $v0, 0x0($a0)
     /* 264CFC 00364C7C 6000428C */  lw         $v0, 0x60($v0)
     /* 264D00 00364C80 05004050 */  beql       $v0, $zero, .L00364C98
-    /* 264D04 00364C84 4E00043C */   lui       $a0, %hi(D_004DBB10)
+    /* 264D04 00364C84 4E00043C */   lui       $a0, %hi(D_4DBB10)
     /* 264D08 00364C88 09F84000 */  jalr       $v0
     /* 264D0C 00364C8C 0400848C */   lw        $a0, 0x4($a0)
     /* 264D10 00364C90 03000010 */  b          .L00364CA0
     /* 264D14 00364C94 2D804000 */   daddu     $s0, $v0, $zero
   .L00364C98:
     /* 264D18 00364C98 EA8C0D0C */  jal        func_003633A8
-    /* 264D1C 00364C9C 10BB8424 */   addiu     $a0, $a0, %lo(D_004DBB10)
+    /* 264D1C 00364C9C 10BB8424 */   addiu     $a0, $a0, %lo(D_4DBB10)
   .L00364CA0:
     /* 264D20 00364CA0 2D100002 */  daddu      $v0, $s0, $zero
   .L00364CA4:
