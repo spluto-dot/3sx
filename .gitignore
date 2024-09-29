@@ -2,11 +2,12 @@
 
 venv
 
-# Assets
-
-SLPM_656.21
-splat/assets
-
 # macOS
 
 .DS_Store
+
+# Project
+
+SLPM_656.21*
+assets
+asm
