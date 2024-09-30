@@ -44,3 +44,7 @@ Right before returning it does `sh $a2, 0x396($a0)`. Is that the return value?
 For track labels (e.g. `4. Necro & Twelve Stage -SNOWLAND mix1-`) it gets called on every frame, possibly due to the fact that track names have a "breathing" animation.
 
 There's a similar function for other strings on the screen, but it behaves differently.
+
+#### Game loop
+
+`waitForKernelMode` (0x0010BFE0) seems to be waiting for kernel mode to kick in in an infinite loop. Returns 1 if it had to sit in a loop and 0 if kernel mode was enabled already.

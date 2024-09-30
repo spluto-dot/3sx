@@ -21,3 +21,9 @@ _EnableDmac = 0x00102D00; // type:func
 _DisableDmac = 0x00102D10; // type:func
 // ..
 CreateSema = 0x00102FA0; // type:func
+
+// MARK: - Funcs
+
+waitForKernelMode = 0x0010BFE0; // type:func
+
+gameLoop = 0x003718B0; // type:func

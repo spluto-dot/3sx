@@ -35,6 +35,8 @@ segments:
     - [0x0034A0, asm, 0034A0]
     - [0x0DB4C0, asm, options/sound/draw_track_name]
     - [0x0DB5F0, asm, 0DB5F0]
+    - [0x271930, asm, game_loop]
+    - [0x271D88, asm, 271D88]
 
     - [0x29519C, pad, nops_29519C]
 
