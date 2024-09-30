@@ -1,0 +1,23 @@
+// MARK: - Syscalls
+
+FullReset = 0x00102B80; // type:func
+ResetEE = 0x00102B90; // type:func
+SetGsCrt = 0x00102BA0; // type:func
+RFU003 = 0x00102BB0; // type:func
+Exit = 0x00102BC0; // type:func
+_ExceptionEpilogue = 0x00102BD0; // type:func
+LoadExecPS2 = 0x00102BE0; // type:func
+ExecPS2 = 0x00102BF0; // type:func
+RFU008 = 0x00102C00; // type:func
+RFU009 = 0x00102C10; // type:func
+// ...
+AddIntcHandler = 0x00102C80; // type:func
+RemoveIntcHandler = 0x00102CA0; // type:func
+AddDmacHandler = 0x00102CC0; // type:func
+RemoveDmacHandler = 0x00102CD0; // type:func
+_EnableIntc = 0x00102CE0; // type:func
+_DisableIntc = 0x00102CF0; // type:func
+_EnableDmac = 0x00102D00; // type:func
+_DisableDmac = 0x00102D10; // type:func
+// ..
+CreateSema = 0x00102FA0; // type:func
