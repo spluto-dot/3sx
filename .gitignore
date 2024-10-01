@@ -11,3 +11,5 @@ venv
 SLPM_656.21*
 assets
 asm
+libs
+exedump
