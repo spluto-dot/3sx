@@ -33,6 +33,8 @@ segments:
     - [0x000088, asm, 000088]
     - [0x002C00, asm, syscalls]
     - [0x0034A0, asm, 0034A0]
+    - [0x00A778, asm, sdk/libkernl/eeloadfile]
+    - [0x00B4D8, asm, 00B4D8]
     - [0x0DB4C0, asm, options/sound/draw_track_name]
     - [0x0DB5F0, asm, 0DB5F0]
     - [0x271930, asm, game_loop]

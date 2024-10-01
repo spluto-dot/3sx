@@ -27,3 +27,37 @@ CreateSema = 0x00102FA0; // type:func
 waitForKernelMode = 0x0010BFE0; // type:func
 
 gameLoop = 0x003718B0; // type:func
+
+// MARK: - SDK
+
+// MARK: - eeloadfile
+
+_lf_bind = 0x0010A6F8; // type:func
+_lf_version = 0x0010A7F8; // type:func
+sceSifLoadFileReset = 0x0010A888; // type:func
+_sceSifLoadModuleBuffer = 0x0010A8C0; // type:func
+sceSifStopModule = 0x0010AAC8; // type:func
+sceSifUnloadModule = 0x0010ACD0; // type:func
+sceSifSearchModuleByName = 0x0010AD60; // type:func
+sceSifSearchModuleByAddress = 0x0010AE00; // type:func
+sceSifLoadModuleBuffer = 0x0010AE90; // type:func
+sceSifLoadStartModuleBuffer = 0x0010AEB0; // type:func
+_sceSifLoadModule = 0x0010AED0; // type:func
+sceSifLoadModule = 0x0010B0F8; // type:func
+sceSifLoadStartModule = 0x0010B118; // type:func
+_sceSifLoadElfPart = 0x0010B138; // type:func
+sceSifLoadElf = 0x0010B260; // type:func
+sceSifGetIopAddr = 0x0010B288; // type:func
+sceSifSetIopAddr = 0x0010B378; // type:func
+
+// MARK: - IRX Modules
+
+SIO2MAN = 0x004DE650;
+MCMAN = 0x004DE680;
+MCSERV = 0x004DE6A0;
+LIBSD = 0x004DE6D0;
+CSELIB00 = 0x004DE6F0;
+CRI_ADXI = 0x004DDDD0;
+DBCMAN = 0x004DE720;
+SIO2D = 0x004DE750;
+DS2U_D = 0x004DE770;
