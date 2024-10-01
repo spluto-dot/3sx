@@ -1,34 +1,25 @@
-// MARK: - Syscalls
-
-FullReset = 0x00102B80; // type:func
-ResetEE = 0x00102B90; // type:func
-SetGsCrt = 0x00102BA0; // type:func
-RFU003 = 0x00102BB0; // type:func
-Exit = 0x00102BC0; // type:func
-_ExceptionEpilogue = 0x00102BD0; // type:func
-LoadExecPS2 = 0x00102BE0; // type:func
-ExecPS2 = 0x00102BF0; // type:func
-RFU008 = 0x00102C00; // type:func
-RFU009 = 0x00102C10; // type:func
-// ...
-AddIntcHandler = 0x00102C80; // type:func
-RemoveIntcHandler = 0x00102CA0; // type:func
-AddDmacHandler = 0x00102CC0; // type:func
-RemoveDmacHandler = 0x00102CD0; // type:func
-_EnableIntc = 0x00102CE0; // type:func
-_DisableIntc = 0x00102CF0; // type:func
-_EnableDmac = 0x00102D00; // type:func
-_DisableDmac = 0x00102D10; // type:func
-// ..
-CreateSema = 0x00102FA0; // type:func
-
 // MARK: - Funcs
 
 waitForKernelMode = 0x0010BFE0; // type:func
 
+main = 0x00371E00; // type:func
+exit = 0x00373440; // type:func
 gameLoop = 0x003718B0; // type:func
 
+// MARK: - crt0
+
+_fbss = 0x004F8500;
+_end = 0x00665D80;
+_gp = 0x004F9B70;
+// _stack = -0x1;
+_stack_size = 0x10000;
+// _heap_size = -0x1;
+_args = 0x0065DCC0;
+_root = 0x00100220; // type:func
+
 // MARK: - SDK
+
+// MARK: - libkernl
 
 // MARK: - eeloadfile
 
@@ -49,6 +40,18 @@ _sceSifLoadElfPart = 0x0010B138; // type:func
 sceSifLoadElf = 0x0010B260; // type:func
 sceSifGetIopAddr = 0x0010B288; // type:func
 sceSifSetIopAddr = 0x0010B378; // type:func
+
+// MARK: - exit
+
+Exit = 0x0010C688; // type:func
+
+// MARK: - initsys
+
+_InitSys = 0x0010C288; // type:func
+
+// MARK: - klib
+
+FlushCache = 0x00103220; // type:func
 
 // MARK: - IRX Modules
 
