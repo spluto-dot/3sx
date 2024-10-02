@@ -4,6 +4,8 @@ main = 0x00371E00; // type:func
 exit = 0x00373440; // type:func
 gameLoop = 0x003718B0; // type:func
 
+scePrintf = 0x001051C8; // type:func
+
 // MARK: - crt0
 
 _fbss = 0x004F8500;
@@ -459,6 +461,15 @@ scePad2GetSide2 = 0x00387DA8; // type:func
 scePad2CheckDma = 0x00387E10; // type:func
 scePad2SetButtonOrder = 0x00387E70; // type:func
 scePad2StateIntToStr = 0x00387F20; // type:func
+
+// MARK: - libgraph
+
+sceGsSyncV = 0x00100438; // type:func
+sceGsSetDefLoadImage = 0x001007E8; // type:func
+sceGsSyncPath = 0x001004D0; // type:func
+sceGsResetPath = 0x001003D0; // type:func
+sceGsSyncVCallback = 0x00100B50; // type:func
+sceGsExecLoadImage = 0x001009D0; // type:func
 
 // MARK: - IRX Modules
 

@@ -35,6 +35,15 @@ segments:
     - [0x000088, asm, crt0]
     - [0x0002B0, asm]
 
+    - [0x000450, asm, sdk/libgraph/graph002]
+    - [0x0004B8, asm, sdk/libgraph/graph011]
+    - [0x000550, asm, sdk/libgraph/graph012]
+    - [0x000868, asm, sdk/libgraph/graph015]
+    - [0x000A50, asm, sdk/libgraph/graph017]
+    - [0x000BD0, asm, sdk/libgraph/graph019]
+
+    - [0xC70, asm]
+
     # Unmapped objects:
     # - tlbtrap.o
     # - gp.o
@@ -101,7 +110,35 @@ segments:
     - [0x287FE0, asm]
     - [0x29519C, pad, nops_29519C]
 
-    - [0x295200, rodata, data]
+    # Data
+
+    - [0x295200, rodata]
+
+    - [0x2E75A0, data, sdk/libgraph/graph002]
+
+    - [0x2E75C0, rodata]
+
+    # Layout:
+    #  00000010 __ps2_libinfo__
+    #  00000004 isInit
+    #  00000008 count_old
+    #  00000010 Pad2StateStr
+    - [0x345608, data, sdk/libpad2/libpad2]
+
+    - [0x345638, rodata]
+
+    # Rodata
+
+    - [0x359680, rodata, sdk/libgraph/graph012]
+    - [0x359810, rodata, sdk/libgraph/graph015]
+    - [0x359930, rodata, sdk/libgraph/graph017]
+
+    - [0x359968, rodata]
+
+    # May need to end a bit sooner.
+    - [0x3F03A0, rodata, sdk/libpad2/libpad2]
+
+    - [0x3F0400, rodata]
 
   - [0x3F85AD, textbin, comment]
   - [0x3F85D8, textbin, reginfo]
