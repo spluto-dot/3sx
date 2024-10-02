@@ -98,7 +98,17 @@ segments:
 
     - [0x00DC28, asm, sdk/libkernl/timeralarm]
     - [0x00E018, asm, sdk/libkernl/iopnotify]
-    - [0x00E278, asm]
+
+    - [0x00E278, asm, sdk/libcdvd/cdvd000]
+    - [0x00F7D0, asm, sdk/libcdvd/cdvd005]
+    - [0x00F9B0, asm, sdk/libcdvd/cdvd010]
+    - [0x00FA80, asm, sdk/libcdvd/cdvd014]
+    - [0x00FB18, asm, sdk/libcdvd/cdvd015]
+    - [0x00FBB0, asm, sdk/libcdvd/cdvd018]
+    - [0x00FC68, asm, sdk/libcdvd/cdvd036]
+    
+    - [0x00FD38, asm]
+
     - [0x0DB4C0, asm, sfiii/options/sound/draw_track_name]
     - [0x0DB5F0, asm]
     - [0x271930, asm, sfiii/game_loop]
@@ -112,11 +122,18 @@ segments:
 
     # Data
 
-    - [0x295200, rodata]
+    - [0x295200, data]
 
     - [0x2E75A0, data, sdk/libgraph/graph002]
 
-    - [0x2E75C0, rodata]
+    - [0x2E75C0, data]
+
+    - [0x2E8D40, data, sdk/libcdvd/cdvd000]
+    - [0x2EA8E8, data, sdk/libcdvd/cdvd036]
+    
+    - [0x2EA8F4, pad]
+
+    - [0x2EA8F8, data] # libmc
 
     # Layout:
     #  00000010 __ps2_libinfo__
@@ -134,6 +151,11 @@ segments:
     - [0x359930, rodata, sdk/libgraph/graph017]
 
     - [0x359968, rodata]
+
+    - [0x359D18, rodata, sdk/libcdvd/cdvd000]
+    - [0x359EE8, rodata, sdk/libcdvd/cdvd005]
+
+    - [0x359F10, rodata]
 
     # May need to end a bit sooner.
     - [0x3F03A0, rodata, sdk/libpad2/libpad2]
