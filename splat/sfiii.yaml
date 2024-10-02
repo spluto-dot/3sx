@@ -97,6 +97,8 @@ segments:
     - [0x271E80, asm, sfiii/main]
     - [0x271EA0, asm]
 
+    - [0x287720, asm, sdk/libpad2/libpad2]
+    - [0x287FE0, asm]
     - [0x29519C, pad, nops_29519C]
 
     - [0x295200, rodata, data]
