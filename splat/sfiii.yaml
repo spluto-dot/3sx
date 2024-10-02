@@ -19,6 +19,7 @@ options:
   find_file_boundaries: False
   # disasm_unknown: True
   # named_regs_for_c_funcs: False
+  gp_value: 0x004F9B70
 
 segments:
   - [0x0, databin, elf_header]
@@ -27,6 +28,7 @@ segments:
     type: code
     start: 0x00000080
     vram: 0x00100000
+    bss_size: 0x16D870
     subsegments:
     - [0x000080, pad, nops_000080]
 
