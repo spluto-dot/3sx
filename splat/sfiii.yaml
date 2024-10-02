@@ -107,7 +107,10 @@ segments:
     - [0x00FBB0, asm, sdk/libcdvd/cdvd018]
     - [0x00FC68, asm, sdk/libcdvd/cdvd036]
     
-    - [0x00FD38, asm]
+    # Very different from 3.0. May continue below 👇.
+    - [0x00FD38, asm, sdk/libmc/libmc]
+
+    - [0x011538, asm]
 
     - [0x0DB4C0, asm, sfiii/options/sound/draw_track_name]
     - [0x0DB5F0, asm]
@@ -133,7 +136,10 @@ segments:
     
     - [0x2EA8F4, pad]
 
-    - [0x2EA8F8, data] # libmc
+    # Start is correct. End may be off.
+    - [0x2EA8F8, data, sdk/libmc/libmc]
+
+    - [0x2EAAE0, data]
 
     # Layout:
     #  00000010 __ps2_libinfo__
@@ -142,7 +148,7 @@ segments:
     #  00000010 Pad2StateStr
     - [0x345608, data, sdk/libpad2/libpad2]
 
-    - [0x345638, rodata]
+    - [0x345638, data]
 
     # Rodata
 
@@ -155,7 +161,9 @@ segments:
     - [0x359D18, rodata, sdk/libcdvd/cdvd000]
     - [0x359EE8, rodata, sdk/libcdvd/cdvd005]
 
-    - [0x359F10, rodata]
+    - [0x359F10, rodata, sdk/libmc/libmc]
+
+    - [0x359F98, rodata]
 
     # May need to end a bit sooner.
     - [0x3F03A0, rodata, sdk/libpad2/libpad2]
