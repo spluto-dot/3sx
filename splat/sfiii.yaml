@@ -32,20 +32,62 @@ segments:
 
     - [0x000088, asm, crt0]
     - [0x0002B0, asm]
+
+    # Unmapped objects:
+    # - tlbtrap.o
+    # - gp.o
+    # - kprintf2.o
+    # - converterr.o
+
     - [0x002C00, asm, sdk/libkernl/klib]
-    - [0x0034A0, asm, sdk/libkernl/glue] # has missing symbols
-    - [0x003870, asm]
+
+    # Has missing symbols.
+    - [0x0034A0, asm, sdk/libkernl/glue]
+
+    - [0x003870, asm, sdk/libkernl/cache]
+    - [0x003AF0, asm, sdk/libkernl/intr]
+
+    # Is very different from the 3.0 SDK.
+    - [0x003D20, asm, sdk/libkernl/thread]
+
     - [0x004170, asm, sdk/libkernl/deci2]
     - [0x0043A8, asm, sdk/libkernl/tty]
     - [0x0048F0, asm]
+
+    - [0x0052A8, asm, sdk/libkernl/sifcmd]
+    - [0x005A7C, asm]
+
+    # Is very different from the 3.0 SDK.
+    # Don't know where sceSifInitRpc function is.
+    # May need to include some functions from the block above 👆.
+    - [0x005C20, asm, sdk/libkernl/sifrpc]
+
+    # Is very different from the 3.0 SDK.
+    # May need to include some functions from the block below 👇.
+    - [0x006B70, asm, sdk/libkernl/filestub]
+
+    - [0x009A10, asm]
     - [0x00A228, asm, sdk/libkernl/iopheap]
     - [0x00A778, asm, sdk/libkernl/eeloadfile]
     - [0x00B4D8, asm, sdk/libkernl/iopreset]
     - [0x00B7B8, asm, sdk/libkernl/tlbfunc]
     - [0x00BD00, asm]
-    - [0x00C8C0, asm, sdk/libkernl/timer] # has missing symbols
+
+    - [0x00C060, asm, sdk/libkernl/diei]
+
+    # supplement_crt0 seems to be implemented differently from 3.0.
+    - [0x00C0D0, asm, sdk/libkernl/initsys]
+
+    - [0x00C360, asm, sdk/libkernl/libosd]
+    - [0x00C4E0, asm, sdk/libkernl/exit]
+    - [0x00C780, asm, sdk/libkernl/alarm]
+
+    # Has missing symbols.
+    - [0x00C8C0, asm, sdk/libkernl/timer]
+
     - [0x00DC28, asm, sdk/libkernl/timeralarm]
-    - [0x00E018, asm]
+    - [0x00E018, asm, sdk/libkernl/iopnotify]
+    - [0x00E278, asm]
     - [0x0DB4C0, asm, sfiii/options/sound/draw_track_name]
     - [0x0DB5F0, asm]
     - [0x271930, asm, sfiii/game_loop]

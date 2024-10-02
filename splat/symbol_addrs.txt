@@ -1,7 +1,5 @@
 // MARK: - Funcs
 
-waitForKernelMode = 0x0010BFE0; // type:func
-
 main = 0x00371E00; // type:func
 exit = 0x00373440; // type:func
 gameLoop = 0x003718B0; // type:func
@@ -271,10 +269,10 @@ sceSifRebootIop = 0x0010B628; // type:func
 
 SetTLBHandler = 0x0010B738; // type:func
 SetDebugHandler = 0x0010B798; // type:func
-Copy = 0x0010B820; // type:func
-kCopy = 0x0010B830; // type:func
-GetEntryAddress = 0x0010B868; // type:func
-setup = 0x0010B878; // type:func
+tlbfunc_Copy = 0x0010B820; // type:func
+tlbfunc_kCopy = 0x0010B830; // type:func
+tlbfunc_GetEntryAddress = 0x0010B868; // type:func
+tlbfunc_setup = 0x0010B878; // type:func
 InitTLBFunctions = 0x0010B888; // type:func
 PutTLBEntry = 0x0010B950; // type:func
 iPutTLBEntry = 0x0010B960; // type:func
@@ -307,13 +305,142 @@ kill = 0x00103778; // type:func
 stat = 0x001037A0; // type:func
 unlink = 0x001037C8; // type:func
 
+// MARK: - alarm
+
+alarm_setup = 0x0010C700; // type:func
+alarm_Copy = 0x0010C710; // type:func
+alarm_kCopy = 0x0010C720; // type:func
+alarm_GetEntryAddress = 0x0010C758; // type:func
+InitAlarm = 0x0010C768; // type:func
+
+// MARK: - iopnotify
+
+sceSifInitRebootNotify = 0x0010DF98; // type:func
+sceSifSetRebootNotifyBuffer = 0x0010DFC0; // type:func
+sceSifAddRebootNotifyHandler = 0x0010E040; // type:func
+sceSifRemoveRebootNotifyHandler = 0x0010E0F8; // type:func
+sceSifExecNotifyHandler = 0x0010E150; // type:func
+
+// MARK: - intr
+
+QueryIntrContext = 0x00103A70; // type:func
+DisableIntc = 0x00103A80; // type:func
+EnableIntc = 0x00103AE8; // type:func
+DisableDmac = 0x00103B50; // type:func
+EnableDmac = 0x00103BB8; // type:func
+iEnableIntc = 0x00103C20; // type:func
+iDisableIntc = 0x00103C40; // type:func
+iEnableDmac = 0x00103C60; // type:func
+iDisableDmac = 0x00103C80; // type:func
+
+// MARK: - thread
+
+iWakeupThread = 0x00103E50; // type:func
+iRotateThreadReadyQueue = 0x00103EE8; // type:func
+iSuspendThread = 0x00103F68; // type:func
+DelayThread = 0x00104000; // type:func
+_DelayThreadHandler = 0x001040C8; // type:func
+
+// MARK: - sifrpc
+
+sceSifExitRpc = 0x00105BA0; // type:func
+_sceRpcGetPacket = 0x00105BC8; // type:func
+_sceRpcFreePacket = 0x00105C70; // type:func
+_sceRpcGetFPacket = 0x00105C90; // type:func
+_sceRpcGetFPacket2 = 0x00105CC0; // type:func
+_request_end = 0x00105D00; // type:func
+_alarm_rdata = 0x00105DD0; // type:func
+_request_rdata = 0x00105E10; // type:func
+_alarm_bind = 0x00106088; // type:func
+_request_bind = 0x001060C8; // type:func
+_request_call = 0x001062D8; // type:func
+sceSifRemoveRpcQueue = 0x001067A0; // type:func
+sceSifGetNextRequest = 0x00106830; // type:func
+sceSifExecRequest = 0x00106888; // type:func
+sceSifRpcLoop = 0x00106A50; // type:func
+
+// MARK: - libosd
+
+libosd_setup = 0x0010C2E0; // type:func
+libosd_Copy = 0x0010C2F0; // type:func
+libosd_kCopy = 0x0010C300; // type:func
+libosd_GetEntryAddress = 0x0010C338; // type:func
+PatchIsNeeded = 0x0010C348; // type:func
+InitExecPS2 = 0x0010C3B0; // type:func
+
+// MARK: - filestub
+
+new_iob = 0x00106AF0; // type:func
+get_iob = 0x00106B78; // type:func
+_sceFs_Rcv_Intr = 0x00106BE8; // type:func
+_sceFsWaitS = 0x00106FF0; // type:func
+_sceFs_Poff_Intr = 0x001070D8; // type:func
+_fs_version = 0x00107328; // type:func
+sceFsReset = 0x001073B8; // type:func
+sceRemove = 0x00108650; // type:func
+sceRmdir = 0x00108820; // type:func
+sceDelDrv = 0x00108BD0; // type:func
+sceDopen = 0x00108BF0; // type:func
+sceChdir = 0x00109548; // type:func
+sceUmount = 0x00109970; // type:func
+
+// MARK: - cache
+
+_sceSDC = 0x001037F0; // type:func
+SyncDCache = 0x00103898; // type:func
+iSyncDCache = 0x00103918; // type:func
+_sceIDC = 0x00103930; // type:func
+InvalidDCache = 0x001039D8; // type:func
+iInvalidDCache = 0x00103A58; // type:func
+
+// MARK: - sifcmd
+
+_set_sreg = 0x00105228; // type:func
+_change_addr = 0x00105248; // type:func
+sceSifGetSreg = 0x00105258; // type:func
+sceSifSetSreg = 0x00105270; // type:func
+sceSifGetDataTable = 0x00105290; // type:func
+sceSifInitCmd = 0x001052A0; // type:func
+sceSifExitCmd = 0x00105520; // type:func
+sceSifSetCmdBuffer = 0x00105558; // type:func
+sceSifSetSysCmdBuffer = 0x00105570; // type:func
+sceSifAddCmdHandler = 0x00105588; // type:func
+sceSifRemoveCmdHandler = 0x00105600; // type:func
+_sceSifSendCmd = 0x00105650; // type:func
+sceSifSendCmd = 0x00105788; // type:func
+isceSifSendCmd = 0x001057C8; // type:func
+_sceSifCmdIntrHdlr = 0x00105808; // type:func
+sceSifWriteBackDCache = 0x00105950; // type:func
+
 // MARK: - exit
 
+exit_Copy = 0x0010C460; // type:func
+exit_kCopy = 0x0010C470; // type:func
+exit_setup = 0x0010C4A0; // type:func
+exit_SetArg = 0x0010C4B0; // type:func
+TerminateLibrary = 0x0010C5C8; // type:func
+ExecPS2 = 0x0010C5D0; // type:func
+LoadExecPS2 = 0x0010C640; // type:func
 Exit = 0x0010C688; // type:func
+ExecOSD = 0x0010C6B0; // type:func
 
 // MARK: - initsys
 
+supplement_crt0 = 0x0010C050; // type:func
+__sceKernlGetEhSemaId = 0x0010C098; // type:func
+initsys_Copy = 0x0010C0A8; // type:func
+initsys_kCopy = 0x0010C0B8; // type:func
+kFindAddress = 0x0010C0F0; // type:func
+FindAddress = 0x0010C130; // type:func
+GetSystemCallEntry = 0x0010C140; // type:func
+InitSystemCallTableAddress = 0x0010C178; // type:func
+initsys_setup = 0x0010C278; // type:func
 _InitSys = 0x0010C288; // type:func
+
+// MARK: - diei
+
+DIntr = 0x0010BFE0; // type:func
+EIntr = 0x0010C038; // type:func
 
 // MARK: - IRX Modules
 
