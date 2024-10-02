@@ -464,6 +464,8 @@ scePad2StateIntToStr = 0x00387F20; // type:func
 
 // MARK: - libgraph
 
+sceGsResetGraph = 0x00100230; // type:func
+sceGsGetGParam = 0x001003C0; // type:func
 sceGsSyncV = 0x00100438; // type:func
 sceGsSetDefLoadImage = 0x001007E8; // type:func
 sceGsSyncPath = 0x001004D0; // type:func

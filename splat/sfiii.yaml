@@ -30,11 +30,11 @@ segments:
     vram: 0x00100000
     bss_size: 0x16D870
     subsegments:
-    - [0x000080, pad, nops_000080]
+    - [0x000080, pad]
 
     - [0x000088, asm, crt0]
-    - [0x0002B0, asm]
 
+    - [0x0002B0, asm, sdk/libgraph/graph001]
     - [0x000450, asm, sdk/libgraph/graph002]
     - [0x0004B8, asm, sdk/libgraph/graph011]
     - [0x000550, asm, sdk/libgraph/graph012]
@@ -121,12 +121,16 @@ segments:
 
     - [0x287720, asm, sdk/libpad2/libpad2]
     - [0x287FE0, asm]
-    - [0x29519C, pad, nops_29519C]
+    - [0x29519C, pad]
 
     # Data
 
     - [0x295200, data]
 
+    # Layout:
+    #  00000010 __ps2_libinfo__
+    #  00000010 gp.15
+    - [0x2E7580, data, sdk/libgraph/graph001]
     - [0x2E75A0, data, sdk/libgraph/graph002]
 
     - [0x2E75C0, data]
