@@ -6,6 +6,8 @@ gameLoop = 0x003718B0; // type:func
 
 scePrintf = 0x001051C8; // type:func
 
+sfVibSetActParam = 0x00371D08; // type:func
+
 // MARK: - Variables
 
 g_roundSecondsLeft = 0x004FA1D0;
