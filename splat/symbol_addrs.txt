@@ -508,6 +508,27 @@ sceMcClose = 0x00110EE8; // type:func
 sceMcFormat = 0x001112D8; // type:func
 sceMcGetEntSpace = 0x001113A8; // type:func
 
+// MARK: - libdbc
+
+sceDbcGetModVersion = 0x00386780; // type:func
+sceDbcInit = 0x003867D8; // type:func
+sceDbcEnd = 0x00386A18; // type:func
+sceDbcSetWorkAddr = 0x00386A60; // type:func
+sceDbcCreateSocket = 0x00386AD0;
+sceDbcDeleteSocket = 0x00386BA8;
+sceDbcGetDepNumber = 0x00386C30;
+sceDbcGetConnection = 0x00386D78; // type:func
+sceDbcInitSocket = 0x00386E70;
+sceDbcResetSocket = 0x00386EE0;
+sceDbcGetDeviceStatus = 0x00386F50;
+sceDbcSearchPortSpecific = 0x00386FC0;
+sceDbcSRData = 0x00387048;
+sceDbcSendData = 0x00387190; // type:func
+sceDbcSendData2 = 0x003872C0; // type:func
+sceDbcSendData3 = 0x00387420; // type:func
+sceDbcReceiveData = 0x00387588; // type:func
+DPRINT = 0x00387678; // type:func
+
 // MARK: - IRX Modules
 
 SIO2MAN = 0x004DE650;

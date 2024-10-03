@@ -119,6 +119,8 @@ segments:
     - [0x271E80, asm, sfiii/main]
     - [0x271EA0, asm]
 
+    - [0x286800, asm, sdk/libdbc/libdbc]
+
     - [0x287720, asm, sdk/libpad2/libpad2]
     - [0x287FE0, asm]
     - [0x29519C, pad]
@@ -145,6 +147,8 @@ segments:
 
     - [0x2EAAE0, data]
 
+    - [0x3455F0, data, sdk/libdbc/libdbc]
+
     # Layout:
     #  00000010 __ps2_libinfo__
     #  00000004 isInit
@@ -168,6 +172,8 @@ segments:
     - [0x359F10, rodata, sdk/libmc/libmc]
 
     - [0x359F98, rodata]
+
+    - [0x3F0130, rodata, sdk/libdbc/libdbc]
 
     # May need to end a bit sooner.
     - [0x3F03A0, rodata, sdk/libpad2/libpad2]
