@@ -24,6 +24,12 @@ options:
 segments:
   - [0x0, databin, elf_header]
 
+  # Unmapped objects in libkernl:
+  # - tlbtrap.o
+  # - gp.o
+  # - kprintf2.o
+  # - converterr.o
+
   - name: main
     type: code
     start: 0x00000080
@@ -40,14 +46,9 @@ segments:
     - [0x000A50, asm, sdk/libgraph/graph017]
     - [0x000BD0, asm, sdk/libgraph/graph019]
     - [0x000C70, asm, sdk/libdma/libdma]
-
-    - [0x0014B8, asm]
-
-    # Unmapped objects in libkernl:
-    # - tlbtrap.o
-    # - gp.o
-    # - kprintf2.o
-    # - converterr.o
+    # No function names, because implementations differ too much
+    # to match functions automatically.
+    - [0x0014B8, asm, sdk/libvu0/libvu0]
     - [0x002C00, asm, sdk/libkernl/klib]
     # Has missing symbols.
     - [0x0034A0, asm, sdk/libkernl/glue]
@@ -112,6 +113,25 @@ segments:
     - [0x271E80, asm, sfiii/main]
 
     - [0x271EA0, asm]
+
+    - [0x274F60, asm, gcc/libc/memchr]
+    - [0x275040, asm, gcc/libc/memcmp]
+    - [0x2750D8, asm, gcc/libc/memcpy]
+    - [0x275188, asm, gcc/libc/memmove]
+    - [0x275290, asm, gcc/libc/memset]
+
+    - [0x275350, asm]
+
+    - [0x276920, asm, gcc/libc/strcat]
+    - [0x276A50, asm, gcc/libc/strchr]
+    - [0x276BE0, asm, gcc/libc/strcmp]
+    - [0x276D28, asm, gcc/libc/strcpy]
+    - [0x276E40, asm, gcc/libc/strlen]
+    - [0x276F78, asm, gcc/libc/strncat]
+    - [0x277128, asm, gcc/libc/strncmp]
+    - [0x2772E0, asm, gcc/libc/strncpy]
+
+    - [0x2774A0, asm]
 
     - [0x286800, asm, sdk/libdbc/libdbc]
     - [0x287720, asm, sdk/libpad2/libpad2]

@@ -12,6 +12,26 @@ sfVibSetActParam = 0x00371D08; // type:func
 
 g_roundSecondsLeft = 0x004FA1D0;
 
+// MARK: - gcc
+
+// MARK: - libc
+
+memchr = 0x00374EE0; // type:func
+memcmp = 0x00374FC0; // type:func
+memcpy = 0x00375058; // type:func
+memmove = 0x00375108; // type:func
+memset = 0x00375210; // type:func
+
+strcat = 0x003768A0; // type:func
+strchr = 0x003769D0; // type:func
+strcmp = 0x00376B60; // type:func
+strcpy = 0x00376CA8; // type:func
+strlen = 0x00376DC0; // type:func
+strncat = 0x00376EF8; // type:func
+strncmp = 0x003770A8; // type:func
+
+strncpy = 0x00377260; // type:func
+
 // MARK: - crt0
 
 _fbss = 0x004F8500;
