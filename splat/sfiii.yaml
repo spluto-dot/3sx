@@ -31,9 +31,7 @@ segments:
     bss_size: 0x16D870
     subsegments:
     - [0x000080, pad]
-
     - [0x000088, asm, crt0]
-
     - [0x0002B0, asm, sdk/libgraph/graph001]
     - [0x000450, asm, sdk/libgraph/graph002]
     - [0x0004B8, asm, sdk/libgraph/graph011]
@@ -41,64 +39,58 @@ segments:
     - [0x000868, asm, sdk/libgraph/graph015]
     - [0x000A50, asm, sdk/libgraph/graph017]
     - [0x000BD0, asm, sdk/libgraph/graph019]
+    - [0x000C70, asm, sdk/libdma/libdma]
 
-    - [0xC70, asm]
+    - [0x0014B8, asm]
 
-    # Unmapped objects:
+    # Unmapped objects in libkernl:
     # - tlbtrap.o
     # - gp.o
     # - kprintf2.o
     # - converterr.o
-
     - [0x002C00, asm, sdk/libkernl/klib]
-
     # Has missing symbols.
     - [0x0034A0, asm, sdk/libkernl/glue]
-
     - [0x003870, asm, sdk/libkernl/cache]
     - [0x003AF0, asm, sdk/libkernl/intr]
-
     # Is very different from the 3.0 SDK.
     - [0x003D20, asm, sdk/libkernl/thread]
-
     - [0x004170, asm, sdk/libkernl/deci2]
     - [0x0043A8, asm, sdk/libkernl/tty]
+
     - [0x0048F0, asm]
 
     - [0x0052A8, asm, sdk/libkernl/sifcmd]
+
     - [0x005A7C, asm]
 
     # Is very different from the 3.0 SDK.
     # Don't know where sceSifInitRpc function is.
     # May need to include some functions from the block above 👆.
     - [0x005C20, asm, sdk/libkernl/sifrpc]
-
     # Is very different from the 3.0 SDK.
     # May need to include some functions from the block below 👇.
     - [0x006B70, asm, sdk/libkernl/filestub]
 
     - [0x009A10, asm]
+
     - [0x00A228, asm, sdk/libkernl/iopheap]
     - [0x00A778, asm, sdk/libkernl/eeloadfile]
     - [0x00B4D8, asm, sdk/libkernl/iopreset]
     - [0x00B7B8, asm, sdk/libkernl/tlbfunc]
+
     - [0x00BD00, asm]
 
     - [0x00C060, asm, sdk/libkernl/diei]
-
     # supplement_crt0 seems to be implemented differently from 3.0.
     - [0x00C0D0, asm, sdk/libkernl/initsys]
-
     - [0x00C360, asm, sdk/libkernl/libosd]
     - [0x00C4E0, asm, sdk/libkernl/exit]
     - [0x00C780, asm, sdk/libkernl/alarm]
-
     # Has missing symbols.
     - [0x00C8C0, asm, sdk/libkernl/timer]
-
     - [0x00DC28, asm, sdk/libkernl/timeralarm]
     - [0x00E018, asm, sdk/libkernl/iopnotify]
-
     - [0x00E278, asm, sdk/libcdvd/cdvd000]
     - [0x00F7D0, asm, sdk/libcdvd/cdvd005]
     - [0x00F9B0, asm, sdk/libcdvd/cdvd010]
@@ -106,23 +98,26 @@ segments:
     - [0x00FB18, asm, sdk/libcdvd/cdvd015]
     - [0x00FBB0, asm, sdk/libcdvd/cdvd018]
     - [0x00FC68, asm, sdk/libcdvd/cdvd036]
-    
     # Very different from 3.0. May continue below 👇.
     - [0x00FD38, asm, sdk/libmc/libmc]
 
     - [0x011538, asm]
 
     - [0x0DB4C0, asm, sfiii/options/sound/draw_track_name]
+
     - [0x0DB5F0, asm]
+
     - [0x271930, asm, sfiii/game_loop]
     - [0x271D88, asm, sfiii/pad/vibration]
     - [0x271E80, asm, sfiii/main]
+
     - [0x271EA0, asm]
 
     - [0x286800, asm, sdk/libdbc/libdbc]
-
     - [0x287720, asm, sdk/libpad2/libpad2]
+
     - [0x287FE0, asm]
+
     - [0x29519C, pad]
 
     # Data
@@ -134,21 +129,19 @@ segments:
     #  00000010 gp.15
     - [0x2E7580, data, sdk/libgraph/graph001]
     - [0x2E75A0, data, sdk/libgraph/graph002]
-
-    - [0x2E75C0, data]
-
+    - [0x2E75C0, data, sdk/libdma/libdma]
+    - [0x2E75F8, pad]
+    - [0x2E7600, data, sdk/libvu0/libvu0] 
+    - [0x2E7640, data, sdk/libkernl] # TODO: split into files
     - [0x2E8D40, data, sdk/libcdvd/cdvd000]
     - [0x2EA8E8, data, sdk/libcdvd/cdvd036]
-    
     - [0x2EA8F4, pad]
-
     # Start is correct. End may be off.
     - [0x2EA8F8, data, sdk/libmc/libmc]
 
     - [0x2EAAE0, data]
 
     - [0x3455F0, data, sdk/libdbc/libdbc]
-
     # Layout:
     #  00000010 __ps2_libinfo__
     #  00000004 isInit
@@ -163,18 +156,16 @@ segments:
     - [0x359680, rodata, sdk/libgraph/graph012]
     - [0x359810, rodata, sdk/libgraph/graph015]
     - [0x359930, rodata, sdk/libgraph/graph017]
-
-    - [0x359968, rodata]
-
+    - [0x359968, rodata, sdk/libdma/libdma]
+    - [0x3599D2, pad]
+    - [0x3599D8, rodata, sdk/libkernl] # TODO: split into files
     - [0x359D18, rodata, sdk/libcdvd/cdvd000]
     - [0x359EE8, rodata, sdk/libcdvd/cdvd005]
-
     - [0x359F10, rodata, sdk/libmc/libmc]
 
     - [0x359F98, rodata]
 
     - [0x3F0130, rodata, sdk/libdbc/libdbc]
-
     # May need to end a bit sooner.
     - [0x3F03A0, rodata, sdk/libpad2/libpad2]
 
