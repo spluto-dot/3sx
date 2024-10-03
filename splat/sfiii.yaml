@@ -50,18 +50,13 @@ segments:
     - [0x0043A8, asm, sdk/libkernl/tty]
     - [0x0048F0, asm, sdk/libkernl/kprintf2]
     - [0x0052A8, asm, sdk/libkernl/sifcmd]
-
-    - [0x005A7C, asm] # An unmapped part of sifcmd or sifrpc
-
-    - [0x005C20, asm, sdk/libkernl/sifrpc] # sceSifInitRpc is missing. May start from above 👆
-    - [0x006B70, asm, sdk/libkernl/filestub] # May continue below 👇
+    - [0x005A84, asm, sdk/libkernl/sifrpc]
+    - [0x006B70, asm, sdk/libkernl/filestub]
     - [0x00A228, asm, sdk/libkernl/iopheap]
     - [0x00A778, asm, sdk/libkernl/eeloadfile]
     - [0x00B4D8, asm, sdk/libkernl/iopreset]
     - [0x00B7B8, asm, sdk/libkernl/tlbfunc]
-
-    - [0x00BD00, asm] # tlbtrap
-
+    - [0x00BD00, asm, sdk/libkernl/tlbtrap]
     - [0x00C060, asm, sdk/libkernl/diei]
     - [0x00C0D0, asm, sdk/libkernl/initsys]
     - [0x00C360, asm, sdk/libkernl/libosd]

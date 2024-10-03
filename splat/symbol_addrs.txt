@@ -369,6 +369,7 @@ _DelayThreadHandler = 0x001040C8; // type:func
 
 // MARK: - sifrpc
 
+sceSifInitRpc = 0x00105A04; // type:func
 sceSifExitRpc = 0x00105BA0; // type:func
 _sceRpcGetPacket = 0x00105BC8; // type:func
 _sceRpcFreePacket = 0x00105C70; // type:func
@@ -478,6 +479,13 @@ printfloat = 0x00104A30; // type:func
 _sceSnprintf = 0x00104B98; // type:func
 kprintf = 0x00105190; // type:func
 scePrintf = 0x001051C8; // type:func
+
+// MARK: - tlbtrap
+
+_kTLBException = 0x0010BC80;
+_xlaunch = 0x0010BD80;
+_kExitTLBHandler = 0x0010BDC0;
+_kDebugException = 0x0010BEC0;
 
 // MARK: - libpad2
 
