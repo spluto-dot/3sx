@@ -115,7 +115,7 @@ segments:
     - [0x0DB4C0, asm, sfiii/options/sound/draw_track_name]
     - [0x0DB5F0, asm]
     - [0x271930, asm, sfiii/game_loop]
-    - [0x271D88, asm]
+    - [0x271D88, asm, sfiii/pad/vibration]
     - [0x271E80, asm, sfiii/main]
     - [0x271EA0, asm]
 

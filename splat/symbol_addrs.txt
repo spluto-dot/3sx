@@ -6,6 +6,10 @@ gameLoop = 0x003718B0; // type:func
 
 scePrintf = 0x001051C8; // type:func
 
+// MARK: - Variables
+
+g_roundSecondsLeft = 0x004FA1D0;
+
 // MARK: - crt0
 
 _fbss = 0x004F8500;
