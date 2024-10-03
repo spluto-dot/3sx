@@ -4,8 +4,6 @@ main = 0x00371E00; // type:func
 exit = 0x00373440; // type:func
 gameLoop = 0x003718B0; // type:func
 
-scePrintf = 0x001051C8; // type:func
-
 sfVibSetActParam = 0x00371D08; // type:func
 
 // MARK: - Variables
@@ -469,6 +467,17 @@ _InitSys = 0x0010C288; // type:func
 
 DIntr = 0x0010BFE0; // type:func
 EIntr = 0x0010C038; // type:func
+
+// MARK: - kprintf2
+
+kputchar = 0x00104870; // type:func
+deci2Putchar = 0x001048B0; // type:func
+serialPutchar = 0x00104960; // type:func
+ftoi = 0x00104998; // type:func
+printfloat = 0x00104A30; // type:func
+_sceSnprintf = 0x00104B98; // type:func
+kprintf = 0x00105190; // type:func
+scePrintf = 0x001051C8; // type:func
 
 // MARK: - libpad2
 
