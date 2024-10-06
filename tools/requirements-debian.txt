@@ -1,0 +1,9 @@
+binutils-mipsel-linux-gnu
+curl
+git
+make
+p7zip-full
+python3-pip
+python3-venv
+unzip
+wget
