@@ -81,6 +81,7 @@ segments:
     - [0x0DB5F0, asm]
 
     - [0x271930, asm, sfiii/game_loop]
+    - [0x271D08, asm, sfiii/pad/371C88]
     - [0x271D88, asm, sfiii/pad/vibration]
     - [0x271E80, asm, sfiii/main]
 
@@ -104,6 +105,10 @@ segments:
     - [0x2772E0, asm, gcc/libc/strncpy]
 
     - [0x2774A0, asm]
+
+    - [0x284810, asm, sfiii/pad/384790]
+
+    - [0x285370, asm]
 
     - [0x286800, asm, sdk/libdbc/libdbc]
     - [0x287720, asm, sdk/libpad2/libpad2]

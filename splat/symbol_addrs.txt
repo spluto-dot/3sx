@@ -10,6 +10,19 @@ sfVibSetActParam = 0x00371D08; // type:func
 
 g_roundSecondsLeft = 0x004FA1D0;
 
+// MARK: - sfiii/pad
+
+k_004F3FC0 = 0x004F3FC0;
+k_004F4040 = 0x004F4040;
+
+g_padButtonStates1 = 0x004FA7E0;
+g_padButtonStates2 = 0x004FA820;
+
+g_inputInfo1 = 0x004FA870;
+g_inputInfo2 = 0x004FA8A0;
+
+g_0065DBC0 = 0x0065DBC0;
+
 // MARK: - gcc
 
 // MARK: - libc
