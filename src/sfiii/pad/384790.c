@@ -1,6 +1,6 @@
 #include "common.h"
 
-#include "libpad2.h"
+#include "sdk/libpad2.h"
 
 // There should be another array at 4FA860.
 // Most likely 2 structs of size 0x5.
@@ -64,17 +64,20 @@ extern char k_004F4040[128];
 extern char g_0065DBC0[2][128]; // this is in bss
 
 void func_00384790(s32 index) {
+    s32 padState;
+    scePad2ButtonProfile buttonProfile;
+    u32 sp48;
+    scePad2ButtonState padReadResult;
+
     g_padButtonStates2[index] = g_padButtonStates1[index];
 
-    s32 padState = scePad2GetState(g_inputInfo1[index].padNumber);
+    padState = scePad2GetState(g_inputInfo1[index].padNumber);
 
     switch (padState) {
     case scePad2StateStable:
         g_inputInfo1[index].unk0 = 2;
 
         if (g_inputInfo1[index].unk1 == 0) {
-            scePad2ButtonProfile buttonProfile;
-
             if (scePad2GetButtonProfile(g_inputInfo1[index].padNumber, &buttonProfile) < 0) {
                 return;
             }
@@ -82,8 +85,6 @@ void func_00384790(s32 index) {
             g_inputInfo1[index].unkC =
                 buttonProfile.unk0 |
                 ((buttonProfile.unk1 << 8) | ((buttonProfile.unk3 << 0x18) | (buttonProfile.unk2 << 0x10)));
-
-            u32 sp48;
 
             if (func_00371C88(g_inputInfo1[index].padNumber, &sp48) >= 0) {
                 g_inputInfo1[index].unk10 = sp48;
@@ -131,8 +132,6 @@ void func_00384790(s32 index) {
             g_inputInfo1[index].unk1 += 1;
             goto block_29;
         }
-
-        scePad2ButtonState padReadResult;
 
         if (scePad2Read(g_inputInfo1[index].padNumber, &padReadResult) >= 0) {
             g_inputInfo1[index].unk0 = 1;
