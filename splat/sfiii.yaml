@@ -79,6 +79,10 @@ segments:
 
     - [0x011538, asm]
 
+    - [0x0AB6F0, c, sfiii/1AB670]
+    - [0x0AB70C, pad]
+    - [0x0AB710, asm]
+
     - [0x0DB4C0, asm, sfiii/options/sound/draw_track_name]
 
     - [0x0DB5F0, asm]
