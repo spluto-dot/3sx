@@ -46,6 +46,8 @@ MAIN_O_FILES := $(addprefix $(BUILD_DIR)/,$(MAIN_O_FILES))
 
 LINKER_SCRIPT := $(CONFIG_DIR)/$(MAIN).ld
 
+COMPILER_TAR := mwcps2-3.0.1b44-030325.tar.gz
+
 # Rules
 
 build: $(MAIN_TARGET)
@@ -55,6 +57,8 @@ clean: ##@ clean extracted files, assets, and build artifacts
 	git clean -fdx $(ASM_DIR)/
 	git clean -fdx $(BUILD_DIR)/
 	git clean -fdx $(LINKER_SCRIPT)
+
+setup_tools: $(WIBO) $(MWCCPS2)
 
 $(MAIN_TARGET): $(MAIN_O_FILES) $(LINKER_SCRIPT)
 	$(LD) $(LD_FLAGS) -o $@ \
@@ -75,6 +79,6 @@ $(WIBO):
 	chmod +x $(WIBO)
 
 $(MWCCPS2):
-	wget https://github.com/decompme/compilers/releases/download/compilers/mwcps2-2.4-001213.tar.gz
-	cd $(BIN_DIR) && tar -x -f ../mwcps2-2.4-001213.tar.gz
-	rm mwcps2-2.4-001213.tar.gz
+	wget https://github.com/decompme/compilers/releases/download/compilers/$(COMPILER_TAR)
+	cd $(BIN_DIR) && tar -x -f ../$(COMPILER_TAR)
+	rm $(COMPILER_TAR)
