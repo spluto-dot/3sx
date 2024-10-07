@@ -39,7 +39,9 @@ LD_FLAGS := -nostdlib --no-check-sections --strip-all
 MAIN_TARGET := $(BUILD_DIR)/$(MAIN)
 
 MAIN_S_FILES := $(shell find $(ASM_DIR) -name '*.s')
+MAIN_C_FILES := $(shell find $(SRC_DIR) -name '*.c')
 MAIN_O_FILES := $(patsubst %.s,%.s.o,$(MAIN_S_FILES))
+MAIN_O_FILES += $(patsubst %.c,%.c.o,$(MAIN_C_FILES))
 MAIN_O_FILES := $(addprefix $(BUILD_DIR)/,$(MAIN_O_FILES))
 
 # Rules
@@ -61,6 +63,10 @@ $(MAIN_TARGET): $(MAIN_O_FILES) $(CONFIG_DIR)/$(MAIN).ld
 $(BUILD_DIR)/%.s.o: %.s
 	mkdir -p $(dir $@)
 	$(AS) $(AS_FLAGS) -o $@ $<
+
+$(BUILD_DIR)/%.c.o: %.c
+	mkdir -p $(dir $@)
+	$(CC) $(CC_FLAGS) -o $@ $<
 
 $(WIBO):
 	wget -O $@ https://github.com/decompals/wibo/releases/download/0.6.13/wibo
