@@ -31,8 +31,8 @@ LD := mipsel-linux-gnu-ld
 MWCCPS2_FLAGS := -gccinc -I$(INCLUDE_DIR) -Op -c -lang c -sdatathreshold 0 -char unsigned
 
 CC_FLAGS += $(MWCCPS2_FLAGS)
-AS_FLAGS += -EL -I $(INCLUDE_DIR) -G0 -march=r5900 -mabi=eabi
-LD_FLAGS := -nostdlib --no-check-sections
+AS_FLAGS += -EL -I $(INCLUDE_DIR) -G0 -march=r5900 -mabi=eabi -no-pad-sections
+LD_FLAGS := -nostdlib --no-check-sections --strip-all
 
 # Files
 
@@ -46,7 +46,13 @@ MAIN_O_FILES := $(addprefix $(BUILD_DIR)/,$(MAIN_O_FILES))
 
 build: $(MAIN_TARGET)
 
-$(MAIN_TARGET): $(MAIN_O_FILES)
+clean: ##@ clean extracted files, assets, and build artifacts
+	git clean -fdx $(ASSETS_DIR)/
+	git clean -fdx $(ASM_DIR)/
+	git clean -fdx $(BUILD_DIR)/
+	git clean -fdx $(CONFIG_DIR)/$(MAIN).ld
+
+$(MAIN_TARGET): $(MAIN_O_FILES) $(CONFIG_DIR)/$(MAIN).ld
 	$(LD) $(LD_FLAGS) -o $@ \
 		-Map $(MAIN_TARGET).map \
 		-T $(CONFIG_DIR)/$(MAIN).ld \

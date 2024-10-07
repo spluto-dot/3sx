@@ -20,18 +20,21 @@ options:
   # disasm_unknown: True
   # named_regs_for_c_funcs: False
   gp_value: 0x004F9B70
+  ld_bss_is_noload: False
+  rodata_string_guesser_level: 0 # without this some rodata gets too much alignment
 
 segments:
-  - [0x0, databin, elf_header]
+  - [0x0, pad]
 
   - name: main
     type: code
     start: 0x00000080
     vram: 0x00100000
     bss_size: 0x16D870
+    align: 128
+    subalign: 4
     subsegments:
-    - [0x000080, pad]
-    - [0x000088, asm, sdk/crt0]
+    - [0x000080, asm, sdk/crt0]
     - [0x0002B0, asm, sdk/libgraph/graph001]
     - [0x000450, asm, sdk/libgraph/graph002]
     - [0x0004B8, asm, sdk/libgraph/graph011]
@@ -115,8 +118,6 @@ segments:
 
     - [0x287FE0, asm]
 
-    - [0x29519C, pad]
-
     # Data
 
     - [0x295200, data]
@@ -180,13 +181,12 @@ segments:
     - [0x359F10, rodata, sdk/libmc/libmc]
 
     - [0x359F98, rodata]
+    - [0x3DE010, rodata]
+    - [0x3DE040, rodata]
 
     - [0x3F0130, rodata, sdk/libdbc/libdbc]
     - [0x3F03A0, rodata, sdk/libpad2/libpad2] # May need to end a bit sooner
 
     - [0x3F0400, rodata]
 
-  - [0x3F85AD, textbin, comment]
-  - [0x3F85D8, textbin, reginfo]
-
-  - [0x3F85F0]
+  - [0x3F85AD]

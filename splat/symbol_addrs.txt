@@ -1,3 +1,5 @@
+__start = 0x100008; // type:func
+
 // MARK: - Funcs
 
 main = 0x00371E00; // type:func
