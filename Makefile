@@ -44,6 +44,8 @@ MAIN_O_FILES := $(patsubst %.s,%.s.o,$(MAIN_S_FILES))
 MAIN_O_FILES += $(patsubst %.c,%.c.o,$(MAIN_C_FILES))
 MAIN_O_FILES := $(addprefix $(BUILD_DIR)/,$(MAIN_O_FILES))
 
+LINKER_SCRIPT := $(CONFIG_DIR)/$(MAIN).ld
+
 # Rules
 
 build: $(MAIN_TARGET)
@@ -52,12 +54,12 @@ clean: ##@ clean extracted files, assets, and build artifacts
 	git clean -fdx $(ASSETS_DIR)/
 	git clean -fdx $(ASM_DIR)/
 	git clean -fdx $(BUILD_DIR)/
-	git clean -fdx $(CONFIG_DIR)/$(MAIN).ld
+	git clean -fdx $(LINKER_SCRIPT)
 
-$(MAIN_TARGET): $(MAIN_O_FILES) $(CONFIG_DIR)/$(MAIN).ld
+$(MAIN_TARGET): $(MAIN_O_FILES) $(LINKER_SCRIPT)
 	$(LD) $(LD_FLAGS) -o $@ \
 		-Map $(MAIN_TARGET).map \
-		-T $(CONFIG_DIR)/$(MAIN).ld \
+		-T $(LINKER_SCRIPT) \
 		-T $(CONFIG_DIR)/undefined_syms_auto.txt
 
 $(BUILD_DIR)/%.s.o: %.s
