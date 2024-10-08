@@ -85,6 +85,11 @@ segments:
 
     - [0x0DB5F0, asm]
 
+    - [0x120870, c, sfiii/2207F0]
+
+    - [0x12090C, pad]
+    - [0x120910, asm]
+
     - [0x271930, asm, sfiii/game_loop]
     - [0x271D08, asm, sfiii/pad/371C88]
     - [0x271D88, asm, sfiii/pad/vibration]

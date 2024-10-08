@@ -28,9 +28,10 @@ LD := mipsel-linux-gnu-ld
 
 # Flags
 
-MWCCPS2_FLAGS := -gccinc -I$(INCLUDE_DIR) -Op -c -lang c -sdatathreshold 0 -char unsigned
+MWCCPS2_FLAGS_BASE := -gccinc -I$(INCLUDE_DIR) -Op -c -lang c -char unsigned
+MWCCPS2_FLAGS_DEFAULT := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 0
+MWCCPS2_FLAGS_SDT2 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 2
 
-CC_FLAGS += $(MWCCPS2_FLAGS)
 AS_FLAGS += -EL -I $(INCLUDE_DIR) -G0 -march=r5900 -mabi=eabi -no-pad-sections
 LD_FLAGS := -nostdlib --no-check-sections --strip-all
 
@@ -44,9 +45,12 @@ MAIN_O_FILES := $(patsubst %.s,%.s.o,$(MAIN_S_FILES))
 MAIN_O_FILES += $(patsubst %.c,%.c.o,$(MAIN_C_FILES))
 MAIN_O_FILES := $(addprefix $(BUILD_DIR)/,$(MAIN_O_FILES))
 
+SDT2_C_FILES := sfiii/2207F0.c
+SDT2_C_FILES := $(addprefix $(SRC_DIR)/,$(SDT2_C_FILES))
+
 LINKER_SCRIPT := $(CONFIG_DIR)/$(MAIN).ld
 
-COMPILER_TAR := mwcps2-3.0.1b44-030325.tar.gz
+COMPILER_TAR := mwcps2-3.0.1b74-030811.tar.gz
 
 # Rules
 
@@ -72,7 +76,7 @@ $(BUILD_DIR)/%.s.o: %.s
 
 $(BUILD_DIR)/%.c.o: %.c
 	mkdir -p $(dir $@)
-	$(CC) $(CC_FLAGS) -o $@ $<
+	$(CC) $(if $(findstring $<,$(SDT2_C_FILES)),$(MWCCPS2_FLAGS_SDT2),$(MWCCPS2_FLAGS_DEFAULT)) -o $@ $<
 
 $(WIBO):
 	wget -O $@ https://github.com/decompals/wibo/releases/download/0.6.13/wibo
