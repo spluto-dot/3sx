@@ -13,6 +13,8 @@ sfVibSetActParam = 0x00371D08; // type:func
 g_roundSecondsLeft = 0x004FA1D0;
 g_frameCount = 0x004F9734;
 
+k_resourceArchivePath = 0x004A0D50; // type:asciz
+
 // MARK: - sfiii/pad
 
 k_004F3FC0 = 0x004F3FC0;
