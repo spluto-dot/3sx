@@ -15,5 +15,5 @@ A project aimed at decompiling Street Fighter III.
 2. Run `splat`.
 
     ```bash
-    python -m splat split splat/sfiii.yaml
+    python -m splat split config/sfiii.yaml
     ```

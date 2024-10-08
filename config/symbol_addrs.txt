@@ -11,6 +11,7 @@ sfVibSetActParam = 0x00371D08; // type:func
 // MARK: - Variables
 
 g_roundSecondsLeft = 0x004FA1D0;
+g_frameCount = 0x004F9734;
 
 // MARK: - sfiii/pad
 

@@ -1,5 +1,3 @@
-# Docs: https://github.com/ethteck/splat/wiki/Configuration
-
 name: "Street Fighter III: Third Strike"
 sha1: ac99c97e9379bc4ac865c0f076a48ae543f127a9
 options:
@@ -90,7 +88,7 @@ segments:
     - [0x271930, asm, sfiii/game_loop]
     - [0x271D08, asm, sfiii/pad/371C88]
     - [0x271D88, asm, sfiii/pad/vibration]
-    - [0x271E80, asm, sfiii/main]
+    - [0x271E80, c, sfiii/main]
 
     - [0x271EA0, asm]
 

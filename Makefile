@@ -10,7 +10,7 @@ SRC_DIR := src
 ASM_DIR := asm
 INCLUDE_DIR := include
 ASSETS_DIR := assets
-CONFIG_DIR := splat
+CONFIG_DIR := config
 TOOLS_DIR := tools
 
 # Tools
