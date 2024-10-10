@@ -10,11 +10,13 @@ options:
   src_path: ../src
   asset_path: ../assets
   build_path: ../build
-  find_file_boundaries: True
+  symbol_addrs_path: 
+    - symbols/symbol_addrs.txt
+    - symbols/cri/syms_cri_libadxe.txt
+  find_file_boundaries: False 
   section_order: [".text", ".data", ".rodata", ".bss"]
   subalign: null
   migrate_rodata_to_functions: False
-  find_file_boundaries: False
   # disasm_unknown: True
   # named_regs_for_c_funcs: False
   gp_value: 0x004F9B70
@@ -86,9 +88,20 @@ segments:
     - [0x0DB5F0, asm]
 
     - [0x120870, c, sfiii/2207F0]
-
     - [0x12090C, pad]
+
     - [0x120910, asm]
+
+    - [0x252E78, asm, cri/libadxe/adx_amp]
+    - [0x253598, asm]
+    - [0x258DB8, asm, cri/libadxe/adx_fs]
+    - [0x25A898, asm]
+    - [0x266878, asm, cri/libadxe/dtr]
+    - [0x266EB8, asm, cri/libadxe/dtx]
+    - [0x2677F0, asm]
+    - [0x26E1F0, asm, cri/libadxe/sf_mem]
+
+    - [0x26E708, asm]
 
     - [0x271930, asm, sfiii/game_loop]
     - [0x271D08, asm, sfiii/pad/371C88]
