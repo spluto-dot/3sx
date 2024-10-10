@@ -1,7 +1,7 @@
 #include "types.h"
 
-void func_00358F00(s32, const char[], s32, s32 *);
-s32 func_00359358(s32);
+s32 ADXF_LoadPartitionNw(s32 ptid, const char *fname, void *dir, void *ptinfo);
+s32 ADXF_GetPtStat(s32 ptid);
 void func_0035C548();
 void sceGsSyncV(s32);
 
@@ -24,13 +24,15 @@ s32 func_002207F0() {
     D_004F8C10 = 0xFFFF;
     D_004F8C0C = 0;
 
-    func_00358F00(0, k_resourceArchivePath, 0, &D_005610D0);
+    ADXF_LoadPartitionNw(0, k_resourceArchivePath, 0, &D_005610D0);
 
-loop:
-    if (func_00359358(0) != 3) {
+    while (1) {
+        if (ADXF_GetPtStat(0) == 3) { // 3 is most likely ADXF_STAT_READEND
+            break;
+        }
+
         sceGsSyncV(0);
         func_0035C548();
-        goto loop;
     }
 
     D_004F8C08 = 0x40;
