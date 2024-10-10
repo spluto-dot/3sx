@@ -18,6 +18,155 @@ ADXAMP_GetFrmLen = 0x00353500; // type:func
 ADXAMP_SetFrmPrd = 0x00353508; // type:func
 ADXAMP_GetFrmPrd = 0x00353510; // type:func
 
+// MARK: - adx_baif
+
+AIFF_GetInfo = 0x003537F0; // type:func
+ADXB_CheckAiff = 0x00353B80; // type:func
+ADX_DecodeInfoAiff = 0x00353BE8; // type:func
+ADXB_DecodeHeaderAiff = 0x00353CF8; // type:func
+ADXB_ExecOneAiff16 = 0x00353E10; // type:func
+ADXB_ExecOneAiff8 = 0x00353FA8; // type:func
+ADXB_ExecOneAiff = 0x00354128; // type:func
+
+// MARK: - adx_bau
+
+AU_GetInfo = 0x00354150; // type:func
+ADXB_CheckAu = 0x00354468; // type:func
+ADX_DecodeInfoAu = 0x003544C0; // type:func
+ADXB_DecodeHeaderAu = 0x003545D0; // type:func
+ADXB_ExecOneAu16 = 0x003546D0; // type:func
+ADXB_ExecOneAu8 = 0x00354868; // type:func
+ADXB_ExecOneAuUlaw = 0x003549E8; // type:func
+ADXB_ExecOneAu = 0x00354B90; // type:func
+
+// MARK: - adx_bsps
+
+ADX_DecodeInfoSpsd = 0x003560B8; // type:func
+ADXB_DecodeHeaderSpsd = 0x003561D8; // type:func
+ADXB_ExecOneSpsd = 0x003562D0; // type:func
+ADXB_CheckSpsd = 0x00356448; // type:func
+
+// MARK: - adx_bwav
+
+ADX_DecodeInfoWav = 0x00356470; // type:func
+ADXB_DecodeHeaderWav = 0x003566A0; // type:func
+ADXB_ExecOneWav16 = 0x003567A0; // type:func
+ADXB_ExecOneWav8 = 0x00356918; // type:func
+ADXB_ExecOneWav4 = 0x00356AB0; // type:func
+ADXB_CheckWav = 0x00356C50; // type:func
+ADXB_ExecOneWav = 0x00356CB8; // type:func
+
+// MARK: - adx_dcd
+
+ADX_GetCoefficient = 0x00356D50; // type:func
+ADX_ScanInfoCode = 0x00356EB0; // type:func
+ADX_IsAdxFmt = 0x00356F30; // type:func
+ADX_DecodeInfo = 0x00356FD8; // type:func
+ADX_DecodeInfoExADPCM2 = 0x003570D8; // type:func
+ADX_DecodeInfoExVer = 0x00357158; // type:func
+ADX_DecodeInfoExIdly = 0x003571D0; // type:func
+ADX_DecodeInfoExLoop = 0x00357308; // type:func
+ADX_DecodeFooter = 0x00357760; // type:func
+ADX_CalcHdrInfoLen = 0x003577C0; // type:func
+
+// MARK: - adx_dcd3
+
+ADX_SetDecodeSteAsMonoSw = 0x00357818; // type:func
+ADX_DecodeMonoFloat = 0x00357828; // type:func
+ADX_DecodeSteFloatAsSte = 0x00357998; // type:func
+ADX_DecodeSteFloatAsMono = 0x00357C30; // type:func
+ADX_DecodeSteFloat = 0x00357ED0; // type:func
+
+// MARK: - adx_dcd5
+
+ADX_DecodeMono4 = 0x00357F18; // type:func
+ADX_DecodeSte4AsMono = 0x003580F8; // type:func
+ADX_DecodeSte4AsSte = 0x003584C0; // type:func
+ADX_DecodeSte4 = 0x00358808; // type:func
+
+// MARK: - adx_errs
+
+ADXERR_Init = 0x00358878; // type:func
+ADXERR_Finish = 0x003588B0; // type:func
+ADXERR_EntryErrFunc = 0x003588E8; // type:func
+ADXERR_CallErrFunc1 = 0x00358910; // type:func
+ADXERR_CallErrFunc2 = 0x00358968; // type:func
+ADXERR_ItoA = 0x003589D8; // type:func
+ADXERR_ItoA2 = 0x00358AE0; // type:func
+
+// MARK: - adx_fs
+
+adxf_SetCmdHstry = 0x00358D38; // type:func
+adxf_wait_1ms = 0x00358DE8; // type:func
+adxf_ChkPrmPt = 0x00358E18; // type:func
+ADXF_LoadPartition = 0x00358E60; // type:func
+ADXF_LoadPartitionEx = 0x00358E80; // type:func
+ADXF_LoadPartitionNw = 0x00358F00; // type:func
+ADXF_LoadPartitionFromAfsNw = 0x00358F28; // type:func
+ADXF_unk00358F50 = 0x00358F50; // type:func
+ADXF_unk00358F78 = 0x00358F78; // type:func
+ADXF_LoadPtNwEx = 0x00358FA0;
+ADXF_LoadPtFromAfsNwEx = 0x00358FE8;
+ADXF_unk00359020 = 0x00359020;
+ADXF_unk00359068 = 0x00359068;
+adxf_LoadPtBothNwEx = 0x003590A0;
+adxf_CloseLdptnwHn = 0x003592A0;
+ADXF_StopPtLd = 0x003592F0;
+ADXF_GetPtStat = 0x00359358;
+ADXF_GetPtStatEx = 0x00359370;
+ADXF_GetPtinfoSize = 0x00359750;
+adxf_AllocAdxFs = 0x00359768;
+
+adxf_CloseSjStm = 0x00359B18;
+ADXF_Close = 0x00359B88;
+ADXF_CloseAll = 0x00359C40;
+adxf_read_sj32 = 0x00359CA0;
+ADXF_ReadSj32 = 0x00359DA0;
+ADXF_ReadSj = 0x00359E30;
+ADXF_ReadNw32 = 0x00359E48;
+ADXF_ReadNw = 0x00359FD8;
+ADXF_Stop = 0x0035A018;
+ADXF_StopNw = 0x0035A108;
+adxf_ExecOne = 0x0035A1D0;
+ADXF_ExecServer = 0x0035A298;
+ADXF_Seek = 0x0035A2F8;
+ADXF_Tell = 0x0035A410;
+
+ADXF_GetFnameRangeEx = 0x0035A628;
+
+ADXF_SetReqRdSct = 0x0035A7A8;
+ADXF_GetStatRead = 0x0035A7E0;
+
+// MARK: - adx_fsvr
+
+ADXT_ExecFsSvr = 0x0035A830; // type:func
+ADXT_IsActiveFsSvr = 0x0035A8D0; // type:func
+
+// MARK: - adx_inis
+
+ADXT_ConfigVsyncSvr = 0x0035A900; // type:func
+adxini_rnaerr_cbfn = 0x0035A910; // type:func
+adxini_lscerr_cbfn = 0x0035A928; // type:func
+ADXT_VsyncProc = 0x0035A940; // type:func
+adxt_exec_main1 = 0x0035A968; // type:func
+adxt_exec_main2 = 0x0035A988; // type:func
+adxt_exec_tsvr = 0x0035A9B8; // type:func
+adxt_exec_fssvr = 0x0035A9D8; // type:func
+ADXT_Init = 0x0035A9F8; // type:func
+ADXT_ResetLibrary = 0x0035AB78; // type:func
+ADXT_Finish = 0x0035AB98; // type:func
+
+// MARK: - adx_lsc
+
+ADXT_EntryFname = 0x0035AC68; // type:func
+ADXT_EntryAfs = 0x0035ACC8; // type:func
+ADXT_StartSeamless = 0x0035AD90; // type:func
+ADXT_SetSeamlessLp = 0x0035AE40; // type:func
+ADXT_StartFnameLp = 0x0035AE70; // type:func
+ADXT_ReleaseSeamless = 0x0035AEF8; // type:func
+ADXT_GetNumFiles = 0x0035AF00; // type:func
+ADXT_ResetEntry = 0x0035AF38; // type:func
+
 // MARK: - sj_mem
 
 SJMEM_Init = 0x0036E170; // type:func
@@ -66,48 +215,3 @@ DTX_Init = 0x003674A0; // type:func
 DTX_Finish = 0x00367590; // type:func
 DTX_CallUrpc = 0x00367608; // type:func
 DTX_ExecServer = 0x00367710; // type:func
-
-// MARK: - adx_fs
-
-adxf_SetCmdHstry = 0x00358D38; // type:func
-adxf_wait_1ms = 0x00358DE8; // type:func
-adxf_ChkPrmPt = 0x00358E18; // type:func
-ADXF_LoadPartition = 0x00358E60; // type:func
-ADXF_LoadPartitionEx = 0x00358E80; // type:func
-ADXF_LoadPartitionNw = 0x00358F00; // type:func
-ADXF_LoadPartitionFromAfsNw = 0x00358F28; // type:func
-ADXF_unk00358F50 = 0x00358F50; // type:func
-ADXF_unk00358F78 = 0x00358F78; // type:func
-ADXF_LoadPtNwEx = 0x00358FA0;
-ADXF_LoadPtFromAfsNwEx = 0x00358FE8;
-ADXF_unk00359020 = 0x00359020;
-ADXF_unk00359068 = 0x00359068;
-adxf_LoadPtBothNwEx = 0x003590A0;
-adxf_CloseLdptnwHn = 0x003592A0;
-ADXF_StopPtLd = 0x003592F0;
-ADXF_GetPtStat = 0x00359358;
-ADXF_GetPtStatEx = 0x00359370;
-ADXF_GetPtinfoSize = 0x00359750;
-adxf_AllocAdxFs = 0x00359768;
-
-
-
-adxf_CloseSjStm = 0x00359B18;
-ADXF_Close = 0x00359B88;
-ADXF_CloseAll = 0x00359C40;
-adxf_read_sj32 = 0x00359CA0;
-ADXF_ReadSj32 = 0x00359DA0;
-ADXF_ReadSj = 0x00359E30;
-ADXF_ReadNw32 = 0x00359E48;
-ADXF_ReadNw = 0x00359FD8;
-ADXF_Stop = 0x0035A018;
-ADXF_StopNw = 0x0035A108;
-adxf_ExecOne = 0x0035A1D0;
-ADXF_ExecServer = 0x0035A298;
-ADXF_Seek = 0x0035A2F8;
-ADXF_Tell = 0x0035A410;
-
-ADXF_GetFnameRangeEx = 0x0035A628;
-
-ADXF_SetReqRdSct = 0x0035A7A8;
-ADXF_GetStatRead = 0x0035A7E0;

@@ -93,9 +93,25 @@ segments:
     - [0x120910, asm]
 
     - [0x252E78, asm, cri/libadxe/adx_amp]
-    - [0x253598, asm]
+    - [0x253598, asm] # adx_bahx
+    - [0x253870, asm, cri/libadxe/adx_baif]
+    - [0x2541D0, asm, cri/libadxe/adx_bau]
+    - [0x254C50, asm] # adx_bsc
+    - [0x256138, asm, cri/libadxe/adx_bsps]
+    - [0x2564F0, asm, cri/libadxe/adx_bwav]
+    - [0x256D90, asm] # adx_crs
+    - [0x256DD0, asm, cri/libadxe/adx_dcd]
+    - [0x257898, asm, cri/libadxe/adx_dcd3]
+    - [0x257F98, asm, cri/libadxe/adx_dcd5]
+    - [0x2588F8, asm, cri/libadxe/adx_errs]
+    - [0x258BE8, asm, cri/libadxe/adx_fro] # not sure, most likely correct
     - [0x258DB8, asm, cri/libadxe/adx_fs]
-    - [0x25A898, asm]
+    - [0x25A898, asm] # orphan func
+    - [0x25A8B0, asm, cri/libadxe/adx_fsvr]
+    - [0x25A968, asm] # orphan func
+    - [0x25A980, asm, cri/libadxe/adx_inis]
+    - [0x25ACE8, asm, cri/libadxe/adx_lsc]
+    - [0x25AFF8, asm]
     - [0x266878, asm, cri/libadxe/dtr]
     - [0x266EB8, asm, cri/libadxe/dtx]
     - [0x2677F0, asm]
