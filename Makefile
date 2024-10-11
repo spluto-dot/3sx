@@ -26,6 +26,10 @@ CC := $(CCPS2)
 AS := mipsel-linux-gnu-as
 LD := mipsel-linux-gnu-ld
 
+PYTHON := python3
+SPLICE_ELF := $(PYTHON) $(TOOLS_DIR)/splice_elf.py
+COMPARE_BYTES := $(PYTHON) $(TOOLS_DIR)/compare_bytes.py
+
 # Flags
 
 MWCCPS2_FLAGS_BASE := -gccinc -I$(INCLUDE_DIR) -Op -c -lang c -char unsigned
@@ -69,6 +73,8 @@ $(MAIN_TARGET): $(MAIN_O_FILES) $(LINKER_SCRIPT)
 		-Map $(MAIN_TARGET).map \
 		-T $(LINKER_SCRIPT) \
 		-T $(CONFIG_DIR)/undefined_syms_auto.txt
+	$(SPLICE_ELF)
+	$(COMPARE_BYTES)
 
 $(BUILD_DIR)/%.s.o: %.s
 	mkdir -p $(dir $@)

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from pathlib import Path
 
 def main():
@@ -10,8 +12,8 @@ def main():
     with open(path_b, 'rb') as f:
         bytes_b = f.read()
 
-    i_a = 0x80
-    i_b = 0x10000
+    i_a = 0
+    i_b = 0
 
     while i_a < len(bytes_a) and i_b < len(bytes_b):
         if bytes_a[i_a] != bytes_b[i_b]:
@@ -21,9 +23,7 @@ def main():
         i_b += 1
 
     if i_a == len(bytes_a) and i_b == len(bytes_b):
-        print("Files fully match ✅")
-    elif i_a == 0x3F85AD: # 0x3F85AD is the start of various fluff sections in the original exe
-        print("Code sections match ✅")
+        print("Files match ✅")
     else:
         print(f"Files diverge at offsets 0x{i_a:X} and 0x{i_b:X} ❌")
 
