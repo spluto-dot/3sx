@@ -89,8 +89,6 @@ typedef struct {
     u8 r1P;
     u8 l2P;
     u8 r2P;
-
-    char unk12[14];
 } scePad2ButtonState;
 
 typedef struct {

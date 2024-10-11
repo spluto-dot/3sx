@@ -145,7 +145,8 @@ segments:
 
     - [0x2774A0, asm]
 
-    - [0x284810, asm, sfiii/pad/384790]
+    - [0x284810, c, sfiii/pad/384790]
+    - [0x285364, pad]
 
     - [0x285370, asm]
 

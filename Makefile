@@ -32,9 +32,10 @@ COMPARE_BYTES := $(PYTHON) $(TOOLS_DIR)/compare_bytes.py
 
 # Flags
 
-MWCCPS2_FLAGS_BASE := -gccinc -I$(INCLUDE_DIR) -Op -c -lang c -char unsigned
+MWCCPS2_FLAGS_BASE := -gccinc -I$(INCLUDE_DIR) -O1,p -c -lang c -char unsigned
 MWCCPS2_FLAGS_DEFAULT := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 0
 MWCCPS2_FLAGS_SDT2 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 2
+MWCCPS2_FLAGS_SDT128 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 128
 
 AS_FLAGS += -EL -I $(INCLUDE_DIR) -G0 -march=r5900 -mabi=eabi -no-pad-sections
 LD_FLAGS := -nostdlib --no-check-sections --strip-all
@@ -51,6 +52,9 @@ MAIN_O_FILES := $(addprefix $(BUILD_DIR)/,$(MAIN_O_FILES))
 
 SDT2_C_FILES := sfiii/2207F0.c
 SDT2_C_FILES := $(addprefix $(SRC_DIR)/,$(SDT2_C_FILES))
+
+SDT128_C_FILES := sfiii/pad/384790.c
+SDT128_C_FILES := $(addprefix $(SRC_DIR)/,$(SDT128_C_FILES))
 
 LINKER_SCRIPT := $(CONFIG_DIR)/$(MAIN).ld
 
@@ -82,7 +86,7 @@ $(BUILD_DIR)/%.s.o: %.s
 
 $(BUILD_DIR)/%.c.o: %.c
 	mkdir -p $(dir $@)
-	$(CC) $(if $(findstring $<,$(SDT2_C_FILES)),$(MWCCPS2_FLAGS_SDT2),$(MWCCPS2_FLAGS_DEFAULT)) -o $@ $<
+	$(CC) $(if $(findstring $<,$(SDT2_C_FILES)),$(MWCCPS2_FLAGS_SDT2),$(if $(findstring $<,$(SDT128_C_FILES)),$(MWCCPS2_FLAGS_SDT128),$(MWCCPS2_FLAGS_DEFAULT))) -o $@ $<
 
 $(WIBO):
 	wget -O $@ https://github.com/decompals/wibo/releases/download/0.6.13/wibo
