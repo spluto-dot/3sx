@@ -32,7 +32,8 @@ COMPARE_BYTES := $(PYTHON) $(TOOLS_DIR)/compare_bytes.py
 
 # Flags
 
-MWCCPS2_FLAGS_BASE := -gccinc -I$(INCLUDE_DIR) -O1,p -c -lang c -char unsigned
+MWCCPS2_INCLUDES := -Iinclude -Iinclude/cri -Iinclude/cri/ee
+MWCCPS2_FLAGS_BASE := -gccinc $(MWCCPS2_INCLUDES) -O1,p -c -lang c -char unsigned
 MWCCPS2_FLAGS_DEFAULT := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 0
 MWCCPS2_FLAGS_SDT2 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 2
 MWCCPS2_FLAGS_SDT128 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 128

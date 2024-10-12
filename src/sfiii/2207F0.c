@@ -1,7 +1,6 @@
 #include "types.h"
+#include "cri_mw.h"
 
-s32 ADXF_LoadPartitionNw(s32 ptid, const char *fname, void *dir, void *ptinfo);
-s32 ADXF_GetPtStat(s32 ptid);
 void func_0035C548();
 void sceGsSyncV(s32);
 
@@ -13,21 +12,21 @@ extern s16 D_004F8C0C;
 extern u16 D_004F8C10;
 extern s16 D_004F8C14;
 
-extern const char k_resourceArchivePath[];
-extern s32 D_005610D0;
+extern char k_resourceArchivePath[];
+extern struct _adxf_ptinfo g_resourcePartitionInfo;
 
 // const char k_resourceArchivePath[] = "SF33RD.AFS";
-// s32 D_005610D0 = 0;
+// _adxf_ptinfo g_resourcePartitionInfo = 0;
 
 s32 func_002207F0() {
     D_004F8C14 = 0;
     D_004F8C10 = 0xFFFF;
     D_004F8C0C = 0;
 
-    ADXF_LoadPartitionNw(0, k_resourceArchivePath, 0, &D_005610D0);
+    ADXF_LoadPartitionNw(0, k_resourceArchivePath, 0, &g_resourcePartitionInfo);
 
     while (1) {
-        if (ADXF_GetPtStat(0) == 3) { // 3 is most likely ADXF_STAT_READEND
+        if (ADXF_GetPtStat(0) == ADXF_STAT_READEND) {
             break;
         }
 
