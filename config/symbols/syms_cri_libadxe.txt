@@ -117,6 +117,7 @@ ADXF_GetPtStatEx = 0x00359370;
 ADXF_GetPtinfoSize = 0x00359750;
 adxf_AllocAdxFs = 0x00359768;
 
+ADXF_OpenAfs = 0x00359A78;
 adxf_CloseSjStm = 0x00359B18;
 ADXF_Close = 0x00359B88;
 ADXF_CloseAll = 0x00359C40;
@@ -166,6 +167,10 @@ ADXT_StartFnameLp = 0x0035AE70; // type:func
 ADXT_ReleaseSeamless = 0x0035AEF8; // type:func
 ADXT_GetNumFiles = 0x0035AF00; // type:func
 ADXT_ResetEntry = 0x0035AF38; // type:func
+
+// MARK: - adx_mps2
+
+ADXM_ExecMain = 0x0035C548;
 
 // MARK: - sj_mem
 

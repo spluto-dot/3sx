@@ -33,7 +33,7 @@ s32 func_002207F0() {
         }
 
         sceGsSyncV(0);
-        func_0035C548();
+        ADXM_ExecMain();
     }
 
     D_004F8C08 = 0x40;
