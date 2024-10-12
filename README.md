@@ -1,6 +1,6 @@
 # sfiii-decomp
 
-A project aimed at decompiling Street Fighter III.
+Decompilation of Street Fighter III (PS2).
 
 ## Building
 
