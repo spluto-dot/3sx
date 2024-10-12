@@ -1,0 +1,15 @@
+scePad2Init = 0x003876A0; // type:func
+scePad2End = 0x003876E0; // type:func
+scePad2CreateSocket = 0x00387748; // type:func
+scePad2DeleteSocket = 0x00387850; // type:func
+scePad2Read = 0x003878A8; // type:func
+scePad2GetButtonProfile = 0x00387980; // type:func
+scePad2GetState = 0x00387A50; // type:func
+scePad2GetButtonInfo = 0x00387B90; // type:func
+scePad2InitDmaDBuff = 0x00387C70; // type:func
+scePad2LinkDriver = 0x00387CE8; // type:func
+scePad2GetSide = 0x00387D40; // type:func
+scePad2GetSide2 = 0x00387DA8; // type:func
+scePad2CheckDma = 0x00387E10; // type:func
+scePad2SetButtonOrder = 0x00387E70; // type:func
+scePad2StateIntToStr = 0x00387F20; // type:func

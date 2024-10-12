@@ -11,8 +11,16 @@ options:
   asset_path: ../assets
   build_path: ../build
   symbol_addrs_path: 
-    - symbols/symbol_addrs.txt
-    - symbols/cri/syms_cri_libadxe.txt
+    - symbols/syms_cri_libadxe.txt
+    - symbols/syms_gcc_libc.txt
+    - symbols/syms_sdk_libcdvd.txt
+    - symbols/syms_sdk_libdbc.txt
+    - symbols/syms_sdk_libdma.txt
+    - symbols/syms_sdk_libgraph.txt
+    - symbols/syms_sdk_libkernl.txt
+    - symbols/syms_sdk_libmc.txt
+    - symbols/syms_sdk_libpad2.txt
+    - symbols/syms_sfiii.txt
   find_file_boundaries: False 
   section_order: [".text", ".data", ".rodata", ".bss"]
   subalign: null
