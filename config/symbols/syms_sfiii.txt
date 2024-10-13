@@ -33,14 +33,18 @@ VibSetActParam = 0x00371D08; // type:func
 k_004F3FC0 = 0x004F3FC0;
 k_004F4040 = 0x004F4040;
 
+D_004F40D0 = 0x004F40D0; // size:0x8
+
 g_padButtonState0 = 0x004FA7C0; // size:0x20
 g_padButtonStates1 = 0x004FA7E0; // size:0x40
 g_padButtonStates2 = 0x004FA820; // size:0x40
 
+g_inputInfo0 = 0x004FA860; // size:0x10
 g_inputInfo1 = 0x004FA870; // size:0x30
 g_inputInfo2 = 0x004FA8A0; // size:0x68
 
 g_0065DBC0 = 0x0065DBC0;
+D_0065D9C0 = 0x0065D9C0; // size:0x200
 
 // MARK: - crt0
 

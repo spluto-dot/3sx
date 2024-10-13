@@ -54,7 +54,7 @@ MAIN_O_FILES := $(addprefix $(BUILD_DIR)/,$(MAIN_O_FILES))
 SDT2_C_FILES := sfiii/2207F0.c
 SDT2_C_FILES := $(addprefix $(SRC_DIR)/,$(SDT2_C_FILES))
 
-SDT128_C_FILES := sfiii/pad/384790.c
+SDT128_C_FILES := sfiii/pad/384790.c sfiii/pad/386000.c
 SDT128_C_FILES := $(addprefix $(SRC_DIR)/,$(SDT128_C_FILES))
 
 LINKER_SCRIPT := $(CONFIG_DIR)/$(MAIN).ld

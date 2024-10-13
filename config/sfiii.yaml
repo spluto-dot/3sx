@@ -158,6 +158,10 @@ segments:
 
     - [0x285370, asm]
 
+    - [0x286080, c, sfiii/pad/386000]
+
+    - [0x2865A0, asm]
+
     - [0x286800, asm, sdk/libdbc/libdbc]
     - [0x287720, asm, sdk/libpad2/libpad2]
 
