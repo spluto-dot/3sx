@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
-from pathlib import Path
+import os
 
 def main():
-    path_a = Path('SLPM_656.21')
-    path_b = Path('build/SLPM_656.21')
+    version = os.environ["VERSION"]
+    target = os.environ["MAIN"]
+
+    path_a = target
+    path_b = f"build/{version}/{target}"
 
     with open(path_a, 'rb') as f:
         bytes_a = f.read()
@@ -25,7 +28,7 @@ def main():
     if i_a == len(bytes_a) and i_b == len(bytes_b):
         print("Files match ✅")
     else:
-        print(f"Files diverge at offsets 0x{i_a:X} and 0x{i_b:X} ❌")
+        print(f"Files diverge at offset 0x{i_a:X}❌")
 
 if __name__ == '__main__':
     main()

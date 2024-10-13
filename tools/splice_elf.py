@@ -1,20 +1,30 @@
 #!/usr/bin/env python3
 
+import os
+
+RANGES: dict[str, tuple[int, int]] = {
+    "standalone": (0x10000, -0xDF)
+}
+
 def main():
-    bin_path = 'build/SLPM_656.21'
+    version = os.environ["VERSION"]
+    target = os.environ["MAIN"]
+    range = RANGES[version]
+
+    bin_path = f"build/{version}/{target}"
 
     with open(bin_path, 'rb') as f:
         bin = f.read()
 
-    with open('elf/header', 'rb') as f:
+    with open(f"elf/{version}/header", 'rb') as f:
         header = f.read()
 
-    with open('elf/footer', 'rb') as f:
+    with open(f"elf/{version}/footer", 'rb') as f:
         footer = f.read()
 
     with open(bin_path, 'wb') as f:
         f.write(header)
-        f.write(bin[0x10000:-0xDF])
+        f.write(bin[range[0]:range[1]])
         f.write(footer)
 
 if __name__ == '__main__':

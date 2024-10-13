@@ -1,16 +1,26 @@
 # Binaries
 
+VERSION ?= standalone
+
+ifeq ($(VERSION), standalone)
 MAIN := SLPM_656.21
+else
+MAIN := THIRD_U.BIN
+endif
+
+# Export so that Python could see those
+export VERSION
+export MAIN
 
 # Directories
 
 BIN_DIR := bin
-BUILD_DIR := build
-SRC_DIR := src
-ASM_DIR := asm
+BUILD_DIR := build/$(VERSION)
+SRC_DIR := src/$(VERSION)
+ASM_DIR := asm/$(VERSION)
 INCLUDE_DIR := include
-ASSETS_DIR := assets
-CONFIG_DIR := config
+ASSETS_DIR := assets/$(VERSION)
+CONFIG_DIR := config/$(VERSION)
 TOOLS_DIR := tools
 
 # Tools
@@ -57,7 +67,7 @@ SDT2_C_FILES := $(addprefix $(SRC_DIR)/,$(SDT2_C_FILES))
 SDT128_C_FILES := sfiii/pad/384790.c sfiii/pad/386000.c
 SDT128_C_FILES := $(addprefix $(SRC_DIR)/,$(SDT128_C_FILES))
 
-LINKER_SCRIPT := $(CONFIG_DIR)/$(MAIN).ld
+LINKER_SCRIPT := $(BUILD_DIR)/$(MAIN).ld
 
 COMPILER_TAR := mwcps2-3.0.1b74-030811.tar.gz
 
@@ -69,7 +79,6 @@ clean: ##@ clean extracted files, assets, and build artifacts
 	git clean -fdx $(ASSETS_DIR)/
 	git clean -fdx $(ASM_DIR)/
 	git clean -fdx $(BUILD_DIR)/
-	git clean -fdx $(LINKER_SCRIPT)
 
 setup_tools: $(WIBO) $(MWCCPS2)
 

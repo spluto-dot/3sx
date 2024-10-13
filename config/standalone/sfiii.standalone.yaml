@@ -1,26 +1,27 @@
-name: "Street Fighter III: Third Strike"
-sha1: ac99c97e9379bc4ac865c0f076a48ae543f127a9
 options:
   basename: SLPM_656.21
-  target_path: ../SLPM_656.21
-  base_path: .
+  base_path: ../..
+  target_path: SLPM_656.21
   platform: ps2
   compiler: MWCCPS2
-  asm_path: ../asm
-  src_path: ../src
-  asset_path: ../assets
-  build_path: ../build
+  asm_path: asm/standalone
+  src_path: src/standalone
+  asset_path: assets/standalone
+  build_path: build/standalone
+  ld_script_path: build/standalone/SLPM_656.21.ld
   symbol_addrs_path: 
-    - symbols/syms_cri_libadxe.txt
-    - symbols/syms_gcc_libc.txt
-    - symbols/syms_sdk_libcdvd.txt
-    - symbols/syms_sdk_libdbc.txt
-    - symbols/syms_sdk_libdma.txt
-    - symbols/syms_sdk_libgraph.txt
-    - symbols/syms_sdk_libkernl.txt
-    - symbols/syms_sdk_libmc.txt
-    - symbols/syms_sdk_libpad2.txt
-    - symbols/syms_sfiii.txt
+    - config/standalone/symbols/syms_cri_libadxe.txt
+    - config/standalone/symbols/syms_gcc_libc.txt
+    - config/standalone/symbols/syms_sdk_libcdvd.txt
+    - config/standalone/symbols/syms_sdk_libdbc.txt
+    - config/standalone/symbols/syms_sdk_libdma.txt
+    - config/standalone/symbols/syms_sdk_libgraph.txt
+    - config/standalone/symbols/syms_sdk_libkernl.txt
+    - config/standalone/symbols/syms_sdk_libmc.txt
+    - config/standalone/symbols/syms_sdk_libpad2.txt
+    - config/standalone/symbols/syms_sfiii.txt
+  undefined_funcs_auto_path: config/standalone/undefined_funcs_auto.txt
+  undefined_syms_auto_path: config/standalone/undefined_syms_auto.txt
   find_file_boundaries: False 
   section_order: [".text", ".data", ".rodata", ".bss"]
   subalign: null
@@ -30,6 +31,8 @@ options:
   gp_value: 0x004F9B70
   ld_bss_is_noload: False
   rodata_string_guesser_level: 0 # without this some rodata gets too much alignment
+
+sha1: ac99c97e9379bc4ac865c0f076a48ae543f127a9
 
 segments:
   - [0x0, pad]
@@ -99,6 +102,10 @@ segments:
     - [0x12090C, pad]
 
     - [0x120910, asm]
+
+    - [0x2125B0, asm, sfiii/battle/312530]
+
+    - [0x212870, asm]
 
     - [0x252E78, asm, cri/libadxe/adx_amp]
     - [0x253598, asm] # adx_bahx
