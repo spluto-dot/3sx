@@ -13,12 +13,12 @@ options:
     - config/anniversary/symbols/syms_cri_libadxe.txt
     # - config/anniversary/symbols/syms_gcc_libc.txt
     # - config/anniversary/symbols/syms_sdk_libcdvd.txt
-    # - config/anniversary/symbols/syms_sdk_libdbc.txt
+    - config/anniversary/symbols/syms_sdk_libdbc.txt
     # - config/anniversary/symbols/syms_sdk_libdma.txt
     # - config/anniversary/symbols/syms_sdk_libgraph.txt
     # - config/anniversary/symbols/syms_sdk_libkernl.txt
     # - config/anniversary/symbols/syms_sdk_libmc.txt
-    # - config/anniversary/symbols/syms_sdk_libpad2.txt
+    - config/anniversary/symbols/syms_sdk_libpad2.txt
     - config/anniversary/symbols/syms_sfiii.txt
   undefined_funcs_auto_path: config/anniversary/undefined_funcs_auto.txt
   undefined_syms_auto_path: config/anniversary/undefined_syms_auto.txt
@@ -522,7 +522,8 @@ segments:
       - [0x300130, asm, sf33rd/AcrSDK/ps2/ps2PAD]
       - [0x302570, asm, sf33rd/AcrSDK/ps2/flps2asm]
 
-      - [0x302760, asm]
+      - [0x302760, asm, sdk/libdbc/libdbc]
+      - [0x303680, asm, sdk/libpad2/libpad2]
 
       - [0x303F40, asm, sf33rd/Source/PS2/mc/mcsub]
       - [0x3074C0, asm, sf33rd/Source/PS2/mc/knjsub]
