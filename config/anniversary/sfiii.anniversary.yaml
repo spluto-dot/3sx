@@ -53,7 +53,7 @@ options:
   migrate_rodata_to_functions: False
   gp_value: 0x004D77F0
   ld_bss_is_noload: False
-  # rodata_string_guesser_level: 0
+  rodata_string_guesser_level: 0
 
 sha1: cf58495054c31ad852175c66e9ca04d5094f000e
 
@@ -68,6 +68,9 @@ segments:
     # align: 128
     subalign: 4
     subsegments:
+
+      # .text
+
       - [0x000080, asm, crt0]
       - [0x0002B0, asm, sdk/libgraph/graph001]
       - [0x000450, asm, sdk/libgraph/graph002]
@@ -658,8 +661,97 @@ segments:
 
       # For some reason this pad messes up the alignment.
       # Commenting this out for now.
-      # - [0x3140B4, pad] 
+      # - [0x3140B4, pad]
+
+      # .data
 
       - [0x314100, data]
+
+      # .rodata
+
+      - [0x3D8600, rodata, sdk/libgraph/graph012]
+      - [0x3D8790, rodata, sdk/libgraph/graph015]
+      - [0x3D88B0, rodata, sdk/libgraph/graph017]
+      - [0x3D88E8, rodata, sdk/libdma/libdma]
+      - [0x3D8958, rodata, sdk/libkernl/thread]
+      - [0x3D8990, rodata, sdk/libkernl/tty]
+      - [0x3D8A00, rodata, sdk/libkernl/kprintf2]
+      - [0x3D8B60, rodata, sdk/libkernl/filestub]
+      - [0x3D8BD0, rodata, sdk/libkernl/eeloadfile]
+      - [0x3D8BE0, rodata, sdk/libkernl/iopreset]
+      - [0x3D8C10, rodata, sdk/libkernl/tlbfunc]
+      - [0x3D8C90, rodata, sdk/libkernl/exit]
+      - [0x3D8C98, rodata, sdk/libcdvd/cdvd000]
+      - [0x3D8E68, rodata, sdk/libcdvd/cdvd005]
+      - [0x3D8E90, rodata, sdk/libmc/libmc]
+      - [0x3D8F18, rodata]
+      - [0x3D8FC8, rodata]
+      - [0x3D9388, rodata]
+      - [0x3D93D8, rodata]
+      - [0x3D9488, rodata]
+      - [0x3D9588, rodata]
+      - [0x3D9688, rodata]
+      - [0x3D9788, rodata]
+      - [0x3D9888, rodata]
+      - [0x4599A0, rodata, cri/libadxe/adx_baif]
+      - [0x4599B0, rodata, cri/libadxe/adx_bau]
+      - [0x4599C0, rodata, cri/libadxe/adx_bsc]
+      - [0x45A248, rodata, cri/libadxe/adx_bsps]
+      - [0x45A250, rodata, cri/libadxe/adx_bwav]
+      - [0x45A270, rodata, cri/libadxe/adx_dcd]
+      - [0x45A278, rodata, cri/libadxe/adx_dcd5]
+      - [0x45A2B8, rodata, cri/libadxe/adx_errs]
+      - [0x45A2C0, rodata, cri/libadxe/adx_fini]
+      - [0x45A2F8, rodata, cri/libadxe/adx_fs]
+      - [0x45A948, rodata, cri/libadxe/adx_inis]
+      - [0x45A980, rodata, cri/libadxe/adx_lsc]
+      - [0x45AB18, rodata]
+      - [0x45ABF0, rodata]
+      - [0x45B430, rodata]
+      - [0x45B458, rodata]
+      - [0x45B4A0, rodata]
+      - [0x45B4D0, rodata]
+      - [0x45B4D8, rodata]
+      - [0x45B4E0, rodata]
+      - [0x45BC08, rodata]
+      - [0x45BD50, rodata]
+      - [0x45BE08, rodata]
+      - [0x45CAC0, rodata]
+      - [0x45CE50, rodata]
+      - [0x45CFB0, rodata]
+      - [0x45D0B0, rodata]
+      - [0x45D300, rodata]
+      - [0x45D480, rodata]
+      - [0x45D7D8, rodata]
+      - [0x45D998, rodata]
+      - [0x45DAB8, rodata]
+      - [0x45DAE8, rodata]
+      - [0x45DB40, rodata]
+      - [0x45E068, rodata]
+      - [0x45E148, rodata]
+      - [0x45E6A0, rodata]
+      - [0x45E6C0, rodata]
+      - [0x45E710, rodata]
+      - [0x45E730, rodata]
+      - [0x45E760, rodata]
+      - [0x45E810, rodata] # 👈 should be the last rodata segment of CRI
+
+      - [0x45E9C0, rodata]
+
+      - [0x45EAA8, rodata, gcc/libc/assert]
+      - [0x45EAD8, rodata, gcc/libc/ctype_]
+      - [0x45EBE0, rodata, gcc/libc/dtoa]
+      - [0x45EC38, rodata, gcc/libc/impure]
+      - [0x45EC40, rodata, gcc/libc/locale]
+      - [0x45EC88, rodata, gcc/libc/mprec]
+      - [0x45EDB0, rodata, gcc/libc/vfiprintf]
+      - [0x45EFA0, rodata, gcc/libc/vfprintf]
+
+      - [0x45F1B0, rodata]
+
+      - [0x45FCB0, rodata, sdk/libdbc/libdbc]
+      - [0x45FF38, rodata, sdk/libpad2/libpad2]
+
+      - [0x45FF90, rodata]
 
   - [0x478A00]
