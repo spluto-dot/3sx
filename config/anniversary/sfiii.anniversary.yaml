@@ -11,7 +11,7 @@ options:
   ld_script_path: build/anniversary/THIRD_U.BIN.ld
   symbol_addrs_path: 
     - config/anniversary/symbols/syms_cri_libadxe.txt
-    # - config/anniversary/symbols/syms_gcc_libc.txt
+    - config/anniversary/symbols/syms_gcc_libc.txt
     # - config/anniversary/symbols/syms_sdk_libcdvd.txt
     - config/anniversary/symbols/syms_sdk_libdbc.txt
     # - config/anniversary/symbols/syms_sdk_libdma.txt
@@ -508,7 +508,57 @@ segments:
 
       - [0x2E64C0, asm, sf33rd/Source/PS2/ps2main]
 
-      - [0x2E64E0, asm]
+      - [0x2E64E0, asm, gcc/libc/abort]
+      - [0x2E64F8, asm, gcc/libc/assert]
+      - [0x2E6530, asm, gcc/libc/calloc]
+      - [0x2E6598, asm, gcc/libc/callocr]
+      - [0x2E6650, asm, gcc/libc/closer]
+      - [0x2E66A8, asm, gcc/libc/dtoa]
+      - [0x2E7B40, asm, gcc/libc/errno]
+      - [0x2E7B50, asm, gcc/libc/exit]
+      - [0x2E7C00, asm, gcc/libc/fflush]
+      - [0x2E7D18, asm, gcc/libc/findfp]
+      - [0x2E7FB8, asm, gcc/libc/fiprintf]
+      - [0x2E8010, asm, gcc/libc/fprintf]
+      - [0x2E8068, asm, gcc/libc/freer]
+      - [0x2E84D0, asm, gcc/libc/fstatr]
+      - [0x2E8530, asm, gcc/libc/fvwrite]
+      - [0x2E8910, asm, gcc/libc/fwalk]
+      - [0x2E89A8, asm, gcc/libc/locale]
+      - [0x2E8A90, asm, gcc/libc/lseekr]
+      - [0x2E8AF0, asm, gcc/libc/makebuf]
+      - [0x2E8C48, asm, gcc/libc/malloc]
+      - [0x2E8CE8, asm, gcc/libc/mallocr]
+      - [0x2E9668, asm, gcc/libc/mbtowc_r]
+      - [0x2E96A0, asm, gcc/libc/memchr]
+      - [0x2E9780, asm, gcc/libc/memcmp]
+      - [0x2E9818, asm, gcc/libc/memcpy]
+      - [0x2E98C8, asm, gcc/libc/memmove]
+      - [0x2E99D0, asm, gcc/libc/memset]
+      - [0x2E9A90, asm, gcc/libc/mlock]
+      - [0x2E9B60, asm, gcc/libc/mprec]
+      - [0x2EAB78, asm, gcc/libc/printf]
+      - [0x2EAC48, asm, gcc/libc/readr]
+      - [0x2EACA8, asm, gcc/libc/sbrkr]
+      - [0x2EAD00, asm, gcc/libc/signal]
+      - [0x2EAFE8, asm, gcc/libc/signalr]
+      - [0x2EB060, asm, gcc/libc/sprintf]
+      - [0x2EB178, asm, gcc/libc/stdio]
+      - [0x2EB2E8, asm, gcc/libc/strcasecmp]
+      - [0x2EB3C0, asm, gcc/libc/strcat]
+      - [0x2EB4F0, asm, gcc/libc/strchr]
+      - [0x2EB680, asm, gcc/libc/strcmp]
+      - [0x2EB7C8, asm, gcc/libc/strcpy]
+      - [0x2EB8E0, asm, gcc/libc/strlen]
+      - [0x2EBA18, asm, gcc/libc/strncat]
+      - [0x2EBBC8, asm, gcc/libc/strncmp]
+      - [0x2EBD80, asm, gcc/libc/strncpy]
+      - [0x2EBF40, asm, gcc/libc/strupr]
+      - [0x2EBF90, asm, gcc/libc/vfiprintf]
+      - [0x2ECD00, asm, gcc/libc/vfprintf]
+      - [0x2EE788, asm, gcc/libc/vsprintf]
+      - [0x2EE838, asm, gcc/libc/writer]
+      - [0x2EE898, asm, gcc/libc/wsetup]
 
       - [0x2EE9B0, asm, sf33rd/AcrSDK/ps2/flps2render]
       - [0x2F22F0, asm, sf33rd/AcrSDK/ps2/flps2d3d]
