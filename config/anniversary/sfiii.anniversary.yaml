@@ -65,8 +65,8 @@ segments:
     start: 0x00000080
     vram: 0x00100000
     # bss_size: 0x16DA80
-    align: 128
-    subalign: 8
+    # align: 128
+    subalign: 4
     subsegments:
       - [0x000080, asm, crt0]
       - [0x0002B0, asm, sdk/libgraph/graph001]
