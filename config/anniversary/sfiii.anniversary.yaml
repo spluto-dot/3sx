@@ -12,14 +12,38 @@ options:
   symbol_addrs_path: 
     - config/anniversary/symbols/syms_cri_libadxe.txt
     - config/anniversary/symbols/syms_gcc_libc.txt
-    # - config/anniversary/symbols/syms_sdk_libcdvd.txt
+    - config/anniversary/symbols/syms_sdk_libcdvd.txt
     - config/anniversary/symbols/syms_sdk_libdbc.txt
-    # - config/anniversary/symbols/syms_sdk_libdma.txt
-    # - config/anniversary/symbols/syms_sdk_libgraph.txt
-    # - config/anniversary/symbols/syms_sdk_libkernl.txt
-    # - config/anniversary/symbols/syms_sdk_libmc.txt
+    - config/anniversary/symbols/syms_sdk_libdma.txt
+    - config/anniversary/symbols/syms_sdk_libgraph.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_alarm.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_cache.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_deci2.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_diei.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_eeloadfile.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_exit.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_filestub.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_glue.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_initsys.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_intr.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_iopheap.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_iopnotify.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_iopreset.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_klib.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_kprintf2.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_libosd.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_sifcmd.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_sifrpc.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_thread.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_timer.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_timeralarm.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_tlbfunc.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_tlbtrap.txt
+    - config/anniversary/symbols/syms_sdk_libkernl_tty.txt
+    - config/anniversary/symbols/syms_sdk_libmc.txt
     - config/anniversary/symbols/syms_sdk_libpad2.txt
     - config/anniversary/symbols/syms_sdk_libvib.txt
+    - config/anniversary/symbols/syms_sdk_libvu0.txt
     - config/anniversary/symbols/syms_sfiii.txt
   undefined_funcs_auto_path: config/anniversary/undefined_funcs_auto.txt
   undefined_syms_auto_path: config/anniversary/undefined_syms_auto.txt
@@ -40,13 +64,54 @@ segments:
     type: code
     start: 0x00000080
     vram: 0x00100000
-    bss_size: 0x16DA80
+    # bss_size: 0x16DA80
     align: 128
     subalign: 8
     subsegments:
       - [0x000080, asm, crt0]
+      - [0x0002B0, asm, sdk/libgraph/graph001]
+      - [0x000450, asm, sdk/libgraph/graph002]
+      - [0x0004B8, asm, sdk/libgraph/graph011]
+      - [0x000550, asm, sdk/libgraph/graph012]
+      - [0x000868, asm, sdk/libgraph/graph015]
+      - [0x000A50, asm, sdk/libgraph/graph017]
+      - [0x000BD0, asm, sdk/libgraph/graph019]
+      - [0x000C70, asm, sdk/libdma/libdma]
+      - [0x0014B8, asm, sdk/libvu0/libvu0]
+      - [0x002C00, asm, sdk/libkernl/klib]
+      - [0x0034A0, asm, sdk/libkernl/glue]
+      - [0x003870, asm, sdk/libkernl/cache]
+      - [0x003AF0, asm, sdk/libkernl/intr]
+      - [0x003D20, asm, sdk/libkernl/thread]
+      - [0x004170, asm, sdk/libkernl/deci2]
+      - [0x0043A8, asm, sdk/libkernl/tty]
+      - [0x0048F0, asm, sdk/libkernl/kprintf2]
+      - [0x0052A8, asm, sdk/libkernl/sifcmd]
+      - [0x005A84, asm, sdk/libkernl/sifrpc]
+      - [0x006B70, asm, sdk/libkernl/filestub]
+      - [0x00A228, asm, sdk/libkernl/iopheap]
+      - [0x00A778, asm, sdk/libkernl/eeloadfile]
+      - [0x00B4D8, asm, sdk/libkernl/iopreset]
+      - [0x00B7B8, asm, sdk/libkernl/tlbfunc]
+      - [0x00BD00, asm, sdk/libkernl/tlbtrap]
+      - [0x00C060, asm, sdk/libkernl/diei]
+      - [0x00C0D0, asm, sdk/libkernl/initsys]
+      - [0x00C360, asm, sdk/libkernl/libosd]
+      - [0x00C4E0, asm, sdk/libkernl/exit]
+      - [0x00C780, asm, sdk/libkernl/alarm]
+      - [0x00C8C0, asm, sdk/libkernl/timer]
+      - [0x00DC28, asm, sdk/libkernl/timeralarm]
+      - [0x00E018, asm, sdk/libkernl/iopnotify]
+      - [0x00E278, asm, sdk/libcdvd/cdvd000]
+      - [0x00F7D0, asm, sdk/libcdvd/cdvd005]
+      - [0x00F9B0, asm, sdk/libcdvd/cdvd010]
+      - [0x00FA80, asm, sdk/libcdvd/cdvd014]
+      - [0x00FB18, asm, sdk/libcdvd/cdvd015]
+      - [0x00FBB0, asm, sdk/libcdvd/cdvd018]
+      - [0x00FC68, asm, sdk/libcdvd/cdvd036]
+      - [0x00FD38, asm, sdk/libmc/libmc]
 
-      - [0x0002B0, asm]
+      - [0x11538, asm]
 
       - [0x015DE0, asm, sf33rd/AcrSDK/common/fbms]
       - [0x016030, asm, sf33rd/AcrSDK/common/memfound]
