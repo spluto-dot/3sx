@@ -10,7 +10,7 @@ options:
   build_path: build/anniversary
   ld_script_path: build/anniversary/THIRD_U.BIN.ld
   symbol_addrs_path: 
-    # - config/anniversary/symbols/syms_cri_libadxe.txt
+    - config/anniversary/symbols/syms_cri_libadxe.txt
     # - config/anniversary/symbols/syms_gcc_libc.txt
     # - config/anniversary/symbols/syms_sdk_libcdvd.txt
     # - config/anniversary/symbols/syms_sdk_libdbc.txt
@@ -481,7 +481,25 @@ segments:
       - [0x2C55F0, asm, sf33rd/Source/PS2/ps2Quad]
       - [0x2C6E10, asm, sf33rd/AcrSDK/MiddleWare/PS2/acrmw]
 
-      - [0x2C6F58, asm]
+      - [0x2C6F58, asm, cri/libadxe/adx_amp]
+      - [0x2C7678, asm, cri/libadxe/adx_bahx]
+      - [0x2C7950, asm, cri/libadxe/adx_baif]
+      - [0x2C82B0, asm, cri/libadxe/adx_bau]
+      - [0x2C8D30, asm, cri/libadxe/adx_bsc]
+      - [0x2CA218, asm, cri/libadxe/adx_bsps]
+      - [0x2CA5D0, asm, cri/libadxe/adx_bwav]
+      - [0x2CAE70, asm, cri/libadxe/adx_crs]
+      - [0x2CAEB0, asm, cri/libadxe/adx_dcd]
+      - [0x2CB978, asm, cri/libadxe/adx_dcd3]
+      - [0x2CC078, asm, cri/libadxe/adx_dcd5]
+      - [0x2CC9D8, asm, cri/libadxe/adx_errs]
+      - [0x2CCCC8, asm, cri/libadxe/adx_fcch]
+      - [0x2CCCE8, asm, cri/libadxe/adx_fini]
+      - [0x2CCE70, asm, cri/libadxe/adx_fs]
+      - [0x2CE990, asm, cri/libadxe/adx_fsvr]
+      - [0x2CEA60, asm, cri/libadxe/adx_inis]
+      - [0x2CEDC8, asm, cri/libadxe/adx_lsc]
+      - [0x2CF0D8, asm] # More CRI stuff
 
       - [0x2E5250, asm, sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX]
       - [0x2E5430, asm, sf33rd/Source/Game/main]
