@@ -9135,6 +9135,7 @@ set_EXE_flag = 0x00396290; // type:func
 Init_sound_system = 0x003963A0; // type:func
 sndCheckVTransStatus = 0x00396440; // type:func
 sndInitialLoad = 0x003964D0; // type:func
+cseMemMapInit = 0x00396530; // type:func
 checkAdxFileLoaded = 0x00396560; // type:func
 Exit_sound_system = 0x00396660; // type:func
 Init_bgm_work = 0x003966E0; // type:func
