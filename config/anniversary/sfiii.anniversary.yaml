@@ -39,7 +39,7 @@ segments:
     type: code
     start: 0x00000080
     vram: 0x00100000
-    # bss_size: 0x16D870
+    bss_size: 0x16DA80
     align: 128
     subalign: 8
     subsegments:
