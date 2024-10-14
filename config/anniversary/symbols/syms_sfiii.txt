@@ -10082,8 +10082,7 @@ cpLoopTask = 0x003E6050; // type:func
 cpInitTask = 0x003E61C0; // type:func
 cpReadyTask = 0x003E61F0; // type:func
 cpExitTask = 0x003E6260; // type:func
-sceVibGetProfile = 0x003E62C8; // type:func
-sceVibSetActParam = 0x003E6348; // type:func
+
 main = 0x003E6440; // type:func
 
 flBeginRender = 0x003EE930; // type:func
