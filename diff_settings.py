@@ -1,7 +1,7 @@
 def apply(config, args):
-    config["baseimg"] = "SLPM_656.21"
-    config["myimg"] = "build/SLPM_656.21"
-    config["mapfile"] = "build/SLPM_656.21.map"
+    config["baseimg"] = "THIRD_U.BIN"
+    config["myimg"] = "build/anniversary/THIRD_U.BIN"
+    config["mapfile"] = "build/anniversary/THIRD_U.BIN.map"
     config["source_directories"] = ["src"]
     # config["show_line_numbers_default"] = True
     config["arch"] = "mipsee"

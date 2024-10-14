@@ -1,10 +1,10 @@
 # Binaries
 
-VERSION ?= standalone
+VERSION ?= anniversary
 
 ifeq ($(VERSION), standalone)
 MAIN := SLPM_656.21
-else
+else ifeq ($(VERSION), anniversary)
 MAIN := THIRD_U.BIN
 endif
 

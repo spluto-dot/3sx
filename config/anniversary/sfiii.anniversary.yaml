@@ -41,7 +41,7 @@ segments:
     vram: 0x00100000
     # bss_size: 0x16D870
     align: 128
-    subalign: 32
+    subalign: 8
     subsegments:
       - [0x000080, asm, crt0]
 
@@ -539,7 +539,9 @@ segments:
       - [0x3139A0, asm, sf33rd/Source/Common/PPGWork]
       - [0x313FC0, asm, sf33rd/Source/PS2/reboot]
 
-      - [0x3140B4, pad]
+      # For some reason this pad messes up the alignment.
+      # Commenting this out for now.
+      # - [0x3140B4, pad] 
 
       - [0x314100, data]
 
