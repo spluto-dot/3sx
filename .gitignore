@@ -19,3 +19,4 @@ libs
 bin
 build
 ctx.c
+.splache
