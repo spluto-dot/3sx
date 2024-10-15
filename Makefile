@@ -43,7 +43,7 @@ COMPARE_BYTES := $(PYTHON) $(TOOLS_DIR)/compare_bytes.py
 # Flags
 
 MWCCPS2_INCLUDES := -Iinclude -Iinclude/cri -Iinclude/cri/ee
-MWCCPS2_FLAGS_BASE := -gccinc $(MWCCPS2_INCLUDES) -O1,p -c -lang c -char unsigned
+MWCCPS2_FLAGS_BASE := -gccinc $(MWCCPS2_INCLUDES) -O0,p -c -lang c -char unsigned
 MWCCPS2_FLAGS_DEFAULT := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 0
 MWCCPS2_FLAGS_SDT2 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 2
 MWCCPS2_FLAGS_SDT128 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 128
@@ -69,7 +69,7 @@ SDT128_C_FILES := $(addprefix $(SRC_DIR)/,$(SDT128_C_FILES))
 
 LINKER_SCRIPT := $(BUILD_DIR)/$(MAIN).ld
 
-COMPILER_TAR := mwcps2-3.0.1b74-030811.tar.gz
+COMPILER_TAR := mwcps2-3.0b52-030722.tar.gz
 
 # Rules
 

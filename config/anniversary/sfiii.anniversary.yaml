@@ -575,7 +575,7 @@ segments:
 
       - [0x2E6348, asm, sdk/libvib/libvib]
 
-      - [0x2E64C0, asm, sf33rd/Source/PS2/ps2main]
+      - [0x2E64C0, c, sf33rd/Source/PS2/ps2main]
 
       - [0x2E64E0, asm, gcc/libc/abort]
       - [0x2E64F8, asm, gcc/libc/assert]
