@@ -779,6 +779,10 @@ segments:
       - [0x3C3C80, data]
       - [0x3C4310, data, sdk/libdbc/libdbc]
       - [0x3C4328, data, sdk/libpad2/libpad2]
+      - [0x3C4360, data]
+      - [0x3D6A10, .data, sf33rd/Source/Common/FileSizeAFS]
+      - [0x3D820C, pad]
+      - [0x3D8210, data]
 
       # .rodata
 
