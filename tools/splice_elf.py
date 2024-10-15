@@ -4,7 +4,7 @@ import os
 
 RANGES: dict[str, tuple[int, int]] = {
     "standalone": (0x10000, -0xDF),
-    "anniversary": (0x10000, -0x8C)
+    "anniversary": (0x10000, -0xBC)
 }
 
 def main():

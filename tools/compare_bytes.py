@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 
 def main():
     version = os.environ["VERSION"]
@@ -27,8 +28,10 @@ def main():
 
     if i_a == len(bytes_a) and i_b == len(bytes_b):
         print("Files match ✅")
+        sys.exit(0)
     else:
         print(f"Files diverge at offset 0x{i_a:X}❌")
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()

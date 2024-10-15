@@ -48,11 +48,10 @@ options:
   undefined_funcs_auto_path: config/anniversary/undefined_funcs_auto.txt
   undefined_syms_auto_path: config/anniversary/undefined_syms_auto.txt
   find_file_boundaries: False 
-  section_order: [".text", ".data", ".rodata", ".bss"]
+  section_order: [".text", ".data", ".sdata", ".rodata", ".bss"]
   subalign: null
   migrate_rodata_to_functions: False
-  gp_value: 0x004D77F0
-  ld_bss_is_noload: False
+  gp_value: 0x57A3F0
   rodata_string_guesser_level: 0
 
 sha1: cf58495054c31ad852175c66e9ca04d5094f000e
@@ -64,7 +63,7 @@ segments:
     type: code
     start: 0x00000080
     vram: 0x00100000
-    # bss_size: 0x16DA80
+    bss_size: 0x172600 # __bss_end - _fbss
     # align: 128
     subalign: 4
     subsegments:
@@ -870,5 +869,7 @@ segments:
       - [0x45FF38, rodata, sdk/libpad2/libpad2]
 
       - [0x45FF90, rodata]
+
+      - { start: 0x478A00, type: bss, vram: 0x578980, name: bss_chunk } # vram == _fbss
 
   - [0x478A00]
