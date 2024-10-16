@@ -48,7 +48,7 @@ options:
   undefined_funcs_auto_path: config/anniversary/undefined_funcs_auto.txt
   undefined_syms_auto_path: config/anniversary/undefined_syms_auto.txt
   find_file_boundaries: False 
-  section_order: [".text", ".data", ".sdata", ".rodata", ".bss"]
+  section_order: [".text", ".data", ".rodata", ".sdata", ".sbss", ".bss"]
   subalign: null
   migrate_rodata_to_functions: False
   gp_value: 0x57A3F0
@@ -854,6 +854,8 @@ segments:
 
       - [0x45E9C0, rodata]
 
+      - [0x45EA80, .rodata, sf33rd/Source/Game/main]
+
       - [0x45EAA8, rodata, gcc/libc/assert]
       - [0x45EAD8, rodata, gcc/libc/ctype_]
       - [0x45EBE0, rodata, gcc/libc/dtoa]
@@ -870,6 +872,13 @@ segments:
 
       - [0x45FF90, rodata]
 
-      - { start: 0x478A00, type: bss, vram: 0x578980, name: bss_chunk } # vram == _fbss
+      # .sdata
+
+      - [0x472480, sdata]
+
+      # .sbss/.bss
+
+      - { type: sbss, vram: 0x578980 } # vram == _fbss
+      - { type: bss, vram: 0x57B650 } # vram == __bss_start
 
   - [0x478A00]
