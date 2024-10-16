@@ -3,4 +3,6 @@
 
 #include "types.h"
 
+#define NULL 0
+
 #endif

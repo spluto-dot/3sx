@@ -570,7 +570,7 @@ segments:
       - [0x2CF0D8, asm] # More CRI stuff
 
       - [0x2E5250, asm, sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX]
-      - [0x2E5430, asm, sf33rd/Source/Game/main]
+      - [0x2E5430, c, sf33rd/Source/Game/main]
 
       - [0x2E6348, asm, sdk/libvib/libvib]
 

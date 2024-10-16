@@ -7,3 +7,7 @@ Cpp11BracedListStyle: false
 BreakTemplateDeclarations: Yes
 ColumnLimit: 120
 # BracketAlignmentStyle: BlockIndent
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
+DerivePointerAlignment: false
+PointerAlignmentStyle: Left

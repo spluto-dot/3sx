@@ -42,14 +42,14 @@ COMPARE_BYTES := $(PYTHON) $(TOOLS_DIR)/compare_bytes.py
 
 # Flags
 
-MWCCPS2_INCLUDES := -Iinclude -Iinclude/cri -Iinclude/cri/ee
-MWCCPS2_FLAGS_BASE := -gccinc $(MWCCPS2_INCLUDES) -O0,p -c -lang c -char unsigned
-MWCCPS2_FLAGS_DEFAULT := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 0
+MWCCPS2_INCLUDES := -I$(INCLUDE_DIR)
+MWCCPS2_FLAGS_BASE := -gccinc $(MWCCPS2_INCLUDES) -O0,p -c -lang c -str readonly
+MWCCPS2_FLAGS_DEFAULT := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 128
 MWCCPS2_FLAGS_SDT2 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 2
 MWCCPS2_FLAGS_SDT128 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 128
 
-AS_FLAGS += -EL -I $(INCLUDE_DIR) -G0 -march=r5900 -mabi=eabi -no-pad-sections
-LD_FLAGS := -nostdlib --no-check-sections --strip-all
+AS_FLAGS += -EL -I $(INCLUDE_DIR) -G 128 -march=r5900 -mabi=eabi -no-pad-sections
+LD_FLAGS := -nostdlib --no-check-sections --strip-all --gpsize 128
 
 # Files
 
