@@ -99,7 +99,7 @@ segments:
       - [0x00C060, asm, sdk/libkernl/diei]
       - [0x00C0D0, asm, sdk/libkernl/initsys]
       - [0x00C360, asm, sdk/libkernl/libosd]
-      - [0x00C4E0, asm, sdk/libkernl/exit]
+      - [0x00C4E0, asm, sdk/libkernl/exit_libkernl]
       - [0x00C780, asm, sdk/libkernl/alarm]
       - [0x00C8C0, asm, sdk/libkernl/timer]
       - [0x00DC28, asm, sdk/libkernl/timeralarm]
