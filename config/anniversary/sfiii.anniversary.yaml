@@ -657,10 +657,7 @@ segments:
       - [0x312F10, asm, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/emlTSB]
       - [0x3139A0, asm, sf33rd/Source/Common/PPGWork]
       - [0x313FC0, asm, sf33rd/Source/PS2/reboot]
-
-      # For some reason this pad messes up the alignment.
-      # Commenting this out for now.
-      # - [0x3140B4, pad]
+      - [0x3140B0, pad]
 
       # .vutext
 
