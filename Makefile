@@ -89,7 +89,7 @@ $(MAIN_TARGET): $(MAIN_O_FILES) $(LINKER_SCRIPT)
 		-T $(LINKER_SCRIPT) \
 		-T $(CONFIG_DIR)/undefined_syms_auto.txt
 	$(SPLICE_ELF)
-	$(COMPARE_BYTES)
+	$(COMPARE_BYTES) $(MAIN) $(MAIN_TARGET)
 
 $(BUILD_DIR)/%.s.o: %.s
 	mkdir -p $(dir $@)

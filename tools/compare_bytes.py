@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-import os
+import sys
+from pathlib import Path
 
 def read_word(b: bytes, offset: int) -> int:
     word = 0
@@ -11,11 +12,8 @@ def read_word(b: bytes, offset: int) -> int:
     return word
 
 def main():
-    version = os.environ["VERSION"]
-    target = os.environ["MAIN"]
-
-    path_a = target
-    path_b = f"build/{version}/{target}"
+    path_a = Path(sys.argv[1])
+    path_b = Path(sys.argv[2])
 
     with open(path_a, 'rb') as f:
         bytes_a = f.read()
@@ -41,7 +39,7 @@ def main():
         print("Files match ✅")
     else:
         matching = False
-        print(f"Files diverge at offset 0x{i_a:X}❌")
+        print(f"Files diverge at offset 0x{i_a:X} ❌")
 
     # Find misalignment
 
