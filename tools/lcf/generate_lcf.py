@@ -111,7 +111,12 @@ def main():
             del runs[0].entries[0]
 
         for run in text_runs:
-            alignment = 0x8 if run.is_game else 0x4
+            is_lib_vib = "libvib" in str(run.entries[0].object_path)
+            alignment = 0x4
+
+            if run.is_game or is_lib_vib:
+                alignment = 0x8
+
             lcf.align_all(alignment)
             lcf.add_entries(run.entries, ".text")
 
@@ -141,8 +146,6 @@ def main():
 
         lcf.begin_section("small data sections")
 
-        lcf.write_line(". = . + 0x51F80;")
-
         sdata_runs = [x for x in runs if x.section == ".sdata"]
         lcf.align(0x80)
         lcf.align_all(0x4)
@@ -164,6 +167,12 @@ def main():
         lcf.align(0x80)
         lcf.align_all(0x8)
         lcf.add_runs(bss_runs, ".bss")
+
+        lcf.blank()
+
+        # finalize
+
+        lcf.align(0x80)
 
 if __name__ == "__main__":
     main()
