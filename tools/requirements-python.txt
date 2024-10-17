@@ -7,3 +7,4 @@ watchdog
 levenshtein
 cxxfilt
 dataclasses
+pyelftools

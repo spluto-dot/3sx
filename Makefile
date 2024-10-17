@@ -39,6 +39,7 @@ LD := mipsel-linux-gnu-ld
 PYTHON := python3
 SPLICE_ELF := $(PYTHON) $(TOOLS_DIR)/splice_elf.py
 COMPARE_BYTES := $(PYTHON) $(TOOLS_DIR)/compare_bytes.py
+PATCH_ALIGNMENT := $(PYTHON) $(TOOLS_DIR)/patch_alignment.py
 
 # Flags
 
@@ -94,10 +95,12 @@ $(MAIN_TARGET): $(MAIN_O_FILES) $(LINKER_SCRIPT)
 $(BUILD_DIR)/%.s.o: %.s
 	mkdir -p $(dir $@)
 	$(AS) $(AS_FLAGS) -o $@ $<
+	$(PATCH_ALIGNMENT) $@
 
 $(BUILD_DIR)/%.c.o: %.c
 	mkdir -p $(dir $@)
 	$(CC) $(if $(findstring $<,$(SDT2_C_FILES)),$(MWCCPS2_FLAGS_SDT2),$(if $(findstring $<,$(SDT128_C_FILES)),$(MWCCPS2_FLAGS_SDT128),$(MWCCPS2_FLAGS_DEFAULT))) -o $@ $<
+	$(PATCH_ALIGNMENT) $@
 
 $(WIBO):
 	wget -O $@ https://github.com/decompals/wibo/releases/download/0.6.13/wibo
