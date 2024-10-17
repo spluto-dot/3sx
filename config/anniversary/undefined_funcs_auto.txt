@@ -6,3 +6,4 @@ func_00101F74 = 0x101F74;
 func_0010206C = 0x10206C;
 func_00105A00 = 0x105A00;
 _kDebugException = 0x10BEC0;
+func_0010BFBC = 0x10BFBC;

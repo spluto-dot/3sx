@@ -1,3 +1,17 @@
+D_10000 = 0x10000; // ignore:true
+D_FFFF = 0xFFFF; // ignore:true
+D_FFFFF = 0xFFFFF; // ignore:true
+D_FFFFFF = 0xFFFFFF; // ignore:true
+D_00200001 = 0x200001; // ignore:true
+D_20000010 = 0x20000010; // ignore:true
+D_20000050 = 0x20000050; // ignore:true
+D_80000000 = 0x80000000; // ignore:true
+D_80000002 = 0x80000002; // ignore:true
+D_E0002000 = 0xE0002000; // ignore:true
+
+func_0010BFBC = 0x10BFBC; // type:func
+_end = 0x6EAF80;
+
 __ieee754_atan2 = 0x001114B8; // type:func
 __ieee754_sqrt = 0x001117F8; // type:func
 __ieee754_rem_pio2f = 0x00111B18; // type:func
