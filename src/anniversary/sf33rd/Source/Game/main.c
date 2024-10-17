@@ -346,7 +346,7 @@ int njUserMain() {
 
                 if (Debug_w[0x21]) {
                     flPrintColor(0xFFFFFFFF);
-                    flPrintL(0x10, 0xA, "FAKE REC! PL2");
+                    flPrintL(0x10, 0xA, "FAKE REC!     PL2");
                 }
             }
         }
