@@ -12,6 +12,7 @@ options:
   symbol_addrs_path: 
     - config/anniversary/symbols/syms_cri_libadxe.txt
     - config/anniversary/symbols/syms_gcc_libc.txt
+    - config/anniversary/symbols/syms_label_overrides.txt
     - config/anniversary/symbols/syms_sdk_libcdvd.txt
     - config/anniversary/symbols/syms_sdk_libdbc.txt
     - config/anniversary/symbols/syms_sdk_libdma.txt
