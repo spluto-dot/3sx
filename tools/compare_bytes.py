@@ -11,14 +11,23 @@ def read_word(b: bytes, offset: int) -> int:
 
     return word
 
+def align_down(n: int, alignment: int) -> int:
+    return n // alignment * alignment
+
 def main():
     path_a = Path(sys.argv[1])
     path_b = Path(sys.argv[2])
     start = 0
+    end = sys.maxsize
 
     if len(sys.argv) >= 4:
-        start = int(sys.argv[3], 16)
-        print(f"Starting comparison from 0x{start:X}")
+        start = align_down(int(sys.argv[3], 16), 4)
+
+    if len(sys.argv) >= 5:
+        end = align_down(int(sys.argv[4], 16), 4)
+
+    if start != 0 or end != sys.maxsize:
+        print(f"Comparing range [0x{start:X}, 0x{end:X})")
 
     with open(path_a, 'rb') as f:
         bytes_a = f.read()
@@ -28,38 +37,41 @@ def main():
 
     # Compare bytes
 
-    i_a = start
-    i_b = start
+    bad_offsets: list[int] = list()
+    misalign_offset: int | None = None
 
-    while i_a < len(bytes_a) and i_b < len(bytes_b):
-        if bytes_a[i_a] != bytes_b[i_b]:
-            break
+    range_end = min(
+        len(bytes_a), 
+        len(bytes_b),
+        end
+    )
 
-        i_a += 1
-        i_b += 1
+    for offset in range(start, range_end, 4):
+        word_a = read_word(bytes_a, offset)
+        word_b = read_word(bytes_b, offset)
 
-    matching = True
+        if word_a != word_b:
+            bad_offsets.append(offset)
 
-    if i_a == len(bytes_a) and i_b == len(bytes_b):
+            if (word_a == 0 or word_b == 0) and misalign_offset == None:
+                misalign_offset = offset
+
+    if not bad_offsets:
         print("Files match ✅")
     else:
-        matching = False
-        print(f"Files diverge at offset 0x{i_a:X} ❌")
+        max_printed_offsets = 20
+        print(f"Files diverge at {len(bad_offsets)} offsets ❌.")
 
-    # Find misalignment
+        if len(bad_offsets) > max_printed_offsets:
+            print(f"First {max_printed_offsets} diverging offsets:")
+        else:
+            print("Diverging offsets:")
 
-    if not matching:
-        print("Looking for a misalignment...")
-
-        for offset in range(0, min(len(bytes_a), len(bytes_b)), 4):
-            word_a = read_word(bytes_a, offset)
-            word_b = read_word(bytes_b, offset)
-
-            if word_a != word_b and (word_a == 0 or word_b == 0):
-                print(f"Misalignment at 0x{offset:X}")
-                return
+        for offset in bad_offsets[:max_printed_offsets]:
+            print(f"    0x{offset:X}")
         
-        print("Misalignment not found")
+    if misalign_offset != None:
+        print(f"Misalignment at 0x{misalign_offset:X}")
 
 if __name__ == '__main__':
     main()
