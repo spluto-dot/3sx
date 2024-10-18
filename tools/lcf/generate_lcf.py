@@ -1,9 +1,8 @@
-import splat
-import splat.scripts.split as split
-from splat.segtypes.linker_entry import LinkerEntry
-from pprint import pprint
+import sys
 from dataclasses import dataclass
 from pathlib import Path
+import splat.scripts.split as split
+from splat.segtypes.linker_entry import LinkerEntry
 
 @dataclass
 class Run:
@@ -33,12 +32,13 @@ def strip_path(path: Path) -> str:
     return path.name
 
 class LCFWriter:
-    def __init__(self):
+    def __init__(self, config_path: Path):
+        self.config_path = config_path
         self.file = None
         self.last_line_blank = False
 
     def __enter__(self) -> 'LCFWriter':
-        self.file = open("config.lcf", "w")
+        self.file = open(self.config_path, "w")
 
         with open("tools/lcf/lcf_header.txt") as header:
             self.file.write(header.read())
@@ -89,10 +89,11 @@ class LCFWriter:
             self.add_entries(run.entries, section)
 
 def main():
+    config_path = Path(sys.argv[1])
     split.main(["config/anniversary/sfiii.anniversary.yaml"], modes="all", verbose=False)
     runs = split_into_runs(split.linker_writer.entries)
 
-    with LCFWriter() as lcf:
+    with LCFWriter(config_path) as lcf:
         lcf.write_line("_gp = 0x57A3F0;")
 
         # text
