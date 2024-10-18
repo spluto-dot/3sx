@@ -533,7 +533,7 @@ segments:
       - [0x2B1C00, asm, sf33rd/Source/Game/VM_SUB]
       - [0x2B1D40, asm, sf33rd/Source/Game/Win]
       - [0x2B28A0, asm, sf33rd/Source/Game/win_pl]
-      - [0x2B7760, asm, sf33rd/Source/Compress/zlibApp]
+      - [0x2B7760, c, sf33rd/Source/Compress/zlibApp]
       - [0x2B7970, asm, sf33rd/Source/Compress/Lz77/Lz77Dec]
       - [0x2B7FC0, asm, sf33rd/Source/Compress/zlib/infcodes]
       - [0x2B92F0, asm, sf33rd/Source/Compress/zlib/infblock]
@@ -807,6 +807,8 @@ segments:
       - [0x3D9688, rodata, rodata_3D9688]
       - [0x3D9788, rodata, rodata_3D9788]
       - [0x3D9888, rodata, rodata_3D9888]
+      - [0x4582C8, .rodata, sf33rd/Source/Compress/zlibApp]
+      - [0x4582E0, rodata, rodata_4582E0]
       - [0x4599A0, rodata, cri/libadxe/adx_baif]
       - [0x4599B0, rodata, cri/libadxe/adx_bau]
       - [0x4599C0, rodata, cri/libadxe/adx_bsc]
@@ -874,9 +876,14 @@ segments:
 
       - [0x472480, sdata, sdata_472480]
 
-      # .sbss/.bss
+      # .sbss
 
-      - { type: sbss, vram: 0x578980, name: sbss_chunk } # vram == _fbss
+      - { type: sbss, vram: 0x578980, name: sbss_578980 } # vram == _fbss
+      - { type: .sbss, vram: 0x57A780, name: sf33rd/Source/Compress/zlibApp }
+      - { type: sbss, vram: 0x57A7F8, name: sbss_57A7F8 }
+
+      # .bss
+
       - { type: bss, vram: 0x57B650, name: bss_chunk } # vram == __bss_start
 
   - [0x478A00]

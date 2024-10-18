@@ -115,7 +115,9 @@ def main():
             is_lib_vib = "libvib" in str(run.entries[0].object_path)
             alignment = 0x4
 
-            if run.is_game or is_lib_vib:
+            if run.is_game:
+                alignment = 0x10
+            elif is_lib_vib:
                 alignment = 0x8
 
             lcf.align_all(alignment)
