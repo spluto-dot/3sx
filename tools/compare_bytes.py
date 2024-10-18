@@ -14,6 +14,11 @@ def read_word(b: bytes, offset: int) -> int:
 def main():
     path_a = Path(sys.argv[1])
     path_b = Path(sys.argv[2])
+    start = 0
+
+    if len(sys.argv) >= 4:
+        start = int(sys.argv[3], 16)
+        print(f"Starting comparison from 0x{start:X}")
 
     with open(path_a, 'rb') as f:
         bytes_a = f.read()
@@ -23,8 +28,8 @@ def main():
 
     # Compare bytes
 
-    i_a = 0
-    i_b = 0
+    i_a = start
+    i_b = start
 
     while i_a < len(bytes_a) and i_b < len(bytes_b):
         if bytes_a[i_a] != bytes_b[i_b]:
