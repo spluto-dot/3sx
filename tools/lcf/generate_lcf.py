@@ -164,7 +164,7 @@ def main():
 
         bss_runs = [x for x in runs if x.section == ".bss"]
 
-        lcf.align(0x80)
+        # lcf.align(0x80)
         lcf.align_all(0x8)
         lcf.add_runs(bss_runs, ".bss")
 
