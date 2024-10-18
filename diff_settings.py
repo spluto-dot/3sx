@@ -1,7 +1,7 @@
 def apply(config, args):
     config["baseimg"] = "THIRD_U.BIN"
     config["myimg"] = "build/anniversary/THIRD_U.BIN"
-    config["mapfile"] = "build/anniversary/THIRD_U.BIN.map"
+    config["mapfile"] = "build/anniversary/THIRD_U.BIN.xMAP"
     config["source_directories"] = ["src"]
     # config["show_line_numbers_default"] = True
     config["arch"] = "mipsee"
