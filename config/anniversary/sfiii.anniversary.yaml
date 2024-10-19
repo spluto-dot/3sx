@@ -117,7 +117,7 @@ segments:
       - [0x11538, asm, asm_11538]
 
       - [0x015DE0, asm, sf33rd/AcrSDK/common/fbms]
-      - [0x016030, asm, sf33rd/AcrSDK/common/memfound]
+      - [0x016030, c, sf33rd/AcrSDK/common/memfound]
       - [0x016200, asm, sf33rd/AcrSDK/common/memmgr]
       - [0x017380, asm, sf33rd/AcrSDK/common/mlPAD]
       - [0x018D70, asm, sf33rd/AcrSDK/common/plapx]
@@ -919,15 +919,18 @@ segments:
       - [0x472C50, sdata, sdata_472C50]
 
       # .sbss
+      # (starts at _fbss)
 
-      - { type: sbss, vram: 0x578980, name: sbss_578980 } # vram == _fbss
+      - { type: .sbss, vram: 0x578980, name: sf33rd/AcrSDK/common/memfound }
+      - { type: sbss, vram: 0x5789A8, name: sbss_5789A8 }
       - { type: .sbss, vram: 0x578E50, name: sf33rd/Source/Game/Continue }
       - { type: sbss, vram: 0x578E54, name: sbss_578E54 }
       - { type: .sbss, vram: 0x57A780, name: sf33rd/Source/Compress/zlibApp }
       - { type: sbss, vram: 0x57A7F8, name: sbss_57A7F8 }
 
       # .bss
+      # (starts at __bss_start)
 
-      - { type: bss, vram: 0x57B650, name: bss_chunk } # vram == __bss_start
+      - { type: bss, vram: 0x57B650, name: bss_chunk }
 
   - [0x478A00]

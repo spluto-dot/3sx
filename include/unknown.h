@@ -17,11 +17,11 @@ typedef struct {
     // total size: 0x8
     unsigned char *pFrame; // offset 0x0, size 0x4
     int heapnum;           // offset 0x4, size 0x4
-} Frame;
+} FMS_FRAME;
 
 typedef struct {
     // total size: 0x4C
-    Frame fmsFrame;            // offset 0x0, size 0x8
+    FMS_FRAME fmsFrame;        // offset 0x0, size 0x8
     unsigned char *ramcntBuff; // offset 0x8, size 0x4
     VPRM vprm;                 // offset 0xC, size 0x18
     char ds_h[2];              // offset 0x24, size 0x2
@@ -2330,6 +2330,38 @@ typedef struct {
     unsigned short index; // offset 0x14, size 0x2
 } BG_MVXY;
 
+typedef struct {
+    // total size: 0x18
+    unsigned char *memoryblock;   // offset 0x0, size 0x4
+    unsigned char *baseandcap[2]; // offset 0x4, size 0x8
+    unsigned char *frame[2];      // offset 0xC, size 0x8
+    int align;                    // offset 0x14, size 0x4
+} FMS_FL;
+
+typedef struct {
+    // total size: 0x10
+    unsigned char *ptr;   // offset 0x0, size 0x4
+    unsigned int len;     // offset 0x4, size 0x4
+    unsigned short align; // offset 0x8, size 0x2
+    unsigned short id;    // offset 0xA, size 0x2
+    unsigned short prev;  // offset 0xC, size 0x2
+    unsigned short next;  // offset 0xE, size 0x2
+} MEM_BLOCK;
+
+typedef struct {
+    // total size: 0x28
+    signed int cnt;         // offset 0x0, size 0x4
+    signed int memsize;     // offset 0x4, size 0x4
+    MEM_BLOCK *block;       // offset 0x8, size 0x4
+    signed int direction;   // offset 0xC, size 0x4
+    unsigned char *memnow;  // offset 0x10, size 0x4
+    unsigned char *memptr;  // offset 0x14, size 0x4
+    signed int memalign;    // offset 0x18, size 0x4
+    signed int used_size;   // offset 0x1C, size 0x4
+    signed int tmemsize;    // offset 0x20, size 0x4
+    unsigned int blocklist; // offset 0x24, size 0x4
+} MEM_MGR;
+
 // MARK: - Variables
 
 extern BG_MVXY bg_mvxy;                      // size: 0x18, address: 0x578C80
@@ -2400,6 +2432,7 @@ extern char Debug_w[72];                     // size: 0x48, address: 0x57A860
 extern short *dctex_linear;                  // size: 0x4, address: 0x57A950
 extern MPP mpp_w;                            // size: 0x4C, address: 0x57A9F0
 extern int system_init_level;                // size: 0x4, address: 0x57AA3C
+extern MEM_BLOCK sysmemblock[4096];          // size: 0x10000, address: 0x584C80
 extern BG bg_w;                              // size: 0x428, address: 0x595830
 extern float PrioBase[128];                  // size: 0x200, address: 0x5E3F50
 extern PLW plw[2];                           // size: 0x8D8, address: 0x5E4D20
@@ -2409,6 +2442,22 @@ extern unsigned char Order[148];             // size: 0x94, address: 0x6BD730
 extern FLPS2State flPs2State;                // size: 0x470, address: 0x6E2750
 
 // MARK: - Functions
+
+int fmsCalcSpace(FMS_FL *lp);                                               // Range: 0x115D60 -> 0x115D88
+int fmsInitialize(FMS_FL *lp, void *memory_ptr, int memsize, int memalign); // Range: 0x115D90 -> 0x115E80
+void *fmsAllocMemory(FMS_FL *lp, int bytes, int heapnum);                   // Range: 0x115E80 -> 0x115F58
+int fmsGetFrame(FMS_FL *lp, int heapnum, FMS_FRAME *frame);                 // Range: 0x115F60 -> 0x115FA8
+
+void plmemInit(MEM_MGR *memmgr, MEM_BLOCK *block, int count, void *mem_ptr, int memsize, int memalign,
+               int direction);                             // Range: 0x116180 -> 0x11629C
+unsigned int plmemRegister(MEM_MGR *memmgr, int len);      // Range: 0x1162A0 -> 0x1162D8
+unsigned int plmemRegisterS(MEM_MGR *memmgr, int len);     // Range: 0x1164C0 -> 0x116980
+void *plmemTemporaryUse(MEM_MGR *memmgr, int len);         // Range: 0x116980 -> 0x116AAC
+void *plmemRetrieve(MEM_MGR *memmgr, unsigned int handle); // Range: 0x116AB0 -> 0x116B20
+int plmemRelease(MEM_MGR *memmgr, unsigned int handle);    // Range: 0x116B20 -> 0x116BFC
+void *plmemCompact(MEM_MGR *memmgr);                       // Range: 0x116C00 -> 0x116E9C
+unsigned int plmemGetSpace(MEM_MGR *memmgr);               // Range: 0x116EA0 -> 0x116EC8
+unsigned int plmemGetFreeSpace(MEM_MGR *memmgr);           // Range: 0x116ED0 -> 0x116F5C
 
 void flPADGetALL();                                                                 // Range: 0x1175B0 -> 0x117988
 void appViewSetItems(VPRM *prm);                                                    // Range: 0x11C0D0 -> 0x11C118
@@ -2467,7 +2516,7 @@ int flSetDebugMode(unsigned int flag);                                 // Range:
 int flPrintL(int posi_x, int posi_y, char *format);                    // Range: 0x3F2B40 -> 0x3F2D08
 int flPrintColor(unsigned int col);                                    // Range: 0x3F2D10 -> 0x3F2E04
 void *flAllocMemory(int size);                                         // Range: 0x3F5F30 -> 0x3F5F60
-int flGetFrame(Frame *frame);                                          // Range: 0x3F5F60 -> 0x3F5F90
+int flGetFrame(FMS_FRAME *frame);                                      // Range: 0x3F5F60 -> 0x3F5F90
 int flGetSpace();                                                      // Range: 0x3F5F90 -> 0x3F5FB4
 int flInitialize();                                                    // Range: 0x3FE0B0 -> 0x3FE1A8
 int flFlip(unsigned int flag);                                         // Range: 0x3FE580 -> 0x3FE648
