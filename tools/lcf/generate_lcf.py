@@ -151,7 +151,7 @@ def main():
 
         sdata_runs = [x for x in runs if x.section == ".sdata"]
         lcf.align(0x80)
-        lcf.align_all(0x4)
+        lcf.align_all(0x10)
         lcf.add_runs(sdata_runs, ".sdata")
 
         lcf.blank()

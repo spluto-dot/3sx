@@ -183,7 +183,7 @@ segments:
       - [0x09DE00, asm, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/cse.h]
       - [0x09FE50, asm, sf33rd/Source/Game/Com_Pl]
       - [0x0A6CA0, asm, sf33rd/Source/Game/Com_Sub]
-      - [0x0BEC20, asm, sf33rd/Source/Game/Continue]
+      - [0x0BEC20, c, sf33rd/Source/Game/Continue]
       - [0x0BF1C0, asm, sf33rd/Source/Game/count]
       - [0x0BFDF0, asm, sf33rd/Source/Game/DC_Ghost]
       - [0x0C0BE0, asm, sf33rd/Source/Game/DEMO00]
@@ -875,10 +875,14 @@ segments:
       # .sdata
 
       - [0x472480, sdata, sdata_472480]
+      - [0x472C30, .sdata, sf33rd/Source/Game/Continue]
+      - [0x472C50, sdata, sdata_472C50]
 
       # .sbss
 
       - { type: sbss, vram: 0x578980, name: sbss_578980 } # vram == _fbss
+      - { type: .sbss, vram: 0x578E50, name: sf33rd/Source/Game/Continue }
+      - { type: sbss, vram: 0x578E54, name: sbss_578E54 }
       - { type: .sbss, vram: 0x57A780, name: sf33rd/Source/Compress/zlibApp }
       - { type: sbss, vram: 0x57A7F8, name: sbss_57A7F8 }
 
