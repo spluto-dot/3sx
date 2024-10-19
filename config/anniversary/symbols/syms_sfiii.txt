@@ -19295,3 +19295,9 @@ CurrMap = 0x006EA200; // size:0x88
 RpcQueue = 0x006EA2C0; // size:0x900
 EchoWork = 0x006EABC0; // size:0x380
 errno = 0x006EAF40; // size:0x4
+
+cseTsbSetBankAddr = 0x0019DD80; // type:func
+cseMemMapSetPhdAddr = 0x0019DDB0; // type:func
+cseSeStopAll = 0x00396780; // type:func
+cseSysSetMasterVolume = 0x00396850; // type:func
+cseSysSetMono = 0x003968D0; // type:func

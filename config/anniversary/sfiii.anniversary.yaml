@@ -180,7 +180,6 @@ segments:
       - [0x08F240, asm, sf33rd/Source/Game/cmb_win]
       - [0x0943E0, asm, sf33rd/Source/Game/CMD_MAIN]
       - [0x09D880, asm, sf33rd/Source/Game/color3rd]
-      - [0x09DE00, asm, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/cse.h]
       - [0x09FE50, asm, sf33rd/Source/Game/Com_Pl]
       - [0x0A6CA0, asm, sf33rd/Source/Game/Com_Sub]
       - [0x0BEC20, c, sf33rd/Source/Game/Continue]
