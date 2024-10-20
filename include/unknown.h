@@ -40,6 +40,15 @@ typedef struct {
 } MPP;                         // size: 0x4C
 
 typedef struct {
+    // total size: 0xC
+    signed short x;   // offset 0x0, size 0x2
+    signed short y;   // offset 0x2, size 0x2
+    signed short pow; // offset 0x4, size 0x2
+    signed short ang; // offset 0x6, size 0x2
+    float rad;        // offset 0x8, size 0x4
+} PAD_STICK;
+
+typedef struct {
     // total size: 0x6C
     struct /* @anon26 */ {
         // total size: 0x34
@@ -52,17 +61,10 @@ typedef struct {
         unsigned int sw_off;    // offset 0x10, size 0x4
         unsigned int sw_chg;    // offset 0x14, size 0x4
         unsigned int sw_repeat; // offset 0x18, size 0x4
-        struct /* @anon60 */ {
-            // total size: 0xC
-            signed short x;   // offset 0x0, size 0x2
-            signed short y;   // offset 0x2, size 0x2
-            signed short pow; // offset 0x4, size 0x2
-            signed short ang; // offset 0x6, size 0x2
-            float rad;        // offset 0x8, size 0x4
-        } stick[2];           // offset 0x1C, size 0x18
-    } data[2];                // offset 0x0, size 0x68
-    unsigned short sw[2];     // offset 0x68, size 0x4
-} IO;                         // size: 0x6C
+        PAD_STICK stick[2];     // offset 0x1C, size 0x18
+    } data[2];                  // offset 0x0, size 0x68
+    unsigned short sw[2];       // offset 0x68, size 0x4
+} IO;                           // size: 0x6C
 
 struct _TASK {
     // total size: 0x14
@@ -2362,8 +2364,101 @@ typedef struct {
     unsigned int blocklist; // offset 0x24, size 0x4
 } MEM_MGR;
 
+typedef union /* @anon0 */ {
+    unsigned int etc; // offset 0x0, size 0x4
+    struct /* @anon1 */ {
+        // total size: 0x4
+        unsigned char vib;  // offset 0x0, size 0x1
+        unsigned char etc0; // offset 0x1, size 0x1
+        unsigned char etc1; // offset 0x2, size 0x1
+        unsigned char etc2; // offset 0x3, size 0x1
+    } gc;                   // offset 0x0, size 0x4
+    struct /* @anon4 */ {
+        // total size: 0x4
+        unsigned char port; // offset 0x0, size 0x1
+        unsigned char slot; // offset 0x1, size 0x1
+        unsigned char vib;  // offset 0x2, size 0x1
+        unsigned char etc;  // offset 0x3, size 0x1
+    } ps;                   // offset 0x0, size 0x4
+    struct /* @anon6 */ {
+        // total size: 0x4
+        unsigned char socket1; // offset 0x0, size 0x1
+        unsigned char socket2; // offset 0x1, size 0x1
+        unsigned short etc;    // offset 0x2, size 0x2
+    } dc;                      // offset 0x0, size 0x4
+    struct /* @anon8 */ {
+        // total size: 0x4
+        void *handle; // offset 0x0, size 0x4
+    } xbox;           // offset 0x0, size 0x4
+} PAD_CONN;
+
+typedef struct {
+    // total size: 0x10
+    unsigned char pow[16]; // offset 0x0, size 0x10
+} PAD_ANSHOT;
+
+typedef struct {
+    // total size: 0x88
+    unsigned char state;    // offset 0x0, size 0x1
+    unsigned char anstate;  // offset 0x1, size 0x1
+    unsigned short kind;    // offset 0x2, size 0x2
+    PAD_CONN conn;          // offset 0x4, size 0x4
+    unsigned int sw;        // offset 0x8, size 0x4
+    unsigned int sw_old;    // offset 0xC, size 0x4
+    unsigned int sw_new;    // offset 0x10, size 0x4
+    unsigned int sw_off;    // offset 0x14, size 0x4
+    unsigned int sw_chg;    // offset 0x18, size 0x4
+    PAD_ANSHOT anshot;      // offset 0x1C, size 0x10
+    PAD_STICK stick[2];     // offset 0x2C, size 0x18
+    unsigned int sw_repeat; // offset 0x44, size 0x4
+    union /* @anon9 */ {
+        unsigned short work; // offset 0x0, size 0x2
+        struct /* @anon10 */ {
+            // total size: 0x2
+            unsigned char press; // offset 0x0, size 0x1
+            unsigned char sw_up; // offset 0x1, size 0x1
+        } ctr;                   // offset 0x0, size 0x2
+    } rpsw[32];                  // offset 0x48, size 0x40
+} FLPAD;
+
+typedef struct {
+    // total size: 0x34
+    unsigned char state;   // offset 0x0, size 0x1
+    unsigned char anstate; // offset 0x1, size 0x1
+    unsigned short kind;   // offset 0x2, size 0x2
+    PAD_CONN conn;         // offset 0x4, size 0x4
+    unsigned int sw;       // offset 0x8, size 0x4
+    PAD_ANSHOT anshot;     // offset 0xC, size 0x10
+    PAD_STICK stick[2];    // offset 0x1C, size 0x18
+} TARPAD;
+
+typedef struct {
+    // total size: 0x2C
+    unsigned char conf_sw[32]; // offset 0x0, size 0x20
+    unsigned char flip_lever;  // offset 0x20, size 0x1
+    unsigned char flip_ast1;   // offset 0x21, size 0x1
+    unsigned char flip_ast2;   // offset 0x22, size 0x1
+    unsigned char free;        // offset 0x23, size 0x1
+    short abut_on;             // offset 0x24, size 0x2
+    short ast1_on;             // offset 0x26, size 0x2
+    short ast2_on;             // offset 0x28, size 0x2
+    unsigned short free2;      // offset 0x2A, size 0x2
+} FLPAD_CONFIG;
+
 // MARK: - Variables
 
+// .rodata
+
+extern const unsigned char fllever_flip_data[4][16];      // size: 0x40, address: 0x4D9820
+extern const unsigned char fllever_depth_flip_data[4][4]; // size: 0x10, address: 0x4D9860
+extern const FLPAD_CONFIG fltpad_config_basic;            // size: 0x2C, address: 0x55F530
+extern const unsigned int flpad_io_map[25];               // size: 0x64, address: 0x55F560
+
+// .sbss
+
+extern unsigned char NumOfValidPads;         // size: 0x1, address: 0x5789A8
+extern FLPAD_CONFIG flpad_config[2];         // size: 0x58, address: 0x5789B0
+extern FLPAD *flpad_adr[2];                  // size: 0x8, address: 0x578A08
 extern BG_MVXY bg_mvxy;                      // size: 0x18, address: 0x578C80
 extern IO io_w;                              // size: 0x6C, address: 0x579230
 extern TPU *tpu_free;                        // size: 0x4, address: 0x579A8C
@@ -2432,21 +2527,22 @@ extern char Debug_w[72];                     // size: 0x48, address: 0x57A860
 extern short *dctex_linear;                  // size: 0x4, address: 0x57A950
 extern MPP mpp_w;                            // size: 0x4C, address: 0x57A9F0
 extern int system_init_level;                // size: 0x4, address: 0x57AA3C
-extern MEM_BLOCK sysmemblock[4096];          // size: 0x10000, address: 0x584C80
-extern BG bg_w;                              // size: 0x428, address: 0x595830
-extern float PrioBase[128];                  // size: 0x200, address: 0x5E3F50
-extern PLW plw[2];                           // size: 0x8D8, address: 0x5E4D20
-extern struct _TASK task[11];                // size: 0xDC, address: 0x6BD2D0
-extern unsigned char Order_Timer[148];       // size: 0x94, address: 0x6BD690
-extern unsigned char Order[148];             // size: 0x94, address: 0x6BD730
-extern FLPS2State flPs2State;                // size: 0x470, address: 0x6E2750
+extern TARPAD tarpad_root[2];                // size: 0x68, address: 0x57B040
+
+// .bss
+
+extern MEM_BLOCK sysmemblock[4096];    // size: 0x10000, address: 0x584C80
+extern FLPAD flpad_conf[2];            // size: 0x110, address: 0x594C80
+extern FLPAD flpad_root[2];            // size: 0x110, address: 0x594D90
+extern BG bg_w;                        // size: 0x428, address: 0x595830
+extern float PrioBase[128];            // size: 0x200, address: 0x5E3F50
+extern PLW plw[2];                     // size: 0x8D8, address: 0x5E4D20
+extern struct _TASK task[11];          // size: 0xDC, address: 0x6BD2D0
+extern unsigned char Order_Timer[148]; // size: 0x94, address: 0x6BD690
+extern unsigned char Order[148];       // size: 0x94, address: 0x6BD730
+extern FLPS2State flPs2State;          // size: 0x470, address: 0x6E2750
 
 // MARK: - Functions
-
-int fmsCalcSpace(FMS_FL *lp);                                               // Range: 0x115D60 -> 0x115D88
-int fmsInitialize(FMS_FL *lp, void *memory_ptr, int memsize, int memalign); // Range: 0x115D90 -> 0x115E80
-void *fmsAllocMemory(FMS_FL *lp, int bytes, int heapnum);                   // Range: 0x115E80 -> 0x115F58
-int fmsGetFrame(FMS_FL *lp, int heapnum, FMS_FRAME *frame);                 // Range: 0x115F60 -> 0x115FA8
 
 void plmemInit(MEM_MGR *memmgr, MEM_BLOCK *block, int count, void *mem_ptr, int memsize, int memalign,
                int direction);                             // Range: 0x116180 -> 0x11629C
@@ -2459,7 +2555,21 @@ void *plmemCompact(MEM_MGR *memmgr);                       // Range: 0x116C00 ->
 unsigned int plmemGetSpace(MEM_MGR *memmgr);               // Range: 0x116EA0 -> 0x116EC8
 unsigned int plmemGetFreeSpace(MEM_MGR *memmgr);           // Range: 0x116ED0 -> 0x116F5C
 
-void flPADGetALL();                                                                 // Range: 0x1175B0 -> 0x117988
+void flpad_ram_clear(unsigned int *adrs_int, int xx);                                 // Range: 0x117300 -> 0x1173C8
+int flPADInitialize();                                                                // Range: 0x1173D0 -> 0x117458
+void flPADWorkClear();                                                                // Range: 0x117480 -> 0x1174C0
+void flPADConfigSet(const FLPAD_CONFIG *adrs, int padnum);                            // Range: 0x1174C0 -> 0x1175A4
+void flPADGetALL();                                                                   // Range: 0x1175B0 -> 0x117988
+void flPADACRConf();                                                                  // Range: 0x117990 -> 0x11880C
+void padconf_setup_depth(unsigned char *deps, unsigned char num, unsigned int iodat); // Range: 0x118810 -> 0x1188D8
+void flupdate_pad_stick_dir(PAD_STICK *st);                                           // Range: 0x1188E0 -> 0x1189D8
+void flupdate_pad_button_data(FLPAD *pad, unsigned int data);                         // Range: 0x1189E0 -> 0x118A80
+void flupdate_pad_on_cnt(FLPAD *pad);                                                 // Range: 0x118A80 -> 0x118B64
+void flPADSetRepeatSw(FLPAD *pad, unsigned int IOdata, unsigned char ctr,
+                      unsigned char times); // Range: 0x118B70 -> 0x118CF0
+
+void plMemset(void *dst, unsigned int pat, int size); // Range: 0x11B3B0 -> 0x11B41C
+
 void appViewSetItems(VPRM *prm);                                                    // Range: 0x11C0D0 -> 0x11C118
 void appViewGetItems(VPRM *prm);                                                    // Range: 0x11C120 -> 0x11C168
 void appViewMatrix();                                                               // Range: 0x11C170 -> 0x11C1CC
@@ -2501,15 +2611,16 @@ void zlib_Initialize(void *tempAdrs, int tempSize);                             
 int Check_Exit_Check();                                                             // Range: 0x3BF690 -> 0x3BF6E0
 void mmSystemInitialize();                                                          // Range: 0x3C0080 -> 0x3C008C
 void mmHeapInitialize(_MEMMAN_OBJ *mmobj, unsigned char *adrs, int size, int unit,
-                      char *format);                                   // Range: 0x3C0090 -> 0x3C020C
-unsigned char *mmAlloc(_MEMMAN_OBJ *mmobj, int size, int flag);        // Range: 0x3C02D0 -> 0x3C037C
-void mmFree(_MEMMAN_OBJ *mmobj, unsigned char *adrs);                  // Range: 0x3C0560 -> 0x3C05D8
-void ppg_Initialize(void *lcmAdrs, int lcmSize);                       // Range: 0x3C05E0 -> 0x3C0650
-void ppgMakeConvTableTexDC();                                          // Range: 0x3C3620 -> 0x3C3768
-void CP3toPS2Draw();                                                   // Range: 0x3C64D0 -> 0x3C6D8C
-void njUserInit();                                                     // Range: 0x3E5BA0 -> 0x3E5E64
-void cpInitTask();                                                     // Range: 0x3E61C0 -> 0x3E61F0
-void cpReadyTask(unsigned short num, void *func_adrs);                 // Range: 0x3E61F0 -> 0x3E625C
+                      char *format);                            // Range: 0x3C0090 -> 0x3C020C
+unsigned char *mmAlloc(_MEMMAN_OBJ *mmobj, int size, int flag); // Range: 0x3C02D0 -> 0x3C037C
+void mmFree(_MEMMAN_OBJ *mmobj, unsigned char *adrs);           // Range: 0x3C0560 -> 0x3C05D8
+void ppg_Initialize(void *lcmAdrs, int lcmSize);                // Range: 0x3C05E0 -> 0x3C0650
+void ppgMakeConvTableTexDC();                                   // Range: 0x3C3620 -> 0x3C3768
+void CP3toPS2Draw();                                            // Range: 0x3C64D0 -> 0x3C6D8C
+void njUserInit();                                              // Range: 0x3E5BA0 -> 0x3E5E64
+void cpInitTask();                                              // Range: 0x3E61C0 -> 0x3E61F0
+void cpReadyTask(unsigned short num, void *func_adrs);          // Range: 0x3E61F0 -> 0x3E625C
+
 int flSetRenderState(enum _FLSETRENDERSTATE func, unsigned int value); // Range: 0x3EEC50 -> 0x3EFDD8
 void flAdjustScreen(int x, int y);                                     // Range: 0x3F2230 -> 0x3F2268
 int flSetDebugMode(unsigned int flag);                                 // Range: 0x3F2280 -> 0x3F22A0
@@ -2520,8 +2631,14 @@ int flGetFrame(FMS_FRAME *frame);                                      // Range:
 int flGetSpace();                                                      // Range: 0x3F5F90 -> 0x3F5FB4
 int flInitialize();                                                    // Range: 0x3FE0B0 -> 0x3FE1A8
 int flFlip(unsigned int flag);                                         // Range: 0x3FE580 -> 0x3FE648
-void MemcardInit();                                                    // Range: 0x403EC0 -> 0x403F38
-void KnjFlush();                                                       // Range: 0x407E90 -> 0x407FE8
-void ppgWorkInitializeApprication();                                   // Range: 0x413920 -> 0x413A54
+
+int tarPADInit();                                                  // Range: 0x400120 -> 0x40041C
+void tarPADDestroy();                                              // Range: 0x400420 -> 0x400448
+void flPADConfigSetACRtoXX(int padnum, short a, short b, short c); // Range: 0x400450 -> 0x4004B8
+void tarPADRead();                                                 // Range: 0x4004C0 -> 0x400624
+
+void MemcardInit();                  // Range: 0x403EC0 -> 0x403F38
+void KnjFlush();                     // Range: 0x407E90 -> 0x407FE8
+void ppgWorkInitializeApprication(); // Range: 0x413920 -> 0x413A54
 
 #endif

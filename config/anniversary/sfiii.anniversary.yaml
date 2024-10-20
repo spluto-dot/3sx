@@ -116,7 +116,7 @@ segments:
 
       - [0x11538, asm, asm_11538]
 
-      - [0x015DE0, asm, sf33rd/AcrSDK/common/fbms]
+      - [0x015DE0, c, sf33rd/AcrSDK/common/fbms]
       - [0x016030, c, sf33rd/AcrSDK/common/memfound]
       - [0x016200, asm, sf33rd/AcrSDK/common/memmgr]
       - [0x017380, asm, sf33rd/AcrSDK/common/mlPAD]
