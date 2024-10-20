@@ -421,7 +421,7 @@ segments:
       - [0x14FB00, asm, sf33rd/Source/Game/Flash_LP]
       - [0x14FE60, asm, sf33rd/Source/Game/FOLLOW02]
       - [0x150210, asm, sf33rd/Source/Game/Game]
-      - [0x153CC0, asm, sf33rd/Source/Game/GameOver]
+      - [0x153CC0, c, sf33rd/Source/Game/GameOver]
       - [0x1543B0, asm, sf33rd/Source/Game/GD3rd]
       - [0x155C10, asm, sf33rd/Source/Game/Grade]
       - [0x15E6F0, asm, sf33rd/Source/Game/HITCHECK]
@@ -819,6 +819,8 @@ segments:
       - [0x3DF2D0, rodata, sf33rd/Source/Game/active01]
       - [0x3DF410, rodata, sf33rd/Source/Game/active02]
       - [0x3DF560, rodata, rodata_3DF560]
+      - [0x41FD50, .rodata, sf33rd/Source/Game/GameOver]
+      - [0x41FD70, rodata, rodata_41FD70]
       - [0x4582C8, .rodata, sf33rd/Source/Compress/zlibApp]
       - [0x4582E0, rodata, rodata_4582E0]
 
@@ -917,6 +919,8 @@ segments:
       - [0x472B70, sdata, sf33rd/Source/Game/Com_Sub]
       - [0x472C30, .sdata, sf33rd/Source/Game/Continue]
       - [0x472C50, sdata, sdata_472C50]
+      - [0x473B20, .sdata, sf33rd/Source/Game/GameOver]
+      - [0x473B30, sdata, sdata_473B30]
 
       # .sbss
       # (starts at _fbss)
@@ -926,6 +930,8 @@ segments:
       - { type: sbss, vram: 0x578A10, name: sbss_578A10 }
       - { type: .sbss, vram: 0x578E50, name: sf33rd/Source/Game/Continue }
       - { type: sbss, vram: 0x578E54, name: sbss_578E54 }
+      - { type: .sbss, vram: 0x579078, name: sf33rd/Source/Game/GameOver }
+      - { type: sbss, vram: 0x57907C, name: sbss_57907C }
       - { type: .sbss, vram: 0x57A780, name: sf33rd/Source/Compress/zlibApp }
       - { type: sbss, vram: 0x57A7F8, name: sbss_57A7F8 }
 
