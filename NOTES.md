@@ -14,6 +14,10 @@ According to the `.comment` section of the main binary the compiler used to buil
 objdump -s -j .comment SLPM_656.21
 ```
 
+### SDK
+
+According to a string in `IOP/MODULES/MXMAN.IRX` the game was built with SDK version 2.8.1.
+
 ### Functions
 
 #### crt0
