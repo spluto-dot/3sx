@@ -2451,16 +2451,11 @@ typedef struct {
 
 // .rodata
 
-extern const u8 fllever_flip_data[4][16];      // size: 0x40, address: 0x4D9820
-extern const u8 fllever_depth_flip_data[4][4]; // size: 0x10, address: 0x4D9860
 extern const FLPAD_CONFIG fltpad_config_basic; // size: 0x2C, address: 0x55F530
 extern const u32 flpad_io_map[25];             // size: 0x64, address: 0x55F560
 
 // .sbss
 
-extern u8 NumOfValidPads;            // size: 0x1, address: 0x5789A8
-extern FLPAD_CONFIG flpad_config[2]; // size: 0x58, address: 0x5789B0
-extern FLPAD *flpad_adr[2];          // size: 0x8, address: 0x578A08
 extern BG_MVXY bg_mvxy;              // size: 0x18, address: 0x578C80
 extern IO io_w;                      // size: 0x6C, address: 0x579230
 extern TPU *tpu_free;                // size: 0x4, address: 0x579A8C
@@ -2534,8 +2529,7 @@ extern TARPAD tarpad_root[2];        // size: 0x68, address: 0x57B040
 // .bss
 
 extern MEM_BLOCK sysmemblock[4096]; // size: 0x10000, address: 0x584C80
-extern FLPAD flpad_conf[2];         // size: 0x110, address: 0x594C80
-extern FLPAD flpad_root[2];         // size: 0x110, address: 0x594D90
+
 extern BG bg_w;                     // size: 0x428, address: 0x595830
 extern f32 PrioBase[128];           // size: 0x200, address: 0x5E3F50
 extern PLW plw[2];                  // size: 0x8D8, address: 0x5E4D20
@@ -2557,19 +2551,6 @@ s32 plmemRelease(MEM_MGR *memmgr, u32 handle);               // Range: 0x116B20 
 void *plmemCompact(MEM_MGR *memmgr);                         // Range: 0x116C00 -> 0x116E9C
 u32 plmemGetSpace(MEM_MGR *memmgr);                          // Range: 0x116EA0 -> 0x116EC8
 u32 plmemGetFreeSpace(MEM_MGR *memmgr);                      // Range: 0x116ED0 -> 0x116F5C
-
-void flpad_ram_clear(u32 *adrs_int, s32 xx);               // Range: 0x117300 -> 0x1173C8
-s32 flPADInitialize();                                     // Range: 0x1173D0 -> 0x117458
-void flPADWorkClear();                                     // Range: 0x117480 -> 0x1174C0
-void flPADConfigSet(const FLPAD_CONFIG *adrs, s32 padnum); // Range: 0x1174C0 -> 0x1175A4
-void flPADGetALL();                                        // Range: 0x1175B0 -> 0x117988
-void flPADACRConf();                                       // Range: 0x117990 -> 0x11880C
-void padconf_setup_depth(u8 *deps, u8 num, u32 iodat);     // Range: 0x118810 -> 0x1188D8
-void flupdate_pad_stick_dir(PAD_STICK *st);                // Range: 0x1188E0 -> 0x1189D8
-void flupdate_pad_button_data(FLPAD *pad, u32 data);       // Range: 0x1189E0 -> 0x118A80
-void flupdate_pad_on_cnt(FLPAD *pad);                      // Range: 0x118A80 -> 0x118B64
-void flPADSetRepeatSw(FLPAD *pad, u32 IOdata, u8 ctr,
-                      u8 times); // Range: 0x118B70 -> 0x118CF0
 
 void plMemset(void *dst, u32 pat, s32 size); // Range: 0x11B3B0 -> 0x11B41C
 

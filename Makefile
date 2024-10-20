@@ -45,7 +45,7 @@ GENERATE_LCF := $(PYTHON) $(TOOLS_DIR)/lcf/generate_lcf.py
 # Flags
 
 MWCCPS2_INCLUDES := -I$(INCLUDE_DIR)
-MWCCPS2_FLAGS_BASE := -gccinc $(MWCCPS2_INCLUDES) -O0,p -c -lang c -str readonly
+MWCCPS2_FLAGS_BASE := -gccinc $(MWCCPS2_INCLUDES) -O0,p -c -lang c -str readonly -fl divbyzerocheck
 MWCCPS2_FLAGS_DEFAULT := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 128
 MWCCPS2_FLAGS_SDT2 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 2
 MWCCPS2_FLAGS_SDT128 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 128
