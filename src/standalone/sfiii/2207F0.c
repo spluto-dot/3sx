@@ -12,13 +12,13 @@ extern s16 D_004F8C0C;
 extern u16 D_004F8C10;
 extern s16 D_004F8C14;
 
-extern char k_resourceArchivePath[];
-extern char g_resourcePartitionInfo[];
+extern s8 k_resourceArchivePath[];
+extern s8 g_resourcePartitionInfo[];
 
-// const char k_resourceArchivePath[] = "SF33RD.AFS";
+// const s8 k_resourceArchivePath[] = "SF33RD.AFS";
 
 // 1535 is the number of files in the AFS archive
-// static char g_resourcePartitionInfo[ADXF_CALC_PTINFO_SIZE(1535)];
+// static s8 g_resourcePartitionInfo[ADXF_CALC_PTINFO_SIZE(1535)];
 
 s32 func_002207F0() {
     D_004F8C14 = 0;

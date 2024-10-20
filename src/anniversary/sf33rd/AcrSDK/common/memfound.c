@@ -3,7 +3,7 @@
 
 MEM_MGR sysmemmgr; // size: 0x28, address: 0x578980
 
-void mflInit(void* mem_ptr, int memsize, int memalign) {
+void mflInit(void* mem_ptr, s32 memsize, s32 memalign) {
     plmemInit(
         &sysmemmgr, 
         sysmemblock,
@@ -23,23 +23,23 @@ void mflGetFreeSpace() {
     plmemGetFreeSpace(&sysmemmgr);
 }
 
-unsigned int mflRegisterS(int len) {
+u32 mflRegisterS(s32 len) {
     return plmemRegisterS(&sysmemmgr, len);
 }
 
-unsigned int mflRegister(int len) {
+u32 mflRegister(s32 len) {
     return plmemRegister(&sysmemmgr, len);
 }
 
-void* mflTemporaryUse(int len) {
+void* mflTemporaryUse(s32 len) {
     return plmemTemporaryUse(&sysmemmgr, len);
 }
 
-void* mflRetrieve(unsigned int handle) {
+void* mflRetrieve(u32 handle) {
     return plmemRetrieve(&sysmemmgr, handle);
 }
 
-int mflRelease(unsigned int handle) {
+s32 mflRelease(u32 handle) {
     return plmemRelease(&sysmemmgr, handle);
 }
 

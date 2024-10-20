@@ -1,4 +1,6 @@
-int appFileSizes[] = {
+#include "common.h"
+
+s32 appFileSizes[] = {
     0x50FC,
     0x4A68,
     0xE3CC,

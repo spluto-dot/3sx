@@ -4,19 +4,19 @@
 
 void distributeScratchPadAddress();
 void MaskScreenEdge();
-int mppGetFavoritePlayerNumber();
+s32 mppGetFavoritePlayerNumber();
 void appCopyKeyData();
-unsigned char *mppMalloc(unsigned int size);
+u8 *mppMalloc(u32 size);
 void njUserInit();
-int njUserMain();
+s32 njUserMain();
 void cpLoopTask();
 void cpInitTask();
-void cpReadyTask(unsigned short num, void *func_adrs);
-void cpExitTask(unsigned short num);
+void cpReadyTask(u16 num, void *func_adrs);
+void cpExitTask(u16 num);
 
 void AcrMain() {
-    unsigned short sw_buff;
-    unsigned int sysinfodisp;
+    u16 sw_buff;
+    u32 sysinfodisp;
 
     flInitialize(flPs2State.DispWidth, flPs2State.DispHeight);
     flSetRenderState(FLRENDER_BACKCOLOR, 0);
@@ -181,8 +181,8 @@ void AcrMain() {
 }
 
 void distributeScratchPadAddress() {
-    dctex_linear = (short *)0x70000800;
-    texcash_melt_buffer = (unsigned char *)0x70001000;
+    dctex_linear = (s16 *)0x70000800;
+    texcash_melt_buffer = (u8 *)0x70001000;
     tpu_free = (TPU *)0x70002000;
 }
 
@@ -211,10 +211,10 @@ void MaskScreenEdge() {
     }
 }
 
-int mppGetFavoritePlayerNumber() {
-    int i;
-    int max = 1;
-    int num = 0;
+s32 mppGetFavoritePlayerNumber() {
+    s32 i;
+    s32 max = 1;
+    s32 num = 0;
 
     if (Debug_w[0x2D]) {
         return Debug_w[0x2D] - 1;
@@ -237,13 +237,13 @@ void appCopyKeyData() {
     PLsw[1][0] = p2sw_buff;
 }
 
-unsigned char *mppMalloc(unsigned int size) {
+u8 *mppMalloc(u32 size) {
     return flAllocMemory(size);
 }
 
 void njUserInit() {
-    int i;
-    unsigned int size;
+    s32 i;
+    u32 size;
 
     sysFF = 1;
     mpp_w.sysStop = 0;
@@ -312,7 +312,7 @@ void njUserInit() {
     cpReadyTask(0, Init_Task);
 }
 
-int njUserMain() {
+s32 njUserMain() {
     CPU_Time_Lag[0] = 0;
     CPU_Time_Lag[1] = 0;
     CPU_Rec[0] = 0;
@@ -358,7 +358,7 @@ int njUserMain() {
 }
 
 void cpLoopTask() {
-    int temp_a0;
+    s32 temp_a0;
     struct _TASK *task_ptr = task;
 
     disp_ramcnt_free_area();
@@ -403,7 +403,7 @@ void cpInitTask() {
     memset(&task, 0, sizeof(task));
 }
 
-void cpReadyTask(unsigned short num, void *func_adrs) {
+void cpReadyTask(u16 num, void *func_adrs) {
     struct _TASK *task_ptr = task + num;
 
     memset(task_ptr, 0, sizeof(struct _TASK));
@@ -412,7 +412,7 @@ void cpReadyTask(unsigned short num, void *func_adrs) {
     task_ptr->condition = 2;
 }
 
-void cpExitTask(unsigned short num) {
+void cpExitTask(u16 num) {
     struct _TASK *task_ptr = task + num;
 
     task_ptr->condition = 0;

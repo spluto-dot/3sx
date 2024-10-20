@@ -1,4 +1,6 @@
-const unsigned char SA_Active_A_Unit_Data[4][4][32] = {
+#include "common.h"
+
+const u8 SA_Active_A_Unit_Data[4][4][32] = {
     {
         {
             0x2,
@@ -553,7 +555,7 @@ const unsigned char SA_Active_A_Unit_Data[4][4][32] = {
     },
 };
 
-const unsigned char SA_Active_B_Unit_Data[4][4][32] = {
+const u8 SA_Active_B_Unit_Data[4][4][32] = {
     {
         {
             0x2,
@@ -1108,7 +1110,7 @@ const unsigned char SA_Active_B_Unit_Data[4][4][32] = {
     },
 };
 
-const unsigned char SA_Active_C_Unit_Data[4][4][32] = {
+const u8 SA_Active_C_Unit_Data[4][4][32] = {
     {
         {
             0x2,
@@ -1663,7 +1665,7 @@ const unsigned char SA_Active_C_Unit_Data[4][4][32] = {
     },
 };
 
-const unsigned char SA_Active_D_Unit_Data[4][4][32] = {
+const u8 SA_Active_D_Unit_Data[4][4][32] = {
     {
         {
             0xF,

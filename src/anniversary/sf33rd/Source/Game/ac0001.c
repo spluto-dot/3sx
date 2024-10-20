@@ -1,4 +1,6 @@
-const unsigned char Active_B_Unit_Data[20][8][32] = {
+#include "common.h"
+
+const u8 Active_B_Unit_Data[20][8][32] = {
     {
         {
             0x1,

@@ -19,9 +19,9 @@ extern s32 g_0065DBC0[2][32]; // this is in bss
 
 typedef struct {
     scePad2ButtonState padReadResult;
-    char pad0[0x16];
+    s8 pad0[0x16];
     u8 sp48;
-    char pad1[0x3];
+    s8 pad1[0x3];
     scePad2ButtonProfile buttonProfile;
 } StackData;
 

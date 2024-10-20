@@ -1,7 +1,7 @@
 #include "unknown.h"
 #include "common.h"
 
-unsigned char CONTINUE_X; // size: 0x1, address: 0x578E50
+u8 CONTINUE_X; // size: 0x1, address: 0x578E50
 
 void Continue_1st();
 void Continue_2nd();
@@ -9,9 +9,9 @@ void Continue_3rd();
 void Continue_4th();
 void Continue_5th();
 void Setup_Continue_OBJ();
-static short Check_Exit_Continue();
+static s16 Check_Exit_Continue();
 
-int Continue_Scene() {
+s32 Continue_Scene() {
     void (* Continue_Jmp_Tbl[5])() = {
         Continue_1st,
         Continue_2nd,
@@ -131,7 +131,7 @@ void Setup_Continue_OBJ() {
     Order_Timer[0x3F] = 1;
 }
 
-static short Check_Exit_Continue() {
+static s16 Check_Exit_Continue() {
     if (((E_Number[0][0]) == 2) || ((E_Number[1][0]) == 2)) {
         return 0;
     }
