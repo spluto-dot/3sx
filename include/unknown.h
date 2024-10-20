@@ -2447,7 +2447,105 @@ typedef struct {
     u16 free2;      // offset 0x2A, size 0x2
 } FLPAD_CONFIG;
 
-// MARK: - Variables
+// .text
+
+void plmemInit(MEM_MGR *memmgr, MEM_BLOCK *block, s32 count, void *mem_ptr, s32 memsize, s32 memalign,
+               s32 direction);                               // Range: 0x116180 -> 0x11629C
+u32 plmemRegister(MEM_MGR *memmgr, s32 len);                 // Range: 0x1162A0 -> 0x1162D8
+u32 plmemRegisterAlign(MEM_MGR *memmgr, s32 len, s32 align); // Range: 0x1162E0 -> 0x1164B4
+u32 plmemRegisterS(MEM_MGR *memmgr, s32 len);                // Range: 0x1164C0 -> 0x116980
+void *plmemTemporaryUse(MEM_MGR *memmgr, s32 len);           // Range: 0x116980 -> 0x116AAC
+void *plmemRetrieve(MEM_MGR *memmgr, u32 handle);            // Range: 0x116AB0 -> 0x116B20
+s32 plmemRelease(MEM_MGR *memmgr, u32 handle);               // Range: 0x116B20 -> 0x116BFC
+void *plmemCompact(MEM_MGR *memmgr);                         // Range: 0x116C00 -> 0x116E9C
+u32 plmemGetSpace(MEM_MGR *memmgr);                          // Range: 0x116EA0 -> 0x116EC8
+u32 plmemGetFreeSpace(MEM_MGR *memmgr);                      // Range: 0x116ED0 -> 0x116F5C
+
+void plMemset(void *dst, u32 pat, s32 size); // Range: 0x11B3B0 -> 0x11B41C
+
+void appViewSetItems(VPRM *prm);    // Range: 0x11C0D0 -> 0x11C118
+void appViewGetItems(VPRM *prm);    // Range: 0x11C120 -> 0x11C168
+void appViewMatrix();               // Range: 0x11C170 -> 0x11C1CC
+void render_start();                // Range: 0x11C1D0 -> 0x11C1F0
+void render_end();                  // Range: 0x11C1F0 -> 0x11C210
+void initRenderState(s32 flag);     // Range: 0x11C210 -> 0x11C328
+void setBackGroundColor(u32 color); // Range: 0x11C4D0 -> 0x11C4FC
+void Setup_Disp_Size();             // Range: 0x11BFF0 -> 0x11C0B4
+
+void Scrn_Renew(); // Range: 0x170BE0 -> 0x170BF0
+void Irl_Family(); // Range: 0x170BF0 -> 0x170CD0
+void Irl_Scrn();   // Range: 0x170CD0 -> 0x170E9C
+
+void bg_etc_write(s16 type); // Range: 0x175920 -> 0x175FC0
+
+void palCreateGhost();                                                      // Range: 0x19F8D0 -> 0x19FB50
+void njdp2d_init();                                                         // Range: 0x1C0330 -> 0x1C034C
+void njdp2d_draw();                                                         // Range: 0x1C0350 -> 0x1C0568
+void njdp2d_sort(f32 *pos, f32 pri, u32 col, s32 flag);                     // Range: 0x1C0570 -> 0x1C0A0C
+s32 effect_49_init(s16 vital_new);                                          // Range: 0x1E52B0 -> 0x1E54D8
+s32 effect_58_init(s16 id, s16 time0, s16 option);                          // Range: 0x1E97D0 -> 0x1E98A0
+s32 effect_76_init(s16 dir_old);                                            // Range: 0x1F2670 -> 0x1F27A0
+s32 effect_95_init(s16 vital_new);                                          // Range: 0x1FCFD0 -> 0x1FD218
+s32 effect_A9_init(s16 Char_Index, s16 Option, s16 Pos_Index, s16 Option2); // Range: 0x201A80 -> 0x201C78
+void disp_effect_work();                                                    // Range: 0x21AD30 -> 0x21AED8
+s32 effect_L1_init(s16 flag);                                               // Range: 0x232820 -> 0x2328E8
+s32 Setup_Directory_Record_Data();                                          // Range: 0x254330 -> 0x2543CC
+void Init_Task(struct _TASK *task_ptr);                                     // Range: 0x266080 -> 0x2660D4
+void keyConvert();                                                          // Range: 0x266A90 -> 0x267118
+void appSetupBasePriority();                                                // Range: 0x286180 -> 0x2861F4
+void appSetupTempPriority();                                                // Range: 0x286200 -> 0x286264
+void seqsInitialize(void *adrs);                                            // Range: 0x286300 -> 0x286350
+void seqsBeforeProcess();                                                   // Range: 0x286370 -> 0x2863B4
+void seqsAfterProcess();                                                    // Range: 0x2863C0 -> 0x2865E4
+void disp_ramcnt_free_area();                                               // Range: 0x37BB90 -> 0x37BC58
+void Init_ram_control_work(u8 *adrs, s32 size);                             // Range: 0x37BC60 -> 0x37BDF8
+
+void FadeInit();                            // Range: 0x3834D0 -> 0x3834E0
+s32 FadeOut(u8 type, u8 step, u8 priority); // Range: 0x3834E0 -> 0x3836D4
+s32 FadeIn(u8 type, u8 step, u8 priority);  // Range: 0x3836E0 -> 0x3838DC
+
+void BGM_Request(s16 Code);                         // Range: 0x3891A0 -> 0x3891CC
+void Init_sound_system();                           // Range: 0x3963A0 -> 0x396438
+void sndInitialLoad();                              // Range: 0x3964D0 -> 0x396524
+void Init_bgm_work();                               // Range: 0x3966E0 -> 0x396718
+void BGM_Server();                                  // Range: 0x396B30 -> 0x3977D8
+void SsBgmFadeOut(u16 time);                        // Range: 0x398290 -> 0x398304
+void Setup_BG(s16 BG_INDEX, s16 X, s16 Y);          // Range: 0x3A4720 -> 0x3A48C4
+s32 Cut_Cut_Loser();                                // Range: 0x3A5070 -> 0x3A50E0
+void Check_Replay_Status(s16 PL_id, u8 Status);     // Range: 0x3A58D0 -> 0x3A5A30
+void zlib_Initialize(void *tempAdrs, s32 tempSize); // Range: 0x3B76E0 -> 0x3B776C
+s32 Check_Exit_Check();                             // Range: 0x3BF690 -> 0x3BF6E0
+void mmSystemInitialize();                          // Range: 0x3C0080 -> 0x3C008C
+void mmHeapInitialize(_MEMMAN_OBJ *mmobj, u8 *adrs, s32 size, s32 unit,
+                      s8 *format);                   // Range: 0x3C0090 -> 0x3C020C
+u8 *mmAlloc(_MEMMAN_OBJ *mmobj, s32 size, s32 flag); // Range: 0x3C02D0 -> 0x3C037C
+void mmFree(_MEMMAN_OBJ *mmobj, u8 *adrs);           // Range: 0x3C0560 -> 0x3C05D8
+void ppg_Initialize(void *lcmAdrs, s32 lcmSize);     // Range: 0x3C05E0 -> 0x3C0650
+void ppgMakeConvTableTexDC();                        // Range: 0x3C3620 -> 0x3C3768
+void CP3toPS2Draw();                                 // Range: 0x3C64D0 -> 0x3C6D8C
+void njUserInit();                                   // Range: 0x3E5BA0 -> 0x3E5E64
+void cpInitTask();                                   // Range: 0x3E61C0 -> 0x3E61F0
+void cpReadyTask(u16 num, void *func_adrs);          // Range: 0x3E61F0 -> 0x3E625C
+
+s32 flSetRenderState(enum _FLSETRENDERSTATE func, u32 value); // Range: 0x3EEC50 -> 0x3EFDD8
+void flAdjustScreen(s32 x, s32 y);                            // Range: 0x3F2230 -> 0x3F2268
+s32 flSetDebugMode(u32 flag);                                 // Range: 0x3F2280 -> 0x3F22A0
+s32 flPrintL(s32 posi_x, s32 posi_y, s8 *format);             // Range: 0x3F2B40 -> 0x3F2D08
+s32 flPrintColor(u32 col);                                    // Range: 0x3F2D10 -> 0x3F2E04
+void *flAllocMemory(s32 size);                                // Range: 0x3F5F30 -> 0x3F5F60
+s32 flGetFrame(FMS_FRAME *frame);                             // Range: 0x3F5F60 -> 0x3F5F90
+s32 flGetSpace();                                             // Range: 0x3F5F90 -> 0x3F5FB4
+s32 flInitialize();                                           // Range: 0x3FE0B0 -> 0x3FE1A8
+s32 flFlip(u32 flag);                                         // Range: 0x3FE580 -> 0x3FE648
+
+s32 tarPADInit();                                            // Range: 0x400120 -> 0x40041C
+void tarPADDestroy();                                        // Range: 0x400420 -> 0x400448
+void flPADConfigSetACRtoXX(s32 padnum, s16 a, s16 b, s16 c); // Range: 0x400450 -> 0x4004B8
+void tarPADRead();                                           // Range: 0x4004C0 -> 0x400624
+
+void MemcardInit();                  // Range: 0x403EC0 -> 0x403F38
+void KnjFlush();                     // Range: 0x407E90 -> 0x407FE8
+void ppgWorkInitializeApprication(); // Range: 0x413920 -> 0x413A54
 
 // .rodata
 
@@ -2551,105 +2649,5 @@ extern struct _TASK task[11]; // size: 0xDC, address: 0x6BD2D0
 extern u8 Order_Timer[148];   // size: 0x94, address: 0x6BD690
 extern u8 Order[148];         // size: 0x94, address: 0x6BD730
 extern FLPS2State flPs2State; // size: 0x470, address: 0x6E2750
-
-// MARK: - Functions
-
-void plmemInit(MEM_MGR *memmgr, MEM_BLOCK *block, s32 count, void *mem_ptr, s32 memsize, s32 memalign,
-               s32 direction);                               // Range: 0x116180 -> 0x11629C
-u32 plmemRegister(MEM_MGR *memmgr, s32 len);                 // Range: 0x1162A0 -> 0x1162D8
-u32 plmemRegisterAlign(MEM_MGR *memmgr, s32 len, s32 align); // Range: 0x1162E0 -> 0x1164B4
-u32 plmemRegisterS(MEM_MGR *memmgr, s32 len);                // Range: 0x1164C0 -> 0x116980
-void *plmemTemporaryUse(MEM_MGR *memmgr, s32 len);           // Range: 0x116980 -> 0x116AAC
-void *plmemRetrieve(MEM_MGR *memmgr, u32 handle);            // Range: 0x116AB0 -> 0x116B20
-s32 plmemRelease(MEM_MGR *memmgr, u32 handle);               // Range: 0x116B20 -> 0x116BFC
-void *plmemCompact(MEM_MGR *memmgr);                         // Range: 0x116C00 -> 0x116E9C
-u32 plmemGetSpace(MEM_MGR *memmgr);                          // Range: 0x116EA0 -> 0x116EC8
-u32 plmemGetFreeSpace(MEM_MGR *memmgr);                      // Range: 0x116ED0 -> 0x116F5C
-
-void plMemset(void *dst, u32 pat, s32 size); // Range: 0x11B3B0 -> 0x11B41C
-
-void appViewSetItems(VPRM *prm);    // Range: 0x11C0D0 -> 0x11C118
-void appViewGetItems(VPRM *prm);    // Range: 0x11C120 -> 0x11C168
-void appViewMatrix();               // Range: 0x11C170 -> 0x11C1CC
-void render_start();                // Range: 0x11C1D0 -> 0x11C1F0
-void render_end();                  // Range: 0x11C1F0 -> 0x11C210
-void initRenderState(s32 flag);     // Range: 0x11C210 -> 0x11C328
-void setBackGroundColor(u32 color); // Range: 0x11C4D0 -> 0x11C4FC
-void Setup_Disp_Size();             // Range: 0x11BFF0 -> 0x11C0B4
-
-void Scrn_Renew(); // Range: 0x170BE0 -> 0x170BF0
-void Irl_Family(); // Range: 0x170BF0 -> 0x170CD0
-void Irl_Scrn();   // Range: 0x170CD0 -> 0x170E9C
-
-void bg_etc_write(s16 type); // Range: 0x175920 -> 0x175FC0
-
-void palCreateGhost();                                                      // Range: 0x19F8D0 -> 0x19FB50
-void njdp2d_init();                                                         // Range: 0x1C0330 -> 0x1C034C
-void njdp2d_draw();                                                         // Range: 0x1C0350 -> 0x1C0568
-void njdp2d_sort(f32 *pos, f32 pri, u32 col, s32 flag);                     // Range: 0x1C0570 -> 0x1C0A0C
-s32 effect_49_init(s16 vital_new);                                          // Range: 0x1E52B0 -> 0x1E54D8
-s32 effect_58_init(s16 id, s16 time0, s16 option);                          // Range: 0x1E97D0 -> 0x1E98A0
-s32 effect_76_init(s16 dir_old);                                            // Range: 0x1F2670 -> 0x1F27A0
-s32 effect_95_init(s16 vital_new);                                          // Range: 0x1FCFD0 -> 0x1FD218
-s32 effect_A9_init(s16 Char_Index, s16 Option, s16 Pos_Index, s16 Option2); // Range: 0x201A80 -> 0x201C78
-void disp_effect_work();                                                    // Range: 0x21AD30 -> 0x21AED8
-s32 effect_L1_init(s16 flag);                                               // Range: 0x232820 -> 0x2328E8
-s32 Setup_Directory_Record_Data();                                          // Range: 0x254330 -> 0x2543CC
-void Init_Task(struct _TASK *task_ptr);                                     // Range: 0x266080 -> 0x2660D4
-void keyConvert();                                                          // Range: 0x266A90 -> 0x267118
-void appSetupBasePriority();                                                // Range: 0x286180 -> 0x2861F4
-void appSetupTempPriority();                                                // Range: 0x286200 -> 0x286264
-void seqsInitialize(void *adrs);                                            // Range: 0x286300 -> 0x286350
-void seqsBeforeProcess();                                                   // Range: 0x286370 -> 0x2863B4
-void seqsAfterProcess();                                                    // Range: 0x2863C0 -> 0x2865E4
-void disp_ramcnt_free_area();                                               // Range: 0x37BB90 -> 0x37BC58
-void Init_ram_control_work(u8 *adrs, s32 size);                             // Range: 0x37BC60 -> 0x37BDF8
-
-void FadeInit();                            // Range: 0x3834D0 -> 0x3834E0
-s32 FadeOut(u8 type, u8 step, u8 priority); // Range: 0x3834E0 -> 0x3836D4
-s32 FadeIn(u8 type, u8 step, u8 priority);  // Range: 0x3836E0 -> 0x3838DC
-
-void BGM_Request(s16 Code);                         // Range: 0x3891A0 -> 0x3891CC
-void Init_sound_system();                           // Range: 0x3963A0 -> 0x396438
-void sndInitialLoad();                              // Range: 0x3964D0 -> 0x396524
-void Init_bgm_work();                               // Range: 0x3966E0 -> 0x396718
-void BGM_Server();                                  // Range: 0x396B30 -> 0x3977D8
-void SsBgmFadeOut(u16 time);                        // Range: 0x398290 -> 0x398304
-void Setup_BG(s16 BG_INDEX, s16 X, s16 Y);          // Range: 0x3A4720 -> 0x3A48C4
-s32 Cut_Cut_Loser();                                // Range: 0x3A5070 -> 0x3A50E0
-void Check_Replay_Status(s16 PL_id, u8 Status);     // Range: 0x3A58D0 -> 0x3A5A30
-void zlib_Initialize(void *tempAdrs, s32 tempSize); // Range: 0x3B76E0 -> 0x3B776C
-s32 Check_Exit_Check();                             // Range: 0x3BF690 -> 0x3BF6E0
-void mmSystemInitialize();                          // Range: 0x3C0080 -> 0x3C008C
-void mmHeapInitialize(_MEMMAN_OBJ *mmobj, u8 *adrs, s32 size, s32 unit,
-                      s8 *format);                   // Range: 0x3C0090 -> 0x3C020C
-u8 *mmAlloc(_MEMMAN_OBJ *mmobj, s32 size, s32 flag); // Range: 0x3C02D0 -> 0x3C037C
-void mmFree(_MEMMAN_OBJ *mmobj, u8 *adrs);           // Range: 0x3C0560 -> 0x3C05D8
-void ppg_Initialize(void *lcmAdrs, s32 lcmSize);     // Range: 0x3C05E0 -> 0x3C0650
-void ppgMakeConvTableTexDC();                        // Range: 0x3C3620 -> 0x3C3768
-void CP3toPS2Draw();                                 // Range: 0x3C64D0 -> 0x3C6D8C
-void njUserInit();                                   // Range: 0x3E5BA0 -> 0x3E5E64
-void cpInitTask();                                   // Range: 0x3E61C0 -> 0x3E61F0
-void cpReadyTask(u16 num, void *func_adrs);          // Range: 0x3E61F0 -> 0x3E625C
-
-s32 flSetRenderState(enum _FLSETRENDERSTATE func, u32 value); // Range: 0x3EEC50 -> 0x3EFDD8
-void flAdjustScreen(s32 x, s32 y);                            // Range: 0x3F2230 -> 0x3F2268
-s32 flSetDebugMode(u32 flag);                                 // Range: 0x3F2280 -> 0x3F22A0
-s32 flPrintL(s32 posi_x, s32 posi_y, s8 *format);             // Range: 0x3F2B40 -> 0x3F2D08
-s32 flPrintColor(u32 col);                                    // Range: 0x3F2D10 -> 0x3F2E04
-void *flAllocMemory(s32 size);                                // Range: 0x3F5F30 -> 0x3F5F60
-s32 flGetFrame(FMS_FRAME *frame);                             // Range: 0x3F5F60 -> 0x3F5F90
-s32 flGetSpace();                                             // Range: 0x3F5F90 -> 0x3F5FB4
-s32 flInitialize();                                           // Range: 0x3FE0B0 -> 0x3FE1A8
-s32 flFlip(u32 flag);                                         // Range: 0x3FE580 -> 0x3FE648
-
-s32 tarPADInit();                                            // Range: 0x400120 -> 0x40041C
-void tarPADDestroy();                                        // Range: 0x400420 -> 0x400448
-void flPADConfigSetACRtoXX(s32 padnum, s16 a, s16 b, s16 c); // Range: 0x400450 -> 0x4004B8
-void tarPADRead();                                           // Range: 0x4004C0 -> 0x400624
-
-void MemcardInit();                  // Range: 0x403EC0 -> 0x403F38
-void KnjFlush();                     // Range: 0x407E90 -> 0x407FE8
-void ppgWorkInitializeApprication(); // Range: 0x413920 -> 0x413A54
 
 #endif
