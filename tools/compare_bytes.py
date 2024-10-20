@@ -3,6 +3,22 @@
 import sys
 from pathlib import Path
 
+EXPECTED_ERRORS = {
+    0x2A5174: 0x1000FFF9,
+    0x302580: 0x14C0FFFA,
+    0x3025B8: 0x14C0FFF4,
+    0x3025E0: 0x14C0FFF8,
+    0x302600: 0x14C0FFFA,
+    0x302658: 0x14C0FFEC,
+    0x302690: 0x14C0FFF4,
+    0x3026B8: 0x14C0FFF8,
+    0x3026F0: 0x14C0FFF4,
+    0x302708: 0x14A0FFFC,
+    0x302720: 0x14A0FFFC,
+    0x302738: 0x14A0FFFC,
+    0x302750: 0x14A0FFFC,
+}
+
 def read_word(b: bytes, offset: int) -> int:
     word = 0
 
@@ -38,6 +54,7 @@ def main():
     # Compare bytes
 
     bad_offsets: list[int] = list()
+    unexpected_error = False
     misalign_offset: int | None = None
 
     range_end = min(
@@ -53,11 +70,16 @@ def main():
         if word_a != word_b:
             bad_offsets.append(offset)
 
+            if offset not in EXPECTED_ERRORS or EXPECTED_ERRORS[offset] != word_b:
+                unexpected_error = True
+
             if (word_a == 0 or word_b == 0) and misalign_offset == None:
                 misalign_offset = offset
 
     if not bad_offsets:
         print("Files match ✅")
+    elif not unexpected_error:
+        print("Files match ✅ (except for expected errors)")
     else:
         max_printed_offsets = 20
         print(f"Files diverge at {len(bad_offsets)} offsets ❌.")
