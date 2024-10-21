@@ -2447,6 +2447,45 @@ typedef struct {
     u16 free2;      // offset 0x2A, size 0x2
 } FLPAD_CONFIG;
 
+typedef struct {
+    // total size: 0x20
+    u32 FileSize;    // offset 0x0, size 0x4
+    u32 PixelSize;   // offset 0x4, size 0x4
+    u32 ClutSize;    // offset 0x8, size 0x4
+    u16 PixelBit;    // offset 0xC, size 0x2
+    u16 PixelWidth;  // offset 0xE, size 0x2
+    u16 PixelHeight; // offset 0x10, size 0x2
+    u16 MipmapNum;   // offset 0x12, size 0x2
+    u16 ClutBit;     // offset 0x14, size 0x2
+    u16 ClutNum;     // offset 0x16, size 0x2
+    u32 Reserved[2]; // offset 0x18, size 0x8
+} APXFileHeader;
+
+typedef struct {
+    // total size: 0x48
+    u32 desc;     // offset 0x0, size 0x4
+    s32 width;    // offset 0x4, size 0x4
+    s32 height;   // offset 0x8, size 0x4
+    s32 pitch;    // offset 0xC, size 0x4
+    void *ptr;    // offset 0x10, size 0x4
+    s32 bitdepth; // offset 0x14, size 0x4
+    struct /* @anon3 */ {
+        // total size: 0x30
+        s32 rl;    // offset 0x0, size 0x4
+        s32 rs;    // offset 0x4, size 0x4
+        s32 rm;    // offset 0x8, size 0x4
+        s32 gl;    // offset 0xC, size 0x4
+        s32 gs;    // offset 0x10, size 0x4
+        s32 gm;    // offset 0x14, size 0x4
+        s32 bl;    // offset 0x18, size 0x4
+        s32 bs;    // offset 0x1C, size 0x4
+        s32 bm;    // offset 0x20, size 0x4
+        s32 al;    // offset 0x24, size 0x4
+        s32 as;    // offset 0x28, size 0x4
+        s32 am;    // offset 0x2C, size 0x4
+    } pixelformat; // offset 0x18, size 0x30
+} UNK_Context;
+
 // .text
 
 void plmemInit(MEM_MGR *memmgr, MEM_BLOCK *block, s32 count, void *mem_ptr, s32 memsize, s32 memalign,
@@ -2461,8 +2500,13 @@ void *plmemCompact(MEM_MGR *memmgr);                         // Range: 0x116C00 
 u32 plmemGetSpace(MEM_MGR *memmgr);                          // Range: 0x116EA0 -> 0x116EC8
 u32 plmemGetFreeSpace(MEM_MGR *memmgr);                      // Range: 0x116ED0 -> 0x116F5C
 
+s32 plAPXGetMipmapTextureNum(void *lpbas);                   // Range: 0x118CF0 -> 0x118D2C
+s32 plAPXGetPaletteNum(void *lpbas);                         // Range: 0x118D30 -> 0x118D6C
+s32 plAPXSetContextFromImage(UNK_Context *dst, void *lpbas); // Range: 0x118D70 -> 0x119224
+
 void plMemset(void *dst, u32 pat, s32 size); // Range: 0x11B3B0 -> 0x11B41C
 
+void setup_pos_remake_key();        // Range: 0x11C0C0 -> 0x11C0D0
 void appViewSetItems(VPRM *prm);    // Range: 0x11C0D0 -> 0x11C118
 void appViewGetItems(VPRM *prm);    // Range: 0x11C120 -> 0x11C168
 void appViewMatrix();               // Range: 0x11C170 -> 0x11C1CC
@@ -2487,35 +2531,49 @@ s32 effect_58_init(s16 id, s16 time0, s16 option);                          // R
 s32 effect_76_init(s16 dir_old);                                            // Range: 0x1F2670 -> 0x1F27A0
 s32 effect_95_init(s16 vital_new);                                          // Range: 0x1FCFD0 -> 0x1FD218
 s32 effect_A9_init(s16 Char_Index, s16 Option, s16 Pos_Index, s16 Option2); // Range: 0x201A80 -> 0x201C78
-void disp_effect_work();                                                    // Range: 0x21AD30 -> 0x21AED8
-s32 effect_L1_init(s16 flag);                                               // Range: 0x232820 -> 0x2328E8
-s32 Setup_Directory_Record_Data();                                          // Range: 0x254330 -> 0x2543CC
-void Init_Task(struct _TASK *task_ptr);                                     // Range: 0x266080 -> 0x2660D4
-void keyConvert();                                                          // Range: 0x266A90 -> 0x267118
-void appSetupBasePriority();                                                // Range: 0x286180 -> 0x2861F4
-void appSetupTempPriority();                                                // Range: 0x286200 -> 0x286264
-void seqsInitialize(void *adrs);                                            // Range: 0x286300 -> 0x286350
-void seqsBeforeProcess();                                                   // Range: 0x286370 -> 0x2863B4
-void seqsAfterProcess();                                                    // Range: 0x2863C0 -> 0x2865E4
-void disp_ramcnt_free_area();                                               // Range: 0x37BB90 -> 0x37BC58
-void Init_ram_control_work(u8 *adrs, s32 size);                             // Range: 0x37BC60 -> 0x37BDF8
+// DWARF says WIN_PL_NO is s8, but decompilation suggests it's at least s16
+s32 effect_B8_init(s16 WIN_PL_NO, s16 timer);   // Range: 0x205500 -> 0x2056B8
+void disp_effect_work();                        // Range: 0x21AD30 -> 0x21AED8
+s32 effect_L1_init(s16 flag);                   // Range: 0x232820 -> 0x2328E8
+s32 Setup_Directory_Record_Data();              // Range: 0x254330 -> 0x2543CC
+void Push_LDREQ_Queue_Player(s16 id, s16 ix);   // Range: 0x254CC0 -> 0x254EB0
+void Init_Task(struct _TASK *task_ptr);         // Range: 0x266080 -> 0x2660D4
+void keyConvert();                              // Range: 0x266A90 -> 0x267118
+void Purge_mmtm_area(s16 ix);                   // Range: 0x280BE0 -> 0x280C24
+void Make_texcash_of_list(s16 ix);              // Range: 0x280D90 -> 0x280E48
+void appSetupBasePriority();                    // Range: 0x286180 -> 0x2861F4
+void appSetupTempPriority();                    // Range: 0x286200 -> 0x286264
+void seqsInitialize(void *adrs);                // Range: 0x286300 -> 0x286350
+void seqsBeforeProcess();                       // Range: 0x286370 -> 0x2863B4
+void seqsAfterProcess();                        // Range: 0x2863C0 -> 0x2865E4
+void pulpul_stop();                             // Range: 0x37A760 -> 0x37A790
+void disp_ramcnt_free_area();                   // Range: 0x37BB90 -> 0x37BC58
+void Init_ram_control_work(u8 *adrs, s32 size); // Range: 0x37BC60 -> 0x37BDF8
 
 void FadeInit();                            // Range: 0x3834D0 -> 0x3834E0
 s32 FadeOut(u8 type, u8 step, u8 priority); // Range: 0x3834E0 -> 0x3836D4
 s32 FadeIn(u8 type, u8 step, u8 priority);  // Range: 0x3836E0 -> 0x3838DC
 
-void BGM_Request(s16 Code);                         // Range: 0x3891A0 -> 0x3891CC
-void Init_sound_system();                           // Range: 0x3963A0 -> 0x396438
-void sndInitialLoad();                              // Range: 0x3964D0 -> 0x396524
-void Init_bgm_work();                               // Range: 0x3966E0 -> 0x396718
-void BGM_Server();                                  // Range: 0x396B30 -> 0x3977D8
-void SsBgmFadeOut(u16 time);                        // Range: 0x398290 -> 0x398304
-void Setup_BG(s16 BG_INDEX, s16 X, s16 Y);          // Range: 0x3A4720 -> 0x3A48C4
-s32 Cut_Cut_Loser();                                // Range: 0x3A5070 -> 0x3A50E0
-void Check_Replay_Status(s16 PL_id, u8 Status);     // Range: 0x3A58D0 -> 0x3A5A30
-void zlib_Initialize(void *tempAdrs, s32 tempSize); // Range: 0x3B76E0 -> 0x3B776C
-s32 Check_Exit_Check();                             // Range: 0x3BF690 -> 0x3BF6E0
-void mmSystemInitialize();                          // Range: 0x3C0080 -> 0x3C008C
+void BGM_Request(s16 Code);                                    // Range: 0x3891A0 -> 0x3891CC
+void Init_sound_system();                                      // Range: 0x3963A0 -> 0x396438
+void sndInitialLoad();                                         // Range: 0x3964D0 -> 0x396524
+void Init_bgm_work();                                          // Range: 0x3966E0 -> 0x396718
+void BGM_Server();                                             // Range: 0x396B30 -> 0x3977D8
+void SsBgmFadeOut(u16 time);                                   // Range: 0x398290 -> 0x398304
+void Switch_Screen_Init();                                     // Range: 0x3A1C50 -> 0x3A1C98
+s32 Switch_Screen(u8 Wipe_Type);                               // Range: 0x3A1CA0 -> 0x3A1D08
+s32 Switch_Screen_Revival(u8 Wipe_Type);                       // Range: 0x3A1D10 -> 0x3A1D78
+void Clear_Flash_No();                                         // Range: 0x3A2910 -> 0x3A2954
+s32 Cut_Cut_Cut();                                             // Range: 0x3A2960 -> 0x3A29F0
+void Setup_BG(s16 BG_INDEX, s16 X, s16 Y);                     // Range: 0x3A4720 -> 0x3A48C4
+void System_all_clear_Level_B();                               // Range: 0x3A4F20 -> 0x3A4F48
+s32 Cut_Cut_Loser();                                           // Range: 0x3A5070 -> 0x3A50E0
+void Check_Replay_Status(s16 PL_id, u8 Status);                // Range: 0x3A58D0 -> 0x3A5A30
+void All_Clear_Suicide();                                      // Range: 0x3A85C0 -> 0x3A865C
+int load_any_texture_patnum(u16 patnum, u8 kokey, u8 _unused); // Range: 0x3B1320 -> 0x3B136C
+void zlib_Initialize(void *tempAdrs, s32 tempSize);            // Range: 0x3B76E0 -> 0x3B776C
+s32 Check_Exit_Check();                                        // Range: 0x3BF690 -> 0x3BF6E0
+void mmSystemInitialize();                                     // Range: 0x3C0080 -> 0x3C008C
 void mmHeapInitialize(_MEMMAN_OBJ *mmobj, u8 *adrs, s32 size, s32 unit,
                       s8 *format);                   // Range: 0x3C0090 -> 0x3C020C
 u8 *mmAlloc(_MEMMAN_OBJ *mmobj, s32 size, s32 flag); // Range: 0x3C02D0 -> 0x3C037C
@@ -2556,6 +2614,7 @@ extern const u32 flpad_io_map[25];             // size: 0x64, address: 0x55F560
 // .sbss
 
 extern BG_MVXY bg_mvxy;           // size: 0x18, address: 0x578C80
+extern s16 base_y_pos;            // size: 0x2, address: 0x578CC4
 extern IO io_w;                   // size: 0x6C, address: 0x579230
 extern TPU *tpu_free;             // size: 0x4, address: 0x579A8C
 extern u8 *texcash_melt_buffer;   // size: 0x4, address: 0x579A90
@@ -2595,10 +2654,14 @@ extern u16 p1sw_1;                // size: 0x2, address: 0x579CC0
 extern u16 p1sw_0;                // size: 0x2, address: 0x579CC4
 extern struct _SYSTEM_W sys_w;    // size: 0x1C, address: 0x579D90
 extern u32 current_task_num;      // size: 0x4, address: 0x579DAC
+extern u16 VS_Win_Record[2];      // size: 0x4, address: 0x579DD8
 extern s16 Cont_Timer;            // size: 0x2, address: 0x579E18
 extern u16 Result_Timer[2];       // size: 0x4, address: 0x579E30
 extern s16 Offset_BG_X[6];        // size: 0xC, address: 0x579E38
 extern s16 Target_BG_X[6];        // size: 0xC, address: 0x579E48
+extern u16 WGJ_Win;               // size: 0x2, address: 0x579E54
+extern u16 Win_Record[2];         // size: 0x4, address: 0x579E5C
+extern s16 M_Timer;               // size: 0x2, address: 0x579FBC
 extern s16 G_Timer;               // size: 0x2, address: 0x57A02C
 extern u8 CPU_Rec[2];             // size: 0x2, address: 0x57A04C
 extern u8 CPU_Time_Lag[2];        // size: 0x2, address: 0x57A054
@@ -2608,15 +2671,19 @@ extern u8 Replay_Status[2];       // size: 0x2, address: 0x57A0E8
 extern u8 Unsubstantial_BG[4];    // size: 0x4, address: 0x57A0F4
 extern u8 Cont_No[4];             // size: 0x4, address: 0x57A1F8
 extern u8 test_flag;              // size: 0x1, address: 0x57A200
+extern u8 Play_Type;              // size: 0x1, address: 0x57A250
 extern u8 Game_pause;             // size: 0x1, address: 0x57A260
+extern u8 M_No[4];                // size: 0x4, address: 0x57A29C
 extern u8 E_Number[2][4];         // size: 0x8, address: 0x57A2B8
 extern s8 Suicide[8];             // size: 0x8, address: 0x57A2F8
+extern s8 Last_Selected_EM[2];    // size: 0x2, address: 0x57A30C
 extern u8 Continue_Count_Down[2]; // size: 0x2, address: 0x57A33C
 extern u8 GO_No[4];               // size: 0x4, address: 0x57A344
 extern u8 Scene_Cut;              // size: 0x1, address: 0x57A348
 extern s8 Break_Com[2][20];       // size: 0x28, address: 0x57A4C0
 extern u8 Usage;                  // size: 0x1, address: 0x57A55C
 extern s8 Ignore_Entry[2];        // size: 0x2, address: 0x57A58C
+extern u8 Continue_Coin[2];       // size: 0x2, address: 0x57A590
 extern u8 Country;                // size: 0x1, address: 0x57A5E4
 extern s8 Player_id;              // size: 0x1, address: 0x57A60C
 extern s8 Cover_Timer;            // size: 0x1, address: 0x57A678
@@ -2628,6 +2695,8 @@ extern s8 Forbid_Break;           // size: 0x1, address: 0x57A6BC
 extern u8 My_char[2];             // size: 0x2, address: 0x57A6D4
 extern s8 Break_Into;             // size: 0x1, address: 0x57A6D8
 extern s8 Winner_id;              // size: 0x1, address: 0x57A6E8
+extern u32 WGJ_Score;             // size: 0x4, address: 0x57A70C
+extern u32 Score[2][3];           // size: 0x18, address: 0x57A760
 extern u32 Record_Timer;          // size: 0x4, address: 0x57A810
 extern s8 Slow_Timer;             // size: 0x1, address: 0x57A830
 extern u8 sysSLOW;                // size: 0x1, address: 0x57A834
@@ -2646,6 +2715,7 @@ extern BG bg_w;               // size: 0x428, address: 0x595830
 extern f32 PrioBase[128];     // size: 0x200, address: 0x5E3F50
 extern PLW plw[2];            // size: 0x8D8, address: 0x5E4D20
 extern struct _TASK task[11]; // size: 0xDC, address: 0x6BD2D0
+extern u8 Order_Dir[148];     // size: 0x94, address: 0x6BD5F0
 extern u8 Order_Timer[148];   // size: 0x94, address: 0x6BD690
 extern u8 Order[148];         // size: 0x94, address: 0x6BD730
 extern FLPS2State flPs2State; // size: 0x470, address: 0x6E2750
