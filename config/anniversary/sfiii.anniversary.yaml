@@ -120,7 +120,7 @@ segments:
       - [0x016030, c, sf33rd/AcrSDK/common/memfound]
       - [0x016200, asm, sf33rd/AcrSDK/common/memmgr]
       - [0x017380, c, sf33rd/AcrSDK/common/mlPAD]
-      - [0x018D70, asm, sf33rd/AcrSDK/common/plapx]
+      - [0x018D70, c, sf33rd/AcrSDK/common/plapx]
       - [0x0199B0, asm, sf33rd/AcrSDK/common/plbmp]
       - [0x019C10, asm, sf33rd/AcrSDK/common/plpic]
       - [0x01A330, asm, sf33rd/AcrSDK/common/pltim2]

@@ -2447,45 +2447,6 @@ typedef struct {
     u16 free2;      // offset 0x2A, size 0x2
 } FLPAD_CONFIG;
 
-typedef struct {
-    // total size: 0x20
-    u32 FileSize;    // offset 0x0, size 0x4
-    u32 PixelSize;   // offset 0x4, size 0x4
-    u32 ClutSize;    // offset 0x8, size 0x4
-    u16 PixelBit;    // offset 0xC, size 0x2
-    u16 PixelWidth;  // offset 0xE, size 0x2
-    u16 PixelHeight; // offset 0x10, size 0x2
-    u16 MipmapNum;   // offset 0x12, size 0x2
-    u16 ClutBit;     // offset 0x14, size 0x2
-    u16 ClutNum;     // offset 0x16, size 0x2
-    u32 Reserved[2]; // offset 0x18, size 0x8
-} APXFileHeader;
-
-typedef struct {
-    // total size: 0x48
-    u32 desc;     // offset 0x0, size 0x4
-    s32 width;    // offset 0x4, size 0x4
-    s32 height;   // offset 0x8, size 0x4
-    s32 pitch;    // offset 0xC, size 0x4
-    void *ptr;    // offset 0x10, size 0x4
-    s32 bitdepth; // offset 0x14, size 0x4
-    struct /* @anon3 */ {
-        // total size: 0x30
-        s32 rl;    // offset 0x0, size 0x4
-        s32 rs;    // offset 0x4, size 0x4
-        s32 rm;    // offset 0x8, size 0x4
-        s32 gl;    // offset 0xC, size 0x4
-        s32 gs;    // offset 0x10, size 0x4
-        s32 gm;    // offset 0x14, size 0x4
-        s32 bl;    // offset 0x18, size 0x4
-        s32 bs;    // offset 0x1C, size 0x4
-        s32 bm;    // offset 0x20, size 0x4
-        s32 al;    // offset 0x24, size 0x4
-        s32 as;    // offset 0x28, size 0x4
-        s32 am;    // offset 0x2C, size 0x4
-    } pixelformat; // offset 0x18, size 0x30
-} UNK_Context;
-
 // .text
 
 void plmemInit(MEM_MGR *memmgr, MEM_BLOCK *block, s32 count, void *mem_ptr, s32 memsize, s32 memalign,
@@ -2499,10 +2460,6 @@ s32 plmemRelease(MEM_MGR *memmgr, u32 handle);               // Range: 0x116B20 
 void *plmemCompact(MEM_MGR *memmgr);                         // Range: 0x116C00 -> 0x116E9C
 u32 plmemGetSpace(MEM_MGR *memmgr);                          // Range: 0x116EA0 -> 0x116EC8
 u32 plmemGetFreeSpace(MEM_MGR *memmgr);                      // Range: 0x116ED0 -> 0x116F5C
-
-s32 plAPXGetMipmapTextureNum(void *lpbas);                   // Range: 0x118CF0 -> 0x118D2C
-s32 plAPXGetPaletteNum(void *lpbas);                         // Range: 0x118D30 -> 0x118D6C
-s32 plAPXSetContextFromImage(UNK_Context *dst, void *lpbas); // Range: 0x118D70 -> 0x119224
 
 void plMemset(void *dst, u32 pat, s32 size); // Range: 0x11B3B0 -> 0x11B41C
 
