@@ -2461,6 +2461,7 @@ void *plmemCompact(MEM_MGR *memmgr);                         // Range: 0x116C00 
 u32 plmemGetSpace(MEM_MGR *memmgr);                          // Range: 0x116EA0 -> 0x116EC8
 u32 plmemGetFreeSpace(MEM_MGR *memmgr);                      // Range: 0x116ED0 -> 0x116F5C
 
+s32 plReport(char *format);                  // Range: 0x11B310 -> 0x11B3AC
 void plMemset(void *dst, u32 pat, s32 size); // Range: 0x11B3B0 -> 0x11B41C
 
 void setup_pos_remake_key();        // Range: 0x11C0C0 -> 0x11C0D0

@@ -132,18 +132,30 @@ def main():
 
         lcf.begin_section("data sections")
 
-        data_groups = [
-            (".data", [x for x in runs if x.section == ".data"]),
-            (".rodata", [x for x in runs if x.section == ".rodata"])
-        ]
+        data_runs = [x for x in runs if x.section == ".data"]
+        lcf.begin_section(".data")
+        lcf.align(0x80)
+        lcf.align_all(0x8)
+        lcf.add_runs(data_runs, ".data")
 
-        for section, section_runs in data_groups:
-            lcf.begin_section(section)
-            lcf.align(0x80)
-            lcf.align_all(0x8)
+        rodata_runs = [x for x in runs if x.section == ".rodata"]
+        lcf.begin_section(".rodata")
+        lcf.align(0x80)
+        # lcf.align_all(0x10)
+        # lcf.add_runs(rodata_runs, ".rodata")
 
-            for run in section_runs:
-                lcf.add_entries(run.entries, section)
+        rodata_alignment = 0x8
+        rodata_increased_alignment = {"plbmp", "SYS_sub2"}
+
+        for run in rodata_runs:
+            for entry in run.entries:
+                align = rodata_alignment
+
+                if entry.object_path.stem.split(".")[0] in rodata_increased_alignment:
+                    align = 0x10
+
+                lcf.align_all(align)
+                lcf.add_entry(entry, ".rodata")
 
         # small data
 
@@ -154,14 +166,14 @@ def main():
         # lcf.align_all(0x10)
         # lcf.add_runs(sdata_runs, ".sdata")
 
-        alignment = 0x8
+        sdata_alignment = 0x8
 
         for run in sdata_runs:
             for entry in run.entries:
                 if "Continue" in str(entry.object_path):
-                    alignment = 0x10
+                    sdata_alignment = 0x10
 
-                lcf.align(alignment)
+                lcf.align(sdata_alignment)
                 lcf.add_entry(entry, ".sdata")
 
         lcf.blank()

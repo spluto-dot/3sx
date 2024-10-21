@@ -30,7 +30,7 @@ s32 plAPXGetPaletteNum(void *lpbas) {
     return lpApxFileHeader->ClutNum;
 }
 
-s32 plAPXSetContextFromImage(plAPXContext *dst, void *lpbas) {
+s32 plAPXSetContextFromImage(plContext *dst, void *lpbas) {
     s32 mipmap_num = plAPXGetMipmapTextureNum(lpbas);
     APXFileHeader *lpApxFileHeader = GetAPXFileHeader(lpbas);
     s32 dw = lpApxFileHeader->PixelWidth;
@@ -145,7 +145,7 @@ s32 plAPXSetContextFromImage(plAPXContext *dst, void *lpbas) {
     return 1;
 }
 
-s32 plAPXSetPaletteContextFromImage(plAPXContext *dst, void *lpbas) {
+s32 plAPXSetPaletteContextFromImage(plContext *dst, void *lpbas) {
     s32 pal_num;
     APXFileHeader *lpApxFileHeader;
     s32 lp0;
