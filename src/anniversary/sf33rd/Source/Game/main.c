@@ -35,12 +35,12 @@ void AcrMain() {
         initRenderState(0);
         mpp_w.ds_h[0] = mpp_w.ds_h[1];
         mpp_w.ds_v[0] = mpp_w.ds_v[1];
-        mpp_w.ds_h[1] = 0x64;
-        mpp_w.ds_v[1] = 0x64;
+        mpp_w.ds_h[1] = 100;
+        mpp_w.ds_v[1] = 100;
         mpp_w.vprm.x0 = 0.0f;
         mpp_w.vprm.y0 = 0.0f;
-        mpp_w.vprm.x1 = (mpp_w.ds_h[0] * 0x180) / 100.0f;
-        mpp_w.vprm.y1 = (mpp_w.ds_v[0] * 0xE0) / 100.0f;
+        mpp_w.vprm.x1 = (mpp_w.ds_h[0] * 384) / 100.0f;
+        mpp_w.vprm.y1 = (mpp_w.ds_v[0] * 224) / 100.0f;
         mpp_w.vprm.ne = -1.0f;
         mpp_w.vprm.fa = 1.0f;
 
@@ -276,8 +276,8 @@ void njUserInit() {
     Interrupt_Timer = 0;
     SA_Zoom_X = 0.0f;
     SA_Zoom_Y = 0.0f;
-    Disp_Size_H = 0x64;
-    Disp_Size_V = 0x64;
+    Disp_Size_H = 100;
+    Disp_Size_V = 100;
     mpp_w.ds_h[0] = mpp_w.ds_h[1] = Disp_Size_H;
     mpp_w.ds_v[0] = mpp_w.ds_v[1] = Disp_Size_V;
     Country = 0;
