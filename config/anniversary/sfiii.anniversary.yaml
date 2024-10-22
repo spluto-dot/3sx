@@ -123,7 +123,7 @@ segments:
       - [0x018D70, c, sf33rd/AcrSDK/common/plapx]
       - [0x0199B0, c, sf33rd/AcrSDK/common/plbmp]
       - [0x019C10, c, sf33rd/AcrSDK/common/plpic]
-      - [0x01A330, asm, sf33rd/AcrSDK/common/pltim2]
+      - [0x01A330, c, sf33rd/AcrSDK/common/pltim2]
       - [0x01B390, asm, sf33rd/AcrSDK/common/prilay]
       - [0x01BFB0, asm, sf33rd/Source/Game/SYS_sub2]
       - [0x01C150, asm, sf33rd/Source/Game/AcrUtil]
