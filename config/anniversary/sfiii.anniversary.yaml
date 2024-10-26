@@ -90,7 +90,7 @@ segments:
       - [0x0043A8, asm, sdk/libkernl/tty]
       - [0x0048F0, asm, sdk/libkernl/kprintf2]
       - [0x0052A8, asm, sdk/libkernl/sifcmd]
-      - [0x005A84, asm, sdk/libkernl/sifrpc]
+      - [0x005A80, asm, sdk/libkernl/sifrpc]
       - [0x006B70, asm, sdk/libkernl/filestub]
       - [0x00A228, asm, sdk/libkernl/iopheap]
       - [0x00A778, asm, sdk/libkernl/eeloadfile]

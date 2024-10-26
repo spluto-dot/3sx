@@ -1,4 +1,4 @@
-sceSifInitRpc = 0x00105A04; // type:func
+sceSifInitRpc = 0x00105A00; // type:func
 sceSifExitRpc = 0x00105BA0; // type:func
 _sceRpcGetPacket = 0x00105BC8; // type:func
 _sceRpcFreePacket = 0x00105C70; // type:func
