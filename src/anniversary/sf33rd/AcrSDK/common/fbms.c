@@ -1,11 +1,11 @@
 #include "unknown.h"
 #include "common.h"
 
-s32 fmsCalcSpace(FMS_FL* lp) {
+s32 fmsCalcSpace(FL_FMS* lp) {
     return lp->frame[1] - lp->frame[0];
 }
 
-s32 fmsInitialize(FMS_FL* lp, void* memory_ptr, s32 memsize, s32 memalign) {
+s32 fmsInitialize(FL_FMS* lp, void* memory_ptr, s32 memsize, s32 memalign) {
     memsize = ~(memalign - 1) & (memsize + memalign - 1);
     lp->memoryblock = (u8*) memory_ptr;
     lp->align = memalign;
@@ -16,7 +16,7 @@ s32 fmsInitialize(FMS_FL* lp, void* memory_ptr, s32 memsize, s32 memalign) {
     return 1;
 }
 
-void* fmsAllocMemory(FMS_FL* lp, s32 bytes, s32 heapnum) {
+void* fmsAllocMemory(FL_FMS* lp, s32 bytes, s32 heapnum) {
     void* pMem;
     bytes = ~(lp->align - 1) & ((u32)bytes + lp->align - 1);
 
@@ -35,7 +35,7 @@ void* fmsAllocMemory(FMS_FL* lp, s32 bytes, s32 heapnum) {
     return pMem;
 }
 
-s32 fmsGetFrame(FMS_FL* lp, s32 heapnum, FMS_FRAME* frame) {
+s32 fmsGetFrame(FL_FMS* lp, s32 heapnum, FMS_FRAME* frame) {
     frame->pFrame = lp->frame[heapnum];
     frame->heapnum = heapnum;
     return 1;

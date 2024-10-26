@@ -1,6 +1,7 @@
 #ifndef UNKNOWN_H
 #define UNKNOWN_H
 
+#include "sdk/libdma.h"
 #include "types.h"
 
 // MARK: - Types
@@ -1461,573 +1462,316 @@ typedef struct {
 } PLW;
 
 typedef struct {
+    // total size: 0x8
+    u32 FBP : 9;  // offset 0x0, size 0x4
+    u32 FBW : 6;  // offset 0x0, size 0x4
+    u32 PSM : 5;  // offset 0x0, size 0x4
+    u32 p0 : 12;  // offset 0x0, size 0x4
+    u32 DBX : 11; // offset 0x4, size 0x4
+    u32 DBY : 11; // offset 0x4, size 0x4
+    u32 p1 : 10;  // offset 0x4, size 0x4
+} FLPS2Frame;
+
+typedef struct {
+    // total size: 0x10
+    u64 NLOOP : 15; // offset 0x0, size 0x4
+    u64 EOP : 1;    // offset 0x0, size 0x4
+    u64 pad16 : 16; // offset 0x0, size 0x4
+    u64 id : 14;    // offset 0x0, size 0x4
+    u64 PRE : 1;    // offset 0x0, size 0x4
+    u64 PRIM : 11;  // offset 0x0, size 0x4
+    u64 FLG : 2;    // offset 0x0, size 0x4
+    u64 NREG : 4;   // offset 0x0, size 0x4
+    u64 REGS0 : 4;  // offset 0x8, size 0x4
+    u64 REGS1 : 4;  // offset 0x8, size 0x4
+    u64 REGS2 : 4;  // offset 0x8, size 0x4
+    u64 REGS3 : 4;  // offset 0x8, size 0x4
+    u64 REGS4 : 4;  // offset 0x8, size 0x4
+    u64 REGS5 : 4;  // offset 0x8, size 0x4
+    u64 REGS6 : 4;  // offset 0x8, size 0x4
+    u64 REGS7 : 4;  // offset 0x8, size 0x4
+    u64 REGS8 : 4;  // offset 0x8, size 0x4
+    u64 REGS9 : 4;  // offset 0x8, size 0x4
+    u64 REGS10 : 4; // offset 0x8, size 0x4
+    u64 REGS11 : 4; // offset 0x8, size 0x4
+    u64 REGS12 : 4; // offset 0x8, size 0x4
+    u64 REGS13 : 4; // offset 0x8, size 0x4
+    u64 REGS14 : 4; // offset 0x8, size 0x4
+    u64 REGS15 : 4; // offset 0x8, size 0x4
+} FLPS2GifTag;
+
+typedef struct {
+    // total size: 0x8
+    u64 X : 16; // offset 0x0, size 0x4
+    u64 Y : 16; // offset 0x0, size 0x4
+    u64 Z : 32; // offset 0x0, size 0x4
+} FLPS2XYZ;
+
+typedef struct {
+    // total size: 0x8
+    u64 ATE : 1;    // offset 0x0, size 0x4
+    u64 ATST : 3;   // offset 0x0, size 0x4
+    u64 AREF : 8;   // offset 0x0, size 0x4
+    u64 AFAIL : 2;  // offset 0x0, size 0x4
+    u64 DATE : 1;   // offset 0x0, size 0x4
+    u64 DATM : 1;   // offset 0x0, size 0x4
+    u64 ZTE : 1;    // offset 0x0, size 0x4
+    u64 ZTST : 2;   // offset 0x0, size 0x4
+    u64 pad19 : 45; // offset 0x0, size 0x4
+} FLPS2Test;
+
+typedef struct {
+    // total size: 0x8
+    u64 OFX : 16;   // offset 0x0, size 0x4
+    u64 pad16 : 16; // offset 0x0, size 0x4
+    u64 OFY : 16;   // offset 0x0, size 0x4
+    u64 pad48 : 16; // offset 0x0, size 0x4
+} FLPS2XYOffset;
+
+typedef struct {
+    // total size: 0x8
+    u64 ZBP : 9;    // offset 0x0, size 0x4
+    u64 pad09 : 15; // offset 0x0, size 0x4
+    u64 PSM : 4;    // offset 0x0, size 0x4
+    u64 pad28 : 4;  // offset 0x0, size 0x4
+    u64 ZMSK : 1;   // offset 0x0, size 0x4
+    u64 pad33 : 31; // offset 0x0, size 0x4
+} FLPS2ZBuf;
+
+typedef struct {
+    // total size: 0x8
+    u32 R : 8; // offset 0x0, size 0x4
+    u32 G : 8; // offset 0x0, size 0x4
+    u32 B : 8; // offset 0x0, size 0x4
+    u32 A : 8; // offset 0x0, size 0x4
+    f32 Q;     // offset 0x4, size 0x4
+} FLPS2RGBAQ;
+
+typedef struct {
+    // total size: 0x8
+    u64 PRIM : 3;   // offset 0x0, size 0x4
+    u64 IIP : 1;    // offset 0x0, size 0x4
+    u64 TME : 1;    // offset 0x0, size 0x4
+    u64 FGE : 1;    // offset 0x0, size 0x4
+    u64 ABE : 1;    // offset 0x0, size 0x4
+    u64 AA1 : 1;    // offset 0x0, size 0x4
+    u64 FST : 1;    // offset 0x0, size 0x4
+    u64 CTXT : 1;   // offset 0x0, size 0x4
+    u64 FIX : 1;    // offset 0x0, size 0x4
+    u64 pad11 : 53; // offset 0x0, size 0x4
+} FLPS2Prim;
+
+typedef struct {
+    // total size: 0x60
+    FLPS2Test testa;  // offset 0x0, size 0x8
+    s32 testaaddr;    // offset 0x8, size 0x4
+    FLPS2Prim prim;   // offset 0x10, size 0x8
+    s32 primaddr;     // offset 0x18, size 0x4
+    FLPS2RGBAQ rgbaq; // offset 0x20, size 0x8
+    s32 rgbaqaddr;    // offset 0x28, size 0x4
+    FLPS2XYZ xyz2a;   // offset 0x30, size 0x8
+    s32 xyz2aaddr;    // offset 0x38, size 0x4
+    FLPS2XYZ xyz2b;   // offset 0x40, size 0x8
+    s32 xyz2baddr;    // offset 0x48, size 0x4
+    FLPS2Test testb;  // offset 0x50, size 0x8
+    s32 testbaddr;    // offset 0x58, size 0x4
+} FLPS2Clear;
+
+typedef struct {
+    // total size: 0x8
+    u64 SCAX0 : 11; // offset 0x0, size 0x4
+    u64 pad11 : 5;  // offset 0x0, size 0x4
+    u64 SCAX1 : 11; // offset 0x0, size 0x4
+    u64 pad27 : 5;  // offset 0x0, size 0x4
+    u64 SCAY0 : 11; // offset 0x0, size 0x4
+    u64 pad43 : 5;  // offset 0x0, size 0x4
+    u64 SCAY1 : 11; // offset 0x0, size 0x4
+    u64 pad59 : 5;  // offset 0x0, size 0x4
+} FLPS2Scissor;
+
+typedef struct {
+    // total size: 0x8
+    u64 AC : 1;     // offset 0x0, size 0x4
+    u64 pad01 : 63; // offset 0x0, size 0x4
+} FLPS2PRModeCont;
+
+typedef struct {
+    // total size: 0x8
+    u64 CLAMP : 1;  // offset 0x0, size 0x4
+    u64 pad01 : 63; // offset 0x0, size 0x4
+} FLPS2ColClamp;
+
+typedef struct {
+    // total size: 0x8
+    u64 DTHE : 1;   // offset 0x0, size 0x4
+    u64 pad01 : 63; // offset 0x0, size 0x4
+} FLPS2DTHE;
+
+typedef struct /* @anon32 */ {
+    // total size: 0x80
+    FLPS2Frame frame1;          // offset 0x0, size 0x8
+    u64 frame1addr;             // offset 0x8, size 0x4
+    FLPS2ZBuf zbuf1;            // offset 0x10, size 0x8
+    s32 zbuf1addr;              // offset 0x18, size 0x4
+    FLPS2XYOffset xyoffset1;    // offset 0x20, size 0x8
+    s32 xyoffset1addr;          // offset 0x28, size 0x4
+    FLPS2Scissor scissor1;      // offset 0x30, size 0x8
+    s32 scissor1addr;           // offset 0x38, size 0x4
+    FLPS2PRModeCont prmodecont; // offset 0x40, size 0x8
+    s32 prmodecontaddr;         // offset 0x48, size 0x4
+    FLPS2ColClamp colclamp;     // offset 0x50, size 0x8
+    s32 colclampaddr;           // offset 0x58, size 0x4
+    FLPS2DTHE dthe;             // offset 0x60, size 0x8
+    s32 dtheaddr;               // offset 0x68, size 0x4
+    FLPS2Test test1;            // offset 0x70, size 0x8
+    s32 test1addr;              // offset 0x78, size 0x4
+} FLPS2Draw1;
+
+typedef struct {
+    // total size: 0x80
+    FLPS2Frame frame2;          // offset 0x0, size 0x8
+    u64 frame2addr;             // offset 0x8, size 0x4
+    FLPS2ZBuf zbuf2;            // offset 0x10, size 0x8
+    s32 zbuf2addr;              // offset 0x18, size 0x4
+    FLPS2XYOffset xyoffset2;    // offset 0x20, size 0x8
+    s32 xyoffset2addr;          // offset 0x28, size 0x4
+    FLPS2Scissor scissor2;      // offset 0x30, size 0x8
+    s32 scissor2addr;           // offset 0x38, size 0x4
+    FLPS2PRModeCont prmodecont; // offset 0x40, size 0x8
+    s32 prmodecontaddr;         // offset 0x48, size 0x4
+    FLPS2ColClamp colclamp;     // offset 0x50, size 0x8
+    s32 colclampaddr;           // offset 0x58, size 0x4
+    FLPS2DTHE dthe;             // offset 0x60, size 0x8
+    s32 dtheaddr;               // offset 0x68, size 0x4
+    FLPS2Test test2;            // offset 0x70, size 0x8
+    s32 test2addr;              // offset 0x78, size 0x4
+} FLPS2Draw2;
+
+typedef struct {
+    // total size: 0x8
+    u32 EN1 : 1;   // offset 0x0, size 0x4
+    u32 EN2 : 1;   // offset 0x0, size 0x4
+    u32 CRTMD : 3; // offset 0x0, size 0x4
+    u32 MMOD : 1;  // offset 0x0, size 0x4
+    u32 AMOD : 1;  // offset 0x0, size 0x4
+    u32 SLBG : 1;  // offset 0x0, size 0x4
+    u32 ALP : 8;   // offset 0x0, size 0x4
+    u32 p0 : 16;   // offset 0x0, size 0x4
+    u32 p1;        // offset 0x4, size 0x4
+} FLPS2PMode;
+
+typedef struct {
+    // total size: 0x8
+    u32 INT : 1;  // offset 0x0, size 0x4
+    u32 FFMD : 1; // offset 0x0, size 0x4
+    u32 DPMS : 2; // offset 0x0, size 0x4
+    u32 p0 : 28;  // offset 0x0, size 0x4
+    u32 p1;       // offset 0x4, size 0x4
+} FLPS2SMode2;
+
+typedef struct {
+    // total size: 0x8
+    u32 DX : 12;  // offset 0x0, size 0x4
+    u32 DY : 11;  // offset 0x0, size 0x4
+    u32 MAGH : 4; // offset 0x0, size 0x4
+    u32 MAGV : 2; // offset 0x0, size 0x4
+    u32 p0 : 3;   // offset 0x0, size 0x4
+    u32 DW : 12;  // offset 0x4, size 0x4
+    u32 DH : 11;  // offset 0x4, size 0x4
+    u32 p1 : 9;   // offset 0x4, size 0x4
+} FLPS2Display;
+
+typedef struct {
+    // total size: 0x8
+    u32 R : 8;  // offset 0x0, size 0x4
+    u32 G : 8;  // offset 0x0, size 0x4
+    u32 B : 8;  // offset 0x0, size 0x4
+    u32 p0 : 8; // offset 0x0, size 0x4
+    u32 p1;     // offset 0x4, size 0x4
+} FLPS2Color;
+
+typedef struct {
+    // total size: 0x28
+    FLPS2PMode pmode;     // offset 0x0, size 0x8
+    FLPS2SMode2 smode2;   // offset 0x8, size 0x8
+    FLPS2Frame dispfb;    // offset 0x10, size 0x8
+    FLPS2Display display; // offset 0x18, size 0x8
+    FLPS2Color bgcolor;   // offset 0x20, size 0x8
+} FLPS2Disp;
+
+typedef struct {
+    // total size: 0x330
+    FLPS2Disp disp[2];   // offset 0x0, size 0x50
+    FLPS2GifTag giftag0; // offset 0x50, size 0x10
+    FLPS2Draw1 draw01;   // offset 0x60, size 0x80
+    FLPS2Draw2 draw02;   // offset 0xE0, size 0x80
+    FLPS2Clear clear0;   // offset 0x160, size 0x60
+    FLPS2GifTag giftag1; // offset 0x1C0, size 0x10
+    FLPS2Draw1 draw11;   // offset 0x1D0, size 0x80
+    FLPS2Draw2 draw12;   // offset 0x250, size 0x80
+    FLPS2Clear clear1;   // offset 0x2D0, size 0x60
+} FLPS2Db;
+
+typedef struct {
+    // total size: 0x90
+    struct /* @anon23 */ {
+        // total size: 0x4
+        u32 DIR : 1;         // offset 0x0, size 0x4
+        u32 p0 : 1;          // offset 0x0, size 0x4
+        u32 MOD : 2;         // offset 0x0, size 0x4
+        u32 ASP : 2;         // offset 0x0, size 0x4
+        u32 TTE : 1;         // offset 0x0, size 0x4
+        u32 TIE : 1;         // offset 0x0, size 0x4
+        u32 STR : 1;         // offset 0x0, size 0x4
+        u32 p1 : 7;          // offset 0x0, size 0x4
+        u32 TAG : 16;        // offset 0x0, size 0x4
+    } chcr;                  // offset 0x0, size 0x4
+    u32 p0[3];               // offset 0x4, size 0xC
+    void *madr;              // offset 0x10, size 0x4
+    u32 p1[3];               // offset 0x14, size 0xC
+    u32 qwc;                 // offset 0x20, size 0x4
+    u32 p2[3];               // offset 0x24, size 0xC
+    struct _sceDmaTag *tadr; // offset 0x30, size 0x4
+    u32 p3[3];               // offset 0x34, size 0xC
+    void *as0;               // offset 0x40, size 0x4
+    u32 p4[3];               // offset 0x44, size 0xC
+    void *as1;               // offset 0x50, size 0x4
+    u32 p5[3];               // offset 0x54, size 0xC
+    u32 p6[4];               // offset 0x60, size 0x10
+    u32 p7[4];               // offset 0x70, size 0x10
+    void *sadr;              // offset 0x80, size 0x4
+    u32 p8[3];               // offset 0x84, size 0xC
+} FLPS2DMAChan;
+
+typedef struct {
     // total size: 0x470
-    u32 VideoMode;        // offset 0x0, size 0x4
-    u32 InterlaceMode;    // offset 0x4, size 0x4
-    u32 DisplayMode;      // offset 0x8, size 0x4
-    s32 DispWidth;        // offset 0xC, size 0x4
-    s32 DispHeight;       // offset 0x10, size 0x4
-    u32 MAGH;             // offset 0x14, size 0x4
-    u32 FrameBitDepth;    // offset 0x18, size 0x4
-    u32 FrameBuffForm;    // offset 0x1C, size 0x4
-    u32 FrameBuffPageX;   // offset 0x20, size 0x4
-    u32 FrameBuffPageY;   // offset 0x24, size 0x4
-    u32 FrameBuffAdrs0;   // offset 0x28, size 0x4
-    u32 FrameBuffAdrs1;   // offset 0x2C, size 0x4
-    u32 ZBuffBitDepth;    // offset 0x30, size 0x4
-    u32 ZBuffForm;        // offset 0x34, size 0x4
-    u32 ZBuffPageX;       // offset 0x38, size 0x4
-    u32 ZBuffPageY;       // offset 0x3C, size 0x4
-    u32 ZBuffAdrs;        // offset 0x40, size 0x4
-    f32 ZBuffMax;         // offset 0x44, size 0x4
-    u32 TextureStartAdrs; // offset 0x48, size 0x4
-    s32 Oddeven;          // offset 0x4C, size 0x4
-    s32 Dbi;              // offset 0x50, size 0x4
-    s32 FrameCount;       // offset 0x54, size 0x4
-    s32 FrameCountNext;   // offset 0x58, size 0x4
-    s32 Irq_count;        // offset 0x5C, size 0x4
-    s32 Db_change_enable; // offset 0x60, size 0x4
-    struct /* @anon25 */ {
-        // total size: 0x330
-        struct /* @anon31 */ {
-            // total size: 0x28
-            struct /* @anon10 */ {
-                // total size: 0x8
-                u32 EN1 : 1;   // offset 0x0, size 0x4
-                u32 EN2 : 1;   // offset 0x0, size 0x4
-                u32 CRTMD : 3; // offset 0x0, size 0x4
-                u32 MMOD : 1;  // offset 0x0, size 0x4
-                u32 AMOD : 1;  // offset 0x0, size 0x4
-                u32 SLBG : 1;  // offset 0x0, size 0x4
-                u32 ALP : 8;   // offset 0x0, size 0x4
-                u32 p0 : 16;   // offset 0x0, size 0x4
-                u32 p1;        // offset 0x4, size 0x4
-            } pmode;           // offset 0x0, size 0x8
-            struct /* @anon15 */ {
-                // total size: 0x8
-                u32 INT : 1;  // offset 0x0, size 0x4
-                u32 FFMD : 1; // offset 0x0, size 0x4
-                u32 DPMS : 2; // offset 0x0, size 0x4
-                u32 p0 : 28;  // offset 0x0, size 0x4
-                u32 p1;       // offset 0x4, size 0x4
-            } smode2;         // offset 0x8, size 0x8
-            struct /* @anon11 */ {
-                // total size: 0x8
-                u32 FBP : 9;  // offset 0x0, size 0x4
-                u32 FBW : 6;  // offset 0x0, size 0x4
-                u32 PSM : 5;  // offset 0x0, size 0x4
-                u32 p0 : 12;  // offset 0x0, size 0x4
-                u32 DBX : 11; // offset 0x4, size 0x4
-                u32 DBY : 11; // offset 0x4, size 0x4
-                u32 p1 : 10;  // offset 0x4, size 0x4
-            } dispfb;         // offset 0x10, size 0x8
-            struct /* @anon19 */ {
-                // total size: 0x8
-                u32 DX : 12;  // offset 0x0, size 0x4
-                u32 DY : 11;  // offset 0x0, size 0x4
-                u32 MAGH : 4; // offset 0x0, size 0x4
-                u32 MAGV : 2; // offset 0x0, size 0x4
-                u32 p0 : 3;   // offset 0x0, size 0x4
-                u32 DW : 12;  // offset 0x4, size 0x4
-                u32 DH : 11;  // offset 0x4, size 0x4
-                u32 p1 : 9;   // offset 0x4, size 0x4
-            } display;        // offset 0x18, size 0x8
-            struct /* @anon17 */ {
-                // total size: 0x8
-                u32 R : 8;  // offset 0x0, size 0x4
-                u32 G : 8;  // offset 0x0, size 0x4
-                u32 B : 8;  // offset 0x0, size 0x4
-                u32 p0 : 8; // offset 0x0, size 0x4
-                u32 p1;     // offset 0x4, size 0x4
-            } bgcolor;      // offset 0x20, size 0x8
-        } disp[2];          // offset 0x0, size 0x50
-        struct /* @anon6 */ {
-            // total size: 0x10
-            u64 NLOOP : 15; // offset 0x0, size 0x4
-            u64 EOP : 1;    // offset 0x0, size 0x4
-            u64 pad16 : 16; // offset 0x0, size 0x4
-            u64 id : 14;    // offset 0x0, size 0x4
-            u64 PRE : 1;    // offset 0x0, size 0x4
-            u64 PRIM : 11;  // offset 0x0, size 0x4
-            u64 FLG : 2;    // offset 0x0, size 0x4
-            u64 NREG : 4;   // offset 0x0, size 0x4
-            u64 REGS0 : 4;  // offset 0x8, size 0x4
-            u64 REGS1 : 4;  // offset 0x8, size 0x4
-            u64 REGS2 : 4;  // offset 0x8, size 0x4
-            u64 REGS3 : 4;  // offset 0x8, size 0x4
-            u64 REGS4 : 4;  // offset 0x8, size 0x4
-            u64 REGS5 : 4;  // offset 0x8, size 0x4
-            u64 REGS6 : 4;  // offset 0x8, size 0x4
-            u64 REGS7 : 4;  // offset 0x8, size 0x4
-            u64 REGS8 : 4;  // offset 0x8, size 0x4
-            u64 REGS9 : 4;  // offset 0x8, size 0x4
-            u64 REGS10 : 4; // offset 0x8, size 0x4
-            u64 REGS11 : 4; // offset 0x8, size 0x4
-            u64 REGS12 : 4; // offset 0x8, size 0x4
-            u64 REGS13 : 4; // offset 0x8, size 0x4
-            u64 REGS14 : 4; // offset 0x8, size 0x4
-            u64 REGS15 : 4; // offset 0x8, size 0x4
-        } giftag0;          // offset 0x50, size 0x10
-        struct /* @anon32 */ {
-            // total size: 0x80
-            struct /* @anon16 */ {
-                // total size: 0x8
-                u64 FBP : 9;    // offset 0x0, size 0x4
-                u64 pad09 : 7;  // offset 0x0, size 0x4
-                u64 FBW : 6;    // offset 0x0, size 0x4
-                u64 pad22 : 2;  // offset 0x0, size 0x4
-                u64 PSM : 6;    // offset 0x0, size 0x4
-                u64 pad30 : 2;  // offset 0x0, size 0x4
-                u64 FBMSK : 32; // offset 0x0, size 0x4
-            } frame1;           // offset 0x0, size 0x8
-            u64 frame1addr;     // offset 0x8, size 0x4
-            struct /* @anon28 */ {
-                // total size: 0x8
-                u64 ZBP : 9;    // offset 0x0, size 0x4
-                u64 pad09 : 15; // offset 0x0, size 0x4
-                u64 PSM : 4;    // offset 0x0, size 0x4
-                u64 pad28 : 4;  // offset 0x0, size 0x4
-                u64 ZMSK : 1;   // offset 0x0, size 0x4
-                u64 pad33 : 31; // offset 0x0, size 0x4
-            } zbuf1;            // offset 0x10, size 0x8
-            long zbuf1addr;     // offset 0x18, size 0x4
-            struct /* @anon21 */ {
-                // total size: 0x8
-                u64 OFX : 16;   // offset 0x0, size 0x4
-                u64 pad16 : 16; // offset 0x0, size 0x4
-                u64 OFY : 16;   // offset 0x0, size 0x4
-                u64 pad48 : 16; // offset 0x0, size 0x4
-            } xyoffset1;        // offset 0x20, size 0x8
-            long xyoffset1addr; // offset 0x28, size 0x4
-            struct /* @anon12 */ {
-                // total size: 0x8
-                u64 SCAX0 : 11; // offset 0x0, size 0x4
-                u64 pad11 : 5;  // offset 0x0, size 0x4
-                u64 SCAX1 : 11; // offset 0x0, size 0x4
-                u64 pad27 : 5;  // offset 0x0, size 0x4
-                u64 SCAY0 : 11; // offset 0x0, size 0x4
-                u64 pad43 : 5;  // offset 0x0, size 0x4
-                u64 SCAY1 : 11; // offset 0x0, size 0x4
-                u64 pad59 : 5;  // offset 0x0, size 0x4
-            } scissor1;         // offset 0x30, size 0x8
-            long scissor1addr;  // offset 0x38, size 0x4
-            struct /* @anon5 */ {
-                // total size: 0x8
-                u64 AC : 1;      // offset 0x0, size 0x4
-                u64 pad01 : 63;  // offset 0x0, size 0x4
-            } prmodecont;        // offset 0x40, size 0x8
-            long prmodecontaddr; // offset 0x48, size 0x4
-            struct /* @anon27 */ {
-                // total size: 0x8
-                u64 CLAMP : 1;  // offset 0x0, size 0x4
-                u64 pad01 : 63; // offset 0x0, size 0x4
-            } colclamp;         // offset 0x50, size 0x8
-            long colclampaddr;  // offset 0x58, size 0x4
-            struct /* @anon9 */ {
-                // total size: 0x8
-                u64 DTHE : 1;   // offset 0x0, size 0x4
-                u64 pad01 : 63; // offset 0x0, size 0x4
-            } dthe;             // offset 0x60, size 0x8
-            long dtheaddr;      // offset 0x68, size 0x4
-            struct /* @anon20 */ {
-                // total size: 0x8
-                u64 ATE : 1;    // offset 0x0, size 0x4
-                u64 ATST : 3;   // offset 0x0, size 0x4
-                u64 AREF : 8;   // offset 0x0, size 0x4
-                u64 AFAIL : 2;  // offset 0x0, size 0x4
-                u64 DATE : 1;   // offset 0x0, size 0x4
-                u64 DATM : 1;   // offset 0x0, size 0x4
-                u64 ZTE : 1;    // offset 0x0, size 0x4
-                u64 ZTST : 2;   // offset 0x0, size 0x4
-                u64 pad19 : 45; // offset 0x0, size 0x4
-            } test1;            // offset 0x70, size 0x8
-            long test1addr;     // offset 0x78, size 0x4
-        } draw01;               // offset 0x60, size 0x80
-        struct /* @anon8 */ {
-            // total size: 0x80
-            struct /* @anon16 */ {
-                // total size: 0x8
-                u64 FBP : 9;    // offset 0x0, size 0x4
-                u64 pad09 : 7;  // offset 0x0, size 0x4
-                u64 FBW : 6;    // offset 0x0, size 0x4
-                u64 pad22 : 2;  // offset 0x0, size 0x4
-                u64 PSM : 6;    // offset 0x0, size 0x4
-                u64 pad30 : 2;  // offset 0x0, size 0x4
-                u64 FBMSK : 32; // offset 0x0, size 0x4
-            } frame2;           // offset 0x0, size 0x8
-            u64 frame2addr;     // offset 0x8, size 0x4
-            struct /* @anon28 */ {
-                // total size: 0x8
-                u64 ZBP : 9;    // offset 0x0, size 0x4
-                u64 pad09 : 15; // offset 0x0, size 0x4
-                u64 PSM : 4;    // offset 0x0, size 0x4
-                u64 pad28 : 4;  // offset 0x0, size 0x4
-                u64 ZMSK : 1;   // offset 0x0, size 0x4
-                u64 pad33 : 31; // offset 0x0, size 0x4
-            } zbuf2;            // offset 0x10, size 0x8
-            long zbuf2addr;     // offset 0x18, size 0x4
-            struct /* @anon21 */ {
-                // total size: 0x8
-                u64 OFX : 16;   // offset 0x0, size 0x4
-                u64 pad16 : 16; // offset 0x0, size 0x4
-                u64 OFY : 16;   // offset 0x0, size 0x4
-                u64 pad48 : 16; // offset 0x0, size 0x4
-            } xyoffset2;        // offset 0x20, size 0x8
-            long xyoffset2addr; // offset 0x28, size 0x4
-            struct /* @anon12 */ {
-                // total size: 0x8
-                u64 SCAX0 : 11; // offset 0x0, size 0x4
-                u64 pad11 : 5;  // offset 0x0, size 0x4
-                u64 SCAX1 : 11; // offset 0x0, size 0x4
-                u64 pad27 : 5;  // offset 0x0, size 0x4
-                u64 SCAY0 : 11; // offset 0x0, size 0x4
-                u64 pad43 : 5;  // offset 0x0, size 0x4
-                u64 SCAY1 : 11; // offset 0x0, size 0x4
-                u64 pad59 : 5;  // offset 0x0, size 0x4
-            } scissor2;         // offset 0x30, size 0x8
-            long scissor2addr;  // offset 0x38, size 0x4
-            struct /* @anon5 */ {
-                // total size: 0x8
-                u64 AC : 1;      // offset 0x0, size 0x4
-                u64 pad01 : 63;  // offset 0x0, size 0x4
-            } prmodecont;        // offset 0x40, size 0x8
-            long prmodecontaddr; // offset 0x48, size 0x4
-            struct /* @anon27 */ {
-                // total size: 0x8
-                u64 CLAMP : 1;  // offset 0x0, size 0x4
-                u64 pad01 : 63; // offset 0x0, size 0x4
-            } colclamp;         // offset 0x50, size 0x8
-            long colclampaddr;  // offset 0x58, size 0x4
-            struct /* @anon9 */ {
-                // total size: 0x8
-                u64 DTHE : 1;   // offset 0x0, size 0x4
-                u64 pad01 : 63; // offset 0x0, size 0x4
-            } dthe;             // offset 0x60, size 0x8
-            long dtheaddr;      // offset 0x68, size 0x4
-            struct /* @anon20 */ {
-                // total size: 0x8
-                u64 ATE : 1;    // offset 0x0, size 0x4
-                u64 ATST : 3;   // offset 0x0, size 0x4
-                u64 AREF : 8;   // offset 0x0, size 0x4
-                u64 AFAIL : 2;  // offset 0x0, size 0x4
-                u64 DATE : 1;   // offset 0x0, size 0x4
-                u64 DATM : 1;   // offset 0x0, size 0x4
-                u64 ZTE : 1;    // offset 0x0, size 0x4
-                u64 ZTST : 2;   // offset 0x0, size 0x4
-                u64 pad19 : 45; // offset 0x0, size 0x4
-            } test2;            // offset 0x70, size 0x8
-            long test2addr;     // offset 0x78, size 0x4
-        } draw02;               // offset 0xE0, size 0x80
-        struct /* @anon14 */ {
-            // total size: 0x60
-            struct /* @anon20 */ {
-                // total size: 0x8
-                u64 ATE : 1;    // offset 0x0, size 0x4
-                u64 ATST : 3;   // offset 0x0, size 0x4
-                u64 AREF : 8;   // offset 0x0, size 0x4
-                u64 AFAIL : 2;  // offset 0x0, size 0x4
-                u64 DATE : 1;   // offset 0x0, size 0x4
-                u64 DATM : 1;   // offset 0x0, size 0x4
-                u64 ZTE : 1;    // offset 0x0, size 0x4
-                u64 ZTST : 2;   // offset 0x0, size 0x4
-                u64 pad19 : 45; // offset 0x0, size 0x4
-            } testa;            // offset 0x0, size 0x8
-            long testaaddr;     // offset 0x8, size 0x4
-            struct /* @anon30 */ {
-                // total size: 0x8
-                u64 PRIM : 3;   // offset 0x0, size 0x4
-                u64 IIP : 1;    // offset 0x0, size 0x4
-                u64 TME : 1;    // offset 0x0, size 0x4
-                u64 FGE : 1;    // offset 0x0, size 0x4
-                u64 ABE : 1;    // offset 0x0, size 0x4
-                u64 AA1 : 1;    // offset 0x0, size 0x4
-                u64 FST : 1;    // offset 0x0, size 0x4
-                u64 CTXT : 1;   // offset 0x0, size 0x4
-                u64 FIX : 1;    // offset 0x0, size 0x4
-                u64 pad11 : 53; // offset 0x0, size 0x4
-            } prim;             // offset 0x10, size 0x8
-            long primaddr;      // offset 0x18, size 0x4
-            struct /* @anon7 */ {
-                // total size: 0x8
-                u32 R : 8;  // offset 0x0, size 0x4
-                u32 G : 8;  // offset 0x0, size 0x4
-                u32 B : 8;  // offset 0x0, size 0x4
-                u32 A : 8;  // offset 0x0, size 0x4
-                f32 Q;      // offset 0x4, size 0x4
-            } rgbaq;        // offset 0x20, size 0x8
-            long rgbaqaddr; // offset 0x28, size 0x4
-            struct /* @anon24 */ {
-                // total size: 0x8
-                u64 X : 16; // offset 0x0, size 0x4
-                u64 Y : 16; // offset 0x0, size 0x4
-                u64 Z : 32; // offset 0x0, size 0x4
-            } xyz2a;        // offset 0x30, size 0x8
-            long xyz2aaddr; // offset 0x38, size 0x4
-            struct /* @anon24 */ {
-                // total size: 0x8
-                u64 X : 16; // offset 0x0, size 0x4
-                u64 Y : 16; // offset 0x0, size 0x4
-                u64 Z : 32; // offset 0x0, size 0x4
-            } xyz2b;        // offset 0x40, size 0x8
-            long xyz2baddr; // offset 0x48, size 0x4
-            struct /* @anon20 */ {
-                // total size: 0x8
-                u64 ATE : 1;    // offset 0x0, size 0x4
-                u64 ATST : 3;   // offset 0x0, size 0x4
-                u64 AREF : 8;   // offset 0x0, size 0x4
-                u64 AFAIL : 2;  // offset 0x0, size 0x4
-                u64 DATE : 1;   // offset 0x0, size 0x4
-                u64 DATM : 1;   // offset 0x0, size 0x4
-                u64 ZTE : 1;    // offset 0x0, size 0x4
-                u64 ZTST : 2;   // offset 0x0, size 0x4
-                u64 pad19 : 45; // offset 0x0, size 0x4
-            } testb;            // offset 0x50, size 0x8
-            long testbaddr;     // offset 0x58, size 0x4
-        } clear0;               // offset 0x160, size 0x60
-        struct /* @anon6 */ {
-            // total size: 0x10
-            u64 NLOOP : 15; // offset 0x0, size 0x4
-            u64 EOP : 1;    // offset 0x0, size 0x4
-            u64 pad16 : 16; // offset 0x0, size 0x4
-            u64 id : 14;    // offset 0x0, size 0x4
-            u64 PRE : 1;    // offset 0x0, size 0x4
-            u64 PRIM : 11;  // offset 0x0, size 0x4
-            u64 FLG : 2;    // offset 0x0, size 0x4
-            u64 NREG : 4;   // offset 0x0, size 0x4
-            u64 REGS0 : 4;  // offset 0x8, size 0x4
-            u64 REGS1 : 4;  // offset 0x8, size 0x4
-            u64 REGS2 : 4;  // offset 0x8, size 0x4
-            u64 REGS3 : 4;  // offset 0x8, size 0x4
-            u64 REGS4 : 4;  // offset 0x8, size 0x4
-            u64 REGS5 : 4;  // offset 0x8, size 0x4
-            u64 REGS6 : 4;  // offset 0x8, size 0x4
-            u64 REGS7 : 4;  // offset 0x8, size 0x4
-            u64 REGS8 : 4;  // offset 0x8, size 0x4
-            u64 REGS9 : 4;  // offset 0x8, size 0x4
-            u64 REGS10 : 4; // offset 0x8, size 0x4
-            u64 REGS11 : 4; // offset 0x8, size 0x4
-            u64 REGS12 : 4; // offset 0x8, size 0x4
-            u64 REGS13 : 4; // offset 0x8, size 0x4
-            u64 REGS14 : 4; // offset 0x8, size 0x4
-            u64 REGS15 : 4; // offset 0x8, size 0x4
-        } giftag1;          // offset 0x1C0, size 0x10
-        struct /* @anon32 */ {
-            // total size: 0x80
-            struct /* @anon16 */ {
-                // total size: 0x8
-                u64 FBP : 9;    // offset 0x0, size 0x4
-                u64 pad09 : 7;  // offset 0x0, size 0x4
-                u64 FBW : 6;    // offset 0x0, size 0x4
-                u64 pad22 : 2;  // offset 0x0, size 0x4
-                u64 PSM : 6;    // offset 0x0, size 0x4
-                u64 pad30 : 2;  // offset 0x0, size 0x4
-                u64 FBMSK : 32; // offset 0x0, size 0x4
-            } frame1;           // offset 0x0, size 0x8
-            u64 frame1addr;     // offset 0x8, size 0x4
-            struct /* @anon28 */ {
-                // total size: 0x8
-                u64 ZBP : 9;    // offset 0x0, size 0x4
-                u64 pad09 : 15; // offset 0x0, size 0x4
-                u64 PSM : 4;    // offset 0x0, size 0x4
-                u64 pad28 : 4;  // offset 0x0, size 0x4
-                u64 ZMSK : 1;   // offset 0x0, size 0x4
-                u64 pad33 : 31; // offset 0x0, size 0x4
-            } zbuf1;            // offset 0x10, size 0x8
-            long zbuf1addr;     // offset 0x18, size 0x4
-            struct /* @anon21 */ {
-                // total size: 0x8
-                u64 OFX : 16;   // offset 0x0, size 0x4
-                u64 pad16 : 16; // offset 0x0, size 0x4
-                u64 OFY : 16;   // offset 0x0, size 0x4
-                u64 pad48 : 16; // offset 0x0, size 0x4
-            } xyoffset1;        // offset 0x20, size 0x8
-            long xyoffset1addr; // offset 0x28, size 0x4
-            struct /* @anon12 */ {
-                // total size: 0x8
-                u64 SCAX0 : 11; // offset 0x0, size 0x4
-                u64 pad11 : 5;  // offset 0x0, size 0x4
-                u64 SCAX1 : 11; // offset 0x0, size 0x4
-                u64 pad27 : 5;  // offset 0x0, size 0x4
-                u64 SCAY0 : 11; // offset 0x0, size 0x4
-                u64 pad43 : 5;  // offset 0x0, size 0x4
-                u64 SCAY1 : 11; // offset 0x0, size 0x4
-                u64 pad59 : 5;  // offset 0x0, size 0x4
-            } scissor1;         // offset 0x30, size 0x8
-            long scissor1addr;  // offset 0x38, size 0x4
-            struct /* @anon5 */ {
-                // total size: 0x8
-                u64 AC : 1;      // offset 0x0, size 0x4
-                u64 pad01 : 63;  // offset 0x0, size 0x4
-            } prmodecont;        // offset 0x40, size 0x8
-            long prmodecontaddr; // offset 0x48, size 0x4
-            struct /* @anon27 */ {
-                // total size: 0x8
-                u64 CLAMP : 1;  // offset 0x0, size 0x4
-                u64 pad01 : 63; // offset 0x0, size 0x4
-            } colclamp;         // offset 0x50, size 0x8
-            long colclampaddr;  // offset 0x58, size 0x4
-            struct /* @anon9 */ {
-                // total size: 0x8
-                u64 DTHE : 1;   // offset 0x0, size 0x4
-                u64 pad01 : 63; // offset 0x0, size 0x4
-            } dthe;             // offset 0x60, size 0x8
-            long dtheaddr;      // offset 0x68, size 0x4
-            struct /* @anon20 */ {
-                // total size: 0x8
-                u64 ATE : 1;    // offset 0x0, size 0x4
-                u64 ATST : 3;   // offset 0x0, size 0x4
-                u64 AREF : 8;   // offset 0x0, size 0x4
-                u64 AFAIL : 2;  // offset 0x0, size 0x4
-                u64 DATE : 1;   // offset 0x0, size 0x4
-                u64 DATM : 1;   // offset 0x0, size 0x4
-                u64 ZTE : 1;    // offset 0x0, size 0x4
-                u64 ZTST : 2;   // offset 0x0, size 0x4
-                u64 pad19 : 45; // offset 0x0, size 0x4
-            } test1;            // offset 0x70, size 0x8
-            long test1addr;     // offset 0x78, size 0x4
-        } draw11;               // offset 0x1D0, size 0x80
-        struct /* @anon8 */ {
-            // total size: 0x80
-            struct /* @anon16 */ {
-                // total size: 0x8
-                u64 FBP : 9;    // offset 0x0, size 0x4
-                u64 pad09 : 7;  // offset 0x0, size 0x4
-                u64 FBW : 6;    // offset 0x0, size 0x4
-                u64 pad22 : 2;  // offset 0x0, size 0x4
-                u64 PSM : 6;    // offset 0x0, size 0x4
-                u64 pad30 : 2;  // offset 0x0, size 0x4
-                u64 FBMSK : 32; // offset 0x0, size 0x4
-            } frame2;           // offset 0x0, size 0x8
-            u64 frame2addr;     // offset 0x8, size 0x4
-            struct /* @anon28 */ {
-                // total size: 0x8
-                u64 ZBP : 9;    // offset 0x0, size 0x4
-                u64 pad09 : 15; // offset 0x0, size 0x4
-                u64 PSM : 4;    // offset 0x0, size 0x4
-                u64 pad28 : 4;  // offset 0x0, size 0x4
-                u64 ZMSK : 1;   // offset 0x0, size 0x4
-                u64 pad33 : 31; // offset 0x0, size 0x4
-            } zbuf2;            // offset 0x10, size 0x8
-            long zbuf2addr;     // offset 0x18, size 0x4
-            struct /* @anon21 */ {
-                // total size: 0x8
-                u64 OFX : 16;   // offset 0x0, size 0x4
-                u64 pad16 : 16; // offset 0x0, size 0x4
-                u64 OFY : 16;   // offset 0x0, size 0x4
-                u64 pad48 : 16; // offset 0x0, size 0x4
-            } xyoffset2;        // offset 0x20, size 0x8
-            long xyoffset2addr; // offset 0x28, size 0x4
-            struct /* @anon12 */ {
-                // total size: 0x8
-                u64 SCAX0 : 11; // offset 0x0, size 0x4
-                u64 pad11 : 5;  // offset 0x0, size 0x4
-                u64 SCAX1 : 11; // offset 0x0, size 0x4
-                u64 pad27 : 5;  // offset 0x0, size 0x4
-                u64 SCAY0 : 11; // offset 0x0, size 0x4
-                u64 pad43 : 5;  // offset 0x0, size 0x4
-                u64 SCAY1 : 11; // offset 0x0, size 0x4
-                u64 pad59 : 5;  // offset 0x0, size 0x4
-            } scissor2;         // offset 0x30, size 0x8
-            long scissor2addr;  // offset 0x38, size 0x4
-            struct /* @anon5 */ {
-                // total size: 0x8
-                u64 AC : 1;      // offset 0x0, size 0x4
-                u64 pad01 : 63;  // offset 0x0, size 0x4
-            } prmodecont;        // offset 0x40, size 0x8
-            long prmodecontaddr; // offset 0x48, size 0x4
-            struct /* @anon27 */ {
-                // total size: 0x8
-                u64 CLAMP : 1;  // offset 0x0, size 0x4
-                u64 pad01 : 63; // offset 0x0, size 0x4
-            } colclamp;         // offset 0x50, size 0x8
-            long colclampaddr;  // offset 0x58, size 0x4
-            struct /* @anon9 */ {
-                // total size: 0x8
-                u64 DTHE : 1;   // offset 0x0, size 0x4
-                u64 pad01 : 63; // offset 0x0, size 0x4
-            } dthe;             // offset 0x60, size 0x8
-            long dtheaddr;      // offset 0x68, size 0x4
-            struct /* @anon20 */ {
-                // total size: 0x8
-                u64 ATE : 1;    // offset 0x0, size 0x4
-                u64 ATST : 3;   // offset 0x0, size 0x4
-                u64 AREF : 8;   // offset 0x0, size 0x4
-                u64 AFAIL : 2;  // offset 0x0, size 0x4
-                u64 DATE : 1;   // offset 0x0, size 0x4
-                u64 DATM : 1;   // offset 0x0, size 0x4
-                u64 ZTE : 1;    // offset 0x0, size 0x4
-                u64 ZTST : 2;   // offset 0x0, size 0x4
-                u64 pad19 : 45; // offset 0x0, size 0x4
-            } test2;            // offset 0x70, size 0x8
-            long test2addr;     // offset 0x78, size 0x4
-        } draw12;               // offset 0x250, size 0x80
-        struct /* @anon14 */ {
-            // total size: 0x60
-            struct /* @anon20 */ {
-                // total size: 0x8
-                u64 ATE : 1;    // offset 0x0, size 0x4
-                u64 ATST : 3;   // offset 0x0, size 0x4
-                u64 AREF : 8;   // offset 0x0, size 0x4
-                u64 AFAIL : 2;  // offset 0x0, size 0x4
-                u64 DATE : 1;   // offset 0x0, size 0x4
-                u64 DATM : 1;   // offset 0x0, size 0x4
-                u64 ZTE : 1;    // offset 0x0, size 0x4
-                u64 ZTST : 2;   // offset 0x0, size 0x4
-                u64 pad19 : 45; // offset 0x0, size 0x4
-            } testa;            // offset 0x0, size 0x8
-            long testaaddr;     // offset 0x8, size 0x4
-            struct /* @anon30 */ {
-                // total size: 0x8
-                u64 PRIM : 3;   // offset 0x0, size 0x4
-                u64 IIP : 1;    // offset 0x0, size 0x4
-                u64 TME : 1;    // offset 0x0, size 0x4
-                u64 FGE : 1;    // offset 0x0, size 0x4
-                u64 ABE : 1;    // offset 0x0, size 0x4
-                u64 AA1 : 1;    // offset 0x0, size 0x4
-                u64 FST : 1;    // offset 0x0, size 0x4
-                u64 CTXT : 1;   // offset 0x0, size 0x4
-                u64 FIX : 1;    // offset 0x0, size 0x4
-                u64 pad11 : 53; // offset 0x0, size 0x4
-            } prim;             // offset 0x10, size 0x8
-            long primaddr;      // offset 0x18, size 0x4
-            struct /* @anon7 */ {
-                // total size: 0x8
-                u32 R : 8;  // offset 0x0, size 0x4
-                u32 G : 8;  // offset 0x0, size 0x4
-                u32 B : 8;  // offset 0x0, size 0x4
-                u32 A : 8;  // offset 0x0, size 0x4
-                f32 Q;      // offset 0x4, size 0x4
-            } rgbaq;        // offset 0x20, size 0x8
-            long rgbaqaddr; // offset 0x28, size 0x4
-            struct /* @anon24 */ {
-                // total size: 0x8
-                u64 X : 16; // offset 0x0, size 0x4
-                u64 Y : 16; // offset 0x0, size 0x4
-                u64 Z : 32; // offset 0x0, size 0x4
-            } xyz2a;        // offset 0x30, size 0x8
-            long xyz2aaddr; // offset 0x38, size 0x4
-            struct /* @anon24 */ {
-                // total size: 0x8
-                u64 X : 16; // offset 0x0, size 0x4
-                u64 Y : 16; // offset 0x0, size 0x4
-                u64 Z : 32; // offset 0x0, size 0x4
-            } xyz2b;        // offset 0x40, size 0x8
-            long xyz2baddr; // offset 0x48, size 0x4
-            struct /* @anon20 */ {
-                // total size: 0x8
-                u64 ATE : 1;    // offset 0x0, size 0x4
-                u64 ATST : 3;   // offset 0x0, size 0x4
-                u64 AREF : 8;   // offset 0x0, size 0x4
-                u64 AFAIL : 2;  // offset 0x0, size 0x4
-                u64 DATE : 1;   // offset 0x0, size 0x4
-                u64 DATM : 1;   // offset 0x0, size 0x4
-                u64 ZTE : 1;    // offset 0x0, size 0x4
-                u64 ZTST : 2;   // offset 0x0, size 0x4
-                u64 pad19 : 45; // offset 0x0, size 0x4
-            } testb;            // offset 0x50, size 0x8
-            long testbaddr;     // offset 0x58, size 0x4
-        } clear1;               // offset 0x2D0, size 0x60
-    } Db;                       // offset 0x70, size 0x330
+    u32 VideoMode;              // offset 0x0, size 0x4
+    u32 InterlaceMode;          // offset 0x4, size 0x4
+    u32 DisplayMode;            // offset 0x8, size 0x4
+    s32 DispWidth;              // offset 0xC, size 0x4
+    s32 DispHeight;             // offset 0x10, size 0x4
+    u32 MAGH;                   // offset 0x14, size 0x4
+    u32 FrameBitDepth;          // offset 0x18, size 0x4
+    u32 FrameBuffForm;          // offset 0x1C, size 0x4
+    u32 FrameBuffPageX;         // offset 0x20, size 0x4
+    u32 FrameBuffPageY;         // offset 0x24, size 0x4
+    u32 FrameBuffAdrs0;         // offset 0x28, size 0x4
+    u32 FrameBuffAdrs1;         // offset 0x2C, size 0x4
+    u32 ZBuffBitDepth;          // offset 0x30, size 0x4
+    u32 ZBuffForm;              // offset 0x34, size 0x4
+    u32 ZBuffPageX;             // offset 0x38, size 0x4
+    u32 ZBuffPageY;             // offset 0x3C, size 0x4
+    u32 ZBuffAdrs;              // offset 0x40, size 0x4
+    f32 ZBuffMax;               // offset 0x44, size 0x4
+    u32 TextureStartAdrs;       // offset 0x48, size 0x4
+    s32 Oddeven;                // offset 0x4C, size 0x4
+    s32 Dbi;                    // offset 0x50, size 0x4
+    s32 FrameCount;             // offset 0x54, size 0x4
+    s32 FrameCountNext;         // offset 0x58, size 0x4
+    s32 Irq_count;              // offset 0x5C, size 0x4
+    s32 Db_change_enable;       // offset 0x60, size 0x4
+    s8 pad64[0xC];              // offset 0x64, size 0xC
+    FLPS2Db Db;                 // offset 0x70, size 0x330
     u32 FrameClearColor;        // offset 0x3A0, size 0x4
     s32 D2dOffsetX;             // offset 0x3A4, size 0x4
     s32 D2dOffsetY;             // offset 0x3A8, size 0x4
@@ -2037,56 +1781,42 @@ typedef struct {
     s32 ScreenDispY;            // offset 0x3B8, size 0x4
     s32 ScreenAdjustX;          // offset 0x3BC, size 0x4
     s32 ScreenAdjustY;          // offset 0x3C0, size 0x4
-    struct /* @anon18 */ {
-        // total size: 0x90
-        struct /* @anon23 */ {
-            // total size: 0x4
-            u32 DIR : 1;         // offset 0x0, size 0x4
-            u32 p0 : 1;          // offset 0x0, size 0x4
-            u32 MOD : 2;         // offset 0x0, size 0x4
-            u32 ASP : 2;         // offset 0x0, size 0x4
-            u32 TTE : 1;         // offset 0x0, size 0x4
-            u32 TIE : 1;         // offset 0x0, size 0x4
-            u32 STR : 1;         // offset 0x0, size 0x4
-            u32 p1 : 7;          // offset 0x0, size 0x4
-            u32 TAG : 16;        // offset 0x0, size 0x4
-        } chcr;                  // offset 0x0, size 0x4
-        u32 p0[3];               // offset 0x4, size 0xC
-        void *madr;              // offset 0x10, size 0x4
-        u32 p1[3];               // offset 0x14, size 0xC
-        u32 qwc;                 // offset 0x20, size 0x4
-        u32 p2[3];               // offset 0x24, size 0xC
-        struct _sceDmaTag *tadr; // offset 0x30, size 0x4
-        u32 p3[3];               // offset 0x34, size 0xC
-        void *as0;               // offset 0x40, size 0x4
-        u32 p4[3];               // offset 0x44, size 0xC
-        void *as1;               // offset 0x50, size 0x4
-        u32 p5[3];               // offset 0x54, size 0xC
-        u32 p6[4];               // offset 0x60, size 0x10
-        u32 p7[4];               // offset 0x70, size 0x10
-        void *sadr;              // offset 0x80, size 0x4
-        u32 p8[3];               // offset 0x84, size 0xC
-    } *DmaChan[10];              // offset 0x3C4, size 0x28
-    s32 NowVu1Code;              // offset 0x3EC, size 0x4
-    s32 NowVu1Size;              // offset 0x3F0, size 0x4
-    s32 DrawDisable;             // offset 0x3F4, size 0x4
-    u32 system_memory_start;     // offset 0x3F8, size 0x4
-    s32 system_memory_size;      // offset 0x3FC, size 0x4
-    u32 SystemStatus;            // offset 0x400, size 0x4
-    s32 SystemIndex;             // offset 0x404, size 0x4
-    u32 SystemTmpBuffStartAdrs;  // offset 0x408, size 0x4
-    u32 SystemTmpBuffEndAdrs;    // offset 0x40C, size 0x4
-    u32 SystemTmpBuffNow;        // offset 0x410, size 0x4
-    u32 SystemTmpBuffHandle[2];  // offset 0x414, size 0x8
-    u64 RenderTESTStatus1;       // offset 0x420, size 0x4
-    u64 RenderTESTStatus2;       // offset 0x428, size 0x4
-    u64 RenderZBUFStatus1;       // offset 0x430, size 0x4
-    u64 RenderZBUFStatus2;       // offset 0x438, size 0x4
-    u64 RenderSCISSORStatus1;    // offset 0x440, size 0x4
-    s32 RenderSCISSORValue1[4];  // offset 0x448, size 0x10
-    u64 RenderSCISSORStatus2;    // offset 0x458, size 0x4
-    s32 RenderSCISSORValue2[4];  // offset 0x460, size 0x10
+    FLPS2DMAChan *DmaChan[10];  // offset 0x3C4, size 0x28
+    s32 NowVu1Code;             // offset 0x3EC, size 0x4
+    s32 NowVu1Size;             // offset 0x3F0, size 0x4
+    s32 DrawDisable;            // offset 0x3F4, size 0x4
+    u32 system_memory_start;    // offset 0x3F8, size 0x4
+    s32 system_memory_size;     // offset 0x3FC, size 0x4
+    u32 SystemStatus;           // offset 0x400, size 0x4
+    s32 SystemIndex;            // offset 0x404, size 0x4
+    u32 SystemTmpBuffStartAdrs; // offset 0x408, size 0x4
+    u32 SystemTmpBuffEndAdrs;   // offset 0x40C, size 0x4
+    u32 SystemTmpBuffNow;       // offset 0x410, size 0x4
+    u32 SystemTmpBuffHandle[2]; // offset 0x414, size 0x8
+    u64 RenderTESTStatus1;      // offset 0x420, size 0x4
+    u64 RenderTESTStatus2;      // offset 0x428, size 0x4
+    u64 RenderZBUFStatus1;      // offset 0x430, size 0x4
+    u64 RenderZBUFStatus2;      // offset 0x438, size 0x4
+    u64 RenderSCISSORStatus1;   // offset 0x440, size 0x4
+    s32 RenderSCISSORValue1[4]; // offset 0x448, size 0x10
+    u64 RenderSCISSORStatus2;   // offset 0x458, size 0x4
+    s32 RenderSCISSORValue2[4]; // offset 0x460, size 0x10
 } FLPS2State;
+
+typedef struct {
+    // total size: 0x3C
+    u32 channel_id;             // offset 0x0, size 0x4
+    u32 queue_size;             // offset 0x4, size 0x4
+    s32 handleID;               // offset 0x8, size 0x4
+    u32 dma_queue_handle[2];    // offset 0xC, size 0x8
+    u32 queue_ctr[2];           // offset 0x14, size 0x8
+    u32 queue_ptr0[2];          // offset 0x1C, size 0x8
+    u32 queue_ptr1[2];          // offset 0x24, size 0x8
+    u32 now_adrs;               // offset 0x2C, size 0x4
+    u32 dma_normal_mode_status; // offset 0x30, size 0x4
+    u32 old_queue_data;         // offset 0x34, size 0x4
+    u32 old_endtag;             // offset 0x38, size 0x4
+} FLPS2VIF1Control;
 
 enum _FLSETRENDERSTATE {
     FLRENDER_CULL = 0,
@@ -2340,7 +2070,7 @@ typedef struct {
     u8 *baseandcap[2]; // offset 0x4, size 0x8
     u8 *frame[2];      // offset 0xC, size 0x8
     s32 align;         // offset 0x14, size 0x4
-} FMS_FL;
+} FL_FMS;
 
 typedef struct {
     // total size: 0x10
@@ -2449,6 +2179,9 @@ typedef struct {
 
 // .text
 
+void mflInit(void *mem_ptr, s32 memsize, s32 memalign);                     // Range: 0x115FB0 -> 0x115FFC
+int fmsInitialize(FL_FMS *lp, void *memory_ptr, s32 memsize, s32 memalign); // Range: 0x115D90 -> 0x115E80
+
 void plmemInit(MEM_MGR *memmgr, MEM_BLOCK *block, s32 count, void *mem_ptr, s32 memsize, s32 memalign,
                s32 direction);                               // Range: 0x116180 -> 0x11629C
 u32 plmemRegister(MEM_MGR *memmgr, s32 len);                 // Range: 0x1162A0 -> 0x1162D8
@@ -2539,21 +2272,31 @@ void mmFree(_MEMMAN_OBJ *mmobj, u8 *adrs);           // Range: 0x3C0560 -> 0x3C0
 void ppg_Initialize(void *lcmAdrs, s32 lcmSize);     // Range: 0x3C05E0 -> 0x3C0650
 void ppgMakeConvTableTexDC();                        // Range: 0x3C3620 -> 0x3C3768
 void CP3toPS2Draw();                                 // Range: 0x3C64D0 -> 0x3C6D8C
+void flAdxModuleInit();                              // Range: 0x3E51D0 -> 0x3E521C
 void njUserInit();                                   // Range: 0x3E5BA0 -> 0x3E5E64
 void cpInitTask();                                   // Range: 0x3E61C0 -> 0x3E61F0
 void cpReadyTask(u16 num, void *func_adrs);          // Range: 0x3E61F0 -> 0x3E625C
 
-s32 flSetRenderState(enum _FLSETRENDERSTATE func, u32 value); // Range: 0x3EEC50 -> 0x3EFDD8
-void flAdjustScreen(s32 x, s32 y);                            // Range: 0x3F2230 -> 0x3F2268
-s32 flSetDebugMode(u32 flag);                                 // Range: 0x3F2280 -> 0x3F22A0
-s32 flPrintL(s32 posi_x, s32 posi_y, s8 *format);             // Range: 0x3F2B40 -> 0x3F2D08
-s32 flPrintColor(u32 col);                                    // Range: 0x3F2D10 -> 0x3F2E04
-void *flAllocMemory(s32 size);                                // Range: 0x3F5F30 -> 0x3F5F60
-s32 flGetFrame(FMS_FRAME *frame);                             // Range: 0x3F5F60 -> 0x3F5F90
-s32 flGetSpace();                                             // Range: 0x3F5F90 -> 0x3F5FB4
-s32 flInitialize();                                           // Range: 0x3FE0B0 -> 0x3FE1A8
-s32 flFlip(u32 flag);                                         // Range: 0x3FE580 -> 0x3FE648
+s32 flSetRenderState(enum _FLSETRENDERSTATE func, u32 value);                       // Range: 0x3EEC50 -> 0x3EFDD8
+void flAdjustScreen(s32 x, s32 y);                                                  // Range: 0x3F2230 -> 0x3F2268
+s32 flSetDebugMode(u32 flag);                                                       // Range: 0x3F2280 -> 0x3F22A0
+void flPS2DebugInit();                                                              // Range: 0x3F2340 -> 0x3F242C
+s32 flPrintL(s32 posi_x, s32 posi_y, s8 *format);                                   // Range: 0x3F2B40 -> 0x3F2D08
+s32 flPrintColor(u32 col);                                                          // Range: 0x3F2D10 -> 0x3F2E04
+void flPS2DmaInitControl(FLPS2VIF1Control *dma_ptr, u32 queue_size, void *handler); // Range: 0x3F4DD0 -> 0x3F4ECC
+s32 flPS2DmaInterrupt(s32 ch);                                                      // Range: 0x3F5200 -> 0x3F55F0
+void flPS2IopModuleLoad(s8 *fname, s32 args, s8 *argp, s32 type);                   // Range: 0x3F5960 -> 0x3F5A1C
+void flMemset(void *dst, u32 pat, s32 size);                                        // Range: 0x3F5E40 -> 0x3F5EA4
+void *flAllocMemory(s32 size);                                                      // Range: 0x3F5F30 -> 0x3F5F60
+s32 flGetFrame(FMS_FRAME *frame);                                                   // Range: 0x3F5F60 -> 0x3F5F90
+s32 flGetSpace();                                                                   // Range: 0x3F5F90 -> 0x3F5FB4
+void *flAllocMemoryS(s32 size);                                                     // Range: 0x3F5FC0 -> 0x3F5FF0
+void flPS2SystemTmpBuffInit();                                                      // Range: 0x3F62E0 -> 0x3F6348
+void flPS2VramInit();                                                               // Range: 0x3FCFB0 -> 0x3FD068
+s32 flInitialize();                                                                 // Range: 0x3FE0B0 -> 0x3FE1A8
+s32 flFlip(u32 flag);                                                               // Range: 0x3FE580 -> 0x3FE648
 
+s32 flPS2PADModuleInit();                                    // Range: 0x4000B0 -> 0x400120
 s32 tarPADInit();                                            // Range: 0x400120 -> 0x40041C
 void tarPADDestroy();                                        // Range: 0x400420 -> 0x400448
 void flPADConfigSetACRtoXX(s32 padnum, s16 a, s16 b, s16 c); // Range: 0x400450 -> 0x4004B8
@@ -2571,99 +2314,110 @@ extern const u32 flpad_io_map[25];             // size: 0x64, address: 0x55F560
 
 // .sbss
 
-extern BG_MVXY bg_mvxy;           // size: 0x18, address: 0x578C80
-extern s16 base_y_pos;            // size: 0x2, address: 0x578CC4
-extern IO io_w;                   // size: 0x6C, address: 0x579230
-extern TPU *tpu_free;             // size: 0x4, address: 0x579A8C
-extern u8 *texcash_melt_buffer;   // size: 0x4, address: 0x579A90
-extern s32 Zoom_Base_Position_Z;  // size: 0x4, address: 0x579AC4
-extern s32 Zoom_Base_Position_Y;  // size: 0x4, address: 0x579AC8
-extern s32 Zoom_Base_Position_X;  // size: 0x4, address: 0x579ACC
-extern f32 Frame_Zoom_Y;          // size: 0x4, address: 0x579AD0
-extern f32 Frame_Zoom_X;          // size: 0x4, address: 0x579AD4
-extern f32 SA_Zoom_Y;             // size: 0x4, address: 0x579AD8
-extern f32 SA_Zoom_X;             // size: 0x4, address: 0x579ADC
-extern f32 Screen_Zoom_Y;         // size: 0x4, address: 0x579AE0
-extern f32 Screen_Zoom_X;         // size: 0x4, address: 0x579AE4
-extern u8 Screen_PAL;             // size: 0x1, address: 0x579C20
-extern u16 PLsw[2][2];            // size: 0x8, address: 0x579C28
-extern u32 Interrupt_Timer;       // size: 0x4, address: 0x579C34
-extern u16 p4sw_buff;             // size: 0x2, address: 0x579C38
-extern u16 p3sw_buff;             // size: 0x2, address: 0x579C3C
-extern u16 p2sw_buff;             // size: 0x2, address: 0x579C40
-extern u16 p1sw_buff;             // size: 0x2, address: 0x579C44
-extern u8 Interrupt_Flag;         // size: 0x1, address: 0x579C48
-extern s16 Correct_Y[4];          // size: 0x8, address: 0x579C50
-extern s16 Correct_X[4];          // size: 0x8, address: 0x579C58
-extern u8 Turbo_Timer;            // size: 0x1, address: 0x579C60
-extern u8 Turbo;                  // size: 0x1, address: 0x579C64
-extern u8 Disp_Size_V;            // size: 0x1, address: 0x579C6C
-extern u8 Disp_Size_H;            // size: 0x1, address: 0x579C70
-extern s32 Y_Adjust;              // size: 0x4, address: 0x579C94
-extern s32 X_Adjust;              // size: 0x4, address: 0x579C98
-extern u8 Process_Counter;        // size: 0x1, address: 0x579CA4
-extern u16 p4sw_1;                // size: 0x2, address: 0x579CA8
-extern u16 p4sw_0;                // size: 0x2, address: 0x579CAC
-extern u16 p3sw_1;                // size: 0x2, address: 0x579CB0
-extern u16 p3sw_0;                // size: 0x2, address: 0x579CB4
-extern u16 p2sw_1;                // size: 0x2, address: 0x579CB8
-extern u16 p2sw_0;                // size: 0x2, address: 0x579CBC
-extern u16 p1sw_1;                // size: 0x2, address: 0x579CC0
-extern u16 p1sw_0;                // size: 0x2, address: 0x579CC4
-extern struct _SYSTEM_W sys_w;    // size: 0x1C, address: 0x579D90
-extern u32 current_task_num;      // size: 0x4, address: 0x579DAC
-extern u16 VS_Win_Record[2];      // size: 0x4, address: 0x579DD8
-extern s16 Cont_Timer;            // size: 0x2, address: 0x579E18
-extern u16 Result_Timer[2];       // size: 0x4, address: 0x579E30
-extern s16 Offset_BG_X[6];        // size: 0xC, address: 0x579E38
-extern s16 Target_BG_X[6];        // size: 0xC, address: 0x579E48
-extern u16 WGJ_Win;               // size: 0x2, address: 0x579E54
-extern u16 Win_Record[2];         // size: 0x4, address: 0x579E5C
-extern s16 M_Timer;               // size: 0x2, address: 0x579FBC
-extern s16 G_Timer;               // size: 0x2, address: 0x57A02C
-extern u8 CPU_Rec[2];             // size: 0x2, address: 0x57A04C
-extern u8 CPU_Time_Lag[2];        // size: 0x2, address: 0x57A054
-extern u8 Play_Mode;              // size: 0x1, address: 0x57A0AC
-extern u8 Mode_Type;              // size: 0x1, address: 0x57A0C4
-extern u8 Replay_Status[2];       // size: 0x2, address: 0x57A0E8
-extern u8 Unsubstantial_BG[4];    // size: 0x4, address: 0x57A0F4
-extern u8 Cont_No[4];             // size: 0x4, address: 0x57A1F8
-extern u8 test_flag;              // size: 0x1, address: 0x57A200
-extern u8 Play_Type;              // size: 0x1, address: 0x57A250
-extern u8 Game_pause;             // size: 0x1, address: 0x57A260
-extern u8 M_No[4];                // size: 0x4, address: 0x57A29C
-extern u8 E_Number[2][4];         // size: 0x8, address: 0x57A2B8
-extern s8 Suicide[8];             // size: 0x8, address: 0x57A2F8
-extern s8 Last_Selected_EM[2];    // size: 0x2, address: 0x57A30C
-extern u8 Continue_Count_Down[2]; // size: 0x2, address: 0x57A33C
-extern u8 GO_No[4];               // size: 0x4, address: 0x57A344
-extern u8 Scene_Cut;              // size: 0x1, address: 0x57A348
-extern s8 Break_Com[2][20];       // size: 0x28, address: 0x57A4C0
-extern u8 Usage;                  // size: 0x1, address: 0x57A55C
-extern s8 Ignore_Entry[2];        // size: 0x2, address: 0x57A58C
-extern u8 Continue_Coin[2];       // size: 0x2, address: 0x57A590
-extern u8 Country;                // size: 0x1, address: 0x57A5E4
-extern s8 Player_id;              // size: 0x1, address: 0x57A60C
-extern s8 Cover_Timer;            // size: 0x1, address: 0x57A678
-extern s8 Next_Step;              // size: 0x1, address: 0x57A680
-extern s8 LOSER;                  // size: 0x1, address: 0x57A698
-extern s8 WINNER;                 // size: 0x1, address: 0x57A69C
-extern s8 Continue_Count[2];      // size: 0x2, address: 0x57A6B4
-extern s8 Forbid_Break;           // size: 0x1, address: 0x57A6BC
-extern u8 My_char[2];             // size: 0x2, address: 0x57A6D4
-extern s8 Break_Into;             // size: 0x1, address: 0x57A6D8
-extern s8 Winner_id;              // size: 0x1, address: 0x57A6E8
-extern u32 WGJ_Score;             // size: 0x4, address: 0x57A70C
-extern u32 Score[2][3];           // size: 0x18, address: 0x57A760
-extern u32 Record_Timer;          // size: 0x4, address: 0x57A810
-extern s8 Slow_Timer;             // size: 0x1, address: 0x57A830
-extern u8 sysSLOW;                // size: 0x1, address: 0x57A834
-extern u8 sysFF;                  // size: 0x1, address: 0x57A838
-extern s8 Debug_w[72];            // size: 0x48, address: 0x57A860
-extern s16 *dctex_linear;         // size: 0x4, address: 0x57A950
-extern MPP mpp_w;                 // size: 0x4C, address: 0x57A9F0
-extern s32 system_init_level;     // size: 0x4, address: 0x57AA3C
-extern TARPAD tarpad_root[2];     // size: 0x68, address: 0x57B040
+extern void (*plfree)(void *);            // size: 0x4, address: 0x578A10
+extern void *(*plmalloc)(s32);            // size: 0x4, address: 0x578A14
+extern BG_MVXY bg_mvxy;                   // size: 0x18, address: 0x578C80
+extern s16 base_y_pos;                    // size: 0x2, address: 0x578CC4
+extern IO io_w;                           // size: 0x6C, address: 0x579230
+extern TPU *tpu_free;                     // size: 0x4, address: 0x579A8C
+extern u8 *texcash_melt_buffer;           // size: 0x4, address: 0x579A90
+extern s32 Zoom_Base_Position_Z;          // size: 0x4, address: 0x579AC4
+extern s32 Zoom_Base_Position_Y;          // size: 0x4, address: 0x579AC8
+extern s32 Zoom_Base_Position_X;          // size: 0x4, address: 0x579ACC
+extern f32 Frame_Zoom_Y;                  // size: 0x4, address: 0x579AD0
+extern f32 Frame_Zoom_X;                  // size: 0x4, address: 0x579AD4
+extern f32 SA_Zoom_Y;                     // size: 0x4, address: 0x579AD8
+extern f32 SA_Zoom_X;                     // size: 0x4, address: 0x579ADC
+extern f32 Screen_Zoom_Y;                 // size: 0x4, address: 0x579AE0
+extern f32 Screen_Zoom_X;                 // size: 0x4, address: 0x579AE4
+extern u8 Screen_PAL;                     // size: 0x1, address: 0x579C20
+extern u16 PLsw[2][2];                    // size: 0x8, address: 0x579C28
+extern u32 Interrupt_Timer;               // size: 0x4, address: 0x579C34
+extern u16 p4sw_buff;                     // size: 0x2, address: 0x579C38
+extern u16 p3sw_buff;                     // size: 0x2, address: 0x579C3C
+extern u16 p2sw_buff;                     // size: 0x2, address: 0x579C40
+extern u16 p1sw_buff;                     // size: 0x2, address: 0x579C44
+extern u8 Interrupt_Flag;                 // size: 0x1, address: 0x579C48
+extern s16 Correct_Y[4];                  // size: 0x8, address: 0x579C50
+extern s16 Correct_X[4];                  // size: 0x8, address: 0x579C58
+extern u8 Turbo_Timer;                    // size: 0x1, address: 0x579C60
+extern u8 Turbo;                          // size: 0x1, address: 0x579C64
+extern u8 Disp_Size_V;                    // size: 0x1, address: 0x579C6C
+extern u8 Disp_Size_H;                    // size: 0x1, address: 0x579C70
+extern s32 Y_Adjust;                      // size: 0x4, address: 0x579C94
+extern s32 X_Adjust;                      // size: 0x4, address: 0x579C98
+extern u8 Process_Counter;                // size: 0x1, address: 0x579CA4
+extern u16 p4sw_1;                        // size: 0x2, address: 0x579CA8
+extern u16 p4sw_0;                        // size: 0x2, address: 0x579CAC
+extern u16 p3sw_1;                        // size: 0x2, address: 0x579CB0
+extern u16 p3sw_0;                        // size: 0x2, address: 0x579CB4
+extern u16 p2sw_1;                        // size: 0x2, address: 0x579CB8
+extern u16 p2sw_0;                        // size: 0x2, address: 0x579CBC
+extern u16 p1sw_1;                        // size: 0x2, address: 0x579CC0
+extern u16 p1sw_0;                        // size: 0x2, address: 0x579CC4
+extern struct _SYSTEM_W sys_w;            // size: 0x1C, address: 0x579D90
+extern u32 current_task_num;              // size: 0x4, address: 0x579DAC
+extern u16 VS_Win_Record[2];              // size: 0x4, address: 0x579DD8
+extern s16 Cont_Timer;                    // size: 0x2, address: 0x579E18
+extern u16 Result_Timer[2];               // size: 0x4, address: 0x579E30
+extern s16 Offset_BG_X[6];                // size: 0xC, address: 0x579E38
+extern s16 Target_BG_X[6];                // size: 0xC, address: 0x579E48
+extern u16 WGJ_Win;                       // size: 0x2, address: 0x579E54
+extern u16 Win_Record[2];                 // size: 0x4, address: 0x579E5C
+extern s16 M_Timer;                       // size: 0x2, address: 0x579FBC
+extern s16 G_Timer;                       // size: 0x2, address: 0x57A02C
+extern u8 CPU_Rec[2];                     // size: 0x2, address: 0x57A04C
+extern u8 CPU_Time_Lag[2];                // size: 0x2, address: 0x57A054
+extern u8 Play_Mode;                      // size: 0x1, address: 0x57A0AC
+extern u8 Mode_Type;                      // size: 0x1, address: 0x57A0C4
+extern u8 Replay_Status[2];               // size: 0x2, address: 0x57A0E8
+extern u8 Unsubstantial_BG[4];            // size: 0x4, address: 0x57A0F4
+extern u8 Cont_No[4];                     // size: 0x4, address: 0x57A1F8
+extern u8 test_flag;                      // size: 0x1, address: 0x57A200
+extern u8 Play_Type;                      // size: 0x1, address: 0x57A250
+extern u8 Game_pause;                     // size: 0x1, address: 0x57A260
+extern u8 M_No[4];                        // size: 0x4, address: 0x57A29C
+extern u8 E_Number[2][4];                 // size: 0x8, address: 0x57A2B8
+extern s8 Suicide[8];                     // size: 0x8, address: 0x57A2F8
+extern s8 Last_Selected_EM[2];            // size: 0x2, address: 0x57A30C
+extern u8 Continue_Count_Down[2];         // size: 0x2, address: 0x57A33C
+extern u8 GO_No[4];                       // size: 0x4, address: 0x57A344
+extern u8 Scene_Cut;                      // size: 0x1, address: 0x57A348
+extern s8 Break_Com[2][20];               // size: 0x28, address: 0x57A4C0
+extern u8 Usage;                          // size: 0x1, address: 0x57A55C
+extern s8 Ignore_Entry[2];                // size: 0x2, address: 0x57A58C
+extern u8 Continue_Coin[2];               // size: 0x2, address: 0x57A590
+extern u8 Country;                        // size: 0x1, address: 0x57A5E4
+extern s8 Player_id;                      // size: 0x1, address: 0x57A60C
+extern s8 Cover_Timer;                    // size: 0x1, address: 0x57A678
+extern s8 Next_Step;                      // size: 0x1, address: 0x57A680
+extern s8 LOSER;                          // size: 0x1, address: 0x57A698
+extern s8 WINNER;                         // size: 0x1, address: 0x57A69C
+extern s8 Continue_Count[2];              // size: 0x2, address: 0x57A6B4
+extern s8 Forbid_Break;                   // size: 0x1, address: 0x57A6BC
+extern u8 My_char[2];                     // size: 0x2, address: 0x57A6D4
+extern s8 Break_Into;                     // size: 0x1, address: 0x57A6D8
+extern s8 Winner_id;                      // size: 0x1, address: 0x57A6E8
+extern u32 WGJ_Score;                     // size: 0x4, address: 0x57A70C
+extern u32 Score[2][3];                   // size: 0x18, address: 0x57A760
+extern u32 Record_Timer;                  // size: 0x4, address: 0x57A810
+extern s8 Slow_Timer;                     // size: 0x1, address: 0x57A830
+extern u8 sysSLOW;                        // size: 0x1, address: 0x57A834
+extern u8 sysFF;                          // size: 0x1, address: 0x57A838
+extern s8 Debug_w[72];                    // size: 0x48, address: 0x57A860
+extern s16 *dctex_linear;                 // size: 0x4, address: 0x57A950
+extern MPP mpp_w;                         // size: 0x4C, address: 0x57A9F0
+extern s32 system_init_level;             // size: 0x4, address: 0x57AA3C
+extern s32 flPS2FlipCancelFlag;           // size: 0x4, address: 0x57AB78
+extern s32 flClayNum;                     // size: 0x4, address: 0x57AB88
+extern s32 flPTNum;                       // size: 0x4, address: 0x57AE38
+extern FLPS2VIF1Control flPs2VIF1Control; // size: 0x3C, address: 0x57AE50
+extern FL_FMS flFMS;                      // size: 0x18, address: 0x57AEB0
+extern u32 flSystemRenderOperation;       // size: 0x4, address: 0x57AEC8
+extern u32 flSystemRenderState;           // size: 0x4, address: 0x57AECC
+extern u32 flLoadCount;                   // size: 0x4, address: 0x57AED8
+extern s32 flCTNum;                       // size: 0x4, address: 0x57AF44
+extern TARPAD tarpad_root[2];             // size: 0x68, address: 0x57B040
 
 // .bss
 
