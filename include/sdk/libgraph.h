@@ -76,7 +76,25 @@ typedef struct {
     sceGsClear clear1;
 } sceGsDBuffDc;
 
+typedef struct {
+	sceGifTag	giftag0;
+	sceGsBitbltbuf	bitbltbuf;
+	long		bitbltbufaddr;
+	sceGsTrxpos	trxpos;
+	long		trxposaddr;
+	sceGsTrxreg	trxreg;
+	long		trxregaddr;
+	sceGsTrxdir	trxdir;
+	long		trxdiraddr;
+	sceGifTag	giftag1;
+} sceGsLoadImage;
+
 int sceGsSyncV(int mode);
-void sceGsResetPath(void);
+int *sceGsSyncVCallback(int (*func)(int));
+void sceGsResetPath();
+void sceGsResetGraph(short mode, short inter, short omode, short ffmode);
+int sceGsSyncPath(int mode, unsigned short timeout);
+int sceGsSetDefLoadImage(sceGsLoadImage *lp, short dbp, short dbw, short dpsm, short x, short y, short w, short h);
+int sceGsExecLoadImage(sceGsLoadImage *lp, unsigned int *srcaddr); // The address should be u_int128
 
 #endif

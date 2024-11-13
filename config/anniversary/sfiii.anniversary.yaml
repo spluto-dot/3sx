@@ -636,7 +636,7 @@ segments:
       - [0x2F7B90, asm, sf33rd/AcrSDK/ps2/flps2math]
       - [0x2F8400, asm, sf33rd/AcrSDK/ps2/flps2ps]
       - [0x2F84D0, asm, sf33rd/AcrSDK/ps2/flps2vram]
-      - [0x2FE130, asm, sf33rd/AcrSDK/ps2/foundaps2]
+      - [0x2FE130, c, sf33rd/AcrSDK/ps2/foundaps2]
       - [0x300130, asm, sf33rd/AcrSDK/ps2/ps2PAD]
       - [0x302570, asm, sf33rd/AcrSDK/ps2/flps2asm]
 
@@ -881,6 +881,8 @@ segments:
       - [0x45EFA0, rodata, gcc/libc/vfprintf]
 
       - [0x45F1B0, rodata, rodata_45F1B0]
+      - [0x45FAD0, .rodata, sf33rd/AcrSDK/ps2/foundaps2]
+      - [0x45FC20, rodata, rodata_45FC20]
 
       - [0x45FCB0, rodata, sdk/libdbc/libdbc]
       - [0x45FF38, rodata, sdk/libpad2/libpad2]
@@ -923,6 +925,8 @@ segments:
       - [0x473B30, sdata, sdata_473B30]
       - [0x474500, .sdata, sf33rd/Source/Game/Win]
       - [0x474540, sdata, sdata_474540]
+      - [0x4749F0, .sdata, sf33rd/AcrSDK/ps2/foundaps2]
+      - [0x4749F4, sdata, sdata_4749F4]
 
       # .sbss
       # (starts at _fbss)

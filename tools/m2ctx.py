@@ -17,6 +17,7 @@ CPP_FLAGS = [
     "-Iinclude/cri/ee",
     "-D_LANGUAGE_C",
     "-D_MIPS_SZLONG=32",
+    "-D__mips64",
     "-ffreestanding",
 ]
 

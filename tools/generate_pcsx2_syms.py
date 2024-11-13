@@ -32,7 +32,7 @@ def extract_symbols(path: Path) -> list[Symbol]:
     return symbols
 
 def main():
-    symbols_path = Path("config/symbols")
+    symbols_path = Path("config/anniversary/symbols")
     symbols: list[Symbol] = []
 
     for path in symbols_path.iterdir():

@@ -166,14 +166,21 @@ def main():
         # lcf.align_all(0x10)
         # lcf.add_runs(sdata_runs, ".sdata")
 
-        sdata_alignment = 0x8
+        sdata_alignment = 8
+
+        sdata_alignment_changes = {
+            "Continue": 16,
+            "sdata_4749F4": 4
+        }
 
         for run in sdata_runs:
             for entry in run.entries:
-                if "Continue" in str(entry.object_path):
-                    sdata_alignment = 0x10
+                filename = entry.object_path.stem.split('.')[0]
 
-                lcf.align(sdata_alignment)
+                if filename in sdata_alignment_changes:
+                    sdata_alignment = sdata_alignment_changes[filename]
+
+                lcf.align_all(sdata_alignment)
                 lcf.add_entry(entry, ".sdata")
 
         lcf.blank()

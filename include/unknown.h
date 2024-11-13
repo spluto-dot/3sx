@@ -1,6 +1,7 @@
 #ifndef UNKNOWN_H
 #define UNKNOWN_H
 
+#include "plcommon.h"
 #include "sdk/libdma.h"
 #include "sdk/libgraph.h"
 #include "types.h"
@@ -1537,6 +1538,59 @@ typedef struct {
     u32 old_endtag;             // offset 0x38, size 0x4
 } FLPS2VIF1Control;
 
+typedef union {
+    __int128 I128;  // offset 0x0, size 0x10
+    s64 I64[2];     // offset 0x0, size 0x10
+    s32 I32[4];     // offset 0x0, size 0x10
+    s16 I16[8];     // offset 0x0, size 0x10
+    s8 I8[16];      // offset 0x0, size 0x10
+    __int128 UI128; // offset 0x0, size 0x10
+    u64 UI64[2];    // offset 0x0, size 0x10
+    u32 UI32[4];    // offset 0x0, size 0x10
+    u16 UI16[8];    // offset 0x0, size 0x10
+    u8 UI8[16];     // offset 0x0, size 0x10
+    f32 F32[4];     // offset 0x0, size 0x10
+    f64 F64[2];     // offset 0x0, size 0x10
+} Numeric;
+
+typedef struct {
+    // total size: 0xA0
+    Numeric dmatag;     // offset 0x0, size 0x10
+    Numeric giftag;     // offset 0x10, size 0x10
+    Numeric frame_1;    // offset 0x20, size 0x10
+    Numeric frame_2;    // offset 0x30, size 0x10
+    Numeric zbuf_1;     // offset 0x40, size 0x10
+    Numeric zbuf_2;     // offset 0x50, size 0x10
+    Numeric xyoffset_1; // offset 0x60, size 0x10
+    Numeric xyoffset_2; // offset 0x70, size 0x10
+    Numeric dthe;       // offset 0x80, size 0x10
+    Numeric colclamp;   // offset 0x90, size 0x10
+} FLPS2DB;
+
+typedef struct {
+    // total size: 0x140
+    Numeric dmatag;         // offset 0x0, size 0x10
+    Numeric giftag;         // offset 0x10, size 0x10
+    Numeric clr_fba;        // offset 0x20, size 0x10
+    Numeric clr_scissor;    // offset 0x30, size 0x10
+    Numeric clr_test;       // offset 0x40, size 0x10
+    Numeric clr_prim;       // offset 0x50, size 0x10
+    Numeric clr_rgbaq;      // offset 0x60, size 0x10
+    Numeric clr_xyz2_0;     // offset 0x70, size 0x10
+    Numeric clr_xyz2_1;     // offset 0x80, size 0x10
+    Numeric acr_scissor_1;  // offset 0x90, size 0x10
+    Numeric acr_scissor_2;  // offset 0xA0, size 0x10
+    Numeric acr_test_1;     // offset 0xB0, size 0x10
+    Numeric acr_test_2;     // offset 0xC0, size 0x10
+    Numeric acr_zbuf_1;     // offset 0xD0, size 0x10
+    Numeric acr_zbuf_2;     // offset 0xE0, size 0x10
+    Numeric acr_fba_1;      // offset 0xF0, size 0x10
+    Numeric acr_fba_2;      // offset 0x100, size 0x10
+    Numeric acr_pabe;       // offset 0x110, size 0x10
+    Numeric acr_prmodecont; // offset 0x120, size 0x10
+    Numeric acr_dimx;       // offset 0x130, size 0x10
+} FLPS2DrawStart;
+
 enum _FLSETRENDERSTATE {
     FLRENDER_CULL = 0,
     FLRENDER_LIGHTING = 1,
@@ -1991,35 +2045,56 @@ void mmFree(_MEMMAN_OBJ *mmobj, u8 *adrs);           // Range: 0x3C0560 -> 0x3C0
 void ppg_Initialize(void *lcmAdrs, s32 lcmSize);     // Range: 0x3C05E0 -> 0x3C0650
 void ppgMakeConvTableTexDC();                        // Range: 0x3C3620 -> 0x3C3768
 void CP3toPS2Draw();                                 // Range: 0x3C64D0 -> 0x3C6D8C
+void flmwVSyncCallback();                            // Range: 0x3C6D90 -> 0x3C6DB4
+void flmwFlip();                                     // Range: 0x3C6E00 -> 0x3C6ED8
 void flAdxModuleInit();                              // Range: 0x3E51D0 -> 0x3E521C
 void njUserInit();                                   // Range: 0x3E5BA0 -> 0x3E5E64
 void cpInitTask();                                   // Range: 0x3E61C0 -> 0x3E61F0
 void cpReadyTask(u16 num, void *func_adrs);          // Range: 0x3E61F0 -> 0x3E625C
 
+s32 flPS2InitRenderState();                                                         // Range: 0x3EEA20 -> 0x3EEC4C
 s32 flSetRenderState(enum _FLSETRENDERSTATE func, u32 value);                       // Range: 0x3EEC50 -> 0x3EFDD8
 void flAdjustScreen(s32 x, s32 y);                                                  // Range: 0x3F2230 -> 0x3F2268
 s32 flSetDebugMode(u32 flag);                                                       // Range: 0x3F2280 -> 0x3F22A0
 void flPS2DebugInit();                                                              // Range: 0x3F2340 -> 0x3F242C
+void flPS2DebugStrDisp();                                                           // Range: 0x3F2450 -> 0x3F2B40
 s32 flPrintL(s32 posi_x, s32 posi_y, s8 *format);                                   // Range: 0x3F2B40 -> 0x3F2D08
 s32 flPrintColor(u32 col);                                                          // Range: 0x3F2D10 -> 0x3F2E04
+void flPS2DispSystemInfo(s32 x, s32 y);                                             // Range: 0x3F2E10 -> 0x3F34B8
+u32 flPS2DmaAddEndTag(u32 tag, s32 qwc, s32 irq, s32 /* unused */);                 // Range: 0x3F3F20 -> 0x3F3F88
 void flPS2DmaInitControl(FLPS2VIF1Control *dma_ptr, u32 queue_size, void *handler); // Range: 0x3F4DD0 -> 0x3F4ECC
-s32 flPS2DmaInterrupt(s32 ch);                                                      // Range: 0x3F5200 -> 0x3F55F0
-void flPS2IopModuleLoad(s8 *fname, s32 args, s8 *argp, s32 type);                   // Range: 0x3F5960 -> 0x3F5A1C
-void flMemset(void *dst, u32 pat, s32 size);                                        // Range: 0x3F5E40 -> 0x3F5EA4
-void *flAllocMemory(s32 size);                                                      // Range: 0x3F5F30 -> 0x3F5F60
-s32 flGetFrame(FMS_FRAME *frame);                                                   // Range: 0x3F5F60 -> 0x3F5F90
-s32 flGetSpace();                                                                   // Range: 0x3F5F90 -> 0x3F5FB4
-void *flAllocMemoryS(s32 size);                                                     // Range: 0x3F5FC0 -> 0x3F5FF0
-void flPS2SystemTmpBuffInit();                                                      // Range: 0x3F62E0 -> 0x3F6348
-void flPS2VramInit();                                                               // Range: 0x3FCFB0 -> 0x3FD068
-s32 flInitialize();                                                                 // Range: 0x3FE0B0 -> 0x3FE1A8
-s32 flFlip(u32 flag);                                                               // Range: 0x3FE580 -> 0x3FE648
+s32 flPS2DmaAddQueue2(s32 type, u32 data_adrs, u32 endtag_adrs,
+                      FLPS2VIF1Control *dma_ptr);                 // Range: 0x3F4ED0 -> 0x3F5200
+s32 flPS2DmaInterrupt(s32 ch);                                    // Range: 0x3F5200 -> 0x3F55F0
+void flPS2DmaSend();                                              // Range: 0x3F55F0 -> 0x3F5838
+s32 flPS2DmaWait();                                               // Range: 0x3F5840 -> 0x3F58B0
+void flPS2IopModuleLoad(s8 *fname, s32 args, s8 *argp, s32 type); // Range: 0x3F5960 -> 0x3F5A1C
+s32 flFileWrite(s8 *filename, void *buf, s32 len);                // Range: 0x3F5B30 -> 0x3F5C28
+s32 flFileAppend(s8 *filename, void *buf, s32 len);               // Range: 0x3F5C30 -> 0x3F5D38
+void flMemset(void *dst, u32 pat, s32 size);                      // Range: 0x3F5E40 -> 0x3F5EA4
+void *flAllocMemory(s32 size);                                    // Range: 0x3F5F30 -> 0x3F5F60
+s32 flGetFrame(FMS_FRAME *frame);                                 // Range: 0x3F5F60 -> 0x3F5F90
+s32 flGetSpace();                                                 // Range: 0x3F5F90 -> 0x3F5FB4
+void *flAllocMemoryS(s32 size);                                   // Range: 0x3F5FC0 -> 0x3F5FF0
+u32 flPS2GetSystemMemoryHandle(s32 len, s32 type);                // Range: 0x3F5FF0 -> 0x3F6148
+void flPS2ReleaseSystemMemory(u32 handle);                        // Range: 0x3F6150 -> 0x3F627C
+void *flPS2GetSystemBuffAdrs(u32 handle);                         // Range: 0x3F6280 -> 0x3F62A8
+void flPS2SystemTmpBuffInit();                                    // Range: 0x3F62E0 -> 0x3F6348
+void flPS2SystemTmpBuffFlush();                                   // Range: 0x3F6350 -> 0x3F63FC
+u32 flPS2GetSystemTmpBuff(s32 len, s32 align);                    // Range: 0x3F6400 -> 0x3F64AC
+u16 flPS2GetStaticVramArea(u32 size);                             // Range: 0x3F8450 -> 0x3F8564
+void flPS2VramInit();                                             // Range: 0x3FCFB0 -> 0x3FD068
+s32 flInitialize();                                               // Range: 0x3FE0B0 -> 0x3FE1A8
+s32 flFlip(u32 flag);                                             // Range: 0x3FE580 -> 0x3FE648
 
 s32 flPS2PADModuleInit();                                    // Range: 0x4000B0 -> 0x400120
 s32 tarPADInit();                                            // Range: 0x400120 -> 0x40041C
 void tarPADDestroy();                                        // Range: 0x400420 -> 0x400448
 void flPADConfigSetACRtoXX(s32 padnum, s16 a, s16 b, s16 c); // Range: 0x400450 -> 0x4004B8
 void tarPADRead();                                           // Range: 0x4004C0 -> 0x400624
+
+void func_00402698(void *mem, s32 size);                // Range: 0x402698 -> 0x4026B0
+void func_00402570(const void *src, void *dest, s32 n); // Range: 0x402570 -> 0x402590
 
 void MemcardInit();                  // Range: 0x403EC0 -> 0x403F38
 void KnjFlush();                     // Range: 0x407E90 -> 0x407FE8
@@ -2127,7 +2202,9 @@ extern s8 Debug_w[72];                    // size: 0x48, address: 0x57A860
 extern s16 *dctex_linear;                 // size: 0x4, address: 0x57A950
 extern MPP mpp_w;                         // size: 0x4C, address: 0x57A9F0
 extern s32 system_init_level;             // size: 0x4, address: 0x57AA3C
+extern u32 flDebugTrueTime[4];            // size: 0x10, address: 0x57AB50
 extern s32 flPS2FlipCancelFlag;           // size: 0x4, address: 0x57AB78
+extern u32 flPs2FBA;                      // size: 0x4, address: 0x57AB84
 extern s32 flClayNum;                     // size: 0x4, address: 0x57AB88
 extern s32 flPTNum;                       // size: 0x4, address: 0x57AE38
 extern FLPS2VIF1Control flPs2VIF1Control; // size: 0x3C, address: 0x57AE50
@@ -2135,6 +2212,10 @@ extern FL_FMS flFMS;                      // size: 0x18, address: 0x57AEB0
 extern u32 flSystemRenderOperation;       // size: 0x4, address: 0x57AEC8
 extern u32 flSystemRenderState;           // size: 0x4, address: 0x57AECC
 extern u32 flLoadCount;                   // size: 0x4, address: 0x57AED8
+extern plContext flFrameBuf;              // size: 0x48, address: 0x57AEF0
+extern s32 flFrame;                       // size: 0x4, address: 0x57AF38
+extern s32 flHeight;                      // size: 0x4, address: 0x57AF3C
+extern s32 flWidth;                       // size: 0x4, address: 0x57AF40
 extern s32 flCTNum;                       // size: 0x4, address: 0x57AF44
 extern TARPAD tarpad_root[2];             // size: 0x68, address: 0x57B040
 
@@ -2142,13 +2223,15 @@ extern TARPAD tarpad_root[2];             // size: 0x68, address: 0x57B040
 
 extern MEM_BLOCK sysmemblock[4096]; // size: 0x10000, address: 0x584C80
 
-extern BG bg_w;               // size: 0x428, address: 0x595830
-extern f32 PrioBase[128];     // size: 0x200, address: 0x5E3F50
-extern PLW plw[2];            // size: 0x8D8, address: 0x5E4D20
-extern struct _TASK task[11]; // size: 0xDC, address: 0x6BD2D0
-extern u8 Order_Dir[148];     // size: 0x94, address: 0x6BD5F0
-extern u8 Order_Timer[148];   // size: 0x94, address: 0x6BD690
-extern u8 Order[148];         // size: 0x94, address: 0x6BD730
-extern FLPS2State flPs2State; // size: 0x470, address: 0x6E2750
+extern BG bg_w;                       // size: 0x428, address: 0x595830
+extern f32 PrioBase[128];             // size: 0x200, address: 0x5E3F50
+extern PLW plw[2];                    // size: 0x8D8, address: 0x5E4D20
+extern struct _TASK task[11];         // size: 0xDC, address: 0x6BD2D0
+extern u8 Order_Dir[148];             // size: 0x94, address: 0x6BD5F0
+extern u8 Order_Timer[148];           // size: 0x94, address: 0x6BD690
+extern u8 Order[148];                 // size: 0x94, address: 0x6BD730
+extern FLPS2DrawStart flPs2DrawStart; // size: 0x140, address: 0x6E24D0
+extern FLPS2DB flPs2Db[2];            // size: 0x140, address: 0x6E2610
+extern FLPS2State flPs2State;         // size: 0x470, address: 0x6E2750
 
 #endif

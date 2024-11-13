@@ -9,7 +9,7 @@ typedef struct _sceDmaTag {
     unsigned char id;        /* tag */
     struct _sceDmaTag *next; /* next tag */
     unsigned int p[2];       /* padding */
-} sceDmaTag __attribute__((aligned(16)));
+} sceDmaTag;
 
 /*
  * Channel Attributes
@@ -35,5 +35,7 @@ typedef struct {
 
 int sceDmaReset(int mode);
 sceDmaChan *sceDmaGetChan(int id);
+void sceDmaSend(sceDmaChan *d, void *tag);
+int sceDmaSync(sceDmaChan *d, int mode, int timeout);
 
 #endif
