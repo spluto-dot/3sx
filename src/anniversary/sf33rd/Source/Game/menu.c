@@ -54,7 +54,7 @@ void Ex_Move_Sub_LR(u16 sw, s16 PL_id);
 
 typedef void (*MenuFunc)(struct _TASK *);
 
-const MenuFunc Menu_Jmp_Tbl[14] = { After_Title,    In_Game,         Wait_Load_Save,   Wait_Replay_Check,
-                                    Disp_Auto_Save, Suspend_Menu,    Wait_Replay_Load, Training_Menu,
-                                    After_Replay,   Disp_Auto_Save2, Wait_Pause_in_Tr, Reset_Training,
-                                    Reset_Replay,   End_Replay_Menu };
+// const MenuFunc Menu_Jmp_Tbl[14] = { After_Title,    In_Game,         Wait_Load_Save,   Wait_Replay_Check,
+//                                     Disp_Auto_Save, Suspend_Menu,    Wait_Replay_Load, Training_Menu,
+//                                     After_Replay,   Disp_Auto_Save2, Wait_Pause_in_Tr, Reset_Training,
+//                                     Reset_Replay,   End_Replay_Menu };
