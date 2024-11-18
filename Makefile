@@ -49,8 +49,8 @@ LD_FLAGS := -main func_00100008 -map
 
 MAIN_TARGET := $(BUILD_DIR)/$(MAIN)
 
-MAIN_S_FILES := $(shell find $(ASM_DIR) -name '*.s')
-MAIN_C_FILES := $(shell find $(SRC_DIR) -name '*.c')
+MAIN_S_FILES := $(shell find $(ASM_DIR) -name '*.s' 2>/dev/null)
+MAIN_C_FILES := $(shell find $(SRC_DIR) -name '*.c' 2>/dev/null)
 MAIN_O_FILES := $(patsubst %.s,%.s.o,$(MAIN_S_FILES))
 MAIN_O_FILES += $(patsubst %.c,%.c.o,$(MAIN_C_FILES))
 MAIN_O_FILES := $(addprefix $(BUILD_DIR)/,$(MAIN_O_FILES))
@@ -92,10 +92,10 @@ $(BUILD_DIR)/%.c.o: %.c
 	$(PATCH_ALIGNMENT) $@
 
 $(WIBO):
+	@mkdir -p $(BIN_DIR)
 	wget -O $@ https://github.com/decompals/wibo/releases/download/0.6.13/wibo
 	chmod +x $(WIBO)
 
 $(MWCCPS2):
-	wget https://github.com/decompme/compilers/releases/download/compilers/$(COMPILER_TAR)
-	cd $(BIN_DIR) && tar -x -f ../$(COMPILER_TAR)
-	rm $(COMPILER_TAR)
+	@mkdir -p $(BIN_DIR)
+	wget -O- https://github.com/decompme/compilers/releases/download/compilers/$(COMPILER_TAR) | tar xzv -C $(BIN_DIR)
