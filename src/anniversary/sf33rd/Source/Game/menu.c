@@ -1,5 +1,5 @@
-#include "menu.h"
-#include "main.h"
+#include "sf33rd/Source/Game/menu.h"
+#include "sf33rd/Source/Game/main.h"
 #include "unknown.h"
 
 void After_Title(struct _TASK *task_ptr);

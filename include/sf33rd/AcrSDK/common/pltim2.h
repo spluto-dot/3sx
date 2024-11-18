@@ -1,7 +1,7 @@
 #ifndef PLTIM2_H
 #define PLTIM2_H
 
-#include "plcommon.h"
+#include "sf33rd/AcrSDK/common/plcommon.h"
 #include "types.h"
 
 s32 plTIM2GetMipmapTextureNum(void *lpbas);

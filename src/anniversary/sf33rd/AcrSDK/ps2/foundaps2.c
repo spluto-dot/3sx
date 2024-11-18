@@ -1,9 +1,8 @@
-#include "foundaps2.h"
+#include "sf33rd/AcrSDK/ps2/foundaps2.h"
 #include "common.h"
 #include "gcc/malloc.h"
 #include "gcc/stdio.h"
 #include "gcc/string.h"
-#include "mlPAD.h"
 #include "mw_stdarg.h"
 #include "sdk/eekernel.h"
 #include "sdk/libcdvd.h"
@@ -12,6 +11,7 @@
 #include "sdk/libvu0.h"
 #include "sdk/sifdev.h"
 #include "sdk/sifprc.h"
+#include "sf33rd/AcrSDK/common/mlPAD.h"
 #include "unknown.h"
 
 static s32 system_work_init();

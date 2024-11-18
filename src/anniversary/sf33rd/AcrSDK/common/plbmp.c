@@ -1,20 +1,20 @@
+#include "sf33rd/AcrSDK/common/plbmp.h"
 #include "common.h"
-#include "plbmp.h"
 #include "unknown.h"
 
 #define BMP_MAGIC 0x4D42
-#define U16_AT(_ptr, _offset) (((u16*)_ptr)[_offset])
+#define U16_AT(_ptr, _offset) (((u16 *)_ptr)[_offset])
 
-s32 plBMPSetContextFromImage(plContext* dst, void* bmp) {
-    u8* lpsrc;
-    u8* lp;
+s32 plBMPSetContextFromImage(plContext *dst, void *bmp) {
+    u8 *lpsrc;
+    u8 *lp;
     s32 i;
 
     (void)i;
 
-    lp = (u8*)bmp;
+    lp = (u8 *)bmp;
     i = U16_AT(lp, 0);
-    
+
     if (i != BMP_MAGIC) {
         plReport("This is not BMP image. @plBMPSetContextFromImage");
         return 0;
@@ -24,7 +24,7 @@ s32 plBMPSetContextFromImage(plContext* dst, void* bmp) {
     i = U16_AT(lp, 0);
     i |= U16_AT(lp, 1) << 0x10;
 
-    lpsrc = (u8*)bmp + i;
+    lpsrc = (u8 *)bmp + i;
 
     lp += 8;
     i = U16_AT(lp, 0);
@@ -35,17 +35,17 @@ s32 plBMPSetContextFromImage(plContext* dst, void* bmp) {
     lp += 4;
     i = U16_AT(lp, 0);
     i |= U16_AT(lp, 1) << 0x10;
-    
+
     dst->height = i;
 
     lp += 6;
     i = U16_AT(lp, 0);
-    
+
     if (i != 24) {
         plReport("Not support except 24bit. @plCreateContextFromBMPImage");
         return 0;
     }
-    
+
     dst->bitdepth = 3;
     dst->pitch = dst->width * 3;
     dst->pixelformat.rl = 8;
@@ -65,12 +65,12 @@ s32 plBMPSetContextFromImage(plContext* dst, void* bmp) {
     return 1;
 }
 
-u8* plBMPGetPixelAddressFromImage(void* bmp) {
-    u8* lpsrc;     // s2
-    u8* lp;        // s1
-    s32 i;         // s0
+u8 *plBMPGetPixelAddressFromImage(void *bmp) {
+    u8 *lpsrc;
+    u8 *lp;
+    s32 i;
 
-    lp = (u8*)bmp;
+    lp = (u8 *)bmp;
     i = U16_AT(lp, 0);
 
     if (i != 0x4D42) {
@@ -82,7 +82,7 @@ u8* plBMPGetPixelAddressFromImage(void* bmp) {
     i = U16_AT(lp, 0);
     i |= U16_AT(lp, 1) << 0x10;
 
-    lpsrc = (u8*)bmp + i;
+    lpsrc = (u8 *)bmp + i;
 
     return lpsrc;
 }

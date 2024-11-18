@@ -1,7 +1,7 @@
 #ifndef PLBMP_H
 #define PLBMP_H
 
-#include "plcommon.h"
+#include "sf33rd/AcrSDK/common/plcommon.h"
 #include "types.h"
 
 s32 plBMPSetContextFromImage(plContext *dst, void *bmp);

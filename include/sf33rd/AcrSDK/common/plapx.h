@@ -1,7 +1,7 @@
 #ifndef PLAPX_H
 #define PLAPX_H
 
-#include "plcommon.h"
+#include "sf33rd/AcrSDK/common/plcommon.h"
 #include "types.h"
 
 s32 plAPXGetMipmapTextureNum(void *lpbas);                        // Range: 0x118CF0 -> 0x118D2C
