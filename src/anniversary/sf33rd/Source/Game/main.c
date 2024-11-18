@@ -1,6 +1,7 @@
+#include "main.h"
 #include "common.h"
-#include "unknown.h"
 #include "gcc/memory.h"
+#include "unknown.h"
 
 void distributeScratchPadAddress();
 void MaskScreenEdge();

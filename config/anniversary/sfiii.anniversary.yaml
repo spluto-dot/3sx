@@ -821,6 +821,8 @@ segments:
       - [0x3DF560, rodata, rodata_3DF560]
       - [0x41FD50, .rodata, sf33rd/Source/Game/GameOver]
       - [0x41FD70, rodata, rodata_41FD70]
+      - [0x422630, rodata, sf33rd/Source/Game/menu]
+      - [0x4228E8, rodata, rodata_4228E8]
       - [0x4582C8, .rodata, sf33rd/Source/Compress/zlibApp]
       - [0x4582E0, rodata, rodata_4582E0]
 
