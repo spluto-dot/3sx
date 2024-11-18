@@ -1,4 +1,4 @@
-splat64[mips]>=0.27.2,<1.0.0
+splat64[mips]==0.27.2
 tqdm
 pycparser
 
