@@ -1,12 +1,7 @@
 # Binaries
 
 VERSION ?= anniversary
-
-ifeq ($(VERSION), standalone)
-MAIN := SLPM_656.21
-else ifeq ($(VERSION), anniversary)
 MAIN := THIRD_U.BIN
-endif
 
 # Export so that Python could see those
 export VERSION
@@ -45,10 +40,7 @@ GENERATE_LCF := $(PYTHON) $(TOOLS_DIR)/lcf/generate_lcf.py
 # Flags
 
 MWCCPS2_INCLUDES := -I$(INCLUDE_DIR)
-MWCCPS2_FLAGS_BASE := -gccinc $(MWCCPS2_INCLUDES) -O0,p -c -lang c -str readonly -fl divbyzerocheck -D__mips64
-MWCCPS2_FLAGS_DEFAULT := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 128
-MWCCPS2_FLAGS_SDT2 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 2
-MWCCPS2_FLAGS_SDT128 := $(MWCCPS2_FLAGS_BASE) -sdatathreshold 128
+MWCCPS2_FLAGS := -gccinc $(MWCCPS2_INCLUDES) -O0,p -c -lang c -str readonly -fl divbyzerocheck -sdatathreshold 128 -D__mips64
 
 AS_FLAGS += -EL -I $(INCLUDE_DIR) -G 128 -march=r5900 -mabi=eabi -no-pad-sections
 LD_FLAGS := -main func_00100008 -map
@@ -62,12 +54,6 @@ MAIN_C_FILES := $(shell find $(SRC_DIR) -name '*.c')
 MAIN_O_FILES := $(patsubst %.s,%.s.o,$(MAIN_S_FILES))
 MAIN_O_FILES += $(patsubst %.c,%.c.o,$(MAIN_C_FILES))
 MAIN_O_FILES := $(addprefix $(BUILD_DIR)/,$(MAIN_O_FILES))
-
-SDT2_C_FILES := sfiii/2207F0.c
-SDT2_C_FILES := $(addprefix $(SRC_DIR)/,$(SDT2_C_FILES))
-
-SDT128_C_FILES := sfiii/pad/384790.c sfiii/pad/386000.c
-SDT128_C_FILES := $(addprefix $(SRC_DIR)/,$(SDT128_C_FILES))
 
 LINKER_SCRIPT := $(BUILD_DIR)/$(MAIN).lcf
 
@@ -102,7 +88,7 @@ $(BUILD_DIR)/%.s.o: %.s
 
 $(BUILD_DIR)/%.c.o: %.c
 	mkdir -p $(dir $@)
-	$(CC) $(if $(findstring $<,$(SDT2_C_FILES)),$(MWCCPS2_FLAGS_SDT2),$(if $(findstring $<,$(SDT128_C_FILES)),$(MWCCPS2_FLAGS_SDT128),$(MWCCPS2_FLAGS_DEFAULT))) -o $@ $<
+	$(CC) $(MWCCPS2_FLAGS) -o $@ $<
 	$(PATCH_ALIGNMENT) $@
 
 $(WIBO):
