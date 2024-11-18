@@ -9,7 +9,7 @@ options:
   asset_path: assets/anniversary
   build_path: build/anniversary
   ld_script_path: build/anniversary/THIRD_U.BIN.ld
-  symbol_addrs_path: 
+  symbol_addrs_path:
     - config/anniversary/symbols/syms_cri_libadxe.txt
     - config/anniversary/symbols/syms_gcc_libc.txt
     - config/anniversary/symbols/syms_label_overrides.txt
@@ -48,12 +48,17 @@ options:
     - config/anniversary/symbols/syms_sfiii.txt
   undefined_funcs_auto_path: config/anniversary/undefined_funcs_auto.txt
   undefined_syms_auto_path: config/anniversary/undefined_syms_auto.txt
-  find_file_boundaries: False 
+  find_file_boundaries: False
   section_order: [".text", ".data", ".rodata", ".sdata", ".sbss", ".bss"]
   subalign: null
   migrate_rodata_to_functions: False
   gp_value: 0x57A3F0
   rodata_string_guesser_level: 0
+
+  asm_inc_header: |
+    .set noat      /* allow manual use of $at */
+    .set noreorder /* don't insert nops after branches */
+    .include "macro.inc"
 
 sha1: cf58495054c31ad852175c66e9ca04d5094f000e
 
@@ -118,7 +123,7 @@ segments:
 
       - [0x015DE0, c, sf33rd/AcrSDK/common/fbms]
       - [0x016030, c, sf33rd/AcrSDK/common/memfound]
-      - [0x016200, asm, sf33rd/AcrSDK/common/memmgr]
+      - [0x016200, c, sf33rd/AcrSDK/common/memmgr]
       - [0x017380, c, sf33rd/AcrSDK/common/mlPAD]
       - [0x018D70, c, sf33rd/AcrSDK/common/plapx]
       - [0x0199B0, c, sf33rd/AcrSDK/common/plbmp]

@@ -5,4 +5,6 @@
 
 #define NULL 0
 
+#define INCLUDE_ASM(FOLDER, NAME)
+
 #endif
