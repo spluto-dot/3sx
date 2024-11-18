@@ -1,35 +1,15 @@
 # sfiii-decomp
 
-Decompilation of Street Fighter III (PS2).
+A work-in-progress decompilation of Street Fighter III: 3rd Strike for PlayStation 2.
 
-## Building
+The project aims to recreate the source code from the existing binaries which would allow to port the game to current platforms, preserve the game for future generations of fighting game players and to improve and expand upon the game.
 
-0. (Optional) This repo assumes a Linux environment. If you're on macOS use Docker with the provided `Dockerfile`.
+## Where to start
 
-1. Install dependencies.
+Visit [the Wiki](https://github.com/apstygo/sfiii-decomp/wiki) for instructions on how to build and decompile and other useful resources.
 
-    ```bash
-    pip install -r requirements.txt
-    sudo apt-get update && sudo apt-get install -y $(cat tools/requirements-debian.txt)
-    make setup_tools
-    ```
+## Community
 
-2. Put `SLPM_656.21` from your copy of the game in the root folder.
+Join `PS1/PS2 Decompilation` server on Discord to discuss the project and ask questions on the dedicated `sf3-third-strike` channel!
 
-3. Run `splat`.
-
-    ```bash
-    tools/split.sh
-    ```
-
-4. Build. If everything's okay you'll see the message `Files match ✅`.
-
-    ```bash
-    make
-    ```
-
-5. (Optional) Run the exe in [PCSX2](https://github.com/PCSX2/pcsx2)
-
-    ```bash
-    /path/to/PCSX2 -elf build/SLPM_656.21 -fastboot -- /path/to/SFIII.iso
-    ```
+[![Join the Discord](https://dcbadge.limes.pink/api/server/https://discord.gg/tch8h5Vw8E)](https://discord.gg/https://discord.gg/tch8h5Vw8E)
