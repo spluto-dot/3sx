@@ -6,7 +6,7 @@ The project aims to recreate the source code from the existing binaries which wo
 
 ## Where to start
 
-Visit [the Wiki](https://github.com/apstygo/sfiii-decomp/wiki) for instructions on how to build and decompile and other useful resources.
+Visit [the Wiki](https://github.com/apstygo/sfiii-decomp/wiki) for instructions on how to [build](https://github.com/apstygo/sfiii-decomp/wiki/Building) and [decompile](https://github.com/apstygo/sfiii-decomp/wiki/Decompiling) and other useful resources.
 
 ## Community
 
