@@ -49,7 +49,7 @@ LD_FLAGS := -main func_00100008 -map
 
 MAIN_TARGET := $(BUILD_DIR)/$(MAIN)
 
-MAIN_S_FILES := $(shell find $(ASM_DIR) -name '*.s' 2>/dev/null)
+MAIN_S_FILES := $(shell find $(ASM_DIR) -name '*.s' -not -path *nonmatchings* 2>/dev/null)
 MAIN_C_FILES := $(shell find $(SRC_DIR) -name '*.c' 2>/dev/null)
 MAIN_O_FILES := $(patsubst %.s,%.s.o,$(MAIN_S_FILES))
 MAIN_O_FILES += $(patsubst %.c,%.c.o,$(MAIN_C_FILES))
@@ -72,25 +72,24 @@ clean: ##@ clean extracted files, assets, and build artifacts
 	git clean -fdx $(BUILD_DIR)/
 	git clean -fdx .splache
 
-setup_tools: $(WIBO) $(MWCCPS2)
+setup_tools: $(MWCCPS2) $(WIBO)
 
 $(MAIN_TARGET): $(MAIN_O_FILES) $(LINKER_SCRIPT)
-	$(LD) $(LD_FLAGS) -o $@ \
+	@$(LD) $(LD_FLAGS) -o $@ \
 		$(LINKER_SCRIPT) \
 		$(shell find $(BUILD_DIR) -name '*.o')
 	# $(SPLICE_ELF)
 	$(COMPARE_BYTES) $(MAIN) $(MAIN_TARGET) 0x80 0x478A00
 
 $(BUILD_DIR)/%.s.o: %.s
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(AS) $(AS_FLAGS) -o $@ $<
 	$(PATCH_ALIGNMENT) $@
 
 $(BUILD_DIR)/%.c.o: %.c
-	mkdir -p $(dir $@)
-	$(CC) $(MWCCPS2_FLAGS) -o $@ $<
-	$(PATCH_ALIGNMENT) $@
-
+	@mkdir -p $(dir $@)
+	#$(CC) $(MWCCPS2_FLAGS) -o $@ $<
+	python3 tools/mwccgap/mwccgap.py $< $@ --mwcc-path bin/mwccps2.exe --use-wibo --wibo-path $(WIBO) --as-march r5900 --as-mabi eabi $(MWCCPS2_FLAGS)
 $(WIBO):
 	@mkdir -p $(BIN_DIR)
 	wget -O $@ https://github.com/decompals/wibo/releases/download/0.6.13/wibo
