@@ -88,8 +88,9 @@ $(BUILD_DIR)/%.s.o: %.s
 
 $(BUILD_DIR)/%.c.o: %.c
 	@mkdir -p $(dir $@)
-	#$(CC) $(MWCCPS2_FLAGS) -o $@ $<
+	# $(CC) $(MWCCPS2_FLAGS) -o $@ $<
 	python3 tools/mwccgap/mwccgap.py $< $@ --mwcc-path bin/mwccps2.exe --use-wibo --wibo-path $(WIBO) --as-march r5900 --as-mabi eabi $(MWCCPS2_FLAGS)
+
 $(WIBO):
 	@mkdir -p $(BIN_DIR)
 	wget -O $@ https://github.com/decompals/wibo/releases/download/0.6.13/wibo

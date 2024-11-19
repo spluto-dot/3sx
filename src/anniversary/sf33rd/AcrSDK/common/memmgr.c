@@ -20,13 +20,9 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/common/memmgr", plmemRel
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/common/memmgr", plmemCompact);
 
-#if 1
 u32 plmemGetSpace(MEM_MGR *memmgr) {
     return memmgr->memsize - memmgr->used_size;
 }
-#else
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/common/memmgr", plmemGetSpace);
-#endif
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/common/memmgr", plmemGetFreeSpace);
 
