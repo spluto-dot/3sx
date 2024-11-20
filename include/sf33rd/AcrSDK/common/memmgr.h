@@ -3,6 +3,8 @@
 
 #include "types.h"
 
+#define MEM_NULL_HANDLE 0xFFFF
+
 typedef struct {
     // total size: 0x10
     u8 *ptr;   // offset 0x0, size 0x4
