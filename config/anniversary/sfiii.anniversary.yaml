@@ -51,14 +51,14 @@ options:
   find_file_boundaries: False
   section_order: [".text", ".data", ".rodata", ".sdata", ".sbss", ".bss"]
   subalign: null
-  migrate_rodata_to_functions: False
+  migrate_rodata_to_functions: yes
   gp_value: 0x57A3F0
   rodata_string_guesser_level: 0
-
+  asm_jtbl_label_macro: jlabel
+  asm_data_macro: dlabel
   asm_inc_header: |
     .set noat      /* allow manual use of $at */
     .set noreorder /* don't insert nops after branches */
-    .include "macro.inc"
 
 sha1: cf58495054c31ad852175c66e9ca04d5094f000e
 
@@ -438,7 +438,7 @@ segments:
       - [0x166B10, asm, sf33rd/Source/Game/IOConv]
       - [0x1671A0, asm, sf33rd/Source/Game/LOSE_PL]
       - [0x167F10, asm, sf33rd/Source/Game/Manage]
-      - [0x16EBE0, asm, sf33rd/Source/Game/menu]
+      - [0x16EBE0, c, sf33rd/Source/Game/menu]
       - [0x1802E0, asm, sf33rd/Source/Game/meta_col]
       - [0x180C00, asm, sf33rd/Source/Game/MMTMCNT]
       - [0x180ED0, asm, sf33rd/Source/Game/MTRANS]
@@ -826,7 +826,7 @@ segments:
       - [0x3DF560, rodata, rodata_3DF560]
       - [0x41FD50, .rodata, sf33rd/Source/Game/GameOver]
       - [0x41FD70, rodata, rodata_41FD70]
-      - [0x422630, rodata, sf33rd/Source/Game/menu]
+      - [0x422630, .rodata, sf33rd/Source/Game/menu]
       - [0x4228E8, rodata, rodata_4228E8]
       - [0x4582C8, .rodata, sf33rd/Source/Compress/zlibApp]
       - [0x4582E0, rodata, rodata_4582E0]
