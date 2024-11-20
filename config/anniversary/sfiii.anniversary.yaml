@@ -3,7 +3,7 @@ options:
   base_path: ../..
   target_path: THIRD_U.BIN
   platform: ps2
-  compiler: MWCCPS2
+  compiler: GCC
   asm_path: asm/anniversary
   src_path: src/anniversary
   asset_path: assets/anniversary
