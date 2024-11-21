@@ -51,7 +51,7 @@ options:
   find_file_boundaries: False
   section_order: [".text", ".data", ".rodata", ".sdata", ".sbss", ".bss"]
   subalign: null
-  migrate_rodata_to_functions: yes
+  migrate_rodata_to_functions: True
   gp_value: 0x57A3F0
   rodata_string_guesser_level: 0
   asm_jtbl_label_macro: jlabel
