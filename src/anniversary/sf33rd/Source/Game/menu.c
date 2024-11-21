@@ -1271,7 +1271,62 @@ void Load_Direction(struct _TASK *task_ptr) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Load_Replay);
+void Load_Replay(struct _TASK *task_ptr) {
+    Menu_Cursor_X[1] = Menu_Cursor_X[0];
+    Clear_Flash_Sub();
+
+    switch (task_ptr->r_no[2]) {
+    case 0:
+        Menu_in_Sub(task_ptr);
+        Menu_Cursor_X[0] = 0;
+        Setup_BG(1, 0x200, 0);
+        Setup_Replay_Sub(1, 0x6E, 9, 1);
+        Clear_Flash_Init(4);
+        Message_Data->kind_req = 5;
+        break;
+
+    case 1:
+        if (Menu_Sub_case1(task_ptr) != 0) {
+            SaveInit(2, 0);
+        }
+
+        break;
+
+    case 2:
+        if (FadeIn(1, 0x19, 8) != 0) {
+            task_ptr->r_no[2] += 1;
+            task_ptr->free[3] = 0;
+            Menu_Cursor_X[0] = Setup_Final_Cursor_Pos(0, 8);
+        }
+
+        break;
+
+    case 3:
+        switch (SaveMove()) {
+        case 0:
+            Decide_ID = 0;
+
+            if (Interface_Type[0] == 0) {
+                Decide_ID = 1;
+            }
+
+            task_ptr->r_no[2] += 1;
+            task_ptr->r_no[3] = 0;
+            break;
+
+        case -1:
+            IO_Result = 0x200;
+            Load_Replay_MC_Sub(task_ptr, 0);
+            break;
+        }
+
+        break;
+
+    case 4:
+        Load_Replay_Sub(task_ptr);
+        break;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Load_Replay_Sub);
 // Load_Replay_Sub literal_742_00522630
