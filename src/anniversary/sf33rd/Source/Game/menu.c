@@ -748,7 +748,15 @@ void System_Direction(struct _TASK *task_ptr) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", System_Dir_Move_Sub);
+void System_Dir_Move_Sub(s16 PL_id) {
+    u16 sw = ~((u16 *)plsw_01)[PL_id] & ((u16 *)plsw_00)[PL_id]; // potential macro
+    sw = Check_Menu_Lever(PL_id, 0);
+    MC_Move_Sub(sw, 0, 4, 0xFF);
+    System_Dir_Move_Sub_LR(sw, 0);
+    Direction_Working[1] = Convert_Buff[3][0][0];
+    Direction_Working[4] = Convert_Buff[3][0][0];
+    Direction_Working[5] = Convert_Buff[3][0][0];
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", System_Dir_Move_Sub_LR);
 
