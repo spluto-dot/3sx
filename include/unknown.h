@@ -2202,8 +2202,6 @@ void Reboot_Program(s8 *args); // Range: 0x413F40 -> 0x414030
 
 extern const u8 Dir_Menu_Max_Data[10][7];      // size: 0x46, address: 0x504FB0
 extern const u8 Page_Data[10];                 // size: 0xA, address: 0x505048
-extern const u8 Ex_Account_Data[4];            // size: 0x4, address: 0x51F2E0
-extern const u8 Ex_Page_Data[4];               // size: 0x4, address: 0x51F2E8
 extern const u8 PL_Color_Data[20];             // size: 0x14, address: 0x552050
 extern const FLPAD_CONFIG fltpad_config_basic; // size: 0x2C, address: 0x55F530
 extern const u32 flpad_io_map[25];             // size: 0x64, address: 0x55F560

@@ -1,5 +1,6 @@
 #include "sf33rd/Source/Game/menu.h"
 #include "common.h"
+#include "sf33rd/Source/Game/EX_DATA.h"
 #include "sf33rd/Source/Game/main.h"
 #include "unknown.h"
 
