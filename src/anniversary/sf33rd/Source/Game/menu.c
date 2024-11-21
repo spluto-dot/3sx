@@ -758,7 +758,33 @@ void System_Dir_Move_Sub(s16 PL_id) {
     Direction_Working[5] = Convert_Buff[3][0][0];
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", System_Dir_Move_Sub_LR);
+void System_Dir_Move_Sub_LR(u16 sw, s16 cursor_id) {
+    if (Menu_Cursor_Y[cursor_id] != 0) {
+        return;
+    }
+
+    switch (sw) {
+    case 4:
+        Convert_Buff[3][cursor_id][Menu_Cursor_Y[cursor_id]] -= 1;
+
+        if (Convert_Buff[3][cursor_id][Menu_Cursor_Y[cursor_id]] < 0) {
+            Convert_Buff[3][cursor_id][Menu_Cursor_Y[cursor_id]] = 1;
+        }
+
+        SE_dir_cursor_move();
+        return;
+
+    case 8:
+        Convert_Buff[3][cursor_id][Menu_Cursor_Y[cursor_id]] += 1;
+
+        if (Convert_Buff[3][cursor_id][Menu_Cursor_Y[cursor_id]] > 1) {
+            Convert_Buff[3][cursor_id][Menu_Cursor_Y[cursor_id]] = 0;
+        }
+
+        SE_dir_cursor_move();
+        return;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Direction_Menu);
 
