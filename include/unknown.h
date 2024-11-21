@@ -2197,7 +2197,7 @@ extern const u32 flpad_io_map[25];             // size: 0x64, address: 0x55F560
 
 // .sbss
 
-extern MessageTable *msgSysDirTbl[1];     // size: 0x4, address: 0x575620
+extern MessageTable *msgSysDirTbl[];      // size: 0x4, address: 0x575620
 extern void (*plfree)(void *);            // size: 0x4, address: 0x578A10
 extern void *(*plmalloc)(s32);            // size: 0x4, address: 0x578A14
 extern BG_MVXY bg_mvxy;                   // size: 0x18, address: 0x578C80

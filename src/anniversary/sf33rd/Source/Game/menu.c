@@ -786,7 +786,154 @@ void System_Dir_Move_Sub_LR(u16 sw, s16 cursor_id) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Direction_Menu);
+void Direction_Menu(struct _TASK *task_ptr) {
+    Menu_Cursor_Y[1] = Menu_Cursor_Y[0];
+
+    switch (task_ptr->r_no[2]) {
+    case 0:
+        FadeOut(1, 0xFF, 8);
+        task_ptr->r_no[2] += 1;
+        task_ptr->timer = 5;
+        Menu_Suicide[1] = 1;
+        Menu_Suicide[2] = 0;
+        Menu_Page = 0;
+        Menu_Page_Buff = Menu_Page;
+        Message_Data->kind_req = 3;
+        break;
+
+    case 1:
+        FadeOut(1, 0xFF, 8);
+        task_ptr->r_no[2] += 1;
+        Setup_Next_Page(task_ptr, 0);
+        /* fallthrough */
+
+    case 2:
+        FadeOut(1, 0xFF, 8);
+
+        if (--task_ptr->timer == 0) {
+            task_ptr->r_no[2] += 1;
+            FadeInit();
+        }
+
+        break;
+
+    case 3:
+        if (FadeIn(1, 0x19, 8) != 0) {
+            task_ptr->r_no[2] += 1;
+        }
+
+        break;
+
+    case 4:
+        Pause_ID = 0;
+
+        Dir_Move_Sub(task_ptr, 0);
+
+        if (IO_Result == 0) {
+            Pause_ID = 1;
+            Dir_Move_Sub(task_ptr, 1);
+        }
+
+        if (Menu_Cursor_Y[1] != Menu_Cursor_Y[0]) {
+            SE_cursor_move();
+            system_dir[1].contents[Menu_Page][Menu_Max] = 1;
+
+            if (Menu_Cursor_Y[0] < Menu_Max) {
+                Message_Data->order = 1;
+                Message_Data->request = Menu_Page * 0xC + Menu_Cursor_Y[0] * 2 + 1;
+                Message_Data->timer = 2;
+
+                if (msgSysDirTbl[0]->msgNum[Menu_Page * 0xC + Menu_Cursor_Y[0] * 2 + 1] == 1) {
+                    Message_Data->pos_y = 0x36;
+                } else {
+                    Message_Data->pos_y = 0x3E;
+                }
+            } else {
+                Message_Data->order = 1;
+                Message_Data->request = system_dir[1].contents[Menu_Page][Menu_Max] + 0x74;
+                Message_Data->timer = 2;
+                Message_Data->pos_y = 0x36;
+            }
+        }
+
+        switch (IO_Result) {
+        case 0x200:
+            task_ptr->r_no[2] += 1;
+            Menu_Suicide[0] = 0;
+            Menu_Suicide[1] = 0;
+            Menu_Suicide[2] = 1;
+            SE_dir_selected();
+            break;
+
+        case 0x80:
+        case 0x800:
+            task_ptr->r_no[2] = 1;
+            task_ptr->timer = 5;
+
+            if (--Menu_Page < 0) {
+                Menu_Page = (s8)Page_Max;
+            }
+
+            SE_dir_selected();
+            break;
+
+        case 0x40:
+        case 0x400:
+            task_ptr->r_no[2] = 1;
+            task_ptr->timer = 5;
+
+            if (++Menu_Page > Page_Max) {
+                Menu_Page = 0;
+            }
+
+            SE_dir_selected();
+            break;
+
+        case 0x100:
+            if (Menu_Cursor_Y[0] == Menu_Max) {
+                switch (system_dir[1].contents[Menu_Page][Menu_Max]) {
+                case 0:
+                    task_ptr->r_no[2] = 1;
+                    task_ptr->timer = 5;
+
+                    if (--Menu_Page < 0) {
+                        Menu_Page = (s8)Page_Max;
+                    }
+
+                    break;
+
+                case 2:
+                    task_ptr->r_no[2] = 1;
+                    task_ptr->timer = 5;
+
+                    if (++Menu_Page > Page_Max) {
+                        Menu_Page = 0;
+                    }
+
+                    break;
+
+                default:
+                    task_ptr->r_no[2] += 1;
+                    Menu_Suicide[0] = 0;
+                    Menu_Suicide[1] = 0;
+                    Menu_Suicide[2] = 1;
+                    break;
+                }
+
+                SE_selected();
+                break;
+            }
+
+            break;
+        }
+
+        break;
+
+    default:
+        Exit_Sub(task_ptr, 2, 5);
+        break;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Dir_Move_Sub);
 
