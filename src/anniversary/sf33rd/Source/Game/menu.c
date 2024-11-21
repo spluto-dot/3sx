@@ -403,9 +403,9 @@ void toSelectGame(struct _TASK *task_ptr) {
     }
 }
 
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_336_00522610);
-
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", jmpRebootProgram);
+void jmpRebootProgram() {
+    Reboot_Program("cdrom0:\\SLUS_209.49;1");
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", imgSelectGameButton);
 

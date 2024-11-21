@@ -2,40 +2,69 @@ from elftools.elf.elffile import ELFFile
 from pathlib import Path
 import sys
 
-def alignment_offsets(path: Path) -> list[int]:
-    skipped_rodata = {"foundaps2"}
+skipped_rodata = {
+    "foundaps2"
+}
 
+# (file, section, index of section within sections of this type) -> alignment
+special_cases = {
+    ("menu", ".rodata", 3): 16
+}
+
+def alignment_to_bytes(alignment: int) -> bytes:
+    return bytes([
+        alignment & 0xFF,
+        (alignment >> 8) & 0xFF,
+        (alignment >> 16) & 0xFF,
+        (alignment >> 24) & 0xFF
+    ])
+
+def alignments(path: Path) -> list[tuple[int, int]]:
     with open(path, 'rb') as f:
         elf_file = ELFFile(f)
         elf_header = elf_file.header
 
-        offsets: list[int] = list()
+        alignments: list[tuple[int, int]] = list()
+        
+        # Current index of section among sections of this type.
+        # .text -> 3 means this .text section is the 3rd .text section.
+        section_indices = {
+            ".text": 0,
+            ".data": 0,
+            ".rodata": 0
+        }
 
         for section_index, section in enumerate(elf_file.iter_sections()):
             if section.name not in (".text", ".data", ".rodata"):
                 continue
 
-            if section.name == '.rodata' and path.stem.split(".")[0] in skipped_rodata:
+            filename = path.stem.split(".")[0]
+
+            if section.name == '.rodata' and filename in skipped_rodata:
                 continue
 
             header_offset = elf_header["e_shoff"] + section_index * elf_header["e_shentsize"]
             align_offset = header_offset + 8 * 4 # 8 is the index of alignment value
-            offsets.append(align_offset)
 
-        return offsets
+            section_key = (filename, section.name, section_indices[section.name])
+            section_alignment = special_cases.get(section_key, 1)
+
+            alignments.append((align_offset, section_alignment))
+            section_indices[section.name] += 1
+
+        return alignments
 
 def main():
     path = Path(sys.argv[1])
-    new_value = bytes([1, 0, 0, 0])
-    offsets = alignment_offsets(path)
+    aligns = alignments(path)
 
-    if not offsets:
+    if not aligns:
         return
 
     with open(path, "r+b") as f:
-        for offset in offsets:
+        for offset, alignment in aligns:
             f.seek(offset)
-            f.write(new_value)
+            f.write(alignment_to_bytes(alignment))
 
 if __name__ == "__main__":
     main()

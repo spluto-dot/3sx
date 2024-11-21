@@ -90,6 +90,7 @@ $(BUILD_DIR)/%.c.o: %.c
 	@mkdir -p $(dir $@)
 	# $(CC) $(MWCCPS2_FLAGS) -o $@ $<
 	python3 tools/mwccgap/mwccgap.py $< $@ --mwcc-path $(MWCCPS2) --macro-inc-path $(INCLUDE_DIR)/macro.inc --use-wibo --wibo-path $(WIBO) --as-march r5900 --as-mabi eabi $(MWCCPS2_FLAGS)
+	$(PATCH_ALIGNMENT) $@
 
 $(WIBO):
 	@mkdir -p $(BIN_DIR)
