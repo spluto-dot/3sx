@@ -652,7 +652,101 @@ void Option_Select(struct _TASK *task_ptr) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", System_Direction);
+void System_Direction(struct _TASK *task_ptr) {
+    s16 ix;
+    s16 char_index;
+
+    s16 unused_s3;
+    s16 unused_s2;
+
+    switch (task_ptr->r_no[2]) {
+    case 0:
+        Menu_in_Sub(task_ptr);
+        Order[0x4E] = 2;
+        Order_Dir[0x4E] = 3;
+        Order_Timer[0x4E] = 1;
+        effect_57_init(0x6D, 0xA, 0, 0x3F, 2);
+        Order[0x6D] = 1;
+        Order_Dir[0x6D] = 8;
+        Order_Timer[0x6D] = 1;
+        effect_04_init(1, 3, 0, 0x48);
+        Convert_Buff[3][0][0] = Direction_Working[1];
+        effect_64_init(0x61U, 0, 1, 0xA, 0, 0x7047, 0xB, 3, 0);
+        Order[0x61] = 1;
+        Order_Dir[0x61] = 4;
+        Order_Timer[0x61] = 0x14;
+
+        ix = 0;
+        unused_s3 = char_index = 0x2B;
+
+        while (ix < 4) {
+            effect_61_init(0, ix + 0x50, 0, 1, char_index, ix + 1, 0x7047);
+            Order[ix + 0x50] = 1;
+            Order_Dir[ix + 0x50] = 4;
+            Order_Timer[ix + 0x50] = ix + 0x15;
+            ix++;
+            unused_s2 = char_index++;
+        }
+
+        Menu_Cursor_Move = 4;
+        Page_Max = Check_SysDir_Page();
+        break;
+
+    case 1:
+        Menu_Sub_case1(task_ptr);
+        break;
+
+    case 2:
+        if (FadeIn(1, 0x19, 8) != 0) {
+            task_ptr->r_no[2] += 1;
+            Suicide[3] = 0;
+        }
+
+        break;
+
+    case 3:
+        System_Dir_Move_Sub(0);
+
+        if (IO_Result == 0) {
+            System_Dir_Move_Sub(1);
+        }
+
+        switch (IO_Result) {
+        case 0x100:
+            if (Menu_Cursor_Y[0] == 0) {
+                break;
+            }
+
+            // fallthrough
+
+        case 0x200:
+            SE_selected();
+            Order[0x6D] = 4;
+            Order_Timer[0x6D] = 4;
+
+            if (Menu_Cursor_Y[0] == 4 || IO_Result == 0x200) {
+                Menu_Suicide[0] = 0;
+                Menu_Suicide[1] = 1;
+                task_ptr->r_no[1] = 1;
+                task_ptr->r_no[2] = 0;
+                task_ptr->r_no[3] = 0;
+                task_ptr->free[0] = 0;
+                break;
+            }
+
+            task_ptr->r_no[2] += 1;
+            task_ptr->free[0] = 0;
+
+            break;
+        }
+
+        break;
+
+    default:
+        Exit_Sub(task_ptr, 1, Menu_Cursor_Y[0] + 0x11);
+        break;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", System_Dir_Move_Sub);
 
