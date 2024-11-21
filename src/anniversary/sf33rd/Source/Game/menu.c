@@ -935,7 +935,30 @@ void Direction_Menu(struct _TASK *task_ptr) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Dir_Move_Sub);
+void Dir_Move_Sub(struct _TASK *task_ptr, s16 PL_id) {
+    u16 sw;
+    u16 ix;
+
+    ((u16 *)plsw_00)[0] = PLsw[0][0];
+    ((u16 *)plsw_01)[0] = PLsw[0][1];
+    ((u16 *)plsw_00)[1] = PLsw[1][0];
+    ((u16 *)plsw_01)[1] = PLsw[1][1];
+
+    for (ix = 0; ix < 2; ix++) {
+        ((u16 *)plsw_00)[ix] &= 0x4FFF;
+        ((u16 *)plsw_01)[ix] &= 0x4FFF;
+    }
+
+    sw = Check_Menu_Lever(PL_id, 0);
+    Dir_Move_Sub2(sw);
+
+    if (task_ptr->r_no[1] == 0xE) {
+        Ex_Move_Sub_LR(sw, PL_id);
+        return;
+    }
+
+    Dir_Move_Sub_LR(sw, PL_id);
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Dir_Move_Sub2);
 
