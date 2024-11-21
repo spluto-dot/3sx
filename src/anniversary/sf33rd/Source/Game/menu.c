@@ -407,7 +407,10 @@ void jmpRebootProgram() {
     Reboot_Program("cdrom0:\\SLUS_209.49;1");
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", imgSelectGameButton);
+void imgSelectGameButton() {
+    dispButtonImage2(0x74, 0x6B, 0x18, 0x20, 0x1A, 0, 4);
+    dispButtonImage2(0xB2, 0x6B, 0x18, 0x20, 0x1A, 0, 5);
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Training_Mode);
 
