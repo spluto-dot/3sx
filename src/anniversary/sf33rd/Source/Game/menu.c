@@ -514,7 +514,143 @@ void Training_Mode(struct _TASK *task_ptr) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Option_Select);
+void Option_Select(struct _TASK *task_ptr) {
+    s16 ix;         // r16
+    s16 char_index; // r17
+
+    s16 unused_s5;
+    s16 unused_s4;
+    s16 unused_s3;
+    s16 unused_s2;
+
+    switch (task_ptr->r_no[2]) {
+    case 0:
+        Menu_in_Sub(task_ptr);
+        Order[0x4E] = 2;
+        Order_Dir[0x4E] = 0;
+        Order_Timer[0x4E] = 1;
+        effect_57_init(0x4F, 1, 0, 0x3F, 2);
+        Order[0x4F] = 1;
+        Order_Dir[0x4F] = 8;
+        Order_Timer[0x4F] = 1;
+
+        if (save_w[Present_Mode].Extra_Option == 0) {
+            effect_04_init(1, 4, 0, 0x48);
+
+            ix = 0;
+            unused_s5 = char_index = 0x2F;
+
+            while (ix < 6) {
+                effect_61_init(0, ix + 0x50, 0, 1, char_index, ix, 0x7047);
+                Order[ix + 0x50] = 1;
+                Order_Dir[ix + 0x50] = 4;
+                Order_Timer[ix + 0x50] = ix + 0x14;
+                ix++;
+                unused_s4 = char_index++;
+            }
+
+            Menu_Cursor_Move = 6;
+            break;
+        }
+
+        effect_04_init(1, 1, 0, 0x48);
+
+        ix = 0;
+        unused_s3 = char_index = 7;
+
+        while (ix < 7) {
+            effect_61_init(0, ix + 0x50, 0, 1, char_index, ix, 0x7047);
+            Order[ix + 0x50] = 1;
+            Order_Dir[ix + 0x50] = 4;
+            Order_Timer[ix + 0x50] = ix + 0x14;
+            ix++;
+            unused_s2 = char_index++;
+        }
+
+        Menu_Cursor_Move = 7;
+        break;
+
+    case 1:
+        if (Menu_Sub_case1(task_ptr) != 0) {
+            checkSelObjFileLoaded();
+        }
+
+        break;
+
+    case 2:
+        if (FadeIn(1, 0x19, 8) != 0) {
+            task_ptr->r_no[2] += 1;
+            Suicide[3] = 0;
+        }
+
+        break;
+
+    case 3:
+        if (save_w[Present_Mode].Extra_Option) {
+            ix = 1;
+        } else {
+            ix = 0;
+        }
+
+        if (MC_Move_Sub(Check_Menu_Lever(0, 0), 0, ix + 5, 0xFF) == 0) {
+            MC_Move_Sub(Check_Menu_Lever(1, 0), 0, ix + 5, 0xFF);
+        }
+
+        switch (IO_Result) {
+        case 0x100:
+        case 0x200:
+            break;
+
+        default:
+            return;
+        }
+
+        SE_selected();
+
+        if (Menu_Cursor_Y[0] == ix + 5 || IO_Result == 0x200) {
+            Menu_Suicide[0] = 0;
+            Menu_Suicide[1] = 1;
+            task_ptr->r_no[1] = 1;
+            task_ptr->r_no[2] = 0;
+            task_ptr->r_no[3] = 0;
+            task_ptr->free[0] = 0;
+            Order[0x4F] = 4;
+            Order_Timer[0x4F] = 4;
+
+            if (Check_Change_Contents()) {
+                if (save_w[Present_Mode].Auto_Save) {
+                    task_ptr->r_no[0] = 4;
+                    task_ptr->r_no[1] = 0;
+                    Forbid_Reset = 1;
+                    Copy_Check_w();
+                    break;
+                }
+            }
+
+            break;
+        }
+
+        task_ptr->r_no[2] += 1;
+        task_ptr->free[0] = 0;
+        X_Adjust_Buff[0] = X_Adjust;
+        X_Adjust_Buff[1] = X_Adjust;
+        X_Adjust_Buff[2] = X_Adjust;
+        Y_Adjust_Buff[0] = Y_Adjust;
+        Y_Adjust_Buff[1] = Y_Adjust;
+        Y_Adjust_Buff[2] = Y_Adjust;
+        Correct_X[1] = Correct_X[0];
+        Correct_X[2] = Correct_X[0];
+        Correct_X[3] = Correct_X[0];
+        Correct_Y[1] = Correct_Y[0];
+        Correct_Y[2] = Correct_Y[0];
+        Correct_Y[3] = Correct_Y[0];
+        break;
+
+    default:
+        Exit_Sub(task_ptr, 1, Menu_Cursor_Y[0] + 9);
+        break;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", System_Direction);
 
