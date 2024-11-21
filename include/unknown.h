@@ -2118,11 +2118,16 @@ void System_all_clear_Level_B();                   // Range: 0x3A4F20 -> 0x3A4F4
 s32 Cut_Cut_Loser();                               // Range: 0x3A5070 -> 0x3A50E0
 void Check_Replay_Status(s16 PL_id, u8 Status);    // Range: 0x3A58D0 -> 0x3A5A30
 s16 Check_SysDir_Page();                           // Range: 0x3A6060 -> 0x3A6174
+void Clear_Flash_Init(s16 level);                  // Range: 0x3A6180 -> 0x3A61A4
+s16 Clear_Flash_Sub();                             // Range: 0x3A61B0 -> 0x3A625C
 void All_Clear_Suicide();                          // Range: 0x3A85C0 -> 0x3A865C
 
 // texgroup.c
 void checkSelObjFileLoaded();                                  // Range: 0x3B1000 -> 0x3B10F8
 int load_any_texture_patnum(u16 patnum, u8 kokey, u8 _unused); // Range: 0x3B1320 -> 0x3B136C
+
+// VM_SUB.c
+void Setup_File_Property(s16 file_type, u8 number); // Range: 0x3B1BB0 -> 0x3B1CBC
 
 // zlibApp.c
 void zlib_Initialize(void *tempAdrs, s32 tempSize); // Range: 0x3B76E0 -> 0x3B776C
@@ -2191,8 +2196,17 @@ void tarPADRead();                                           // Range: 0x4004C0 
 void func_00402698(void *mem, s32 size);                // Range: 0x402698 -> 0x4026B0
 void func_00402570(const void *src, void *dest, s32 n); // Range: 0x402570 -> 0x402590
 
-void MemcardInit();                  // Range: 0x403EC0 -> 0x403F38
-void KnjFlush();                     // Range: 0x407E90 -> 0x407FE8
+// mcsub.c
+void MemcardInit(); // Range: 0x403EC0 -> 0x403F38
+
+// knjsub.c
+void KnjFlush(); // Range: 0x407E90 -> 0x407FE8
+
+// savesub.c
+void SaveInit(s32 file_type, s32 save_mode); // Range: 0x40A210 -> 0x40A3D8
+s32 SaveMove();                              // Range: 0x40A3E0 -> 0x40A464
+
+// PPGWork.c
 void ppgWorkInitializeApprication(); // Range: 0x413920 -> 0x413A54
 
 // reboot.c
@@ -2288,6 +2302,7 @@ extern u8 Mode_Type;                      // size: 0x1, address: 0x57A0C4
 extern s8 Menu_Cursor_Move;               // size: 0x1, address: 0x57A0D8
 extern u8 Replay_Status[2];               // size: 0x2, address: 0x57A0E8
 extern s8 Menu_Cursor_Y[2];               // size: 0x2, address: 0x57A0EC
+extern s8 Menu_Cursor_X[2];               // size: 0x2, address: 0x57A0F0
 extern u8 Unsubstantial_BG[4];            // size: 0x4, address: 0x57A0F4
 extern s8 Convert_Buff[4][2][12];         // size: 0x60, address: 0x57A100
 extern u8 Cont_No[4];                     // size: 0x4, address: 0x57A1F8

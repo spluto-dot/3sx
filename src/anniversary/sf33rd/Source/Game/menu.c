@@ -1186,7 +1186,45 @@ void Setup_Next_Page(struct _TASK *task_ptr, s32 /* unused */) {
     effect_40_init(mode_type, 3, 0x4B, 0, 2, 2);
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Save_Direction);
+void Save_Direction(struct _TASK *task_ptr) {
+    Menu_Cursor_X[1] = Menu_Cursor_X[0];
+    Clear_Flash_Sub();
+
+    switch (task_ptr->r_no[2]) {
+    case 0:
+        FadeOut(1, 0xFF, 8);
+        task_ptr->r_no[2] += 1;
+        task_ptr->timer = 5;
+        Menu_Suicide[1] = 1;
+        Menu_Suicide[2] = 0;
+        Menu_Cursor_X[0] = 0;
+        Setup_BG(1, 0x200, 0);
+        Setup_Replay_Sub(1, 0x70, 0xA, 2);
+        Setup_File_Property(2, 0);
+        Clear_Flash_Init(4);
+        Message_Data->kind_req = 5;
+        break;
+
+    case 1:
+        if (Menu_Sub_case1(task_ptr) != 0) {
+            SaveInit(1, 1);
+        }
+
+        break;
+
+    case 2:
+        Setup_Save_Replay_2nd(task_ptr, 2);
+        break;
+
+    case 3:
+        if (SaveMove() <= 0) {
+            IO_Result = 0x200;
+            Load_Replay_MC_Sub(task_ptr, 0);
+        }
+
+        break;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Load_Direction);
 
