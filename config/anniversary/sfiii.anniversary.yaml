@@ -930,6 +930,8 @@ segments:
       - [0x472C50, sdata, sdata_472C50]
       - [0x473B20, .sdata, sf33rd/Source/Game/GameOver]
       - [0x473B30, sdata, sdata_473B30]
+      - [0x473C80, .sdata, sf33rd/Source/Game/menu]
+      - [0x473CE0, sdata, sdata_473CE0]
       - [0x474500, .sdata, sf33rd/Source/Game/Win]
       - [0x474540, sdata, sdata_474540]
       - [0x4749F0, .sdata, sf33rd/AcrSDK/ps2/foundaps2]
