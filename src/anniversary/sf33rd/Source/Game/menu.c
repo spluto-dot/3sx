@@ -412,7 +412,107 @@ void imgSelectGameButton() {
     dispButtonImage2(0xB2, 0x6B, 0x18, 0x20, 0x1A, 0, 5);
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Training_Mode);
+void Training_Mode(struct _TASK *task_ptr) {
+    s16 ix;
+    s16 char_index;
+    s16 PL_id;
+
+    s16 unused_s4;
+    s16 unused_s3;
+
+    switch (task_ptr->r_no[2]) {
+    case 0:
+        Menu_in_Sub(task_ptr);
+        mpp_w.initTrainingData = 1;
+        effect_57_init(0x6F, 0xB, 0, 0x3F, 2);
+        Order[0x6F] = 1;
+        Order_Dir[0x6F] = 8;
+        Order_Timer[0x6F] = 1;
+        effect_04_init(1, 5, 0, 0x48);
+
+        ix = 0;
+        unused_s4 = char_index = 0x35;
+
+        while (ix < 3) {
+            effect_61_init(0, ix + 0x50, 0, 1, char_index, ix, 0x7047);
+            Order[ix + 0x50] = 1;
+            Order_Dir[ix + 0x50] = 4;
+            Order_Timer[ix + 0x50] = ix + 0x14;
+            ix++;
+            unused_s3 = char_index++;
+        }
+
+        Menu_Cursor_Move = 3;
+        system_dir[4] = system_dir[1];
+        system_dir[5] = system_dir[1];
+        break;
+
+    case 1:
+        Menu_Sub_case1(task_ptr);
+        break;
+
+    case 2:
+        if (FadeIn(1, 0x19, 8) != 0) {
+            task_ptr->r_no[2] += 1;
+            Suicide[3] = 0;
+        }
+
+        break;
+
+    case 3:
+        PL_id = 0;
+
+        if (MC_Move_Sub(Check_Menu_Lever(0, 0), 0, 2, 0xFF) == 0) {
+            PL_id = 1;
+            MC_Move_Sub(Check_Menu_Lever(1, 0), 0, 2, 0xFF);
+        }
+
+        switch (IO_Result) {
+        case 0x100:
+        case 0x200:
+            break;
+
+        default:
+            return;
+        }
+
+        SE_selected();
+
+        if (Menu_Cursor_Y[0] == 2 || IO_Result == 0x200) {
+            Menu_Suicide[0] = 0;
+            Menu_Suicide[1] = 1;
+            task_ptr->r_no[1] = 1;
+            task_ptr->r_no[2] = 0;
+            task_ptr->r_no[3] = 0;
+            task_ptr->free[0] = 0;
+            Order[0x6F] = 4;
+            Order_Timer[0x6F] = 4;
+            break;
+        }
+
+        Decide_ID = PL_id;
+
+        if (Menu_Cursor_Y[0] == 0) {
+            Mode_Type = 3;
+            Present_Mode = 4;
+        } else {
+            Mode_Type = 4;
+            Present_Mode = 5;
+        }
+
+        Setup_VS_Mode(task_ptr);
+        G_No[2] += 1;
+        task_ptr->r_no[0] = 5;
+        cpExitTask(6);
+        Champion = PL_id;
+        Pause_ID = PL_id;
+        Training_ID = PL_id;
+        New_Challenger = PL_id ^ 1;
+        cpExitTask(1);
+
+        break;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Option_Select);
 
