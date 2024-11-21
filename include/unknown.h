@@ -2028,9 +2028,14 @@ void njdp2d_init();                                     // Range: 0x1C0330 -> 0x
 void njdp2d_draw();                                     // Range: 0x1C0350 -> 0x1C0568
 void njdp2d_sort(f32 *pos, f32 pri, u32 col, s32 flag); // Range: 0x1C0570 -> 0x1C0A0C
 
-s32 effect_04_init(s16 Death_Type, s16 cg_type, s16 sync_bg, s16 priority);      // Range: 0x1C56A0 -> 0x1C5818
+s32 effect_04_init(s16 Death_Type, s16 cg_type, s16 sync_bg, s16 priority); // Range: 0x1C56A0 -> 0x1C5818
+// DWARF says disp_index and cursor_id are s16, but decompilation suggests otherwise
+s32 effect_18_init(s32 disp_index, s32 cursor_id, s16 sync_bg, s16 master_player); // Range: 0x1D36B0 -> 0x1D37E0
+s32 effect_40_init(s16 id, s16 type, s16 char_ix, s16 sync_bg, s16 master_player,
+                   s16 master_priority);                                         // Range: 0x1E0B90 -> 0x1E0E78
 s32 effect_45_init(u8 id, s16 sync_bg, s16 master_player);                       // Range: 0x1E30D0 -> 0x1E3228
 s32 effect_49_init(s16 vital_new);                                               // Range: 0x1E52B0 -> 0x1E54D8
+s32 effect_51_init(s16 letter_type, s16 cursor_index, s16 master_player);        // Range: 0x1E5E80 -> 0x1E6040
 s32 effect_57_init(s16 dir_old, s16 ID, s16 Target_BG, s16 char_ix, s16 option); // Range: 0x1E85B0 -> 0x1E8740
 s32 effect_58_init(s16 id, s16 time0, s16 option);                               // Range: 0x1E97D0 -> 0x1E98A0
 s32 effect_61_init(s16 master, u8 dir_old, s16 sync_bg, s16 master_player, s16 char_ix, s16 cursor_index,
@@ -2043,9 +2048,14 @@ s32 effect_76_init(s16 dir_old);                                            // R
 s32 effect_95_init(s16 vital_new);                                          // Range: 0x1FCFD0 -> 0x1FD218
 s32 effect_A9_init(s16 Char_Index, s16 Option, s16 Pos_Index, s16 Option2); // Range: 0x201A80 -> 0x201C78
 // DWARF says WIN_PL_NO is s8, but decompilation suggests it's at least s16
-s32 effect_B8_init(s16 WIN_PL_NO, s16 timer); // Range: 0x205500 -> 0x2056B8
-void disp_effect_work();                      // Range: 0x21AD30 -> 0x21AED8
-s32 effect_L1_init(s16 flag);                 // Range: 0x232820 -> 0x2328E8
+s32 effect_B8_init(s16 WIN_PL_NO, s16 timer);                                     // Range: 0x205500 -> 0x2056B8
+s32 effect_C4_init(s16 id, s16 letter_type, s16 cursor_index, s16 master_player); // Range: 0x209D40 -> 0x209F4C
+
+// EFFECT.c
+void disp_effect_work(); // Range: 0x21AD30 -> 0x21AED8
+void effect_work_init(); // Range: 0x21AEE0 -> 0x21B05C
+
+s32 effect_L1_init(s16 flag); // Range: 0x232820 -> 0x2328E8
 
 void Entry_Task();                               // Range: 0x24B5C0 -> 0x24B708
 s32 Setup_Directory_Record_Data();               // Range: 0x254330 -> 0x2543CC
@@ -2191,6 +2201,9 @@ void Reboot_Program(s8 *args); // Range: 0x413F40 -> 0x414030
 // .rodata
 
 extern const u8 Dir_Menu_Max_Data[10][7];      // size: 0x46, address: 0x504FB0
+extern const u8 Page_Data[10];                 // size: 0xA, address: 0x505048
+extern const u8 Ex_Account_Data[4];            // size: 0x4, address: 0x51F2E0
+extern const u8 Ex_Page_Data[4];               // size: 0x4, address: 0x51F2E8
 extern const u8 PL_Color_Data[20];             // size: 0x14, address: 0x552050
 extern const FLPAD_CONFIG fltpad_config_basic; // size: 0x2C, address: 0x55F530
 extern const u32 flpad_io_map[25];             // size: 0x64, address: 0x55F560
@@ -2198,6 +2211,7 @@ extern const u32 flpad_io_map[25];             // size: 0x64, address: 0x55F560
 // .sbss
 
 extern MessageTable *msgSysDirTbl[];      // size: 0x4, address: 0x575620
+extern MessageTable *msgExtraTbl[];       // size: 0x4, address: 0x575624
 extern void (*plfree)(void *);            // size: 0x4, address: 0x578A10
 extern void *(*plmalloc)(s32);            // size: 0x4, address: 0x578A14
 extern BG_MVXY bg_mvxy;                   // size: 0x18, address: 0x578C80

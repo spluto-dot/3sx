@@ -1091,7 +1091,99 @@ void Dir_Move_Sub_LR(u16 sw, s16 /* unused */) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Setup_Next_Page);
+void Setup_Next_Page(struct _TASK *task_ptr, s32 /* unused */) {
+    s16 ix;
+    s16 disp_index;
+    s16 mode_type;
+
+    s16 unused_s3;
+
+    Menu_Page_Buff = Menu_Page;
+    effect_work_init();
+    Menu_Common_Init();
+    Menu_Cursor_Y[0] = 0;
+    Order[0x4E] = 5;
+    Order_Timer[0x4E] = 1;
+
+    if (task_ptr->r_no[1] == 0xE) {
+        mode_type = 1;
+        Menu_Max = Ex_Page_Data[Menu_Page];
+        save_w[1].extra_option.contents[Menu_Page][Menu_Max] = 1;
+        Order_Dir[0x4E] = 1;
+        effect_57_init(0x4E, 1, 0, 0x45, 0);
+        Order[0x73] = 3;
+        Order_Dir[0x73] = 8;
+        Order_Timer[0x73] = 1;
+        effect_57_init(0x73, 6, 0, 0x3F, 2);
+        effect_66_init(0x5C, 0x27, 2, 0, 0x47, 0xB, 0);
+        Order[0x5C] = 3;
+        Order_Timer[0x5C] = 1;
+        effect_66_init(0x5D, 0x28, 2, 0, 0x40, (s16)Menu_Page + 1, 0);
+        Order[0x5D] = 3;
+        Order_Timer[0x5D] = 1;
+
+        if ((msgExtraTbl[0]->msgNum[Menu_Cursor_Y[0] + Menu_Page * 8]) == 1) {
+            Message_Data->pos_y = 0x36;
+        } else {
+            Message_Data->pos_y = 0x3E;
+        }
+
+        Message_Data->request = Ex_Account_Data[Menu_Page] + Menu_Cursor_Y[0];
+    } else {
+        mode_type = 0;
+        Menu_Max = Page_Data[Menu_Page];
+        system_dir[1].contents[Menu_Page][Menu_Max] = 1;
+        effect_66_init(0x5B, 0x14, 2, 0, 0x47, 0xA, 0);
+        Order[0x5B] = 3;
+        Order_Timer[0x5B] = 1;
+        Order[0x4E] = 5;
+        Order_Dir[0x4E] = 3;
+        effect_57_init(0x4E, 0, 0, 0x45, 0);
+        effect_66_init(0x5C, 0x15, 2, 0, 0x47, 0xB, 0);
+        Order[0x5C] = 3;
+        Order_Timer[0x5C] = 1;
+        effect_66_init(0x5D, 0x16, 2, 0, 0x40, (s16)Menu_Page + 1, 0);
+        Order[0x5D] = 3;
+        Order_Timer[0x5D] = 1;
+
+        if ((msgSysDirTbl[0]->msgNum[Menu_Page * 0xC + Menu_Cursor_Y[0] * 2 + 1]) == 1) {
+            Message_Data->pos_y = 0x36;
+        } else {
+            Message_Data->pos_y = 0x3E;
+        }
+
+        disp_index = Menu_Page * 0xC;
+        Message_Data->request = disp_index + 1;
+    }
+
+    Menu_Cursor_Y[0] = 0;
+    effect_66_init(0x8A, 0x13, 2, 0, -1, -1, -0x8000);
+    Order[0x8A] = 3;
+    Order_Timer[0x8A] = 1;
+    Message_Data->order = 0;
+    Message_Data->timer = 1;
+    Message_Data->pos_x = 0;
+    Message_Data->pos_z = 0x45;
+    effect_45_init(0, 0, 2);
+
+    for (ix = 0; ix < Menu_Max; ix++, unused_s3 = disp_index += 2) {
+        if (mode_type == 0) {
+            effect_18_init(disp_index, ix, 0, 2);
+            effect_51_init(ix, ix, 2);
+        } else {
+            effect_C4_init(0, ix, ix, 2);
+
+            if (Menu_Page != 0 || ix != (Menu_Max - 1)) {
+                effect_C4_init(1, ix, ix, 2);
+            }
+        }
+    }
+
+    effect_40_init(mode_type, 0, 0x48, 0, 2, 1);
+    effect_40_init(mode_type, 1, 0x49, 0, 2, 1);
+    effect_40_init(mode_type, 2, 0x4A, 0, 2, 0);
+    effect_40_init(mode_type, 3, 0x4B, 0, 2, 2);
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Save_Direction);
 
