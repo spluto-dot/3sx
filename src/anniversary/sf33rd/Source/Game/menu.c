@@ -1018,7 +1018,78 @@ u16 Dir_Move_Sub2(u16 sw) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Dir_Move_Sub_LR);
+void Dir_Move_Sub_LR(u16 sw, s16 /* unused */) {
+    u8 last_pos = system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]];
+
+    switch (sw) {
+    case 0x4:
+        SE_dir_cursor_move();
+        system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] -= 1;
+
+        if (Menu_Cursor_Y[0] == Menu_Max) {
+            if (system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] < 0) {
+                system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] = 0;
+                IO_Result = 0x80;
+                return;
+            }
+
+            if (system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] != last_pos) {
+                Message_Data->order = 1;
+                Message_Data->request = system_dir[1].contents[Menu_Page][Menu_Max] + 0x74;
+                Message_Data->timer = 2;
+            }
+        } else {
+            if (system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] < 0) {
+                system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] = Dir_Menu_Max_Data[Menu_Page][Menu_Cursor_Y[0]];
+            }
+        }
+
+        return;
+
+    case 0x8:
+        SE_dir_cursor_move();
+        system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] += 1;
+
+        if (Menu_Cursor_Y[0] == Menu_Max) {
+            if (system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] > 2) {
+                system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] = 2;
+                IO_Result = 0x400;
+                return;
+            }
+
+            if (system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] > 2) {
+                system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] = 2;
+            }
+
+            if (system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] != last_pos) {
+                Message_Data->order = 1;
+                Message_Data->request = system_dir[1].contents[Menu_Page][Menu_Max] + 0x74;
+                Message_Data->timer = 2;
+            }
+        } else {
+            if (system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] > Dir_Menu_Max_Data[Menu_Page][Menu_Cursor_Y[0]]) {
+                system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] = 0;
+            }
+        }
+
+        return;
+
+    case 0x100:
+        SE_dir_cursor_move();
+
+        if (Menu_Cursor_Y[0] == Menu_Max) {
+            return;
+        } else {
+            system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] += 1;
+
+            if (system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] > Dir_Menu_Max_Data[Menu_Page][Menu_Cursor_Y[0]]) {
+                system_dir[1].contents[Menu_Page][Menu_Cursor_Y[0]] = 0;
+            }
+        }
+
+        return;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Setup_Next_Page);
 
