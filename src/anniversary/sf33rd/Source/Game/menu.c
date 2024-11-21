@@ -960,7 +960,63 @@ void Dir_Move_Sub(struct _TASK *task_ptr, s16 PL_id) {
     Dir_Move_Sub_LR(sw, PL_id);
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Dir_Move_Sub2);
+u16 Dir_Move_Sub2(u16 sw) {
+    if (Menu_Cursor_Move > 0) {
+        return 0;
+    }
+
+    switch (sw) {
+    case 0x1:
+        Menu_Cursor_Y[0] -= 1;
+
+        if (Menu_Cursor_Y[0] < 0) {
+            Menu_Cursor_Y[0] = Menu_Max;
+        }
+
+        SE_cursor_move();
+        return IO_Result = 1;
+
+    case 0x2:
+        Menu_Cursor_Y[0] += 1;
+
+        if (Menu_Cursor_Y[0] > Menu_Max) {
+            Menu_Cursor_Y[0] = 0;
+        }
+
+        SE_cursor_move();
+        return IO_Result = 2;
+
+    case 0x10:
+        return IO_Result = 0x10;
+
+    case 0x20:
+        return IO_Result = 0x20;
+
+    case 0x40:
+        return IO_Result = 0x40;
+
+    case 0x80:
+        return IO_Result = 0x80;
+
+    case 0x100:
+        return IO_Result = 0x100;
+
+    case 0x200:
+        return IO_Result = 0x200;
+
+    case 0x400:
+        return IO_Result = 0x400;
+
+    case 0x800:
+        return IO_Result = 0x800;
+
+    case 0x4000:
+        return IO_Result = 0x4000;
+
+    default:
+        return IO_Result = 0;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Dir_Move_Sub_LR);
 
