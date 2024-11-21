@@ -1543,9 +1543,6 @@
 .L0028C9A8 = 0x0028C9A8; // type:label
 .L0028CA28 = 0x0028CA28; // type:label
 .L0028CA60 = 0x0028CA60; // type:label
-.L0026F410 = 0x0026F410; // type:jtbl_label
-.L0026F450 = 0x0026F450; // type:jtbl_label
-.L0026F488 = 0x0026F488; // type:jtbl_label
 .L00272938 = 0x00272938; // type:label
 .L002729C0 = 0x002729C0; // type:label
 .L00272CA0 = 0x00272CA0; // type:label

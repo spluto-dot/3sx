@@ -6,5 +6,6 @@
 #define NULL 0
 
 #define INCLUDE_ASM(FOLDER, NAME)
+#define INCLUDE_RODATA(FOLDER, NAME)
 
 #endif
