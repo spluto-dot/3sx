@@ -8,7 +8,8 @@ skipped_rodata = {
 
 # (file, section, index of section within sections of this type) -> alignment
 special_cases = {
-    ("menu", ".rodata", 3): 16
+    ("menu", ".rodata", 3): 16,
+    ("menu", ".rodata", 7): 16
 }
 
 def alignment_to_bytes(alignment: int) -> bytes:
