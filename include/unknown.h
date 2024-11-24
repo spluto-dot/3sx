@@ -2271,6 +2271,7 @@ s32 Switch_Screen_Revival(u8 Wipe_Type);           // Range: 0x3A1D10 -> 0x3A1D7
 void Clear_Personal_Data(s16 PL_id);               // Range: 0x3A21C0 -> 0x3A2744
 void Clear_Flash_No();                             // Range: 0x3A2910 -> 0x3A2954
 s32 Cut_Cut_Cut();                                 // Range: 0x3A2960 -> 0x3A29F0
+void Save_Game_Data();                             // Range: 0x3A3890 -> 0x3A3B80
 void Copy_Check_w();                               // Range: 0x3A3E40 -> 0x3A3FA8
 s32 Check_Change_Contents();                       // Range: 0x3A4080 -> 0x3A4410
 void Setup_Training_Difficulty();                  // Range: 0x3A4620 -> 0x3A4720
