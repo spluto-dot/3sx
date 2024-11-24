@@ -129,7 +129,7 @@ segments:
       - [0x0199B0, c, sf33rd/AcrSDK/common/plbmp]
       - [0x019C10, c, sf33rd/AcrSDK/common/plpic]
       - [0x01A330, c, sf33rd/AcrSDK/common/pltim2]
-      - [0x01B390, asm, sf33rd/AcrSDK/common/prilay]
+      - [0x01B390, c, sf33rd/AcrSDK/common/prilay]
       - [0x01BFB0, asm, sf33rd/Source/Game/SYS_sub2]
       - [0x01C150, asm, sf33rd/Source/Game/AcrUtil]
       - [0x01C580, asm, sf33rd/Source/Game/ACTIVE00]
@@ -964,6 +964,7 @@ segments:
 
       - { type: bss, vram: 0x57B650, name: bss_57B650 }
       - { type: .bss, vram: 0x594C80, name: sf33rd/AcrSDK/common/mlPAD }
-      - { type: bss, vram: 0x594EA0, name: bss_594EA0 }
+      - { type: .bss, vram: 0x594EA0, name: sf33rd/AcrSDK/common/prilay }
+      - { type: bss, vram: 0x5956A0, name: bss_5956A0 }
 
   - [0x478A00]

@@ -2145,15 +2145,17 @@ typedef struct {
     } p[2];            // offset 0xC, size 0x28
 } PPWORK;
 
+typedef struct {
+    // total size: 0x8
+    s16 x; // offset 0x0, size 0x2
+    s16 y; // offset 0x2, size 0x2
+    u32 c; // offset 0x4, size 0x4
+} Pixel;
+
 // .text
 
 void mflInit(void *mem_ptr, s32 memsize, s32 memalign);                     // Range: 0x115FB0 -> 0x115FFC
 int fmsInitialize(FL_FMS *lp, void *memory_ptr, s32 memsize, s32 memalign); // Range: 0x115D90 -> 0x115E80
-
-// prilay.c
-s32 plReport(s8 *format);                       // Range: 0x11B310 -> 0x11B3AC
-void plMemset(void *dst, u32 pat, s32 size);    // Range: 0x11B3B0 -> 0x11B41C
-void plMemmove(void *dst, void *src, s32 size); // Range: 0x11B420 -> 0x11B540
 
 void setup_pos_remake_key();        // Range: 0x11C0C0 -> 0x11C0D0
 void appViewSetItems(VPRM *prm);    // Range: 0x11C0D0 -> 0x11C118
