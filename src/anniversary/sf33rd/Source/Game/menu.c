@@ -56,6 +56,7 @@ u16 Dir_Move_Sub2(u16 sw);
 void Dir_Move_Sub_LR(u16 sw, s16 /* unused */);
 void Ex_Move_Sub_LR(u16 sw, s16 PL_id);
 u16 Game_Option_Sub(s16 PL_id);
+u16 GO_Move_Sub_LR(u16 sw, s16 cursor_id);
 
 typedef void (*MenuFunc)(struct _TASK *);
 
@@ -1614,7 +1615,17 @@ INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Game_Opti
 
 INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Sound_Data_Max);
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Game_Option_Sub);
+u16 Game_Option_Sub(s16 PL_id) {
+    u16 sw;
+    u16 ret;
+
+    sw = ~((u16 *)plsw_01)[PL_id] & ((u16 *)plsw_00)[PL_id];
+    sw = Check_Menu_Lever(PL_id, 0);
+    ret = MC_Move_Sub(sw, 0, 0xB, 0xFF);
+    ret |= GO_Move_Sub_LR(sw, 0);
+    ret &= 0x20F;
+    return ret;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", GO_Move_Sub_LR);
 
