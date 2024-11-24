@@ -295,8 +295,8 @@ void njUserInit() {
     Screen_Zoom_X = 1.0f;
     Screen_Zoom_Y = 1.0f;
     Setup_Disp_Size(0);
-    *Correct_X = 0;
-    *Correct_Y = 0;
+    Correct_X[0] = 0;
+    Correct_Y[0] = 0;
     Frame_Zoom_X = Screen_Zoom_X + SA_Zoom_X;
     Frame_Zoom_Y = Screen_Zoom_Y + SA_Zoom_Y;
     Zoom_Base_Position_X = 0;
@@ -360,7 +360,6 @@ s32 njUserMain() {
 }
 
 void cpLoopTask() {
-    s32 temp_a0;
     struct _TASK *task_ptr = task;
 
     disp_ramcnt_free_area();
@@ -383,7 +382,7 @@ void cpLoopTask() {
         }
     }
 
-    for (current_task_num = 0; current_task_num < 0xB; current_task_num++) {
+    for (current_task_num = 0; current_task_num < 11; current_task_num++) {
         switch (task_ptr->condition) {
         case 1:
             task_ptr->func_adrs(task_ptr);
