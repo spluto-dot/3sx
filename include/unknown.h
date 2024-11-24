@@ -2157,7 +2157,6 @@ typedef struct {
 void mflInit(void *mem_ptr, s32 memsize, s32 memalign);                     // Range: 0x115FB0 -> 0x115FFC
 int fmsInitialize(FL_FMS *lp, void *memory_ptr, s32 memsize, s32 memalign); // Range: 0x115D90 -> 0x115E80
 
-void setup_pos_remake_key();        // Range: 0x11C0C0 -> 0x11C0D0
 void appViewSetItems(VPRM *prm);    // Range: 0x11C0D0 -> 0x11C118
 void appViewGetItems(VPRM *prm);    // Range: 0x11C120 -> 0x11C168
 void appViewMatrix();               // Range: 0x11C170 -> 0x11C1CC
@@ -2165,7 +2164,6 @@ void render_start();                // Range: 0x11C1D0 -> 0x11C1F0
 void render_end();                  // Range: 0x11C1F0 -> 0x11C210
 void initRenderState(s32 flag);     // Range: 0x11C210 -> 0x11C328
 void setBackGroundColor(u32 color); // Range: 0x11C4D0 -> 0x11C4FC
-void Setup_Disp_Size();             // Range: 0x11BFF0 -> 0x11C0B4
 
 void Scrn_Renew(); // Range: 0x170BE0 -> 0x170BF0
 void Irl_Family(); // Range: 0x170BF0 -> 0x170CD0

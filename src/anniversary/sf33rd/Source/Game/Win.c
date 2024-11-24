@@ -1,4 +1,5 @@
 #include "common.h"
+#include "sf33rd/Source/Game/SYS_sub2.h"
 #include "unknown.h"
 
 void Win_1st();
