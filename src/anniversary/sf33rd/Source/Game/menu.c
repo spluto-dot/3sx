@@ -59,6 +59,7 @@ u16 Game_Option_Sub(s16 PL_id);
 u16 GO_Move_Sub_LR(u16 sw, s16 cursor_id);
 void Button_Config_Sub(s16 PL_id);
 void Button_Move_Sub_LR(u16 sw, s16 cursor_id);
+void Return_Option_Mode_Sub(struct _TASK *task_ptr);
 
 typedef void (*MenuFunc)(struct _TASK *);
 
@@ -1817,7 +1818,100 @@ void Button_Move_Sub_LR(u16 sw, s16 cursor_id) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Button_Exit_Check);
+void Button_Exit_Check(struct _TASK *task_ptr, s16 PL_id) {
+    switch (IO_Result) {
+    case 0x200:
+    case 0x100:
+        break;
+
+    default:
+        return;
+    }
+
+    switch (task_ptr->r_no[1]) {
+    case 9:
+        if (Menu_Cursor_Y[0] == 11 || IO_Result == 0x200) {
+            SE_selected();
+            Return_Option_Mode_Sub(task_ptr);
+            Order[0x6A] = 4;
+            Order_Timer[0x6A] = 4;
+            return;
+        }
+
+        if (Menu_Cursor_Y[0] == 10) {
+            SE_selected();
+            save_w[1].Difficulty = Game_Default_Data.Difficulty;
+            save_w[1].Time_Limit = Game_Default_Data.Time_Limit;
+            save_w[1].Battle_Number[0] = Game_Default_Data.Battle_Number[0];
+            save_w[1].Battle_Number[1] = Game_Default_Data.Battle_Number[1];
+            save_w[1].Damage_Level = Game_Default_Data.Damage_Level;
+            save_w[1].GuardCheck = Game_Default_Data.GuardCheck;
+            save_w[1].AnalogStick = Game_Default_Data.AnalogStick;
+            save_w[1].Handicap = Game_Default_Data.Handicap;
+            save_w[1].Partner_Type[0] = Game_Default_Data.Partner_Type[0];
+            save_w[1].Partner_Type[1] = Game_Default_Data.Partner_Type[1];
+            Copy_Save_w();
+            return;
+        }
+
+        break;
+
+    case 10:
+        if ((Menu_Cursor_Y[PL_id] == 10) || (IO_Result == 0x200)) {
+            SE_selected();
+            Return_Option_Mode_Sub(task_ptr);
+            Order[0x6B] = 4;
+            Order_Timer[0x6B] = 4;
+            return;
+        }
+
+        if (Menu_Cursor_Y[PL_id] == 9) {
+            SE_selected();
+            Setup_IO_ConvDataDefault(PL_id);
+            Save_Game_Data();
+            return;
+        }
+
+        break;
+
+    case 13:
+        if (IO_Result == 0x200) {
+            SE_selected();
+            Return_Option_Mode_Sub(task_ptr);
+            Order[0x69] = 4;
+            Order_Timer[0x69] = 4;
+            return;
+        }
+
+        switch (Menu_Cursor_Y[0]) {
+        case 3:
+            SE_selected();
+            Return_Option_Mode_Sub(task_ptr);
+            Order[0x69] = 4;
+            Order_Timer[0x69] = 4;
+            break;
+
+        case 0:
+            SE_selected();
+            task_ptr->r_no[2] = 4;
+            task_ptr->r_no[3] = 0;
+            break;
+
+        case 1:
+            SE_selected();
+            task_ptr->r_no[2] = 5;
+            task_ptr->r_no[3] = 0;
+            break;
+
+        case 2:
+            task_ptr->r_no[2] = 6;
+            task_ptr->r_no[3] = 0;
+            break;
+        }
+
+        break;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Return_Option_Mode_Sub);
 

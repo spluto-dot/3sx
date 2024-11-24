@@ -2302,7 +2302,9 @@ s32 Switch_Screen_Revival(u8 Wipe_Type);           // Range: 0x3A1D10 -> 0x3A1D7
 void Clear_Personal_Data(s16 PL_id);               // Range: 0x3A21C0 -> 0x3A2744
 void Clear_Flash_No();                             // Range: 0x3A2910 -> 0x3A2954
 s32 Cut_Cut_Cut();                                 // Range: 0x3A2960 -> 0x3A29F0
+void Setup_IO_ConvDataDefault(s32 id);             // Range: 0x3A3810 -> 0x3A388C
 void Save_Game_Data();                             // Range: 0x3A3890 -> 0x3A3B80
+void Copy_Save_w();                                // Range: 0x3A3B80 -> 0x3A3E3C
 void Copy_Check_w();                               // Range: 0x3A3E40 -> 0x3A3FA8
 s32 Check_Change_Contents();                       // Range: 0x3A4080 -> 0x3A4410
 void Setup_Training_Difficulty();                  // Range: 0x3A4620 -> 0x3A4720
@@ -2417,6 +2419,7 @@ void Reboot_Program(s8 *args); // Range: 0x413F40 -> 0x414030
 extern const u8 Dir_Menu_Max_Data[10][7];      // size: 0x46, address: 0x504FB0
 extern const u8 Page_Data[10];                 // size: 0xA, address: 0x505048
 extern const u8 PL_Color_Data[20];             // size: 0x14, address: 0x552050
+extern const struct _SAVE_W Game_Default_Data; // size: 0x208, address: 0x5544C0
 extern const FLPAD_CONFIG fltpad_config_basic; // size: 0x2C, address: 0x55F530
 extern const u32 flpad_io_map[25];             // size: 0x64, address: 0x55F560
 
