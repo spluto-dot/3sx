@@ -2072,6 +2072,53 @@ typedef struct {
     u8 extra_free;             // offset 0x7447, size 0x1
 } _REPLAY_W;
 
+struct _VM_W {
+    // total size: 0x6C
+    u8 r_no[4];     // offset 0x0, size 0x4
+    u8 r_sub[4];    // offset 0x4, size 0x4
+    s32 Timer;      // offset 0x8, size 0x4
+    s32 FreeMem[2]; // offset 0xC, size 0x8
+    s8 Format[2];   // offset 0x14, size 0x2
+    s8 Find[2];     // offset 0x16, size 0x2
+    s8 Connect[2];  // offset 0x18, size 0x2
+    s8 CheckDrive;  // offset 0x1A, size 0x1
+    s8 AutoDrive;   // offset 0x1B, size 0x1
+    s8 Drive;       // offset 0x1C, size 0x1
+    s8 Access;      // offset 0x1D, size 0x1
+    s8 Request;     // offset 0x1E, size 0x1
+    s8 AutoLoaded;  // offset 0x1F, size 0x1
+    struct {
+        // total size: 0x8
+        u16 year;      // offset 0x0, size 0x2
+        u8 month;      // offset 0x2, size 0x1
+        u8 day;        // offset 0x3, size 0x1
+        u8 hour;       // offset 0x4, size 0x1
+        u8 minute;     // offset 0x5, size 0x1
+        u8 second;     // offset 0x6, size 0x1
+        u8 dayofweek;  // offset 0x7, size 0x1
+    } curTime[2];      // offset 0x20, size 0x10
+    s32 curSize[2];    // offset 0x30, size 0x8
+    s16 memKey;        // offset 0x38, size 0x2
+    u8 *memAdr;        // offset 0x3C, size 0x4
+    s32 nowResult;     // offset 0x40, size 0x4
+    s32 nowNumber;     // offset 0x44, size 0x4
+    s32 polResult;     // offset 0x48, size 0x4
+    s32 polNumber;     // offset 0x4C, size 0x4
+    u8 File_Type;      // offset 0x50, size 0x1
+    u8 *File_Name;     // offset 0x54, size 0x4
+    u32 Save_Size;     // offset 0x58, size 0x4
+    u16 Block_Size;    // offset 0x5C, size 0x2
+    u8 Icon_Type;      // offset 0x5E, size 0x1
+    u8 Comment_Type;   // offset 0x5F, size 0x1
+    u8 Target_Number;  // offset 0x60, size 0x1
+    u8 Number;         // offset 0x61, size 0x1
+    u8 Counter;        // offset 0x62, size 0x1
+    u8 Save_Type;      // offset 0x63, size 0x1
+    s8 New_File;       // offset 0x64, size 0x1
+    s8 Header_Counter; // offset 0x65, size 0x1
+    s8 padding[3];     // offset 0x66, size 0x3
+};
+
 // .text
 
 void mflInit(void *mem_ptr, s32 memsize, s32 memalign);                     // Range: 0x115FB0 -> 0x115FFC
@@ -2246,6 +2293,7 @@ void checkSelObjFileLoaded();                                  // Range: 0x3B100
 s32 load_any_texture_patnum(u16 patnum, u8 kokey, u8 _unused); // Range: 0x3B1320 -> 0x3B136C
 
 // VM_SUB.c
+u8 VM_Access_Request(u8 Request, u8 Drive);         // Range: 0x3B1B80 -> 0x3B1BAC
 void Setup_File_Property(s16 file_type, u8 number); // Range: 0x3B1BB0 -> 0x3B1CBC
 
 // zlibApp.c
@@ -2390,6 +2438,7 @@ extern u16 p2sw_1;                        // size: 0x2, address: 0x579CB8
 extern u16 p2sw_0;                        // size: 0x2, address: 0x579CBC
 extern u16 p1sw_1;                        // size: 0x2, address: 0x579CC0
 extern u16 p1sw_0;                        // size: 0x2, address: 0x579CC4
+extern struct _VM_W vm_w;                 // size: 0x6C, address: 0x579D20
 extern struct _SYSTEM_W sys_w;            // size: 0x1C, address: 0x579D90
 extern u32 current_task_num;              // size: 0x4, address: 0x579DAC
 extern u8 plsw_01[2];                     // size: 0x4, address: 0x579DD0

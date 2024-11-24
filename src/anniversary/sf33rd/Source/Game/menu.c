@@ -1484,13 +1484,61 @@ void Load_Replay_Sub(struct _TASK *task_ptr) {
     }
 }
 
+s32 Load_Replay_MC_Sub(struct _TASK *task_ptr, s16 PL_id) {
+    u16 sw = IO_Result;
+
+    switch (sw) {
+    case 0x100:
+        if ((Menu_Cursor_X[0] == -1) || (vm_w.Connect[Menu_Cursor_X[0]] == 0)) {
+            break;
+        }
+
+        Pause_ID = PL_id;
+        vm_w.Drive = (u8)Menu_Cursor_X[0];
+
+        if (VM_Access_Request(6, Menu_Cursor_X[0]) == 0) {
+            break;
+        }
+
+        SE_selected();
+        task_ptr->free[1] = 0;
+        task_ptr->free[2] = 0;
+        task_ptr->r_no[0] = 3;
+        return 1;
+
+    case 0x200:
+        if (task_ptr->r_no[1] == 6) {
+            Menu_Suicide[0] = 0;
+            Menu_Suicide[1] = 1;
+            task_ptr->r_no[1] = 1;
+            task_ptr->r_no[2] = 0;
+            task_ptr->r_no[3] = 0;
+            task_ptr->free[0] = 0;
+            Order[0x6E] = 4;
+            Order_Timer[0x6E] = 4;
+        } else {
+            Menu_Suicide[0] = 0;
+            Menu_Suicide[1] = 0;
+            Menu_Suicide[2] = 1;
+            task_ptr->r_no[1] = 5;
+            task_ptr->r_no[2] = 0;
+            task_ptr->r_no[3] = 0;
+            task_ptr->free[0] = 0;
+            Order[0x70] = 4;
+            Order_Timer[0x70] = 4;
+        }
+
+        break;
+    }
+
+    return 0;
+}
+
 INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Setup_Index_64);
 
 INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Game_Option_Index_Data);
 
 INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Sound_Data_Max);
-
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Load_Replay_MC_Sub);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Game_Option);
 
