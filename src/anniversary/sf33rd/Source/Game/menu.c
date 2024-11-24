@@ -1611,10 +1611,6 @@ void Game_Option(struct _TASK *task_ptr) {
     }
 }
 
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Game_Option_Index_Data);
-
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Sound_Data_Max);
-
 u16 Game_Option_Sub(s16 PL_id) {
     u16 sw;
     u16 ret;
@@ -1627,7 +1623,38 @@ u16 Game_Option_Sub(s16 PL_id) {
     return ret;
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", GO_Move_Sub_LR);
+const u8 Game_Option_Index_Data[10] = { 7, 3, 3, 3, 3, 1, 1, 1, 1, 1 };
+
+u16 GO_Move_Sub_LR(u16 sw, s16 cursor_id) {
+    if (Menu_Cursor_Y[cursor_id] > 9) {
+        return 0;
+    }
+
+    switch (sw) {
+    case 4:
+        Convert_Buff[0][cursor_id][Menu_Cursor_Y[cursor_id]] -= 1;
+
+        if (Convert_Buff[0][cursor_id][Menu_Cursor_Y[cursor_id]] < 0) {
+            Convert_Buff[0][cursor_id][Menu_Cursor_Y[cursor_id]] = Game_Option_Index_Data[Menu_Cursor_Y[cursor_id]];
+        }
+
+        SE_dir_cursor_move();
+        return 4;
+
+    case 8:
+        Convert_Buff[0][cursor_id][Menu_Cursor_Y[cursor_id]] += 1;
+
+        if (Convert_Buff[0][cursor_id][Menu_Cursor_Y[cursor_id]] > Game_Option_Index_Data[Menu_Cursor_Y[cursor_id]]) {
+            Convert_Buff[0][cursor_id][Menu_Cursor_Y[cursor_id]] = 0;
+        }
+
+        SE_dir_cursor_move();
+        return 8;
+
+    default:
+        return 0;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Button_Config);
 
@@ -1652,6 +1679,8 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Sound_Test);
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Setup_Sound_Mode);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Sound_Cursor_Sub);
+
+INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Sound_Data_Max);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", SD_Move_Sub_LR);
 
