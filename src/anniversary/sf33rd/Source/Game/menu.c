@@ -2041,9 +2041,32 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Pause_Check_
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Setup_Tr_Pause);
 
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2159);
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2160);
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Flash_1P_or_2P);
+void Flash_1P_or_2P(struct _TASK *task_ptr) {
+    switch (task_ptr->r_no[3]) {
+    case 0:
+        if (--task_ptr->free[0]) {
+            if (Pause_ID == 0) {
+                SSPutStr2(20, 9, 9, "1P PAUSE");
+                break;
+            } else {
+                SSPutStr2(20, 9, 9, "2P PAUSE");
+                break;
+            }
+        }
+
+        task_ptr->r_no[3] = 1;
+        task_ptr->free[0] = 0x1E;
+        break;
+
+    case 1:
+        if (--task_ptr->free[0] == 0) {
+            task_ptr->r_no[3] = 0;
+            task_ptr->free[0] = 0x3C;
+        }
+
+        break;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Pause_in_Normal_Tr);
 

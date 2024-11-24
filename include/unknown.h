@@ -2269,9 +2269,10 @@ u8 nowSoftReset(); // Range: 0x37EC90 -> 0x37ECA8
 void Saver_Task(struct _TASK *task_ptr); // Range: 0x37F1B0 -> 0x37F210
 
 // sc_sub.c
-void FadeInit();                            // Range: 0x3834D0 -> 0x3834E0
-s32 FadeOut(u8 type, u8 step, u8 priority); // Range: 0x3834E0 -> 0x3836D4
-s32 FadeIn(u8 type, u8 step, u8 priority);  // Range: 0x3836E0 -> 0x3838DC
+void SSPutStr2(u16 x, u16 y, u8 atr, s8 *str); // Range: 0x3806E0 -> 0x380800
+void FadeInit();                               // Range: 0x3834D0 -> 0x3834E0
+s32 FadeOut(u8 type, u8 step, u8 priority);    // Range: 0x3834E0 -> 0x3836D4
+s32 FadeIn(u8 type, u8 step, u8 priority);     // Range: 0x3836E0 -> 0x3838DC
 
 // sc_sub.c
 void dispButtonImage2(s32 px, s32 py, s32 pz, s32 sx, s32 sy, s32 cl, s32 ix); // Range: 0x388AA0 -> 0x388D94
