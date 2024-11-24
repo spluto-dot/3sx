@@ -1999,14 +1999,6 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Wait_Replay_
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", VS_Result);
 // VS_Result contains literal_1803
 
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2159);
-
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2160);
-
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2215);
-
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2216);
-
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Setup_Win_Lose_OBJ);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", VS_Result_Select_Sub);
@@ -2043,10 +2035,14 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Pause_Check_
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Setup_Tr_Pause);
 
+INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2159);
+INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2160);
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Flash_1P_or_2P);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Pause_in_Normal_Tr);
 
+INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2215);
+INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2216);
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Pause_1st_Sub);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Reset_Training);
@@ -2059,8 +2055,6 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Training_Ini
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Normal_Training);
 // Normal_Training contains literal_2331
-
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Menu_Max_Data_Tr);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Setup_NTr_Data);
 
@@ -2081,6 +2075,9 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Training_Opt
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Training_Disp_Sub);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Dummy_Move_Sub);
+
+const u8 Menu_Max_Data_Tr[2][2][6] = { { { 4, 6, 2, 1, 0, 0 }, { 3, 1, 3, 7, 0, 0 } },
+                                       { { 2, 3, 1, 3, 0, 0 }, { 0, 0, 0, 0, 0, 0 } } };
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Dummy_Move_Sub_LR);
 
