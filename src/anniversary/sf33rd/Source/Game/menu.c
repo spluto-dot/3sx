@@ -58,6 +58,7 @@ void Ex_Move_Sub_LR(u16 sw, s16 PL_id);
 u16 Game_Option_Sub(s16 PL_id);
 u16 GO_Move_Sub_LR(u16 sw, s16 cursor_id);
 void Button_Config_Sub(s16 PL_id);
+void Button_Move_Sub_LR(u16 sw, s16 cursor_id);
 
 typedef void (*MenuFunc)(struct _TASK *);
 
@@ -1744,7 +1745,20 @@ void Button_Config(struct _TASK *task_ptr) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Button_Config_Sub);
+void Button_Config_Sub(s16 PL_id) {
+    u16 sw = ~((u16 *)plsw_01)[PL_id] & ((u16 *)plsw_00)[PL_id];
+    sw = Check_Menu_Lever(PL_id, 0);
+    MC_Move_Sub(sw, PL_id, 0xA, 0xFF);
+    Button_Move_Sub_LR(sw, PL_id);
+
+    if (ppwork[0].ok_dev == 0) {
+        Convert_Buff[1][0][8] = 0;
+    }
+
+    if (ppwork[1].ok_dev == 0) {
+        Convert_Buff[1][1][8] = 0;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Button_Move_Sub_LR);
 

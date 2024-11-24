@@ -2119,6 +2119,32 @@ struct _VM_W {
     s8 padding[3];     // offset 0x66, size 0x3
 };
 
+typedef struct {
+    // total size: 0x34
+    u8 ok_dev; // offset 0x0, size 0x1
+    u8 id;     // offset 0x1, size 0x1
+    u8 opck;   // offset 0x2, size 0x1
+    u8 psix;   // offset 0x3, size 0x1
+    s16 vital; // offset 0x4, size 0x2
+    u8 inStop; // offset 0x6, size 0x1
+    u8 free;   // offset 0x7, size 0x1
+    u32 port;  // offset 0x8, size 0x4
+    struct /* @anon4 */ {
+        // total size: 0x14
+        u8 ppnew;   // offset 0x0, size 0x1
+        u8 free;    // offset 0x1, size 0x1
+        s16 data;   // offset 0x2, size 0x2
+        s16 rno[4]; // offset 0x4, size 0x8
+        s16 life;   // offset 0xC, size 0x2
+        s16 exix;   // offset 0xE, size 0x2
+        struct /* @anon14 */ {
+            // total size: 0x4
+            s16 ix;    // offset 0x0, size 0x2
+            s16 timer; // offset 0x2, size 0x2
+        } *padr;       // offset 0x10, size 0x4
+    } p[2];            // offset 0xC, size 0x28
+} PPWORK;
+
 // .text
 
 void mflInit(void *mem_ptr, s32 memsize, s32 memalign);                     // Range: 0x115FB0 -> 0x115FFC
@@ -2394,6 +2420,7 @@ extern const u32 flpad_io_map[25];             // size: 0x64, address: 0x55F560
 
 // .sbss
 
+extern PPWORK ppwork[2];                  // size: 0x68, address: 0x579610
 extern MessageTable *msgSysDirTbl[];      // size: 0x4, address: 0x575620
 extern MessageTable *msgExtraTbl[];       // size: 0x4, address: 0x575624
 extern void (*plfree)(void *);            // size: 0x4, address: 0x578A10
