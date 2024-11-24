@@ -1760,7 +1760,62 @@ void Button_Config_Sub(s16 PL_id) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Button_Move_Sub_LR);
+void Button_Move_Sub_LR(u16 sw, s16 cursor_id) {
+    s16 max;
+
+    switch (Menu_Cursor_Y[cursor_id]) {
+    case 8:
+        max = 1;
+        break;
+
+    case 9:
+    case 10:
+        max = 0;
+        break;
+
+    default:
+        max = 11;
+        break;
+    }
+
+    if (max == 0) {
+        return;
+    }
+
+    switch (sw) {
+    case 4:
+        Convert_Buff[1][cursor_id][Menu_Cursor_Y[cursor_id]] -= 1;
+
+        if (Convert_Buff[1][cursor_id][Menu_Cursor_Y[cursor_id]] < 0) {
+            Convert_Buff[1][cursor_id][Menu_Cursor_Y[cursor_id]] = max;
+        }
+
+        if (Menu_Cursor_Y[cursor_id] == 8) {
+            if (Convert_Buff[1][cursor_id][8]) {
+                pp_vib_on(cursor_id);
+            } else {
+                pulpul_stop2(cursor_id);
+            }
+        }
+
+        SE_dir_cursor_move();
+        break;
+
+    case 8:
+        Convert_Buff[1][cursor_id][Menu_Cursor_Y[cursor_id]] += 1;
+
+        if (Convert_Buff[1][cursor_id][Menu_Cursor_Y[cursor_id]] > max) {
+            Convert_Buff[1][cursor_id][Menu_Cursor_Y[cursor_id]] = 0;
+        }
+
+        if ((Menu_Cursor_Y[cursor_id] == 8) && (Convert_Buff[1][cursor_id][Menu_Cursor_Y[cursor_id]] == 1)) {
+            pp_vib_on(cursor_id);
+        }
+
+        SE_dir_cursor_move();
+        break;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Button_Exit_Check);
 

@@ -2253,6 +2253,8 @@ void seqsAfterProcess();         // Range: 0x2863C0 -> 0x2865E4
 // PulPul.c
 void init_pulpul_work();            // Range: 0x37A560 -> 0x37A590
 void pulpul_stop();                 // Range: 0x37A760 -> 0x37A790
+void pulpul_stop2(s32 ix);          // Range: 0x37A790 -> 0x37A890
+void pp_vib_on(s32 id);             // Range: 0x37AB30 -> 0x37AB74
 void pp_operator_check_flag(u8 fl); // Range: 0x37ABD0 -> 0x37ABF0
 
 // RAMCNT.c
