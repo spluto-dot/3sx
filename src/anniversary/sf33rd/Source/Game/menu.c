@@ -37,6 +37,7 @@ void Save_Direction(struct _TASK *task_ptr);
 void Load_Direction(struct _TASK *task_ptr);
 void Setup_VS_Mode(struct _TASK *task_ptr);
 void Setup_Next_Page(struct _TASK *task_ptr, s32 /* unused */);
+void Load_Replay_Sub(struct _TASK *task_ptr);
 
 void bg_etc_write_ex(s16 type);
 void Decide_PL(s16 PL_id);
@@ -1328,8 +1329,160 @@ void Load_Replay(struct _TASK *task_ptr) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Load_Replay_Sub);
-// Load_Replay_Sub literal_742_00522630
+void Load_Replay_Sub(struct _TASK *task_ptr) {
+    s32 ix;
+
+    switch (task_ptr->r_no[3]) {
+    case 0:
+        task_ptr->r_no[3] += 1;
+        Rep_Game_Infor[0xA] = Replay_w.game_infor;
+        cpExitTask(1);
+        Play_Mode = 3;
+        break;
+
+    case 1:
+        task_ptr->r_no[3] += 1;
+        FadeInit();
+        FadeOut(0, 0xFF, 8);
+        setup_pos_remake_key(5);
+        Play_Type = 1;
+        Mode_Type = 5;
+        Present_Mode = 3;
+        Bonus_Game_Flag = 0;
+
+        for (ix = 0; ix < 2; ix++) {
+            plw[ix].wu.operator= Replay_w.game_infor.player_infor[ix].player_type;
+            Operator_Status[ix] = Replay_w.game_infor.player_infor[ix].player_type;
+            My_char[ix] = Replay_w.game_infor.player_infor[ix].my_char;
+            Super_Arts[ix] = Replay_w.game_infor.player_infor[ix].sa;
+            Player_Color[ix] = Replay_w.game_infor.player_infor[ix].color;
+            Vital_Handicap[3][ix] = Replay_w.game_infor.Vital_Handicap[ix];
+        }
+
+        Direction_Working[3] = Replay_w.game_infor.Direction_Working;
+        bg_w.stage = Replay_w.game_infor.stage;
+        bg_w.area = 0;
+        save_w[3].Time_Limit = Replay_w.mini_save_w.Time_Limit;
+        save_w[3].Battle_Number[0] = Replay_w.mini_save_w.Battle_Number[0];
+        save_w[3].Battle_Number[1] = Replay_w.mini_save_w.Battle_Number[1];
+        save_w[3].Damage_Level = Replay_w.mini_save_w.Damage_Level;
+        save_w[3].extra_option = Replay_w.mini_save_w.extra_option;
+        system_dir[3] = Replay_w.system_dir;
+        save_w[3].extra_option = Replay_w.mini_save_w.extra_option;
+        save_w[3].Pad_Infor[0] = Replay_w.mini_save_w.Pad_Infor[0];
+        save_w[3].Pad_Infor[1] = Replay_w.mini_save_w.Pad_Infor[1];
+        save_w[3].Pad_Infor[0].Vibration = 0;
+        save_w[3].Pad_Infor[1].Vibration = 0;
+        cpExitTask(6);
+        break;
+
+    case 2:
+        FadeOut(0, 0xFF, 8);
+        task_ptr->r_no[3] += 1;
+        task_ptr->timer = 0xA;
+        System_all_clear_Level_B();
+        pulpul_stop();
+        init_pulpul_work();
+        bg_etc_write(2);
+        bg_w.bgw[0].wxy[0].disp.pos += 0x200;
+        Setup_BG(0, bg_w.bgw[0].wxy[0].disp.pos, bg_w.bgw[0].wxy[1].disp.pos);
+        effect_38_init(0, 0xB, My_char[0], 1, 0);
+        Order[0xB] = 3;
+        Order_Timer[0xB] = 1;
+        effect_38_init(1, 0xC, My_char[1], 1, 0);
+        Order[0xC] = 3;
+        Order_Timer[0xC] = 1;
+        effect_K6_init(0, 0x23, 0x23, 0);
+        Order[0x23] = 3;
+        Order_Timer[0x23] = 1;
+        effect_K6_init(1, 0x24, 0x23, 0);
+        Order[0x24] = 3;
+        Order_Timer[0x24] = 1;
+        effect_39_init(0, 0x11, My_char[0], 0, 0);
+        Order[0x11] = 3;
+        Order_Timer[0x11] = 1;
+        effect_39_init(1, 0x12, My_char[1], 0, 0);
+        Order[0x12] = 3;
+        Order_Timer[0x12] = 1;
+        effect_K6_init(0, 0x1D, 0x1D, 0);
+        Order[0x1D] = 3;
+        Order_Timer[0x1D] = 1;
+        effect_K6_init(1, 0x1E, 0x1D, 0);
+        Order[0x1E] = 3;
+        Order_Timer[0x1E] = 1;
+        effect_43_init(2, 0);
+        effect_75_init(0x2A, 3, 0);
+        Order[0x2A] = 3;
+        Order_Timer[0x2A] = 1;
+        Order_Dir[0x2A] = 5;
+        break;
+
+    case 3:
+        FadeOut(0, 0xFF, 8);
+
+        if (--task_ptr->timer <= 0) {
+            task_ptr->r_no[3] += 1;
+            bgPalCodeOffset[0] = 0x90;
+            BGM_Request(0x33);
+            Purge_memory_of_kind_of_key(0xCU);
+            Push_LDREQ_Queue_Player(0, My_char[0]);
+            Push_LDREQ_Queue_Player(1, My_char[1]);
+            Push_LDREQ_Queue_BG((u16)bg_w.stage);
+        }
+
+        break;
+
+    case 4:
+        if (FadeIn(0, 4, 8) != 0) {
+            task_ptr->r_no[3] += 1;
+        }
+
+        break;
+
+    case 5:
+        if ((Check_PL_Load() != 0) && (Check_LDREQ_Queue_BG((u16)bg_w.stage) != 0) && (adx_now_playend() != 0) &&
+            (sndCheckVTransStatus(0) != 0)) {
+            task_ptr->r_no[3] += 1;
+            Switch_Screen_Init(0);
+            init_omop();
+        }
+
+        break;
+
+    case 6:
+        if (Switch_Screen(0) != 0) {
+            Game01_Sub();
+            Cover_Timer = 5;
+            appear_type = 1;
+            set_hitmark_color();
+            Purge_texcash_of_list(3);
+            Make_texcash_of_list(3);
+            G_No[1] = 2;
+            G_No[2] = 0;
+            G_No[3] = 0;
+            E_No[0] = 4;
+            E_No[1] = 0;
+            E_No[2] = 0;
+            E_No[3] = 0;
+
+            if (plw->wu.operator!= 0) {
+                Sel_Arts_Complete[0] = -1;
+            }
+
+            if (plw[1].wu.operator!= 0) {
+                Sel_Arts_Complete[1] = -1;
+            }
+
+            task_ptr->r_no[2] = 0;
+            cpExitTask(3);
+        }
+
+        break;
+
+    default:
+        break;
+    }
+}
 
 INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Setup_Index_64);
 
