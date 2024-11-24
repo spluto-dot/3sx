@@ -1936,8 +1936,6 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", SD_Move_Sub_
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Memory_Card);
 // Memory_Card contains literal_1183_00522690
 
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Menu_Deley_Time);
-
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Save_Load_Menu);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Go_Back_MC);
@@ -1951,6 +1949,8 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Memory_Card_
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", MC_Move_Sub);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Exit_Sub);
+
+const u8 Menu_Deley_Time[6] = { 15, 10, 6, 15, 15, 15 };
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Menu_Common_Init);
 
