@@ -2500,6 +2500,7 @@ extern u8 CPU_Time_Lag[2];                // size: 0x2, address: 0x57A054
 extern u8 Decide_ID;                      // size: 0x1, address: 0x57A064
 extern s8 Menu_Page_Buff;                 // size: 0x1, address: 0x57A06C
 extern u8 Training_ID;                    // size: 0x1, address: 0x57A07C
+extern u8 Pause_Down;                     // size: 0x1, address: 0x57A080
 extern s8 Vital_Handicap[6][2];           // size: 0xC, address: 0x57A090
 extern u8 Direction_Working[6];           // size: 0x6, address: 0x57A0A0
 extern u8 Page_Max;                       // size: 0x1, address: 0x57A0A8
@@ -2517,6 +2518,7 @@ extern u8 Unsubstantial_BG[4];            // size: 0x4, address: 0x57A0F4
 extern s8 Convert_Buff[4][2][12];         // size: 0x60, address: 0x57A100
 extern u8 Cont_No[4];                     // size: 0x4, address: 0x57A1F8
 extern u8 test_flag;                      // size: 0x1, address: 0x57A200
+extern u8 Exit_Menu;                      // size: 0x1, address: 0x57A24C
 extern u8 Play_Type;                      // size: 0x1, address: 0x57A250
 extern u8 Pause_ID;                       // size: 0x1, address: 0x57A254
 extern u8 Game_pause;                     // size: 0x1, address: 0x57A260

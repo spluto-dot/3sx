@@ -2035,6 +2035,7 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Control_Play
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Next_Be_Tr_Menu);
 
+s32 Check_Pause_Term_Tr(s16 PL_id);
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Check_Pause_Term_Tr);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Pause_Check_Tr);
@@ -2070,9 +2071,36 @@ void Flash_1P_or_2P(struct _TASK *task_ptr) {
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Pause_in_Normal_Tr);
 
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2215);
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2216);
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Pause_1st_Sub);
+s32 Pause_1st_Sub(struct _TASK *task_ptr) {
+    u16 sw = ~((u16 *)plsw_01)[Pause_ID] & ((u16 *)plsw_00)[Pause_ID];
+
+    if (Pause_Down) {
+        SSPutStr2(17, 12, 9, "PRESS   BUTTON");
+        dispButtonImage2(0xB2, 0x5B, 1, 0x13, 0xF, 0, 4);
+        SSPutStr2(18, 14, 9, "TO PAUSE MENU");
+    }
+
+    if (sw & 0x4000) {
+        if (((Mode_Type == 3) || (Mode_Type == 4)) && (Check_Pause_Term_Tr(Pause_ID ^ 1) != 0) &&
+            plw[Pause_ID ^ 1].wu.operator&&(Interface_Type[Pause_ID ^ 1] == 0)) {
+            Pause_ID = Pause_ID ^ 1;
+            return 0;
+        }
+
+        task_ptr->r_no[2] = 0x63;
+        Exit_Menu = 1;
+        SE_selected();
+        return 1;
+    }
+
+    if (sw & 0x100) {
+        task_ptr->r_no[2] += 1;
+        Cursor_Y_Pos[0][0] = 0;
+        SE_selected();
+    }
+
+    return 0;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Reset_Training);
 
