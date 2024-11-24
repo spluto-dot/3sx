@@ -63,6 +63,12 @@ void Return_Option_Mode_Sub(struct _TASK *task_ptr);
 
 typedef void (*MenuFunc)(struct _TASK *);
 
+typedef struct {
+    // total size: 0x8
+    s16 pos_x; // offset 0x0, size 0x2
+    s8 *menu;  // offset 0x4, size 0x4
+} LetterData;
+
 const MenuFunc Menu_Jmp_Tbl[16] = {
     After_Title,   In_Game,      Wait_Load_Save,  Wait_Replay_Check, Disp_Auto_Save, Suspend_Menu, Wait_Replay_Load,
     Training_Menu, After_Replay, Disp_Auto_Save2, Wait_Pause_in_Tr,  Reset_Training, Reset_Replay, End_Replay_Menu,
@@ -2084,19 +2090,9 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Dummy_Move_S
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Blocking_Training);
 // Blocking_Training contains literal_2592
 
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2708);
-
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2709);
-
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2710);
-
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2711);
-
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2712);
-
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", literal_2713);
-
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", training_letter_data);
+const LetterData training_letter_data[6] = { { 0x68, "NORMAL TRAINING" },   { 0x5C, "PARRYING TRAINING" },
+                                             { 0x7C, "DUMMY SETTING" },     { 0x6C, "TRAINING OPTION" },
+                                             { 0x64, "RECORDING SETTING" }, { 0x72, "BUTTON CONFIG." } };
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Blocking_Tr_Option);
 

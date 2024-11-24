@@ -11,7 +11,9 @@ special_cases = {
     ("menu", ".rodata", 3): 16,
     ("menu", ".rodata", 7): 16,
     ("menu", ".rodata", 9): 16,
-    ("menu", ".rodata", 16): 16
+    ("menu", ".rodata", 16): 16,
+    ("menu", ".rodata", 20): 16,
+    ("menu", ".rodata", 23): 16,
 }
 
 def alignment_to_bytes(alignment: int) -> bytes:
