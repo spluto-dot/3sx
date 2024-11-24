@@ -57,6 +57,7 @@ void Dir_Move_Sub_LR(u16 sw, s16 /* unused */);
 void Ex_Move_Sub_LR(u16 sw, s16 PL_id);
 u16 Game_Option_Sub(s16 PL_id);
 u16 GO_Move_Sub_LR(u16 sw, s16 cursor_id);
+void Button_Config_Sub(s16 PL_id);
 
 typedef void (*MenuFunc)(struct _TASK *);
 
@@ -1656,7 +1657,92 @@ u16 GO_Move_Sub_LR(u16 sw, s16 cursor_id) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Button_Config);
+void Button_Config(struct _TASK *task_ptr) {
+    s16 ix;
+    s16 disp_index;
+
+    switch (task_ptr->r_no[2]) {
+    case 0:
+        FadeOut(1, 0xFF, 8);
+        task_ptr->r_no[2] += 1;
+        task_ptr->timer = 5;
+        Menu_Common_Init();
+        pp_operator_check_flag(0);
+        Menu_Cursor_Y[0] = 0;
+        Menu_Cursor_Y[1] = 0;
+        Menu_Suicide[1] = 1;
+        Menu_Suicide[2] = 0;
+        Copy_Key_Disp_Work();
+        Order[0x4F] = 4;
+        Order_Timer[0x4F] = 1;
+        Order[0x4E] = 2;
+        Order_Dir[0x4E] = 2;
+        Order_Timer[0x4E] = 1;
+        effect_57_init(0x6B, 2, 0, 0x3F, 2);
+        Order[0x6B] = 1;
+        Order_Dir[0x6B] = 8;
+        Order_Timer[0x6B] = 1;
+
+        for (ix = 0; ix < 12; ix++) {
+            effect_23_init(0, ix + 0x50, 0, 2, 2, ix, 0x70A7, ix + 9, 1);
+            Order[ix + 0x50] = 1;
+            Order_Dir[ix + 0x50] = 4;
+            Order_Timer[ix + 0x50] = ix + 0x14;
+            effect_23_init(1, ix + 0x5C, 0, 2, 3, ix, 0x70A7, ix + 9, 1);
+            Order[ix + 0x5C] = 1;
+            Order_Dir[ix + 0x5C] = 4;
+            Order_Timer[ix + 0x5C] = ix + 0x14;
+        }
+
+        for (ix = 0; ix < 9; ix++) {
+            if (ix == 8) {
+                disp_index = 1;
+            } else {
+                disp_index = 0;
+            }
+
+            effect_23_init(0, ix + 0x78, 0, 2, disp_index, ix, 0x70A7, ix, 0);
+            Order[ix + 0x78] = 1;
+            Order_Dir[ix + 0x78] = 4;
+            Order_Timer[ix + 0x78] = ix + 0x14;
+            effect_23_init(1, ix + 0x81, 0, 2, disp_index, ix, 0x70A7, ix, 0);
+            Order[ix + 0x81] = 1;
+            Order_Dir[ix + 0x81] = 4;
+            Order_Timer[ix + 0x81] = ix + 0x14;
+        }
+
+        Menu_Cursor_Move = 0x22;
+        effect_66_init(0x8A, 7, 2, 0, -1, -1, -0x7FFF);
+        Order[0x8A] = 1;
+        Order_Dir[0x8A] = 4;
+        Order_Timer[0x8A] = 0x14;
+        effect_66_init(0x8B, 8, 2, 0, -1, -1, -0x7FFF);
+        Order[0x8B] = 1;
+        Order_Dir[0x8B] = 4;
+        Order_Timer[0x8B] = 0x14;
+        break;
+
+    case 1:
+        Menu_Sub_case1(task_ptr);
+        break;
+
+    case 2:
+        if (FadeIn(1, 0x19, 8) != 0) {
+            task_ptr->r_no[2] += 1;
+            Suicide[3] = 0;
+        }
+
+        break;
+
+    case 3:
+        Button_Config_Sub(0);
+        Button_Exit_Check(task_ptr, 0);
+        Button_Config_Sub(1);
+        Button_Exit_Check(task_ptr, 1);
+        Save_Game_Data();
+        break;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Button_Config_Sub);
 

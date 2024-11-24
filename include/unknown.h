@@ -2157,6 +2157,8 @@ void njdp2d_sort(f32 *pos, f32 pri, u32 col, s32 flag); // Range: 0x1C0570 -> 0x
 s32 effect_04_init(s16 Death_Type, s16 cg_type, s16 sync_bg, s16 priority); // Range: 0x1C56A0 -> 0x1C5818
 // DWARF says disp_index and cursor_id are s16, but decompilation suggests otherwise
 s32 effect_18_init(s32 disp_index, s32 cursor_id, s16 sync_bg, s16 master_player); // Range: 0x1D36B0 -> 0x1D37E0
+s32 effect_23_init(s16 id, u8 dir_old, s16 sync_bg, s16 master_player, s16 letter_type, s16 cursor_index,
+                   u16 char_offset, s16 pos_index, s16 type); // Range: 0x1D5230 -> 0x1D5390
 s32 effect_38_init(s16 PL_id, s16 dir_old, s16 Your_Char, s16 Play_Status,
                    s16 Target_BG);                                                    // Range: 0x1DEC30 -> 0x1DF620
 s32 effect_39_init(s16 PL_id, s16 dir_old, s16 Your_Char, s16 Target_BG, s16 Option); // Range: 0x1E04E0 -> 0x1E0718
@@ -2223,8 +2225,9 @@ void seqsBeforeProcess();        // Range: 0x286370 -> 0x2863B4
 void seqsAfterProcess();         // Range: 0x2863C0 -> 0x2865E4
 
 // PulPul.c
-void init_pulpul_work(); // Range: 0x37A560 -> 0x37A590
-void pulpul_stop();      // Range: 0x37A760 -> 0x37A790
+void init_pulpul_work();            // Range: 0x37A560 -> 0x37A590
+void pulpul_stop();                 // Range: 0x37A760 -> 0x37A790
+void pp_operator_check_flag(u8 fl); // Range: 0x37ABD0 -> 0x37ABF0
 
 // RAMCNT.c
 void disp_ramcnt_free_area();                   // Range: 0x37BB90 -> 0x37BC58
@@ -2284,6 +2287,7 @@ void Check_Replay_Status(s16 PL_id, u8 Status);    // Range: 0x3A58D0 -> 0x3A5A3
 s16 Check_SysDir_Page();                           // Range: 0x3A6060 -> 0x3A6174
 void Clear_Flash_Init(s16 level);                  // Range: 0x3A6180 -> 0x3A61A4
 s16 Clear_Flash_Sub();                             // Range: 0x3A61B0 -> 0x3A625C
+void Copy_Key_Disp_Work();                         // Range: 0x3A6260 -> 0x3A631C
 void All_Clear_Suicide();                          // Range: 0x3A85C0 -> 0x3A865C
 
 // SysDir.c
