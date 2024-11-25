@@ -1,6 +1,7 @@
 #include "sf33rd/Source/Game/main.h"
 #include "common.h"
 #include "gcc/memory.h"
+#include "sf33rd/Source/Game/AcrUtil.h"
 #include "sf33rd/Source/Game/SYS_sub2.h"
 #include "unknown.h"
 

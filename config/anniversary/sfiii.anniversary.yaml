@@ -131,7 +131,7 @@ segments:
       - [0x01A330, c, sf33rd/AcrSDK/common/pltim2]
       - [0x01B390, c, sf33rd/AcrSDK/common/prilay]
       - [0x01BFB0, c, sf33rd/Source/Game/SYS_sub2]
-      - [0x01C150, asm, sf33rd/Source/Game/AcrUtil]
+      - [0x01C150, c, sf33rd/Source/Game/AcrUtil]
       - [0x01C580, asm, sf33rd/Source/Game/ACTIVE00]
       - [0x01F240, asm, sf33rd/Source/Game/active01]
       - [0x022100, asm, sf33rd/Source/Game/active02]
@@ -903,7 +903,7 @@ segments:
 
       # .sdata
 
-      - [0x472480, sdata, sf33rd/Source/Game/AcrUtil]
+      - [0x472480, .sdata, sf33rd/Source/Game/AcrUtil]
       - [0x472520, sdata, sf33rd/Source/Game/BBBSCOM]
       - [0x472550, sdata, sf33rd/Source/Game/bg_data]
       - [0x472600, sdata, sf33rd/Source/Game/bg000]
@@ -950,6 +950,8 @@ segments:
       - { type: .sbss, vram: 0x578980, name: sf33rd/AcrSDK/common/memfound }
       - { type: .sbss, vram: 0x5789A8, name: sf33rd/AcrSDK/common/mlPAD }
       - { type: sbss, vram: 0x578A10, name: sbss_578A10 }
+      - { type: .sbss, vram: 0x578A20, name: sf33rd/Source/Game/AcrUtil }
+      - { type: sbss, vram: 0x578A80, name: sbss_578A80 }
       - { type: .sbss, vram: 0x578E50, name: sf33rd/Source/Game/Continue }
       - { type: sbss, vram: 0x578E54, name: sbss_578E54 }
       - { type: .sbss, vram: 0x579078, name: sf33rd/Source/Game/GameOver }

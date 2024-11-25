@@ -2152,18 +2152,36 @@ typedef struct {
     u32 c; // offset 0x4, size 0x4
 } Pixel;
 
+typedef struct {
+    // total size: 0x40
+    f32 _11; // offset 0x0, size 0x4
+    f32 _12; // offset 0x4, size 0x4
+    f32 _13; // offset 0x8, size 0x4
+    f32 _14; // offset 0xC, size 0x4
+    f32 _21; // offset 0x10, size 0x4
+    f32 _22; // offset 0x14, size 0x4
+    f32 _23; // offset 0x18, size 0x4
+    f32 _24; // offset 0x1C, size 0x4
+    f32 _31; // offset 0x20, size 0x4
+    f32 _32; // offset 0x24, size 0x4
+    f32 _33; // offset 0x28, size 0x4
+    f32 _34; // offset 0x2C, size 0x4
+    f32 _41; // offset 0x30, size 0x4
+    f32 _42; // offset 0x34, size 0x4
+    f32 _43; // offset 0x38, size 0x4
+    f32 _44; // offset 0x3C, size 0x4
+} Matrix;
+
+typedef union {
+    f32 f[16];   // offset 0x0, size 0x40
+    f32 a[4][4]; // offset 0x0, size 0x40
+    Matrix m;    // offset 0x0, size 0x40
+} MTX;
+
 // .text
 
 void mflInit(void *mem_ptr, s32 memsize, s32 memalign);                     // Range: 0x115FB0 -> 0x115FFC
 int fmsInitialize(FL_FMS *lp, void *memory_ptr, s32 memsize, s32 memalign); // Range: 0x115D90 -> 0x115E80
-
-void appViewSetItems(VPRM *prm);    // Range: 0x11C0D0 -> 0x11C118
-void appViewGetItems(VPRM *prm);    // Range: 0x11C120 -> 0x11C168
-void appViewMatrix();               // Range: 0x11C170 -> 0x11C1CC
-void render_start();                // Range: 0x11C1D0 -> 0x11C1F0
-void render_end();                  // Range: 0x11C1F0 -> 0x11C210
-void initRenderState(s32 flag);     // Range: 0x11C210 -> 0x11C328
-void setBackGroundColor(u32 color); // Range: 0x11C4D0 -> 0x11C4FC
 
 void Scrn_Renew(); // Range: 0x170BE0 -> 0x170BF0
 void Irl_Family(); // Range: 0x170BF0 -> 0x170CD0
@@ -2355,22 +2373,31 @@ void flmwFlip();          // Range: 0x3C6E00 -> 0x3C6ED8
 void flAdxModuleInit();   // Range: 0x3E51D0 -> 0x3E521C
 void njUserInit();        // Range: 0x3E5BA0 -> 0x3E5E64
 
-s32 flPS2InitRenderState();                                                         // Range: 0x3EEA20 -> 0x3EEC4C
-s32 flSetRenderState(enum _FLSETRENDERSTATE func, u32 value);                       // Range: 0x3EEC50 -> 0x3EFDD8
-void flAdjustScreen(s32 x, s32 y);                                                  // Range: 0x3F2230 -> 0x3F2268
-s32 flSetDebugMode(u32 flag);                                                       // Range: 0x3F2280 -> 0x3F22A0
-void flPS2DebugInit();                                                              // Range: 0x3F2340 -> 0x3F242C
-void flPS2DebugStrDisp();                                                           // Range: 0x3F2450 -> 0x3F2B40
-s32 flPrintL(s32 posi_x, s32 posi_y, s8 *format);                                   // Range: 0x3F2B40 -> 0x3F2D08
-s32 flPrintColor(u32 col);                                                          // Range: 0x3F2D10 -> 0x3F2E04
-void flPS2DispSystemInfo(s32 x, s32 y);                                             // Range: 0x3F2E10 -> 0x3F34B8
+// flps2render.c
+s32 flBeginRender();                                          // Range: 0x3EE930 -> 0x3EE9B0
+s32 flEndRender();                                            // Range: 0x3EE9B0 -> 0x3EEA14
+s32 flPS2InitRenderState();                                   // Range: 0x3EEA20 -> 0x3EEC4C
+s32 flSetRenderState(enum _FLSETRENDERSTATE func, u32 value); // Range: 0x3EEC50 -> 0x3EFDD8
+void flAdjustScreen(s32 x, s32 y);                            // Range: 0x3F2230 -> 0x3F2268
+
+// flps2debug.c
+s32 flSetDebugMode(u32 flag);                     // Range: 0x3F2280 -> 0x3F22A0
+void flPS2DebugInit();                            // Range: 0x3F2340 -> 0x3F242C
+void flPS2DebugStrDisp();                         // Range: 0x3F2450 -> 0x3F2B40
+s32 flPrintL(s32 posi_x, s32 posi_y, s8 *format); // Range: 0x3F2B40 -> 0x3F2D08
+s32 flPrintColor(u32 col);                        // Range: 0x3F2D10 -> 0x3F2E04
+void flPS2DispSystemInfo(s32 x, s32 y);           // Range: 0x3F2E10 -> 0x3F34B8
+
+// flps2dma.c
 u32 flPS2DmaAddEndTag(u32 tag, s32 qwc, s32 irq, s32 /* unused */);                 // Range: 0x3F3F20 -> 0x3F3F88
 void flPS2DmaInitControl(FLPS2VIF1Control *dma_ptr, u32 queue_size, void *handler); // Range: 0x3F4DD0 -> 0x3F4ECC
 s32 flPS2DmaAddQueue2(s32 type, u32 data_adrs, u32 endtag_adrs,
-                      FLPS2VIF1Control *dma_ptr);                 // Range: 0x3F4ED0 -> 0x3F5200
-s32 flPS2DmaInterrupt(s32 ch);                                    // Range: 0x3F5200 -> 0x3F55F0
-void flPS2DmaSend();                                              // Range: 0x3F55F0 -> 0x3F5838
-s32 flPS2DmaWait();                                               // Range: 0x3F5840 -> 0x3F58B0
+                      FLPS2VIF1Control *dma_ptr); // Range: 0x3F4ED0 -> 0x3F5200
+s32 flPS2DmaInterrupt(s32 ch);                    // Range: 0x3F5200 -> 0x3F55F0
+void flPS2DmaSend();                              // Range: 0x3F55F0 -> 0x3F5838
+s32 flPS2DmaWait();                               // Range: 0x3F5840 -> 0x3F58B0
+
+// flps2etc.c
 void flPS2IopModuleLoad(s8 *fname, s32 args, s8 *argp, s32 type); // Range: 0x3F5960 -> 0x3F5A1C
 s32 flFileWrite(s8 *filename, void *buf, s32 len);                // Range: 0x3F5B30 -> 0x3F5C28
 s32 flFileAppend(s8 *filename, void *buf, s32 len);               // Range: 0x3F5C30 -> 0x3F5D38
@@ -2385,10 +2412,14 @@ void *flPS2GetSystemBuffAdrs(u32 handle);                         // Range: 0x3F
 void flPS2SystemTmpBuffInit();                                    // Range: 0x3F62E0 -> 0x3F6348
 void flPS2SystemTmpBuffFlush();                                   // Range: 0x3F6350 -> 0x3F63FC
 u32 flPS2GetSystemTmpBuff(s32 len, s32 align);                    // Range: 0x3F6400 -> 0x3F64AC
-u16 flPS2GetStaticVramArea(u32 size);                             // Range: 0x3F8450 -> 0x3F8564
-void flPS2VramInit();                                             // Range: 0x3FCFB0 -> 0x3FD068
-s32 flInitialize();                                               // Range: 0x3FE0B0 -> 0x3FE1A8
-s32 flFlip(u32 flag);                                             // Range: 0x3FE580 -> 0x3FE648
+
+// flps2math.c
+void flmatMakeViewport(MTX *lpmat, s32 dwx, s32 dwy, s32 dwWidth, s32 dwHeight, f32 dvMinz,
+                       f32 dvMaxz);   // Range: 0x3F7CE0 -> 0x3F811C
+u16 flPS2GetStaticVramArea(u32 size); // Range: 0x3F8450 -> 0x3F8564
+void flPS2VramInit();                 // Range: 0x3FCFB0 -> 0x3FD068
+s32 flInitialize();                   // Range: 0x3FE0B0 -> 0x3FE1A8
+s32 flFlip(u32 flag);                 // Range: 0x3FE580 -> 0x3FE648
 
 s32 flPS2PADModuleInit();                                    // Range: 0x4000B0 -> 0x400120
 s32 tarPADInit();                                            // Range: 0x400120 -> 0x40041C
