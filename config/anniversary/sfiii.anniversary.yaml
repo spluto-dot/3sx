@@ -427,7 +427,7 @@ segments:
       - [0x14FE60, asm, sf33rd/Source/Game/FOLLOW02]
       - [0x150210, asm, sf33rd/Source/Game/Game]
       - [0x153CC0, c, sf33rd/Source/Game/GameOver]
-      - [0x1543B0, asm, sf33rd/Source/Game/GD3rd]
+      - [0x1543B0, c, sf33rd/Source/Game/GD3rd]
       - [0x155C10, asm, sf33rd/Source/Game/Grade]
       - [0x15E6F0, asm, sf33rd/Source/Game/HITCHECK]
       - [0x165100, asm, sf33rd/Source/Game/HITEFEF]
@@ -695,7 +695,10 @@ segments:
       - [0x3697F8, data, sdk/libmc/libmc]
       - [0x369820, data, data_369820]
       - [0x36F9F0, .data, sf33rd/Source/Game/EX_DATA]
-      - [0x370160, data, data_370160]
+      - [0x370160, data, sf33rd/Source/Game/IOConv]
+      - [0x370220, data, sf33rd/Source/Game/OPENING]
+      - [0x3703A0, data, sf33rd/Source/Game/PulPul]
+      - [0x370620, data, sf33rd/Source/Game/Sound3rd]
       - [0x370CE0, data, data_370CE0]
       - [0x3753C0, data, data_3753C0]
       - [0x375980, data, data_375980]
@@ -830,7 +833,8 @@ segments:
       - [0x41F340, .rodata, sf33rd/Source/Game/EX_DATA]
       - [0x41F890, rodata, rodata_41F890]
       - [0x41FD50, .rodata, sf33rd/Source/Game/GameOver]
-      - [0x41FD70, rodata, rodata_41FD70]
+      - [0x41FD70, .rodata, sf33rd/Source/Game/GD3rd]
+      - [0x420450, rodata, rodata_420450]
       - [0x422630, .rodata, sf33rd/Source/Game/menu]
       - [0x4228E8, rodata, rodata_4228E8]
       - [0x4582C8, .rodata, sf33rd/Source/Compress/zlibApp]
@@ -879,8 +883,7 @@ segments:
       - [0x45E760, rodata, rodata_45E760]
       - [0x45E810, rodata, rodata_45E810] # 👈 should be the last rodata segment of CRI
 
-      - [0x45E9C0, rodata, rodata_45E9C0]
-
+      - [0x45E9C0, rodata, sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX]
       - [0x45EA80, .rodata, sf33rd/Source/Game/main]
 
       - [0x45EAA8, rodata, gcc/libc/assert]
@@ -892,14 +895,20 @@ segments:
       - [0x45EDB0, rodata, gcc/libc/vfiprintf]
       - [0x45EFA0, rodata, gcc/libc/vfprintf]
 
-      - [0x45F1B0, rodata, rodata_45F1B0]
+      - [0x45F1B0, rodata, sf33rd/AcrSDK/ps2/flps2render]
+      - [0x45F290, rodata, sf33rd/AcrSDK/ps2/flps2debug]
+      - [0x45F470, rodata, sf33rd/AcrSDK/ps2/flps2dma]
+      - [0x45F500, rodata, sf33rd/AcrSDK/ps2/flps2etc]
+      - [0x45F5B0, rodata, sf33rd/AcrSDK/ps2/flPADUSR]
+      - [0x45F648, rodata, sf33rd/AcrSDK/ps2/flps2shader]
+      - [0x45F660, rodata, sf33rd/AcrSDK/ps2/flps2vram]
       - [0x45FAD0, .rodata, sf33rd/AcrSDK/ps2/foundaps2]
-      - [0x45FC20, rodata, rodata_45FC20]
+      - [0x45FC20, rodata, sf33rd/AcrSDK/ps2/ps2PAD]
 
       - [0x45FCB0, rodata, sdk/libdbc/libdbc]
       - [0x45FF38, rodata, sdk/libpad2/libpad2]
 
-      - [0x45FF90, rodata, rodata_45FF90]
+      - [0x45FFA0, rodata, rodata_45FFA0]
 
       # .sdata
 
@@ -936,7 +945,8 @@ segments:
       - [0x473A20, .sdata, sf33rd/Source/Game/EX_DATA]
       - [0x473A90, sdata, sdata_473A90]
       - [0x473B20, .sdata, sf33rd/Source/Game/GameOver]
-      - [0x473B30, sdata, sdata_473B30]
+      - [0x473B30, .sdata, sf33rd/Source/Game/GD3rd]
+      - [0x473B50, sdata, sdata_473B50]
       - [0x473C80, .sdata, sf33rd/Source/Game/menu]
       - [0x473CE0, sdata, sdata_473CE0]
       - [0x474500, .sdata, sf33rd/Source/Game/Win]
@@ -955,7 +965,8 @@ segments:
       - { type: .sbss, vram: 0x578E50, name: sf33rd/Source/Game/Continue }
       - { type: sbss, vram: 0x578E54, name: sbss_578E54 }
       - { type: .sbss, vram: 0x579078, name: sf33rd/Source/Game/GameOver }
-      - { type: sbss, vram: 0x57907C, name: sbss_57907C }
+      - { type: .sbss, vram: 0x57907C, name: sf33rd/Source/Game/GD3rd }
+      - { type: sbss, vram: 0x5790A0, name: sbss_5790A0 }
       - { type: .sbss, vram: 0x579AB0, name: sf33rd/Source/Game/Win }
       - { type: sbss, vram: 0x579AB4, name: sbss_579AB4 }
       - { type: .sbss, vram: 0x57A780, name: sf33rd/Source/Compress/zlibApp }
@@ -968,5 +979,7 @@ segments:
       - { type: .bss, vram: 0x594C80, name: sf33rd/AcrSDK/common/mlPAD }
       - { type: .bss, vram: 0x594EA0, name: sf33rd/AcrSDK/common/prilay }
       - { type: bss, vram: 0x5956A0, name: bss_5956A0 }
+      - { type: .bss, vram: 0x5E1CA0, name: sf33rd/Source/Game/GD3rd }
+      - { type: bss, vram: 0x5E2D70, name: bss_5E2D70 }
 
   - [0x478A00]

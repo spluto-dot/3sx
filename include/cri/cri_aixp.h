@@ -11,7 +11,7 @@
 /*	Version number of AIXP library 		*/
 #define	AIXP_VER	"1.30"
 
-#include "cri_xpt.h"
+#include "cri/ee/cri_xpt.h"
 #include "sj.h"
 #include "cri_adxt.h"
 

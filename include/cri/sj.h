@@ -11,7 +11,7 @@
 
 #define	SJ_VER	"6.10"		/* Version number */
 
-#include "cri_xpt.h"
+#include "cri/ee/cri_xpt.h"
 
 /***********************************************************************
  *		ˆ—ƒ}ƒNƒ

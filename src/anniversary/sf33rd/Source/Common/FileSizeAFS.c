@@ -1,6 +1,7 @@
+#include "sf33rd/Source/Common/FileSizeAFS.h"
 #include "common.h"
 
-s32 appFileSizes[] = {
+s32 appFileSizes[AFS_FILE_COUNT] = {
     0x50FC,
     0x4A68,
     0xE3CC,

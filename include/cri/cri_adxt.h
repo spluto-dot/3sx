@@ -12,7 +12,7 @@
 /*	Version number of ADXT library 		*/
 #define	ADXT_VER	"8.34"
 
-#include "cri_xpt.h"
+#include "cri/ee/cri_xpt.h"
 #include "sj.h"
 
 /*	ストリームコントローラ				*/

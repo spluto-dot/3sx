@@ -9,7 +9,7 @@
 /*                                                                      */
 /************************************************************************/
 
-#include "cri_xpt.h"
+#include "cri/ee/cri_xpt.h"
 #include "cri_adxt.h"
 
 #ifdef __cplusplus

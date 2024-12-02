@@ -1,6 +1,7 @@
 #ifndef _LIBGRAPH_H
 #define _LIBGRAPH_H
 
+#include "sdk/eeregs.h"
 #include "sdk/eestruct.h"
 
 typedef struct {
@@ -77,16 +78,16 @@ typedef struct {
 } sceGsDBuffDc;
 
 typedef struct {
-	sceGifTag	giftag0;
-	sceGsBitbltbuf	bitbltbuf;
-	long		bitbltbufaddr;
-	sceGsTrxpos	trxpos;
-	long		trxposaddr;
-	sceGsTrxreg	trxreg;
-	long		trxregaddr;
-	sceGsTrxdir	trxdir;
-	long		trxdiraddr;
-	sceGifTag	giftag1;
+    sceGifTag giftag0;
+    sceGsBitbltbuf bitbltbuf;
+    long bitbltbufaddr;
+    sceGsTrxpos trxpos;
+    long trxposaddr;
+    sceGsTrxreg trxreg;
+    long trxregaddr;
+    sceGsTrxdir trxdir;
+    long trxdiraddr;
+    sceGifTag giftag1;
 } sceGsLoadImage;
 
 int sceGsSyncV(int mode);

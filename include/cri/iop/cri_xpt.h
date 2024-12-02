@@ -49,7 +49,7 @@
 
 #define	XPT_TGT_IOP
 
-#include "cri_xpts.h"
+#include "cri/cri_xpts.h"
 
 #endif  /* CRI_XPT_H */
 /* End Of File */

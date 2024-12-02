@@ -14,7 +14,7 @@
 #define ADXI_VER_MINOR	(34)
 #define	ADXI_VER	"8.34"
 
-#include "cri_xpt.h"
+#include "cri/ee/cri_xpt.h"
 
 /****************************************************************************/
 /*		íËêîÉ}ÉNÉç															*/

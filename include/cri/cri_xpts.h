@@ -107,15 +107,15 @@ typedef unsigned long			Uint64;		/* �����Ȃ��W�o�C�g���
 typedef signed long				Sint64;		/* �������W�o�C�g���� */
 #endif
 
-#ifndef _TYPEDEF_Uint128
-#define _TYPEDEF_Uint128					/* �����Ȃ�16�o�C�g���� */
-typedef unsigned int			Uint128 __attribute__ ((mode (TI)));
-#endif
+// #ifndef _TYPEDEF_Uint128
+// #define _TYPEDEF_Uint128					/* �����Ȃ�16�o�C�g���� */
+// typedef unsigned int			Uint128 __attribute__ ((mode (TI)));
+// #endif
 
-#ifndef _TYPEDEF_Sint128
-#define _TYPEDEF_Sint128					/* ������16�o�C�g���� */
-typedef int						Sint128 __attribute__ ((mode (TI)));
-#endif
+// #ifndef _TYPEDEF_Sint128
+// #define _TYPEDEF_Sint128					/* ������16�o�C�g���� */
+// typedef int						Sint128 __attribute__ ((mode (TI)));
+// #endif
 
 #endif	/* endif XPT_TGT_EE */
 

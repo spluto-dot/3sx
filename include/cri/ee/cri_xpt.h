@@ -51,7 +51,7 @@
 #define	XPT_TGT_EE			//	ターゲット　：EmotionEngine
 #define XPT_CCS_LEND		//	エンディアン：リトルエンディアン
 
-#include "cri_xpts.h"
+#include "cri/cri_xpts.h"
 
 #endif  /* CRI_XPT_H */
 /* End Of File */

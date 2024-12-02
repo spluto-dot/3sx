@@ -2178,6 +2178,40 @@ typedef union {
     Matrix m;    // offset 0x0, size 0x40
 } MTX;
 
+typedef struct {
+    // total size: 0xC
+    s8 ok;             // offset 0x0, size 0x1
+    s8 type;           // offset 0x1, size 0x1
+    s16 key;           // offset 0x2, size 0x2
+    u32 texture_table; // offset 0x4, size 0x4
+    u32 trans_table;   // offset 0x8, size 0x4
+} TEX_GRP_LD;
+
+typedef struct {
+    // total size: 0x28
+    u8 be;           // offset 0x0, size 0x1
+    u8 type;         // offset 0x1, size 0x1
+    s16 id;          // offset 0x2, size 0x2
+    u8 rno;          // offset 0x4, size 0x1
+    u8 retry;        // offset 0x5, size 0x1
+    u8 ix;           // offset 0x6, size 0x1
+    u8 frre;         // offset 0x7, size 0x1
+    s16 key;         // offset 0x8, size 0x2
+    u8 kokey;        // offset 0xA, size 0x1
+    u8 group;        // offset 0xB, size 0x1
+    u8 *result;      // offset 0xC, size 0x4
+    s32 size;        // offset 0x10, size 0x4
+    s32 sect;        // offset 0x14, size 0x4
+    u16 fnum;        // offset 0x18, size 0x2
+    u8 free[2];      // offset 0x1A, size 0x2
+    TEX_GRP_LD *lds; // offset 0x1C, size 0x4
+    struct {
+        // total size: 0x8
+        u32 number; // offset 0x0, size 0x4
+        u32 size;   // offset 0x4, size 0x4
+    } info;         // offset 0x20, size 0x8
+} REQ;
+
 // .text
 
 void mflInit(void *mem_ptr, s32 memsize, s32 memalign);                     // Range: 0x115FB0 -> 0x115FFC
@@ -2190,8 +2224,9 @@ void Irl_Scrn();   // Range: 0x170CD0 -> 0x170E9C
 void bg_etc_write(s16 type); // Range: 0x175920 -> 0x175FC0
 
 // color3rd.c
-void set_hitmark_color(); // Range: 0x19DE70 -> 0x19E010
-void palCreateGhost();    // Range: 0x19F8D0 -> 0x19FB50
+void q_ldreq_color_data(REQ *curr); // Range: 0x19D800 -> 0x19DD7C
+void set_hitmark_color();           // Range: 0x19DE70 -> 0x19E010
+void palCreateGhost();              // Range: 0x19F8D0 -> 0x19FB50
 
 // DC_Ghost.c
 void njdp2d_init();                                     // Range: 0x1C0330 -> 0x1C034C
@@ -2276,9 +2311,13 @@ void pp_vib_on(s32 id);             // Range: 0x37AB30 -> 0x37AB74
 void pp_operator_check_flag(u8 fl); // Range: 0x37ABD0 -> 0x37ABF0
 
 // RAMCNT.c
-void disp_ramcnt_free_area();                   // Range: 0x37BB90 -> 0x37BC58
-void Init_ram_control_work(u8 *adrs, s32 size); // Range: 0x37BC60 -> 0x37BDF8
-void Purge_memory_of_kind_of_key(u8 kokey);     // Range: 0x37C060 -> 0x37C10C
+void disp_ramcnt_free_area();                                 // Range: 0x37BB90 -> 0x37BC58
+void Init_ram_control_work(u8 *adrs, s32 size);               // Range: 0x37BC60 -> 0x37BDF8
+void Push_ramcnt_key(s16 key);                                // Range: 0x37BE00 -> 0x37BEC4
+void Purge_memory_of_kind_of_key(u8 kokey);                   // Range: 0x37C060 -> 0x37C10C
+void Set_size_data_ramcnt_key(s16 key, u32 size);             // Range: 0x37C110 -> 0x37C1A4
+u32 Get_ramcnt_address(s16 key);                              // Range: 0x37C240 -> 0x37C2C8
+s16 Pull_ramcnt_key(u32 memreq, u8 kokey, u8 group, u8 frre); // Range: 0x37C460 -> 0x37C62C
 
 // Reset.c
 u8 nowSoftReset(); // Range: 0x37EC90 -> 0x37ECA8
@@ -2343,6 +2382,7 @@ void All_Clear_Suicide();                          // Range: 0x3A85C0 -> 0x3A865
 void init_omop(); // Range: 0x3AB060 -> 0x3AB290
 
 // texgroup.c
+void q_ldreq_texture_group(REQ *curr);                         // Range: 0x3B0540 -> 0x3B0E6C
 void checkSelObjFileLoaded();                                  // Range: 0x3B1000 -> 0x3B10F8
 s32 load_any_texture_patnum(u16 patnum, u8 kokey, u8 _unused); // Range: 0x3B1320 -> 0x3B136C
 
@@ -2381,12 +2421,12 @@ s32 flSetRenderState(enum _FLSETRENDERSTATE func, u32 value); // Range: 0x3EEC50
 void flAdjustScreen(s32 x, s32 y);                            // Range: 0x3F2230 -> 0x3F2268
 
 // flps2debug.c
-s32 flSetDebugMode(u32 flag);                     // Range: 0x3F2280 -> 0x3F22A0
-void flPS2DebugInit();                            // Range: 0x3F2340 -> 0x3F242C
-void flPS2DebugStrDisp();                         // Range: 0x3F2450 -> 0x3F2B40
-s32 flPrintL(s32 posi_x, s32 posi_y, s8 *format); // Range: 0x3F2B40 -> 0x3F2D08
-s32 flPrintColor(u32 col);                        // Range: 0x3F2D10 -> 0x3F2E04
-void flPS2DispSystemInfo(s32 x, s32 y);           // Range: 0x3F2E10 -> 0x3F34B8
+s32 flSetDebugMode(u32 flag);                          // Range: 0x3F2280 -> 0x3F22A0
+void flPS2DebugInit();                                 // Range: 0x3F2340 -> 0x3F242C
+void flPS2DebugStrDisp();                              // Range: 0x3F2450 -> 0x3F2B40
+s32 flPrintL(s32 posi_x, s32 posi_y, s8 *format, ...); // Range: 0x3F2B40 -> 0x3F2D08
+s32 flPrintColor(u32 col);                             // Range: 0x3F2D10 -> 0x3F2E04
+void flPS2DispSystemInfo(s32 x, s32 y);                // Range: 0x3F2E10 -> 0x3F34B8
 
 // flps2dma.c
 u32 flPS2DmaAddEndTag(u32 tag, s32 qwc, s32 irq, s32 /* unused */);                 // Range: 0x3F3F20 -> 0x3F3F88
@@ -2439,6 +2479,9 @@ void KnjFlush(); // Range: 0x407E90 -> 0x407FE8
 // savesub.c
 void SaveInit(s32 file_type, s32 save_mode); // Range: 0x40A210 -> 0x40A3D8
 s32 SaveMove();                              // Range: 0x40A3E0 -> 0x40A464
+
+// cse.c
+s32 cseExecServer(); // Range: 0x4116A0 -> 0x411730
 
 // PPGWork.c
 void ppgWorkInitializeApprication(); // Range: 0x413920 -> 0x413A54
@@ -2498,6 +2541,7 @@ extern s32 X_Adjust_Buff[3];              // size: 0xC, address: 0x579C88
 extern s32 Y_Adjust;                      // size: 0x4, address: 0x579C94
 extern s32 X_Adjust;                      // size: 0x4, address: 0x579C98
 extern u8 Interface_Type[2];              // size: 0x2, address: 0x579C9C
+extern u32 system_timer;                  // size: 0x4, address: 0x579CA0
 extern u8 Process_Counter;                // size: 0x1, address: 0x579CA4
 extern u16 p4sw_1;                        // size: 0x2, address: 0x579CA8
 extern u16 p4sw_0;                        // size: 0x2, address: 0x579CAC

@@ -90,7 +90,12 @@ def main():
             print("Diverging offsets:")
 
         for offset in bad_offsets[:max_printed_offsets]:
-            print(f"    0x{offset:X}")
+            offset_str = f"    0x{offset:X}"
+
+            if offset in EXPECTED_ERRORS:
+                offset_str += " (expected)"
+
+            print(offset_str)
         
     if misalign_offset != None:
         print(f"Misalignment at 0x{misalign_offset:X}")

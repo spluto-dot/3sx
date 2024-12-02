@@ -3,7 +3,8 @@ from pathlib import Path
 import sys
 
 skipped_rodata = {
-    "foundaps2"
+    "foundaps2",
+    "GD3rd",
 }
 
 # (file, section, index of section within sections of this type) -> alignment
@@ -14,6 +15,7 @@ special_cases = {
     ("menu", ".rodata", 16): 16,
     ("menu", ".rodata", 20): 16,
     ("menu", ".rodata", 23): 16,
+    ("sbss_5790A0", ".sbss", 0): 16,
 }
 
 def alignment_to_bytes(alignment: int) -> bytes:
@@ -36,11 +38,12 @@ def alignments(path: Path) -> list[tuple[int, int]]:
         section_indices = {
             ".text": 0,
             ".data": 0,
-            ".rodata": 0
+            ".rodata": 0,
+            ".sbss": 0
         }
 
         for section_index, section in enumerate(elf_file.iter_sections()):
-            if section.name not in (".text", ".data", ".rodata"):
+            if section.name not in (".text", ".data", ".rodata", ".sbss"):
                 continue
 
             filename = path.stem.split(".")[0]
@@ -52,7 +55,13 @@ def alignments(path: Path) -> list[tuple[int, int]]:
             align_offset = header_offset + 8 * 4 # 8 is the index of alignment value
 
             section_key = (filename, section.name, section_indices[section.name])
-            section_alignment = special_cases.get(section_key, 1)
+            section_alignment = 1
+
+            if section_key in special_cases:
+                section_alignment = special_cases[section_key]
+            elif section.name == ".sbss":
+                # Don't change alignment of .sbss sections if not explicitly stated
+                continue
 
             alignments.append((align_offset, section_alignment))
             section_indices[section.name] += 1
