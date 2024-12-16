@@ -240,7 +240,7 @@ s32 load_it_use_any_key2(u16 fnum, void **adrs, s16 *key, u8 kokey, u8 group) {
     u32 err;
 
     if (fnum >= AFS_FILE_COUNT) {
-        flLogOut("�t�@�C���i���o�[�Ɉُ킪����܂��B�t�@�C���ԍ��F%d\n", fnum);
+        flLogOut("ファイルナンバーに異常があります。ファイル番号：%d\n", fnum);
         while (1) {}
     }
 
@@ -295,7 +295,7 @@ s32 load_it_use_this_key(u16 fnum, s16 key) {
             return 1;
         }
 
-        flLogOut("�t�@�C���̓ǂݍ��݂Ɏ��s���܂����B�t�@�C���ԍ��F%d\n", fnum);
+        flLogOut("ファイルの読み込みに失敗しました。ファイル番号：%d\n", fnum);
     }
 }
 
@@ -449,7 +449,7 @@ s32 Push_LDREQ_Queue(REQ *ldreq) {
         return 1;
     }
 
-    flLogOut("�t�@�C���ǂݍ��ݗv���o�b�t�@���I�[�o�[���܂����B\n");
+    flLogOut("ファイル読み込み要求バッファがオーバーしました。\n");
     return 0;
 }
 
@@ -561,7 +561,7 @@ s32 Check_LDREQ_Queue_Direct(s16 ix) {
 
 void q_ldreq_error(REQ *curr) {
     curr->be = 0;
-    flLogOut("Q_LDREQ_ERROR : ���[�h�����̎w��Ɍ�肪����܂��B\n");
+    flLogOut("Q_LDREQ_ERROR : ロード処理の指定に誤りがあります。\n");
 }
 
 const LDREQ_Process_Func ldreq_process[6] = {
