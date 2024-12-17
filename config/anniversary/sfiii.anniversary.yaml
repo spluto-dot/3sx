@@ -837,6 +837,8 @@ segments:
       - [0x420450, rodata, rodata_420450]
       - [0x422630, .rodata, sf33rd/Source/Game/menu]
       - [0x4228E8, rodata, rodata_4228E8]
+      - [0x452690, rodata, sf33rd/Source/Game/Sound3rd]
+      - [0x452810, rodata, rodata_452810]
       - [0x4582C8, .rodata, sf33rd/Source/Compress/zlibApp]
       - [0x4582E0, rodata, rodata_4582E0]
 
@@ -949,6 +951,8 @@ segments:
       - [0x473B50, sdata, sdata_473B50]
       - [0x473C80, .sdata, sf33rd/Source/Game/menu]
       - [0x473CE0, sdata, sdata_473CE0]
+      - [0x4742A0, sdata, sf33rd/Source/Game/Sound3rd]
+      - [0x474368, sdata, sdata_474368]
       - [0x474500, .sdata, sf33rd/Source/Game/Win]
       - [0x474540, sdata, sdata_474540]
       - [0x4749F0, .sdata, sf33rd/AcrSDK/ps2/foundaps2]
@@ -981,5 +985,7 @@ segments:
       - { type: bss, vram: 0x5956A0, name: bss_5956A0 }
       - { type: .bss, vram: 0x5E1CA0, name: sf33rd/Source/Game/GD3rd }
       - { type: bss, vram: 0x5E2D70, name: bss_5E2D70 }
+      - { type: bss, vram: 0x5E5D00, name: sf33rd/Source/Game/Sound3rd }
+      - { type: bss, vram: 0x623700, name: bss_623700 }
 
   - [0x478A00]
