@@ -2212,10 +2212,26 @@ typedef struct {
     } info;         // offset 0x20, size 0x8
 } REQ;
 
+struct _cursor_infor {
+    // total size: 0x2
+    u8 first_x; // offset 0x0, size 0x1
+    u8 first_y; // offset 0x1, size 0x1
+};
+
+typedef struct {
+    // total size: 0x18
+    u8 ok[20];                            // offset 0x0, size 0x14
+    struct _cursor_infor cursor_infor[2]; // offset 0x14, size 0x4
+} Permission;
+
 // .text
 
 void mflInit(void *mem_ptr, s32 memsize, s32 memalign);                     // Range: 0x115FB0 -> 0x115FFC
 int fmsInitialize(FL_FMS *lp, void *memory_ptr, s32 memsize, s32 memalign); // Range: 0x115D90 -> 0x115E80
+
+// bg.c
+void Bg_TexInit();      // Range: 0x16BA90 -> 0x16BB34
+void Pause_Family_On(); // Range: 0x170290 -> 0x170320
 
 void Scrn_Renew(); // Range: 0x170BE0 -> 0x170BF0
 void Irl_Family(); // Range: 0x170BF0 -> 0x170CD0
@@ -2232,6 +2248,12 @@ void palCreateGhost();              // Range: 0x19F8D0 -> 0x19FB50
 void njdp2d_init();                                     // Range: 0x1C0330 -> 0x1C034C
 void njdp2d_draw();                                     // Range: 0x1C0350 -> 0x1C0568
 void njdp2d_sort(f32 *pos, f32 pri, u32 col, s32 flag); // Range: 0x1C0570 -> 0x1C0A0C
+
+// DEMO00.c
+s32 Warning();                 // Range: 0x1C0B60 -> 0x1C0DC4
+void Warning_Init();           // Range: 0x1C16F0 -> 0x1C1898
+void Put_Warning(s16 type);    // Range: 0x1C18A0 -> 0x1C1BC0
+void Pal_Cursor_Put(s16 type); // Range: 0x1C1BC0 -> 0x1C1E28
 
 s32 effect_04_init(s16 Death_Type, s16 cg_type, s16 sync_bg, s16 priority); // Range: 0x1C56A0 -> 0x1C5818
 // DWARF says disp_index and cursor_id are s16, but decompilation suggests otherwise
@@ -2274,7 +2296,8 @@ s32 effect_L1_init(s16 flag);                                            // Rang
 void Entry_Task(); // Range: 0x24B5C0 -> 0x24B708
 
 // Game.c
-void Game01_Sub(); // Range: 0x2514F0 -> 0x2515C0
+void Game_Task(struct _TASK *task_ptr); // Range: 0x250190 -> 0x250378
+void Game01_Sub();                      // Range: 0x2514F0 -> 0x2515C0
 
 // GD3rd.c
 s32 Setup_Directory_Record_Data();            // Range: 0x254330 -> 0x2543CC
@@ -2320,12 +2343,14 @@ u32 Get_ramcnt_address(s16 key);                              // Range: 0x37C240
 s16 Pull_ramcnt_key(u32 memreq, u8 kokey, u8 group, u8 frre); // Range: 0x37C460 -> 0x37C62C
 
 // Reset.c
-u8 nowSoftReset(); // Range: 0x37EC90 -> 0x37ECA8
+void Reset_Task(struct _TASK *task_ptr); // Range: 0x37EBF0 -> 0x37EC5C
+u8 nowSoftReset();                       // Range: 0x37EC90 -> 0x37ECA8
 
 // Saver.c
 void Saver_Task(struct _TASK *task_ptr); // Range: 0x37F1B0 -> 0x37F210
 
 // sc_sub.c
+void Scrscreen_Init();                         // Range: 0x37F4A0 -> 0x37F6E4
 void SSPutStr2(u16 x, u16 y, u8 atr, s8 *str); // Range: 0x3806E0 -> 0x380800
 void FadeInit();                               // Range: 0x3834D0 -> 0x3834E0
 s32 FadeOut(u8 type, u8 step, u8 priority);    // Range: 0x3834E0 -> 0x3836D4
@@ -2360,11 +2385,13 @@ s32 Switch_Screen_Revival(u8 Wipe_Type);           // Range: 0x3A1D10 -> 0x3A1D7
 void Clear_Personal_Data(s16 PL_id);               // Range: 0x3A21C0 -> 0x3A2744
 void Clear_Flash_No();                             // Range: 0x3A2910 -> 0x3A2954
 s32 Cut_Cut_Cut();                                 // Range: 0x3A2960 -> 0x3A29F0
+void Game_Data_Init();                             // Range: 0x3A3740 -> 0x3A380C
 void Setup_IO_ConvDataDefault(s32 id);             // Range: 0x3A3810 -> 0x3A388C
 void Save_Game_Data();                             // Range: 0x3A3890 -> 0x3A3B80
 void Copy_Save_w();                                // Range: 0x3A3B80 -> 0x3A3E3C
 void Copy_Check_w();                               // Range: 0x3A3E40 -> 0x3A3FA8
 s32 Check_Change_Contents();                       // Range: 0x3A4080 -> 0x3A4410
+void Setup_Limit_Time();                           // Range: 0x3A4550 -> 0x3A4618
 void Setup_Training_Difficulty();                  // Range: 0x3A4620 -> 0x3A4720
 void Setup_BG(s16 BG_INDEX, s16 X, s16 Y);         // Range: 0x3A4720 -> 0x3A48C4
 void Setup_Virtual_BG(s16 BG_INDEX, s16 X, s16 Y); // Range: 0x3A48D0 -> 0x3A4A58
@@ -2378,11 +2405,18 @@ s16 Clear_Flash_Sub();                             // Range: 0x3A61B0 -> 0x3A625
 void Copy_Key_Disp_Work();                         // Range: 0x3A6260 -> 0x3A631C
 void All_Clear_Suicide();                          // Range: 0x3A85C0 -> 0x3A865C
 
+// aboutspr.c
+void Init_load_on_memory_data(); // Range: 0x3A8710 -> 0x3A87CC
+
 // SysDir.c
 void init_omop(); // Range: 0x3AB060 -> 0x3AB290
 
+// texcash.c
+void init_texcash_1st(); // Range: 0x3AE390 -> 0x3AE4EC
+
 // texgroup.c
 void q_ldreq_texture_group(REQ *curr);                         // Range: 0x3B0540 -> 0x3B0E6C
+void Init_texgrplds_work();                                    // Range: 0x3B0E70 -> 0x3B0F4C
 void checkSelObjFileLoaded();                                  // Range: 0x3B1000 -> 0x3B10F8
 s32 load_any_texture_patnum(u16 patnum, u8 kokey, u8 _unused); // Range: 0x3B1320 -> 0x3B136C
 
@@ -2394,7 +2428,8 @@ void Setup_File_Property(s16 file_type, u8 number); // Range: 0x3B1BB0 -> 0x3B1C
 void zlib_Initialize(void *tempAdrs, s32 tempSize); // Range: 0x3B76E0 -> 0x3B776C
 
 // Debug.c
-s32 Check_Exit_Check(); // Range: 0x3BF690 -> 0x3BF6E0
+void Debug_Task(struct _TASK *task_ptr); // Range: 0x3BDDD0 -> 0x3BDE70
+s32 Check_Exit_Check();                  // Range: 0x3BF690 -> 0x3BF6E0
 
 // MemMan.c
 void mmSystemInitialize(); // Range: 0x3C0080 -> 0x3C008C
@@ -2407,6 +2442,9 @@ void mmFree(_MEMMAN_OBJ *mmobj, u8 *adrs);           // Range: 0x3C0560 -> 0x3C0
 void ppg_Initialize(void *lcmAdrs, s32 lcmSize); // Range: 0x3C05E0 -> 0x3C0650
 void ppgMakeConvTableTexDC();                    // Range: 0x3C3620 -> 0x3C3768
 
+// ps2Quad.c
+void CP3toPS2DrawOn();    // Range: 0x3C64B0 -> 0x3C64C0
+void CP3toPS2DrawOff();   // Range: 0x3C64C0 -> 0x3C64CC
 void CP3toPS2Draw();      // Range: 0x3C64D0 -> 0x3C6D8C
 void flmwVSyncCallback(); // Range: 0x3C6D90 -> 0x3C6DB4
 void flmwFlip();          // Range: 0x3C6E00 -> 0x3C6ED8
@@ -2492,7 +2530,9 @@ void Reboot_Program(s8 *args); // Range: 0x413F40 -> 0x414030
 // .rodata
 
 extern const u8 Dir_Menu_Max_Data[10][7];      // size: 0x46, address: 0x504FB0
+extern const SystemDir Dir_Default_Data;       // size: 0x48, address: 0x505000
 extern const u8 Page_Data[10];                 // size: 0xA, address: 0x505048
+extern const Permission Permission_PL_Data;    // size: 0x18, address: 0x5224C0
 extern const u8 PL_Color_Data[20];             // size: 0x14, address: 0x552050
 extern const struct _SAVE_W Game_Default_Data; // size: 0x208, address: 0x5544C0
 extern const FLPAD_CONFIG fltpad_config_basic; // size: 0x2C, address: 0x55F530
@@ -2500,17 +2540,19 @@ extern const u32 flpad_io_map[25];             // size: 0x64, address: 0x55F560
 
 // .sbss
 
-extern PPWORK ppwork[2];                  // size: 0x68, address: 0x579610
 extern MessageTable *msgSysDirTbl[];      // size: 0x4, address: 0x575620
 extern MessageTable *msgExtraTbl[];       // size: 0x4, address: 0x575624
 extern void (*plfree)(void *);            // size: 0x4, address: 0x578A10
 extern void *(*plmalloc)(s32);            // size: 0x4, address: 0x578A14
 extern s32 bgPalCodeOffset[8];            // size: 0x20, address: 0x578AA0
+extern s8 seraph_flag;                    // size: 0x1, address: 0x578C6C
 extern BG_MVXY bg_mvxy;                   // size: 0x18, address: 0x578C80
 extern s16 base_y_pos;                    // size: 0x2, address: 0x578CC4
 extern MessageData Message_Data[4];       // size: 0x30, address: 0x578ED0
 extern IO io_w;                           // size: 0x6C, address: 0x579230
 extern s16 appear_type;                   // size: 0x2, address: 0x5795C8
+extern PPWORK ppwork[2];                  // size: 0x68, address: 0x579610
+extern u8 Reset_Status[2];                // size: 0x2, address: 0x57975C
 extern TPU *tpu_free;                     // size: 0x4, address: 0x579A8C
 extern u8 *texcash_melt_buffer;           // size: 0x4, address: 0x579A90
 extern s32 Zoom_Base_Position_Z;          // size: 0x4, address: 0x579AC4
@@ -2534,6 +2576,7 @@ extern s16 Correct_Y[4];                  // size: 0x8, address: 0x579C50
 extern s16 Correct_X[4];                  // size: 0x8, address: 0x579C58
 extern u8 Turbo_Timer;                    // size: 0x1, address: 0x579C60
 extern u8 Turbo;                          // size: 0x1, address: 0x579C64
+extern u8 No_Trans;                       // size: 0x1, address: 0x579C68
 extern u8 Disp_Size_V;                    // size: 0x1, address: 0x579C6C
 extern u8 Disp_Size_H;                    // size: 0x1, address: 0x579C70
 extern s32 Y_Adjust_Buff[3];              // size: 0xC, address: 0x579C78
@@ -2559,13 +2602,17 @@ extern u8 plsw_00[2];                     // size: 0x4, address: 0x579DD4
 extern u16 VS_Win_Record[2];              // size: 0x4, address: 0x579DD8
 extern u16 IO_Result;                     // size: 0x2, address: 0x579DDC
 extern s16 Cont_Timer;                    // size: 0x2, address: 0x579E18
-extern s16 Bonus_Game_Flag;               // size: 0x2, address: 0x579EA4
 extern u16 Result_Timer[2];               // size: 0x4, address: 0x579E30
 extern s16 Offset_BG_X[6];                // size: 0xC, address: 0x579E38
 extern s16 Target_BG_X[6];                // size: 0xC, address: 0x579E48
 extern u16 WGJ_Win;                       // size: 0x2, address: 0x579E54
 extern u16 Win_Record[2];                 // size: 0x4, address: 0x579E5C
+extern s16 Bonus_Game_Flag;               // size: 0x2, address: 0x579EA4
+extern s16 Max_vitality;                  // size: 0x2, address: 0x579EA8
+extern s16 DE_X[2];                       // size: 0x4, address: 0x579EB0
 extern s16 M_Timer;                       // size: 0x2, address: 0x579FBC
+extern s16 Random_ix32;                   // size: 0x2, address: 0x579FC0
+extern s16 Random_ix16;                   // size: 0x2, address: 0x579FC4
 extern s16 Sel_Arts_Complete[2];          // size: 0x4, address: 0x57A000
 extern s16 G_Timer;                       // size: 0x2, address: 0x57A02C
 extern u8 Pause_Type;                     // size: 0x1, address: 0x57A048
@@ -2573,7 +2620,9 @@ extern u8 CPU_Rec[2];                     // size: 0x2, address: 0x57A04C
 extern u8 Forbid_Reset;                   // size: 0x1, address: 0x57A050
 extern u8 CPU_Time_Lag[2];                // size: 0x2, address: 0x57A054
 extern u8 Decide_ID;                      // size: 0x1, address: 0x57A064
+extern u8 Reset_Bootrom;                  // size: 0x1, address: 0x57A068
 extern s8 Menu_Page_Buff;                 // size: 0x1, address: 0x57A06C
+extern u8 Disp_Attack_Data;               // size: 0x1, address: 0x57A078
 extern u8 Training_ID;                    // size: 0x1, address: 0x57A07C
 extern u8 Pause_Down;                     // size: 0x1, address: 0x57A080
 extern s8 Vital_Handicap[6][2];           // size: 0xC, address: 0x57A090
@@ -2582,16 +2631,19 @@ extern u8 Page_Max;                       // size: 0x1, address: 0x57A0A8
 extern u8 Play_Mode;                      // size: 0x1, address: 0x57A0AC
 extern u8 Present_Mode;                   // size: 0x1, address: 0x57A0B0
 extern s8 VS_Stage;                       // size: 0x1, address: 0x57A0B4
+extern u8 reset_NG_flag;                  // size: 0x1, address: 0x57A0B8
 extern s8 Menu_Max;                       // size: 0x1, address: 0x57A0BC
 extern s8 Menu_Page;                      // size: 0x1, address: 0x57A0C0
 extern u8 Mode_Type;                      // size: 0x1, address: 0x57A0C4
 extern s8 Menu_Cursor_Move;               // size: 0x1, address: 0x57A0D8
+extern u8 Play_Game;                      // size: 0x1, address: 0x57A0DC
 extern u8 Replay_Status[2];               // size: 0x2, address: 0x57A0E8
 extern s8 Menu_Cursor_Y[2];               // size: 0x2, address: 0x57A0EC
 extern s8 Menu_Cursor_X[2];               // size: 0x2, address: 0x57A0F0
 extern u8 Unsubstantial_BG[4];            // size: 0x4, address: 0x57A0F4
 extern s8 Convert_Buff[4][2][12];         // size: 0x60, address: 0x57A100
 extern u8 Cont_No[4];                     // size: 0x4, address: 0x57A1F8
+extern u8 ixbfw_cut;                      // size: 0x1, address: 0x57A1FC
 extern u8 test_flag;                      // size: 0x1, address: 0x57A200
 extern u8 Exit_Menu;                      // size: 0x1, address: 0x57A24C
 extern u8 Play_Type;                      // size: 0x1, address: 0x57A250
@@ -2602,6 +2654,7 @@ extern u8 Connect_Status;                 // size: 0x1, address: 0x57A268
 extern s8 Cursor_Y_Pos[2][4];             // size: 0x8, address: 0x57A278
 extern u8 M_No[4];                        // size: 0x4, address: 0x57A29C
 extern u8 G_No[4];                        // size: 0x4, address: 0x57A2A4
+extern u8 S_No[4];                        // size: 0x4, address: 0x57A2A8
 extern u8 E_No[4];                        // size: 0x4, address: 0x57A2B0
 extern u8 E_Number[2][4];                 // size: 0x8, address: 0x57A2B8
 extern s8 Suicide[8];                     // size: 0x8, address: 0x57A2F8
@@ -2609,7 +2662,11 @@ extern s8 Last_Selected_EM[2];            // size: 0x2, address: 0x57A30C
 extern u8 Continue_Count_Down[2];         // size: 0x2, address: 0x57A33C
 extern u8 GO_No[4];                       // size: 0x4, address: 0x57A344
 extern u8 Scene_Cut;                      // size: 0x1, address: 0x57A348
+extern u8 Extra_Break;                    // size: 0x1, address: 0x57A3E0
+extern u8 CC_Value[2];                    // size: 0x2, address: 0x57A494
 extern s8 Break_Com[2][20];               // size: 0x28, address: 0x57A4C0
+extern s8 No_Death;                       // size: 0x1, address: 0x57A51C
+extern s8 PB_Music_Off;                   // size: 0x1, address: 0x57A520
 extern s8 Operator_Status[2];             // size: 0x2, address: 0x57A550
 extern u8 Usage;                          // size: 0x1, address: 0x57A55C
 extern s8 Player_Color[2];                // size: 0x2, address: 0x57A578
@@ -2617,13 +2674,16 @@ extern s8 Ignore_Entry[2];                // size: 0x2, address: 0x57A58C
 extern u8 Continue_Coin[2];               // size: 0x2, address: 0x57A590
 extern u8 Country;                        // size: 0x1, address: 0x57A5E4
 extern s8 Player_id;                      // size: 0x1, address: 0x57A60C
+extern s8 Demo_Flag;                      // size: 0x1, address: 0x57A634
 extern s8 Cover_Timer;                    // size: 0x1, address: 0x57A678
+extern s8 Switch_Type;                    // size: 0x1, address: 0x57A67C
 extern s8 Next_Step;                      // size: 0x1, address: 0x57A680
 extern s8 Champion;                       // size: 0x1, address: 0x57A690
 extern s8 New_Challenger;                 // size: 0x1, address: 0x57A694
 extern s8 LOSER;                          // size: 0x1, address: 0x57A698
 extern s8 WINNER;                         // size: 0x1, address: 0x57A69C
 extern s8 Continue_Count[2];              // size: 0x2, address: 0x57A6B4
+extern s8 Request_Break[2];               // size: 0x2, address: 0x57A6B8
 extern s8 Forbid_Break;                   // size: 0x1, address: 0x57A6BC
 extern s8 Super_Arts[2];                  // size: 0x2, address: 0x57A6C0
 extern u8 My_char[2];                     // size: 0x2, address: 0x57A6D4
@@ -2664,6 +2724,7 @@ extern BG bg_w;                                   // size: 0x428, address: 0x595
 extern f32 PrioBase[128];                         // size: 0x200, address: 0x5E3F50
 extern PLW plw[2];                                // size: 0x8D8, address: 0x5E4D20
 extern struct _SAVE_W save_w[6];                  // size: 0xC30, address: 0x6B4E80
+extern Permission permission_player[6];           // size: 0x90, address: 0x6B5AB0
 extern SystemDir system_dir[6];                   // size: 0x1B0, address: 0x6B5B40
 extern _REPLAY_W Replay_w;                        // size: 0x7448, address: 0x6B5CF0
 extern struct _REP_GAME_INFOR Rep_Game_Infor[11]; // size: 0x18C, address: 0x6BD140

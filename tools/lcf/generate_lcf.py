@@ -170,6 +170,8 @@ def main():
 
         sdata_alignment_changes = {
             "Continue": 16,
+            "sdata_474368": 8,
+            "Win": 16,
             "sdata_4749F4": 4
         }
 

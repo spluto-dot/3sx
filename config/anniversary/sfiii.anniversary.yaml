@@ -434,7 +434,7 @@ segments:
       - [0x1653F0, asm, sf33rd/Source/Game/HITEFPL]
       - [0x1659A0, asm, sf33rd/Source/Game/HITPLEF]
       - [0x165CF0, asm, sf33rd/Source/Game/HITPLPL]
-      - [0x166100, asm, sf33rd/Source/Game/init3rd]
+      - [0x166100, c, sf33rd/Source/Game/init3rd]
       - [0x166B10, asm, sf33rd/Source/Game/IOConv]
       - [0x1671A0, asm, sf33rd/Source/Game/LOSE_PL]
       - [0x167F10, asm, sf33rd/Source/Game/Manage]
@@ -835,6 +835,8 @@ segments:
       - [0x41FD50, .rodata, sf33rd/Source/Game/GameOver]
       - [0x41FD70, .rodata, sf33rd/Source/Game/GD3rd]
       - [0x420450, rodata, rodata_420450]
+      - [0x422530, .rodata, sf33rd/Source/Game/init3rd]
+      - [0x422560, rodata, rodata_422560]
       - [0x422630, .rodata, sf33rd/Source/Game/menu]
       - [0x4228E8, rodata, rodata_4228E8]
       - [0x452690, rodata, sf33rd/Source/Game/Sound3rd]
@@ -948,7 +950,8 @@ segments:
       - [0x473A90, sdata, sdata_473A90]
       - [0x473B20, .sdata, sf33rd/Source/Game/GameOver]
       - [0x473B30, .sdata, sf33rd/Source/Game/GD3rd]
-      - [0x473B50, sdata, sdata_473B50]
+      - [0x473B50, .sdata, sf33rd/Source/Game/init3rd]
+      - [0x473B70, sdata, sdata_473B70]
       - [0x473C80, .sdata, sf33rd/Source/Game/menu]
       - [0x473CE0, sdata, sdata_473CE0]
       - [0x4742A0, sdata, sf33rd/Source/Game/Sound3rd]
@@ -971,6 +974,8 @@ segments:
       - { type: .sbss, vram: 0x579078, name: sf33rd/Source/Game/GameOver }
       - { type: .sbss, vram: 0x57907C, name: sf33rd/Source/Game/GD3rd }
       - { type: sbss, vram: 0x5790A0, name: sbss_5790A0 }
+      - { type: .sbss, vram: 0x579220, name: sf33rd/Source/Game/init3rd }
+      - { type: sbss, vram: 0x579230, name: sbss_579230 }
       - { type: .sbss, vram: 0x579AB0, name: sf33rd/Source/Game/Win }
       - { type: sbss, vram: 0x579AB4, name: sbss_579AB4 }
       - { type: .sbss, vram: 0x57A780, name: sf33rd/Source/Compress/zlibApp }

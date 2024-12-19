@@ -5,6 +5,7 @@ import sys
 skipped_rodata = {
     "foundaps2",
     "GD3rd",
+    "init3rd",
 }
 
 # (file, section, index of section within sections of this type) -> alignment
@@ -16,6 +17,8 @@ special_cases = {
     ("menu", ".rodata", 20): 16,
     ("menu", ".rodata", 23): 16,
     ("sbss_5790A0", ".sbss", 0): 16,
+    ("rodata_422560", ".rodata", 0): 16,
+    ("sbss_579230", ".sbss", 0): 16
 }
 
 def alignment_to_bytes(alignment: int) -> bytes:
