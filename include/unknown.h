@@ -2342,10 +2342,6 @@ void Set_size_data_ramcnt_key(s16 key, u32 size);             // Range: 0x37C110
 u32 Get_ramcnt_address(s16 key);                              // Range: 0x37C240 -> 0x37C2C8
 s16 Pull_ramcnt_key(u32 memreq, u8 kokey, u8 group, u8 frre); // Range: 0x37C460 -> 0x37C62C
 
-// Reset.c
-void Reset_Task(struct _TASK *task_ptr); // Range: 0x37EBF0 -> 0x37EC5C
-u8 nowSoftReset();                       // Range: 0x37EC90 -> 0x37ECA8
-
 // Saver.c
 void Saver_Task(struct _TASK *task_ptr); // Range: 0x37F1B0 -> 0x37F210
 
@@ -2355,6 +2351,7 @@ void SSPutStr2(u16 x, u16 y, u8 atr, s8 *str); // Range: 0x3806E0 -> 0x380800
 void FadeInit();                               // Range: 0x3834D0 -> 0x3834E0
 s32 FadeOut(u8 type, u8 step, u8 priority);    // Range: 0x3834E0 -> 0x3836D4
 s32 FadeIn(u8 type, u8 step, u8 priority);     // Range: 0x3836E0 -> 0x3838DC
+void ToneDown(u8 tone, u8 priority);           // Range: 0x3838E0 -> 0x383A24
 
 // sc_sub.c
 void dispButtonImage2(s32 px, s32 py, s32 pz, s32 sx, s32 sy, s32 cl, s32 ix); // Range: 0x388AA0 -> 0x388D94
@@ -2398,6 +2395,7 @@ void Setup_Virtual_BG(s16 BG_INDEX, s16 X, s16 Y); // Range: 0x3A48D0 -> 0x3A4A5
 s32 Check_PL_Load();                               // Range: 0x3A4BF0 -> 0x3A4C48
 void System_all_clear_Level_B();                   // Range: 0x3A4F20 -> 0x3A4F48
 s32 Cut_Cut_Loser();                               // Range: 0x3A5070 -> 0x3A50E0
+void Soft_Reset_Sub();                             // Range: 0x3A5100 -> 0x3A5258
 void Check_Replay_Status(s16 PL_id, u8 Status);    // Range: 0x3A58D0 -> 0x3A5A30
 s16 Check_SysDir_Page();                           // Range: 0x3A6060 -> 0x3A6174
 void Clear_Flash_Init(s16 level);                  // Range: 0x3A6180 -> 0x3A61A4
@@ -2552,7 +2550,6 @@ extern MessageData Message_Data[4];       // size: 0x30, address: 0x578ED0
 extern IO io_w;                           // size: 0x6C, address: 0x579230
 extern s16 appear_type;                   // size: 0x2, address: 0x5795C8
 extern PPWORK ppwork[2];                  // size: 0x68, address: 0x579610
-extern u8 Reset_Status[2];                // size: 0x2, address: 0x57975C
 extern TPU *tpu_free;                     // size: 0x4, address: 0x579A8C
 extern u8 *texcash_melt_buffer;           // size: 0x4, address: 0x579A90
 extern s32 Zoom_Base_Position_Z;          // size: 0x4, address: 0x579AC4

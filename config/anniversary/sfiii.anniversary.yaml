@@ -506,7 +506,7 @@ segments:
       - [0x27A5E0, asm, sf33rd/Source/Game/PulPul]
       - [0x27BC10, asm, sf33rd/Source/Game/RAMCNT]
       - [0x27C6B0, asm, sf33rd/Source/Game/RANKING]
-      - [0x27EC70, asm, sf33rd/Source/Game/Reset]
+      - [0x27EC70, c, sf33rd/Source/Game/Reset]
       - [0x27F230, asm, sf33rd/Source/Game/Saver]
       - [0x27F520, asm, sf33rd/Source/Game/sc_sub]
       - [0x289050, asm, sf33rd/Source/Game/SE]
@@ -954,6 +954,8 @@ segments:
       - [0x473B70, sdata, sdata_473B70]
       - [0x473C80, .sdata, sf33rd/Source/Game/menu]
       - [0x473CE0, sdata, sdata_473CE0]
+      - [0x4740D0, .sdata, sf33rd/Source/Game/Reset]
+      - [0x4740E0, sdata, sdata_4740E0]
       - [0x4742A0, sdata, sf33rd/Source/Game/Sound3rd]
       - [0x474368, sdata, sdata_474368]
       - [0x474500, .sdata, sf33rd/Source/Game/Win]
@@ -976,6 +978,8 @@ segments:
       - { type: sbss, vram: 0x5790A0, name: sbss_5790A0 }
       - { type: .sbss, vram: 0x579220, name: sf33rd/Source/Game/init3rd }
       - { type: sbss, vram: 0x579230, name: sbss_579230 }
+      - { type: .sbss, vram: 0x579758, name: sf33rd/Source/Game/Reset }
+      - { type: sbss, vram: 0x579760, name: sbss_579760 }
       - { type: .sbss, vram: 0x579AB0, name: sf33rd/Source/Game/Win }
       - { type: sbss, vram: 0x579AB4, name: sbss_579AB4 }
       - { type: .sbss, vram: 0x57A780, name: sf33rd/Source/Compress/zlibApp }
