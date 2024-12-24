@@ -112,576 +112,389 @@ struct _SYSTEM_W {
 };
 
 typedef struct {
-    // total size: 0x46C
-    struct /* @anon46 */ {
-        // total size: 0x388
-        s8 be_flag;        // offset 0x0, size 0x1
-        s8 disp_flag;      // offset 0x1, size 0x1
-        u8 blink_timing;   // offset 0x2, size 0x1
-        u8 operator;       // offset 0x3, size 0x1
-        u8 type;           // offset 0x4, size 0x1
-        u8 charset_id;     // offset 0x5, size 0x1
-        s16 work_id;       // offset 0x6, size 0x2
-        s16 id;            // offset 0x8, size 0x2
-        s8 rl_flag;        // offset 0xA, size 0x1
-        s8 rl_waza;        // offset 0xB, size 0x1
-        u32 *target_adrs;  // offset 0xC, size 0x4
-        u32 *hit_adrs;     // offset 0x10, size 0x4
-        u32 *dmg_adrs;     // offset 0x14, size 0x4
-        s16 before;        // offset 0x18, size 0x2
-        s16 myself;        // offset 0x1A, size 0x2
-        s16 behind;        // offset 0x1C, size 0x2
-        s16 listix;        // offset 0x1E, size 0x2
-        s16 dead_f;        // offset 0x20, size 0x2
-        s16 timing;        // offset 0x22, size 0x2
-        s16 routine_no[8]; // offset 0x24, size 0x10
-        s16 old_rno[8];    // offset 0x34, size 0x10
-        s16 hit_stop;      // offset 0x44, size 0x2
-        s16 hit_quake;     // offset 0x46, size 0x2
-        s8 cgromtype;      // offset 0x48, size 0x1
-        u8 kage_flag;      // offset 0x49, size 0x1
-        s16 kage_hx;       // offset 0x4A, size 0x2
-        s16 kage_hy;       // offset 0x4C, size 0x2
-        s16 kage_prio;     // offset 0x4E, size 0x2
-        s16 kage_width;    // offset 0x50, size 0x2
-        s16 kage_char;     // offset 0x52, size 0x2
-        s16 position_x;    // offset 0x54, size 0x2
-        s16 position_y;    // offset 0x56, size 0x2
-        s16 position_z;    // offset 0x58, size 0x2
-        s16 next_x;        // offset 0x5A, size 0x2
-        s16 next_y;        // offset 0x5C, size 0x2
-        s16 next_z;        // offset 0x5E, size 0x2
-        s16 scr_mv_x;      // offset 0x60, size 0x2
-        s16 scr_mv_y;      // offset 0x62, size 0x2
-        union /* @anon29 */ {
-            s32 cal; // offset 0x0, size 0x4
-            struct /* @anon31 */ {
-                // total size: 0x4
-                s16 low;  // offset 0x0, size 0x2
-                s16 pos;  // offset 0x2, size 0x2
-            } disp;       // offset 0x0, size 0x4
-        } xyz[3];         // offset 0x64, size 0xC
-        s16 old_pos[3];   // offset 0x70, size 0x6
-        s16 sync_suzi;    // offset 0x76, size 0x2
-        u16 *suzi_offset; // offset 0x78, size 0x4
-        struct /* @anon4 */ {
-            // total size: 0x18
-            union /* @anon5 */ {
-                s32 sp; // offset 0x0, size 0x4
-                struct /* @anon7 */ {
-                    // total size: 0x4
-                    s16 l; // offset 0x0, size 0x2
-                    s16 h; // offset 0x2, size 0x2
-                } real;    // offset 0x0, size 0x4
-            } a[2];        // offset 0x0, size 0x8
-            union /* @anon11 */ {
-                s32 sp; // offset 0x0, size 0x4
-                struct /* @anon13 */ {
-                    // total size: 0x4
-                    s16 l; // offset 0x0, size 0x2
-                    s16 h; // offset 0x2, size 0x2
-                } real;    // offset 0x0, size 0x4
-            } d[2];        // offset 0x8, size 0x8
-            s16 kop[2];    // offset 0x10, size 0x4
-            u16 index;     // offset 0x14, size 0x2
-        } mvxy;            // offset 0x7C, size 0x18
-        s16 direction;     // offset 0x94, size 0x2
-        s16 dir_old;       // offset 0x96, size 0x2
-        s16 dir_step;      // offset 0x98, size 0x2
-        s16 dir_timer;     // offset 0x9A, size 0x2
-        s16 vitality;      // offset 0x9C, size 0x2
-        s16 vital_new;     // offset 0x9E, size 0x2
-        s16 vital_old;     // offset 0xA0, size 0x2
-        s16 dm_vital;      // offset 0xA2, size 0x2
-        s16 dmcal_m;       // offset 0xA4, size 0x2
-        s16 dmcal_d;       // offset 0xA6, size 0x2
-        s8 weight_level;   // offset 0xA8, size 0x1
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmoa;       // offset 0xAA, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmsw;       // offset 0xB2, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmlp;       // offset 0xBA, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cml2;       // offset 0xC2, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmja;       // offset 0xCA, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmj2;       // offset 0xD2, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmj3;       // offset 0xDA, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmj4;       // offset 0xE2, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmj5;       // offset 0xEA, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmj6;       // offset 0xF2, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmj7;       // offset 0xFA, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmms;       // offset 0x102, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmmd;       // offset 0x10A, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmyd;       // offset 0x112, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmcf;       // offset 0x11A, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmcr;       // offset 0x122, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmbk;       // offset 0x12A, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmb2;       // offset 0x132, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmb3;       // offset 0x13A, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmhs;       // offset 0x142, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmr0;       // offset 0x14A, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmr1;       // offset 0x152, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmr2;       // offset 0x15A, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code;         // offset 0x0, size 0x2
-            s16 koc;          // offset 0x2, size 0x2
-            s16 ix;           // offset 0x4, size 0x2
-            s16 pat;          // offset 0x6, size 0x2
-        } cmr3;               // offset 0x162, size 0x8
-        s16 cmwk[32];         // offset 0x16A, size 0x40
-        u32 *char_table[12];  // offset 0x1AC, size 0x30
-        u32 *se_random_table; // offset 0x1DC, size 0x4
-        s16 *step_xy_table;   // offset 0x1E0, size 0x4
-        s16 *move_xy_table;   // offset 0x1E4, size 0x4
-        struct /* @anon49 */ {
-            // total size: 0x10
-            s16 parts_hos_x; // offset 0x0, size 0x2
-            s16 parts_hos_y; // offset 0x2, size 0x2
-            u8 parts_colmd;  // offset 0x4, size 0x1
-            u8 parts_colcd;  // offset 0x5, size 0x1
-            u8 parts_prio;   // offset 0x6, size 0x1
-            u8 parts_flip;   // offset 0x7, size 0x1
-            u8 parts_timer;  // offset 0x8, size 0x1
-            u8 parts_disp;   // offset 0x9, size 0x1
-            s16 parts_mts;   // offset 0xA, size 0x2
-            u16 parts_nix;   // offset 0xC, size 0x2
-            u16 parts_char;  // offset 0xE, size 0x2
-        } *overlap_char_tbl; // offset 0x1E8, size 0x4
-        struct /* @anon43 */ {
-            // total size: 0x8
-            s16 olc_ix[4]; // offset 0x0, size 0x8
-        } *olc_ix_table;   // offset 0x1EC, size 0x4
-        struct /* @anon43 */ {
-            // total size: 0x8
-            s16 olc_ix[4]; // offset 0x0, size 0x8
-        } cg_olc;          // offset 0x1F0, size 0x8
-        struct /* @anon58 */ {
-            // total size: 0x8
-            s16 catch_hos_x; // offset 0x0, size 0x2
-            s16 catch_hos_y; // offset 0x2, size 0x2
-            u8 catch_prio;   // offset 0x4, size 0x1
-            u8 catch_flip;   // offset 0x5, size 0x1
-            s16 catch_nix;   // offset 0x6, size 0x2
-        } *rival_catch_tbl;  // offset 0x1F8, size 0x4
-        struct /* @anon58 */ {
-            // total size: 0x8
-            s16 catch_hos_x; // offset 0x0, size 0x2
-            s16 catch_hos_y; // offset 0x2, size 0x2
-            u8 catch_prio;   // offset 0x4, size 0x1
-            u8 catch_flip;   // offset 0x5, size 0x1
-            s16 catch_nix;   // offset 0x6, size 0x2
-        } *curr_rca;         // offset 0x1FC, size 0x4
-        u32 *set_char_ad;    // offset 0x200, size 0x4
-        s16 cg_ix;           // offset 0x204, size 0x2
-        s16 now_koc;         // offset 0x206, size 0x2
-        s16 char_index;      // offset 0x208, size 0x2
-        s16 current_colcd;   // offset 0x20A, size 0x2
-        s16 cgd_type;        // offset 0x20C, size 0x2
-        u8 pat_status;       // offset 0x20E, size 0x1
-        u8 kind_of_waza;     // offset 0x20F, size 0x1
-        u8 hit_range;        // offset 0x210, size 0x1
-        u8 total_paring;     // offset 0x211, size 0x1
-        u8 total_att_set;    // offset 0x212, size 0x1
-        u8 sp_tech_id;       // offset 0x213, size 0x1
-        u8 cg_type;          // offset 0x214, size 0x1
-        u8 cg_ctr;           // offset 0x215, size 0x1
-        u16 cg_se;           // offset 0x216, size 0x2
-        u16 cg_olc_ix;       // offset 0x218, size 0x2
-        u16 cg_number;       // offset 0x21A, size 0x2
-        u16 cg_hit_ix;       // offset 0x21C, size 0x2
-        s16 cg_att_ix;       // offset 0x21E, size 0x2
-        u8 cg_extdat;        // offset 0x220, size 0x1
-        u8 cg_cancel;        // offset 0x221, size 0x1
-        u8 cg_effect;        // offset 0x222, size 0x1
-        u8 cg_eftype;        // offset 0x223, size 0x1
-        u16 cg_zoom;         // offset 0x224, size 0x2
-        u16 cg_rival;        // offset 0x226, size 0x2
-        u16 cg_add_xy;       // offset 0x228, size 0x2
-        u8 cg_next_ix;       // offset 0x22A, size 0x1
-        u8 cg_status;        // offset 0x22B, size 0x1
-        s16 cg_wca_ix;       // offset 0x22C, size 0x2
-        s16 cg_jphos;        // offset 0x22E, size 0x2
-        u16 cg_meoshi;       // offset 0x230, size 0x2
-        u8 cg_prio;          // offset 0x232, size 0x1
-        u8 cg_flip;          // offset 0x233, size 0x1
-        u16 old_cgnum;       // offset 0x234, size 0x2
-        s16 floor;           // offset 0x236, size 0x2
-        u16 ccoff;           // offset 0x238, size 0x2
-        s16 colcd;           // offset 0x23A, size 0x2
-        s16 my_col_mode;     // offset 0x23C, size 0x2
-        s16 my_col_code;     // offset 0x23E, size 0x2
-        s16 my_priority;     // offset 0x240, size 0x2
-        s16 my_family;       // offset 0x242, size 0x2
-        s16 my_ext_pri;      // offset 0x244, size 0x2
-        s16 my_bright_type;  // offset 0x246, size 0x2
-        s16 my_bright_level; // offset 0x248, size 0x2
-        s16 my_clear_level;  // offset 0x24A, size 0x2
-        s16 my_mts;          // offset 0x24C, size 0x2
-        s16 my_mr_flag;      // offset 0x24E, size 0x2
-        struct /* @anon47 */ {
+    // total size: 0x10
+    u16 boix; // offset 0x0, size 0x2
+    u16 bhix; // offset 0x2, size 0x2
+    u16 haix; // offset 0x4, size 0x2
+    union /* @anon10 */ {
+        u16 full; // offset 0x0, size 0x2
+        struct /* @anon12 */ {
+            // total size: 0x2
+            u8 bx; // offset 0x0, size 0x1
+            u8 mv; // offset 0x1, size 0x1
+        } half;    // offset 0x0, size 0x2
+    } mf;          // offset 0x6, size 0x2
+    u16 caix;      // offset 0x8, size 0x2
+    u16 cuix;      // offset 0xA, size 0x2
+    u16 atix;      // offset 0xC, size 0x2
+    u16 hoix;      // offset 0xE, size 0x2
+} UNK_0;
+
+typedef struct {
+    // total size: 0x20
+    s16 body_dm[4][4]; // offset 0x0, size 0x20
+} UNK_1;
+
+typedef struct {
+    // total size: 0x20
+    s16 hand_dm[4][4]; // offset 0x0, size 0x20
+} UNK_2;
+
+typedef struct {
+    // total size: 0x8
+    s16 cat_box[4]; // offset 0x0, size 0x8
+} UNK_3;
+
+typedef struct {
+    // total size: 0x8
+    s16 cau_box[4]; // offset 0x0, size 0x8
+} UNK_4;
+
+typedef struct {
+    // total size: 0x20
+    s16 att_box[4][4]; // offset 0x0, size 0x20
+} UNK_5;
+
+typedef struct {
+    // total size: 0x8
+    s16 hos_box[4]; // offset 0x0, size 0x8
+} UNK_6;
+
+typedef struct {
+    // total size: 0x10
+    u8 reaction; // offset 0x0, size 0x1
+    u8 level;    // offset 0x1, size 0x1
+    u8 mkh_ix;   // offset 0x2, size 0x1
+    u8 but_ix;   // offset 0x3, size 0x1
+    u8 dipsw;    // offset 0x4, size 0x1
+    u8 guard;    // offset 0x5, size 0x1
+    u8 dir;      // offset 0x6, size 0x1
+    u8 free;     // offset 0x7, size 0x1
+    u8 pow;      // offset 0x8, size 0x1
+    u8 impact;   // offset 0x9, size 0x1
+    u8 piyo;     // offset 0xA, size 0x1
+    u8 ng_type;  // offset 0xB, size 0x1
+    s8 hs_me;    // offset 0xC, size 0x1
+    s8 hs_you;   // offset 0xD, size 0x1
+    u8 hit_mark; // offset 0xE, size 0x1
+    u8 dmg_mark; // offset 0xF, size 0x1
+} UNK_7;
+
+typedef struct {
+    // total size: 0x10
+    s16 parts_hos_x; // offset 0x0, size 0x2
+    s16 parts_hos_y; // offset 0x2, size 0x2
+    u8 parts_colmd;  // offset 0x4, size 0x1
+    u8 parts_colcd;  // offset 0x5, size 0x1
+    u8 parts_prio;   // offset 0x6, size 0x1
+    u8 parts_flip;   // offset 0x7, size 0x1
+    u8 parts_timer;  // offset 0x8, size 0x1
+    u8 parts_disp;   // offset 0x9, size 0x1
+    s16 parts_mts;   // offset 0xA, size 0x2
+    u16 parts_nix;   // offset 0xC, size 0x2
+    u16 parts_char;  // offset 0xE, size 0x2
+} UNK_8;
+
+typedef struct {
+    // total size: 0x8
+    s16 olc_ix[4]; // offset 0x0, size 0x8
+} UNK_9;
+
+typedef struct {
+    // total size: 0x8
+    s16 catch_hos_x; // offset 0x0, size 0x2
+    s16 catch_hos_y; // offset 0x2, size 0x2
+    u8 catch_prio;   // offset 0x4, size 0x1
+    u8 catch_flip;   // offset 0x5, size 0x1
+    s16 catch_nix;   // offset 0x6, size 0x2
+} UNK_10;
+
+typedef struct {
+    // total size: 0x8
+    u16 code; // offset 0x0, size 0x2
+    s16 koc;  // offset 0x2, size 0x2
+    s16 ix;   // offset 0x4, size 0x2
+    s16 pat;  // offset 0x6, size 0x2
+} UNK_11;
+
+typedef union {
+    s32 sp; // offset 0x0, size 0x4
+    struct /* @anon17 */ {
+        // total size: 0x4
+        s16 l; // offset 0x0, size 0x2
+        s16 h; // offset 0x2, size 0x2
+    } real;    // offset 0x0, size 0x4
+} UNK_13;
+
+typedef struct {
+    // total size: 0x18
+    UNK_13 a[2]; // offset 0x0, size 0x8
+    UNK_13 d[2]; // offset 0x8, size 0x8
+    s16 kop[2];  // offset 0x10, size 0x4
+    u16 index;   // offset 0x14, size 0x2
+} MVXY;
+
+typedef struct {
+    // total size: 0x388
+    s8 be_flag;        // offset 0x0, size 0x1
+    s8 disp_flag;      // offset 0x1, size 0x1
+    u8 blink_timing;   // offset 0x2, size 0x1
+    u8 operator;       // offset 0x3, size 0x1
+    u8 type;           // offset 0x4, size 0x1
+    u8 charset_id;     // offset 0x5, size 0x1
+    s16 work_id;       // offset 0x6, size 0x2
+    s16 id;            // offset 0x8, size 0x2
+    s8 rl_flag;        // offset 0xA, size 0x1
+    s8 rl_waza;        // offset 0xB, size 0x1
+    u32 *target_adrs;  // offset 0xC, size 0x4
+    u32 *hit_adrs;     // offset 0x10, size 0x4
+    u32 *dmg_adrs;     // offset 0x14, size 0x4
+    s16 before;        // offset 0x18, size 0x2
+    s16 myself;        // offset 0x1A, size 0x2
+    s16 behind;        // offset 0x1C, size 0x2
+    s16 listix;        // offset 0x1E, size 0x2
+    s16 dead_f;        // offset 0x20, size 0x2
+    s16 timing;        // offset 0x22, size 0x2
+    s16 routine_no[8]; // offset 0x24, size 0x10
+    s16 old_rno[8];    // offset 0x34, size 0x10
+    s16 hit_stop;      // offset 0x44, size 0x2
+    s16 hit_quake;     // offset 0x46, size 0x2
+    s8 cgromtype;      // offset 0x48, size 0x1
+    u8 kage_flag;      // offset 0x49, size 0x1
+    s16 kage_hx;       // offset 0x4A, size 0x2
+    s16 kage_hy;       // offset 0x4C, size 0x2
+    s16 kage_prio;     // offset 0x4E, size 0x2
+    s16 kage_width;    // offset 0x50, size 0x2
+    s16 kage_char;     // offset 0x52, size 0x2
+    s16 position_x;    // offset 0x54, size 0x2
+    s16 position_y;    // offset 0x56, size 0x2
+    s16 position_z;    // offset 0x58, size 0x2
+    s16 next_x;        // offset 0x5A, size 0x2
+    s16 next_y;        // offset 0x5C, size 0x2
+    s16 next_z;        // offset 0x5E, size 0x2
+    s16 scr_mv_x;      // offset 0x60, size 0x2
+    s16 scr_mv_y;      // offset 0x62, size 0x2
+    union /* @anon29 */ {
+        s32 cal; // offset 0x0, size 0x4
+        struct /* @anon31 */ {
             // total size: 0x4
-            struct /* @anon48 */ {
-                // total size: 0x4
-                s16 x;     // offset 0x0, size 0x2
-                s16 y;     // offset 0x2, size 0x2
-            } size;        // offset 0x0, size 0x4
-        } my_mr;           // offset 0x250, size 0x4
-        s16 my_trans_mode; // offset 0x254, size 0x2
-        s16 my_roll_flag;  // offset 0x256, size 0x2
-        struct /* @anon52 */ {
-            // total size: 0x8
-            s16 now;         // offset 0x0, size 0x2
-            s16 add;         // offset 0x2, size 0x2
-            s16 free;        // offset 0x4, size 0x2
-            s16 old;         // offset 0x6, size 0x2
-        } my_roll;           // offset 0x258, size 0x8
-        s16 waku_work_index; // offset 0x260, size 0x2
-        s16 olc_work_ix[4];  // offset 0x262, size 0x8
-        struct /* @anon6 */ {
-            // total size: 0x10
-            u16 boix; // offset 0x0, size 0x2
-            u16 bhix; // offset 0x2, size 0x2
-            u16 haix; // offset 0x4, size 0x2
-            union /* @anon10 */ {
-                u16 full; // offset 0x0, size 0x2
-                struct /* @anon12 */ {
-                    // total size: 0x2
-                    u8 bx; // offset 0x0, size 0x1
-                    u8 mv; // offset 0x1, size 0x1
-                } half;    // offset 0x0, size 0x2
-            } mf;          // offset 0x6, size 0x2
-            u16 caix;      // offset 0x8, size 0x2
-            u16 cuix;      // offset 0xA, size 0x2
-            u16 atix;      // offset 0xC, size 0x2
-            u16 hoix;      // offset 0xE, size 0x2
-        } *hit_ix_table;   // offset 0x26C, size 0x4
-        struct /* @anon6 */ {
-            // total size: 0x10
-            u16 boix; // offset 0x0, size 0x2
-            u16 bhix; // offset 0x2, size 0x2
-            u16 haix; // offset 0x4, size 0x2
-            union /* @anon10 */ {
-                u16 full; // offset 0x0, size 0x2
-                struct /* @anon12 */ {
-                    // total size: 0x2
-                    u8 bx; // offset 0x0, size 0x1
-                    u8 mv; // offset 0x1, size 0x1
-                } half;    // offset 0x0, size 0x2
-            } mf;          // offset 0x6, size 0x2
-            u16 caix;      // offset 0x8, size 0x2
-            u16 cuix;      // offset 0xA, size 0x2
-            u16 atix;      // offset 0xC, size 0x2
-            u16 hoix;      // offset 0xE, size 0x2
-        } cg_ja;           // offset 0x270, size 0x10
-        struct /* @anon22 */ {
-            // total size: 0x20
-            s16 body_dm[4][4]; // offset 0x0, size 0x20
-        } *body_adrs;          // offset 0x280, size 0x4
-        struct /* @anon22 */ {
-            // total size: 0x20
-            s16 body_dm[4][4]; // offset 0x0, size 0x20
-        } *h_bod;              // offset 0x284, size 0x4
-        struct /* @anon26 */ {
-            // total size: 0x20
-            s16 hand_dm[4][4]; // offset 0x0, size 0x20
-        } *hand_adrs;          // offset 0x288, size 0x4
-        struct /* @anon26 */ {
-            // total size: 0x20
-            s16 hand_dm[4][4]; // offset 0x0, size 0x20
-        } *h_han;              // offset 0x28C, size 0x4
-        struct /* @anon26 */ {
-            // total size: 0x20
-            s16 hand_dm[4][4]; // offset 0x0, size 0x20
-        } *dumm_adrs;          // offset 0x290, size 0x4
-        struct /* @anon26 */ {
-            // total size: 0x20
-            s16 hand_dm[4][4]; // offset 0x0, size 0x20
-        } *h_dumm;             // offset 0x294, size 0x4
-        struct /* @anon36 */ {
-            // total size: 0x8
-            s16 cat_box[4]; // offset 0x0, size 0x8
-        } *catch_adrs;      // offset 0x298, size 0x4
-        struct /* @anon36 */ {
-            // total size: 0x8
-            s16 cat_box[4]; // offset 0x0, size 0x8
-        } *h_cat;           // offset 0x29C, size 0x4
-        struct /* @anon39 */ {
-            // total size: 0x8
-            s16 cau_box[4]; // offset 0x0, size 0x8
-        } *caught_adrs;     // offset 0x2A0, size 0x4
-        struct /* @anon39 */ {
-            // total size: 0x8
-            s16 cau_box[4]; // offset 0x0, size 0x8
-        } *h_cau;           // offset 0x2A4, size 0x4
-        struct /* @anon32 */ {
-            // total size: 0x20
-            s16 att_box[4][4]; // offset 0x0, size 0x20
-        } *attack_adrs;        // offset 0x2A8, size 0x4
-        struct /* @anon32 */ {
-            // total size: 0x20
-            s16 att_box[4][4]; // offset 0x0, size 0x20
-        } *h_att;              // offset 0x2AC, size 0x4
-        struct /* @anon32 */ {
-            // total size: 0x20
-            s16 att_box[4][4]; // offset 0x0, size 0x20
-        } *h_eat;              // offset 0x2B0, size 0x4
-        struct /* @anon42 */ {
-            // total size: 0x8
-            s16 hos_box[4]; // offset 0x0, size 0x8
-        } *hosei_adrs;      // offset 0x2B4, size 0x4
-        struct /* @anon42 */ {
-            // total size: 0x8
-            s16 hos_box[4]; // offset 0x0, size 0x8
-        } *h_hos;           // offset 0x2B8, size 0x4
-        struct /* @anon60 */ {
-            // total size: 0x10
-            u8 reaction; // offset 0x0, size 0x1
-            u8 level;    // offset 0x1, size 0x1
-            u8 mkh_ix;   // offset 0x2, size 0x1
-            u8 but_ix;   // offset 0x3, size 0x1
-            u8 dipsw;    // offset 0x4, size 0x1
-            u8 guard;    // offset 0x5, size 0x1
-            u8 dir;      // offset 0x6, size 0x1
-            u8 free;     // offset 0x7, size 0x1
-            u8 pow;      // offset 0x8, size 0x1
-            u8 impact;   // offset 0x9, size 0x1
-            u8 piyo;     // offset 0xA, size 0x1
-            u8 ng_type;  // offset 0xB, size 0x1
-            s8 hs_me;    // offset 0xC, size 0x1
-            s8 hs_you;   // offset 0xD, size 0x1
-            u8 hit_mark; // offset 0xE, size 0x1
-            u8 dmg_mark; // offset 0xF, size 0x1
-        } *att_ix_table; // offset 0x2BC, size 0x4
-        struct /* @anon60 */ {
-            // total size: 0x10
-            u8 reaction;       // offset 0x0, size 0x1
-            u8 level;          // offset 0x1, size 0x1
-            u8 mkh_ix;         // offset 0x2, size 0x1
-            u8 but_ix;         // offset 0x3, size 0x1
-            u8 dipsw;          // offset 0x4, size 0x1
-            u8 guard;          // offset 0x5, size 0x1
-            u8 dir;            // offset 0x6, size 0x1
-            u8 free;           // offset 0x7, size 0x1
-            u8 pow;            // offset 0x8, size 0x1
-            u8 impact;         // offset 0x9, size 0x1
-            u8 piyo;           // offset 0xA, size 0x1
-            u8 ng_type;        // offset 0xB, size 0x1
-            s8 hs_me;          // offset 0xC, size 0x1
-            s8 hs_you;         // offset 0xD, size 0x1
-            u8 hit_mark;       // offset 0xE, size 0x1
-            u8 dmg_mark;       // offset 0xF, size 0x1
-        } att;                 // offset 0x2C0, size 0x10
-        u16 zu_flag;           // offset 0x2D0, size 0x2
-        u16 at_attribute;      // offset 0x2D2, size 0x2
-        s16 kezuri_pow;        // offset 0x2D4, size 0x2
-        u16 add_arts_point;    // offset 0x2D6, size 0x2
-        u16 buttobi_type;      // offset 0x2D8, size 0x2
-        u16 att_zuru;          // offset 0x2DA, size 0x2
-        u16 at_ten_ix;         // offset 0x2DC, size 0x2
-        s16 dir_atthit;        // offset 0x2DE, size 0x2
-        s16 vs_id;             // offset 0x2E0, size 0x2
-        u8 att_hit_ok;         // offset 0x2E2, size 0x1
-        u8 meoshi_hit_flag;    // offset 0x2E3, size 0x1
-        u16 at_koa;            // offset 0x2E4, size 0x2
-        u8 paring_attack_flag; // offset 0x2E6, size 0x1
-        s8 no_death_attack;    // offset 0x2E7, size 0x1
-        u8 jump_att_flag;      // offset 0x2E8, size 0x1
-        s8 shell_vs_refrect;   // offset 0x2E9, size 0x1
-        s16 renew_attack;      // offset 0x2EA, size 0x2
-        u16 attack_num;        // offset 0x2EC, size 0x2
-        u16 uketa_att[4];      // offset 0x2EE, size 0x8
-        union /* @anon16 */ {
-            struct /* @anon18 */ {
-                // total size: 0x2
-                u8 player;     // offset 0x0, size 0x1
-                u8 effect;     // offset 0x1, size 0x1
-            } hit;             // offset 0x0, size 0x2
-            u16 hit_flag;      // offset 0x0, size 0x2
-        } hf;                  // offset 0x2F6, size 0x2
-        s16 hit_mark_x;        // offset 0x2F8, size 0x2
-        s16 hit_mark_y;        // offset 0x2FA, size 0x2
-        s16 hit_mark_z;        // offset 0x2FC, size 0x2
-        s16 kohm;              // offset 0x2FE, size 0x2
-        u8 dm_fushin;          // offset 0x300, size 0x1
-        s8 dm_weight;          // offset 0x301, size 0x1
-        u16 dm_butt_type;      // offset 0x302, size 0x2
-        u16 dm_zuru;           // offset 0x304, size 0x2
-        u16 dm_attribute;      // offset 0x306, size 0x2
-        s16 dm_guard_success;  // offset 0x308, size 0x2
-        s16 dm_plnum;          // offset 0x30A, size 0x2
-        s16 dm_attlv;          // offset 0x30C, size 0x2
-        s16 dm_dir;            // offset 0x30E, size 0x2
-        s8 dm_rl;              // offset 0x310, size 0x1
-        u8 dm_impact;          // offset 0x311, size 0x1
-        s16 dm_stop;           // offset 0x312, size 0x2
-        s16 dm_quake;          // offset 0x314, size 0x2
-        u16 dm_piyo;           // offset 0x316, size 0x2
-        u16 dm_ten_ix;         // offset 0x318, size 0x2
-        u16 dm_koa;            // offset 0x31A, size 0x2
-        s16 dm_work_id;        // offset 0x31C, size 0x2
-        u16 dm_arts_point;     // offset 0x31E, size 0x2
-        u8 dm_jump_att_flag;   // offset 0x320, size 0x1
-        u8 dm_free;            // offset 0x321, size 0x1
-        s16 dm_count_up;       // offset 0x322, size 0x2
-        s8 dm_nodeathattack;   // offset 0x324, size 0x1
-        u8 dm_exdm_ix;         // offset 0x325, size 0x1
-        u8 dm_dip;             // offset 0x326, size 0x1
-        u8 dm_kind_of_waza;    // offset 0x327, size 0x1
-        s16 attpow;            // offset 0x328, size 0x2
-        s16 defpow;            // offset 0x32A, size 0x2
-        u32 *my_effadrs;       // offset 0x32C, size 0x4
-        s16 shell_ix[8];       // offset 0x330, size 0x10
-        s16 hm_dm_side;        // offset 0x340, size 0x2
-        s16 extra_col;         // offset 0x342, size 0x2
-        s16 extra_col_2;       // offset 0x344, size 0x2
-        s16 original_vitality; // offset 0x346, size 0x2
-        u8 hit_work_id;        // offset 0x348, size 0x1
-        u8 dmg_work_id;        // offset 0x349, size 0x1
-        s8 K5_init_flag;       // offset 0x34A, size 0x1
-        s8 K5_exec_ok;         // offset 0x34B, size 0x1
-        u8 kow;                // offset 0x34C, size 0x1
-        u8 swallow_no_effect;  // offset 0x34D, size 0x1
-        s16 E3_work_index;     // offset 0x34E, size 0x2
-        s16 E4_work_index;     // offset 0x350, size 0x2
-        u8 kezurare_flag;      // offset 0x352, size 0x1
-        u8 wrd_free[53];       // offset 0x353, size 0x35
-    } wu;                      // offset 0x0, size 0x388
+            s16 low;         // offset 0x0, size 0x2
+            s16 pos;         // offset 0x2, size 0x2
+        } disp;              // offset 0x0, size 0x4
+    } xyz[3];                // offset 0x64, size 0xC
+    s16 old_pos[3];          // offset 0x70, size 0x6
+    s16 sync_suzi;           // offset 0x76, size 0x2
+    u16 *suzi_offset;        // offset 0x78, size 0x4
+    MVXY mvxy;             // offset 0x7C, size 0x18
+    s16 direction;           // offset 0x94, size 0x2
+    s16 dir_old;             // offset 0x96, size 0x2
+    s16 dir_step;            // offset 0x98, size 0x2
+    s16 dir_timer;           // offset 0x9A, size 0x2
+    s16 vitality;            // offset 0x9C, size 0x2
+    s16 vital_new;           // offset 0x9E, size 0x2
+    s16 vital_old;           // offset 0xA0, size 0x2
+    s16 dm_vital;            // offset 0xA2, size 0x2
+    s16 dmcal_m;             // offset 0xA4, size 0x2
+    s16 dmcal_d;             // offset 0xA6, size 0x2
+    s8 weight_level;         // offset 0xA8, size 0x1
+    UNK_11 cmoa;             // offset 0xAA, size 0x8
+    UNK_11 cmsw;             // offset 0xB2, size 0x8
+    UNK_11 cmlp;             // offset 0xBA, size 0x8
+    UNK_11 cml2;             // offset 0xC2, size 0x8
+    UNK_11 cmja;             // offset 0xCA, size 0x8
+    UNK_11 cmj2;             // offset 0xD2, size 0x8
+    UNK_11 cmj3;             // offset 0xDA, size 0x8
+    UNK_11 cmj4;             // offset 0xE2, size 0x8
+    UNK_11 cmj5;             // offset 0xEA, size 0x8
+    UNK_11 cmj6;             // offset 0xF2, size 0x8
+    UNK_11 cmj7;             // offset 0xFA, size 0x8
+    UNK_11 cmms;             // offset 0x102, size 0x8
+    UNK_11 cmmd;             // offset 0x10A, size 0x8
+    UNK_11 cmyd;             // offset 0x112, size 0x8
+    UNK_11 cmcf;             // offset 0x11A, size 0x8
+    UNK_11 cmcr;             // offset 0x122, size 0x8
+    UNK_11 cmbk;             // offset 0x12A, size 0x8
+    UNK_11 cmb2;             // offset 0x132, size 0x8
+    UNK_11 cmb3;             // offset 0x13A, size 0x8
+    UNK_11 cmhs;             // offset 0x142, size 0x8
+    UNK_11 cmr0;             // offset 0x14A, size 0x8
+    UNK_11 cmr1;             // offset 0x152, size 0x8
+    UNK_11 cmr2;             // offset 0x15A, size 0x8
+    UNK_11 cmr3;             // offset 0x162, size 0x8
+    s16 cmwk[32];            // offset 0x16A, size 0x40
+    u32 *char_table[12];     // offset 0x1AC, size 0x30
+    u32 *se_random_table;    // offset 0x1DC, size 0x4
+    s16 *step_xy_table;      // offset 0x1E0, size 0x4
+    s16 *move_xy_table;      // offset 0x1E4, size 0x4
+    UNK_8 *overlap_char_tbl; // offset 0x1E8, size 0x4
+    UNK_9 *olc_ix_table;     // offset 0x1EC, size 0x4
+    UNK_9 cg_olc;            // offset 0x1F0, size 0x8
+    UNK_10 *rival_catch_tbl; // offset 0x1F8, size 0x4
+    UNK_10 *curr_rca;        // offset 0x1FC, size 0x4
+    u32 *set_char_ad;        // offset 0x200, size 0x4
+    s16 cg_ix;               // offset 0x204, size 0x2
+    s16 now_koc;             // offset 0x206, size 0x2
+    s16 char_index;          // offset 0x208, size 0x2
+    s16 current_colcd;       // offset 0x20A, size 0x2
+    s16 cgd_type;            // offset 0x20C, size 0x2
+    u8 pat_status;           // offset 0x20E, size 0x1
+    u8 kind_of_waza;         // offset 0x20F, size 0x1
+    u8 hit_range;            // offset 0x210, size 0x1
+    u8 total_paring;         // offset 0x211, size 0x1
+    u8 total_att_set;        // offset 0x212, size 0x1
+    u8 sp_tech_id;           // offset 0x213, size 0x1
+    u8 cg_type;              // offset 0x214, size 0x1
+    u8 cg_ctr;               // offset 0x215, size 0x1
+    u16 cg_se;               // offset 0x216, size 0x2
+    u16 cg_olc_ix;           // offset 0x218, size 0x2
+    u16 cg_number;           // offset 0x21A, size 0x2
+    u16 cg_hit_ix;           // offset 0x21C, size 0x2
+    s16 cg_att_ix;           // offset 0x21E, size 0x2
+    u8 cg_extdat;            // offset 0x220, size 0x1
+    u8 cg_cancel;            // offset 0x221, size 0x1
+    u8 cg_effect;            // offset 0x222, size 0x1
+    u8 cg_eftype;            // offset 0x223, size 0x1
+    u16 cg_zoom;             // offset 0x224, size 0x2
+    u16 cg_rival;            // offset 0x226, size 0x2
+    u16 cg_add_xy;           // offset 0x228, size 0x2
+    u8 cg_next_ix;           // offset 0x22A, size 0x1
+    u8 cg_status;            // offset 0x22B, size 0x1
+    s16 cg_wca_ix;           // offset 0x22C, size 0x2
+    s16 cg_jphos;            // offset 0x22E, size 0x2
+    u16 cg_meoshi;           // offset 0x230, size 0x2
+    u8 cg_prio;              // offset 0x232, size 0x1
+    u8 cg_flip;              // offset 0x233, size 0x1
+    u16 old_cgnum;           // offset 0x234, size 0x2
+    s16 floor;               // offset 0x236, size 0x2
+    u16 ccoff;               // offset 0x238, size 0x2
+    s16 colcd;               // offset 0x23A, size 0x2
+    s16 my_col_mode;         // offset 0x23C, size 0x2
+    s16 my_col_code;         // offset 0x23E, size 0x2
+    s16 my_priority;         // offset 0x240, size 0x2
+    s16 my_family;           // offset 0x242, size 0x2
+    s16 my_ext_pri;          // offset 0x244, size 0x2
+    s16 my_bright_type;      // offset 0x246, size 0x2
+    s16 my_bright_level;     // offset 0x248, size 0x2
+    s16 my_clear_level;      // offset 0x24A, size 0x2
+    s16 my_mts;              // offset 0x24C, size 0x2
+    s16 my_mr_flag;          // offset 0x24E, size 0x2
+    struct /* @anon47 */ {
+        // total size: 0x4
+        struct /* @anon48 */ {
+            // total size: 0x4
+            s16 x;     // offset 0x0, size 0x2
+            s16 y;     // offset 0x2, size 0x2
+        } size;        // offset 0x0, size 0x4
+    } my_mr;           // offset 0x250, size 0x4
+    s16 my_trans_mode; // offset 0x254, size 0x2
+    s16 my_roll_flag;  // offset 0x256, size 0x2
+    struct /* @anon52 */ {
+        // total size: 0x8
+        s16 now;           // offset 0x0, size 0x2
+        s16 add;           // offset 0x2, size 0x2
+        s16 free;          // offset 0x4, size 0x2
+        s16 old;           // offset 0x6, size 0x2
+    } my_roll;             // offset 0x258, size 0x8
+    s16 waku_work_index;   // offset 0x260, size 0x2
+    s16 olc_work_ix[4];    // offset 0x262, size 0x8
+    UNK_0 *hit_ix_table;   // offset 0x26C, size 0x4
+    UNK_0 cg_ja;           // offset 0x270, size 0x10
+    UNK_1 *body_adrs;      // offset 0x280, size 0x4
+    UNK_1 *h_bod;          // offset 0x284, size 0x4
+    UNK_2 *hand_adrs;      // offset 0x288, size 0x4
+    UNK_2 *h_han;          // offset 0x28C, size 0x4
+    UNK_2 *dumm_adrs;      // offset 0x290, size 0x4
+    UNK_2 *h_dumm;         // offset 0x294, size 0x4
+    UNK_3 *catch_adrs;     // offset 0x298, size 0x4
+    UNK_3 *h_cat;          // offset 0x29C, size 0x4
+    UNK_4 *caught_adrs;    // offset 0x2A0, size 0x4
+    UNK_4 *h_cau;          // offset 0x2A4, size 0x4
+    UNK_5 *attack_adrs;    // offset 0x2A8, size 0x4
+    UNK_5 *h_att;          // offset 0x2AC, size 0x4
+    UNK_5 *h_eat;          // offset 0x2B0, size 0x4
+    UNK_6 *hosei_adrs;     // offset 0x2B4, size 0x4
+    UNK_6 *h_hos;          // offset 0x2B8, size 0x4
+    UNK_7 *att_ix_table;   // offset 0x2BC, size 0x4
+    UNK_7 att;             // offset 0x2C0, size 0x10
+    u16 zu_flag;           // offset 0x2D0, size 0x2
+    u16 at_attribute;      // offset 0x2D2, size 0x2
+    s16 kezuri_pow;        // offset 0x2D4, size 0x2
+    u16 add_arts_point;    // offset 0x2D6, size 0x2
+    u16 buttobi_type;      // offset 0x2D8, size 0x2
+    u16 att_zuru;          // offset 0x2DA, size 0x2
+    u16 at_ten_ix;         // offset 0x2DC, size 0x2
+    s16 dir_atthit;        // offset 0x2DE, size 0x2
+    s16 vs_id;             // offset 0x2E0, size 0x2
+    u8 att_hit_ok;         // offset 0x2E2, size 0x1
+    u8 meoshi_hit_flag;    // offset 0x2E3, size 0x1
+    u16 at_koa;            // offset 0x2E4, size 0x2
+    u8 paring_attack_flag; // offset 0x2E6, size 0x1
+    s8 no_death_attack;    // offset 0x2E7, size 0x1
+    u8 jump_att_flag;      // offset 0x2E8, size 0x1
+    s8 shell_vs_refrect;   // offset 0x2E9, size 0x1
+    s16 renew_attack;      // offset 0x2EA, size 0x2
+    u16 attack_num;        // offset 0x2EC, size 0x2
+    u16 uketa_att[4];      // offset 0x2EE, size 0x8
+    union /* @anon16 */ {
+        struct /* @anon18 */ {
+            // total size: 0x2
+            u8 player;     // offset 0x0, size 0x1
+            u8 effect;     // offset 0x1, size 0x1
+        } hit;             // offset 0x0, size 0x2
+        u16 hit_flag;      // offset 0x0, size 0x2
+    } hf;                  // offset 0x2F6, size 0x2
+    s16 hit_mark_x;        // offset 0x2F8, size 0x2
+    s16 hit_mark_y;        // offset 0x2FA, size 0x2
+    s16 hit_mark_z;        // offset 0x2FC, size 0x2
+    s16 kohm;              // offset 0x2FE, size 0x2
+    u8 dm_fushin;          // offset 0x300, size 0x1
+    s8 dm_weight;          // offset 0x301, size 0x1
+    u16 dm_butt_type;      // offset 0x302, size 0x2
+    u16 dm_zuru;           // offset 0x304, size 0x2
+    u16 dm_attribute;      // offset 0x306, size 0x2
+    s16 dm_guard_success;  // offset 0x308, size 0x2
+    s16 dm_plnum;          // offset 0x30A, size 0x2
+    s16 dm_attlv;          // offset 0x30C, size 0x2
+    s16 dm_dir;            // offset 0x30E, size 0x2
+    s8 dm_rl;              // offset 0x310, size 0x1
+    u8 dm_impact;          // offset 0x311, size 0x1
+    s16 dm_stop;           // offset 0x312, size 0x2
+    s16 dm_quake;          // offset 0x314, size 0x2
+    u16 dm_piyo;           // offset 0x316, size 0x2
+    u16 dm_ten_ix;         // offset 0x318, size 0x2
+    u16 dm_koa;            // offset 0x31A, size 0x2
+    s16 dm_work_id;        // offset 0x31C, size 0x2
+    u16 dm_arts_point;     // offset 0x31E, size 0x2
+    u8 dm_jump_att_flag;   // offset 0x320, size 0x1
+    u8 dm_free;            // offset 0x321, size 0x1
+    s16 dm_count_up;       // offset 0x322, size 0x2
+    s8 dm_nodeathattack;   // offset 0x324, size 0x1
+    u8 dm_exdm_ix;         // offset 0x325, size 0x1
+    u8 dm_dip;             // offset 0x326, size 0x1
+    u8 dm_kind_of_waza;    // offset 0x327, size 0x1
+    s16 attpow;            // offset 0x328, size 0x2
+    s16 defpow;            // offset 0x32A, size 0x2
+    u32 *my_effadrs;       // offset 0x32C, size 0x4
+    s16 shell_ix[8];       // offset 0x330, size 0x10
+    s16 hm_dm_side;        // offset 0x340, size 0x2
+    s16 extra_col;         // offset 0x342, size 0x2
+    s16 extra_col_2;       // offset 0x344, size 0x2
+    s16 original_vitality; // offset 0x346, size 0x2
+    u8 hit_work_id;        // offset 0x348, size 0x1
+    u8 dmg_work_id;        // offset 0x349, size 0x1
+    s8 K5_init_flag;       // offset 0x34A, size 0x1
+    s8 K5_exec_ok;         // offset 0x34B, size 0x1
+    u8 kow;                // offset 0x34C, size 0x1
+    u8 swallow_no_effect;  // offset 0x34D, size 0x1
+    s16 E3_work_index;     // offset 0x34E, size 0x2
+    s16 E4_work_index;     // offset 0x350, size 0x2
+    u8 kezurare_flag;      // offset 0x352, size 0x1
+    u8 wrd_free[53];       // offset 0x353, size 0x35
+} UNK_12;
+
+typedef struct {
+    // total size: 0x46C
+    UNK_12 wu; // offset 0x0, size 0x388
     struct /* @anon65 */ {
         // total size: 0x406
         u16 sw_lvbt;       // offset 0x0, size 0x2
@@ -800,601 +613,33 @@ typedef struct {
             s32 timer; // offset 0x0, size 0x4
             struct /* @anon41 */ {
                 // total size: 0x4
-                s16 l;   // offset 0x0, size 0x2
-                s16 h;   // offset 0x2, size 0x2
-            } quantity;  // offset 0x0, size 0x4
-        } now;           // offset 0x8, size 0x4
-        s32 recover;     // offset 0xC, size 0x4
-        s16 store;       // offset 0x10, size 0x2
-        s16 again;       // offset 0x12, size 0x2
-    } *py;               // offset 0x3CC, size 0x4
-    s8 wkey_flag;        // offset 0x3D0, size 0x1
-    s8 dead_flag;        // offset 0x3D1, size 0x1
-    s16 ukemi_ok_timer;  // offset 0x3D2, size 0x2
-    s16 backup_ok_timer; // offset 0x3D4, size 0x2
-    s8 uot_cd_ok_flag;   // offset 0x3D6, size 0x1
-    s8 ukemi_success;    // offset 0x3D7, size 0x1
-    s16 old_pos_data[8]; // offset 0x3D8, size 0x10
-    s16 move_distance;   // offset 0x3E8, size 0x2
-    s16 move_power;      // offset 0x3EA, size 0x2
-    s16 sa_stop_sai;     // offset 0x3EC, size 0x2
-    u8 saishin_lvdir;    // offset 0x3EE, size 0x1
-    u8 sa_stop_lvdir;    // offset 0x3EF, size 0x1
-    u8 sa_stop_flag;     // offset 0x3F0, size 0x1
-    u8 kezurijini_flag;  // offset 0x3F1, size 0x1
-    struct /* @anon46 */ {
-        // total size: 0x388
-        s8 be_flag;        // offset 0x0, size 0x1
-        s8 disp_flag;      // offset 0x1, size 0x1
-        u8 blink_timing;   // offset 0x2, size 0x1
-        u8 operator;       // offset 0x3, size 0x1
-        u8 type;           // offset 0x4, size 0x1
-        u8 charset_id;     // offset 0x5, size 0x1
-        s16 work_id;       // offset 0x6, size 0x2
-        s16 id;            // offset 0x8, size 0x2
-        s8 rl_flag;        // offset 0xA, size 0x1
-        s8 rl_waza;        // offset 0xB, size 0x1
-        u32 *target_adrs;  // offset 0xC, size 0x4
-        u32 *hit_adrs;     // offset 0x10, size 0x4
-        u32 *dmg_adrs;     // offset 0x14, size 0x4
-        s16 before;        // offset 0x18, size 0x2
-        s16 myself;        // offset 0x1A, size 0x2
-        s16 behind;        // offset 0x1C, size 0x2
-        s16 listix;        // offset 0x1E, size 0x2
-        s16 dead_f;        // offset 0x20, size 0x2
-        s16 timing;        // offset 0x22, size 0x2
-        s16 routine_no[8]; // offset 0x24, size 0x10
-        s16 old_rno[8];    // offset 0x34, size 0x10
-        s16 hit_stop;      // offset 0x44, size 0x2
-        s16 hit_quake;     // offset 0x46, size 0x2
-        s8 cgromtype;      // offset 0x48, size 0x1
-        u8 kage_flag;      // offset 0x49, size 0x1
-        s16 kage_hx;       // offset 0x4A, size 0x2
-        s16 kage_hy;       // offset 0x4C, size 0x2
-        s16 kage_prio;     // offset 0x4E, size 0x2
-        s16 kage_width;    // offset 0x50, size 0x2
-        s16 kage_char;     // offset 0x52, size 0x2
-        s16 position_x;    // offset 0x54, size 0x2
-        s16 position_y;    // offset 0x56, size 0x2
-        s16 position_z;    // offset 0x58, size 0x2
-        s16 next_x;        // offset 0x5A, size 0x2
-        s16 next_y;        // offset 0x5C, size 0x2
-        s16 next_z;        // offset 0x5E, size 0x2
-        s16 scr_mv_x;      // offset 0x60, size 0x2
-        s16 scr_mv_y;      // offset 0x62, size 0x2
-        union /* @anon29 */ {
-            s32 cal; // offset 0x0, size 0x4
-            struct /* @anon31 */ {
-                // total size: 0x4
-                s16 low;  // offset 0x0, size 0x2
-                s16 pos;  // offset 0x2, size 0x2
-            } disp;       // offset 0x0, size 0x4
-        } xyz[3];         // offset 0x64, size 0xC
-        s16 old_pos[3];   // offset 0x70, size 0x6
-        s16 sync_suzi;    // offset 0x76, size 0x2
-        u16 *suzi_offset; // offset 0x78, size 0x4
-        struct /* @anon4 */ {
-            // total size: 0x18
-            union /* @anon5 */ {
-                s32 sp; // offset 0x0, size 0x4
-                struct /* @anon7 */ {
-                    // total size: 0x4
-                    s16 l; // offset 0x0, size 0x2
-                    s16 h; // offset 0x2, size 0x2
-                } real;    // offset 0x0, size 0x4
-            } a[2];        // offset 0x0, size 0x8
-            union /* @anon11 */ {
-                s32 sp; // offset 0x0, size 0x4
-                struct /* @anon13 */ {
-                    // total size: 0x4
-                    s16 l; // offset 0x0, size 0x2
-                    s16 h; // offset 0x2, size 0x2
-                } real;    // offset 0x0, size 0x4
-            } d[2];        // offset 0x8, size 0x8
-            s16 kop[2];    // offset 0x10, size 0x4
-            u16 index;     // offset 0x14, size 0x2
-        } mvxy;            // offset 0x7C, size 0x18
-        s16 direction;     // offset 0x94, size 0x2
-        s16 dir_old;       // offset 0x96, size 0x2
-        s16 dir_step;      // offset 0x98, size 0x2
-        s16 dir_timer;     // offset 0x9A, size 0x2
-        s16 vitality;      // offset 0x9C, size 0x2
-        s16 vital_new;     // offset 0x9E, size 0x2
-        s16 vital_old;     // offset 0xA0, size 0x2
-        s16 dm_vital;      // offset 0xA2, size 0x2
-        s16 dmcal_m;       // offset 0xA4, size 0x2
-        s16 dmcal_d;       // offset 0xA6, size 0x2
-        s8 weight_level;   // offset 0xA8, size 0x1
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmoa;       // offset 0xAA, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmsw;       // offset 0xB2, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmlp;       // offset 0xBA, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cml2;       // offset 0xC2, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmja;       // offset 0xCA, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmj2;       // offset 0xD2, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmj3;       // offset 0xDA, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmj4;       // offset 0xE2, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmj5;       // offset 0xEA, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmj6;       // offset 0xF2, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmj7;       // offset 0xFA, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmms;       // offset 0x102, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmmd;       // offset 0x10A, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmyd;       // offset 0x112, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmcf;       // offset 0x11A, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmcr;       // offset 0x122, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmbk;       // offset 0x12A, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmb2;       // offset 0x132, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmb3;       // offset 0x13A, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmhs;       // offset 0x142, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmr0;       // offset 0x14A, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmr1;       // offset 0x152, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code; // offset 0x0, size 0x2
-            s16 koc;  // offset 0x2, size 0x2
-            s16 ix;   // offset 0x4, size 0x2
-            s16 pat;  // offset 0x6, size 0x2
-        } cmr2;       // offset 0x15A, size 0x8
-        struct /* @anon21 */ {
-            // total size: 0x8
-            u16 code;         // offset 0x0, size 0x2
-            s16 koc;          // offset 0x2, size 0x2
-            s16 ix;           // offset 0x4, size 0x2
-            s16 pat;          // offset 0x6, size 0x2
-        } cmr3;               // offset 0x162, size 0x8
-        s16 cmwk[32];         // offset 0x16A, size 0x40
-        u32 *char_table[12];  // offset 0x1AC, size 0x30
-        u32 *se_random_table; // offset 0x1DC, size 0x4
-        s16 *step_xy_table;   // offset 0x1E0, size 0x4
-        s16 *move_xy_table;   // offset 0x1E4, size 0x4
-        struct /* @anon49 */ {
-            // total size: 0x10
-            s16 parts_hos_x; // offset 0x0, size 0x2
-            s16 parts_hos_y; // offset 0x2, size 0x2
-            u8 parts_colmd;  // offset 0x4, size 0x1
-            u8 parts_colcd;  // offset 0x5, size 0x1
-            u8 parts_prio;   // offset 0x6, size 0x1
-            u8 parts_flip;   // offset 0x7, size 0x1
-            u8 parts_timer;  // offset 0x8, size 0x1
-            u8 parts_disp;   // offset 0x9, size 0x1
-            s16 parts_mts;   // offset 0xA, size 0x2
-            u16 parts_nix;   // offset 0xC, size 0x2
-            u16 parts_char;  // offset 0xE, size 0x2
-        } *overlap_char_tbl; // offset 0x1E8, size 0x4
-        struct /* @anon43 */ {
-            // total size: 0x8
-            s16 olc_ix[4]; // offset 0x0, size 0x8
-        } *olc_ix_table;   // offset 0x1EC, size 0x4
-        struct /* @anon43 */ {
-            // total size: 0x8
-            s16 olc_ix[4]; // offset 0x0, size 0x8
-        } cg_olc;          // offset 0x1F0, size 0x8
-        struct /* @anon58 */ {
-            // total size: 0x8
-            s16 catch_hos_x; // offset 0x0, size 0x2
-            s16 catch_hos_y; // offset 0x2, size 0x2
-            u8 catch_prio;   // offset 0x4, size 0x1
-            u8 catch_flip;   // offset 0x5, size 0x1
-            s16 catch_nix;   // offset 0x6, size 0x2
-        } *rival_catch_tbl;  // offset 0x1F8, size 0x4
-        struct /* @anon58 */ {
-            // total size: 0x8
-            s16 catch_hos_x; // offset 0x0, size 0x2
-            s16 catch_hos_y; // offset 0x2, size 0x2
-            u8 catch_prio;   // offset 0x4, size 0x1
-            u8 catch_flip;   // offset 0x5, size 0x1
-            s16 catch_nix;   // offset 0x6, size 0x2
-        } *curr_rca;         // offset 0x1FC, size 0x4
-        u32 *set_char_ad;    // offset 0x200, size 0x4
-        s16 cg_ix;           // offset 0x204, size 0x2
-        s16 now_koc;         // offset 0x206, size 0x2
-        s16 char_index;      // offset 0x208, size 0x2
-        s16 current_colcd;   // offset 0x20A, size 0x2
-        s16 cgd_type;        // offset 0x20C, size 0x2
-        u8 pat_status;       // offset 0x20E, size 0x1
-        u8 kind_of_waza;     // offset 0x20F, size 0x1
-        u8 hit_range;        // offset 0x210, size 0x1
-        u8 total_paring;     // offset 0x211, size 0x1
-        u8 total_att_set;    // offset 0x212, size 0x1
-        u8 sp_tech_id;       // offset 0x213, size 0x1
-        u8 cg_type;          // offset 0x214, size 0x1
-        u8 cg_ctr;           // offset 0x215, size 0x1
-        u16 cg_se;           // offset 0x216, size 0x2
-        u16 cg_olc_ix;       // offset 0x218, size 0x2
-        u16 cg_number;       // offset 0x21A, size 0x2
-        u16 cg_hit_ix;       // offset 0x21C, size 0x2
-        s16 cg_att_ix;       // offset 0x21E, size 0x2
-        u8 cg_extdat;        // offset 0x220, size 0x1
-        u8 cg_cancel;        // offset 0x221, size 0x1
-        u8 cg_effect;        // offset 0x222, size 0x1
-        u8 cg_eftype;        // offset 0x223, size 0x1
-        u16 cg_zoom;         // offset 0x224, size 0x2
-        u16 cg_rival;        // offset 0x226, size 0x2
-        u16 cg_add_xy;       // offset 0x228, size 0x2
-        u8 cg_next_ix;       // offset 0x22A, size 0x1
-        u8 cg_status;        // offset 0x22B, size 0x1
-        s16 cg_wca_ix;       // offset 0x22C, size 0x2
-        s16 cg_jphos;        // offset 0x22E, size 0x2
-        u16 cg_meoshi;       // offset 0x230, size 0x2
-        u8 cg_prio;          // offset 0x232, size 0x1
-        u8 cg_flip;          // offset 0x233, size 0x1
-        u16 old_cgnum;       // offset 0x234, size 0x2
-        s16 floor;           // offset 0x236, size 0x2
-        u16 ccoff;           // offset 0x238, size 0x2
-        s16 colcd;           // offset 0x23A, size 0x2
-        s16 my_col_mode;     // offset 0x23C, size 0x2
-        s16 my_col_code;     // offset 0x23E, size 0x2
-        s16 my_priority;     // offset 0x240, size 0x2
-        s16 my_family;       // offset 0x242, size 0x2
-        s16 my_ext_pri;      // offset 0x244, size 0x2
-        s16 my_bright_type;  // offset 0x246, size 0x2
-        s16 my_bright_level; // offset 0x248, size 0x2
-        s16 my_clear_level;  // offset 0x24A, size 0x2
-        s16 my_mts;          // offset 0x24C, size 0x2
-        s16 my_mr_flag;      // offset 0x24E, size 0x2
-        struct /* @anon47 */ {
-            // total size: 0x4
-            struct /* @anon48 */ {
-                // total size: 0x4
-                s16 x;     // offset 0x0, size 0x2
-                s16 y;     // offset 0x2, size 0x2
-            } size;        // offset 0x0, size 0x4
-        } my_mr;           // offset 0x250, size 0x4
-        s16 my_trans_mode; // offset 0x254, size 0x2
-        s16 my_roll_flag;  // offset 0x256, size 0x2
-        struct /* @anon52 */ {
-            // total size: 0x8
-            s16 now;         // offset 0x0, size 0x2
-            s16 add;         // offset 0x2, size 0x2
-            s16 free;        // offset 0x4, size 0x2
-            s16 old;         // offset 0x6, size 0x2
-        } my_roll;           // offset 0x258, size 0x8
-        s16 waku_work_index; // offset 0x260, size 0x2
-        s16 olc_work_ix[4];  // offset 0x262, size 0x8
-        struct /* @anon6 */ {
-            // total size: 0x10
-            u16 boix; // offset 0x0, size 0x2
-            u16 bhix; // offset 0x2, size 0x2
-            u16 haix; // offset 0x4, size 0x2
-            union /* @anon10 */ {
-                u16 full; // offset 0x0, size 0x2
-                struct /* @anon12 */ {
-                    // total size: 0x2
-                    u8 bx; // offset 0x0, size 0x1
-                    u8 mv; // offset 0x1, size 0x1
-                } half;    // offset 0x0, size 0x2
-            } mf;          // offset 0x6, size 0x2
-            u16 caix;      // offset 0x8, size 0x2
-            u16 cuix;      // offset 0xA, size 0x2
-            u16 atix;      // offset 0xC, size 0x2
-            u16 hoix;      // offset 0xE, size 0x2
-        } *hit_ix_table;   // offset 0x26C, size 0x4
-        struct /* @anon6 */ {
-            // total size: 0x10
-            u16 boix; // offset 0x0, size 0x2
-            u16 bhix; // offset 0x2, size 0x2
-            u16 haix; // offset 0x4, size 0x2
-            union /* @anon10 */ {
-                u16 full; // offset 0x0, size 0x2
-                struct /* @anon12 */ {
-                    // total size: 0x2
-                    u8 bx; // offset 0x0, size 0x1
-                    u8 mv; // offset 0x1, size 0x1
-                } half;    // offset 0x0, size 0x2
-            } mf;          // offset 0x6, size 0x2
-            u16 caix;      // offset 0x8, size 0x2
-            u16 cuix;      // offset 0xA, size 0x2
-            u16 atix;      // offset 0xC, size 0x2
-            u16 hoix;      // offset 0xE, size 0x2
-        } cg_ja;           // offset 0x270, size 0x10
-        struct /* @anon22 */ {
-            // total size: 0x20
-            s16 body_dm[4][4]; // offset 0x0, size 0x20
-        } *body_adrs;          // offset 0x280, size 0x4
-        struct /* @anon22 */ {
-            // total size: 0x20
-            s16 body_dm[4][4]; // offset 0x0, size 0x20
-        } *h_bod;              // offset 0x284, size 0x4
-        struct /* @anon26 */ {
-            // total size: 0x20
-            s16 hand_dm[4][4]; // offset 0x0, size 0x20
-        } *hand_adrs;          // offset 0x288, size 0x4
-        struct /* @anon26 */ {
-            // total size: 0x20
-            s16 hand_dm[4][4]; // offset 0x0, size 0x20
-        } *h_han;              // offset 0x28C, size 0x4
-        struct /* @anon26 */ {
-            // total size: 0x20
-            s16 hand_dm[4][4]; // offset 0x0, size 0x20
-        } *dumm_adrs;          // offset 0x290, size 0x4
-        struct /* @anon26 */ {
-            // total size: 0x20
-            s16 hand_dm[4][4]; // offset 0x0, size 0x20
-        } *h_dumm;             // offset 0x294, size 0x4
-        struct /* @anon36 */ {
-            // total size: 0x8
-            s16 cat_box[4]; // offset 0x0, size 0x8
-        } *catch_adrs;      // offset 0x298, size 0x4
-        struct /* @anon36 */ {
-            // total size: 0x8
-            s16 cat_box[4]; // offset 0x0, size 0x8
-        } *h_cat;           // offset 0x29C, size 0x4
-        struct /* @anon39 */ {
-            // total size: 0x8
-            s16 cau_box[4]; // offset 0x0, size 0x8
-        } *caught_adrs;     // offset 0x2A0, size 0x4
-        struct /* @anon39 */ {
-            // total size: 0x8
-            s16 cau_box[4]; // offset 0x0, size 0x8
-        } *h_cau;           // offset 0x2A4, size 0x4
-        struct /* @anon32 */ {
-            // total size: 0x20
-            s16 att_box[4][4]; // offset 0x0, size 0x20
-        } *attack_adrs;        // offset 0x2A8, size 0x4
-        struct /* @anon32 */ {
-            // total size: 0x20
-            s16 att_box[4][4]; // offset 0x0, size 0x20
-        } *h_att;              // offset 0x2AC, size 0x4
-        struct /* @anon32 */ {
-            // total size: 0x20
-            s16 att_box[4][4]; // offset 0x0, size 0x20
-        } *h_eat;              // offset 0x2B0, size 0x4
-        struct /* @anon42 */ {
-            // total size: 0x8
-            s16 hos_box[4]; // offset 0x0, size 0x8
-        } *hosei_adrs;      // offset 0x2B4, size 0x4
-        struct /* @anon42 */ {
-            // total size: 0x8
-            s16 hos_box[4]; // offset 0x0, size 0x8
-        } *h_hos;           // offset 0x2B8, size 0x4
-        struct /* @anon60 */ {
-            // total size: 0x10
-            u8 reaction; // offset 0x0, size 0x1
-            u8 level;    // offset 0x1, size 0x1
-            u8 mkh_ix;   // offset 0x2, size 0x1
-            u8 but_ix;   // offset 0x3, size 0x1
-            u8 dipsw;    // offset 0x4, size 0x1
-            u8 guard;    // offset 0x5, size 0x1
-            u8 dir;      // offset 0x6, size 0x1
-            u8 free;     // offset 0x7, size 0x1
-            u8 pow;      // offset 0x8, size 0x1
-            u8 impact;   // offset 0x9, size 0x1
-            u8 piyo;     // offset 0xA, size 0x1
-            u8 ng_type;  // offset 0xB, size 0x1
-            s8 hs_me;    // offset 0xC, size 0x1
-            s8 hs_you;   // offset 0xD, size 0x1
-            u8 hit_mark; // offset 0xE, size 0x1
-            u8 dmg_mark; // offset 0xF, size 0x1
-        } *att_ix_table; // offset 0x2BC, size 0x4
-        struct /* @anon60 */ {
-            // total size: 0x10
-            u8 reaction;       // offset 0x0, size 0x1
-            u8 level;          // offset 0x1, size 0x1
-            u8 mkh_ix;         // offset 0x2, size 0x1
-            u8 but_ix;         // offset 0x3, size 0x1
-            u8 dipsw;          // offset 0x4, size 0x1
-            u8 guard;          // offset 0x5, size 0x1
-            u8 dir;            // offset 0x6, size 0x1
-            u8 free;           // offset 0x7, size 0x1
-            u8 pow;            // offset 0x8, size 0x1
-            u8 impact;         // offset 0x9, size 0x1
-            u8 piyo;           // offset 0xA, size 0x1
-            u8 ng_type;        // offset 0xB, size 0x1
-            s8 hs_me;          // offset 0xC, size 0x1
-            s8 hs_you;         // offset 0xD, size 0x1
-            u8 hit_mark;       // offset 0xE, size 0x1
-            u8 dmg_mark;       // offset 0xF, size 0x1
-        } att;                 // offset 0x2C0, size 0x10
-        u16 zu_flag;           // offset 0x2D0, size 0x2
-        u16 at_attribute;      // offset 0x2D2, size 0x2
-        s16 kezuri_pow;        // offset 0x2D4, size 0x2
-        u16 add_arts_point;    // offset 0x2D6, size 0x2
-        u16 buttobi_type;      // offset 0x2D8, size 0x2
-        u16 att_zuru;          // offset 0x2DA, size 0x2
-        u16 at_ten_ix;         // offset 0x2DC, size 0x2
-        s16 dir_atthit;        // offset 0x2DE, size 0x2
-        s16 vs_id;             // offset 0x2E0, size 0x2
-        u8 att_hit_ok;         // offset 0x2E2, size 0x1
-        u8 meoshi_hit_flag;    // offset 0x2E3, size 0x1
-        u16 at_koa;            // offset 0x2E4, size 0x2
-        u8 paring_attack_flag; // offset 0x2E6, size 0x1
-        s8 no_death_attack;    // offset 0x2E7, size 0x1
-        u8 jump_att_flag;      // offset 0x2E8, size 0x1
-        s8 shell_vs_refrect;   // offset 0x2E9, size 0x1
-        s16 renew_attack;      // offset 0x2EA, size 0x2
-        u16 attack_num;        // offset 0x2EC, size 0x2
-        u16 uketa_att[4];      // offset 0x2EE, size 0x8
-        union /* @anon16 */ {
-            struct /* @anon18 */ {
-                // total size: 0x2
-                u8 player;     // offset 0x0, size 0x1
-                u8 effect;     // offset 0x1, size 0x1
-            } hit;             // offset 0x0, size 0x2
-            u16 hit_flag;      // offset 0x0, size 0x2
-        } hf;                  // offset 0x2F6, size 0x2
-        s16 hit_mark_x;        // offset 0x2F8, size 0x2
-        s16 hit_mark_y;        // offset 0x2FA, size 0x2
-        s16 hit_mark_z;        // offset 0x2FC, size 0x2
-        s16 kohm;              // offset 0x2FE, size 0x2
-        u8 dm_fushin;          // offset 0x300, size 0x1
-        s8 dm_weight;          // offset 0x301, size 0x1
-        u16 dm_butt_type;      // offset 0x302, size 0x2
-        u16 dm_zuru;           // offset 0x304, size 0x2
-        u16 dm_attribute;      // offset 0x306, size 0x2
-        s16 dm_guard_success;  // offset 0x308, size 0x2
-        s16 dm_plnum;          // offset 0x30A, size 0x2
-        s16 dm_attlv;          // offset 0x30C, size 0x2
-        s16 dm_dir;            // offset 0x30E, size 0x2
-        s8 dm_rl;              // offset 0x310, size 0x1
-        u8 dm_impact;          // offset 0x311, size 0x1
-        s16 dm_stop;           // offset 0x312, size 0x2
-        s16 dm_quake;          // offset 0x314, size 0x2
-        u16 dm_piyo;           // offset 0x316, size 0x2
-        u16 dm_ten_ix;         // offset 0x318, size 0x2
-        u16 dm_koa;            // offset 0x31A, size 0x2
-        s16 dm_work_id;        // offset 0x31C, size 0x2
-        u16 dm_arts_point;     // offset 0x31E, size 0x2
-        u8 dm_jump_att_flag;   // offset 0x320, size 0x1
-        u8 dm_free;            // offset 0x321, size 0x1
-        s16 dm_count_up;       // offset 0x322, size 0x2
-        s8 dm_nodeathattack;   // offset 0x324, size 0x1
-        u8 dm_exdm_ix;         // offset 0x325, size 0x1
-        u8 dm_dip;             // offset 0x326, size 0x1
-        u8 dm_kind_of_waza;    // offset 0x327, size 0x1
-        s16 attpow;            // offset 0x328, size 0x2
-        s16 defpow;            // offset 0x32A, size 0x2
-        u32 *my_effadrs;       // offset 0x32C, size 0x4
-        s16 shell_ix[8];       // offset 0x330, size 0x10
-        s16 hm_dm_side;        // offset 0x340, size 0x2
-        s16 extra_col;         // offset 0x342, size 0x2
-        s16 extra_col_2;       // offset 0x344, size 0x2
-        s16 original_vitality; // offset 0x346, size 0x2
-        u8 hit_work_id;        // offset 0x348, size 0x1
-        u8 dmg_work_id;        // offset 0x349, size 0x1
-        s8 K5_init_flag;       // offset 0x34A, size 0x1
-        s8 K5_exec_ok;         // offset 0x34B, size 0x1
-        u8 kow;                // offset 0x34C, size 0x1
-        u8 swallow_no_effect;  // offset 0x34D, size 0x1
-        s16 E3_work_index;     // offset 0x34E, size 0x2
-        s16 E4_work_index;     // offset 0x350, size 0x2
-        u8 kezurare_flag;      // offset 0x352, size 0x1
-        u8 wrd_free[53];       // offset 0x353, size 0x35
-    } *illusion_work;          // offset 0x3F4, size 0x4
-    s16 image_setup_flag;      // offset 0x3F8, size 0x2
-    s16 image_data_index;      // offset 0x3FA, size 0x2
-    u8 caution_flag;           // offset 0x3FC, size 0x1
-    u8 tc_1st_flag;            // offset 0x3FD, size 0x1
+                s16 l;     // offset 0x0, size 0x2
+                s16 h;     // offset 0x2, size 0x2
+            } quantity;    // offset 0x0, size 0x4
+        } now;             // offset 0x8, size 0x4
+        s32 recover;       // offset 0xC, size 0x4
+        s16 store;         // offset 0x10, size 0x2
+        s16 again;         // offset 0x12, size 0x2
+    } *py;                 // offset 0x3CC, size 0x4
+    s8 wkey_flag;          // offset 0x3D0, size 0x1
+    s8 dead_flag;          // offset 0x3D1, size 0x1
+    s16 ukemi_ok_timer;    // offset 0x3D2, size 0x2
+    s16 backup_ok_timer;   // offset 0x3D4, size 0x2
+    s8 uot_cd_ok_flag;     // offset 0x3D6, size 0x1
+    s8 ukemi_success;      // offset 0x3D7, size 0x1
+    s16 old_pos_data[8];   // offset 0x3D8, size 0x10
+    s16 move_distance;     // offset 0x3E8, size 0x2
+    s16 move_power;        // offset 0x3EA, size 0x2
+    s16 sa_stop_sai;       // offset 0x3EC, size 0x2
+    u8 saishin_lvdir;      // offset 0x3EE, size 0x1
+    u8 sa_stop_lvdir;      // offset 0x3EF, size 0x1
+    u8 sa_stop_flag;       // offset 0x3F0, size 0x1
+    u8 kezurijini_flag;    // offset 0x3F1, size 0x1
+    UNK_12 *illusion_work; // offset 0x3F4, size 0x4
+    s16 image_setup_flag;  // offset 0x3F8, size 0x2
+    s16 image_data_index;  // offset 0x3FA, size 0x2
+    u8 caution_flag;       // offset 0x3FC, size 0x1
+    u8 tc_1st_flag;        // offset 0x3FD, size 0x1
     struct /* @anon27 */ {
         // total size: 0xA8
         s16 total;             // offset 0x0, size 0x2
@@ -1821,23 +1066,6 @@ typedef struct {
     BGW bgw[7];        // offset 0x38, size 0x3F0
 } BG;
 
-typedef union {
-    s32 sp; // offset 0x0, size 0x4
-    struct /* @anon17 */ {
-        // total size: 0x4
-        s16 l; // offset 0x0, size 0x2
-        s16 h; // offset 0x2, size 0x2
-    } real;    // offset 0x0, size 0x4
-} BG_MVXY_UNK;
-
-typedef struct {
-    // total size: 0x18
-    BG_MVXY_UNK a[2]; // offset 0x0, size 0x8
-    BG_MVXY_UNK d[2]; // offset 0x8, size 0x8
-    s16 kop[2];       // offset 0x10, size 0x4
-    u16 index;        // offset 0x14, size 0x2
-} BG_MVXY;
-
 typedef struct {
     // total size: 0x18
     u8 *memoryblock;   // offset 0x0, size 0x4
@@ -2231,107 +1459,31 @@ typedef struct {
 
 typedef struct {
     // total size: 0x64
-    u32 *nmca;  // offset 0x0, size 0x4
-    u32 *dmca;  // offset 0x4, size 0x4
-    u32 *btca;  // offset 0x8, size 0x4
-    u32 *caca;  // offset 0xC, size 0x4
-    u32 *cuca;  // offset 0x10, size 0x4
-    u32 *atca;  // offset 0x14, size 0x4
-    u32 *saca;  // offset 0x18, size 0x4
-    u32 *exca;  // offset 0x1C, size 0x4
-    u32 *cbca;  // offset 0x20, size 0x4
-    u32 *yuca;  // offset 0x24, size 0x4
-    s16 *stxy;  // offset 0x28, size 0x4
-    s16 *mvxy;  // offset 0x2C, size 0x4
-    u32 *sernd; // offset 0x30, size 0x4
-    struct /* @anon30 */ {
-        // total size: 0x10
-        s16 parts_hos_x; // offset 0x0, size 0x2
-        s16 parts_hos_y; // offset 0x2, size 0x2
-        u8 parts_colmd;  // offset 0x4, size 0x1
-        u8 parts_colcd;  // offset 0x5, size 0x1
-        u8 parts_prio;   // offset 0x6, size 0x1
-        u8 parts_flip;   // offset 0x7, size 0x1
-        u8 parts_timer;  // offset 0x8, size 0x1
-        u8 parts_disp;   // offset 0x9, size 0x1
-        s16 parts_mts;   // offset 0xA, size 0x2
-        u16 parts_nix;   // offset 0xC, size 0x2
-        u16 parts_char;  // offset 0xE, size 0x2
-    } *ovct;             // offset 0x34, size 0x4
-    struct /* @anon26 */ {
-        // total size: 0x8
-        s16 olc_ix[4]; // offset 0x0, size 0x8
-    } *ovix;           // offset 0x38, size 0x4
-    struct /* @anon31 */ {
-        // total size: 0x8
-        s16 catch_hos_x; // offset 0x0, size 0x2
-        s16 catch_hos_y; // offset 0x2, size 0x2
-        u8 catch_prio;   // offset 0x4, size 0x1
-        u8 catch_flip;   // offset 0x5, size 0x1
-        s16 catch_nix;   // offset 0x6, size 0x2
-    } *rict;             // offset 0x3C, size 0x4
-    struct /* @anon34 */ {
-        // total size: 0x10
-        u16 boix; // offset 0x0, size 0x2
-        u16 bhix; // offset 0x2, size 0x2
-        u16 haix; // offset 0x4, size 0x2
-        union /* @anon47 */ {
-            u16 full; // offset 0x0, size 0x2
-            struct /* @anon49 */ {
-                // total size: 0x2
-                u8 bx; // offset 0x0, size 0x1
-                u8 mv; // offset 0x1, size 0x1
-            } half;    // offset 0x0, size 0x2
-        } mf;          // offset 0x6, size 0x2
-        u16 caix;      // offset 0x8, size 0x2
-        u16 cuix;      // offset 0xA, size 0x2
-        u16 atix;      // offset 0xC, size 0x2
-        u16 hoix;      // offset 0xE, size 0x2
-    } *hiit;           // offset 0x40, size 0x4
-    struct /* @anon6 */ {
-        // total size: 0x20
-        s16 body_dm[4][4]; // offset 0x0, size 0x20
-    } *boda;               // offset 0x44, size 0x4
-    struct /* @anon10 */ {
-        // total size: 0x20
-        s16 hand_dm[4][4]; // offset 0x0, size 0x20
-    } *hana;               // offset 0x48, size 0x4
-    struct /* @anon19 */ {
-        // total size: 0x8
-        s16 cat_box[4]; // offset 0x0, size 0x8
-    } *cata;            // offset 0x4C, size 0x4
-    struct /* @anon22 */ {
-        // total size: 0x8
-        s16 cau_box[4]; // offset 0x0, size 0x8
-    } *caua;            // offset 0x50, size 0x4
-    struct /* @anon16 */ {
-        // total size: 0x20
-        s16 att_box[4][4]; // offset 0x0, size 0x20
-    } *atta;               // offset 0x54, size 0x4
-    struct /* @anon25 */ {
-        // total size: 0x8
-        s16 hos_box[4]; // offset 0x0, size 0x8
-    } *hosa;            // offset 0x58, size 0x4
-    struct /* @anon36 */ {
-        // total size: 0x10
-        u8 reaction; // offset 0x0, size 0x1
-        u8 level;    // offset 0x1, size 0x1
-        u8 mkh_ix;   // offset 0x2, size 0x1
-        u8 but_ix;   // offset 0x3, size 0x1
-        u8 dipsw;    // offset 0x4, size 0x1
-        u8 guard;    // offset 0x5, size 0x1
-        u8 dir;      // offset 0x6, size 0x1
-        u8 free;     // offset 0x7, size 0x1
-        u8 pow;      // offset 0x8, size 0x1
-        u8 impact;   // offset 0x9, size 0x1
-        u8 piyo;     // offset 0xA, size 0x1
-        u8 ng_type;  // offset 0xB, size 0x1
-        s8 hs_me;    // offset 0xC, size 0x1
-        s8 hs_you;   // offset 0xD, size 0x1
-        u8 hit_mark; // offset 0xE, size 0x1
-        u8 dmg_mark; // offset 0xF, size 0x1
-    } *atit;         // offset 0x5C, size 0x4
-    UNK_Data *prot;  // offset 0x60, size 0x4
+    u32 *nmca;      // offset 0x0, size 0x4
+    u32 *dmca;      // offset 0x4, size 0x4
+    u32 *btca;      // offset 0x8, size 0x4
+    u32 *caca;      // offset 0xC, size 0x4
+    u32 *cuca;      // offset 0x10, size 0x4
+    u32 *atca;      // offset 0x14, size 0x4
+    u32 *saca;      // offset 0x18, size 0x4
+    u32 *exca;      // offset 0x1C, size 0x4
+    u32 *cbca;      // offset 0x20, size 0x4
+    u32 *yuca;      // offset 0x24, size 0x4
+    s16 *stxy;      // offset 0x28, size 0x4
+    s16 *mvxy;      // offset 0x2C, size 0x4
+    u32 *sernd;     // offset 0x30, size 0x4
+    UNK_8 *ovct;    // offset 0x34, size 0x4
+    UNK_9 *ovix;    // offset 0x38, size 0x4
+    UNK_10 *rict;   // offset 0x3C, size 0x4
+    UNK_0 *hiit;    // offset 0x40, size 0x4
+    UNK_1 *boda;    // offset 0x44, size 0x4
+    UNK_2 *hana;    // offset 0x48, size 0x4
+    UNK_3 *cata;    // offset 0x4C, size 0x4
+    UNK_4 *caua;    // offset 0x50, size 0x4
+    UNK_5 *atta;    // offset 0x54, size 0x4
+    UNK_6 *hosa;    // offset 0x58, size 0x4
+    UNK_7 *atit;    // offset 0x5C, size 0x4
+    UNK_Data *prot; // offset 0x60, size 0x4
 } CharInitData;
 
 typedef struct {
@@ -2659,7 +1811,7 @@ extern void (*plfree)(void *);            // size: 0x4, address: 0x578A10
 extern void *(*plmalloc)(s32);            // size: 0x4, address: 0x578A14
 extern s32 bgPalCodeOffset[8];            // size: 0x20, address: 0x578AA0
 extern s8 seraph_flag;                    // size: 0x1, address: 0x578C6C
-extern BG_MVXY bg_mvxy;                   // size: 0x18, address: 0x578C80
+extern MVXY bg_mvxy;                    // size: 0x18, address: 0x578C80
 extern s16 base_y_pos;                    // size: 0x2, address: 0x578CC4
 extern UNK_Data *parabora_own_table[20];  // size: 0x50, address: 0x578CD0
 extern MessageData Message_Data[4];       // size: 0x30, address: 0x578ED0
