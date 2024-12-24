@@ -2,6 +2,7 @@
 #include "common.h"
 #include "sf33rd/Source/Game/EX_DATA.h"
 #include "sf33rd/Source/Game/main.h"
+#include "sf33rd/Source/Game/texgroup.h"
 #include "unknown.h"
 
 void After_Title(struct _TASK *task_ptr);

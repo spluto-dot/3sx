@@ -3,6 +3,7 @@
 #include "sf33rd/Source/Game/Reset.h"
 #include "sf33rd/Source/Game/SYS_sub2.h"
 #include "sf33rd/Source/Game/main.h"
+#include "sf33rd/Source/Game/texgroup.h"
 
 f32 Keep_Zoom_X;
 s8 Test_Cursor;
@@ -38,7 +39,7 @@ void Init_Task_1st(struct _TASK *task_ptr) {
     Scrscreen_Init();
     effect_work_init();
     Usage = 7;
-    Max_vitality = 0xA0;
+    Max_vitality = 160;
     reset_NG_flag = 0;
     Break_Into = 0;
     Forbid_Break = 0;

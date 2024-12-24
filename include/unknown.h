@@ -2224,6 +2224,126 @@ typedef struct {
     struct _cursor_infor cursor_infor[2]; // offset 0x14, size 0x4
 } Permission;
 
+typedef struct {
+    // total size: 0x30
+    s16 data[4][6]; // offset 0x0, size 0x30
+} UNK_Data;
+
+typedef struct {
+    // total size: 0x64
+    u32 *nmca;  // offset 0x0, size 0x4
+    u32 *dmca;  // offset 0x4, size 0x4
+    u32 *btca;  // offset 0x8, size 0x4
+    u32 *caca;  // offset 0xC, size 0x4
+    u32 *cuca;  // offset 0x10, size 0x4
+    u32 *atca;  // offset 0x14, size 0x4
+    u32 *saca;  // offset 0x18, size 0x4
+    u32 *exca;  // offset 0x1C, size 0x4
+    u32 *cbca;  // offset 0x20, size 0x4
+    u32 *yuca;  // offset 0x24, size 0x4
+    s16 *stxy;  // offset 0x28, size 0x4
+    s16 *mvxy;  // offset 0x2C, size 0x4
+    u32 *sernd; // offset 0x30, size 0x4
+    struct /* @anon30 */ {
+        // total size: 0x10
+        s16 parts_hos_x; // offset 0x0, size 0x2
+        s16 parts_hos_y; // offset 0x2, size 0x2
+        u8 parts_colmd;  // offset 0x4, size 0x1
+        u8 parts_colcd;  // offset 0x5, size 0x1
+        u8 parts_prio;   // offset 0x6, size 0x1
+        u8 parts_flip;   // offset 0x7, size 0x1
+        u8 parts_timer;  // offset 0x8, size 0x1
+        u8 parts_disp;   // offset 0x9, size 0x1
+        s16 parts_mts;   // offset 0xA, size 0x2
+        u16 parts_nix;   // offset 0xC, size 0x2
+        u16 parts_char;  // offset 0xE, size 0x2
+    } *ovct;             // offset 0x34, size 0x4
+    struct /* @anon26 */ {
+        // total size: 0x8
+        s16 olc_ix[4]; // offset 0x0, size 0x8
+    } *ovix;           // offset 0x38, size 0x4
+    struct /* @anon31 */ {
+        // total size: 0x8
+        s16 catch_hos_x; // offset 0x0, size 0x2
+        s16 catch_hos_y; // offset 0x2, size 0x2
+        u8 catch_prio;   // offset 0x4, size 0x1
+        u8 catch_flip;   // offset 0x5, size 0x1
+        s16 catch_nix;   // offset 0x6, size 0x2
+    } *rict;             // offset 0x3C, size 0x4
+    struct /* @anon34 */ {
+        // total size: 0x10
+        u16 boix; // offset 0x0, size 0x2
+        u16 bhix; // offset 0x2, size 0x2
+        u16 haix; // offset 0x4, size 0x2
+        union /* @anon47 */ {
+            u16 full; // offset 0x0, size 0x2
+            struct /* @anon49 */ {
+                // total size: 0x2
+                u8 bx; // offset 0x0, size 0x1
+                u8 mv; // offset 0x1, size 0x1
+            } half;    // offset 0x0, size 0x2
+        } mf;          // offset 0x6, size 0x2
+        u16 caix;      // offset 0x8, size 0x2
+        u16 cuix;      // offset 0xA, size 0x2
+        u16 atix;      // offset 0xC, size 0x2
+        u16 hoix;      // offset 0xE, size 0x2
+    } *hiit;           // offset 0x40, size 0x4
+    struct /* @anon6 */ {
+        // total size: 0x20
+        s16 body_dm[4][4]; // offset 0x0, size 0x20
+    } *boda;               // offset 0x44, size 0x4
+    struct /* @anon10 */ {
+        // total size: 0x20
+        s16 hand_dm[4][4]; // offset 0x0, size 0x20
+    } *hana;               // offset 0x48, size 0x4
+    struct /* @anon19 */ {
+        // total size: 0x8
+        s16 cat_box[4]; // offset 0x0, size 0x8
+    } *cata;            // offset 0x4C, size 0x4
+    struct /* @anon22 */ {
+        // total size: 0x8
+        s16 cau_box[4]; // offset 0x0, size 0x8
+    } *caua;            // offset 0x50, size 0x4
+    struct /* @anon16 */ {
+        // total size: 0x20
+        s16 att_box[4][4]; // offset 0x0, size 0x20
+    } *atta;               // offset 0x54, size 0x4
+    struct /* @anon25 */ {
+        // total size: 0x8
+        s16 hos_box[4]; // offset 0x0, size 0x8
+    } *hosa;            // offset 0x58, size 0x4
+    struct /* @anon36 */ {
+        // total size: 0x10
+        u8 reaction; // offset 0x0, size 0x1
+        u8 level;    // offset 0x1, size 0x1
+        u8 mkh_ix;   // offset 0x2, size 0x1
+        u8 but_ix;   // offset 0x3, size 0x1
+        u8 dipsw;    // offset 0x4, size 0x1
+        u8 guard;    // offset 0x5, size 0x1
+        u8 dir;      // offset 0x6, size 0x1
+        u8 free;     // offset 0x7, size 0x1
+        u8 pow;      // offset 0x8, size 0x1
+        u8 impact;   // offset 0x9, size 0x1
+        u8 piyo;     // offset 0xA, size 0x1
+        u8 ng_type;  // offset 0xB, size 0x1
+        s8 hs_me;    // offset 0xC, size 0x1
+        s8 hs_you;   // offset 0xD, size 0x1
+        u8 hit_mark; // offset 0xE, size 0x1
+        u8 dmg_mark; // offset 0xF, size 0x1
+    } *atit;         // offset 0x5C, size 0x4
+    UNK_Data *prot;  // offset 0x60, size 0x4
+} CharInitData;
+
+typedef struct {
+    // total size: 0xC
+    u32 adr;        // offset 0x0, size 0x4
+    u32 size;       // offset 0x4, size 0x4
+    u8 search_type; // offset 0x8, size 0x1
+    u8 group_num;   // offset 0x9, size 0x1
+    u8 type;        // offset 0xA, size 0x1
+    u8 use;         // offset 0xB, size 0x1
+} RCKeyWork;
+
 // .text
 
 void mflInit(void *mem_ptr, s32 memsize, s32 memalign);                     // Range: 0x115FB0 -> 0x115FFC
@@ -2412,12 +2532,6 @@ void init_omop(); // Range: 0x3AB060 -> 0x3AB290
 // texcash.c
 void init_texcash_1st(); // Range: 0x3AE390 -> 0x3AE4EC
 
-// texgroup.c
-void q_ldreq_texture_group(REQ *curr);                         // Range: 0x3B0540 -> 0x3B0E6C
-void Init_texgrplds_work();                                    // Range: 0x3B0E70 -> 0x3B0F4C
-void checkSelObjFileLoaded();                                  // Range: 0x3B1000 -> 0x3B10F8
-s32 load_any_texture_patnum(u16 patnum, u8 kokey, u8 _unused); // Range: 0x3B1320 -> 0x3B136C
-
 // VM_SUB.c
 u8 VM_Access_Request(u8 Request, u8 Drive);         // Range: 0x3B1B80 -> 0x3B1BAC
 void Setup_File_Property(s16 file_type, u8 number); // Range: 0x3B1BB0 -> 0x3B1CBC
@@ -2531,6 +2645,7 @@ extern const u8 Dir_Menu_Max_Data[10][7];      // size: 0x46, address: 0x504FB0
 extern const SystemDir Dir_Default_Data;       // size: 0x48, address: 0x505000
 extern const u8 Page_Data[10];                 // size: 0xA, address: 0x505048
 extern const Permission Permission_PL_Data;    // size: 0x18, address: 0x5224C0
+extern const s8 plid_data[20];                 // size: 0x14, address: 0x54B230
 extern const u8 PL_Color_Data[20];             // size: 0x14, address: 0x552050
 extern const struct _SAVE_W Game_Default_Data; // size: 0x208, address: 0x5544C0
 extern const FLPAD_CONFIG fltpad_config_basic; // size: 0x2C, address: 0x55F530
@@ -2546,6 +2661,7 @@ extern s32 bgPalCodeOffset[8];            // size: 0x20, address: 0x578AA0
 extern s8 seraph_flag;                    // size: 0x1, address: 0x578C6C
 extern BG_MVXY bg_mvxy;                   // size: 0x18, address: 0x578C80
 extern s16 base_y_pos;                    // size: 0x2, address: 0x578CC4
+extern UNK_Data *parabora_own_table[20];  // size: 0x50, address: 0x578CD0
 extern MessageData Message_Data[4];       // size: 0x30, address: 0x578ED0
 extern IO io_w;                           // size: 0x6C, address: 0x579230
 extern s16 appear_type;                   // size: 0x2, address: 0x5795C8
@@ -2718,8 +2834,10 @@ extern TARPAD tarpad_root[2];             // size: 0x68, address: 0x57B040
 extern MEM_BLOCK sysmemblock[4096]; // size: 0x10000, address: 0x584C80
 
 extern BG bg_w;                                   // size: 0x428, address: 0x595830
+extern CharInitData char_init_data[23];           // size: 0x8FC, address: 0x595C60
 extern f32 PrioBase[128];                         // size: 0x200, address: 0x5E3F50
 extern PLW plw[2];                                // size: 0x8D8, address: 0x5E4D20
+extern RCKeyWork rckey_work[64];                  // size: 0x300, address: 0x5E5600
 extern struct _SAVE_W save_w[6];                  // size: 0xC30, address: 0x6B4E80
 extern Permission permission_player[6];           // size: 0x90, address: 0x6B5AB0
 extern SystemDir system_dir[6];                   // size: 0x1B0, address: 0x6B5B40
