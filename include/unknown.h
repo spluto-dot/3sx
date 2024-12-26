@@ -285,7 +285,7 @@ typedef struct {
     s16 old_pos[3];          // offset 0x70, size 0x6
     s16 sync_suzi;           // offset 0x76, size 0x2
     u16 *suzi_offset;        // offset 0x78, size 0x4
-    MVXY mvxy;             // offset 0x7C, size 0x18
+    MVXY mvxy;               // offset 0x7C, size 0x18
     s16 direction;           // offset 0x94, size 0x2
     s16 dir_old;             // offset 0x96, size 0x2
     s16 dir_step;            // offset 0x98, size 0x2
@@ -1612,6 +1612,7 @@ void Push_ramcnt_key(s16 key);                                // Range: 0x37BE00
 void Purge_memory_of_kind_of_key(u8 kokey);                   // Range: 0x37C060 -> 0x37C10C
 void Set_size_data_ramcnt_key(s16 key, u32 size);             // Range: 0x37C110 -> 0x37C1A4
 u32 Get_ramcnt_address(s16 key);                              // Range: 0x37C240 -> 0x37C2C8
+s16 Search_ramcnt_type(u8 kokey);                             // Range: 0x37C2D0 -> 0x37C398
 s16 Pull_ramcnt_key(u32 memreq, u8 kokey, u8 group, u8 frre); // Range: 0x37C460 -> 0x37C62C
 
 // Saver.c
@@ -1682,7 +1683,8 @@ void Init_load_on_memory_data(); // Range: 0x3A8710 -> 0x3A87CC
 void init_omop(); // Range: 0x3AB060 -> 0x3AB290
 
 // texcash.c
-void init_texcash_1st(); // Range: 0x3AE390 -> 0x3AE4EC
+void init_texcash_1st();   // Range: 0x3AE390 -> 0x3AE4EC
+void Clear_texcash_work(); // Range: 0x3AFEC0 -> 0x3AFF28
 
 // VM_SUB.c
 u8 VM_Access_Request(u8 Request, u8 Drive);         // Range: 0x3B1B80 -> 0x3B1BAC
@@ -1811,7 +1813,7 @@ extern void (*plfree)(void *);            // size: 0x4, address: 0x578A10
 extern void *(*plmalloc)(s32);            // size: 0x4, address: 0x578A14
 extern s32 bgPalCodeOffset[8];            // size: 0x20, address: 0x578AA0
 extern s8 seraph_flag;                    // size: 0x1, address: 0x578C6C
-extern MVXY bg_mvxy;                    // size: 0x18, address: 0x578C80
+extern MVXY bg_mvxy;                      // size: 0x18, address: 0x578C80
 extern s16 base_y_pos;                    // size: 0x2, address: 0x578CC4
 extern UNK_Data *parabora_own_table[20];  // size: 0x50, address: 0x578CD0
 extern MessageData Message_Data[4];       // size: 0x30, address: 0x578ED0

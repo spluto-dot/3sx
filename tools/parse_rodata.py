@@ -33,8 +33,8 @@ U8 = IntDecodable(1, False)
 U16 = IntDecodable(2, False)
 U32 = IntDecodable(4, False)
 S8 = IntDecodable(1, True)
-S16 = IntDecodable(1, True)
-S32 = IntDecodable(1, True)
+S16 = IntDecodable(2, True)
+S32 = IntDecodable(4, True)
 
 class StructDecodable(Decodable):
     def __init__(self, members: list[Decodable]) -> None:

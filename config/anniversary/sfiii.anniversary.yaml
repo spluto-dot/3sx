@@ -532,7 +532,7 @@ segments:
       - [0x2ABE00, asm, sf33rd/Source/Game/ta_sub]
       - [0x2AD770, asm, sf33rd/Source/Game/TATE00]
       - [0x2AD990, asm, sf33rd/Source/Game/texcash]
-      - [0x2B05C0, asm, sf33rd/Source/Game/texgroup]
+      - [0x2B05C0, c, sf33rd/Source/Game/texgroup]
       - [0x2B14F0, asm, sf33rd/Source/Game/VITAL]
       - [0x2B1C00, asm, sf33rd/Source/Game/VM_SUB]
       - [0x2B1D40, c, sf33rd/Source/Game/Win]
@@ -849,7 +849,7 @@ segments:
       - [0x4549B0, rodata, sf33rd/Source/Game/SysDir]
       - [0x454AC0, rodata, sf33rd/Source/Game/ta_sub]
       - [0x454B90, rodata, sf33rd/Source/Game/texcash]
-      - [0x455010, rodata, sf33rd/Source/Game/texgroup]
+      - [0x455010, .rodata, sf33rd/Source/Game/texgroup]
       - [0x455810, rodata, sf33rd/Source/Game/VM_SUB]
       - [0x455950, rodata, sf33rd/Source/Game/vs_shell]
       - [0x458150, rodata, sf33rd/Source/Game/win_pl]
@@ -970,6 +970,8 @@ segments:
       - [0x4740E0, sdata, sdata_4740E0]
       - [0x4742A0, sdata, sf33rd/Source/Game/Sound3rd]
       - [0x474368, sdata, sdata_474368]
+      - [0x474494, .sdata, sf33rd/Source/Game/texgroup]
+      - [0x4744A0, sdata, sdata_4744A0]
       - [0x474500, .sdata, sf33rd/Source/Game/Win]
       - [0x474540, sdata, sdata_474540]
       - [0x4749F0, .sdata, sf33rd/AcrSDK/ps2/foundaps2]
@@ -1008,5 +1010,7 @@ segments:
       - { type: bss, vram: 0x5E2D70, name: bss_5E2D70 }
       - { type: bss, vram: 0x5E5D00, name: sf33rd/Source/Game/Sound3rd }
       - { type: bss, vram: 0x623700, name: bss_623700 }
+      - { type: .bss, vram: 0x6B49D0, name: sf33rd/Source/Game/texgroup }
+      - { type: bss, vram: 0x6B4E80, name: bss_6B4E80 }
 
   - [0x478A00]

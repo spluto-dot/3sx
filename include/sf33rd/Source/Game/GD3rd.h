@@ -6,6 +6,7 @@
 
 extern s16 plt_req[2];
 extern const u8 lpr_wrdata[3];
+extern const u8 lpt_seldat[4];
 
 s32 Setup_Directory_Record_Data();
 s32 fsOpen(REQ *req);
