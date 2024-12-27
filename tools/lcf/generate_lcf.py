@@ -172,7 +172,7 @@ def main():
             "Continue": 16,
             "sdata_474368": 4,
             "Win": 16,
-            "sdata_4749F4": 4
+            "flps2shader": 4,
         }
 
         for run in sdata_runs:
