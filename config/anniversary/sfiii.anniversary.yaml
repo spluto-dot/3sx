@@ -808,15 +808,16 @@ segments:
       - [0x3D8C98, rodata, sdk/libcdvd/cdvd000]
       - [0x3D8E68, rodata, sdk/libcdvd/cdvd005]
       - [0x3D8E90, rodata, sdk/libmc/libmc]
-      - [0x3D8F18, rodata, rodata_3D8F18]
-      - [0x3D8FC8, rodata, rodata_3D8FC8]
-      - [0x3D9388, rodata, rodata_3D9388]
-      - [0x3D93D8, rodata, rodata_3D93D8]
-      - [0x3D9488, rodata, rodata_3D9488]
-      - [0x3D9588, rodata, rodata_3D9588]
-      - [0x3D9688, rodata, rodata_3D9688]
-      - [0x3D9788, rodata, rodata_3D9788]
-      - [0x3D9888, rodata, rodata_3D9888]
+
+      - [0x3D8F18, rodata, rodata_3D8F18] #
+      - [0x3D8FC8, rodata, rodata_3D8FC8] #
+      - [0x3D9388, rodata, rodata_3D9388] #
+      - [0x3D93D8, rodata, rodata_3D93D8] #
+      - [0x3D9488, rodata, rodata_3D9488] # GCC
+      - [0x3D9588, rodata, rodata_3D9588] #
+      - [0x3D9688, rodata, rodata_3D9688] #
+      - [0x3D9788, rodata, rodata_3D9788] #
+      - [0x3D9888, rodata, rodata_3D9888] #
 
       - [0x3D98A0, .rodata, sf33rd/AcrSDK/common/mlPAD]
       - [0x3D98F0, .rodata, sf33rd/AcrSDK/common/plbmp]
@@ -829,7 +830,31 @@ segments:
       - [0x3DF1C0, rodata, sf33rd/Source/Game/ACTIVE00]
       - [0x3DF2D0, rodata, sf33rd/Source/Game/active01]
       - [0x3DF410, rodata, sf33rd/Source/Game/active02]
-      - [0x3DF560, rodata, rodata_3DF560]
+      - [0x3DF560, rodata, sf33rd/Source/Game/active03]
+      - [0x3DF680, rodata, sf33rd/Source/Game/active04]
+      - [0x3DF790, rodata, sf33rd/Source/Game/active05]
+      - [0x3DF8A0, rodata, sf33rd/Source/Game/active06]
+      - [0x3DF9A0, rodata, sf33rd/Source/Game/active07]
+      - [0x3DFAF0, rodata, sf33rd/Source/Game/active08]
+      - [0x3DFC70, rodata, sf33rd/Source/Game/active09]
+      - [0x3DFE30, rodata, sf33rd/Source/Game/active10]
+      - [0x3DFFB0, rodata, sf33rd/Source/Game/active11]
+      - [0x3E0120, rodata, sf33rd/Source/Game/active12]
+      - [0x3E02A0, rodata, sf33rd/Source/Game/active13]
+      - [0x3E03F0, rodata, sf33rd/Source/Game/active14]
+      - [0x3E0910, rodata, sf33rd/Source/Game/active15]
+      - [0x3E0A50, rodata, sf33rd/Source/Game/active16]
+      - [0x3E0B90, rodata, sf33rd/Source/Game/active17]
+      - [0x3E0D80, rodata, sf33rd/Source/Game/active18]
+      - [0x3E0F60, rodata, sf33rd/Source/Game/active19]
+      - [0x3E10C0, rodata, sf33rd/Source/Game/app_data]
+      - [0x3E5580, rodata, sf33rd/Source/Game/appear]
+      - [0x3E5900, rodata, sf33rd/Source/Game/BBBSCOM]
+      - [0x3E6F48, rodata, sf33rd/Source/Game/bg]
+      - [0x3E6FD0, rodata, sf33rd/Source/Game/bg_data]
+      - [0x3E9550, rodata, sf33rd/Source/Game/CALDIR]
+      - [0x3EDD50, rodata, sf33rd/Source/Game/CHARID]
+      - [0x3EDEE0, rodata, sf33rd/Source/Game/CHARSET]
       - [0x3EE2E0, rodata, sf33rd/Source/Game/chren3rd]
       - [0x3F7600, rodata, rodata_3F7600]
       - [0x41F340, .rodata, sf33rd/Source/Game/EX_DATA]
