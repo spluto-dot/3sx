@@ -20,6 +20,11 @@ special_cases = {
     ("rodata_422560", ".rodata", 0): 16,
     ("sbss_579230", ".sbss", 0): 16,
     ("sdata_4744A0", ".sdata", 0): 16,
+    ("Demo_Dat", ".sdata", 0): 16,
+    ("BBBSCOM", ".sdata", 0): 16,
+    ("sdata_473B70", ".sdata", 0): 16,
+    ("sdata_473CE0", ".sdata", 0): 16,
+    ("sdata_474540", ".sdata", 0): 16,
 }
 
 def alignment_to_bytes(alignment: int) -> bytes:

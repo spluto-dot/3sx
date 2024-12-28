@@ -168,27 +168,8 @@ def main():
 
         sdata_runs = [x for x in runs if x.section == ".sdata"]
         lcf.align(0x80)
-        # lcf.align_all(0x10)
-        # lcf.add_runs(sdata_runs, ".sdata")
-
-        sdata_alignment = 8
-
-        sdata_alignment_changes = {
-            "Continue": 16,
-            "sdata_474368": 4,
-            "Win": 16,
-            "flps2shader": 4,
-        }
-
-        for run in sdata_runs:
-            for entry in run.entries:
-                filename = entry.object_path.stem.split('.')[0]
-
-                if filename in sdata_alignment_changes:
-                    sdata_alignment = sdata_alignment_changes[filename]
-
-                lcf.align_all(sdata_alignment)
-                lcf.add_entry(entry, ".sdata")
+        lcf.align_all(4)
+        lcf.add_runs(sdata_runs, ".sdata")
 
         lcf.blank()
 
