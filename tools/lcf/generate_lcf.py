@@ -145,7 +145,12 @@ def main():
         # lcf.add_runs(rodata_runs, ".rodata")
 
         rodata_alignment = 0x8
-        rodata_increased_alignment = {"plbmp", "SYS_sub2"}
+
+        rodata_increased_alignment = {
+            "plbmp", 
+            "SYS_sub2",
+            "LOSE_PL",
+        }
 
         for run in rodata_runs:
             for entry in run.entries:
