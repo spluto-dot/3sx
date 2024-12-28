@@ -574,7 +574,7 @@ segments:
       - [0x2CEDC8, asm, cri/libadxe/adx_lsc]
       - [0x2CF0D8, asm, asm_2CF0D8] # More CRI stuff
 
-      - [0x2E5250, asm, sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX]
+      - [0x2E5250, asm, sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX] # Good first decomp
       - [0x2E5430, c, sf33rd/Source/Game/main]
 
       - [0x2E6348, asm, sdk/libvib/libvib]
@@ -693,6 +693,7 @@ segments:
       - [0x367C40, data, sdk/libcdvd/cdvd000]
       - [0x3697E8, data, sdk/libcdvd/cdvd036]
       - [0x3697F8, data, sdk/libmc/libmc]
+
       - [0x369820, data, data_369820]
       - [0x36F9F0, .data, sf33rd/Source/Game/EX_DATA]
       - [0x370160, data, sf33rd/Source/Game/IOConv]
@@ -788,7 +789,6 @@ segments:
       - [0x3C4328, data, sdk/libpad2/libpad2]
       - [0x3C4360, data, data_3C4360]
       - [0x3D6A10, .data, sf33rd/Source/Common/FileSizeAFS]
-      - [0x3D820C, pad]
       - [0x3D8210, data, data_3D8210]
 
       # .rodata
