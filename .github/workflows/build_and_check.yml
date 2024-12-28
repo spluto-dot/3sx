@@ -19,5 +19,11 @@ jobs:
             - name: Install Linux dependencies
               run: sudo apt-get update && sudo apt-get install -y $(cat tools/requirements-debian.txt)
 
-            - name: Download build tools
+            - name: Setup build tools
               run: make setup_tools
+            
+            - name: Download and unzip the image
+              run: curl -L -o image.7z ${{ secrets.IMAGE_URL }} && 7z x image.7z
+            
+            - name: Print original ELF's SHA
+              run: shasum -a 256 THIRD_U.BIN
