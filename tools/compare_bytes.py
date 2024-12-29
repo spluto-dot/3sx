@@ -76,11 +76,14 @@ def main():
             if (word_a == 0 or word_b == 0) and misalign_offset == None:
                 misalign_offset = offset
 
+    success = True
+
     if not bad_offsets:
         print("Files match ✅")
     elif not unexpected_error:
         print("Files match ✅ (except for expected errors)")
     else:
+        success = False
         max_printed_offsets = 20
         print(f"Files diverge at {len(bad_offsets)} offsets ❌.")
 
@@ -99,6 +102,11 @@ def main():
         
     if misalign_offset != None:
         print(f"Misalignment at 0x{misalign_offset:X}")
+
+    if success:
+        sys.exit(0)
+    else:
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()
