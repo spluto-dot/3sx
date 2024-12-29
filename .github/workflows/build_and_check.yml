@@ -27,5 +27,8 @@ jobs:
             - name: Decrypt original ELF's binary
               run: openssl enc -d -aes-256-cbc -in encrypted.bin -out THIRD_U.BIN -pass pass:${{ secrets.BIN_PASSWORD }}
 
+            - name: Split the binary
+              run: make split
+
             - name: Build and compare binaries
-              run: make split && make build -j
+              run: make build -j
