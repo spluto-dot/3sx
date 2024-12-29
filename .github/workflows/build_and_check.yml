@@ -22,8 +22,8 @@ jobs:
             - name: Setup build tools
               run: make setup_tools
             
-            - name: Download and unzip the image
-              run: curl -L -o image.7z ${{ secrets.IMAGE_URL }} && 7z x image.7z
+            - name: Decrypt original ELF's binary
+              run: openssl enc -d -aes-256-cbc -in encrypted.bin -out THIRD_U.BIN -pass pass:${{ secrets.BIN_PASSWORD }}
             
             - name: Print original ELF's SHA
               run: shasum -a 256 THIRD_U.BIN
