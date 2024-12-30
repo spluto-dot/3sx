@@ -61,6 +61,9 @@ u16 GO_Move_Sub_LR(u16 sw, s16 cursor_id);
 void Button_Config_Sub(s16 PL_id);
 void Button_Move_Sub_LR(u16 sw, s16 cursor_id);
 void Return_Option_Mode_Sub(struct _TASK *task_ptr);
+void Screen_Adjust_Sub(s16 PL_id);
+void Screen_Exit_Check(struct _TASK *task_ptr, s16 PL_id);
+void Screen_Move_Sub_LR(u16 sw);
 
 typedef void (*MenuFunc)(struct _TASK *);
 
@@ -1920,13 +1923,161 @@ void Button_Exit_Check(struct _TASK *task_ptr, s16 PL_id) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Return_Option_Mode_Sub);
+void Return_Option_Mode_Sub(struct _TASK *task_ptr) {
+    Menu_Suicide[1] = 0;
+    Menu_Suicide[2] = 1;
+    task_ptr->r_no[1] = 7;
+    task_ptr->r_no[2] = 0;
+    task_ptr->r_no[3] = 0;
+    task_ptr->free[0] = 0;
+    Cursor_Y_Pos[0][2] = Menu_Cursor_Y[0];
+    Cursor_Y_Pos[1][2] = Menu_Cursor_Y[1];
+}
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Screen_Adjust);
+void Screen_Adjust(struct _TASK *task_ptr) {
+    s16 char_index;
+    s16 ix;
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Screen_Adjust_Sub);
+    s16 unused_s3;
+    s16 unused_s2;
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Screen_Exit_Check);
+    X_Adjust = X_Adjust_Buff[0];
+    X_Adjust_Buff[0] = X_Adjust_Buff[1];
+    X_Adjust_Buff[1] = X_Adjust_Buff[2];
+    Y_Adjust = Y_Adjust_Buff[0];
+    Y_Adjust_Buff[0] = Y_Adjust_Buff[1];
+    Y_Adjust_Buff[1] = Y_Adjust_Buff[2];
+    Correct_X[0] = Correct_X[1];
+    Correct_X[1] = Correct_X[2];
+    Correct_X[2] = Correct_X[3];
+    Correct_Y[0] = Correct_Y[1];
+    Correct_Y[1] = Correct_Y[2];
+    Correct_Y[2] = Correct_Y[3];
+
+    switch (task_ptr->r_no[2]) {
+    case 0:
+        FadeOut(1, 0xFF, 8);
+        task_ptr->r_no[2] += 1;
+        task_ptr->timer = 5;
+        Menu_Common_Init();
+        Menu_Cursor_Y[0] = 0;
+        Menu_Suicide[1] = 1;
+        Menu_Suicide[2] = 0;
+        Order[0x4F] = 4;
+        Order_Timer[0x4F] = 1;
+        Order[0x4E] = 2;
+        Order_Dir[0x4E] = 2;
+        Order_Timer[0x4E] = 1;
+        effect_57_init(0x65, 3, 0, 0x3F, 2);
+        Order[0x65] = 1;
+        Order_Dir[0x65] = 8;
+        Order_Timer[0x65] = 1;
+
+        for (ix = 0; ix < 5; ix++) {
+            effect_63_init(ix + 0x66, 0, 2, ix, ix);
+            Order[ix + 0x66] = 1;
+            Order_Dir[ix + 0x66] = 4;
+            Order_Timer[ix + 0x66] = ix + 0x14;
+        }
+
+        for (ix = 0, unused_s3 = char_index = 0xE; ix < 7; ix++, unused_s2 = char_index++) {
+            effect_61_init(0, ix + 0x50, 0, 2, char_index, ix, 0x7047);
+            Order[ix + 0x50] = 1;
+            Order_Dir[ix + 0x50] = 4;
+            Order_Timer[ix + 0x50] = ix + 0x14;
+        }
+
+        Menu_Cursor_Move = 5;
+        break;
+
+    case 1:
+        Menu_Sub_case1(task_ptr);
+        break;
+
+    case 2:
+        if (FadeIn(1, 0x19, 8) != 0) {
+            task_ptr->r_no[2] += 1;
+            Suicide[3] = 0;
+        }
+
+        break;
+
+    case 3:
+        Screen_Adjust_Sub(0);
+        Screen_Exit_Check(task_ptr, 0);
+
+        if (IO_Result == 0) {
+            Screen_Adjust_Sub(1);
+            Screen_Exit_Check(task_ptr, 0);
+        }
+
+        Save_Game_Data();
+        break;
+    }
+}
+
+void Screen_Adjust_Sub(s16 PL_id) {
+    u16 sw;
+    sw = ~((u16 *)plsw_01)[PL_id] & ((u16 *)plsw_00)[PL_id];
+    sw = Check_Menu_Lever(PL_id, 0);
+    MC_Move_Sub(sw, 0, 6, 0xFF);
+    Screen_Move_Sub_LR(sw);
+    Convert_Buff[2][0][0] = X_Adjust_Buff[2] & 0xFF;
+    Convert_Buff[2][0][1] = Y_Adjust_Buff[2] & 0xFF;
+    Convert_Buff[2][0][2] = dspwhPack(Disp_Size_H, Disp_Size_V);
+    save_w[1].Screen_Size = dspwhPack(Disp_Size_H, Disp_Size_V);
+    Convert_Buff[2][0][3] = sys_w.screen_mode;
+    save_w[1].Screen_Mode = sys_w.screen_mode;
+}
+
+void Screen_Exit_Check(struct _TASK *task_ptr, s16 PL_id) {
+    switch (IO_Result) {
+    case 0x200:
+    case 0x100:
+        break;
+
+    default:
+        return;
+    }
+
+    if (Menu_Cursor_Y[0] == 6 || IO_Result == 0x200) {
+        SE_selected();
+        Menu_Suicide[1] = 0;
+        Menu_Suicide[2] = 1;
+        Correct_X[0] = Correct_X[3];
+        Correct_X[1] = Correct_X[3];
+        Correct_X[2] = Correct_X[3];
+        Correct_Y[0] = Correct_Y[3];
+        Correct_Y[1] = Correct_Y[3];
+        Correct_Y[2] = Correct_Y[3];
+        X_Adjust = X_Adjust_Buff[2];
+        Y_Adjust = Y_Adjust_Buff[2];
+        Return_Option_Mode_Sub(task_ptr);
+
+        if (task_ptr->r_no[0] == 1) {
+            task_ptr->r_no[1] = 1;
+        } else {
+            task_ptr->r_no[1] = 7;
+            Order[0x65] = 4;
+            Order_Timer[0x65] = 4;
+        }
+
+        task_ptr->r_no[2] = 0;
+        task_ptr->r_no[3] = 0;
+        task_ptr->free[0] = 0;
+        return;
+    }
+
+    if (Menu_Cursor_Y[PL_id] == 5) {
+        SE_selected();
+        X_Adjust_Buff[2] = 0;
+        Y_Adjust_Buff[2] = 0;
+        Disp_Size_H = 0x64;
+        Disp_Size_V = 0x64;
+        Setup_Disp_Size(0);
+        sys_w.screen_mode = 1;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Screen_Move_Sub_LR);
 
