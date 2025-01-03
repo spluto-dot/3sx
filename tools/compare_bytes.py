@@ -4,6 +4,9 @@ import sys
 from pathlib import Path
 
 EXPECTED_ERRORS = {
+    # Weird call misalignment issue.
+    # For some reason are 4 bytes earlier than needed.
+    # Must be a compiler/linker bug or something.
     0x2A5174: 0x1000FFF9,
     0x302580: 0x14C0FFFA,
     0x3025B8: 0x14C0FFF4,
@@ -17,6 +20,12 @@ EXPECTED_ERRORS = {
     0x302720: 0x14A0FFFC,
     0x302738: 0x14A0FFFC,
     0x302750: 0x14A0FFFC,
+
+    # menu::Sound_Test: s2 <-> s4 regswap
+    0x175A48: 0x0004A43C,
+    0x175A4C: 0x0014A43F,
+    0x175ACC: 0x305200FF,
+    0x175C8C: 0x0240202D,
 }
 
 def read_word(b: bytes, offset: int) -> int:

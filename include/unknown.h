@@ -1550,10 +1550,12 @@ s32 effect_63_init(u8 dir_old, s16 sync_bg, s16 master_player, s16 letter_type,
 s32 effect_64_init(u8 dir_old, s16 sync_bg, s16 master_player, s16 letter_type, s16 cursor_index, u16 char_offset,
                    s16 pos_index, s16 convert_id, s16 convert_id2); // Range: 0x1EC830 -> 0x1EC990
 s32 effect_66_init(s16 order_index, s16 id, s16 master_player, s16 target_bg, s16 char_ix, s16 char_ix2,
-                   s16 option);                                             // Range: 0x1EDB60 -> 0x1EDEA4
-s32 effect_75_init(s16 dir_old, s16 ID, s16 Target_BG);                     // Range: 0x1F1910 -> 0x1F1A28
-s32 effect_76_init(s16 dir_old);                                            // Range: 0x1F2670 -> 0x1F27A0
-s32 effect_95_init(s16 vital_new);                                          // Range: 0x1FCFD0 -> 0x1FD218
+                   s16 option);                         // Range: 0x1EDB60 -> 0x1EDEA4
+s32 effect_75_init(s16 dir_old, s16 ID, s16 Target_BG); // Range: 0x1F1910 -> 0x1F1A28
+s32 effect_76_init(s16 dir_old);                        // Range: 0x1F2670 -> 0x1F27A0
+s32 effect_95_init(s16 vital_new);                      // Range: 0x1FCFD0 -> 0x1FD218
+s32 effect_A8_init(s16 id, u8 dir_old, s16 sync_bg, s16 master_player, s16 cursor_index, s16 char_ix,
+                   s16 pos_index);                                          // Range: 0x2012C0 -> 0x201540
 s32 effect_A9_init(s16 Char_Index, s16 Option, s16 Pos_Index, s16 Option2); // Range: 0x201A80 -> 0x201C78
 // DWARF says WIN_PL_NO is s8, but decompilation suggests it's at least s16
 s32 effect_B8_init(s16 WIN_PL_NO, s16 timer);                                     // Range: 0x205500 -> 0x2056B8
@@ -1632,23 +1634,29 @@ void ToneDown(u8 tone, u8 priority);           // Range: 0x3838E0 -> 0x383A24
 void dispButtonImage2(s32 px, s32 py, s32 pz, s32 sx, s32 sy, s32 cl, s32 ix); // Range: 0x388AA0 -> 0x388D94
 
 // SE.c
-void BGM_Request(s16 Code); // Range: 0x3891A0 -> 0x3891CC
+void BGM_Request(s16 Code);            // Range: 0x3891A0 -> 0x3891CC
+void BGM_Request_Code_Check(u16 Code); // Range: 0x3891D0 -> 0x3891FC
+void BGM_Stop();                       // Range: 0x389200 -> 0x389220
 
 // Sound3rd.c
-void Init_sound_system();           // Range: 0x3963A0 -> 0x396438
-s32 sndCheckVTransStatus(s32 type); // Range: 0x396440 -> 0x3964C8
-void sndInitialLoad();              // Range: 0x3964D0 -> 0x396524
-void checkAdxFileLoaded();          // Range: 0x396560 -> 0x396654
-void Exit_sound_system();           // Range: 0x396660 -> 0x3966D8
-void Init_bgm_work();               // Range: 0x3966E0 -> 0x396718
-void sound_all_off();               // Range: 0x396720 -> 0x396748
-void BGM_Server();                  // Range: 0x396B30 -> 0x3977D8
-s32 adx_now_playend();              // Range: 0x397AF0 -> 0x397B50
-void SsBgmFadeOut(u16 time);        // Range: 0x398290 -> 0x398304
-void SE_cursor_move();              // Range: 0x3983F0 -> 0x398414
-void SE_selected();                 // Range: 0x398420 -> 0x398444
-void SE_dir_cursor_move();          // Range: 0x398450 -> 0x398474
-void SE_dir_selected();             // Range: 0x398480 -> 0x3984A4
+void Init_sound_system();               // Range: 0x3963A0 -> 0x396438
+s32 sndCheckVTransStatus(s32 type);     // Range: 0x396440 -> 0x3964C8
+void sndInitialLoad();                  // Range: 0x3964D0 -> 0x396524
+void checkAdxFileLoaded();              // Range: 0x396560 -> 0x396654
+void Exit_sound_system();               // Range: 0x396660 -> 0x3966D8
+void Init_bgm_work();                   // Range: 0x3966E0 -> 0x396718
+void sound_all_off();                   // Range: 0x396720 -> 0x396748
+void setSeVolume(u8 /* unused */);      // Range: 0x3967F0 -> 0x396850
+void BGM_Server();                      // Range: 0x396B30 -> 0x3977D8
+void setupAlwaysSeamlessFlag(s16 flag); // Range: 0x397820 -> 0x39783C
+s32 adx_now_playend();                  // Range: 0x397AF0 -> 0x397B50
+void SsRequest(u16 ReqNumber);          // Range: 0x398030 -> 0x398088
+void SsBgmFadeOut(u16 time);            // Range: 0x398290 -> 0x398304
+void SsBgmHalfVolume(s16 flag);         // Range: 0x3983A0 -> 0x3983EC
+void SE_cursor_move();                  // Range: 0x3983F0 -> 0x398414
+void SE_selected();                     // Range: 0x398420 -> 0x398444
+void SE_dir_cursor_move();              // Range: 0x398450 -> 0x398474
+void SE_dir_selected();                 // Range: 0x398480 -> 0x3984A4
 
 // SYS_sub.c
 void Switch_Screen_Init();                         // Range: 0x3A1C50 -> 0x3A1C98
@@ -1822,6 +1830,8 @@ extern MessageData Message_Data[4];       // size: 0x30, address: 0x578ED0
 extern IO io_w;                           // size: 0x6C, address: 0x579230
 extern s16 appear_type;                   // size: 0x2, address: 0x5795C8
 extern PPWORK ppwork[2];                  // size: 0x68, address: 0x579610
+extern s16 bgm_level;                     // size: 0x2, address: 0x5798D0
+extern s16 se_level;                      // size: 0x2, address: 0x5798D4
 extern TPU *tpu_free;                     // size: 0x4, address: 0x579A8C
 extern u8 *texcash_melt_buffer;           // size: 0x4, address: 0x579A90
 extern s32 Zoom_Base_Position_Z;          // size: 0x4, address: 0x579AC4

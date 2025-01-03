@@ -65,6 +65,8 @@ void Return_Option_Mode_Sub(struct _TASK *task_ptr);
 void Screen_Adjust_Sub(s16 PL_id);
 void Screen_Exit_Check(struct _TASK *task_ptr, s16 PL_id);
 void Screen_Move_Sub_LR(u16 sw);
+void Setup_Sound_Mode(u8 last_mode);
+u16 Sound_Cursor_Sub(s16 PL_id);
 
 typedef void (*MenuFunc)(struct _TASK *);
 
@@ -2080,9 +2082,281 @@ void Screen_Exit_Check(struct _TASK *task_ptr, s16 PL_id) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Screen_Move_Sub_LR);
+void Screen_Move_Sub_LR(u16 sw) {
+    s16 flag = 0;
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Sound_Test);
+    if (sw == 4) {
+        switch (Menu_Cursor_Y[0]) {
+        case 0:
+            X_Adjust_Buff[2] -= 2;
+
+            if (X_Adjust_Buff[2] < -10) {
+                X_Adjust_Buff[2] = -10;
+            } else {
+                flag = 1;
+            }
+
+            break;
+
+        case 1:
+            Y_Adjust_Buff[2] -= 2;
+
+            if (Y_Adjust_Buff[2] < -10) {
+                Y_Adjust_Buff[2] = -10;
+            } else {
+                flag = 1;
+            }
+
+            break;
+
+        case 2:
+            Disp_Size_H -= 2;
+
+            if (Disp_Size_H < 94) {
+                Disp_Size_H = 94;
+            } else {
+                flag = 1;
+            }
+
+            Setup_Disp_Size(1);
+            break;
+
+        case 3:
+            Disp_Size_V -= 2;
+
+            if (Disp_Size_V < 94) {
+                Disp_Size_V = 94;
+            } else {
+                flag = 1;
+            }
+
+            Setup_Disp_Size(1);
+            break;
+
+        case 4:
+            sys_w.screen_mode = (sys_w.screen_mode + 1) & 1;
+            flag = 1;
+            break;
+        }
+    } else if (sw == 8) {
+        switch (Menu_Cursor_Y[0]) {
+        case 0:
+            X_Adjust_Buff[2] += 2;
+
+            if (X_Adjust_Buff[2] > 10) {
+                X_Adjust_Buff[2] = 10;
+            } else {
+                flag = 1;
+            }
+
+            break;
+
+        case 1:
+            Y_Adjust_Buff[2] += 2;
+
+            if (Y_Adjust_Buff[2] > 10) {
+                Y_Adjust_Buff[2] = 10;
+            } else {
+                flag = 1;
+            }
+
+            break;
+
+        case 2:
+            Disp_Size_H += 2;
+
+            if (Disp_Size_H > 100) {
+                Disp_Size_H = 100;
+            } else {
+                flag = 1;
+            }
+
+            Setup_Disp_Size(1);
+            break;
+
+        case 3:
+            Disp_Size_V += 2;
+
+            if (Disp_Size_V > 100) {
+                Disp_Size_V = 100;
+            } else {
+                flag = 1;
+            }
+
+            Setup_Disp_Size(1);
+            break;
+
+        case 4:
+            sys_w.screen_mode = (sys_w.screen_mode + 1) & 1;
+            flag = 1;
+            break;
+        }
+    }
+
+    if (flag) {
+        SE_dir_cursor_move();
+    }
+
+    X_Adjust = X_Adjust_Buff[0] = X_Adjust_Buff[1] = X_Adjust_Buff[2];
+    Y_Adjust = Y_Adjust_Buff[0] = Y_Adjust_Buff[1] = Y_Adjust_Buff[2];
+}
+
+void Sound_Test(struct _TASK *task_ptr) {
+    s16 char_index; // r17
+    s16 ix;         // r16
+    u8 last_mode;   // r20
+
+    Clear_Flash_Sub();
+
+    switch (task_ptr->r_no[2]) {
+    case 0:
+        FadeOut(1, 0xFF, 8);
+        task_ptr->r_no[2] += 1;
+        task_ptr->timer = 5;
+        setupAlwaysSeamlessFlag(((((u16 *)plsw_00)[0] | ((u16 *)plsw_00)[1]) & 0x4000) != 0);
+        Clear_Flash_Init(4);
+        Menu_Common_Init();
+        Menu_Cursor_Y[0] = 0;
+        Menu_Suicide[1] = 1;
+        Menu_Suicide[2] = 0;
+        Convert_Buff[3][1][5] = 0;
+
+        if (sys_w.sound_mode == 0) {
+            Convert_Buff[3][1][0] = 0;
+        } else {
+            Convert_Buff[3][1][0] = 1;
+        }
+
+        if (sys_w.bgm_type == 0) {
+            Convert_Buff[3][1][3] = 0;
+        } else {
+            Convert_Buff[3][1][3] = 1;
+        }
+
+        Convert_Buff[3][1][7] = 1;
+        Order[0x4F] = 4;
+        Order_Timer[0x4F] = 1;
+        Order[0x4E] = 2;
+        Order_Dir[0x4E] = 2;
+        Order_Timer[0x4E] = 1;
+        effect_57_init(0x72, 4, 0, 0x3F, 2);
+        Order[0x72] = 1;
+        Order_Dir[0x72] = 8;
+        Order_Timer[0x72] = 1;
+        effect_04_init(2, 6, 2, 0x48);
+
+        {
+            s32 ixSoundMenuItem[4] = { 10, 11, 11, 12 }; // r29+0x70
+
+            for (ix = 0; ix < 4; ix++) {
+                Order[ix + 0x57] = 1;
+                Order_Dir[ix + 0x57] = 4;
+                Order_Timer[ix + 0x57] = ix + 0x14;
+                effect_64_init(ix + 0x57, 0, 2, ixSoundMenuItem[ix] + 1, ix, 0x7047, ix + 0xC, 3, 1);
+            }
+        }
+
+        Order_Dir[0x78] = 0;
+        effect_A8_init(0, 0x78, 0, 2, 5, 0x70A7, 0);
+        Order_Dir[0x79] = 1;
+        effect_A8_init(0, 0x79, 0, 2, 5, 0x70A7, 1);
+        effect_A8_init(3, 0x7A, 0, 2, 5, 0x70A7, 3);
+        Convert_Buff[3][1][5] = 0;
+        Order_Dir[0x7B] = 0;
+        effect_A8_init(2, 0x7B, 0, 2, 5, 0x70A7, 2);
+
+        {
+            s16 unused_s2;
+            s16 unused_s3;
+
+            for (ix = 0, unused_s3 = char_index = 0x3B; ix < 7; ix++, unused_s2 = char_index++) {
+                effect_61_init(0, ix + 0x50, 0, 2, char_index, ix, 0x7047);
+                Order[ix + 0x50] = 1;
+                Order_Dir[ix + 0x50] = 4;
+                Order_Timer[ix + 0x50] = ix + 0x14;
+            }
+        }
+
+        Menu_Cursor_Move = 5;
+        break;
+
+    case 1:
+        Menu_Sub_case1(task_ptr);
+        break;
+
+    case 2:
+        if (FadeIn(1, 0x19, 8) != 0) {
+            task_ptr->r_no[2] += 1;
+            Suicide[3] = 0;
+        }
+
+        break;
+
+    case 3:
+        last_mode = Convert_Buff[3][1][0];
+        Sound_Cursor_Sub(0);
+
+        if (IO_Result == 0) {
+            Sound_Cursor_Sub(1);
+        }
+
+        if ((Menu_Cursor_Y[0] == 4) && (IO_Result == 0x100)) {
+            SE_selected();
+            Convert_Buff[3][1][0] = 0;
+            Convert_Buff[3][1][1] = 0xF;
+            Convert_Buff[3][1][2] = 0xF;
+            Convert_Buff[3][1][3] = 0;
+        }
+
+        if (bgm_level != (s16)Convert_Buff[3][1][1]) {
+            bgm_level = Convert_Buff[3][1][1];
+            save_w[Present_Mode].BGM_Level = Convert_Buff[3][1][1];
+            SsBgmHalfVolume(0);
+        }
+
+        if (se_level != (s16)Convert_Buff[3][1][2]) {
+            se_level = Convert_Buff[3][1][2];
+            setSeVolume(save_w[Present_Mode].SE_Level = Convert_Buff[3][1][2]);
+        }
+
+        save_w[Present_Mode].BgmType = Convert_Buff[3][1][3];
+
+        if (sys_w.bgm_type != Convert_Buff[3][1][3]) {
+            sys_w.bgm_type = Convert_Buff[3][1][3];
+            Convert_Buff[3][1][5] = 0;
+            BGM_Request_Code_Check(0x41);
+        }
+
+        Order_Dir[0x7B] = Convert_Buff[3][1][5];
+        Setup_Sound_Mode(last_mode);
+        Save_Game_Data();
+
+        if (Menu_Cursor_Y[0] == 5) {
+            if (IO_Result == 0x100) {
+                SsRequest((u16)Order_Dir[0x7B] + 1);
+                Convert_Buff[3][1][7] = 1;
+                return;
+            }
+
+            if ((IO_Result == 0x200) && Convert_Buff[3][1][7]) {
+                Convert_Buff[3][1][7] = 0;
+                BGM_Stop();
+                return;
+            }
+        }
+
+        if (IO_Result == 0x200 || (Menu_Cursor_Y[0] == 6) && (IO_Result == 0x100 || IO_Result == 0x4000)) {
+            SE_selected();
+            Return_Option_Mode_Sub(task_ptr);
+            setupAlwaysSeamlessFlag(0);
+            Order[0x72] = 4;
+            Order_Timer[0x72] = 4;
+            BGM_Request_Code_Check(0x41);
+        }
+
+        break;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/Source/Game/menu", Setup_Sound_Mode);
 
