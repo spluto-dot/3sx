@@ -1647,9 +1647,11 @@ void Exit_sound_system();               // Range: 0x396660 -> 0x3966D8
 void Init_bgm_work();                   // Range: 0x3966E0 -> 0x396718
 void sound_all_off();                   // Range: 0x396720 -> 0x396748
 void setSeVolume(u8 /* unused */);      // Range: 0x3967F0 -> 0x396850
+void setupSoundMode();                  // Range: 0x396880 -> 0x3968C8
 void BGM_Server();                      // Range: 0x396B30 -> 0x3977D8
 void setupAlwaysSeamlessFlag(s16 flag); // Range: 0x397820 -> 0x39783C
 s32 adx_now_playend();                  // Range: 0x397AF0 -> 0x397B50
+s32 bgmSkipCheck(s32 code);             // Range: 0x397BC0 -> 0x397C08
 void SsRequest(u16 ReqNumber);          // Range: 0x398030 -> 0x398088
 void SsBgmFadeOut(u16 time);            // Range: 0x398290 -> 0x398304
 void SsBgmHalfVolume(s16 flag);         // Range: 0x3983A0 -> 0x3983EC
@@ -1828,6 +1830,7 @@ extern s16 base_y_pos;                    // size: 0x2, address: 0x578CC4
 extern UNK_Data *parabora_own_table[20];  // size: 0x50, address: 0x578CD0
 extern MessageData Message_Data[4];       // size: 0x30, address: 0x578ED0
 extern IO io_w;                           // size: 0x6C, address: 0x579230
+extern u8 r_no_plus;                      // size: 0x1, address: 0x5792B8
 extern s16 appear_type;                   // size: 0x2, address: 0x5795C8
 extern PPWORK ppwork[2];                  // size: 0x68, address: 0x579610
 extern s16 bgm_level;                     // size: 0x2, address: 0x5798D0
@@ -1942,6 +1945,8 @@ extern u8 Continue_Count_Down[2];         // size: 0x2, address: 0x57A33C
 extern u8 GO_No[4];                       // size: 0x4, address: 0x57A344
 extern u8 Scene_Cut;                      // size: 0x1, address: 0x57A348
 extern u8 Extra_Break;                    // size: 0x1, address: 0x57A3E0
+extern s8 Deley_Shot_Timer[2];            // size: 0x2, address: 0x57A414
+extern s8 Deley_Shot_No[2];               // size: 0x2, address: 0x57A418
 extern u8 CC_Value[2];                    // size: 0x2, address: 0x57A494
 extern s8 Break_Com[2][20];               // size: 0x28, address: 0x57A4C0
 extern s8 No_Death;                       // size: 0x1, address: 0x57A51C
