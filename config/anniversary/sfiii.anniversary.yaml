@@ -423,7 +423,7 @@ segments:
       - [0x149C50, asm, sf33rd/Source/Game/end_9]
       - [0x14A1F0, asm, sf33rd/Source/Game/end_main]
       - [0x14B640, asm, sf33rd/Source/Game/Entry]
-      - [0x14FB00, asm, sf33rd/Source/Game/Flash_LP]
+      - [0x14FB00, asm, sf33rd/Source/Game/Flash_LP] # Good first decomp
       - [0x14FE60, asm, sf33rd/Source/Game/FOLLOW02]
       - [0x150210, asm, sf33rd/Source/Game/Game]
       - [0x153CC0, c, sf33rd/Source/Game/GameOver]
@@ -440,11 +440,11 @@ segments:
       - [0x167F10, asm, sf33rd/Source/Game/Manage]
       - [0x16EBE0, c, sf33rd/Source/Game/menu]
       - [0x1802E0, asm, sf33rd/Source/Game/meta_col]
-      - [0x180C00, asm, sf33rd/Source/Game/MMTMCNT]
+      - [0x180C00, asm, sf33rd/Source/Game/MMTMCNT] # Good first decomp
       - [0x180ED0, asm, sf33rd/Source/Game/MTRANS]
       - [0x188DB0, asm, sf33rd/Source/Game/n_input]
       - [0x18ABF0, asm, sf33rd/Source/Game/Next_CPU]
-      - [0x18F640, asm, sf33rd/Source/Game/op_sub]
+      - [0x18F640, asm, sf33rd/Source/Game/op_sub] # Good first decomp
       - [0x18FD20, asm, sf33rd/Source/Game/OPENING]
       - [0x198E80, asm, sf33rd/Source/Game/pass00]
       - [0x1A0AC0, asm, sf33rd/Source/Game/PASS01]
@@ -466,7 +466,7 @@ segments:
       - [0x22D8C0, asm, sf33rd/Source/Game/pass17]
       - [0x2367F0, asm, sf33rd/Source/Game/pass18]
       - [0x240310, asm, sf33rd/Source/Game/pass19]
-      - [0x248820, asm, sf33rd/Source/Game/Pause]
+      - [0x248820, asm, sf33rd/Source/Game/Pause] # Good first decomp
       - [0x249350, asm, sf33rd/Source/Game/PLCNT]
       - [0x24DB40, asm, sf33rd/Source/Game/PLCNT2]
       - [0x24EC10, asm, sf33rd/Source/Game/PLCNT3]
@@ -507,11 +507,11 @@ segments:
       - [0x27BC10, asm, sf33rd/Source/Game/RAMCNT]
       - [0x27C6B0, asm, sf33rd/Source/Game/RANKING]
       - [0x27EC70, c, sf33rd/Source/Game/Reset]
-      - [0x27F230, asm, sf33rd/Source/Game/Saver]
+      - [0x27F230, asm, sf33rd/Source/Game/Saver] # Good first decomp
       - [0x27F520, asm, sf33rd/Source/Game/sc_sub]
       - [0x289050, asm, sf33rd/Source/Game/SE]
       - [0x28A090, asm, sf33rd/Source/Game/sel_pl]
-      - [0x290610, asm, sf33rd/Source/Game/SHELL00]
+      - [0x290610, asm, sf33rd/Source/Game/SHELL00] # Good first decomp
       - [0x290E40, asm, sf33rd/Source/Game/SHELL01]
       - [0x2916A0, asm, sf33rd/Source/Game/SHELL03]
       - [0x291F70, asm, sf33rd/Source/Game/SHELL04]
@@ -521,7 +521,7 @@ segments:
       - [0x294650, asm, sf33rd/Source/Game/SHELL12]
       - [0x294F50, asm, sf33rd/Source/Game/SHELL13]
       - [0x2958B0, asm, sf33rd/Source/Game/SHELL14]
-      - [0x2962E0, asm, sf33rd/Source/Game/SLOWF]
+      - [0x2962E0, asm, sf33rd/Source/Game/SLOWF] # Good first decomp
       - [0x296420, asm, sf33rd/Source/Game/Sound3rd]
       - [0x298530, asm, sf33rd/Source/Game/spgauge]
       - [0x29FD20, asm, sf33rd/Source/Game/staff]
@@ -548,11 +548,11 @@ segments:
       - [0x2BDB00, asm, sf33rd/Source/Compress/zlib/infutil]
       - [0x2BDD70, asm, sf33rd/Source/Compress/zlib/zutil]
       - [0x2BDE50, asm, sf33rd/Source/Game/debug/Debug]
-      - [0x2BFF30, asm, sf33rd/Source/Game/debug/OBJTEST]
-      - [0x2C0100, asm, sf33rd/Source/Common/MemMan]
+      - [0x2BFF30, asm, sf33rd/Source/Game/debug/OBJTEST] # Good first decomp
+      - [0x2C0100, asm, sf33rd/Source/Common/MemMan] # Good first decomp
       - [0x2C0660, asm, sf33rd/Source/Common/PPGFile]
       - [0x2C55F0, asm, sf33rd/Source/PS2/ps2Quad]
-      - [0x2C6E10, asm, sf33rd/AcrSDK/MiddleWare/PS2/acrmw]
+      - [0x2C6E10, asm, sf33rd/AcrSDK/MiddleWare/PS2/acrmw] # Good first decomp
 
       - [0x2C6F58, asm, cri/libadxe/adx_amp]
       - [0x2C7678, asm, cri/libadxe/adx_bahx]
@@ -634,12 +634,12 @@ segments:
       - [0x2EE898, asm, gcc/libc/wsetup]
 
       - [0x2EE9B0, asm, sf33rd/AcrSDK/ps2/flps2render]
-      - [0x2F22F0, asm, sf33rd/AcrSDK/ps2/flps2d3d]
+      - [0x2F22F0, asm, sf33rd/AcrSDK/ps2/flps2d3d] # Good first decomp
       - [0x2F2300, asm, sf33rd/AcrSDK/ps2/flps2debug]
       - [0x2F3DD0, asm, sf33rd/AcrSDK/ps2/flps2dma]
       - [0x2F59E0, asm, sf33rd/AcrSDK/ps2/flps2etc]
       - [0x2F7B90, asm, sf33rd/AcrSDK/ps2/flps2math]
-      - [0x2F8400, asm, sf33rd/AcrSDK/ps2/flps2ps]
+      - [0x2F8400, asm, sf33rd/AcrSDK/ps2/flps2ps] # Good first decomp
       - [0x2F84D0, asm, sf33rd/AcrSDK/ps2/flps2vram]
       - [0x2FE130, c, sf33rd/AcrSDK/ps2/foundaps2]
       - [0x300130, asm, sf33rd/AcrSDK/ps2/ps2PAD]
@@ -660,8 +660,8 @@ segments:
       - [0x312400, asm, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/emlRpcQueue]
       - [0x312790, asm, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/emlSndDrv]
       - [0x312F10, asm, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/emlTSB]
-      - [0x3139A0, asm, sf33rd/Source/Common/PPGWork]
-      - [0x313FC0, asm, sf33rd/Source/PS2/reboot]
+      - [0x3139A0, asm, sf33rd/Source/Common/PPGWork] # Good first decomp
+      - [0x313FC0, asm, sf33rd/Source/PS2/reboot] # Good first decomp
       - [0x3140B0, pad]
 
       # .vutext
