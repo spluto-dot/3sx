@@ -1832,6 +1832,7 @@ extern IO io_w;                           // size: 0x6C, address: 0x579230
 extern u8 r_no_plus;                      // size: 0x1, address: 0x5792B8
 extern s16 appear_type;                   // size: 0x2, address: 0x5795C8
 extern PPWORK ppwork[2];                  // size: 0x68, address: 0x579610
+extern s16 EXE_flag;                      // size: 0x2, address: 0x579870
 extern s16 bgm_level;                     // size: 0x2, address: 0x5798D0
 extern s16 se_level;                      // size: 0x2, address: 0x5798D4
 extern TPU *tpu_free;                     // size: 0x4, address: 0x579A8C
@@ -1896,6 +1897,7 @@ extern s16 Random_ix32;                   // size: 0x2, address: 0x579FC0
 extern s16 Random_ix16;                   // size: 0x2, address: 0x579FC4
 extern s16 Sel_Arts_Complete[2];          // size: 0x4, address: 0x57A000
 extern s16 G_Timer;                       // size: 0x2, address: 0x57A02C
+extern u16 Game_timer;                    // size: 0x2, address: 0x57A044
 extern u8 Pause_Type;                     // size: 0x1, address: 0x57A048
 extern u8 CPU_Rec[2];                     // size: 0x2, address: 0x57A04C
 extern u8 Forbid_Reset;                   // size: 0x1, address: 0x57A050

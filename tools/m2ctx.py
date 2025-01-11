@@ -15,6 +15,7 @@ CPP_FLAGS = [
     "-Iinclude",
     "-Iinclude/cri",
     "-Iinclude/cri/ee",
+    "-Iinclude/sdk",
     "-D_LANGUAGE_C",
     "-D_MIPS_SZLONG=32",
     "-D__mips64",
