@@ -39,7 +39,7 @@ GENERATE_LCF := $(PYTHON) $(TOOLS_DIR)/lcf/generate_lcf.py
 
 # Flags
 
-MWCCPS2_INCLUDES := -I$(INCLUDE_DIR)
+MWCCPS2_INCLUDES := -I$(INCLUDE_DIR) -I$(INCLUDE_DIR)/cri -I$(INCLUDE_DIR)/cri/ee
 MWCCPS2_FLAGS := -gccinc $(MWCCPS2_INCLUDES) -O0,p -c -lang c -str readonly -fl divbyzerocheck -sdatathreshold 128 -D__mips64
 
 AS_FLAGS += -EL -I $(INCLUDE_DIR) -G 128 -march=r5900 -mabi=eabi -no-pad-sections

@@ -6,6 +6,7 @@ skipped_rodata = {
     "foundaps2",
     "GD3rd",
     "init3rd",
+    "flADX",
 }
 
 # (file, section, index of section within sections of this type) -> alignment

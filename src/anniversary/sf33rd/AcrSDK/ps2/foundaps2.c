@@ -11,6 +11,7 @@
 #include "sdk/libvu0.h"
 #include "sdk/sifdev.h"
 #include "sdk/sifprc.h"
+#include "sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX.h"
 #include "sf33rd/AcrSDK/common/mlPAD.h"
 #include "unknown.h"
 
