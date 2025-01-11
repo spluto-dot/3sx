@@ -521,7 +521,7 @@ segments:
       - [0x294650, asm, sf33rd/Source/Game/SHELL12]
       - [0x294F50, asm, sf33rd/Source/Game/SHELL13]
       - [0x2958B0, asm, sf33rd/Source/Game/SHELL14]
-      - [0x2962E0, asm, sf33rd/Source/Game/SLOWF]
+      - [0x2962E0, asm, sf33rd/Source/Game/SLOWF] # Good first decomp
       - [0x296420, asm, sf33rd/Source/Game/Sound3rd]
       - [0x298530, asm, sf33rd/Source/Game/spgauge]
       - [0x29FD20, asm, sf33rd/Source/Game/staff]
