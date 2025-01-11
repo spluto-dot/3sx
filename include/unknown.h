@@ -1,11 +1,11 @@
 #ifndef UNKNOWN_H
 #define UNKNOWN_H
 
-#include "sdk/libdma.h"
-#include "sdk/libgraph.h"
 #include "sf33rd/AcrSDK/common/memmgr.h"
 #include "sf33rd/AcrSDK/common/plcommon.h"
 #include "types.h"
+#include <libdma.h>
+#include <libgraph.h>
 
 // MARK: - Types
 
@@ -1726,7 +1726,6 @@ void CP3toPS2DrawOff();   // Range: 0x3C64C0 -> 0x3C64CC
 void CP3toPS2Draw();      // Range: 0x3C64D0 -> 0x3C6D8C
 void flmwVSyncCallback(); // Range: 0x3C6D90 -> 0x3C6DB4
 void flmwFlip();          // Range: 0x3C6E00 -> 0x3C6ED8
-void flAdxModuleInit();   // Range: 0x3E51D0 -> 0x3E521C
 void njUserInit();        // Range: 0x3E5BA0 -> 0x3E5E64
 
 // flps2render.c
