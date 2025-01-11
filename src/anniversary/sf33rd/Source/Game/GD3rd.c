@@ -1,13 +1,12 @@
 #include "sf33rd/Source/Game/GD3rd.h"
 #include "common.h"
-#include "cri/cri_adxf.h"
-#include "cri/cri_adxt.h"
-#include "sdk/libcdvd.h"
-#include "sdk/libgraph.h"
 #include "sf33rd/AcrSDK/ps2/foundaps2.h"
 #include "sf33rd/Source/Common/FileSizeAFS.h"
 #include "sf33rd/Source/Game/texgroup.h"
 #include "unknown.h"
+#include <cri_mw.h>
+#include <libcdvd.h>
+#include <libgraph.h>
 
 typedef struct {
     // total size: 0x4

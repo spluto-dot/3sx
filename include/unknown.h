@@ -1,11 +1,11 @@
 #ifndef UNKNOWN_H
 #define UNKNOWN_H
 
-#include "sdk/libdma.h"
-#include "sdk/libgraph.h"
 #include "sf33rd/AcrSDK/common/memmgr.h"
 #include "sf33rd/AcrSDK/common/plcommon.h"
 #include "types.h"
+#include <libdma.h>
+#include <libgraph.h>
 
 // MARK: - Types
 

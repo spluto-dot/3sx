@@ -1,8 +1,8 @@
 #ifndef _LIBGRAPH_H
 #define _LIBGRAPH_H
 
-#include "sdk/eeregs.h"
-#include "sdk/eestruct.h"
+#include <eeregs.h>
+#include <eestruct.h>
 
 typedef struct {
     tGS_PMODE pmode;

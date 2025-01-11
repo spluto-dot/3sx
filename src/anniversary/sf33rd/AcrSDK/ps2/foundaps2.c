@@ -1,17 +1,17 @@
 #include "sf33rd/AcrSDK/ps2/foundaps2.h"
 #include "common.h"
 #include "mw_stdarg.h"
-#include "sdk/eekernel.h"
-#include "sdk/libcdvd.h"
-#include "sdk/libdma.h"
-#include "sdk/libgraph.h"
-#include "sdk/libvu0.h"
-#include "sdk/sifdev.h"
-#include "sdk/sifprc.h"
 #include "sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX.h"
 #include "sf33rd/AcrSDK/common/mlPAD.h"
 #include "unknown.h"
+#include <eekernel.h>
+#include <libcdvd.h>
+#include <libdma.h>
+#include <libgraph.h>
+#include <libvu0.h>
 #include <malloc.h>
+#include <sifdev.h>
+#include <sifprc.h>
 #include <stdio.h>
 #include <string.h>
 

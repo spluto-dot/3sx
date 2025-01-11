@@ -1,8 +1,8 @@
 #include "sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX.h"
 #include "common.h"
-#include "cri/ee/cri_mw.h"
-#include "sdk/sifdev.h"
 #include "unknown.h"
+#include <cri_mw.h>
+#include <sifdev.h>
 #include <stdio.h>
 #include <string.h>
 
