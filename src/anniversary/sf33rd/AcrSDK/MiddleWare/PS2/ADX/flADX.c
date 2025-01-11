@@ -1,10 +1,10 @@
 #include "sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX.h"
 #include "common.h"
 #include "cri/ee/cri_mw.h"
-#include "gcc/stdio.h"
-#include "gcc/string.h"
 #include "sdk/sifdev.h"
 #include "unknown.h"
+#include <stdio.h>
+#include <string.h>
 
 ADXPS2_SPRM_HOST ht_sprm;
 s8 ht_fc_buff[533];

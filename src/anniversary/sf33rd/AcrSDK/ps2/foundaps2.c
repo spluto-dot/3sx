@@ -1,8 +1,5 @@
 #include "sf33rd/AcrSDK/ps2/foundaps2.h"
 #include "common.h"
-#include "gcc/malloc.h"
-#include "gcc/stdio.h"
-#include "gcc/string.h"
 #include "mw_stdarg.h"
 #include "sdk/eekernel.h"
 #include "sdk/libcdvd.h"
@@ -14,6 +11,9 @@
 #include "sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX.h"
 #include "sf33rd/AcrSDK/common/mlPAD.h"
 #include "unknown.h"
+#include <malloc.h>
+#include <stdio.h>
+#include <string.h>
 
 static s32 system_work_init();
 static s32 system_hard_init();
