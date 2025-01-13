@@ -22,7 +22,7 @@ RUN adduser ${USER}
 ENV VENV_PATH=/tools/.venv
 RUN mkdir -p ${VENV_PATH}
 RUN chown ${USER} /sfiii ${VENV_PATH}
-# USER ${USER}
+USER ${USER}
 
 # Install Python dependencies
 ADD tools/requirements-python.txt /tools/requirements-python.txt
