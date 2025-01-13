@@ -2,9 +2,9 @@ name: Build and check
 
 on:
     push:
-        branches: [ "main" ]
+        branches: ["main"]
     pull_request:
-        branches: [ "main" ]
+        branches: ["main"]
     workflow_dispatch:
 
 jobs:
@@ -18,8 +18,11 @@ jobs:
             - name: Install Python dependencies
               run: pip install -r tools/requirements-python.txt
 
-            - name: Install Linux dependencies
-              run: sudo apt-get update && sudo apt-get install -y $(cat tools/requirements-debian.txt)
+            - name: Enable i386 architecture and install Linux dependencies
+              run: |
+                sudo dpkg --add-architecture i386
+                sudo apt-get update
+                sudo apt-get install -y $(cat tools/requirements-debian.txt)
 
             - name: Setup build tools
               run: make setup_tools
