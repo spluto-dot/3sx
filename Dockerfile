@@ -12,12 +12,7 @@
 
 FROM --platform=linux/amd64 ubuntu:22.04
 
-# Update and install necessary libraries for i386 programs
-RUN dpkg --add-architecture i386 && \
-    apt-get update && \
-    apt-get install -y libc6:i386
-
-# Install other packages
+RUN dpkg --add-architecture i386
 ADD tools/requirements-debian.txt /tools/requirements-debian.txt
 RUN apt-get update && apt-get install -y $(cat /tools/requirements-debian.txt)
 
