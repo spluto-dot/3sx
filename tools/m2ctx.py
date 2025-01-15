@@ -16,10 +16,12 @@ CPP_FLAGS = [
     "-Iinclude/cri",
     "-Iinclude/cri/ee",
     "-Iinclude/sdk",
+    "-Iinclude/gcc",
     "-D_LANGUAGE_C",
     "-D_MIPS_SZLONG=32",
     "-D__mips64",
     "-ffreestanding",
+    "-nostdinc",
 ]
 
 def import_c_file(in_file) -> str:
