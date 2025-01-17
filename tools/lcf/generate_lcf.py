@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import splat.scripts.split as split
 from splat.segtypes.linker_entry import LinkerEntry
+from pathlib import Path
 
 @dataclass
 class Run:
@@ -193,6 +194,18 @@ def main():
         # finalize
 
         lcf.align(0x80)
+
+    # Patch CRI rodata segments
+    # 
+    # spimdisasm adds `.section .rodata` before each rodata peace of CRI.
+    # But GNU as expects `.rdata` instead. That's why the code below exists.
+
+    cri_nonmatchings = Path("asm/anniversary/nonmatchings/cri")
+
+    for asm_file in cri_nonmatchings.rglob("*.s"):
+        text = asm_file.read_text()
+        text = text.replace(".section .rodata", ".rdata")
+        asm_file.write_text(text)
 
 if __name__ == "__main__":
     main()

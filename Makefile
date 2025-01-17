@@ -43,7 +43,7 @@ GENERATE_LCF := $(PYTHON) $(TOOLS_DIR)/lcf/generate_lcf.py
 
 INCLUDES := -I$(INCLUDE_DIR) -I$(INCLUDE_DIR)/gcc -I$(INCLUDE_DIR)/sdk -I$(INCLUDE_DIR)/cri -I$(INCLUDE_DIR)/cri/ee
 MWCCPS2_FLAGS := -gccinc $(INCLUDES) -O0,p -c -lang c -str readonly -fl divbyzerocheck -sdatathreshold 128 -D__mips64
-EEGCC_FLAGS := $(INCLUDES) -O2 -c
+EEGCC_FLAGS := $(INCLUDES) -O2 -G0 -c
 
 AS_FLAGS += -EL -I $(INCLUDE_DIR) -G 128 -march=r5900 -mabi=eabi -no-pad-sections
 LD_FLAGS := -main func_00100008 -map
