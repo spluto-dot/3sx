@@ -35,9 +35,17 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", SKG_GetDefKey);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", SKG_GetNextKey);
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_Init);
+void ADXB_Init() {
+    ADXPD_Init();
+    SKG_Init();
+    memset(&adxb_obj, 0, sizeof(adxb_obj));
+}
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_Finish);
+void ADXB_Finish() {
+    ADXPD_Finish();
+    SKG_Finish();
+    memset(&adxb_obj, 0, sizeof(adxb_obj));
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", adxb_DefGetWr);
 
