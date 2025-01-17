@@ -1,6 +1,7 @@
 #include "common.h"
 #include <cri/private/libadxe/adx_amp.h>
 #include <cri/private/libadxe/adx_crs.h>
+#include <cri/sj.h>
 #include <memory.h>
 
 s32 adxsmp_init_cnt = 0;

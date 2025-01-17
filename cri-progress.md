@@ -5,7 +5,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 ### adx_amp
 
 - [x] ADXAMP_Destroy
-- [ ] ADXAMP_Start
+- [ ] ADXAMP_Start (seems to be unused at runtime)
 - [x] ADXAMP_Stop
 
 ### adx_bahx
