@@ -58,7 +58,7 @@ void ADXT_EntryAfs(ADXT adxt, s32 patid, s32 fid) {
 }
 
 void ADXT_StartSeamless(ADXT adxt) {
-    SJ_OBJ *sj;
+    SJ sj;
     void *lsc = adxt->lsc;
 
     if (adxt == NULL) {
@@ -70,7 +70,7 @@ void ADXT_StartSeamless(ADXT adxt) {
     ADXCRS_Lock();
     adxt_start_sj(adxt, adxt->sjf);
     sj = adxt->sji;
-    sj->vtbl->Reset(sj);
+    SJ_Reset(sj);
     adxt->pmode = 4;
     LSC_SetFlowLimit(lsc, adxt->minsct << 11);
     ADXCRS_Unlock();

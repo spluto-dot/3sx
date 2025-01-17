@@ -120,7 +120,7 @@ segments:
       - [0x00FC68, asm, sdk/libcdvd/cdvd036]
       - [0x00FD38, asm, sdk/libmc/libmc]
 
-      - [0x11538, asm, asm_11538]
+      - [0x11538, asm, asm_11538] # libm (not from GCC, from MW?)
 
       - [0x015DE0, c, sf33rd/AcrSDK/common/fbms]
       - [0x016030, c, sf33rd/AcrSDK/common/memfound]
@@ -555,7 +555,7 @@ segments:
       - [0x2C55F0, asm, sf33rd/Source/PS2/ps2Quad]
       - [0x2C6E10, asm, sf33rd/AcrSDK/MiddleWare/PS2/acrmw] # Good first decomp
 
-      - [0x2C6F58, asm, cri/libadxe/adx_amp]
+      - [0x2C6F58, c, cri/libadxe/adx_amp]
       - [0x2C7678, asm, cri/libadxe/adx_bahx]
       - [0x2C7950, asm, cri/libadxe/adx_baif]
       - [0x2C82B0, asm, cri/libadxe/adx_bau]
@@ -773,7 +773,7 @@ segments:
       - [0x39BDA8, data, data_39BDA8]
       - [0x3A1FC8, data, data_3A1FC8]
       - [0x3A3CD0, data, data_3A3CD0]
-      - [0x3A65E0, data, data_3A65E0]
+      - [0x3A65E0, .data, cri/libadxe/adx_amp]
       - [0x3A68E8, data, data_3A68E8]
       - [0x3A68F8, data, data_3A68F8]
       - [0x3A6908, data, data_3A6908]
