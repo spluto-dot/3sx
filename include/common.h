@@ -18,6 +18,8 @@
             "\t.end\t" #NAME "\n"                                                                                      \
             ".popsection")
 
+#define INCLUDE_RODATA(FOLDER, NAME) __asm__("    .include \"" FOLDER "/" #NAME ".s\"\n")
+
 __asm__(".include \"include/cri_macro.inc\"\n");
 #else
 #define INCLUDE_ASM(FOLDER, NAME)
