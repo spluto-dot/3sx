@@ -22,7 +22,13 @@ void ADXAMP_Finish() {
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_amp", ADXAMP_Create);
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_amp", ADXAMP_Destroy);
+void ADXAMP_Destroy(ADXAMP *amp) {
+    if (amp != NULL) {
+        ADXCRS_Lock();
+        memset(amp, 0, sizeof(ADXAMP));
+        ADXCRS_Unlock();
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_amp", ADXAMP_GetStat);
 
