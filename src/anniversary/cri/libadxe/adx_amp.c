@@ -33,7 +33,60 @@ void ADXAMP_Destroy(ADXAMP *amp) {
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_amp", ADXAMP_GetStat);
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_amp", ADXAMP_Start);
+void ADXAMP_Start(ADXAMP *amp) {
+    s32 i = 0;
+    SJ sj;
+    SJ *sj_ptr;
+    SJCK ck;
+
+    s32 var_v0;
+    s32 *var_v1;
+
+    if (amp->unk2 > 0) {
+        var_v1 = amp->unk14;
+
+        do {
+            *var_v1 = 0;
+            var_v1 += 1;
+            i += 1;
+        } while (i < amp->unk2);
+    }
+
+    var_v0 = amp->unk2 << 0x18;
+    amp->unk2C = 0;
+    i = 0;
+
+    if (var_v0 > 0) {
+        sj_ptr = amp->unk4;
+
+        do {
+            sj = sj_ptr[i];
+            SJ_Reset(sj);
+            SJ_GetChunk(sj, 0, SJ_GetNumData(sj, 0), &ck);
+            memset(ck.data, 0, ck.len);
+            SJ_UngetChunk(sj, 0, &ck);
+            i += 1;
+        } while (i < amp->unk2);
+    }
+
+    var_v0 = amp->unk2 << 0x18;
+    i = 0;
+
+    if (var_v0 > 0) {
+        sj_ptr = amp->unkC;
+
+        do {
+            sj = sj_ptr[i];
+            SJ_Reset(sj);
+            SJ_GetChunk(sj, 0, SJ_GetNumData(sj, 0), &ck);
+            memset(ck.data, 0, ck.len);
+            SJ_UngetChunk(sj, 0, &ck);
+            i += 1;
+        } while (i < amp->unk2);
+    }
+
+    amp->unk1 = 2;
+}
 
 void ADXAMP_Stop(ADXAMP *amp) {
     amp->unk1 = 0;

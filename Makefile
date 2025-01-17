@@ -17,7 +17,7 @@ INCLUDE_DIR := include
 ASSETS_DIR := assets/$(VERSION)
 CONFIG_DIR := config/$(VERSION)
 TOOLS_DIR := tools
-EEGCC_PATHS := PATH=$(BIN_DIR)/ee/bin:$(BIN_DIR)/lib/gcc-lib/ee/2.96-ee-001003-1:$PATH
+EEGCC_PATHS := PATH=$(BIN_DIR)/ee/bin:$(BIN_DIR)/lib/gcc-lib/ee/2.96-ee-001003-1
 
 # Tools
 
