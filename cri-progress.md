@@ -15,7 +15,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 ### adx_bsc
 
-- [ ] SKG_Init
+- [x] SKG_Init
 - [ ] ADXB_Init
 - [ ] ADXB_Create
 - [ ] ADXB_Destroy
