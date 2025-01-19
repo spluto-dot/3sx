@@ -1,4 +1,8 @@
 #include "common.h"
+#include <cri/private/libadxe/adx_bsc.h>
+#include <cri/private/libadxe/adx_xpnd.h>
+
+#define ADXB_MAX_OBJ 0x10
 
 s8 *skg_build = "\nSKG/PS2EE Ver.0.64 Build:Sep 18 2003 09:59:56\n";
 s32 skg_init_count = 0;
@@ -10,7 +14,9 @@ s32 pl2resetfunc = 0;
 s16 adxb_def_k0 = 0;
 s16 adxb_def_km = 0;
 s16 adxb_def_ka = 0;
-char adxb_obj[3840] = { 0 };
+ADXB_OBJ adxb_obj[ADXB_MAX_OBJ] = { 0 };
+
+void ADXB_Destroy(ADXB);
 
 INCLUDE_RODATA("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", skg_prim_tbl);
 
@@ -47,13 +53,68 @@ void ADXB_Finish() {
     memset(&adxb_obj, 0, sizeof(adxb_obj));
 }
 
+s32 adxb_DefGetWr(ADXB_UNK_0 *arg0, s32 *arg1, s32 *arg2, s32 *arg3);
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", adxb_DefGetWr);
 
+void adxb_DefAddWr(ADXB_UNK_0 *arg0, s32 arg1, s32 arg2);
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", adxb_DefAddWr);
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_Create);
+ADXB ADXB_Create(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    ADXB adxb;
+    ADXB chk_adxb;
+    ADXPD adxpd;
+    s32 i;
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_Destroy);
+    chk_adxb = &adxb_obj[0];
+
+    for (i = 0; i < ADXB_MAX_OBJ; i++, chk_adxb++) {
+        if (chk_adxb->unk0 == 0) {
+            break;
+        }
+    }
+
+    if (i == ADXB_MAX_OBJ) {
+        return NULL;
+    }
+
+    adxb = &adxb_obj[i];
+    memset(adxb, 0, sizeof(ADXB_OBJ));
+    adxb->unk0 = 1;
+    adxpd = ADXPD_Create();
+    adxb->adxpd = adxpd;
+
+    if (adxpd == NULL) {
+        ADXB_Destroy(adxb);
+        return NULL;
+    }
+
+    adxb->unk38 = arg0;
+    adxb->unk3C = arg1;
+    adxb->unk40 = arg2;
+    adxb->unk44 = arg3;
+    adxb->unk78 = &adxb_DefGetWr;
+    adxb->unk80 = &adxb_DefAddWr;
+    adxb->unk7C = adxb;
+    adxb->unk84 = adxb;
+    adxb->unkC8 = 0;
+    adxb->unkDC = 0;
+    adxb->unkDE = -0x80;
+    adxb->unkE0 = -0x80;
+    memset(&adxb->adxb_unk_1, 0, sizeof(ADXB_UNK_1));
+    return adxb;
+}
+
+void ADXB_Destroy(ADXB adxb) {
+    ADXPD adxpd;
+
+    if (adxb != NULL) {
+        adxpd = adxb->adxpd;
+        adxb->adxpd = 0;
+        ADXPD_Destroy(adxpd);
+        memset(adxb, 0, sizeof(ADXB_OBJ));
+        adxb->unk0 = 0;
+    }
+}
 
 INCLUDE_RODATA("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", D_0055A178);
 
