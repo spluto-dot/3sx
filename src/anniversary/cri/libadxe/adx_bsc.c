@@ -124,7 +124,10 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_DecodeHeade
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_DecodeHeader);
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_EntryGetWrFunc);
+void ADXB_EntryGetWrFunc(ADXB arg0, s32 arg1, s32 arg2) {
+    arg0->unk78 = arg1;
+    arg0->unk7C = arg2;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_EntryAddWrFunc);
 
