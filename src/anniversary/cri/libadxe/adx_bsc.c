@@ -135,7 +135,9 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetPcmBuf);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetFormat);
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetSfreq);
+s32 ADXB_GetSfreq(ADXB adxb) {
+    return adxb->unk14;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetNumChan);
 

@@ -23,7 +23,9 @@ typedef struct {
     s16 unk0;
     char pad2[6];
     ADXPD adxpd;
-    char padC[0x2C];
+    char padC[8];
+    s32 unk14;
+    char pad18[0x20];
     s32 unk38;
     s32 unk3C;
     s32 unk40;
