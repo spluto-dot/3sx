@@ -198,7 +198,9 @@ s32 ADXB_GetAinfLen(ADXB adxb) {
     return adxb->unkC8;
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetDefOutVol);
+s16 ADXB_GetDefOutVol(ADXB adxb) {
+    return adxb->unkDC;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetDefPan);
 

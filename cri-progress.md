@@ -24,7 +24,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXB_GetOutBps
 - [x] ADXB_GetTotalNumSmpl
 - [x] ADXB_GetAinfLen
-- [ ] ADXB_GetDefOutVol
+- [x] ADXB_GetDefOutVol
 - [ ] ADXB_Stop
 
 ### adx_crs
