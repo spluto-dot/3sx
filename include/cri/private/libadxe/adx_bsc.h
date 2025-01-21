@@ -25,7 +25,8 @@ typedef struct {
     /* 0x08 */ ADXPD adxpd;
     /* 0x0C */ char padC[8];
     /* 0x14 */ s32 unk14;
-    /* 0x18 */ char pad18[0x20];
+    /* 0x18 */ s32 unk18;
+    /* 0x1C */ char pad1C[0x1C];
     /* 0x38 */ s32 unk38;
     /* 0x3C */ s32 unk3C;
     /* 0x40 */ s32 unk40;

@@ -22,7 +22,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXB_EntryGetWrFunc
 - [x] ADXB_GetSfreq
 - [x] ADXB_GetOutBps
-- [ ] ADXB_GetTotalNumSmpl
+- [x] ADXB_GetTotalNumSmpl
 - [ ] ADXB_GetAinfLen
 - [ ] ADXB_GetDefOutVol
 - [ ] ADXB_Stop

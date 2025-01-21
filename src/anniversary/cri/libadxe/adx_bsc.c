@@ -176,7 +176,9 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetBlkSmpl)
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetBlkLen);
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetTotalNumSmpl);
+s32 ADXB_GetTotalNumSmpl(ADXB adxb) {
+    return adxb->unk18;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetCof);
 
