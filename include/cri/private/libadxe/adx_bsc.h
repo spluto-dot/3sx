@@ -21,7 +21,8 @@ typedef struct {
 
 typedef struct {
     /* 0x00 */ s16 unk0;
-    /* 0x02 */ char pad2[6];
+    /* 0x02 */ char pad2[2];
+    /* 0x04 */ s32 unk4;
     /* 0x08 */ ADXPD adxpd;
     /* 0x0C */ char padC[8];
     /* 0x14 */ s32 unk14;
@@ -45,7 +46,9 @@ typedef struct {
     /* 0xDC */ s16 unkDC;
     /* 0xDE */ s16 unkDE;
     /* 0xE0 */ s16 unkE0;
-    /* 0xE2 */ char padE2[0xE];
+    /* 0xE2 */ char padE2[2];
+    /* 0xE4 */ s32 unkE4;
+    /* 0xE8 */ char padE8[8];
 } ADXB_OBJ;
 
 typedef ADXB_OBJ *ADXB;

@@ -10,7 +10,7 @@ s32 skg_err_func = 0;
 s32 skg_err_obj = 0;
 s32 ahxsetextfunc = 0;
 s32 pl2encodefunc = 0;
-s32 pl2resetfunc = 0;
+void (*pl2resetfunc)() = NULL;
 s16 adxb_def_k0 = 0;
 s16 adxb_def_km = 0;
 s16 adxb_def_ka = 0;
@@ -224,7 +224,14 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_EntryData);
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_Start);
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_Stop);
+void ADXB_Stop(ADXB adxb) {
+    if (adxb->unkE4 != 0) {
+        pl2resetfunc();
+    }
+
+    ADXPD_Stop(adxb->adxpd);
+    adxb->unk4 = 0;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_Reset);
 

@@ -9,5 +9,6 @@ typedef ADXPD_OBJ *ADXPD;
 
 ADXPD ADXPD_Create();
 void ADXPD_Destroy(ADXPD);
+void ADXPD_Stop(ADXPD);
 
 #endif // ADX_XPND_H
