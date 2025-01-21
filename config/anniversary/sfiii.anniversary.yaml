@@ -556,7 +556,7 @@ segments:
       - [0x2C6E10, asm, sf33rd/AcrSDK/MiddleWare/PS2/acrmw] # Good first decomp
 
       - [0x2C6F58, c, cri/libadxe/adx_amp]
-      - [0x2C7678, asm, cri/libadxe/adx_bahx]
+      - [0x2C7678, c, cri/libadxe/adx_bahx]
       - [0x2C7950, asm, cri/libadxe/adx_baif]
       - [0x2C82B0, asm, cri/libadxe/adx_bau]
       - [0x2C8D30, c, cri/libadxe/adx_bsc]
