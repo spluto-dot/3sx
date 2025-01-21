@@ -143,7 +143,34 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetNumChan)
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetFmtBps);
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetOutBps);
+s32 ADXB_GetOutBps(ADXB adxb) {
+    s16 temp_a1;
+    s16 temp_v1;
+    s32 var_v0;
+
+    temp_a1 = adxb->unk98;
+
+    if (temp_a1 == 0) {
+        return 16;
+    }
+
+    if (temp_a1 == 2) {
+        temp_v1 = adxb->unk9A;
+
+        if (temp_v1 == temp_a1) {
+            return 4;
+        }
+
+        return ((temp_v1 ^ 1) == 0) ? 8 : 16;
+    }
+
+    if (temp_a1 == 1) {
+        temp_v1 = adxb->unk9A;
+        return ((temp_v1 ^ 2) == 0) ? 4 : 16;
+    }
+
+    return 16;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/cri/libadxe/adx_bsc", ADXB_GetBlkSmpl);
 
