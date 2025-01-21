@@ -8,12 +8,12 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [ ] ADXAMP_Start (seems to be unused at runtime)
 - [x] ADXAMP_Stop
 
-### adx_bahx
+### adx_bahx ✅
 
 - [x] ADXB_SetAc3InSj
-- [ ] ADXB_SetAhxInSj
+- [x] ADXB_SetAhxInSj
 
-### adx_bsc
+### adx_bsc ✅
 
 - [x] SKG_Init
 - [x] ADXB_Init

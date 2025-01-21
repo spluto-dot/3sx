@@ -40,7 +40,9 @@ typedef struct {
     /* 0x88 */ char pad88[0x10];
     /* 0x98 */ s16 unk98;
     /* 0x9A */ s16 unk9A;
-    /* 0x9C */ char pad9C[0x20];
+    /* 0x9C */ char pad9C[0x12];
+    /* 0xB0 */ s32 unkB0;
+    /* 0xB4 */ char padB4[8];
     /* 0xBC */ s32 unkBC;
     /* 0xC0 */ char padC0[8];
     /* 0xC8 */ s32 unkC8;

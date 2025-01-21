@@ -775,7 +775,6 @@ segments:
       - [0x3A3CD0, data, data_3A3CD0]
       - [0x3A65E0, .data, cri/libadxe/adx_amp]
       - [0x3A68E8, .data, cri/libadxe/adx_bahx]
-      - [0x3A68F8, data, data_3A68F8]
       - [0x3A6908, data, data_3A6908]
       - [0x3A6B08, .data, cri/libadxe/adx_bsc]
       - [0x3A7A30, data, data_3A7A30]
