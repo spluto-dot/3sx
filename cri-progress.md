@@ -2,30 +2,30 @@
 
 If you don't see a function in this list it doesn't need to be decompiled.
 
-### adx_amp
+### adx_amp ✅
 
 - [x] ADXAMP_Destroy
-- [ ] ADXAMP_Start (seems to be unused at runtime)
+- [x] ADXAMP_Start
 - [x] ADXAMP_Stop
 
-### adx_bahx
+### adx_bahx ✅
 
-- [ ] ADXB_SetAc3InSj
-- [ ] ADXB_SetAhxInSj
+- [x] ADXB_SetAc3InSj
+- [x] ADXB_SetAhxInSj
 
-### adx_bsc
+### adx_bsc ✅
 
-- [ ] SKG_Init
-- [ ] ADXB_Init
-- [ ] ADXB_Create
-- [ ] ADXB_Destroy
-- [ ] ADXB_EntryGetWrFunc
-- [ ] ADXB_GetSfreq
-- [ ] ADXB_GetOutBps
-- [ ] ADXB_GetTotalNumSmpl
-- [ ] ADXB_GetAinfLen
-- [ ] ADXB_GetDefOutVol
-- [ ] ADXB_Stop
+- [x] SKG_Init
+- [x] ADXB_Init
+- [x] ADXB_Create
+- [x] ADXB_Destroy
+- [x] ADXB_EntryGetWrFunc
+- [x] ADXB_GetSfreq
+- [x] ADXB_GetOutBps
+- [x] ADXB_GetTotalNumSmpl
+- [x] ADXB_GetAinfLen
+- [x] ADXB_GetDefOutVol
+- [x] ADXB_Stop
 
 ### adx_crs
 
