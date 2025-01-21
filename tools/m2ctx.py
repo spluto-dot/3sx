@@ -20,6 +20,7 @@ CPP_FLAGS = [
     "-D_LANGUAGE_C",
     "-D_MIPS_SZLONG=32",
     "-D__mips64",
+    "-DM2CTX",
     "-ffreestanding",
     "-nostdinc",
 ]

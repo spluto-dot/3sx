@@ -10,7 +10,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 ### adx_bahx
 
-- [ ] ADXB_SetAc3InSj
+- [x] ADXB_SetAc3InSj
 - [ ] ADXB_SetAhxInSj
 
 ### adx_bsc
@@ -25,7 +25,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXB_GetTotalNumSmpl
 - [x] ADXB_GetAinfLen
 - [x] ADXB_GetDefOutVol
-- [ ] ADXB_Stop
+- [x] ADXB_Stop
 
 ### adx_crs
 

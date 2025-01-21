@@ -6,7 +6,7 @@
 #define NULL 0
 
 // Compilation with GNU C Compilier means we are compiling CRI
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(M2CTX)
 #define INCLUDE_ASM(FOLDER, NAME)                                                                                      \
     __asm__("\t.text\n"                                                                                                \
             "\t.align\t3\n"                                                                                            \
