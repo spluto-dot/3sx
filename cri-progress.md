@@ -27,11 +27,11 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXB_GetDefOutVol
 - [x] ADXB_Stop
 
-### adx_crs
+### adx_crs ✅
 
-- [ ] ADXCRS_Init
-- [ ] ADXCRS_Lock
-- [ ] ADXCRS_Unlock
+- [x] ADXCRS_Init
+- [x] ADXCRS_Lock
+- [x] ADXCRS_Unlock
 
 ### adx_dcd
 
