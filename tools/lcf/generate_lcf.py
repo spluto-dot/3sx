@@ -113,12 +113,14 @@ def main():
             del runs[0].entries[0]
 
         for run in text_runs:
-            is_lib_vib = "libvib" in str(run.entries[0].object_path)
+            path = str(run.entries[0].object_path)
+            is_lib_vib = "libvib" in path
+            is_cri = "cri" in path
             alignment = 0x4
 
             if run.is_game:
                 alignment = 0x10
-            elif is_lib_vib:
+            elif is_lib_vib or is_cri:
                 alignment = 0x8
 
             lcf.align_all(alignment)
