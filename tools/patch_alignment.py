@@ -28,6 +28,7 @@ special_cases = {
     ("win_pl", ".sdata", 0): 16,
     ("LOSE_PL", ".sdata", 0): 16,
     ("sbss_579878", ".sbss", 0): 8,
+    ("bss_6BDA68", ".bss", 0): 8,
 }
 
 def alignment_to_bytes(alignment: int) -> bytes:
@@ -51,12 +52,13 @@ def alignments(path: Path) -> list[tuple[int, int]]:
             ".text": 0,
             ".data": 0,
             ".rodata": 0,
+            ".bss": 0,
             ".sbss": 0,
             ".sdata": 0
         }
 
         for section_index, section in enumerate(elf_file.iter_sections()):
-            if section.name not in (".text", ".data", ".rodata", ".sbss", ".sdata"):
+            if section.name not in (".text", ".data", ".rodata", ".bss", ".sbss", ".sdata"):
                 continue
 
             filename = path.stem.split(".")[0]
@@ -72,8 +74,8 @@ def alignments(path: Path) -> list[tuple[int, int]]:
 
             if section_key in special_cases:
                 section_alignment = special_cases[section_key]
-            elif section.name in (".sbss", ".sdata"):
-                # Don't change alignment of .sbss/.sdata sections if not explicitly stated
+            elif section.name in (".bss", ".sbss", ".sdata"):
+                # Don't change alignment of .bss/.sbss/.sdata sections if not explicitly stated
                 continue
 
             alignments.append((align_offset, section_alignment))

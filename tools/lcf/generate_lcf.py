@@ -188,8 +188,14 @@ def main():
         bss_runs = [x for x in runs if x.section == ".bss"]
 
         # lcf.align(0x80)
-        lcf.align_all(0x8)
-        lcf.add_runs(bss_runs, ".bss")
+        lcf.align_all(8)
+
+        for run in bss_runs:
+            for entry in run.entries:
+                lcf.add_entry(entry, ".bss")
+
+                if "cri" in str(entry.object_path):
+                    lcf.add_entry(entry, "COMMON")
 
         lcf.blank()
 

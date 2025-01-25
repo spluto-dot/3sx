@@ -43,12 +43,12 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 ### adx_errs
 
-- [ ] ADXERR_Init
-- [ ] ADXERR_Finish
-- [ ] ADXERR_CallErrFunc1
-- [ ] ADXERR_CallErrFunc2
-- [ ] ADXERR_ItoA
-- [ ] ADXERR_ItoA2
+- [x] ADXERR_Init
+- [x] ADXERR_Finish
+- [x] ADXERR_CallErrFunc1
+- [x] ADXERR_CallErrFunc2
+- [x] ADXERR_ItoA
+- [x] ADXERR_ItoA2
 
 ### adx_fcch
 
