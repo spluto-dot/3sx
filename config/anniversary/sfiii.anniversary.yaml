@@ -672,7 +672,7 @@ segments:
       - [0x2F22F0, asm, sf33rd/AcrSDK/ps2/flps2d3d] # Good first decomp
       - [0x2F2300, asm, sf33rd/AcrSDK/ps2/flps2debug]
       - [0x2F3DD0, asm, sf33rd/AcrSDK/ps2/flps2dma]
-      - [0x2F59E0, asm, sf33rd/AcrSDK/ps2/flps2etc]
+      - [0x2F59E0, c, sf33rd/AcrSDK/ps2/flps2etc]
       - [0x2F7B90, asm, sf33rd/AcrSDK/ps2/flps2math]
       - [0x2F8400, asm, sf33rd/AcrSDK/ps2/flps2ps] # Good first decomp
       - [0x2F84D0, asm, sf33rd/AcrSDK/ps2/flps2vram]
@@ -1256,7 +1256,7 @@ segments:
       - [0x45F1B0, rodata, sf33rd/AcrSDK/ps2/flps2render]
       - [0x45F290, rodata, sf33rd/AcrSDK/ps2/flps2debug]
       - [0x45F470, rodata, sf33rd/AcrSDK/ps2/flps2dma]
-      - [0x45F500, rodata, sf33rd/AcrSDK/ps2/flps2etc]
+      - [0x45F500, .rodata, sf33rd/AcrSDK/ps2/flps2etc]
       - [0x45F5B0, rodata, sf33rd/AcrSDK/ps2/flPADUSR]
       - [0x45F648, rodata, sf33rd/AcrSDK/ps2/flps2shader]
       - [0x45F660, rodata, sf33rd/AcrSDK/ps2/flps2vram]
