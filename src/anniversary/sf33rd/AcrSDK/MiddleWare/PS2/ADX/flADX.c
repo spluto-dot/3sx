@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#define ADX_MAX_FILENAME_LEN 32
+
 ADXPS2_SPRM_HOST ht_sprm;
 s8 ht_fc_buff[533];
 ADXPS2_SPRM_DVD dv_sprm;
@@ -31,8 +33,8 @@ void flAdxInitialize(s8 *host_root, s8 *cvd_root) {
         ADXPS2_SetupHostFs(&ht_sprm);
         memset(&ht_fcprm, 0, sizeof(ADXPS2_FCPRM));
         ht_fcprm.flist = "0flist.dir";
-        ht_fcprm.maxflen = 0x20;
-        ht_fcprm.fcsize = 0x215;
+        ht_fcprm.maxflen = ADX_MAX_FILENAME_LEN;
+        ht_fcprm.fcsize = sizeof(ht_fc_buff);
         ht_fcprm.fcbuf = ht_fc_buff;
         ADXPS2_LoadFcacheHost(&ht_fcprm);
     }
@@ -45,8 +47,8 @@ void flAdxInitialize(s8 *host_root, s8 *cvd_root) {
         printf("Setup CD/DVD cache system.\n");
         memset(&dv_fcprm, 0, sizeof(ADXPS2_FCPRM));
         dv_fcprm.flist = "0flist.dir";
-        dv_fcprm.maxflen = 0x20;
-        dv_fcprm.fcsize = 0x668;
+        dv_fcprm.maxflen = ADX_MAX_FILENAME_LEN;
+        dv_fcprm.fcsize = sizeof(dv_fc_buff);
         dv_fcprm.fcbuf = dv_fc_buff;
         ADXPS2_LoadFcacheDvd(&dv_fcprm);
     }
