@@ -21,5 +21,6 @@ void *flPS2GetSystemBuffAdrs(u32 handle);
 void flPS2SystemTmpBuffInit();
 void flPS2SystemTmpBuffFlush();
 u32 flPS2GetSystemTmpBuff(s32 len, s32 align);
+u32 flCreateTextureFromFile(s8 *file, u32 flag);
 
 #endif // FLPS2ETC_H

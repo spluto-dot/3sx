@@ -12,6 +12,10 @@
 #include <string.h>
 
 void flCompact();
+u32 flCreateTextureFromApx(s8 *apx_file, u32 flag);
+u32 flCreateTextureFromBMP(s8 *bmp_file, u32 flag);
+u32 flCreateTextureFromPIC(s8 *pic_file, u32 flag);
+u32 flCreateTextureFromTim2(s8 *tim2_file, u32 flag);
 
 void flPS2IopModuleLoad(s8 *fname, s32 args, s8 *argp, s32 type) {
     s32 lp0;
@@ -293,7 +297,41 @@ u32 flPS2GetSystemTmpBuff(s32 len, s32 align) {
     return now;
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromFile);
+u32 flCreateTextureFromFile(s8 *file, u32 flag) {
+    s8 *tmp = file;
+
+    while (*tmp != 0) {
+        tmp++;
+    }
+
+    do {
+        tmp--;
+    } while (*tmp != '.');
+
+    tmp++;
+
+    if (((tmp[0] == 'A') || (tmp[0] == 'a')) && ((tmp[1] == 'P') || (tmp[1] == 'p')) &&
+        ((tmp[2] == 'X') || (tmp[2] == 'x'))) {
+        return flCreateTextureFromApx(file, flag);
+    }
+
+    if (((tmp[0] == 'T') || (tmp[0] == 't')) && ((tmp[1] == 'M') || (tmp[1] == 'm')) &&
+        ((tmp[2] == '2') || (tmp[2] == '2'))) {
+        return flCreateTextureFromTim2(file, flag);
+    }
+
+    if (((tmp[0] == 'B') || (tmp[0] == 'b')) && ((tmp[1] == 'M') || (tmp[1] == 'm')) &&
+        ((tmp[2] == 'P') || (tmp[2] == 'p'))) {
+        return flCreateTextureFromBMP(file, flag);
+    }
+
+    if (((tmp[0] == 'P') || (tmp[0] == 'p')) && ((tmp[1] == 'I') || (tmp[1] == 'i')) &&
+        ((tmp[2] == 'C') || (tmp[2] == 'c'))) {
+        return flCreateTextureFromPIC(file, flag);
+    }
+
+    return 0;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromApx);
 
