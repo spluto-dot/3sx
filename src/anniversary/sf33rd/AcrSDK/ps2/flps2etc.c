@@ -254,7 +254,25 @@ void flPS2SystemTmpBuffInit() {
     flPS2SystemTmpBuffFlush();
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2SystemTmpBuffFlush);
+void flPS2SystemTmpBuffFlush() {
+    u32 len;
+
+    switch (flPs2State.SystemStatus) {
+    case 0:
+    case 2:
+    case 1:
+        len = 0x80000;
+        flPs2State.SystemTmpBuffStartAdrs =
+            (u32)flPS2GetSystemBuffAdrs(flPs2State.SystemTmpBuffHandle[flPs2State.SystemIndex]);
+        flPs2State.SystemTmpBuffNow = flPs2State.SystemTmpBuffStartAdrs;
+        flPs2State.SystemTmpBuffEndAdrs = flPs2State.SystemTmpBuffStartAdrs + len;
+
+        break;
+
+    default:
+        break;
+    }
+}
 
 INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", literal_431_0055F500);
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2GetSystemTmpBuff);
