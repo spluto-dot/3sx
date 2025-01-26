@@ -2,7 +2,9 @@
 #include "common.h"
 #include "sf33rd/AcrSDK/common/fbms.h"
 #include "sf33rd/AcrSDK/common/memfound.h"
+#include "sf33rd/AcrSDK/ps2/flps2d3d.h"
 #include "sf33rd/AcrSDK/ps2/flps2debug.h"
+#include "sf33rd/AcrSDK/ps2/flps2dma.h"
 #include "unknown.h"
 #include <cri_mw.h>
 #include <sifdev.h>
@@ -236,7 +238,11 @@ void *flPS2GetSystemBuffAdrs(u32 handle) {
     return mflRetrieve(handle);
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCompact);
+void flCompact() {
+    flPS2DmaTerminate();
+    mflCompact();
+    flPS2ClayRetouchMaterialTag();
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2SystemTmpBuffInit);
 
