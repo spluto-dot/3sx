@@ -22,6 +22,7 @@ u32 flCreateTextureFromApx_mem(void *mem, u32 flag);
 u32 flCreateTextureFromTim2(s8 *tim2_file, u32 flag);
 u32 flCreateTextureFromTim2_mem(void *mem, u32 flag);
 u32 flCreateTextureFromBMP(s8 *bmp_file, u32 flag);
+u32 flCreateTextureFromBMP_mem(void *mem, u32 flag);
 u32 flCreateTextureFromPIC(s8 *pic_file, u32 flag);
 
 void flPS2IopModuleLoad(s8 *fname, s32 args, s8 *argp, s32 type) {
@@ -606,7 +607,16 @@ void flPS2ConvertAlpha(void *lpPtr, s32 width, s32 height) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromBMP);
+u32 flCreateTextureFromBMP(s8 *bmp_file, u32 flag) {
+    s32 len = flFileLength(bmp_file);
+    char *file_ptr = mflTemporaryUse(len);
+
+    if (flFileRead(bmp_file, file_ptr, len) == 0) {
+        return 0;
+    }
+
+    return flCreateTextureFromBMP_mem(file_ptr, flag);
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromBMP_mem);
 
