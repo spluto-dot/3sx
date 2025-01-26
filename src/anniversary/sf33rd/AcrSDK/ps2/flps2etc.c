@@ -153,7 +153,9 @@ s32 flGetFrame(FMS_FRAME *frame) {
     return fmsGetFrame(&flFMS, 0, frame);
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flGetSpace);
+s32 flGetSpace() {
+    return fmsCalcSpace(&flFMS);
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flAllocMemoryS);
 
