@@ -244,7 +244,15 @@ void flCompact() {
     flPS2ClayRetouchMaterialTag();
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2SystemTmpBuffInit);
+void flPS2SystemTmpBuffInit() {
+    s32 lp0;
+
+    for (lp0 = 0; lp0 < 2; lp0++) {
+        flPs2State.SystemTmpBuffHandle[lp0] = flPS2GetSystemMemoryHandle(0x80000, 1);
+    }
+
+    flPS2SystemTmpBuffFlush();
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2SystemTmpBuffFlush);
 
