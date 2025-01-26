@@ -1,5 +1,7 @@
 #include "sf33rd/AcrSDK/ps2/flps2etc.h"
 #include "common.h"
+#include "sf33rd/AcrSDK/common/fbms.h"
+#include "unknown.h"
 #include <cri_mw.h>
 #include <sifdev.h>
 #include <stdio.h>
@@ -143,7 +145,9 @@ void flMemcpy(void *dst, void *src, s32 size) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flAllocMemory);
+void *flAllocMemory(s32 size) {
+    return fmsAllocMemory(&flFMS, size, 0);
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flGetFrame);
 
