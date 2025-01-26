@@ -3,6 +3,7 @@
 #include "sf33rd/AcrSDK/common/fbms.h"
 #include "sf33rd/AcrSDK/common/memfound.h"
 #include "sf33rd/AcrSDK/common/plapx.h"
+#include "sf33rd/AcrSDK/common/plbmp.h"
 #include "sf33rd/AcrSDK/common/plcommon.h"
 #include "sf33rd/AcrSDK/common/pltim2.h"
 #include "sf33rd/AcrSDK/ps2/flps2d3d.h"
@@ -618,7 +619,55 @@ u32 flCreateTextureFromBMP(s8 *bmp_file, u32 flag) {
     return flCreateTextureFromBMP_mem(file_ptr, flag);
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromBMP_mem);
+u32 flCreateTextureFromBMP_mem(void *mem, u32 flag) {
+    s32 x;
+    s32 y;
+    u8 *dst;
+    u8 *src;
+    u8 *keep;
+    plContext context;
+    u32 th = 0;
+    FLTexture *lpflTexture;
+    u8 r;
+    u8 g;
+    u8 b;
+
+    th = flPS2GetTextureHandle();
+    lpflTexture = &flTexture[(th & 0xFFFF) - 1];
+    plBMPSetContextFromImage(&context, mem);
+
+    if (context.bitdepth != 3) {
+        return 0;
+    }
+
+    flPS2GetTextureInfoFromContext(&context, 1, th, flag);
+    lpflTexture->mem_handle = flPS2GetSystemMemoryHandle(lpflTexture->size, 2);
+    dst = flPS2GetSystemBuffAdrs(lpflTexture->mem_handle);
+    keep = plBMPGetPixelAddressFromImage(mem);
+
+    switch (context.bitdepth) {
+    case 3:
+        for (y = 0; y < context.height; y++) {
+            for (x = 0; x < context.width; x++) {
+                src = keep + x * context.bitdepth + (context.height - 1 - y) * context.pitch;
+                b = *src++;
+                g = *src++;
+                r = *src++;
+                *dst++ = r;
+                *dst++ = g;
+                *dst++ = b;
+            }
+        }
+
+        break;
+
+    default:
+        return 0;
+    }
+
+    flPS2CreateTextureHandle(th, flag);
+    return th;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromPIC);
 
