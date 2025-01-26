@@ -1743,15 +1743,6 @@ s32 flPrintL(s32 posi_x, s32 posi_y, s8 *format, ...); // Range: 0x3F2B40 -> 0x3
 s32 flPrintColor(u32 col);                             // Range: 0x3F2D10 -> 0x3F2E04
 void flPS2DispSystemInfo(s32 x, s32 y);                // Range: 0x3F2E10 -> 0x3F34B8
 
-// flps2dma.c
-u32 flPS2DmaAddEndTag(u32 tag, s32 qwc, s32 irq, s32 /* unused */);                 // Range: 0x3F3F20 -> 0x3F3F88
-void flPS2DmaInitControl(FLPS2VIF1Control *dma_ptr, u32 queue_size, void *handler); // Range: 0x3F4DD0 -> 0x3F4ECC
-s32 flPS2DmaAddQueue2(s32 type, u32 data_adrs, u32 endtag_adrs,
-                      FLPS2VIF1Control *dma_ptr); // Range: 0x3F4ED0 -> 0x3F5200
-s32 flPS2DmaInterrupt(s32 ch);                    // Range: 0x3F5200 -> 0x3F55F0
-void flPS2DmaSend();                              // Range: 0x3F55F0 -> 0x3F5838
-s32 flPS2DmaWait();                               // Range: 0x3F5840 -> 0x3F58B0
-
 // flps2math.c
 void flmatMakeViewport(MTX *lpmat, s32 dwx, s32 dwy, s32 dwWidth, s32 dwHeight, f32 dvMinz,
                        f32 dvMaxz);   // Range: 0x3F7CE0 -> 0x3F811C

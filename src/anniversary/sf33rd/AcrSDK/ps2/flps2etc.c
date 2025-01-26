@@ -274,8 +274,24 @@ void flPS2SystemTmpBuffFlush() {
     }
 }
 
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", literal_431_0055F500);
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2GetSystemTmpBuff);
+u32 flPS2GetSystemTmpBuff(s32 len, s32 align) {
+    u32 now;
+    u32 new_now;
+
+    now = flPs2State.SystemTmpBuffNow;
+    now = ~(align - 1) & (now + align - 1);
+    new_now = now + len;
+
+    if (flPs2State.SystemTmpBuffEndAdrs < new_now) {
+        flPS2DmaWait();
+        flPS2SystemError(0, "ERROR flPS2GetSystemTmpBuff flps2etc.c");
+        now = flPs2State.SystemTmpBuffStartAdrs;
+        new_now = now + len;
+    }
+
+    flPs2State.SystemTmpBuffNow = new_now;
+    return now;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromFile);
 
