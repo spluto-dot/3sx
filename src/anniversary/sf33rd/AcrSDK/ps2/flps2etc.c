@@ -13,6 +13,7 @@
 
 void flCompact();
 u32 flCreateTextureFromApx(s8 *apx_file, u32 flag);
+u32 flCreateTextureFromApx_mem(void *mem, u32 flag);
 u32 flCreateTextureFromBMP(s8 *bmp_file, u32 flag);
 u32 flCreateTextureFromPIC(s8 *pic_file, u32 flag);
 u32 flCreateTextureFromTim2(s8 *tim2_file, u32 flag);
@@ -333,7 +334,16 @@ u32 flCreateTextureFromFile(s8 *file, u32 flag) {
     return 0;
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromApx);
+u32 flCreateTextureFromApx(s8 *apx_file, u32 flag) {
+    s32 len = flFileLength(apx_file);
+    s8 *file_ptr = mflTemporaryUse(len);
+
+    if (flFileRead(apx_file, file_ptr, len) == 0) {
+        return 0;
+    }
+
+    return flCreateTextureFromApx_mem(file_ptr, flag);
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromApx_mem);
 
