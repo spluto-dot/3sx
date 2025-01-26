@@ -131,7 +131,17 @@ void flMemset(void *dst, u32 pat, s32 size) {
     }
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flMemcpy);
+void flMemcpy(void *dst, void *src, s32 size) {
+    s32 i;
+    s8 *now[2];
+
+    now[0] = dst;
+    now[1] = src;
+
+    for (i = 0; i < size; i++) {
+        *now[0]++ = *now[1]++;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flAllocMemory);
 
