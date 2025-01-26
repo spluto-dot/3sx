@@ -16,6 +16,8 @@
 int sceOpen(const char *filename, int flag, ...);
 int sceClose(int fd);
 int sceRead(int fd, void *buf, int nbyte);
+int sceWrite(int fd, const void *buf, int nbyte);
+int sceLseek(int fd, int offset, int where);
 
 int sceSifInitIopHeap();
 int sceSifRebootIop(const char *img);

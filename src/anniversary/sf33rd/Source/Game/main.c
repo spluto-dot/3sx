@@ -1,5 +1,6 @@
 #include "sf33rd/Source/Game/main.h"
 #include "common.h"
+#include "sf33rd/AcrSDK/ps2/flps2etc.h"
 #include "sf33rd/Source/Game/AcrUtil.h"
 #include "sf33rd/Source/Game/SYS_sub2.h"
 #include "unknown.h"

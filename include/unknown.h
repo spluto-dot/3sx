@@ -1752,22 +1752,6 @@ s32 flPS2DmaInterrupt(s32 ch);                    // Range: 0x3F5200 -> 0x3F55F0
 void flPS2DmaSend();                              // Range: 0x3F55F0 -> 0x3F5838
 s32 flPS2DmaWait();                               // Range: 0x3F5840 -> 0x3F58B0
 
-// flps2etc.c
-void flPS2IopModuleLoad(s8 *fname, s32 args, s8 *argp, s32 type); // Range: 0x3F5960 -> 0x3F5A1C
-s32 flFileWrite(s8 *filename, void *buf, s32 len);                // Range: 0x3F5B30 -> 0x3F5C28
-s32 flFileAppend(s8 *filename, void *buf, s32 len);               // Range: 0x3F5C30 -> 0x3F5D38
-void flMemset(void *dst, u32 pat, s32 size);                      // Range: 0x3F5E40 -> 0x3F5EA4
-void *flAllocMemory(s32 size);                                    // Range: 0x3F5F30 -> 0x3F5F60
-s32 flGetFrame(FMS_FRAME *frame);                                 // Range: 0x3F5F60 -> 0x3F5F90
-s32 flGetSpace();                                                 // Range: 0x3F5F90 -> 0x3F5FB4
-void *flAllocMemoryS(s32 size);                                   // Range: 0x3F5FC0 -> 0x3F5FF0
-u32 flPS2GetSystemMemoryHandle(s32 len, s32 type);                // Range: 0x3F5FF0 -> 0x3F6148
-void flPS2ReleaseSystemMemory(u32 handle);                        // Range: 0x3F6150 -> 0x3F627C
-void *flPS2GetSystemBuffAdrs(u32 handle);                         // Range: 0x3F6280 -> 0x3F62A8
-void flPS2SystemTmpBuffInit();                                    // Range: 0x3F62E0 -> 0x3F6348
-void flPS2SystemTmpBuffFlush();                                   // Range: 0x3F6350 -> 0x3F63FC
-u32 flPS2GetSystemTmpBuff(s32 len, s32 align);                    // Range: 0x3F6400 -> 0x3F64AC
-
 // flps2math.c
 void flmatMakeViewport(MTX *lpmat, s32 dwx, s32 dwy, s32 dwWidth, s32 dwHeight, f32 dvMinz,
                        f32 dvMaxz);   // Range: 0x3F7CE0 -> 0x3F811C

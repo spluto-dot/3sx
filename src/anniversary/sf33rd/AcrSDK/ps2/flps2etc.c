@@ -25,17 +25,102 @@ void flPS2IopModuleLoad(s8 *fname, s32 args, s8 *argp, s32 type) {
     printf("Can't load module %s", fname);
 }
 
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", literal_264_0055F498);
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", literal_265_0055F4A8);
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", literal_266_0055F4B0);
+s32 flFileRead(s8 *filename, void *buf, s32 len) {
+    s32 fd;
+    s8 temp[2048];
+    s8 *p;
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flFileRead);
+    strcpy(temp, "cdrom0:\\THIRD\\");
+    p = strlen(temp) + temp;
+    strcat(temp, filename);
+    strupr(p);
+    strcat(temp, ";1");
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flFileWrite);
+    ADXM_Lock();
+    fd = sceOpen(temp, SCE_RDONLY);
+    printf("flFileRead: \"%s\" (fd = %d)\n", &temp, fd);
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flFileAppend);
+    if (fd < 0) {
+        ADXM_Unlock();
+        return 0;
+    }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flFileLength);
+    sceRead(fd, buf, len);
+    sceClose(fd);
+    ADXM_Unlock();
+    return 1;
+}
+
+s32 flFileWrite(s8 *filename, void *buf, s32 len) {
+    s32 fd;
+    s8 temp[2048];
+    s8 *p;
+
+    strcpy(temp, "cdrom0:\\THIRD\\");
+    p = strlen(temp) + temp;
+    strcat(temp, filename);
+    strupr(p);
+    strcat(temp, ";1");
+    ADXM_Lock();
+
+    if ((fd = sceOpen(temp, SCE_WRONLY | SCE_CREAT | SCE_TRUNC)) < 0) {
+        ADXM_Unlock();
+        return 0;
+    }
+
+    sceWrite(fd, buf, len);
+    sceClose(fd);
+    ADXM_Unlock();
+    return 1;
+}
+
+s32 flFileAppend(s8 *filename, void *buf, s32 len) {
+    s32 fd;
+    s8 temp[2048];
+    s8 *p;
+
+    strcpy(temp, "cdrom0:\\THIRD\\");
+    p = strlen(temp) + temp;
+    strcat(temp, filename);
+    strupr(p);
+    strcat(temp, ";1");
+    ADXM_Lock();
+
+    if ((fd = sceOpen(temp, SCE_WRONLY)) < 0) {
+        ADXM_Unlock();
+        return 0;
+    }
+
+    sceLseek(fd, 0, 2);
+    sceWrite(fd, buf, len);
+    sceClose(fd);
+    ADXM_Unlock();
+    return 1;
+}
+
+s32 flFileLength(s8 *filename) {
+    s32 fd;
+    s8 temp[2048];
+    s8 *p;
+    s32 length;
+
+    strcpy(temp, "cdrom0:\\THIRD\\");
+    p = strlen(temp) + temp;
+    strcat(temp, filename);
+    strupr(p);
+    strcat(temp, ";1");
+    ADXM_Lock();
+
+    if ((fd = sceOpen(temp, SCE_RDONLY)) < 0) {
+        ADXM_Unlock();
+        return 0;
+    }
+
+    length = sceLseek(fd, 0, 2);
+    sceClose(fd);
+    ADXM_Unlock();
+    return length;
+}
 
 void flMemset(void *dst, u32 pat, s32 size) {
     s32 i;

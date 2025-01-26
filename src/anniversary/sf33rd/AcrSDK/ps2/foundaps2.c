@@ -3,6 +3,7 @@
 #include "mw_stdarg.h"
 #include "sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX.h"
 #include "sf33rd/AcrSDK/common/mlPAD.h"
+#include "sf33rd/AcrSDK/ps2/flps2etc.h"
 #include "unknown.h"
 #include <eekernel.h>
 #include <libcdvd.h>
