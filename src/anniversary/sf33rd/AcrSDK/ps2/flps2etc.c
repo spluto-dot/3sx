@@ -1,7 +1,29 @@
+#include "sf33rd/AcrSDK/ps2/flps2etc.h"
 #include "common.h"
+#include <cri_mw.h>
+#include <sifdev.h>
+#include <stdio.h>
+#include <string.h>
 
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", literal_211_0055F480);
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2IopModuleLoad);
+void flPS2IopModuleLoad(s8 *fname, s32 args, s8 *argp, s32 type) {
+    s32 lp0;
+
+    if (type == 0) {
+        do {
+
+        } while (sceSifLoadModule(fname, args, argp) < 0);
+
+        return;
+    }
+
+    for (lp0 = 0; lp0 < type; lp0++) {
+        if (sceSifLoadModule(fname, args, argp) > 0) {
+            return;
+        }
+    }
+
+    printf("Can't load module %s", fname);
+}
 
 INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", literal_264_0055F498);
 INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", literal_265_0055F4A8);
@@ -15,7 +37,14 @@ INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flFileApp
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flFileLength);
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flMemset);
+void flMemset(void *dst, u32 pat, s32 size) {
+    s32 i;
+    u8 *now = dst;
+
+    for (i = 0; i < size; i++) {
+        *now++ = pat;
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flMemcpy);
 

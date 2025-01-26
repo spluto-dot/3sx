@@ -4,6 +4,9 @@
 #include "types.h"
 
 void *memset(void *s, int c, size_t n);
-extern size_t strlen(const char *s);
+size_t strlen(const char *s);
+char *strcpy(char *dest, const char *src);
+char *strcat(char *dest, const char *src);
+char *strupr(char *str);
 
 #endif
