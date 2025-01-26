@@ -232,7 +232,9 @@ void flPS2ReleaseSystemMemory(u32 handle) {
     mflRelease(handle);
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2GetSystemBuffAdrs);
+void *flPS2GetSystemBuffAdrs(u32 handle) {
+    return mflRetrieve(handle);
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCompact);
 
