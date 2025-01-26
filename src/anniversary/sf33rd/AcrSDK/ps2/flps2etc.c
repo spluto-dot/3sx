@@ -1,11 +1,15 @@
 #include "sf33rd/AcrSDK/ps2/flps2etc.h"
 #include "common.h"
 #include "sf33rd/AcrSDK/common/fbms.h"
+#include "sf33rd/AcrSDK/common/memfound.h"
+#include "sf33rd/AcrSDK/ps2/flps2debug.h"
 #include "unknown.h"
 #include <cri_mw.h>
 #include <sifdev.h>
 #include <stdio.h>
 #include <string.h>
+
+void flCompact();
 
 void flPS2IopModuleLoad(s8 *fname, s32 args, s8 *argp, s32 type) {
     s32 lp0;
@@ -161,8 +165,42 @@ void *flAllocMemoryS(s32 size) {
     return fmsAllocMemory(&flFMS, size, 1);
 }
 
-INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", literal_380_0055F4D0);
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2GetSystemMemoryHandle);
+u32 flPS2GetSystemMemoryHandle(s32 len, s32 type) {
+    u32 handle = mflRegisterS(len);
+
+    if (handle == 0) {
+        flCompact();
+        handle = mflRegister(len);
+
+        if (handle == 0) {
+            flPS2SystemError(0, "ERROR flPS2GetSystemMemoryHandle flps2etc.c");
+            while (1) {}
+        }
+    }
+
+    flDebugSysMem[handle - 1] = type;
+    flDebugSysMemHandleNum += 1;
+
+    switch (type) {
+    case 1:
+        flDebugSysMemEtc += len;
+        break;
+
+    case 2:
+        flDebugSysMemTexture += len;
+        break;
+
+    case 3:
+        flDebugSysMemClay += len;
+        break;
+
+    case 4:
+        flDebugSysMemMotion += len;
+        break;
+    }
+
+    return handle;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2ReleaseSystemMemory);
 
