@@ -22,7 +22,21 @@ def main():
 
     for src in src_path.rglob("*.c"):
         c_file_count += 1
-        ast = parse_file(src, use_cpp=True, cpp_args=r'-Iinclude')
+
+        ast = parse_file(
+            src, 
+            use_cpp=True,
+            cpp_args=[
+                "-DM2CTX",
+                "-Iinclude", 
+                "-Iinclude/sdk",
+                "-Iinclude/cri",
+                "-Iinclude/cri/ee",
+                "-Iinclude/gcc",
+                "-nostdinc",
+            ]
+        )
+
         v.visit(ast)
 
     # Calculate asm funcs
