@@ -157,7 +157,9 @@ s32 flGetSpace() {
     return fmsCalcSpace(&flFMS);
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flAllocMemoryS);
+void *flAllocMemoryS(s32 size) {
+    return fmsAllocMemory(&flFMS, size, 1);
+}
 
 INCLUDE_RODATA("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", literal_380_0055F4D0);
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2GetSystemMemoryHandle);
