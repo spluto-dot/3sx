@@ -577,7 +577,34 @@ u32 flCreateTextureFromTim2_mem(void *mem, u32 flag) {
     return th | ph;
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2ConvertAlpha);
+void flPS2ConvertAlpha(void *lpPtr, s32 width, s32 height) {
+    s32 x;
+    s32 y;
+    u8 *ptr = lpPtr;
+    u8 alpha;
+    u32 color;
+
+    for (y = 0; y < height; y++) {
+        for (x = 0; x < width; x++) {
+            color = ((u32 *)ptr)[0] << 40;
+            color >>= 40;
+            alpha = ptr[3];
+
+            if (alpha == 255) {
+                alpha = 128;
+            } else if (alpha != 0) {
+                alpha >>= 1;
+
+                if (alpha == 0) {
+                    alpha = 1;
+                }
+            }
+
+            ptr[3] = alpha;
+            ptr += 4;
+        }
+    }
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromBMP);
 
