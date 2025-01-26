@@ -475,7 +475,107 @@ u32 flCreateTextureFromTim2(s8 *tim2_file, u32 flag) {
     return flCreateTextureFromTim2_mem(file_ptr, flag);
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromTim2_mem);
+u32 flCreateTextureFromTim2_mem(void *mem, u32 flag) {
+    u8 *dst;
+    u8 *src;
+    plContext context[7];
+    plContext pal_context;
+    u32 th = 0;
+    u32 ph = 0;
+    FLTexture *lpflTexture;
+    FLTexture *lpflPalette;
+    s32 mip_num;
+    s32 lp0;
+    s32 dw;
+    s32 dh;
+    s32 tex_size;
+
+    th = flPS2GetTextureHandle();
+    lpflTexture = &flTexture[(th & 0xFFFF) - 1];
+    mip_num = plTIM2GetMipmapTextureNum(mem);
+
+    if (plTIM2SetContextFromImage(context, mem) == 0) {
+        return 0;
+    }
+
+    flPS2GetTextureInfoFromContext(context, mip_num + 1, th, flag);
+    lpflTexture->mem_handle = flPS2GetSystemMemoryHandle(lpflTexture->size, 2);
+    dst = flPS2GetSystemBuffAdrs(lpflTexture->mem_handle);
+    dw = lpflTexture->width;
+    dh = lpflTexture->height;
+
+    for (lp0 = 0; lp0 <= mip_num; lp0++) {
+        switch (context[lp0].bitdepth) {
+        case 0:
+            tex_size = dw * dh >> 1;
+            src = plTIM2GetPixelAddressFromImage(mem, lp0);
+
+            if (lpflTexture->dma_type == 0) {
+                flMemcpy(dst, src, tex_size);
+            } else {
+                flPS2Conv4_8_32(dw, dh, src, dst, 0);
+            }
+
+            break;
+
+        case 1:
+            tex_size = dw * dh;
+            src = plTIM2GetPixelAddressFromImage(mem, lp0);
+
+            if (lpflTexture->dma_type == 0) {
+                flMemcpy(dst, src, tex_size);
+            } else {
+                flPS2Conv4_8_32(dw, dh, src, dst, 1);
+            }
+
+            break;
+
+        case 2:
+            tex_size = dw * dh << 1;
+            src = plTIM2GetPixelAddressFromImage(mem, lp0);
+            flMemcpy(dst, src, tex_size);
+            break;
+
+        case 3:
+            tex_size = dw * dh << 2;
+            src = plTIM2GetPixelAddressFromImage(mem, lp0);
+            flMemcpy(dst, src, tex_size);
+            break;
+
+        case 4:
+            tex_size = dw * dh << 2;
+            src = plTIM2GetPixelAddressFromImage(mem, lp0);
+            flMemcpy(dst, src, tex_size);
+            flPS2ConvertAlpha(dst, dw, dh);
+            break;
+        }
+
+        dw >>= 1;
+        dh >>= 1;
+        dst = &dst[tex_size];
+    }
+
+    flPS2CreateTextureHandle(th, flag);
+
+    if ((lpflTexture->format == 0x14) || (lpflTexture->format == 0x13)) {
+        ph = flPS2GetPaletteHandle();
+        lpflPalette = &flPalette[((ph & 0xFFFF0000) >> 0x10) - 1];
+        plTIM2SetPaletteContextFromImage(&pal_context, mem);
+        flPS2GetPaletteInfoFromContext(&pal_context, ph, flag);
+        lpflPalette->mem_handle = flPS2GetSystemMemoryHandle(lpflPalette->size, 2);
+        dst = flPS2GetSystemBuffAdrs(lpflPalette->mem_handle);
+        src = plTIM2GetPaletteAddressFromImage(mem);
+        flMemcpy(dst, src, lpflPalette->size);
+
+        if (pal_context.bitdepth == 4) {
+            flPS2ConvertAlpha(dst, lpflPalette->width, lpflPalette->height);
+        }
+
+        flPS2CreatePaletteHandle(ph, flag);
+    }
+
+    return th | ph;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flPS2ConvertAlpha);
 
