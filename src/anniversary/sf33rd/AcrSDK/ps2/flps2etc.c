@@ -149,7 +149,9 @@ void *flAllocMemory(s32 size) {
     return fmsAllocMemory(&flFMS, size, 0);
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flGetFrame);
+s32 flGetFrame(FMS_FRAME *frame) {
+    return fmsGetFrame(&flFMS, 0, frame);
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flGetSpace);
 
