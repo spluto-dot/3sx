@@ -4,6 +4,7 @@
 #include "sf33rd/AcrSDK/common/memfound.h"
 #include "sf33rd/AcrSDK/common/plapx.h"
 #include "sf33rd/AcrSDK/common/plcommon.h"
+#include "sf33rd/AcrSDK/common/pltim2.h"
 #include "sf33rd/AcrSDK/ps2/flps2d3d.h"
 #include "sf33rd/AcrSDK/ps2/flps2debug.h"
 #include "sf33rd/AcrSDK/ps2/flps2dma.h"
@@ -18,9 +19,10 @@ void flCompact();
 void flPS2ConvertAlpha(void *lpPtr, s32 width, s32 height);
 u32 flCreateTextureFromApx(s8 *apx_file, u32 flag);
 u32 flCreateTextureFromApx_mem(void *mem, u32 flag);
+u32 flCreateTextureFromTim2(s8 *tim2_file, u32 flag);
+u32 flCreateTextureFromTim2_mem(void *mem, u32 flag);
 u32 flCreateTextureFromBMP(s8 *bmp_file, u32 flag);
 u32 flCreateTextureFromPIC(s8 *pic_file, u32 flag);
-u32 flCreateTextureFromTim2(s8 *tim2_file, u32 flag);
 
 void flPS2IopModuleLoad(s8 *fname, s32 args, s8 *argp, s32 type) {
     s32 lp0;
@@ -462,7 +464,16 @@ u32 flCreateTextureFromApx_mem(void *mem, u32 flag) {
     return th | ph;
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromTim2);
+u32 flCreateTextureFromTim2(s8 *tim2_file, u32 flag) {
+    s32 len = flFileLength(tim2_file);
+    s8 *file_ptr = mflTemporaryUse(len);
+
+    if (flFileRead(tim2_file, file_ptr, len) == 0) {
+        return 0;
+    }
+
+    return flCreateTextureFromTim2_mem(file_ptr, flag);
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromTim2_mem);
 
