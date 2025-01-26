@@ -1994,6 +1994,8 @@ extern struct _TASK task[11];                     // size: 0xDC, address: 0x6BD2
 extern u8 Order_Dir[148];                         // size: 0x94, address: 0x6BD5F0
 extern u8 Order_Timer[148];                       // size: 0x94, address: 0x6BD690
 extern u8 Order[148];                             // size: 0x94, address: 0x6BD730
+extern FLTexture flPalette[1088];                 // size: 0xFF00, address: 0x6C56D0
+extern FLTexture flTexture[256];                  // size: 0x3C00, address: 0x6D55D0
 extern FLPS2DrawStart flPs2DrawStart;             // size: 0x140, address: 0x6E24D0
 extern FLPS2DB flPs2Db[2];                        // size: 0x140, address: 0x6E2610
 extern FLPS2State flPs2State;                     // size: 0x470, address: 0x6E2750

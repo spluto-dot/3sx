@@ -2,9 +2,12 @@
 #include "common.h"
 #include "sf33rd/AcrSDK/common/fbms.h"
 #include "sf33rd/AcrSDK/common/memfound.h"
+#include "sf33rd/AcrSDK/common/plapx.h"
+#include "sf33rd/AcrSDK/common/plcommon.h"
 #include "sf33rd/AcrSDK/ps2/flps2d3d.h"
 #include "sf33rd/AcrSDK/ps2/flps2debug.h"
 #include "sf33rd/AcrSDK/ps2/flps2dma.h"
+#include "sf33rd/AcrSDK/ps2/flps2vram.h"
 #include "unknown.h"
 #include <cri_mw.h>
 #include <sifdev.h>
@@ -12,6 +15,7 @@
 #include <string.h>
 
 void flCompact();
+void flPS2ConvertAlpha(void *lpPtr, s32 width, s32 height);
 u32 flCreateTextureFromApx(s8 *apx_file, u32 flag);
 u32 flCreateTextureFromApx_mem(void *mem, u32 flag);
 u32 flCreateTextureFromBMP(s8 *bmp_file, u32 flag);
@@ -345,7 +349,118 @@ u32 flCreateTextureFromApx(s8 *apx_file, u32 flag) {
     return flCreateTextureFromApx_mem(file_ptr, flag);
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromApx_mem);
+u32 flCreateTextureFromApx_mem(void *mem, u32 flag) {
+    u8 *dst;
+    u8 *src;
+    plContext context[7];
+    plContext pal_context;
+    plContext tmp_context;
+    u32 th;
+    u32 ph;
+    FLTexture *lpflTexture;
+    FLTexture *lpflPalette;
+    s32 mip_num;
+    s32 lp0;
+    s32 dw;
+    s32 dh;
+    s32 tex_size;
+
+    th = 0;
+    ph = 0;
+    th = flPS2GetTextureHandle();
+    lpflTexture = &flTexture[(th & 0xFFFF) - 1];
+    mip_num = plAPXGetMipmapTextureNum(mem) - 1;
+
+    if (plAPXSetContextFromImage(&context[0], mem) == 0) {
+        return 0;
+    }
+
+    flPS2GetTextureInfoFromContext(&context[0], mip_num + 1, th, flag);
+    lpflTexture->mem_handle = flPS2GetSystemMemoryHandle(lpflTexture->size, 2);
+    dst = flPS2GetSystemBuffAdrs(lpflTexture->mem_handle);
+    dw = lpflTexture->width;
+    dh = lpflTexture->height;
+
+    for (lp0 = 0; lp0 <= mip_num; lp0++) {
+        switch (context[lp0].bitdepth) {
+        case 0:
+            tex_size = dw * dh >> 1;
+            src = plAPXGetPixelAddressFromImage(mem, lp0);
+
+            if (lpflTexture->dma_type == 0) {
+                flMemcpy(dst, src, tex_size);
+            } else {
+                flPS2Conv4_8_32(dw, dh, src, dst, 0);
+            }
+
+            break;
+
+        case 1:
+            tex_size = dw * dh;
+            src = plAPXGetPixelAddressFromImage(mem, lp0);
+
+            if (lpflTexture->dma_type == 0) {
+                flMemcpy(dst, src, tex_size);
+            } else {
+                flPS2Conv4_8_32(dw, dh, src, dst, 1);
+            }
+
+            break;
+
+        case 2:
+            tex_size = dw * dh << 1;
+            src = plAPXGetPixelAddressFromImage(mem, lp0);
+            flMemcpy(dst, src, tex_size);
+            break;
+
+        case 3:
+            tex_size = dw * dh << 2;
+            src = plAPXGetPixelAddressFromImage(mem, lp0);
+            flMemcpy(dst, src, tex_size);
+            break;
+
+        case 4:
+            tex_size = dw * dh << 2;
+            src = plAPXGetPixelAddressFromImage(mem, lp0);
+            flMemcpy(dst, src, tex_size);
+            flPS2ConvertAlpha(dst, dw, dh);
+            break;
+        }
+
+        dw >>= 1;
+        dh >>= 1;
+        dst = &dst[tex_size];
+    }
+
+    flPS2CreateTextureHandle(th, flag);
+
+    if ((lpflTexture->format == 0x14) || (lpflTexture->format == 0x13)) {
+        ph = flPS2GetPaletteHandle();
+        lpflPalette = &flPalette[((ph & 0xFFFF0000) >> 0x10) - 1];
+        plAPXSetPaletteContextFromImage(&pal_context, mem);
+        flPS2GetPaletteInfoFromContext(&pal_context, ph, flag);
+        lpflPalette->mem_handle = flPS2GetSystemMemoryHandle(lpflPalette->size, 2);
+        dst = flPS2GetSystemBuffAdrs(lpflPalette->mem_handle);
+        src = plAPXGetPaletteAddressFromImage(mem, 0);
+
+        if (lpflTexture->format == 0x13) {
+            tmp_context = pal_context;
+            pal_context.ptr = src;
+            tmp_context.ptr = dst;
+            flPS2ConvertContext(&pal_context, &tmp_context, 0, 1);
+        } else {
+            flMemcpy(dst, src, lpflPalette->size);
+
+            if (pal_context.bitdepth == 4) {
+                flPS2ConvertAlpha(dst, lpflPalette->width, lpflPalette->height);
+            }
+        }
+
+        flPS2CreatePaletteHandle(ph, flag);
+    }
+
+    return th | ph;
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromTim2);
 
