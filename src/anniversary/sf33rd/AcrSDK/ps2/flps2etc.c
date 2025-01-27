@@ -669,6 +669,15 @@ u32 flCreateTextureFromBMP_mem(void *mem, u32 flag) {
     return th;
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromPIC);
+u32 flCreateTextureFromPIC(s8 *pic_file, u32 flag) {
+    s32 len = flFileLength(pic_file);
+    s8 *file_ptr = mflTemporaryUse(len);
+
+    if (flFileRead(pic_file, file_ptr, len) == 0) {
+        return 0;
+    }
+
+    return flCreateTextureFromPIC_mem(file_ptr, flag);
+}
 
 INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromPIC_mem);
