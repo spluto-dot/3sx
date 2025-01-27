@@ -5,6 +5,7 @@
 #include "sf33rd/AcrSDK/common/plapx.h"
 #include "sf33rd/AcrSDK/common/plbmp.h"
 #include "sf33rd/AcrSDK/common/plcommon.h"
+#include "sf33rd/AcrSDK/common/plpic.h"
 #include "sf33rd/AcrSDK/common/pltim2.h"
 #include "sf33rd/AcrSDK/ps2/flps2d3d.h"
 #include "sf33rd/AcrSDK/ps2/flps2debug.h"
@@ -25,6 +26,7 @@ u32 flCreateTextureFromTim2_mem(void *mem, u32 flag);
 u32 flCreateTextureFromBMP(s8 *bmp_file, u32 flag);
 u32 flCreateTextureFromBMP_mem(void *mem, u32 flag);
 u32 flCreateTextureFromPIC(s8 *pic_file, u32 flag);
+u32 flCreateTextureFromPIC_mem(void *mem, u32 flag);
 
 void flPS2IopModuleLoad(s8 *fname, s32 args, s8 *argp, s32 type) {
     s32 lp0;
@@ -680,4 +682,131 @@ u32 flCreateTextureFromPIC(s8 *pic_file, u32 flag) {
     return flCreateTextureFromPIC_mem(file_ptr, flag);
 }
 
-INCLUDE_ASM("asm/anniversary/nonmatchings/sf33rd/AcrSDK/ps2/flps2etc", flCreateTextureFromPIC_mem);
+u32 flCreateTextureFromPIC_mem(void *mem, u32 flag) {
+    s32 x;
+    s32 y;
+    u8 *lpdst;
+    u8 *dst;
+    u8 *lpsrc;
+    plContext context;
+    u32 th = 0;
+    FLTexture *lpflTexture;
+
+    th = flPS2GetTextureHandle();
+    lpflTexture = &flTexture[(th & 0xFFFF) - 1];
+    plPICSetContextFromImage(&context, mem);
+
+    if ((context.bitdepth != 3) && (context.bitdepth != 4)) {
+        return 0;
+    }
+
+    flPS2GetTextureInfoFromContext(&context, 1, th, flag);
+    lpflTexture->mem_handle = flPS2GetSystemMemoryHandle(lpflTexture->size, 2);
+    dst = flPS2GetSystemBuffAdrs(lpflTexture->mem_handle);
+    lpsrc = plPICGetPixelAddressFromImage(mem);
+
+    for (y = 0; y < context.height; y++) {
+        {
+            s32 cx;
+            s32 ax;
+
+            lpdst = dst + (y * context.pitch);
+            x = 0;
+
+            while (x < context.width) {
+                ax = *lpsrc++;
+
+                if (ax == 0x80) {
+                    cx = (lpsrc[0] << 8) | lpsrc[1];
+                    lpsrc += 2;
+                    x += cx;
+
+                    while (cx-- != 0) {
+                        lpdst[0] = lpsrc[0];
+                        lpdst[1] = lpsrc[1];
+                        lpdst[2] = lpsrc[2];
+                        lpdst += context.bitdepth;
+                    }
+
+                    lpsrc += 3;
+                } else if (ax > 0x80) {
+                    cx = ax - 0x7F;
+                    x += cx;
+
+                    while (cx-- != 0) {
+                        lpdst[0] = lpsrc[0];
+                        lpdst[1] = lpsrc[1];
+                        lpdst[2] = lpsrc[2];
+                        lpdst += context.bitdepth;
+                    }
+
+                    lpsrc += 3;
+                } else {
+                    cx = ax + 1;
+                    x += cx;
+
+                    while (cx-- != 0) {
+                        lpdst[0] = lpsrc[0];
+                        lpdst[1] = lpsrc[1];
+                        lpdst[2] = lpsrc[2];
+                        lpdst += context.bitdepth;
+                        lpsrc += 3;
+                    }
+                }
+            }
+        }
+
+        {
+            s32 cx;
+            s32 ax;
+
+            if (context.bitdepth != 3) {
+                lpdst = dst + (y * context.pitch) + 3;
+                x = 0;
+
+                while (x < context.width) {
+                    ax = *lpsrc++;
+
+                    if (ax == 0x80) {
+                        cx = (lpsrc[0] << 8) | lpsrc[1];
+                        lpsrc += 2;
+                        x += cx;
+
+                        while (cx-- != 0) {
+                            lpdst[0] = lpsrc[0];
+                            lpdst += 4;
+                        }
+
+                        lpsrc += 1;
+                    } else if (ax > 0x80) {
+                        cx = ax - 0x7F;
+                        x += cx;
+
+                        while (cx-- != 0) {
+                            lpdst[0] = lpsrc[0];
+                            lpdst += 4;
+                        }
+
+                        lpsrc += 1;
+                    } else {
+                        cx = ax + 1;
+                        x += cx;
+
+                        while (cx-- != 0) {
+                            *lpdst = *lpsrc++;
+                            lpdst += 4;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (context.bitdepth == 4) {
+        dst = flPS2GetSystemBuffAdrs(lpflTexture->mem_handle);
+        flPS2ConvertAlpha(dst, lpflTexture->width, lpflTexture->height);
+    }
+
+    flPS2CreateTextureHandle(th, flag);
+    return th;
+}
