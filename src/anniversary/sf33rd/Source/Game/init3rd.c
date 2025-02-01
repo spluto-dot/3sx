@@ -1,8 +1,11 @@
 #include "sf33rd/Source/Game/init3rd.h"
+#include "sf33rd/Source/Game/DEMO00.h"
 #include "sf33rd/Source/Game/Entry.h"
 #include "sf33rd/Source/Game/GD3rd.h"
 #include "sf33rd/Source/Game/Reset.h"
+#include "sf33rd/Source/Game/SYS_sub.h"
 #include "sf33rd/Source/Game/SYS_sub2.h"
+#include "sf33rd/Source/Game/debug/Debug.h"
 #include "sf33rd/Source/Game/main.h"
 #include "sf33rd/Source/Game/texgroup.h"
 
@@ -97,7 +100,7 @@ void Init_Task_1st(struct _TASK *task_ptr) {
     Setup_Limit_Time();
     Keep_Zoom_X = Screen_Zoom_X;
     Reset_Bootrom = 1;
-    cpReadyTask(2, Reset_Task);
+    cpReadyTask(RESET_TASK_NUM, Reset_Task);
     Switch_Type = 0;
     Reset_Status[0] = 0;
     Reset_Status[1] = 0;
@@ -254,14 +257,14 @@ void Init_Task_Test2(struct _TASK *task_ptr) {
 }
 
 void Init_Task_End(struct _TASK *task_ptr) {
-    cpReadyTask(5, Game_Task);
+    cpReadyTask(GAME_TASK_NUM, Game_Task);
     task_ptr->r_no[0] += 1;
     task_ptr->r_no[1] = 0;
     G_No[0] = 1;
-    cpReadyTask(1, Entry_Task);
+    cpReadyTask(ENTRY_TASK_NUM, Entry_Task);
 
     if (Usage == 7) {
-        cpReadyTask(9, Debug_Task);
+        cpReadyTask(DEBUG_TASK_NUM, Debug_Task);
     }
 
     cpExitTask(0);
