@@ -729,15 +729,33 @@ segments:
       - [0x3697E8, data, sdk/libcdvd/cdvd036]
       - [0x3697F8, data, sdk/libmc/libmc]
 
-      - [0x369820, data, data_369820]
+      - [0x369820, data, sf33rd/Source/Game/appear]
+      - [0x3698D0, data, sf33rd/Source/Game/bg_data]
+      - [0x3699E0, data, sf33rd/Source/Game/bg_sub]
+      - [0x369A70, data, sf33rd/Source/Game/cmd_data]
+      - [0x36BD70, data, sf33rd/Source/Game/Com_Data]
+      - [0x36C4F0, data, sf33rd/Source/Game/DEMO00]
+      - [0x36C580, data, sf33rd/Source/Game/DIR_DATA]
+      - [0x36C940, data, sf33rd/Source/Game/EFF10]
+      - [0x36CAC0, data, sf33rd/Source/Game/EFF23]
+      - [0x36CB80, data, sf33rd/Source/Game/EFF61]
+      - [0x36CC90, data, sf33rd/Source/Game/EFF63]
+      - [0x36CD90, data, sf33rd/Source/Game/EFF64]
+      - [0x36D190, data, sf33rd/Source/Game/Eff99]
+      - [0x36D340, data, sf33rd/Source/Game/EFFA3]
+      - [0x36D620, data, sf33rd/Source/Game/EFFA8]
+      - [0x36D860, data, sf33rd/Source/Game/EFFB6]
+      - [0x36F860, data, sf33rd/Source/Game/effe6]
+      - [0x36F8F0, data, sf33rd/Source/Game/end_data]
       - [0x36F9F0, .data, sf33rd/Source/Game/EX_DATA]
       - [0x370160, data, sf33rd/Source/Game/IOConv]
       - [0x370220, data, sf33rd/Source/Game/OPENING]
       - [0x3703A0, data, sf33rd/Source/Game/PulPul]
       - [0x370620, data, sf33rd/Source/Game/Sound3rd]
-      - [0x370CE0, data, data_370CE0]
+      - [0x370CE0, data, data_370CE0] # PLS03?
       - [0x3753C0, data, data_3753C0]
-      - [0x375980, data, data_375980]
+      - [0x375980, data, data_375980] # PLS02?
+      - [0x375E80, data, data_375E80] # HITCHECK or HITEFPL?
       - [0x375FC0, data, data_375FC0]
       - [0x376200, data, data_376200]
       - [0x376E30, data, data_376E30]
@@ -818,12 +836,61 @@ segments:
       - [0x3C3818, data, gcc/libc/locale]
       - [0x3C3820, data, gcc/libc/mallocr]
       - [0x3C3C78, data, gcc/libc/mlock]
-      - [0x3C3C80, data, data_3C3C80]
+
+      - [0x3C3C80, data, sf33rd/AcrSDK/ps2/flps2debug]
+      - [0x3C3D10, data, sf33rd/AcrSDK/ps2/flps2vram]
+
       - [0x3C4310, data, sdk/libdbc/libdbc]
       - [0x3C4328, data, sdk/libpad2/libpad2]
-      - [0x3C4360, data, data_3C4360]
+
+      - [0x3C4360, data, sf33rd/Source/PS2/mc/knjsub]
+      - [0x3C4670, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL03]
+      - [0x3C4A00, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL01]
+      - [0x3C4DB0, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL02]
+      - [0x3C5160, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL00]
+      - [0x3C5560, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL04]
+      - [0x3C5940, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL05]
+      - [0x3C5D40, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL06]
+      - [0x3C6270, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL07]
+      - [0x3C6620, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL08]
+      - [0x3C6B00, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL09]
+      - [0x3C6EE0, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL10]
+      - [0x3C7310, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL11]
+      - [0x3C7710, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL12]
+      - [0x3C7B90, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL13]
+      - [0x3C7FC0, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL14]
+      - [0x3C8350, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL15]
+      - [0x3C8880, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL16]
+      - [0x3C8E20, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL17]
+      - [0x3C9180, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL18]
+      - [0x3C95B0, data, sf33rd/Source/PS2/cseDataFiles/PHD_PL19]
+      - [0x3C99B0, data, sf33rd/Source/PS2/cseDataFiles/PHD_SE]
+      - [0x3CAD90, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL00]
+      - [0x3CB5B0, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL01]
+      - [0x3CBDD0, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL02]
+      - [0x3CC5F0, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL03]
+      - [0x3CCE10, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL04]
+      - [0x3CD630, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL05]
+      - [0x3CDE50, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL06]
+      - [0x3CE670, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL07]
+      - [0x3CEE90, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL08]
+      - [0x3CF6B0, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL09]
+      - [0x3CFED0, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL10]
+      - [0x3D06F0, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL11]
+      - [0x3D0F10, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL12]
+      - [0x3D1730, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL13]
+      - [0x3D1F50, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL14]
+      - [0x3D2770, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL15]
+      - [0x3D2F90, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL16]
+      - [0x3D37B0, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL17]
+      - [0x3D3FD0, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL18]
+      - [0x3D47F0, data, sf33rd/Source/PS2/cseDataFiles/TSB_PL19]
+      - [0x3D5010, data, sf33rd/Source/PS2/cseDataFiles/TSB_SE]
       - [0x3D6A10, .data, sf33rd/Source/Common/FileSizeAFS]
-      - [0x3D8210, data, data_3D8210]
+      - [0x3D8210, data, sf33rd/Source/PS2/mc/msgtblj]
+      - [0x3D82A0, data, sf33rd/Source/PS2/mc/msgtble]
+      - [0x3D8330, data, sf33rd/Source/Game/Message3rd/C_USA/msgSysDir_usa]
+      - [0x3D8510, data, sf33rd/Source/Game/Message3rd/C_USA/msgExtra_usa]
 
       # .rodata
 
@@ -1266,7 +1333,23 @@ segments:
       - [0x45FCB0, rodata, sdk/libdbc/libdbc]
       - [0x45FF38, rodata, sdk/libpad2/libpad2]
 
-      - [0x45FFA0, rodata, rodata_45FFA0]
+      - [0x45FFA0, rodata, sf33rd/Source/PS2/mc/mcsub]
+      - [0x460270, rodata, sf33rd/Source/PS2/mc/knjsub]
+      - [0x4602B8, rodata, sf33rd/Source/PS2/mc/savesub]
+      - [0x460500, rodata, sf33rd/Source/PS2/mc/msgsub]
+      - [0x460520, rodata, sf33rd/Source/Game/vm]
+      - [0x460530, rodata, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/eflSifRpc]
+      - [0x460648, rodata, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/eflSpuMap]
+      - [0x460678, rodata, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/cse]
+      - [0x460708, rodata, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/emlRefPhd]
+      - [0x460728, rodata, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/emlRpcQueue]
+      - [0x460768, rodata, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/emlSndDrv]
+      - [0x4607A0, rodata, sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/emlTSB]
+      - [0x4607D8, rodata, sf33rd/Source/PS2/mc/msgtblj]
+      - [0x461008, rodata, sf33rd/Source/PS2/mc/msgtble]
+      - [0x4619C0, rodata, sf33rd/Source/Common/PPGWork]
+      - [0x4619D8, rodata, sf33rd/Source/PS2/reboot]
+      - [0x4619F0, rodata, rodata_4619F0]
 
       # .sdata
 
@@ -1401,86 +1484,130 @@ segments:
       - [0x474FF0, sdata, sf33rd/Source/PS2/mc/msgtblj]
       - [0x4752F0, sdata, sf33rd/Source/PS2/mc/msgtble]
       - [0x4755A0, sdata, sf33rd/Source/PS2/reboot]
-      - [0x4755B0, sdata, sdata_4755B0]
-      # - [0x4755B0, sdata, sf33rd/Source/Game/Message3rd/C_USA/msgTable_usa]
+      - [0x4755B0, sdata, sf33rd/Source/Game/Message3rd/C_USA/msgTable_usa] # Includes segment below ⬇️
       # - [0x4756B0, sdata, sf33rd/Source/Game/Message3rd/C_USA/msgMenu_usa]
-      # - [0x4756D0, sdata, sf33rd/Source/Game/Message3rd/C_USA/msgSysDir_usa]
-      # - [0x475A80, sdata, sf33rd/Source/Game/Message3rd/C_USA/msgExtra_usa]
-      # - [0x475B50, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL00End_usa]
+      - [0x4756D0, sdata, sf33rd/Source/Game/Message3rd/C_USA/msgSysDir_usa]
+      - [0x475A80, sdata, sf33rd/Source/Game/Message3rd/C_USA/msgExtra_usa]
+      - [0x475B50, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL00End_usa] # Includes segment below ⬇️
       # - [0x475C30, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL00Tlk_usa]
-      # - [0x475CB0, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL00Win_usa]
-      # - [0x475E28, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL01End_usa]
-      # - [0x475F08, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL01Tlk_usa]
-      # - [0x475F58, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL01Win_usa]
-      # - [0x476088, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL02End_usa]
-      # - [0x476128, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL02Tlk_usa]
-      # - [0x476178, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL02Win_usa]
-      # - [0x4762A8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL03End_usa]
-      # - [0x4763D0, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL03Tlk_usa]
-      # - [0x476430, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL03Win_usa]
-      # - [0x476558, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL04End_usa]
-      # - [0x4765F8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL04Tlk_usa]
-      # - [0x476658, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL04Win_usa]
-      # - [0x476788, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL05End_usa]
-      # - [0x476858, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL05Tlk_usa]
-      # - [0x4768B8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL05Win_usa]
-      # - [0x4769E8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL06End_usa]
-      # - [0x476AB8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL06Tlk_usa]
-      # - [0x476B18, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL06Win_usa]
-      # - [0x476C48, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL07End_usa]
-      # - [0x476D18, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL07Tlk_usa]
-      # - [0x476D80, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL07Win_usa]
-      # - [0x476EA8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL08End_usa]
-      # - [0x476F48, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL08Tlk_usa]
-      # - [0x476FA8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL08Win_usa]
-      # - [0x4770D8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL09End_usa]
-      # - [0x477178, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL09Tlk_usa]
-      # - [0x4771E0, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL09Win_usa]
-      # - [0x477308, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL10End_usa]
-      # - [0x477410, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL10Tlk_usa]
-      # - [0x477480, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL10Win_usa]
-      # - [0x4775A8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL11End_usa]
-      # - [0x477678, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL11Tlk_usa]
-      # - [0x4776C8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL11Win_usa]
-      # - [0x4777F8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL12End_usa]
-      # - [0x4778A0, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL12Tlk_usa]
-      # - [0x477910, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL12Win_usa]
-      # - [0x477A38, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL13End_usa]
-      # - [0x477AE8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL13Tlk_usa]
-      # - [0x477B50, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL13Win_usa]
-      # - [0x477C78, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL14End_usa]
-      # - [0x477D18, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL14Win_usa]
-      # - [0x477E38, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL15End_usa]
-      # - [0x477EF0, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL15Tlk_usa]
-      # - [0x477F60, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL15Win_usa]
-      # - [0x478088, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL16End_usa]
-      # - [0x478180, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL16Tlk_usa]
-      # - [0x4781D8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL16Win_usa]
-      # - [0x478308, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL17End_usa]
-      # - [0x478410, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL17Win_usa]
-      # - [0x478518, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL18End_usa]
-      # - [0x478600, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL18Tlk_usa]
-      # - [0x478658, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL18Win_usa]
-      # - [0x478768, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL19End_usa]
-      # - [0x478860, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL19Tlk_usa]
-      # - [0x4788D0, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL19Win_usa]
+      - [0x475CB0, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL00Win_usa]
+      - [0x475E28, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL01End_usa]
+      - [0x475F08, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL01Tlk_usa]
+      - [0x475F58, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL01Win_usa]
+      - [0x476088, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL02End_usa]
+      - [0x476128, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL02Tlk_usa]
+      - [0x476178, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL02Win_usa]
+      - [0x4762A8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL03End_usa]
+      - [0x4763D0, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL03Tlk_usa]
+      - [0x476430, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL03Win_usa]
+      - [0x476558, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL04End_usa]
+      - [0x4765F8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL04Tlk_usa]
+      - [0x476658, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL04Win_usa]
+      - [0x476788, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL05End_usa]
+      - [0x476858, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL05Tlk_usa]
+      - [0x4768B8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL05Win_usa]
+      - [0x4769E8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL06End_usa]
+      - [0x476AB8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL06Tlk_usa]
+      - [0x476B18, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL06Win_usa]
+      - [0x476C48, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL07End_usa]
+      - [0x476D18, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL07Tlk_usa]
+      - [0x476D80, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL07Win_usa]
+      - [0x476EA8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL08End_usa]
+      - [0x476F48, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL08Tlk_usa]
+      - [0x476FA8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL08Win_usa]
+      - [0x4770D8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL09End_usa]
+      - [0x477178, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL09Tlk_usa]
+      - [0x4771E0, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL09Win_usa]
+      - [0x477308, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL10End_usa]
+      - [0x477410, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL10Tlk_usa]
+      - [0x477480, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL10Win_usa]
+      - [0x4775A8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL11End_usa]
+      - [0x477678, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL11Tlk_usa]
+      - [0x4776C8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL11Win_usa]
+      - [0x4777F8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL12End_usa]
+      - [0x4778A0, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL12Tlk_usa]
+      - [0x477910, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL12Win_usa]
+      - [0x477A38, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL13End_usa]
+      - [0x477AE8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL13Tlk_usa]
+      - [0x477B50, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL13Win_usa]
+      - [0x477C78, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL14End_usa]
+      - [0x477D18, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL14Win_usa]
+      - [0x477E38, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL15End_usa]
+      - [0x477EF0, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL15Tlk_usa]
+      - [0x477F60, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL15Win_usa]
+      - [0x478088, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL16End_usa]
+      - [0x478180, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL16Tlk_usa]
+      - [0x4781D8, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL16Win_usa]
+      - [0x478308, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL17End_usa]
+      - [0x478410, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL17Win_usa]
+      - [0x478518, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL18End_usa]
+      - [0x478600, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL18Tlk_usa]
+      - [0x478658, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL18Win_usa]
+      - [0x478768, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL19End_usa]
+      - [0x478860, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL19Tlk_usa]
+      - [0x4788D0, sdata, sf33rd/Source/Game/Message3rd/C_USA/PL19Win_usa]
 
       # .sbss
       # (starts at _fbss)
 
       - { type: .sbss, vram: 0x578980, name: sf33rd/AcrSDK/common/memfound }
       - { type: .sbss, vram: 0x5789A8, name: sf33rd/AcrSDK/common/mlPAD }
-      - { type: sbss, vram: 0x578A10, name: sbss_578A10 }
+      - { type: .sbss, vram: 0x578A10, name: sf33rd/AcrSDK/common/prilay }
       - { type: .sbss, vram: 0x578A20, name: sf33rd/Source/Game/AcrUtil }
-      - { type: sbss, vram: 0x578A80, name: sbss_578A80 }
+      - { type: sbss, vram: 0x578A80, name: sf33rd/Source/Game/appear }
+      - { type: sbss, vram: 0x578A9C, name: sf33rd/Source/Game/BCD }
+      - { type: sbss, vram: 0x578AA0, name: sf33rd/Source/Game/bg }
+      - { type: sbss, vram: 0x578C20, name: sf33rd/Source/Game/bg_data }
+      - { type: sbss, vram: 0x578CD0, name: sf33rd/Source/Game/CHARID }
+      - { type: sbss, vram: 0x578D20, name: sf33rd/Source/Game/CHARSET }
+      - { type: sbss, vram: 0x578D24, name: sf33rd/Source/Game/Ck_Pass }
+      - { type: sbss, vram: 0x578D28, name: sf33rd/Source/Game/cmb_win }
+      - { type: sbss, vram: 0x578DBC, name: sf33rd/Source/Game/cmd_data }
+      - { type: sbss, vram: 0x578DD8, name: sf33rd/Source/Game/color3rd }
+      - { type: sbss, vram: 0x578E48, name: sf33rd/Source/Game/Com_Sub }
       - { type: .sbss, vram: 0x578E50, name: sf33rd/Source/Game/Continue }
-      - { type: sbss, vram: 0x578E54, name: sbss_578E54 }
+      - { type: sbss, vram: 0x578E54, name: sf33rd/Source/Game/count }
+      - { type: sbss, vram: 0x578E80, name: sf33rd/Source/Game/DC_Ghost }
+      - { type: sbss, vram: 0x578EC0, name: sf33rd/Source/Game/DEMO00 }
+      - { type: sbss, vram: 0x578ED0, name: sf33rd/Source/Game/EFF45 }
+      - { type: sbss, vram: 0x578F00, name: sf33rd/Source/Game/EFF56 }
+      - { type: sbss, vram: 0x578F0C, name: sf33rd/Source/Game/EFF77 }
+      - { type: sbss, vram: 0x578F10, name: sf33rd/Source/Game/Eff79 }
+      - { type: sbss, vram: 0x578F18, name: sf33rd/Source/Game/Eff95 }
+      - { type: sbss, vram: 0x578F20, name: sf33rd/Source/Game/EffA2 }
+      - { type: sbss, vram: 0x578F30, name: sf33rd/Source/Game/EFFA6 }
+      - { type: sbss, vram: 0x578F48, name: sf33rd/Source/Game/effb2 }
+      - { type: sbss, vram: 0x578F50, name: sf33rd/Source/Game/effb3 }
+      - { type: sbss, vram: 0x578F54, name: sf33rd/Source/Game/EFFB8 }
+      - { type: sbss, vram: 0x578F70, name: sf33rd/Source/Game/effb9 }
+      - { type: sbss, vram: 0x578F80, name: sf33rd/Source/Game/EFFECT }
+      - { type: sbss, vram: 0x578FB8, name: sf33rd/Source/Game/EFFF9 }
+      - { type: sbss, vram: 0x578FD4, name: sf33rd/Source/Game/EFFH6 }
+      - { type: sbss, vram: 0x578FE0, name: sf33rd/Source/Game/effl8 }
+      - { type: sbss, vram: 0x578FE8, name: sf33rd/Source/Game/end_0 }
+      - { type: sbss, vram: 0x578FF8, name: sf33rd/Source/Game/end_14 }
+      - { type: sbss, vram: 0x579000, name: sf33rd/Source/Game/end_5 }
+      - { type: sbss, vram: 0x57900C, name: sf33rd/Source/Game/end_data }
       - { type: .sbss, vram: 0x57903C, name: sf33rd/Source/Game/Entry }
       - { type: .sbss, vram: 0x579078, name: sf33rd/Source/Game/GameOver }
       - { type: .sbss, vram: 0x57907C, name: sf33rd/Source/Game/GD3rd }
-      - { type: sbss, vram: 0x5790A0, name: sbss_5790A0 }
+      - { type: sbss, vram: 0x5790A0, name: sf33rd/Source/Game/Grade }
+      - { type: sbss, vram: 0x5790F4, name: sf33rd/Source/Game/HITCHECK }
       - { type: .sbss, vram: 0x579220, name: sf33rd/Source/Game/init3rd }
-      - { type: sbss, vram: 0x579230, name: sbss_579230 }
+      - { type: sbss, vram: 0x579230, name: sf33rd/Source/Game/IOConv }
+      - { type: sbss, vram: 0x57929C, name: sf33rd/Source/Game/LOSE_PL }
+      - { type: sbss, vram: 0x5792A8, name: sf33rd/Source/Game/Manage }
+      - { type: sbss, vram: 0x5792B0, name: sf33rd/Source/Game/menu }
+      - { type: sbss, vram: 0x5792C0, name: sf33rd/Source/Game/MTRANS }
+      - { type: sbss, vram: 0x5792E8, name: sf33rd/Source/Game/n_input }
+      - { type: sbss, vram: 0x5793F4, name: sf33rd/Source/Game/Next_CPU }
+      - { type: sbss, vram: 0x579400, name: sf33rd/Source/Game/OPENING }
+      - { type: sbss, vram: 0x579474, name: sf33rd/Source/Game/Pause }
+      - { type: sbss, vram: 0x579480, name: sf33rd/Source/Game/PLCNT }
+      - { type: sbss, vram: 0x5795D8, name: sf33rd/Source/Game/plpat14 }
+      - { type: sbss, vram: 0x5795DC, name: sf33rd/Source/Game/PulPul }
+      - { type: sbss, vram: 0x579678, name: sf33rd/Source/Game/RAMCNT }
+      - { type: sbss, vram: 0x579730, name: sf33rd/Source/Game/RANKING }
       - { type: .sbss, vram: 0x579758, name: sf33rd/Source/Game/Reset }
       - { type: sbss, vram: 0x579760, name: sbss_579760 }
       - { type: .sbss, vram: 0x579868, name: sf33rd/Source/Game/SLOWF }
