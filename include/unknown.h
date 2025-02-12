@@ -1525,6 +1525,100 @@ typedef struct {
     s8 code[4]; // offset 0x0, size 0x4
 } UNK_14;
 
+typedef struct {
+    // total size: 0x14
+    s8 be;        // offset 0x0, size 0x1
+    u8 c_mode;    // offset 0x1, size 0x1
+    u16 total;    // offset 0x2, size 0x2
+    u16 *handle;  // offset 0x4, size 0x4
+    s32 ixNum1st; // offset 0x8, size 0x4
+    u8 *srcAdrs;  // offset 0xC, size 0x4
+    u32 srcSize;  // offset 0x10, size 0x4
+} UNK_16;
+
+typedef union {
+    u32 b32;    // offset 0x0, size 0x4
+    u16 b16[2]; // offset 0x0, size 0x4
+    u8 b8[4];   // offset 0x0, size 0x4
+} UNK_17;
+
+typedef struct {
+    // total size: 0x20
+    s8 be;          // offset 0x0, size 0x1
+    u8 flags;       // offset 0x1, size 0x1
+    s16 arCnt;      // offset 0x2, size 0x2
+    s16 arInit;     // offset 0x4, size 0x2
+    u16 total;      // offset 0x6, size 0x2
+    UNK_17 *handle; // offset 0x8, size 0x4
+    s32 ixNum1st;   // offset 0xC, size 0x4
+    u16 textures;   // offset 0x10, size 0x2
+    u16 accnum;     // offset 0x12, size 0x2
+    u32 *offset;    // offset 0x14, size 0x4
+    u8 *srcAdrs;    // offset 0x18, size 0x4
+    u32 srcSize;    // offset 0x1C, size 0x4
+} UNK_18;
+
+typedef struct {
+    // total size: 0x8
+    UNK_18 *tex; // offset 0x0, size 0x4
+    UNK_16 *pal; // offset 0x4, size 0x4
+} UNK_15;
+
+typedef struct {
+    // total size: 0x18
+    f32 x;   // offset 0x0, size 0x4
+    f32 y;   // offset 0x4, size 0x4
+    f32 z;   // offset 0x8, size 0x4
+    f32 u;   // offset 0xC, size 0x4
+    f32 v;   // offset 0x10, size 0x4
+    u32 col; // offset 0x14, size 0x4
+} Polygon;
+
+typedef struct {
+    // total size: 0x14
+    f32 x; // offset 0x0, size 0x4
+    f32 y; // offset 0x4, size 0x4
+    f32 z; // offset 0x8, size 0x4
+    f32 s; // offset 0xC, size 0x4
+    f32 t; // offset 0x10, size 0x4
+} Vertex;
+
+typedef struct {
+    // total size: 0x8
+    f32 x; // offset 0x0, size 0x4
+    f32 y; // offset 0x4, size 0x4
+} PAL_CURSOR_P;
+
+typedef union {
+    u32 color; // offset 0x0, size 0x4
+    struct {
+        // total size: 0x4
+        s16 u; // offset 0x0, size 0x2
+        s16 v; // offset 0x2, size 0x2
+    } tex;     // offset 0x0, size 0x4
+    struct {
+        // total size: 0x4
+        u8 b; // offset 0x0, size 0x1
+        u8 g; // offset 0x1, size 0x1
+        u8 r; // offset 0x2, size 0x1
+        u8 a; // offset 0x3, size 0x1
+    } argb;   // offset 0x0, size 0x4
+} PAL_CURSOR_COL;
+
+typedef struct {
+    // total size: 0x30
+    PAL_CURSOR_P pal_cursor_p[4];     // offset 0x0, size 0x20
+    PAL_CURSOR_COL pal_cursor_col[4]; // offset 0x20, size 0x10
+} PAL_CURSOR_TBL;
+
+typedef struct {
+    // total size: 0x10
+    PAL_CURSOR_P *p;     // offset 0x0, size 0x4
+    PAL_CURSOR_COL *col; // offset 0x4, size 0x4
+    PAL_CURSOR_COL *tex; // offset 0x8, size 0x4
+    u32 num;             // offset 0xC, size 0x4
+} PAL_CURSOR;
+
 // .text
 
 void mflInit(void *mem_ptr, s32 memsize, s32 memalign);                     // Range: 0x115FB0 -> 0x115FFC
@@ -1548,10 +1642,13 @@ void init_color_trans_req();        // Range: 0x19F600 -> 0x19F694
 void palCreateGhost();              // Range: 0x19F8D0 -> 0x19FB50
 
 // DC_Ghost.c
-void njSetBackColor(u32 c0, u32 c1, u32 c2);            // Range: 0x1BFF30 -> 0x1BFFBC
-void njdp2d_init();                                     // Range: 0x1C0330 -> 0x1C034C
-void njdp2d_draw();                                     // Range: 0x1C0350 -> 0x1C0568
-void njdp2d_sort(f32 *pos, f32 pri, u32 col, s32 flag); // Range: 0x1C0570 -> 0x1C0A0C
+void njSetBackColor(u32 c0, u32 c1, u32 c2);                                       // Range: 0x1BFF30 -> 0x1BFFBC
+void njDrawTexture(Polygon *polygon, s32 /* unused */, s32 tex, s32 /* unused */); // Range: 0x1C0130 -> 0x1C01E8
+void njdp2d_init();                                                                // Range: 0x1C0330 -> 0x1C034C
+void njdp2d_draw();                                                                // Range: 0x1C0350 -> 0x1C0568
+void njdp2d_sort(f32 *pos, f32 pri, u32 col, s32 flag);                            // Range: 0x1C0570 -> 0x1C0A0C
+void njDrawPolygon2D(PAL_CURSOR *p, s32 /* unused */, f32 pri, u32 attr);          // Range: 0x1C0A10 -> 0x1C0A68
+void njSetPaletteBankNumG(u32 globalIndex, s32 bank);                              // Range: 0x1C0A70 -> 0x1C0AA8
 
 s32 effect_04_init(s16 Death_Type, s16 cg_type, s16 sync_bg, s16 priority); // Range: 0x1C56A0 -> 0x1C5818
 // DWARF says disp_index and cursor_id are s16, but decompilation suggests otherwise
@@ -1689,6 +1786,8 @@ s32 adx_now_playend();                  // Range: 0x397AF0 -> 0x397B50
 s32 bgmSkipCheck(s32 code);             // Range: 0x397BC0 -> 0x397C08
 void SsAllNoteOff();                    // Range: 0x397C10 -> 0x397C30
 void SsRequest(u16 ReqNumber);          // Range: 0x398030 -> 0x398088
+void Standby_BGM(s16 num);              // Range: 0x3980F0 -> 0x398150
+void Go_BGM();                          // Range: 0x398150 -> 0x398190
 void SsBgmFadeOut(u16 time);            // Range: 0x398290 -> 0x398304
 void SsBgmHalfVolume(s16 flag);         // Range: 0x3983A0 -> 0x3983EC
 void SE_cursor_move();                  // Range: 0x3983F0 -> 0x398414
@@ -1717,12 +1816,22 @@ void zlib_Initialize(void *tempAdrs, s32 tempSize); // Range: 0x3B76E0 -> 0x3B77
 void mmSystemInitialize(); // Range: 0x3C0080 -> 0x3C008C
 void mmHeapInitialize(_MEMMAN_OBJ *mmobj, u8 *adrs, s32 size, s32 unit,
                       s8 *format);                   // Range: 0x3C0090 -> 0x3C020C
+void mmDebWriteTag();                                // Range: 0x3C0280 -> 0x3C0290
 u8 *mmAlloc(_MEMMAN_OBJ *mmobj, s32 size, s32 flag); // Range: 0x3C02D0 -> 0x3C037C
 void mmFree(_MEMMAN_OBJ *mmobj, u8 *adrs);           // Range: 0x3C0560 -> 0x3C05D8
 
 // PPGFile.c
-void ppg_Initialize(void *lcmAdrs, s32 lcmSize); // Range: 0x3C05E0 -> 0x3C0650
-void ppgMakeConvTableTexDC();                    // Range: 0x3C3620 -> 0x3C3768
+void ppg_Initialize(void *lcmAdrs, s32 lcmSize);         // Range: 0x3C05E0 -> 0x3C0650
+void ppgSourceDataReleased(UNK_15 *dlist);               // Range: 0x3C0800 -> 0x3C0870
+void ppgSetupCurrentDataList(UNK_15 *dlist);             // Range: 0x3C0870 -> 0x3C088C
+void ppgSetupCurrentPaletteNumber(UNK_16 *pal, s32 num); // Range: 0x3C0890 -> 0x3C0904
+s32 ppgSetupPalChunk(UNK_16 *pch, u8 *adrs, s32 size, s32 ixNum1st, s32 num,
+                     s32 /* unused */); // Range: 0x3C2020 -> 0x3C271C
+void ppgMakeConvTableTexDC();           // Range: 0x3C3620 -> 0x3C3768
+s32 ppgSetupTexChunk_1st(UNK_18 *tch, u8 *adrs, s32 size, s32 ixNum1st, s32 ixNums, s32 ar,
+                         s32 arcnt);                             // Range: 0x3C3900 -> 0x3C3F3C
+s32 ppgSetupTexChunk_2nd(UNK_18 *tch, s32 ixNum);                // Range: 0x3C3F90 -> 0x3C4104
+s32 ppgSetupTexChunk_3rd(UNK_18 *tch, s32 ixNum, u32 attribute); // Range: 0x3C4110 -> 0x3C4460
 
 // ps2Quad.c
 void CP3toPS2DrawOn();    // Range: 0x3C64B0 -> 0x3C64C0
@@ -1810,6 +1919,7 @@ extern UNK_14 rank_name_w[2];             // size: 0x8, address: 0x5792E8
 extern s16 Name_00[2];                    // size: 0x4, address: 0x579374
 extern NAME_WK name_wk[2];                // size: 0x64, address: 0x579390
 extern s16 title_tex_flag;                // size: 0x2, address: 0x579464
+extern s16 op_timer0;                     // size: 0x2, address: 0x579468
 extern s16 appear_type;                   // size: 0x2, address: 0x5795C8
 extern s16 pcon_rno[4];                   // size: 0x8, address: 0x5795D0
 extern PPWORK ppwork[2];                  // size: 0x68, address: 0x579610
@@ -1889,6 +1999,7 @@ extern s16 Sel_Arts_Complete[2];          // size: 0x4, address: 0x57A000
 extern s16 ENTRY_X;                       // size: 0x2, address: 0x57A014
 extern s16 F_Timer[2];                    // size: 0x4, address: 0x57A018
 extern s16 E_Timer;                       // size: 0x2, address: 0x57A01C
+extern s16 D_Timer;                       // size: 0x2, address: 0x57A028
 extern s16 G_Timer;                       // size: 0x2, address: 0x57A02C
 extern s16 Round_Level;                   // size: 0x2, address: 0x57A038
 extern s16 Time_in_Time;                  // size: 0x2, address: 0x57A03C
@@ -1917,6 +2028,7 @@ extern s8 Menu_Page;                      // size: 0x1, address: 0x57A0C0
 extern u8 Mode_Type;                      // size: 0x1, address: 0x57A0C4
 extern s8 Menu_Cursor_Move;               // size: 0x1, address: 0x57A0D8
 extern u8 Play_Game;                      // size: 0x1, address: 0x57A0DC
+extern u8 Disappear_LOGO;                 // size: 0x1, address: 0x57A0E4
 extern u8 Replay_Status[2];               // size: 0x2, address: 0x57A0E8
 extern s8 Menu_Cursor_Y[2];               // size: 0x2, address: 0x57A0EC
 extern s8 Menu_Cursor_X[2];               // size: 0x2, address: 0x57A0F0
@@ -1979,6 +2091,7 @@ extern s8 Lost_Round[2];                  // size: 0x2, address: 0x57A410
 extern s8 Deley_Shot_Timer[2];            // size: 0x2, address: 0x57A414
 extern s8 Deley_Shot_No[2];               // size: 0x2, address: 0x57A418
 extern u8 Final_Result_id;                // size: 0x1, address: 0x57A480
+extern u8 Weak_PL;                        // size: 0x1, address: 0x57A48C
 extern u8 CC_Value[2];                    // size: 0x2, address: 0x57A494
 extern u8 paring_bonus_r[2];              // size: 0x2, address: 0x57A4B0
 extern u8 paring_counter[2];              // size: 0x2, address: 0x57A4B4
@@ -1987,6 +2100,7 @@ extern s8 No_Death;                       // size: 0x1, address: 0x57A51C
 extern s8 PB_Music_Off;                   // size: 0x1, address: 0x57A520
 extern s8 Round_Operator[2];              // size: 0x2, address: 0x57A54C
 extern s8 Operator_Status[2];             // size: 0x2, address: 0x57A550
+extern s8 Stop_SG;                        // size: 0x1, address: 0x57A554
 extern u8 Usage;                          // size: 0x1, address: 0x57A55C
 extern s8 Player_Color[2];                // size: 0x2, address: 0x57A578
 extern s8 Naming_Cut[2];                  // size: 0x2, address: 0x57A580
@@ -2004,6 +2118,7 @@ extern s8 Player_id;                      // size: 0x1, address: 0x57A60C
 extern s8 Select_Timer;                   // size: 0x1, address: 0x57A618
 extern s8 Demo_Stage_Index;               // size: 0x1, address: 0x57A628
 extern s8 Demo_PL_Index;                  // size: 0x1, address: 0x57A62C
+extern s32 Next_Demo;                     // size: 0x4, address: 0x57A630
 extern s8 Demo_Flag;                      // size: 0x1, address: 0x57A634
 extern s8 E_07_Flag[2];                   // size: 0x2, address: 0x57A63C
 extern s8 Rank_Type;                      // size: 0x1, address: 0x57A658
@@ -2060,6 +2175,14 @@ extern s32 flHeight;                      // size: 0x4, address: 0x57AF3C
 extern s32 flWidth;                       // size: 0x4, address: 0x57AF40
 extern s32 flCTNum;                       // size: 0x4, address: 0x57AF44
 extern TARPAD tarpad_root[2];             // size: 0x68, address: 0x57B040
+extern UNK_15 ppgCapLogoList;             // size: 0x8, address: 0x57B308
+extern UNK_16 ppgCapLogoPal;              // size: 0x14, address: 0x57B310
+extern UNK_18 ppgCapLogoTex;              // size: 0x20, address: 0x57B330
+extern UNK_15 ppgAdxList;                 // size: 0x8, address: 0x57B350
+extern UNK_15 ppgWarList;                 // size: 0x8, address: 0x57B358
+extern UNK_16 ppgAdxPal;                  // size: 0x14, address: 0x57B360
+extern UNK_16 ppgWarPal;                  // size: 0x14, address: 0x57B380
+extern UNK_18 ppgWarTex;                  // size: 0x20, address: 0x57B3A0
 
 // .bss
 
