@@ -1383,6 +1383,13 @@ typedef struct {
 } Pixel;
 
 typedef struct {
+    // total size: 0xC
+    f32 x; // offset 0x0, size 0x4
+    f32 y; // offset 0x4, size 0x4
+    f32 z; // offset 0x8, size 0x4
+} Point;
+
+typedef struct {
     // total size: 0x40
     f32 _11; // offset 0x0, size 0x4
     f32 _12; // offset 0x4, size 0x4
@@ -1584,6 +1591,11 @@ typedef struct {
 } Vertex;
 
 typedef struct {
+    // total size: 0x30
+    Point v[4]; // offset 0x0, size 0x30
+} Quad;
+
+typedef struct {
     // total size: 0x8
     f32 x; // offset 0x0, size 0x4
     f32 y; // offset 0x4, size 0x4
@@ -1636,19 +1648,12 @@ void Irl_Scrn();   // Range: 0x170CD0 -> 0x170E9C
 void bg_etc_write(s16 type); // Range: 0x175920 -> 0x175FC0
 
 // color3rd.c
-void q_ldreq_color_data(REQ *curr); // Range: 0x19D800 -> 0x19DD7C
-void set_hitmark_color();           // Range: 0x19DE70 -> 0x19E010
-void init_color_trans_req();        // Range: 0x19F600 -> 0x19F694
-void palCreateGhost();              // Range: 0x19F8D0 -> 0x19FB50
-
-// DC_Ghost.c
-void njSetBackColor(u32 c0, u32 c1, u32 c2);                                       // Range: 0x1BFF30 -> 0x1BFFBC
-void njDrawTexture(Polygon *polygon, s32 /* unused */, s32 tex, s32 /* unused */); // Range: 0x1C0130 -> 0x1C01E8
-void njdp2d_init();                                                                // Range: 0x1C0330 -> 0x1C034C
-void njdp2d_draw();                                                                // Range: 0x1C0350 -> 0x1C0568
-void njdp2d_sort(f32 *pos, f32 pri, u32 col, s32 flag);                            // Range: 0x1C0570 -> 0x1C0A0C
-void njDrawPolygon2D(PAL_CURSOR *p, s32 /* unused */, f32 pri, u32 attr);          // Range: 0x1C0A10 -> 0x1C0A68
-void njSetPaletteBankNumG(u32 globalIndex, s32 bank);                              // Range: 0x1C0A70 -> 0x1C0AA8
+void q_ldreq_color_data(REQ *curr);                // Range: 0x19D800 -> 0x19DD7C
+void set_hitmark_color();                          // Range: 0x19DE70 -> 0x19E010
+void init_color_trans_req();                       // Range: 0x19F600 -> 0x19F694
+void palCopyGhostDC(s32 ofs, s32 cnt, void *data); // Range: 0x19F700 -> 0x19F7C0
+void palCreateGhost();                             // Range: 0x19F8D0 -> 0x19FB50
+void palUpdateGhostDC();                           // Range: 0x19FB70 -> 0x19FC6C
 
 s32 effect_04_init(s16 Death_Type, s16 cg_type, s16 sync_bg, s16 priority); // Range: 0x1C56A0 -> 0x1C5818
 // DWARF says disp_index and cursor_id are s16, but decompilation suggests otherwise
@@ -1796,7 +1801,8 @@ void SE_dir_cursor_move();              // Range: 0x398450 -> 0x398474
 void SE_dir_selected();                 // Range: 0x398480 -> 0x3984A4
 
 // aboutspr.c
-void Init_load_on_memory_data(); // Range: 0x3A8710 -> 0x3A87CC
+void Init_load_on_memory_data();          // Range: 0x3A8710 -> 0x3A87CC
+void shadow_drawing(UNK_12 *wk, s16 bsy); // Range: 0x3AAD20 -> 0x3AAEAC
 
 // texcash.c
 void init_texcash_1st();            // Range: 0x3AE390 -> 0x3AE4EC
@@ -1821,25 +1827,32 @@ u8 *mmAlloc(_MEMMAN_OBJ *mmobj, s32 size, s32 flag); // Range: 0x3C02D0 -> 0x3C0
 void mmFree(_MEMMAN_OBJ *mmobj, u8 *adrs);           // Range: 0x3C0560 -> 0x3C05D8
 
 // PPGFile.c
-void ppg_Initialize(void *lcmAdrs, s32 lcmSize);         // Range: 0x3C05E0 -> 0x3C0650
-void ppgSourceDataReleased(UNK_15 *dlist);               // Range: 0x3C0800 -> 0x3C0870
-void ppgSetupCurrentDataList(UNK_15 *dlist);             // Range: 0x3C0870 -> 0x3C088C
-void ppgSetupCurrentPaletteNumber(UNK_16 *pal, s32 num); // Range: 0x3C0890 -> 0x3C0904
+void ppg_Initialize(void *lcmAdrs, s32 lcmSize);                               // Range: 0x3C05E0 -> 0x3C0650
+void ppgSourceDataReleased(UNK_15 *dlist);                                     // Range: 0x3C0800 -> 0x3C0870
+void ppgSetupCurrentDataList(UNK_15 *dlist);                                   // Range: 0x3C0870 -> 0x3C088C
+void ppgSetupCurrentPaletteNumber(UNK_16 *pal, s32 num);                       // Range: 0x3C0890 -> 0x3C0904
+s32 ppgWriteQuadWithST_B(Vertex *pos, u32 col, UNK_15 *tb, s32 tix, s32 cix);  // Range: 0x3C0B70 -> 0x3C0CF0
+s32 ppgWriteQuadWithST_B2(Vertex *pos, u32 col, UNK_15 *tb, s32 tix, s32 cix); // Range: 0x3C0CF0 -> 0x3C0E70
 s32 ppgSetupPalChunk(UNK_16 *pch, u8 *adrs, s32 size, s32 ixNum1st, s32 num,
-                     s32 /* unused */); // Range: 0x3C2020 -> 0x3C271C
-void ppgMakeConvTableTexDC();           // Range: 0x3C3620 -> 0x3C3768
+                     s32 /* unused */);                                          // Range: 0x3C2020 -> 0x3C271C
+void ppgRenewDotDataSeqs(UNK_18 *tch, u32 gix, u32 *srcRam, u32 code, u32 size); // Range: 0x3C3030 -> 0x3C361C
+void ppgMakeConvTableTexDC();                                                    // Range: 0x3C3620 -> 0x3C3768
 s32 ppgSetupTexChunk_1st(UNK_18 *tch, u8 *adrs, s32 size, s32 ixNum1st, s32 ixNums, s32 ar,
                          s32 arcnt);                             // Range: 0x3C3900 -> 0x3C3F3C
 s32 ppgSetupTexChunk_2nd(UNK_18 *tch, s32 ixNum);                // Range: 0x3C3F90 -> 0x3C4104
 s32 ppgSetupTexChunk_3rd(UNK_18 *tch, s32 ixNum, u32 attribute); // Range: 0x3C4110 -> 0x3C4460
 
 // ps2Quad.c
-void CP3toPS2DrawOn();    // Range: 0x3C64B0 -> 0x3C64C0
-void CP3toPS2DrawOff();   // Range: 0x3C64C0 -> 0x3C64CC
-void CP3toPS2Draw();      // Range: 0x3C64D0 -> 0x3C6D8C
-void flmwVSyncCallback(); // Range: 0x3C6D90 -> 0x3C6DB4
-void flmwFlip();          // Range: 0x3C6E00 -> 0x3C6ED8
-void njUserInit();        // Range: 0x3E5BA0 -> 0x3E5E64
+void ps2SeqsRenderQuadInit_B();               // Range: 0x3C5580 -> 0x3C5588
+void ps2SeqsRenderQuad_B(Quad *spr, u32 col); // Range: 0x3C6090 -> 0x3C6158
+void ps2SeqsRenderQuadEnd();                  // Range: 0x3C6490 -> 0x3C6498
+s32 getCP3toFullScreenDrawFlag();             // Range: 0x3C64A0 -> 0x3C64AC
+void CP3toPS2DrawOn();                        // Range: 0x3C64B0 -> 0x3C64C0
+void CP3toPS2DrawOff();                       // Range: 0x3C64C0 -> 0x3C64CC
+void CP3toPS2Draw();                          // Range: 0x3C64D0 -> 0x3C6D8C
+void flmwVSyncCallback();                     // Range: 0x3C6D90 -> 0x3C6DB4
+void flmwFlip();                              // Range: 0x3C6E00 -> 0x3C6ED8
+void njUserInit();                            // Range: 0x3E5BA0 -> 0x3E5E64
 
 // flps2render.c
 s32 flBeginRender();                                          // Range: 0x3EE930 -> 0x3EE9B0
