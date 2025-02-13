@@ -27,7 +27,7 @@ typedef struct {
     NJDP2D_PRIM prim[100]; // offset 0x4, size 0x1770
 } NJDP2D_W;
 
-extern NJDP2D_W njdp2d_w;
+NJDP2D_W njdp2d_w;
 MTX cmtx;
 
 void njUnitMatrix(MTX *mtx) {
