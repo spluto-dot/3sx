@@ -550,7 +550,7 @@ segments:
       - [0x2BDE50, asm, sf33rd/Source/Game/debug/Debug]
       - [0x2BFF30, asm, sf33rd/Source/Game/debug/OBJTEST] # Good first decomp
       - [0x2C0100, asm, sf33rd/Source/Common/MemMan] # Good first decomp
-      - [0x2C0660, asm, sf33rd/Source/Common/PPGFile]
+      - [0x2C0660, c, sf33rd/Source/Common/PPGFile]
       - [0x2C55F0, asm, sf33rd/Source/PS2/ps2Quad]
       - [0x2C6E10, asm, sf33rd/AcrSDK/MiddleWare/PS2/acrmw] # Good first decomp
 
@@ -1262,7 +1262,7 @@ segments:
       - [0x458D10, rodata, sf33rd/Source/Game/debug/Debug]
       - [0x458E78, rodata, sf33rd/Source/Game/debug/Deb_Data]
       - [0x459600, rodata, sf33rd/Source/Game/debug/Nakai]
-      - [0x459650, rodata, sf33rd/Source/Common/PPGFile]
+      - [0x459650, .rodata, sf33rd/Source/Common/PPGFile]
 
       - [0x4599A0, rodata, cri/libadxe/adx_baif]
       - [0x4599B0, rodata, cri/libadxe/adx_bau]
@@ -1466,7 +1466,7 @@ segments:
       - [0x474590, sdata, sf33rd/Source/Compress/zlib/infutil]
       - [0x4745D8, sdata, sf33rd/Source/Game/debug/Debug]
       - [0x474630, sdata, sf33rd/Source/Game/debug/Deb_Data]
-      - [0x474650, sdata, sf33rd/Source/Common/PPGFile]
+      - [0x474650, .sdata, sf33rd/Source/Common/PPGFile]
       - [0x4746B0, sdata, sf33rd/AcrSDK/ps2/flps2render]
       - [0x474730, sdata, sf33rd/AcrSDK/ps2/flps2debug]
       - [0x474770, sdata, sf33rd/AcrSDK/ps2/flps2dma]
@@ -1633,7 +1633,7 @@ segments:
       - { type: sbss, vram: 0x57A8B0, name: sf33rd/Source/Game/debug/OBJTEST }
       - { type: sbss, vram: 0x57A930, name: sf33rd/Source/Game/debug/OTESTDAT }
       - { type: sbss, vram: 0x57A94C, name: sf33rd/Source/Common/MemMan }
-      - { type: sbss, vram: 0x57A950, name: sf33rd/Source/Common/PPGFile }
+      - { type: .sbss, vram: 0x57A950, name: sf33rd/Source/Common/PPGFile }
       - { type: sbss, vram: 0x57A994, name: sf33rd/Source/PS2/ps2Quad }
       - { type: .sbss, vram: 0x57A9A0, name: sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX }
       - { type: sbss, vram: 0x57A9F0, name: sf33rd/Source/Game/main }
@@ -1683,7 +1683,7 @@ segments:
       - { type: bss, vram: 0x596560, name: sf33rd/Source/Game/cmb_win }
       - { type: bss, vram: 0x596680, name: sf33rd/Source/Game/cmd_data }
       - { type: bss, vram: 0x597B60, name: sf33rd/Source/Game/color3rd }
-      - { type: bss, vram: 0x5A8420, name: sf33rd/Source/Game/DC_Ghost }
+      - { type: .bss, vram: 0x5A8420, name: sf33rd/Source/Game/DC_Ghost }
       - { type: bss, vram: 0x5A9BA0, name: sf33rd/Source/Game/EFFECT }
       - { type: .bss, vram: 0x5E1CA0, name: sf33rd/Source/Game/GD3rd }
       - { type: bss, vram: 0x5E2D70, name: sf33rd/Source/Game/Grade }

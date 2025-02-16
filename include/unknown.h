@@ -1390,6 +1390,14 @@ typedef struct {
 } Point;
 
 typedef struct {
+    // total size: 0x8
+    s16 x1; // offset 0x0, size 0x2
+    s16 y1; // offset 0x2, size 0x2
+    s16 x2; // offset 0x4, size 0x2
+    s16 y2; // offset 0x6, size 0x2
+} Rect;
+
+typedef struct {
     // total size: 0x40
     f32 _11; // offset 0x0, size 0x4
     f32 _12; // offset 0x4, size 0x4
@@ -1541,35 +1549,68 @@ typedef struct {
     s32 ixNum1st; // offset 0x8, size 0x4
     u8 *srcAdrs;  // offset 0xC, size 0x4
     u32 srcSize;  // offset 0x10, size 0x4
-} UNK_16;
+} Palette;
 
 typedef union {
     u32 b32;    // offset 0x0, size 0x4
     u16 b16[2]; // offset 0x0, size 0x4
     u8 b8[4];   // offset 0x0, size 0x4
-} UNK_17;
+} TextureHandle;
 
 typedef struct {
     // total size: 0x20
-    s8 be;          // offset 0x0, size 0x1
-    u8 flags;       // offset 0x1, size 0x1
-    s16 arCnt;      // offset 0x2, size 0x2
-    s16 arInit;     // offset 0x4, size 0x2
-    u16 total;      // offset 0x6, size 0x2
-    UNK_17 *handle; // offset 0x8, size 0x4
-    s32 ixNum1st;   // offset 0xC, size 0x4
-    u16 textures;   // offset 0x10, size 0x2
-    u16 accnum;     // offset 0x12, size 0x2
-    u32 *offset;    // offset 0x14, size 0x4
-    u8 *srcAdrs;    // offset 0x18, size 0x4
-    u32 srcSize;    // offset 0x1C, size 0x4
-} UNK_18;
+    s8 be;                 // offset 0x0, size 0x1
+    u8 flags;              // offset 0x1, size 0x1
+    s16 arCnt;             // offset 0x2, size 0x2
+    s16 arInit;            // offset 0x4, size 0x2
+    u16 total;             // offset 0x6, size 0x2
+    TextureHandle *handle; // offset 0x8, size 0x4
+    s32 ixNum1st;          // offset 0xC, size 0x4
+    u16 textures;          // offset 0x10, size 0x2
+    u16 accnum;            // offset 0x12, size 0x2
+    u32 *offset;           // offset 0x14, size 0x4
+    u8 *srcAdrs;           // offset 0x18, size 0x4
+    u32 srcSize;           // offset 0x1C, size 0x4
+} Texture;
 
 typedef struct {
     // total size: 0x8
-    UNK_18 *tex; // offset 0x0, size 0x4
-    UNK_16 *pal; // offset 0x4, size 0x4
-} UNK_15;
+    Texture *tex; // offset 0x0, size 0x4
+    Palette *pal; // offset 0x4, size 0x4
+} PPGDataList;
+
+typedef struct {
+    // total size: 0x10
+    u32 magic;     // offset 0x0, size 0x4
+    u32 fileSize;  // offset 0x4, size 0x4
+    u8 width;      // offset 0x8, size 0x1
+    u8 height;     // offset 0x9, size 0x1
+    u8 compress;   // offset 0xA, size 0x1
+    u8 pixel;      // offset 0xB, size 0x1
+    u16 formARGB;  // offset 0xC, size 0x2
+    u16 transNums; // offset 0xE, size 0x2
+} PPGFileHeader;
+
+typedef struct {
+    // total size: 0x10
+    u32 magic;    // offset 0x0, size 0x4
+    u32 fileSize; // offset 0x4, size 0x4
+    u16 id;       // offset 0x8, size 0x2
+    u8 compress;  // offset 0xA, size 0x1
+    u8 free;      // offset 0xB, size 0x1
+    u32 expSize;  // offset 0xC, size 0x4
+} PPXFileHeader;
+
+typedef struct {
+    // total size: 0x10
+    u32 magic;    // offset 0x0, size 0x4
+    u32 fileSize; // offset 0x4, size 0x4
+    u16 free;     // offset 0x8, size 0x2
+    u8 compress;  // offset 0xA, size 0x1
+    u8 c_mode;    // offset 0xB, size 0x1
+    u16 formARGB; // offset 0xC, size 0x2
+    u16 palettes; // offset 0xE, size 0x2
+} PPLFileHeader;
 
 typedef struct {
     // total size: 0x18
@@ -1594,6 +1635,19 @@ typedef struct {
     // total size: 0x30
     Point v[4]; // offset 0x0, size 0x30
 } Quad;
+
+typedef struct {
+    // total size: 0x8
+    f32 s; // offset 0x0, size 0x4
+    f32 t; // offset 0x4, size 0x4
+} TexCoord;
+
+typedef struct {
+    // total size: 0x54
+    Point v[4];    // offset 0x0, size 0x30
+    TexCoord t[4]; // offset 0x30, size 0x20
+    u32 texCode;   // offset 0x50, size 0x4
+} Sprite;
 
 typedef struct {
     // total size: 0x8
@@ -1815,8 +1869,8 @@ void Clear_texcash_work();          // Range: 0x3AFEC0 -> 0x3AFF28
 u8 VM_Access_Request(u8 Request, u8 Drive);         // Range: 0x3B1B80 -> 0x3B1BAC
 void Setup_File_Property(s16 file_type, u8 number); // Range: 0x3B1BB0 -> 0x3B1CBC
 
-// zlibApp.c
-void zlib_Initialize(void *tempAdrs, s32 tempSize); // Range: 0x3B76E0 -> 0x3B776C
+// Lz77Dec.c
+s32 decLZ77withSizeCheck(u8 *src, u8 *dst, s32 size); // Range: 0x3B78F0 -> 0x3B7F3C
 
 // MemMan.c
 void mmSystemInitialize(); // Range: 0x3C0080 -> 0x3C008C
@@ -1825,22 +1879,6 @@ void mmHeapInitialize(_MEMMAN_OBJ *mmobj, u8 *adrs, s32 size, s32 unit,
 void mmDebWriteTag();                                // Range: 0x3C0280 -> 0x3C0290
 u8 *mmAlloc(_MEMMAN_OBJ *mmobj, s32 size, s32 flag); // Range: 0x3C02D0 -> 0x3C037C
 void mmFree(_MEMMAN_OBJ *mmobj, u8 *adrs);           // Range: 0x3C0560 -> 0x3C05D8
-
-// PPGFile.c
-void ppg_Initialize(void *lcmAdrs, s32 lcmSize);                               // Range: 0x3C05E0 -> 0x3C0650
-void ppgSourceDataReleased(UNK_15 *dlist);                                     // Range: 0x3C0800 -> 0x3C0870
-void ppgSetupCurrentDataList(UNK_15 *dlist);                                   // Range: 0x3C0870 -> 0x3C088C
-void ppgSetupCurrentPaletteNumber(UNK_16 *pal, s32 num);                       // Range: 0x3C0890 -> 0x3C0904
-s32 ppgWriteQuadWithST_B(Vertex *pos, u32 col, UNK_15 *tb, s32 tix, s32 cix);  // Range: 0x3C0B70 -> 0x3C0CF0
-s32 ppgWriteQuadWithST_B2(Vertex *pos, u32 col, UNK_15 *tb, s32 tix, s32 cix); // Range: 0x3C0CF0 -> 0x3C0E70
-s32 ppgSetupPalChunk(UNK_16 *pch, u8 *adrs, s32 size, s32 ixNum1st, s32 num,
-                     s32 /* unused */);                                          // Range: 0x3C2020 -> 0x3C271C
-void ppgRenewDotDataSeqs(UNK_18 *tch, u32 gix, u32 *srcRam, u32 code, u32 size); // Range: 0x3C3030 -> 0x3C361C
-void ppgMakeConvTableTexDC();                                                    // Range: 0x3C3620 -> 0x3C3768
-s32 ppgSetupTexChunk_1st(UNK_18 *tch, u8 *adrs, s32 size, s32 ixNum1st, s32 ixNums, s32 ar,
-                         s32 arcnt);                             // Range: 0x3C3900 -> 0x3C3F3C
-s32 ppgSetupTexChunk_2nd(UNK_18 *tch, s32 ixNum);                // Range: 0x3C3F90 -> 0x3C4104
-s32 ppgSetupTexChunk_3rd(UNK_18 *tch, s32 ixNum, u32 attribute); // Range: 0x3C4110 -> 0x3C4460
 
 // ps2Quad.c
 void ps2SeqsRenderQuadInit_B();               // Range: 0x3C5580 -> 0x3C5588
@@ -1882,9 +1920,6 @@ s32 tarPADInit();                                            // Range: 0x400120 
 void tarPADDestroy();                                        // Range: 0x400420 -> 0x400448
 void flPADConfigSetACRtoXX(s32 padnum, s16 a, s16 b, s16 c); // Range: 0x400450 -> 0x4004B8
 void tarPADRead();                                           // Range: 0x4004C0 -> 0x400624
-
-void func_00402698(void *mem, s32 size);                // Range: 0x402698 -> 0x4026B0
-void func_00402570(const void *src, void *dest, s32 n); // Range: 0x402570 -> 0x402590
 
 // mcsub.c
 void MemcardInit(); // Range: 0x403EC0 -> 0x403F38
@@ -2188,14 +2223,14 @@ extern s32 flHeight;                      // size: 0x4, address: 0x57AF3C
 extern s32 flWidth;                       // size: 0x4, address: 0x57AF40
 extern s32 flCTNum;                       // size: 0x4, address: 0x57AF44
 extern TARPAD tarpad_root[2];             // size: 0x68, address: 0x57B040
-extern UNK_15 ppgCapLogoList;             // size: 0x8, address: 0x57B308
-extern UNK_16 ppgCapLogoPal;              // size: 0x14, address: 0x57B310
-extern UNK_18 ppgCapLogoTex;              // size: 0x20, address: 0x57B330
-extern UNK_15 ppgAdxList;                 // size: 0x8, address: 0x57B350
-extern UNK_15 ppgWarList;                 // size: 0x8, address: 0x57B358
-extern UNK_16 ppgAdxPal;                  // size: 0x14, address: 0x57B360
-extern UNK_16 ppgWarPal;                  // size: 0x14, address: 0x57B380
-extern UNK_18 ppgWarTex;                  // size: 0x20, address: 0x57B3A0
+extern PPGDataList ppgCapLogoList;        // size: 0x8, address: 0x57B308
+extern Palette ppgCapLogoPal;             // size: 0x14, address: 0x57B310
+extern Texture ppgCapLogoTex;             // size: 0x20, address: 0x57B330
+extern PPGDataList ppgAdxList;            // size: 0x8, address: 0x57B350
+extern PPGDataList ppgWarList;            // size: 0x8, address: 0x57B358
+extern Palette ppgAdxPal;                 // size: 0x14, address: 0x57B360
+extern Palette ppgWarPal;                 // size: 0x14, address: 0x57B380
+extern Texture ppgWarTex;                 // size: 0x20, address: 0x57B3A0
 
 // .bss
 
