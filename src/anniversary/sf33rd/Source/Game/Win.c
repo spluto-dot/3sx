@@ -1,9 +1,19 @@
 #include "common.h"
+#include "sf33rd/Source/Game/GD3rd.h"
+#include "sf33rd/Source/Game/MMTMCNT.h"
+#include "sf33rd/Source/Game/PulPul.h"
+#include "sf33rd/Source/Game/SE.h"
 #include "sf33rd/Source/Game/SYS_sub.h"
 #include "sf33rd/Source/Game/SYS_sub2.h"
+#include "sf33rd/Source/Game/Sel_Data.h"
+#include "sf33rd/Source/Game/Sound3rd.h"
+#include "sf33rd/Source/Game/bg.h"
+#include "sf33rd/Source/Game/bg_data.h"
+#include "sf33rd/Source/Game/bg_sub.h"
 #include "sf33rd/Source/Game/debug/Debug.h"
+#include "sf33rd/Source/Game/effect_init.h"
 #include "sf33rd/Source/Game/texgroup.h"
-#include "unknown.h"
+#include "sf33rd/Source/Game/workuser.h"
 
 void Win_1st();
 void Win_2nd();

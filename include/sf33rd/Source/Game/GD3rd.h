@@ -1,8 +1,8 @@
 #ifndef GD3RD_H
 #define GD3RD_H
 
+#include "structs.h"
 #include "types.h"
-#include "unknown.h"
 
 extern s16 plt_req[2];
 extern const u8 lpr_wrdata[3];
@@ -27,5 +27,9 @@ void Push_LDREQ_Queue_Player(s16 id, s16 ix);
 void Check_LDREQ_Queue();
 s32 Check_LDREQ_Clear();
 void Push_LDREQ_Queue_Direct(s16 ix, s16 id);
+s32 Setup_Directory_Record_Data();
+void Push_LDREQ_Queue_Player(s16 id, s16 ix);
+void Push_LDREQ_Queue_BG(s16 ix);
+s32 Check_LDREQ_Queue_BG(s16 ix);
 
 #endif

@@ -1,9 +1,15 @@
 #include "sf33rd/Source/Game/GD3rd.h"
 #include "common.h"
+#include "sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/cse.h"
+#include "sf33rd/AcrSDK/ps2/flps2debug.h"
 #include "sf33rd/AcrSDK/ps2/foundaps2.h"
 #include "sf33rd/Source/Common/FileSizeAFS.h"
+#include "sf33rd/Source/Game/RAMCNT.h"
+#include "sf33rd/Source/Game/WORK_SYS.h"
+#include "sf33rd/Source/Game/color3rd.h"
+#include "sf33rd/Source/Game/debug/Debug.h"
 #include "sf33rd/Source/Game/texgroup.h"
-#include "unknown.h"
+#include "structs.h"
 #include <cri_mw.h>
 #include <libcdvd.h>
 #include <libgraph.h>
