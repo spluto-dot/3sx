@@ -4,7 +4,11 @@
 #include "structs.h"
 #include "types.h"
 
+void ps2SeqsRenderQuadInit_A();
 void ps2SeqsRenderQuadInit_B();
+void ps2SeqsRenderQuad_Ax(Sprite2 *spr);
+void ps2SeqsRenderQuad_A(Sprite *spr, u32 col);
+void ps2SeqsRenderQuad_A2(Sprite *spr, u32 col);
 void ps2SeqsRenderQuad_B(Quad *spr, u32 col);
 void ps2SeqsRenderQuadEnd();
 s32 getCP3toFullScreenDrawFlag();

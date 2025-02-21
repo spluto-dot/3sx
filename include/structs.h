@@ -795,44 +795,44 @@ typedef union {
     u8 UI8[16];     // offset 0x0, size 0x10
     f32 F32[4];     // offset 0x0, size 0x10
     f64 F64[2];     // offset 0x0, size 0x10
-} Numeric;
+} QWORD;
 
 typedef struct {
     // total size: 0xA0
-    Numeric dmatag;     // offset 0x0, size 0x10
-    Numeric giftag;     // offset 0x10, size 0x10
-    Numeric frame_1;    // offset 0x20, size 0x10
-    Numeric frame_2;    // offset 0x30, size 0x10
-    Numeric zbuf_1;     // offset 0x40, size 0x10
-    Numeric zbuf_2;     // offset 0x50, size 0x10
-    Numeric xyoffset_1; // offset 0x60, size 0x10
-    Numeric xyoffset_2; // offset 0x70, size 0x10
-    Numeric dthe;       // offset 0x80, size 0x10
-    Numeric colclamp;   // offset 0x90, size 0x10
+    QWORD dmatag;     // offset 0x0, size 0x10
+    QWORD giftag;     // offset 0x10, size 0x10
+    QWORD frame_1;    // offset 0x20, size 0x10
+    QWORD frame_2;    // offset 0x30, size 0x10
+    QWORD zbuf_1;     // offset 0x40, size 0x10
+    QWORD zbuf_2;     // offset 0x50, size 0x10
+    QWORD xyoffset_1; // offset 0x60, size 0x10
+    QWORD xyoffset_2; // offset 0x70, size 0x10
+    QWORD dthe;       // offset 0x80, size 0x10
+    QWORD colclamp;   // offset 0x90, size 0x10
 } FLPS2DB;
 
 typedef struct {
     // total size: 0x140
-    Numeric dmatag;         // offset 0x0, size 0x10
-    Numeric giftag;         // offset 0x10, size 0x10
-    Numeric clr_fba;        // offset 0x20, size 0x10
-    Numeric clr_scissor;    // offset 0x30, size 0x10
-    Numeric clr_test;       // offset 0x40, size 0x10
-    Numeric clr_prim;       // offset 0x50, size 0x10
-    Numeric clr_rgbaq;      // offset 0x60, size 0x10
-    Numeric clr_xyz2_0;     // offset 0x70, size 0x10
-    Numeric clr_xyz2_1;     // offset 0x80, size 0x10
-    Numeric acr_scissor_1;  // offset 0x90, size 0x10
-    Numeric acr_scissor_2;  // offset 0xA0, size 0x10
-    Numeric acr_test_1;     // offset 0xB0, size 0x10
-    Numeric acr_test_2;     // offset 0xC0, size 0x10
-    Numeric acr_zbuf_1;     // offset 0xD0, size 0x10
-    Numeric acr_zbuf_2;     // offset 0xE0, size 0x10
-    Numeric acr_fba_1;      // offset 0xF0, size 0x10
-    Numeric acr_fba_2;      // offset 0x100, size 0x10
-    Numeric acr_pabe;       // offset 0x110, size 0x10
-    Numeric acr_prmodecont; // offset 0x120, size 0x10
-    Numeric acr_dimx;       // offset 0x130, size 0x10
+    QWORD dmatag;         // offset 0x0, size 0x10
+    QWORD giftag;         // offset 0x10, size 0x10
+    QWORD clr_fba;        // offset 0x20, size 0x10
+    QWORD clr_scissor;    // offset 0x30, size 0x10
+    QWORD clr_test;       // offset 0x40, size 0x10
+    QWORD clr_prim;       // offset 0x50, size 0x10
+    QWORD clr_rgbaq;      // offset 0x60, size 0x10
+    QWORD clr_xyz2_0;     // offset 0x70, size 0x10
+    QWORD clr_xyz2_1;     // offset 0x80, size 0x10
+    QWORD acr_scissor_1;  // offset 0x90, size 0x10
+    QWORD acr_scissor_2;  // offset 0xA0, size 0x10
+    QWORD acr_test_1;     // offset 0xB0, size 0x10
+    QWORD acr_test_2;     // offset 0xC0, size 0x10
+    QWORD acr_zbuf_1;     // offset 0xD0, size 0x10
+    QWORD acr_zbuf_2;     // offset 0xE0, size 0x10
+    QWORD acr_fba_1;      // offset 0xF0, size 0x10
+    QWORD acr_fba_2;      // offset 0x100, size 0x10
+    QWORD acr_pabe;       // offset 0x110, size 0x10
+    QWORD acr_prmodecont; // offset 0x120, size 0x10
+    QWORD acr_dimx;       // offset 0x130, size 0x10
 } FLPS2DrawStart;
 
 enum _FLSETRENDERSTATE {
@@ -1376,7 +1376,15 @@ typedef struct {
     f32 x; // offset 0x0, size 0x4
     f32 y; // offset 0x4, size 0x4
     f32 z; // offset 0x8, size 0x4
-} Point;
+} Vec3;
+
+typedef struct {
+    // total size: 0x10
+    f32 x; // offset 0x0, size 0x4
+    f32 y; // offset 0x4, size 0x4
+    f32 z; // offset 0x8, size 0x4
+    f32 w; // offset 0xC, size 0x4
+} Vec4;
 
 typedef struct {
     // total size: 0x8
@@ -1622,7 +1630,7 @@ typedef struct {
 
 typedef struct {
     // total size: 0x30
-    Point v[4]; // offset 0x0, size 0x30
+    Vec3 v[4]; // offset 0x0, size 0x30
 } Quad;
 
 typedef struct {
@@ -1633,10 +1641,19 @@ typedef struct {
 
 typedef struct {
     // total size: 0x54
-    Point v[4];    // offset 0x0, size 0x30
+    Vec3 v[4];     // offset 0x0, size 0x30
     TexCoord t[4]; // offset 0x30, size 0x20
     u32 texCode;   // offset 0x50, size 0x4
 } Sprite;
+
+typedef struct {
+    // total size: 0x34
+    Vec3 v[2];     // offset 0x0, size 0x18
+    TexCoord t[2]; // offset 0x18, size 0x10
+    u32 vtxColor;  // offset 0x28, size 0x4
+    u32 texCode;   // offset 0x2C, size 0x4
+    u32 id;        // offset 0x30, size 0x4
+} Sprite2;
 
 typedef struct {
     // total size: 0x8
