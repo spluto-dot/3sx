@@ -10,3 +10,4 @@ wget
 p7zip-full
 openssl
 libc6:i386
+graphviz

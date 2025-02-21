@@ -8,3 +8,4 @@ levenshtein
 cxxfilt
 dataclasses
 pyelftools
+graphviz
