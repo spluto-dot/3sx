@@ -549,7 +549,7 @@ segments:
       - [0x2BDD70, asm, sf33rd/Source/Compress/zlib/zutil]
       - [0x2BDE50, asm, sf33rd/Source/Game/debug/Debug]
       - [0x2BFF30, asm, sf33rd/Source/Game/debug/OBJTEST] # Good first decomp
-      - [0x2C0100, asm, sf33rd/Source/Common/MemMan] # Good first decomp
+      - [0x2C0100, c, sf33rd/Source/Common/MemMan]
       - [0x2C0660, c, sf33rd/Source/Common/PPGFile]
       - [0x2C55F0, c, sf33rd/Source/PS2/ps2Quad]
       - [0x2C6E10, c, sf33rd/AcrSDK/MiddleWare/PS2/acrmw]
@@ -1632,7 +1632,7 @@ segments:
       - { type: sbss, vram: 0x57A800, name: sf33rd/Source/Game/debug/Debug }
       - { type: sbss, vram: 0x57A8B0, name: sf33rd/Source/Game/debug/OBJTEST }
       - { type: sbss, vram: 0x57A930, name: sf33rd/Source/Game/debug/OTESTDAT }
-      - { type: sbss, vram: 0x57A94C, name: sf33rd/Source/Common/MemMan }
+      - { type: .sbss, vram: 0x57A94C, name: sf33rd/Source/Common/MemMan }
       - { type: .sbss, vram: 0x57A950, name: sf33rd/Source/Common/PPGFile }
       - { type: .sbss, vram: 0x57A994, name: sf33rd/Source/PS2/ps2Quad }
       - { type: .sbss, vram: 0x57A9A0, name: sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX }
