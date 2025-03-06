@@ -295,30 +295,30 @@ typedef struct {
     s16 dmcal_m;             // offset 0xA4, size 0x2
     s16 dmcal_d;             // offset 0xA6, size 0x2
     s8 weight_level;         // offset 0xA8, size 0x1
-    UNK11 cmoa;             // offset 0xAA, size 0x8
-    UNK11 cmsw;             // offset 0xB2, size 0x8
-    UNK11 cmlp;             // offset 0xBA, size 0x8
-    UNK11 cml2;             // offset 0xC2, size 0x8
-    UNK11 cmja;             // offset 0xCA, size 0x8
-    UNK11 cmj2;             // offset 0xD2, size 0x8
-    UNK11 cmj3;             // offset 0xDA, size 0x8
-    UNK11 cmj4;             // offset 0xE2, size 0x8
-    UNK11 cmj5;             // offset 0xEA, size 0x8
-    UNK11 cmj6;             // offset 0xF2, size 0x8
-    UNK11 cmj7;             // offset 0xFA, size 0x8
-    UNK11 cmms;             // offset 0x102, size 0x8
-    UNK11 cmmd;             // offset 0x10A, size 0x8
-    UNK11 cmyd;             // offset 0x112, size 0x8
-    UNK11 cmcf;             // offset 0x11A, size 0x8
-    UNK11 cmcr;             // offset 0x122, size 0x8
-    UNK11 cmbk;             // offset 0x12A, size 0x8
-    UNK11 cmb2;             // offset 0x132, size 0x8
-    UNK11 cmb3;             // offset 0x13A, size 0x8
-    UNK11 cmhs;             // offset 0x142, size 0x8
-    UNK11 cmr0;             // offset 0x14A, size 0x8
-    UNK11 cmr1;             // offset 0x152, size 0x8
-    UNK11 cmr2;             // offset 0x15A, size 0x8
-    UNK11 cmr3;             // offset 0x162, size 0x8
+    UNK11 cmoa;              // offset 0xAA, size 0x8
+    UNK11 cmsw;              // offset 0xB2, size 0x8
+    UNK11 cmlp;              // offset 0xBA, size 0x8
+    UNK11 cml2;              // offset 0xC2, size 0x8
+    UNK11 cmja;              // offset 0xCA, size 0x8
+    UNK11 cmj2;              // offset 0xD2, size 0x8
+    UNK11 cmj3;              // offset 0xDA, size 0x8
+    UNK11 cmj4;              // offset 0xE2, size 0x8
+    UNK11 cmj5;              // offset 0xEA, size 0x8
+    UNK11 cmj6;              // offset 0xF2, size 0x8
+    UNK11 cmj7;              // offset 0xFA, size 0x8
+    UNK11 cmms;              // offset 0x102, size 0x8
+    UNK11 cmmd;              // offset 0x10A, size 0x8
+    UNK11 cmyd;              // offset 0x112, size 0x8
+    UNK11 cmcf;              // offset 0x11A, size 0x8
+    UNK11 cmcr;              // offset 0x122, size 0x8
+    UNK11 cmbk;              // offset 0x12A, size 0x8
+    UNK11 cmb2;              // offset 0x132, size 0x8
+    UNK11 cmb3;              // offset 0x13A, size 0x8
+    UNK11 cmhs;              // offset 0x142, size 0x8
+    UNK11 cmr0;              // offset 0x14A, size 0x8
+    UNK11 cmr1;              // offset 0x152, size 0x8
+    UNK11 cmr2;              // offset 0x15A, size 0x8
+    UNK11 cmr3;              // offset 0x162, size 0x8
     s16 cmwk[32];            // offset 0x16A, size 0x40
     u32 *char_table[12];     // offset 0x1AC, size 0x30
     u32 *se_random_table;    // offset 0x1DC, size 0x4
@@ -1750,5 +1750,102 @@ typedef struct {
     s32 prio;             // offset 0x8, size 0x4
     OPTW_Small map[4][4]; // offset 0xC, size 0x100
 } OPBW;
+
+typedef struct {
+    // total size: 0x330
+    s8 r_no_0;     // offset 0x0, size 0x1
+    s8 r_no_1;     // offset 0x1, size 0x1
+    s8 r_no_2;     // offset 0x2, size 0x1
+    s8 old_rno;    // offset 0x3, size 0x1
+    s16 index;     // offset 0x4, size 0x2
+    s16 mv_ctr;    // offset 0x6, size 0x2
+    s16 free_work; // offset 0x8, size 0x2
+    s16 dummy;     // offset 0xA, size 0x2
+    OPBW bgw[3];   // offset 0xC, size 0x324
+} OP_W;
+
+typedef struct {
+    // total size: 0xD08
+    s32 x16;            // offset 0x0, size 0x4
+    s32 x32;            // offset 0x4, size 0x4
+    u16 x16_free[1024]; // offset 0x8, size 0x800
+    u16 x32_free[640];  // offset 0x808, size 0x500
+} TexturePoolFree;
+
+typedef struct {
+    // total size: 0xD08
+    s32 x16;            // offset 0x0, size 0x4
+    s32 x32;            // offset 0x4, size 0x4
+    u16 x16_used[1024]; // offset 0x8, size 0x800
+    u16 x32_used[640];  // offset 0x808, size 0x500
+} TexturePoolUsed;
+
+typedef struct {
+    // total size: 0xD0
+    u16 x16_map[4][16]; // offset 0x0, size 0x80
+    u8 x32_map[10][8];  // offset 0x80, size 0x50
+} PatternMap;
+
+typedef union {
+    u32 code; // offset 0x0, size 0x4
+    struct {
+        // total size: 0x4
+        u16 offset; // offset 0x0, size 0x2
+        u16 group;  // offset 0x2, size 0x2
+    } parts;        // offset 0x0, size 0x4
+} PatternCode;
+
+typedef struct {
+    // total size: 0x8
+    s16 time;       // offset 0x0, size 0x2
+    s16 state;      // offset 0x2, size 0x2
+    PatternCode cs; // offset 0x4, size 0x4
+} PatternState;
+
+typedef struct {
+    // total size: 0xDC
+    s16 curr_disp;  // offset 0x0, size 0x2
+    s16 time;       // offset 0x2, size 0x2
+    PatternCode cg; // offset 0x4, size 0x4
+    s16 x16;        // offset 0x8, size 0x2
+    s16 x32;        // offset 0xA, size 0x2
+    PatternMap map; // offset 0xC, size 0xD0
+} PatternInstance;
+
+typedef struct {
+    // total size: 0x3804
+    s16 kazu;                 // offset 0x0, size 0x2
+    PatternInstance *adr[64]; // offset 0x4, size 0x100
+    PatternInstance patt[64]; // offset 0x104, size 0x3700
+} PatternCollection;
+
+typedef struct {
+    // total size: 0x64
+    s32 mltnum16;            // offset 0x0, size 0x4
+    s32 mltnum32;            // offset 0x4, size 0x4
+    s32 mltnum;              // offset 0x8, size 0x4
+    s32 mltgidx16;           // offset 0xC, size 0x4
+    s32 mltgidx32;           // offset 0x10, size 0x4
+    s32 mltcshtime16;        // offset 0x14, size 0x4
+    s32 mltcshtime32;        // offset 0x18, size 0x4
+    PatternState *mltcsh16;  // offset 0x1C, size 0x4
+    PatternState *mltcsh32;  // offset 0x20, size 0x4
+    u8 *mltbuf;              // offset 0x24, size 0x4
+    Texture tex;             // offset 0x28, size 0x20
+    PPGDataList texList;     // offset 0x48, size 0x8
+    u32 attribute;           // offset 0x50, size 0x4
+    PatternCollection *cpat; // offset 0x54, size 0x4
+    TexturePoolFree *tpf;    // offset 0x58, size 0x4
+    TexturePoolUsed *tpu;    // offset 0x5C, size 0x4
+    u8 id;                   // offset 0x60, size 0x1
+    u8 ext;                  // offset 0x61, size 0x1
+    s16 mode;                // offset 0x62, size 0x2
+} MultiTexture;
+
+typedef struct {
+    // total size: 0x4
+    u16 bg_h_shift; // offset 0x0, size 0x2
+    u16 bg_v_shift; // offset 0x2, size 0x2
+} BackgroundParameters;
 
 #endif

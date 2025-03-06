@@ -12,6 +12,7 @@ skipped_rodata = {
     "DEMO00",
     "PPGFile",
     "CHARSET",
+    "OPENING",
 }
 
 # (file, section, index of section within sections of this type) -> alignment
@@ -27,6 +28,15 @@ special_cases = {
     ("Demo_Dat", ".rodata", 0): 16,
     ("chren3rd", ".rodata", 0): 16,
     ("CHARSET", ".rodata", 11): 16,
+    ("OPENING", ".rodata", 20): 16,
+    ("OPENING", ".rodata", 22): 16,
+    ("OPENING", ".rodata", 25): 16,
+    ("OPENING", ".rodata", 28): 16,
+    ("OPENING", ".rodata", 31): 16,
+    ("OPENING", ".rodata", 33): 16,
+    ("pass00", ".rodata", 0): 16,
+
+    ("PulPul", ".data", 0): 16,
 
     ("VM_DATA", ".sdata", 0): 16,
     ("Demo_Dat", ".sdata", 0): 16,
