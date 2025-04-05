@@ -14,7 +14,11 @@ extern f32 SA_Zoom_X;                  // size: 0x4, address: 0x579ADC
 extern f32 Screen_Zoom_Y;              // size: 0x4, address: 0x579AE0
 extern f32 Screen_Zoom_X;              // size: 0x4, address: 0x579AE4
 extern f32 scr_sc;                     // size: 0x4, address: 0x579AE8
+extern s32 sca_y;                      // size: 0x4, address: 0x579AEC
+extern s32 sca_x;                      // size: 0x4, address: 0x579AF0
 extern BackgroundParameters bg_prm[8]; // size: 0x20, address: 0x579B00
+extern BG_POS fm_pos[8];               // size: 0x80, address: 0x579B20
+extern BG_POS bg_pos[8];               // size: 0x80, address: 0x579BA0
 extern u8 Screen_PAL;                  // size: 0x1, address: 0x579C20
 extern u16 PLsw[2][2];                 // size: 0x8, address: 0x579C28
 extern u32 Interrupt_Timer;            // size: 0x4, address: 0x579C34
@@ -55,5 +59,6 @@ extern SystemDir system_dir[6];                   // size: 0x1B0, address: 0x6B5
 extern _REPLAY_W Replay_w;                        // size: 0x7448, address: 0x6B5CF0
 extern struct _REP_GAME_INFOR Rep_Game_Infor[11]; // size: 0x18C, address: 0x6BD140
 extern struct _TASK task[11];                     // size: 0xDC, address: 0x6BD2D0
+extern MTX BgMATRIX[9];                           // size: 0x240, address: 0x6BD3B0
 
 #endif
