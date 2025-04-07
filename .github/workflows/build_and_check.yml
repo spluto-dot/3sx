@@ -9,10 +9,15 @@ on:
 
 jobs:
     build:
+        # Building and testing cannot work if the repository owner is not apstygo
+        # due to the missing secrets
+        if: github.repository == 'apstygo/sfiii-decomp'
         runs-on: ubuntu-22.04
         steps:
-            - uses: actions/checkout@v4
+            - name: Clone main repo
+              uses: actions/checkout@v4
               with:
+                ref: ${{ github.ref }}
                 submodules: recursive
 
             - name: Install Python dependencies
