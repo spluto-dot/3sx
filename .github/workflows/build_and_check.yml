@@ -3,8 +3,7 @@ name: Build and check
 on:
     push:
         branches: ["main"]
-    pull_request:
-        branches: ["main"]
+    pull_request_target:
     workflow_dispatch:
 
 jobs:
@@ -14,7 +13,15 @@ jobs:
         if: github.repository == 'apstygo/sfiii-decomp'
         runs-on: ubuntu-22.04
         steps:
+            - name: Clone main repo (PR)
+              if: github.event_name == 'pull_request_target'
+              uses: actions/checkout@v4
+              with:
+                ref: ${{ github.event.pull_request.head.sha }}
+                submodules: recursive
+
             - name: Clone main repo
+              if: github.event_name != 'pull_request_target'
               uses: actions/checkout@v4
               with:
                 ref: ${{ github.ref }}
