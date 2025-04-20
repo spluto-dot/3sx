@@ -50,9 +50,17 @@ jobs:
             - name: Build and compare binaries
               run: make build -j
 
+            - name: Checkout fork
+              if: github.event_name == 'pull_request_target'
+              uses: actions/checkout@v4
+              with:
+                repository: ${{ github.event.pull_request.head.repo.full_name }}
+                ref: ${{ github.head_ref }}
+
             - name: Update progress in README
               run: python3 tools/update_progress_in_readme.py
 
-            - uses: stefanzweifel/git-auto-commit-action@v5
+            - name: Commit README changes
+              uses: stefanzweifel/git-auto-commit-action@v5
               with:
                 commit_message: Update progress in README
