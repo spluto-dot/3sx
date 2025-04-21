@@ -9,11 +9,10 @@ The project aims to recreate the source code from the existing binaries which wo
 ## Decomp progress
 
 <!-- PROGRESS-TABLE:START -->
-| Module   | Progress (size)   | Progress (func count)   |
-|----------|-------------------|-------------------------|
-| sf33rd   | 8.8%              | 6.7%                    |
-| cri      | 2.5%              | 3.6%                    |
-| sdk      | 0.0%              | 0.0%                    |
+| Module   | Progress (size)   | Progress (func count)   | Notes                                                                                          |
+|----------|-------------------|-------------------------|------------------------------------------------------------------------------------------------|
+| sf33rd   | 8.8%              | 6.7%                    | Game functions.                                                                                |
+| cri      | 6.8%              | 10.2%                   | CRI Middleware functions. For a full list of functions see [cri-progress.md](cri-progress.md). |
 <!-- PROGRESS-TABLE:END -->
 
 ## Where to start
