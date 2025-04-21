@@ -95,8 +95,8 @@ def generate_progress_report(no_cache: bool = False) -> str:
     for module in ("sf33rd", "cri"):
         rows.append([
             module,
-            f"{metrics[module].decompiled_size_percentage:.1f}%",
-            f"{metrics[module].decompiled_func_percentage:.1f}%",
+            f"{metrics[module].decompiled_size_percentage:.2f}%",
+            f"{metrics[module].decompiled_func_percentage:.2f}%",
             ""
         ])
 
