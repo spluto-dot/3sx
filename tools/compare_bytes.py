@@ -74,6 +74,15 @@ EXPECTED_ERRORS = {
     0x2CE884: 0x00004294,
     0x2CE888: 0x000082AE,
     0x2CE8A4: 0x2D106002,
+
+    # MTRANS::seqsStoreChip: string literal encoding issues
+    0x422D5C: 0x82AA9792,
+    0x422D60: 0xE8909482,
+    0x422D64: 0xF0897A82,
+    0x422D68: 0xA682C482,
+    0x422D6C: 0xB582DC82,
+    0x422D70: 0xA282DC82,
+    0x422D74: 0xB582BD00,
 }
 
 def read_word(b: bytes, offset: int) -> int:
