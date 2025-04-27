@@ -21,5 +21,7 @@ s32 flLockTexture(Rect *lprect, u32 th, plContext *lpcontext, u32 flag);
 s32 flUnlockTexture(u32 th);
 u16 flPS2GetStaticVramArea(u32 size);
 void flPS2VramInit();
+void flReloadTexture(s32 count, u32 *texlist);
+s16 flPS2GetVramSize();
 
 #endif
