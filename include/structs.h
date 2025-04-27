@@ -2034,16 +2034,91 @@ typedef struct {
 } TileMapEntry;
 
 typedef struct {
+    // total size: 0x8
+    s16 ptix; // offset 0x0, size 0x2
+    s16 bank; // offset 0x2, size 0x2
+    s16 port; // offset 0x4, size 0x2
+    s16 code; // offset 0x6, size 0x2
+} SoundPatchConfig;
+
+typedef struct {
     // total size: 0xC
-    u16 cp3code; // offset 0x0, size 0x2
-    u16 free;    // offset 0x2, size 0x2
-    struct {
-        // total size: 0x8
-        s16 ptix; // offset 0x0, size 0x2
-        s16 bank; // offset 0x2, size 0x2
-        s16 port; // offset 0x4, size 0x2
-        s16 code; // offset 0x6, size 0x2
-    } rmc;        // offset 0x4, size 0x8
-} SoundPatch;     // Tentative name
+    u16 cp3code;          // offset 0x0, size 0x2
+    u16 free;             // offset 0x2, size 0x2
+    SoundPatchConfig rmc; // offset 0x4, size 0x8
+} SoundPatch;             // Tentative name
+
+typedef struct {
+    // total size: 0x8
+    s16 req;  // offset 0x0, size 0x2
+    s16 kind; // offset 0x2, size 0x2
+    s16 data; // offset 0x4, size 0x2
+    s16 code; // offset 0x6, size 0x2
+} BGMRequest;
+
+typedef struct {
+    // total size: 0x16
+    s16 kind;        // offset 0x0, size 0x2
+    s16 rno;         // offset 0x2, size 0x2
+    s16 code;        // offset 0x4, size 0x2
+    s16 timer;       // offset 0x6, size 0x2
+    s16 data;        // offset 0x8, size 0x2
+    s16 volume;      // offset 0xA, size 0x2
+    s16 state;       // offset 0xC, size 0x2
+    u16 ownData;     // offset 0xE, size 0x2
+    u16 nowSeamless; // offset 0x10, size 0x2
+    u16 exEntry;     // offset 0x12, size 0x2
+    u16 exIndex;     // offset 0x14, size 0x2
+} BGMExecution;
+
+typedef struct {
+    // total size: 0x8
+    u16 numStart; // offset 0x0, size 0x2
+    u16 numEnd;   // offset 0x2, size 0x2
+    u16 numLoop;  // offset 0x4, size 0x2
+    s16 free;     // offset 0x6, size 0x2
+} BGMExecutionData;
+
+typedef struct {
+    // total size: 0x8
+    union {
+        s32 cal; // offset 0x0, size 0x4
+        struct {
+            // total size: 0x4
+            s16 low; // offset 0x0, size 0x2
+            s16 hi;  // offset 0x2, size 0x2
+        } dex;       // offset 0x0, size 0x4
+    } in;            // offset 0x0, size 0x4
+    s32 speed;       // offset 0x4, size 0x4
+} BGMFade;
+
+typedef struct {
+    // total size: 0x8
+    u16 data; // offset 0x0, size 0x2
+    s16 vol;  // offset 0x2, size 0x2
+    s32 fnum; // offset 0x4, size 0x4
+} BGMTableEntry;
+
+typedef struct {
+    // total size: 0x20
+    u8 cmd;       // offset 0x0, size 0x1
+    u8 flags;     // offset 0x1, size 0x1
+    u8 prog;      // offset 0x2, size 0x1
+    u8 note;      // offset 0x3, size 0x1
+    u8 attr;      // offset 0x4, size 0x1
+    u8 vol;       // offset 0x5, size 0x1
+    u8 pan;       // offset 0x6, size 0x1
+    s16 pitch;    // offset 0x8, size 0x2
+    u8 prio;      // offset 0xA, size 0x1
+    u8 id1;       // offset 0xB, size 0x1
+    u8 id2;       // offset 0xC, size 0x1
+    u32 kofftime; // offset 0x10, size 0x4
+    u8 limit;     // offset 0x14, size 0x1
+    s16 param0;   // offset 0x16, size 0x2
+    s16 param1;   // offset 0x18, size 0x2
+    s16 param2;   // offset 0x1A, size 0x2
+    s16 param3;   // offset 0x1C, size 0x2
+    s16 link;     // offset 0x1E, size 0x2
+} SoundEvent;     // Tentative name
 
 #endif
