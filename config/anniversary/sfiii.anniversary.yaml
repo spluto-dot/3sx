@@ -184,7 +184,7 @@ segments:
       - [0x085A80, asm, sf33rd/Source/Game/Ck_Pass]
       - [0x08F240, asm, sf33rd/Source/Game/cmb_win]
       - [0x0943E0, asm, sf33rd/Source/Game/CMD_MAIN]
-      - [0x09D880, asm, sf33rd/Source/Game/color3rd]
+      - [0x09D880, c, sf33rd/Source/Game/color3rd]
       - [0x09FE50, asm, sf33rd/Source/Game/Com_Pl]
       - [0x0A6CA0, asm, sf33rd/Source/Game/Com_Sub]
       - [0x0BEC20, c, sf33rd/Source/Game/Continue]
@@ -961,7 +961,7 @@ segments:
       - [0x3F7600, rodata, sf33rd/Source/Game/Ck_Pass]
       - [0x3F7940, rodata, sf33rd/Source/Game/cmb_win]
       - [0x3F79D0, rodata, sf33rd/Source/Game/cmd_data]
-      - [0x3FC000, rodata, sf33rd/Source/Game/color3rd]
+      - [0x3FC000, .rodata, sf33rd/Source/Game/color3rd]
       - [0x3FC630, rodata, sf33rd/Source/Game/Com_Data]
       - [0x4046F8, rodata, sf33rd/Source/Game/COM_DATU]
       - [0x404890, rodata, sf33rd/Source/Game/Com_Pl]
@@ -1379,7 +1379,7 @@ segments:
       - [0x472790, sdata, sf33rd/Source/Game/bonus_bg]
       - [0x4727B0, sdata, sf33rd/Source/Game/cmd_data]
       - [0x472900, sdata, sf33rd/Source/Game/CMD_MAIN]
-      - [0x472970, sdata, sf33rd/Source/Game/color3rd]
+      - [0x472970, .sdata, sf33rd/Source/Game/color3rd]
       - [0x472990, sdata, sf33rd/Source/Game/Com_Pl]
       - [0x472B70, sdata, sf33rd/Source/Game/Com_Sub]
       - [0x472C30, .sdata, sf33rd/Source/Game/Continue]
@@ -1564,7 +1564,7 @@ segments:
       - { type: sbss, vram: 0x578D24, name: sf33rd/Source/Game/Ck_Pass }
       - { type: sbss, vram: 0x578D28, name: sf33rd/Source/Game/cmb_win }
       - { type: sbss, vram: 0x578DBC, name: sf33rd/Source/Game/cmd_data }
-      - { type: sbss, vram: 0x578DD8, name: sf33rd/Source/Game/color3rd }
+      - { type: .sbss, vram: 0x578DD8, name: sf33rd/Source/Game/color3rd }
       - { type: sbss, vram: 0x578E48, name: sf33rd/Source/Game/Com_Sub }
       - { type: .sbss, vram: 0x578E50, name: sf33rd/Source/Game/Continue }
       - { type: sbss, vram: 0x578E54, name: sf33rd/Source/Game/count }
@@ -1684,7 +1684,7 @@ segments:
       - { type: bss, vram: 0x595C60, name: sf33rd/Source/Game/CHARID }
       - { type: bss, vram: 0x596560, name: sf33rd/Source/Game/cmb_win }
       - { type: bss, vram: 0x596680, name: sf33rd/Source/Game/cmd_data }
-      - { type: bss, vram: 0x597B60, name: sf33rd/Source/Game/color3rd }
+      - { type: .bss, vram: 0x597B60, name: sf33rd/Source/Game/color3rd }
       - { type: .bss, vram: 0x5A8420, name: sf33rd/Source/Game/DC_Ghost }
       - { type: bss, vram: 0x5A9BA0, name: sf33rd/Source/Game/EFFECT }
       - { type: .bss, vram: 0x5E1CA0, name: sf33rd/Source/Game/GD3rd }
