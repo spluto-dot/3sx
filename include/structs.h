@@ -81,14 +81,6 @@ struct _TASK {
     u8 free[4];              // offset 0x10, size 0x4
 };
 
-typedef struct {
-    // total size: 0xD08
-    s32 x16;            // offset 0x0, size 0x4
-    s32 x32;            // offset 0x4, size 0x4
-    u16 x16_used[1024]; // offset 0x8, size 0x800
-    u16 x32_used[640];  // offset 0x808, size 0x500
-} TPU;
-
 struct _disp {
     // total size: 0xC
     u16 size_x; // offset 0x0, size 0x2
@@ -2137,5 +2129,15 @@ typedef struct {
     s16 reqNum;     // offset 0xA8, size 0x2
     u32 upBits;     // offset 0xAC, size 0x4
 } Col3rd_W;
+
+typedef struct {
+    // total size: 0xC
+    s16 be;    // offset 0x0, size 0x2
+    s16 mincg; // offset 0x2, size 0x2
+    s16 min16; // offset 0x4, size 0x2
+    s16 min32; // offset 0x6, size 0x2
+    s16 key0;  // offset 0x8, size 0x2
+    s16 key1;  // offset 0xA, size 0x2
+} MTS_OK;
 
 #endif
