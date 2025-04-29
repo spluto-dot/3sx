@@ -85,10 +85,10 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 - [ ] ADXT_ExecFsSvr
 
-### adx_inis
+### adx_inis ✅
 
-- [ ] ADXT_Init
-- [ ] ADXT_Finish
+- [x] ADXT_Init
+- [x] ADXT_Finish
 
 ### adx_lsc ✅
 
@@ -386,23 +386,23 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [ ] SJX_Create
 - [ ] SJX_Destroy
 
-### svm
+### svm ✅
 
-- [ ] svm_lock
-- [ ] svm_unlock
+- [x] svm_lock
+- [x] svm_unlock
 - [x] SVM_Lock
 - [x] SVM_Unlock
 - [x] SVM_LockRsc
 - [x] SVM_UnlockRsc
 - [x] SVM_CallErr
 - [x] SVM_CallErr1
-- [ ] SVM_SetCbSvr
-- [ ] SVM_DelCbSvr
-- [ ] SVM_SetCbSvrId
+- [x] SVM_SetCbSvr
+- [x] SVM_DelCbSvr
+- [x] SVM_SetCbSvrId
 - [x] SVM_SetCbLock
 - [x] SVM_SetCbUnlock
-- [ ] SVM_ExecSvrFunc
-- [ ] SVM_ExecSvrMain
+- [x] SVM_ExecSvrFunc
+- [x] SVM_ExecSvrMain
 - [x] svm_reset_variable
 - [x] SVM_Init
 - [x] SVM_Finish
