@@ -390,20 +390,20 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 - [ ] svm_lock
 - [ ] svm_unlock
-- [ ] SVM_Lock
-- [ ] SVM_Unlock
-- [ ] SVM_LockRsc
-- [ ] SVM_UnlockRsc
-- [ ] SVM_CallErr
-- [ ] SVM_CallErr1
+- [x] SVM_Lock
+- [x] SVM_Unlock
+- [x] SVM_LockRsc
+- [x] SVM_UnlockRsc
+- [x] SVM_CallErr
+- [x] SVM_CallErr1
 - [ ] SVM_SetCbSvr
 - [ ] SVM_DelCbSvr
 - [ ] SVM_SetCbSvrId
-- [ ] SVM_SetCbLock
-- [ ] SVM_SetCbUnlock
+- [x] SVM_SetCbLock
+- [x] SVM_SetCbUnlock
 - [ ] SVM_ExecSvrFunc
 - [ ] SVM_ExecSvrMain
-- [ ] svm_reset_variable
-- [ ] SVM_Init
-- [ ] SVM_Finish
-- [ ] SVM_TestAndSet
+- [x] svm_reset_variable
+- [x] SVM_Init
+- [x] SVM_Finish
+- [x] SVM_TestAndSet
