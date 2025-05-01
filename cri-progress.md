@@ -175,27 +175,27 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 - [ ] ADXPS2_LoadFcacheDvd
 
-### adx_tlk
+### adx_tlk ✅
 
-- [ ] ADXT_Create
-- [ ] adxt_detach_ahx
-- [ ] adxt_detach_ac3
-- [ ] adxt_detach_pl2
-- [ ] ADXT_Destroy
-- [ ] adxt_start_sj
-- [ ] ADXT_StopWithoutLsc
-- [ ] ADXT_Stop
-- [ ] ADXT_GetStat
-- [ ] ADXT_GetTimeSfreq2
-- [ ] adxt_time_adjust_trap
-- [ ] ADXT_GetTime
-- [ ] ADXT_SetOutVol
-- [ ] ADXT_SetDefSvrFreq
-- [ ] ADXT_GetNumSmplObuf
-- [ ] ADXT_Pause
-- [ ] ADXT_GetStatPause
-- [ ] ADXT_SetLnkSw
-- [ ] ADXT_SetOutputMono
+- [x] ADXT_Create
+- [x] adxt_detach_ahx
+- [x] adxt_detach_ac3
+- [x] adxt_detach_pl2
+- [x] ADXT_Destroy
+- [x] adxt_start_sj
+- [x] ADXT_StopWithoutLsc
+- [x] ADXT_Stop
+- [x] ADXT_GetStat
+- [x] ADXT_GetTimeSfreq2
+- [x] adxt_time_adjust_trap
+- [x] ADXT_GetTime
+- [x] ADXT_SetOutVol
+- [x] ADXT_SetDefSvrFreq
+- [x] ADXT_GetNumSmplObuf
+- [x] ADXT_Pause
+- [x] ADXT_GetStatPause
+- [x] ADXT_SetLnkSw
+- [x] ADXT_SetOutputMono
 
 ### adx_tlk2
 
