@@ -124,20 +124,20 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 ### adx_sjd
 
-- [ ] ADXSJD_Init
-- [ ] ADXSJD_Finish
-- [ ] adxsjd_clear
-- [ ] ADXSJD_Create
-- [ ] ADXSJD_Destroy
+- [x] ADXSJD_Init
+- [x] ADXSJD_Finish
+- [x] adxsjd_clear
+- [x] ADXSJD_Create
+- [x] ADXSJD_Destroy
 - [ ] ADXSJD_SetInSj
-- [ ] ADXSJD_Start
-- [ ] ADXSJD_Stop
-- [ ] ADXSJD_GetDecNumSmpl
-- [ ] ADXSJD_SetLnkSw
-- [ ] ADXSJD_GetSfreq
-- [ ] ADXSJD_GetOutBps
-- [ ] ADXSJD_GetTotalNumSmpl
-- [ ] ADXSJD_GetDefOutVol
+- [x] ADXSJD_Start
+- [x] ADXSJD_Stop
+- [x] ADXSJD_GetDecNumSmpl
+- [x] ADXSJD_SetLnkSw
+- [x] ADXSJD_GetSfreq
+- [x] ADXSJD_GetOutBps
+- [x] ADXSJD_GetTotalNumSmpl
+- [x] ADXSJD_GetDefOutVol
 
 ### adx_stmc
 
