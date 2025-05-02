@@ -1,9 +1,11 @@
 #ifndef ADX_SJD_H
 #define ADX_SJD_H
 
-#include <cri/cri_adxt.h>
 #include <cri/cri_xpts.h>
+#include <cri/private/libadxe/structs.h>
 #include <cri/sj.h>
+
+#define ADXSJD_MAX_OBJ 16
 
 ADXSJD ADXSJD_Create(SJ, Sint32, SJ *);
 void ADXSJD_Start(ADXSJD);
