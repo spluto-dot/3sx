@@ -197,11 +197,11 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXT_SetLnkSw
 - [x] ADXT_SetOutputMono
 
-### adx_tlk2
+### adx_tlk2 ✅
 
-- [ ] ADXT_StartAfs
-- [ ] ADXT_StartMem
-- [ ] ADXT_StartMem2
+- [x] ADXT_StartAfs
+- [x] ADXT_StartMem
+- [x] ADXT_StartMem2
 
 ### adx_xpnd
 
