@@ -110,17 +110,17 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXM_Unlock
 - [x] ADXM_ExecMain
 
-### adx_rnap
+### adx_rnap ✅
 
-- [ ] ADXRNA_Init
-- [ ] ADXRNA_Finish
-- [ ] ADXRNA_EntryErrFunc
-- [ ] ADXRNA_Create
-- [ ] ADXRNA_Destroy
-- [ ] ADXRNA_SetTransSw
-- [ ] ADXRNA_SetPlaySw
-- [ ] ADXRNA_GetNumData
-- [ ] ADXRNA_SetOutVol
+- [x] ADXRNA_Init
+- [x] ADXRNA_Finish
+- [x] ADXRNA_EntryErrFunc
+- [x] ADXRNA_Create
+- [x] ADXRNA_Destroy
+- [x] ADXRNA_SetTransSw
+- [x] ADXRNA_SetPlaySw
+- [x] ADXRNA_GetNumData
+- [x] ADXRNA_SetOutVol
 
 ### adx_sjd ✅
 
