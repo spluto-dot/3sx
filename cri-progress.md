@@ -97,18 +97,18 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXT_GetNumFiles
 - [x] ADXT_ResetEntry
 
-### adx_mps2
+### adx_mps2 ✅
 
-- [ ] ADXM_IsSetupThrd
-- [ ] adxm_ShutdownPreProcedure
-- [ ] ADXM_ShutdownThrd
-- [ ] adxm_ShutdownMwIdleThrd
-- [ ] adxm_ShutdownVsyncThrd
-- [ ] adxm_ShutdownFsThrd
-- [ ] adxm_ShutdownSafeThrd
-- [ ] ADXM_Lock
-- [ ] ADXM_Unlock
-- [ ] ADXM_ExecMain
+- [x] ADXM_IsSetupThrd
+- [x] adxm_ShutdownPreProcedure
+- [x] ADXM_ShutdownThrd
+- [x] adxm_ShutdownMwIdleThrd
+- [x] adxm_ShutdownVsyncThrd
+- [x] adxm_ShutdownFsThrd
+- [x] adxm_ShutdownSafeThrd
+- [x] ADXM_Lock
+- [x] ADXM_Unlock
+- [x] ADXM_ExecMain
 
 ### adx_rnap
 
@@ -122,14 +122,14 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [ ] ADXRNA_GetNumData
 - [ ] ADXRNA_SetOutVol
 
-### adx_sjd
+### adx_sjd ✅
 
 - [x] ADXSJD_Init
 - [x] ADXSJD_Finish
 - [x] adxsjd_clear
 - [x] ADXSJD_Create
 - [x] ADXSJD_Destroy
-- [ ] ADXSJD_SetInSj
+- [x] ADXSJD_SetInSj
 - [x] ADXSJD_Start
 - [x] ADXSJD_Stop
 - [x] ADXSJD_GetDecNumSmpl
