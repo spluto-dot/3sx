@@ -323,21 +323,23 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 ### ps2_rna
 
-- [ ] ps2rna_init_psj
-- [ ] ps2rna_finish_psj
-- [ ] ps2rna_get_psj
-- [ ] ps2rna_release_psj
-- [ ] PS2RNA_Init
-- [ ] PS2RNA_InitIopSnd
-- [ ] PS2RNA_FinishIopSnd
-- [ ] PS2RNA_Finish
-- [ ] PS2RNA_Create
-- [ ] PS2RNA_Destroy
-- [ ] PS2RNA_SetTransSw
-- [ ] PS2RNA_SetPlaySw
-- [ ] PS2RNA_SetDiscardSw
-- [ ] PS2RNA_GetNumData
-- [ ] PS2RNA_SetOutVol
+- [x] ps2rna_init_psj
+- [x] ps2rna_finish_psj
+- [x] ps2rna_get_psj
+- [x] ps2rna_release_psj
+- [x] ps2rna_rcvcbf
+- [ ] ps2rna_sndcbf
+- [x] PS2RNA_Init
+- [x] PS2RNA_InitIopSnd
+- [x] PS2RNA_FinishIopSnd
+- [x] PS2RNA_Finish
+- [x] PS2RNA_Create
+- [x] PS2RNA_Destroy
+- [x] PS2RNA_SetTransSw
+- [x] PS2RNA_SetPlaySw
+- [x] PS2RNA_SetDiscardSw
+- [x] PS2RNA_GetNumData
+- [x] PS2RNA_SetOutVol
 
 ### sj_crs
 
