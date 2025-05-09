@@ -249,11 +249,11 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [ ] SRD_SceClose
 - [ ] SRD_SceRead
 
-### dtr
+### dtr ✅
 
-- [ ] DTR_Create
-- [ ] DTR_Destroy
-- [ ] DTR_Stop
+- [x] DTR_Create
+- [x] DTR_Destroy
+- [x] DTR_Stop
 
 ### dtx
 
