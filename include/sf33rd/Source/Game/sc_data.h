@@ -3,6 +3,7 @@
 
 #include "types.h"
 
+extern const u8 vmark_tbl[8];
 extern const s16 Fade_Pos_tbl[8];
 extern const s16 fade_data_tbl[][3];
 
