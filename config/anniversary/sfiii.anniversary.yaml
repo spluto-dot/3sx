@@ -585,7 +585,7 @@ segments:
       - [0x2D74D8, asm, cri/libadxe/cri_cvfs]
       - [0x2D9618, asm, cri/libadxe/cri_srd]
       - [0x2DA958, c, cri/libadxe/dtr]
-      - [0x2DAF98, asm, cri/libadxe/dtx]
+      - [0x2DAF98, c, cri/libadxe/dtx]
       - [0x2DB8D0, asm, cri/libadxe/dvci]
       - [0x2DC550, asm, cri/libadxe/dvci_sub]
       - [0x2DD208, asm, cri/libadxe/htci]
@@ -813,7 +813,7 @@ segments:
       - [0x3B4960, data, cri/libadxe/cri_cvfs]
       - [0x3B4970, data, cri/libadxe/cri_srd]
       - [0x3B49E8, .data, cri/libadxe/dtr]
-      - [0x3B51F0, data, cri/libadxe/dtx]
+      - [0x3B51F0, .data, cri/libadxe/dtx]
       - [0x3B59C0, data, cri/libadxe/dvci]
       - [0x3B66B0, data, cri/libadxe/dvci_sub]
       - [0x3B6858, data, cri/libadxe/htci]
@@ -1291,7 +1291,7 @@ segments:
       - [0x45BE08, rodata, cri/libadxe/cri_cvfs]
       - [0x45CAC0, rodata, cri/libadxe/cri_srd]
       - [0x45CE50, .rodata, cri/libadxe/dtr]
-      - [0x45CFB0, rodata, cri/libadxe/dtx]
+      - [0x45CFB0, .rodata, cri/libadxe/dtx]
       - [0x45D0B0, rodata, cri/libadxe/dvci]
       - [0x45D300, rodata, cri/libadxe/dvci_sub]
       - [0x45D480, rodata, cri/libadxe/htci]
@@ -1704,8 +1704,8 @@ segments:
       - { type: bss, vram: 0x6BD7D0, name: sf33rd/Source/Game/debug/OBJTEST }
 
       - { type: .bss, vram: 0x6BDA48, name: cri/libadxe/adx_errs }
-      - { type: bss, vram: 0x6BDA68, name: cri/libadxe/cri_cvfs } # More CRI stuff
-      - { type: bss, vram: 0x6BDF00, name: cri/libadxe/dtx }
+      - { type: bss, vram: 0x6BDA68, name: cri/libadxe/cri_cvfs }
+      - { type: .bss, vram: 0x6BDF00, name: cri/libadxe/dtx }
       - { type: bss, vram: 0x6BE100, name: cri/libadxe/dvci_sub }
       - { type: bss, vram: 0x6BF100, name: cri/libadxe/htci_sub } # May need to be split more granularly
       - { type: bss, vram: 0x6C0100, name: cri/libadxe/sjr_clt }
