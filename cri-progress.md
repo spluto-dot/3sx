@@ -255,19 +255,21 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] DTR_Destroy
 - [x] DTR_Stop
 
-### dtx
+### dtx ✅
 
-- [ ] dtx_create_rmt
-- [ ] dtx_destroy_rmt
-- [ ] DTX_Create
-- [ ] DTX_Destroy
-- [ ] DTX_SetRcvCbf
-- [ ] DTX_SetSndCbf
-- [ ] DTX_ExecHndl
-- [ ] DTX_Init
-- [ ] DTX_Finish
-- [ ] DTX_CallUrpc
-- [ ] DTX_ExecServer
+- [x] dtx_create_rmt
+- [x] dtx_destroy_rmt
+- [x] dtx_def_rcvcbf
+- [x] dtx_def_sndcbf
+- [x] DTX_Create
+- [x] DTX_Destroy
+- [x] DTX_SetRcvCbf
+- [x] DTX_SetSndCbf
+- [x] DTX_ExecHndl
+- [x] DTX_Init
+- [x] DTX_Finish
+- [x] DTX_CallUrpc
+- [x] DTX_ExecServer
 
 ### dvci
 
