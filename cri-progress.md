@@ -311,10 +311,10 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [ ] LSC_LockCrs
 - [ ] LSC_UnlockCrs
 
-### lsc_err
+### lsc_err ✅
 
-- [ ] LSC_EntryErrFunc
-- [ ] LSC_CallErrFunc
+- [x] LSC_EntryErrFunc
+- [x] LSC_CallErrFunc
 
 ### lsc_ini
 
