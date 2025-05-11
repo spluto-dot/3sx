@@ -50,9 +50,9 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXERR_ItoA
 - [x] ADXERR_ItoA2
 
-### adx_fcch
+### adx_fcch ✅
 
-- [ ] ADXF_Ocbi
+- [x] ADXF_Ocbi
 
 ### adx_fini
 
