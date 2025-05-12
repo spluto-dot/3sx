@@ -364,15 +364,24 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] SJMEM_UngetChunk
 - [x] SJMEM_IsGetChunk
 
-### sj_rbf
+### sj_rbf ✅
 
-- [ ] SJRBF_Init
-- [ ] SJRBF_Finish
-- [ ] SJRBF_Create
-- [ ] SJRBF_Reset
-- [ ] SJRBF_GetBufPtr
-- [ ] SJRBF_GetBufSize
-- [ ] SJRBF_GetXtrSize
+- [x] SJRBF_Error
+- [x] SJRBF_Init
+- [x] SJRBF_Finish
+- [x] SJRBF_Create
+- [x] SJRBF_Destroy
+- [x] SJRBF_GetUuid
+- [x] SJRBF_EntryErrFunc
+- [x] SJRBF_Reset
+- [x] SJRBF_GetNumData
+- [x] SJRBF_GetChunk
+- [x] SJRBF_PutChunk
+- [x] SJRBF_UngetChunk
+- [x] SJRBF_IsGetChunk
+- [x] SJRBF_GetBufPtr
+- [x] SJRBF_GetBufSize
+- [x] SJRBF_GetXtrSize
 
 ### sj_uni
 
