@@ -348,12 +348,21 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [ ] SJCRS_Lock
 - [ ] SJCRS_Unlock
 
-### sj_mem
+### sj_mem ✅
 
-- [ ] SJMEM_Init
-- [ ] SJMEM_Finish
-- [ ] SJMEM_Create
-- [ ] SJMEM_Reset
+- [x] SJMEM_Error
+- [x] SJMEM_Init
+- [x] SJMEM_Finish
+- [x] SJMEM_Create
+- [x] SJMEM_Destroy
+- [x] SJMEM_GetUuid
+- [x] SJMEM_EntryErrFunc
+- [x] SJMEM_Reset
+- [x] SJMEM_GetNumData
+- [x] SJMEM_GetChunk
+- [x] SJMEM_PutChunk
+- [x] SJMEM_UngetChunk
+- [x] SJMEM_IsGetChunk
 
 ### sj_rbf
 
