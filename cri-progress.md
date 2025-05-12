@@ -343,10 +343,10 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] PS2RNA_GetNumData
 - [x] PS2RNA_SetOutVol
 
-### sj_crs
+### sj_crs ✅
 
-- [ ] SJCRS_Lock
-- [ ] SJCRS_Unlock
+- [x] SJCRS_Lock
+- [x] SJCRS_Unlock
 
 ### sj_mem ✅
 
