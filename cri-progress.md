@@ -372,9 +372,9 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [ ] SJUNI_Create
 - [ ] SJUNI_Reset
 
-### sj_utl
+### sj_utl ✅
 
-- [ ] SJ_SplitChunk
+- [x] SJ_SplitChunk
 
 ### sjr_clt
 
