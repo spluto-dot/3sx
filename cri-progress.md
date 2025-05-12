@@ -139,37 +139,37 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXSJD_GetTotalNumSmpl
 - [x] ADXSJD_GetDefOutVol
 
-### adx_stmc
+### adx_stmc ✅
 
-- [ ] ADXSTM_Init
-- [ ] ADXSTM_Finish
-- [ ] ADXSTMF_SetupHandleMember
-- [ ] ADXSTMF_CreateCvfsRt
-- [ ] ADXSTMF_CreateCvfs
-- [ ] ADXSTM_Create
-- [ ] ADXSTM_Destroy
-- [ ] ADXSTM_BindFileNw
-- [ ] ADXSTM_BindFile
-- [ ] ADXSTM_ReleaseFileNw
-- [ ] ADXSTM_ReleaseFile
-- [ ] ADXSTM_GetStat
-- [ ] ADXSTM_Seek
-- [ ] ADXSTM_Tell
-- [ ] adxstm_start_sub
-- [ ] ADXSTM_Start2
-- [ ] ADXSTM_StopNw
-- [ ] ADXSTM_Stop
-- [ ] ADXSTM_EntryEosFunc
-- [ ] ADXSTM_SetEos
-- [ ] adxstm_sj_internal_error
-- [ ] adxstmf_stat_exec
-- [ ] ADXSTMF_ExecHndl
-- [ ] ADXSTM_ExecServer
-- [ ] ADXSTM_SetReqRdSize
-- [ ] ADXSTM_GetFileSct
-- [ ] ADXSTM_SetPause
-- [ ] ADXSTM_SetSj
-- [ ] ADXSTM_OpenCvfs
+- [x] ADXSTM_Init
+- [x] ADXSTM_Finish
+- [x] ADXSTMF_SetupHandleMember
+- [x] ADXSTMF_CreateCvfsRt
+- [x] ADXSTMF_CreateCvfs
+- [x] ADXSTM_Create
+- [x] ADXSTM_Destroy
+- [x] ADXSTM_BindFileNw
+- [x] ADXSTM_BindFile
+- [x] ADXSTM_ReleaseFileNw
+- [x] ADXSTM_ReleaseFile
+- [x] ADXSTM_GetStat
+- [x] ADXSTM_Seek
+- [x] ADXSTM_Tell
+- [x] adxstm_start_sub
+- [x] ADXSTM_Start2
+- [x] ADXSTM_StopNw
+- [x] ADXSTM_Stop
+- [x] ADXSTM_EntryEosFunc
+- [x] ADXSTM_SetEos
+- [x] adxstm_sj_internal_error
+- [x] adxstmf_stat_exec
+- [x] ADXSTMF_ExecHndl
+- [x] ADXSTM_ExecServer
+- [x] ADXSTM_SetReqRdSize
+- [x] ADXSTM_GetFileSct
+- [x] ADXSTM_SetPause
+- [x] ADXSTM_SetSj
+- [x] ADXSTM_OpenCvfs
 
 ### adx_sudv
 
