@@ -383,12 +383,21 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] SJRBF_GetBufSize
 - [x] SJRBF_GetXtrSize
 
-### sj_uni
+### sj_uni ✅
 
-- [ ] SJUNI_Init
-- [ ] SJUNI_Finish
-- [ ] SJUNI_Create
-- [ ] SJUNI_Reset
+- [x] SJUNI_Error
+- [x] SJUNI_Init
+- [x] SJUNI_Finish
+- [x] SJUNI_Create
+- [x] SJUNI_Destroy
+- [x] SJUNI_GetUuid
+- [x] SJUNI_EntryErrFunc
+- [x] SJUNI_Reset
+- [x] SJUNI_GetNumData
+- [x] SJUNI_GetChunk
+- [x] SJUNI_PutChunk
+- [x] SJUNI_UngetChunk
+- [x] SJUNI_IsGetChunk
 
 ### sj_utl ✅
 
