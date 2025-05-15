@@ -37,9 +37,9 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 - [ ] ADX_GetCoefficient
 
-### adx_dcd3
+### adx_dcd3 ✅
 
-- [ ] ADX_SetDecodeSteAsMonoSw
+- [x] ADX_SetDecodeSteAsMonoSw
 
 ### adx_errs ✅
 
@@ -54,10 +54,10 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 - [x] ADXF_Ocbi
 
-### adx_fini
+### adx_fini ✅
 
-- [ ] ADXF_Init
-- [ ] ADXF_Finish
+- [x] ADXF_Init
+- [x] ADXF_Finish
 
 ### adx_fs ✅
 
@@ -171,9 +171,9 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXSTM_SetSj
 - [x] ADXSTM_OpenCvfs
 
-### adx_sudv
+### adx_sudv ✅
 
-- [ ] ADXPS2_LoadFcacheDvd
+- [x] ADXPS2_LoadFcacheDvd
 
 ### adx_tlk ✅
 
@@ -306,22 +306,22 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [ ] LSC_GetNumStm
 - [ ] LSC_SetFlowLimit
 
-### lsc_crs
+### lsc_crs ✅
 
-- [ ] LSC_LockCrs
-- [ ] LSC_UnlockCrs
+- [x] LSC_LockCrs
+- [x] LSC_UnlockCrs
 
 ### lsc_err ✅
 
 - [x] LSC_EntryErrFunc
 - [x] LSC_CallErrFunc
 
-### lsc_ini
+### lsc_ini ✅
 
-- [ ] lsc_EntrySvrInt
-- [ ] lsc_DeleteSvrInt
-- [ ] LSC_Init
-- [ ] LSC_Finish
+- [x] lsc_EntrySvrInt
+- [x] lsc_DeleteSvrInt
+- [x] LSC_Init
+- [x] LSC_Finish
 
 ### ps2_rna
 
@@ -403,19 +403,21 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 - [x] SJ_SplitChunk
 
-### sjr_clt
+### sjr_clt ✅
 
-- [ ] SJUNI_CreateRmt
-- [ ] SJRMT_Destroy
-- [ ] SJRMT_Init
-- [ ] SJRMT_Finish
+- [x] SJUNI_CreateRmt
+- [x] SJRMT_Destroy
+- [x] SJRMT_Init
+- [x] SJRMT_Finish
 
-### sjx
+### sjx ✅
 
-- [ ] SJX_Init
-- [ ] SJX_Finish
-- [ ] SJX_Create
-- [ ] SJX_Destroy
+- [x] sjx_rcvcbf
+- [x] sjx_sndcbf
+- [x] SJX_Init
+- [x] SJX_Finish
+- [x] SJX_Create
+- [x] SJX_Destroy
 
 ### svm ✅
 
