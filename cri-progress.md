@@ -210,27 +210,27 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [ ] ADXPD_Destroy
 - [ ] ADXPD_Stop
 
-### cri_cvfs
+### cri_cvfs ✅
 
-- [ ] cvFsCallUsrErrFn
-- [ ] cvFsError
-- [ ] getDevice
-- [ ] toUpperStr
-- [ ] cvFsGetDefDev
-- [ ] variousProc
-- [ ] cvFsOpen
-- [ ] allocCvFsHn
-- [ ] releaseCvFsHn
-- [ ] getDevName
-- [ ] getDefDev
-- [ ] cvFsClose
-- [ ] cvFsTell
-- [ ] cvFsSeek
-- [ ] cvFsReqRd
-- [ ] cvFsExecServer
-- [ ] cvFsGetStat
-- [ ] isNeedDevName
-- [ ] addDevName
+- [x] cvFsCallUsrErrFn
+- [x] cvFsError
+- [x] getDevice
+- [x] toUpperStr
+- [x] cvFsGetDefDev
+- [x] variousProc
+- [x] cvFsOpen
+- [x] allocCvFsHn
+- [x] releaseCvFsHn
+- [x] getDevName
+- [x] getDefDev
+- [x] cvFsClose
+- [x] cvFsTell
+- [x] cvFsSeek
+- [x] cvFsReqRd
+- [x] cvFsExecServer
+- [x] cvFsGetStat
+- [x] isNeedDevName
+- [x] addDevName
 
 ### cri_srd
 
