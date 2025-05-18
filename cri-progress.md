@@ -232,22 +232,22 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] isNeedDevName
 - [x] addDevName
 
-### cri_srd
+### cri_srd ✅
 
-- [ ] srd_wait
-- [ ] srd_wait_hst
-- [ ] srd_check_dvd_error
-- [ ] srd_exec_dvd
-- [ ] srd_exec_hst
-- [ ] SRD_ExecServer
-- [ ] SRD_SetHistory
-- [ ] srd_sw_lock
-- [ ] srd_sw_unlock
-- [ ] SRD_SceLseek
-- [ ] SRD_SceIoctl
-- [ ] SRD_SceOpen
-- [ ] SRD_SceClose
-- [ ] SRD_SceRead
+- [x] srd_wait
+- [x] srd_wait_hst
+- [x] srd_check_dvd_error
+- [x] srd_exec_dvd
+- [x] srd_exec_hst
+- [x] SRD_ExecServer
+- [x] SRD_SetHistory
+- [x] srd_sw_lock
+- [x] srd_sw_unlock
+- [x] SRD_SceLseek
+- [x] SRD_SceIoctl
+- [x] SRD_SceOpen
+- [x] SRD_SceClose
+- [x] SRD_SceRead
 
 ### dtr ✅
 
