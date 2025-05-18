@@ -81,9 +81,9 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXF_GetFnameRangeEx
 - [x] ADXF_GetFnameFromPt
 
-### adx_fsvr
+### adx_fsvr ✅
 
-- [ ] ADXT_ExecFsSvr
+- [x] ADXT_ExecFsSvr
 
 ### adx_inis ✅
 
