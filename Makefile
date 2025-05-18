@@ -107,7 +107,7 @@ split:
 clean: ##@ clean extracted files, assets, and build artifacts
 	git clean -fdx $(ASSETS_DIR)/
 	git clean -fdx $(ASM_DIR)/
-	git clean -fdx $(BUILD_DIR)/
+	git clean -fdx build/
 	git clean -fdx .splache
 
 # Build

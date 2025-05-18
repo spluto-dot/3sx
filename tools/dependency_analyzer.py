@@ -27,7 +27,8 @@ CACHED_PATH = Path("temp/cached_func_map.pkl")
 
 def obj_path_to_source_path(obj_path: Path) -> Path:
     components = str(obj_path).split("/")
-    components = components[4:] # drop build/anniversary/src/anniversary and build/anniversary/asm/anniversary
+    # Drop build/anniversary/ps2/src/anniversary and build/anniversary/ps2/asm/anniversary
+    components = components[5:]
     components[-1] = components[-1].replace(".c.o", ".c").replace(".s.o", ".c")
     return Path("/".join(components))
 
@@ -84,7 +85,7 @@ def check_if_decompiled(func: str, obj_file: Path) -> bool:
         return False
     
     components = str(obj_file).split("/")
-    components = components[4:]                         # drop 'build/anniversary/src/anniversary'
+    components = components[5:]                         # drop 'build/anniversary/ps2/src/anniversary'
     components[-1] = components[-1].split(".")[0]       # remove extensions
     components = ["asm", "anniversary", "nonmatchings"] + components + [f"{func}.s"]
 
