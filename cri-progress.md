@@ -13,13 +13,14 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXB_SetAc3InSj
 - [x] ADXB_SetAhxInSj
 
-### adx_bsc ✅
+### adx_bsc
 
 - [x] SKG_Init
 - [x] ADXB_Init
 - [x] ADXB_Create
 - [x] ADXB_Destroy
 - [x] ADXB_EntryGetWrFunc
+- [ ] ADXB_GetPcmBuf
 - [x] ADXB_GetSfreq
 - [x] ADXB_GetOutBps
 - [x] ADXB_GetTotalNumSmpl
@@ -132,6 +133,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXSJD_SetInSj
 - [x] ADXSJD_Start
 - [x] ADXSJD_Stop
+- [x] adxsjd_get_wr
 - [x] ADXSJD_GetDecNumSmpl
 - [x] ADXSJD_SetLnkSw
 - [x] ADXSJD_GetSfreq
