@@ -60,9 +60,11 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXF_Init
 - [x] ADXF_Finish
 
-### adx_fs ✅
+### adx_fs
 
 - [x] adxf_SetCmdHstry
+- [ ] ADXF_LoadPartitionNw
+- [ ] ADXF_GetPtStat
 - [x] adxf_AllocAdxFs
 - [x] adxf_CreateAdxFs
 - [x] adxf_SetAfsFileInfo
@@ -74,6 +76,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXF_ReadNw32
 - [x] ADXF_ReadNw
 - [x] ADXF_Stop
+- [ ] ADXF_StopNw
 - [x] adxf_ExecOne
 - [x] ADXF_ExecServer
 - [x] ADXF_GetFsizeSct
@@ -98,7 +101,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXT_GetNumFiles
 - [x] ADXT_ResetEntry
 
-### adx_mps2 ✅
+### adx_mps2
 
 - [x] ADXM_IsSetupThrd
 - [x] adxm_ShutdownPreProcedure
@@ -109,10 +112,13 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] adxm_ShutdownSafeThrd
 - [x] ADXM_Lock
 - [x] ADXM_Unlock
+- [ ] ADXPS2_ExecVint
 - [x] ADXM_ExecMain
+- [ ] ADXPS2_SetupThrd
 
-### adx_rnap ✅
+### adx_rnap
 
+- [ ] ADXPS2_SetupVoice
 - [x] ADXRNA_Init
 - [x] ADXRNA_Finish
 - [x] ADXRNA_EntryErrFunc
@@ -173,11 +179,17 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXSTM_SetSj
 - [x] ADXSTM_OpenCvfs
 
-### adx_sudv ✅
+### adx_sudv
 
+- [ ] ADXPS2_SetupDvdFs
 - [x] ADXPS2_LoadFcacheDvd
 
-### adx_tlk ✅
+### adx_suht
+
+- [ ] ADXPS2_SetupHostFs
+- [ ] ADXPS2_LoadFcacheHost
+
+### adx_tlk
 
 - [x] ADXT_Create
 - [x] adxt_detach_ahx
@@ -194,6 +206,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXT_SetOutVol
 - [x] ADXT_SetDefSvrFreq
 - [x] ADXT_GetNumSmplObuf
+- [ ] ADXT_ExecServer
 - [x] ADXT_Pause
 - [x] ADXT_GetStatPause
 - [x] ADXT_SetLnkSw
