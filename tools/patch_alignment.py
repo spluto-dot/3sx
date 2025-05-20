@@ -18,6 +18,7 @@ special_cases = {
     ("flps2debug", ".rodata", 22): 16,
     ("MTRANS", ".rodata", 10): 16,
     ("Sound3rd", ".rodata", 1): 16,
+    ("CALDIR", ".rodata", 0): 16,
 
     ("PulPul", ".data", 0): 16,
     ("flps2vram", ".data", 0): 16,
@@ -40,6 +41,8 @@ special_cases = {
     ("spgauge", ".sbss", 0): 16,
     ("VITAL", ".sbss", 0): 16,
     ("RANKING", ".sbss", 0): 16,
+    ("OBJTEST", ".sbss", 0): 16,
+    ("CHARID", ".sbss", 0): 16,
 
     ("bss_6BDA68", ".bss", 0): 8,
     ("iopnotify", ".bss", 0): 8,
