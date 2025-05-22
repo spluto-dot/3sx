@@ -338,16 +338,16 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [ ] ADXPD_GetNumBlk
 - [ ] ADXPD_ExecHndl
 
-### cri_cvfs
+### cri_cvfs ✅
 
 - [x] cvFsCallUsrErrFn
 - [x] cvFsError
-- [ ] cvFsAddDev
-- [ ] addDevice
+- [x] cvFsAddDev
+- [x] addDevice
 - [x] getDevice
 - [x] toUpperStr
-- [ ] cvFsSetDefDev
-- [ ] isExistDev
+- [x] cvFsSetDefDev
+- [x] isExistDev
 - [x] cvFsGetDefDev
 - [x] variousProc
 - [x] cvFsOpen
@@ -361,7 +361,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] cvFsReqRd
 - [x] cvFsExecServer
 - [x] cvFsGetStat
-- [ ] cvFsEntryErrFunc
+- [x] cvFsEntryErrFunc
 - [x] isNeedDevName
 - [x] addDevName
 

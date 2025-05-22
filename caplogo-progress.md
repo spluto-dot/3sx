@@ -292,16 +292,16 @@ Notes:
 | Init_sound_system                | sf33rd/Source/Game/Sound3rd.c                        | sf33rd   | ✅               |
 | flAdxInitialize                  | sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX.c             | sf33rd   | ✅               |
 | ADXPS2_SetupDvdFs                | cri/libadxe/adx_sudv.c                               | cri      |                 |
-| cvFsEntryErrFunc                 | cri/libadxe/cri_cvfs.c                               | cri      |                 |
-| cvFsAddDev                       | cri/libadxe/cri_cvfs.c                               | cri      |                 |
-| addDevice                        | cri/libadxe/cri_cvfs.c                               | cri      |                 |
+| cvFsEntryErrFunc                 | cri/libadxe/cri_cvfs.c                               | cri      | ✅               |
+| cvFsAddDev                       | cri/libadxe/cri_cvfs.c                               | cri      | ✅               |
+| addDevice                        | cri/libadxe/cri_cvfs.c                               | cri      | ✅               |
 | toUpperStr                       | cri/libadxe/cri_cvfs.c                               | cri      | ✅               |
 | dvCiGetInterface                 | cri/libadxe/dvci.c                                   | cri      |                 |
 | dvCiSetRootDir                   | cri/libadxe/dvci_sub.c                               | cri      |                 |
 | getDevice                        | cri/libadxe/cri_cvfs.c                               | cri      | ✅               |
 | dvCiEntryErrFunc                 | cri/libadxe/dvci.c                                   | cri      |                 |
-| cvFsSetDefDev                    | cri/libadxe/cri_cvfs.c                               | cri      |                 |
-| isExistDev                       | cri/libadxe/cri_cvfs.c                               | cri      |                 |
+| cvFsSetDefDev                    | cri/libadxe/cri_cvfs.c                               | cri      | ✅               |
+| isExistDev                       | cri/libadxe/cri_cvfs.c                               | cri      | ✅               |
 | dvCiSetRdMode                    | cri/libadxe/dvci_sub.c                               | cri      |                 |
 | ADXPS2_LoadFcacheDvd             | cri/libadxe/adx_sudv.c                               | cri      | ✅               |
 | dvCiLoadFcache                   | cri/libadxe/dvci_sub.c                               | cri      |                 |
