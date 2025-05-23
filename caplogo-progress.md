@@ -118,7 +118,7 @@ Notes:
 | _sceSifLoadModule                | sdk/libkernl/eeloadfile.c                            | sdk      | –               |
 | _lf_bind                         | sdk/libkernl/eeloadfile.c                            | sdk      | –               |
 | _lf_version                      | sdk/libkernl/eeloadfile.c                            | sdk      | –               |
-| flPS2PADModuleInit               | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   |                 |
+| flPS2PADModuleInit               | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   | ✅               |
 | flAdxModuleInit                  | sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX.c             | sf33rd   | ✅               |
 | ADXPS2_SetupVoice                | cri/libadxe/adx_rnap.c                               | cri      |                 |
 | PS2RNA_SetupVoice                | cri/libadxe/ps2_rna.c                                | cri      |                 |
@@ -184,22 +184,22 @@ Notes:
 | WaitDma                          | sdk/libdma/libdma.c                                  | sdk      | –               |
 | sceDmaSync                       | sdk/libdma/libdma.c                                  | sdk      | –               |
 | flPADInitialize                  | sf33rd/AcrSDK/common/mlPAD.c                         | sf33rd   | ✅               |
-| tarPADInit                       | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   |                 |
-| PADDeviceInit                    | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   |                 |
+| tarPADInit                       | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   | ✅               |
+| PADDeviceInit                    | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   | ✅               |
 | sceDbcInit                       | sdk/libdbc/libdbc.c                                  | sdk      | –               |
 | sceDbcGetModVersion              | sdk/libdbc/libdbc.c                                  | sdk      | –               |
 | DPRINT                           | sdk/libdbc/libdbc.c                                  | sdk      | –               |
 | sceDbcSetWorkAddr                | sdk/libdbc/libdbc.c                                  | sdk      | –               |
 | scePad2Init                      | sdk/libpad2/libpad2.c                                | sdk      | –               |
-| ps2PADWorkClear                  | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   |                 |
+| ps2PADWorkClear                  | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   | ✅               |
 | flpad_ram_clear                  | sf33rd/AcrSDK/common/mlPAD.c                         | sf33rd   | ✅               |
-| PADPortOpen                      | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   |                 |
+| PADPortOpen                      | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   | ✅               |
 | scePad2CreateSocket              | sdk/libpad2/libpad2.c                                | sdk      | –               |
 | sceDbcCreateSocket               | sdk/libdbc/libdbc.c                                  | sdk      | –               |
 | scePad2InitDmaDBuff              | sdk/libpad2/libpad2.c                                | sdk      | –               |
 | flPADWorkClear                   | sf33rd/AcrSDK/common/mlPAD.c                         | sf33rd   | ✅               |
 | flPADConfigSet                   | sf33rd/AcrSDK/common/mlPAD.c                         | sf33rd   | ✅               |
-| flPADConfigSetACRtoXX            | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   |                 |
+| flPADConfigSetACRtoXX            | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   | ✅               |
 | flPS2DebugInit                   | sf33rd/AcrSDK/ps2/flps2debug.c                       | sf33rd   | ✅               |
 | flSetDebugMode                   | sf33rd/AcrSDK/ps2/flps2debug.c                       | sf33rd   | ✅               |
 | flCreateTextureFromFile          | sf33rd/AcrSDK/ps2/flps2etc.c                         | sf33rd   | ✅               |
