@@ -742,7 +742,7 @@ Notes:
 | flPS2UnlockTexture               | sf33rd/AcrSDK/ps2/flps2vram.c                        | sf33rd   | ✅               |
 | reservMemKeySelObj               | sf33rd/Source/Game/texgroup.c                        | sf33rd   | ✅               |
 | load_any_texture_patnum          | sf33rd/Source/Game/texgroup.c                        | sf33rd   | ✅               |
-| load_any_texture_grpnum          | sf33rd/Source/Game/texgroup.c                        | sf33rd   |                 |
+| load_any_texture_grpnum          | sf33rd/Source/Game/texgroup.c                        | sf33rd   | ✅               |
 | Pause_Family_On                  | sf33rd/Source/Game/bg.c                              | sf33rd   |                 |
 | njUnitMatrix                     | sf33rd/Source/Game/DC_Ghost.c                        | sf33rd   | ✅               |
 | sceVu0UnitMatrix                 | sdk/libvu0/libvu0.c                                  | sdk      | –               |
@@ -808,7 +808,7 @@ Notes:
 | pulpul_stop2                     | sf33rd/Source/Game/PulPul.c                          | sf33rd   |                 |
 | Warning_Init                     | sf33rd/Source/Game/DEMO00.c                          | sf33rd   | ✅               |
 | mmDebWriteTag                    | sf33rd/Source/Common/MemMan.c                        | sf33rd   | ✅               |
-| purge_texture_group              | sf33rd/Source/Game/texgroup.c                        | sf33rd   |                 |
+| purge_texture_group              | sf33rd/Source/Game/texgroup.c                        | sf33rd   | ✅               |
 | CP3toPS2DrawOff                  | sf33rd/Source/PS2/ps2Quad.c                          | sf33rd   | ✅               |
 | Init_Task_Aload                  | sf33rd/Source/Game/init3rd.c                         | sf33rd   | ✅               |
 | SaveInit                         | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
