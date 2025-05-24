@@ -248,9 +248,39 @@ typedef ADXSTM_OBJ *ADXSTM;
 
 // LSC
 
+#define LSC_MAX_OBJ 16
+#define LSC_MAX_STM 16
+
+typedef struct {
+    Sint32 id;
+    const Char8 *fname;
+    Sint32 unk8;
+    void *dir;
+    Sint32 unk10;
+    Sint32 unk14;
+    Sint32 stat;
+    Sint32 rd_sct; // maybe void*?
+} LSC_STM;
+
 typedef struct {
     Sint8 used;
-    char pad1[0x237];
+    Sint8 stat;
+    Sint8 unk2;
+    Sint8 lp_flg;
+    Sint8 unk4;
+    SJ sj;
+    Sint32 unkC;
+    Sint32 unk10;
+    Sint32 flow_limit;
+    Sint32 unk18;
+    Sint32 last_stm_index;
+    Sint32 unk20;
+    Sint32 num_stm;
+    ADXSTM stm_hndl;
+    Sint32 unk2C;
+    char pad30[4];
+    Sint32 unk34;
+    LSC_STM stm[LSC_MAX_STM];
 } LSC_OBJ;
 
 typedef LSC_OBJ *LSC;
