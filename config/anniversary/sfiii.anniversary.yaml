@@ -597,7 +597,7 @@ segments:
       - [0x2DF9E0, asm, cri/libadxe/lsc_svr]
       - [0x2DFD90, asm, cri/libadxe/pl2enc] # This file is a guess
       - [0x2E0998, c, cri/libadxe/ps2_rna]
-      - [0x2E2208, asm, cri/libadxe/rna_crs]
+      - [0x2E2208, c, cri/libadxe/rna_crs]
       - [0x2E2258, c, cri/libadxe/sj_crs]
       - [0x2E2298, c, cri/libadxe/sj_err] # This file is a guess
       - [0x2E22B0, c, cri/libadxe/sj_mem]
@@ -822,7 +822,7 @@ segments:
       - [0x3B6DC8, .data, cri/libadxe/lsc_err]
       - [0x3B6ED0, data, cri/libadxe/lsc_ini]
       - [0x3B9270, data, cri/libadxe/pl2enc]
-      - [0x3B92B0, data, cri/libadxe/ps2_rna]
+      - [0x3B92B0, .data, cri/libadxe/ps2_rna]
       - [0x3BD5C0, data, cri/libadxe/rna_crs]
       - [0x3BD5C8, data, cri/libadxe/sj_crs]
       - [0x3BD5D0, .data, cri/libadxe/sj_mem]
