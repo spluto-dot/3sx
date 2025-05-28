@@ -8,7 +8,7 @@ Notes:
 
 | Module   | Progress   |
 |----------|------------|
-| sf33rd   | 65.87%     |
+| sf33rd   | 67.50%     |
 | cri      | 52.69%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
@@ -656,7 +656,7 @@ Notes:
 | flPS2VIF1CodeAddDirectHL         | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
 | ppgMakeConvTableTexDC            | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
 | appSetupBasePriority             | sf33rd/Source/Game/MTRANS.c                          | sf33rd   |                 |
-| MemcardInit                      | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   |                 |
+| MemcardInit                      | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
 | sceMcInit                        | sdk/libmc/libmc.c                                    | sdk      | –               |
 | sceMcSync                        | sdk/libmc/libmc.c                                    | sdk      | –               |
 | initRenderState                  | sf33rd/Source/Game/AcrUtil.c                         | sf33rd   | ✅               |
@@ -817,15 +817,15 @@ Notes:
 | CP3toPS2DrawOff                  | sf33rd/Source/PS2/ps2Quad.c                          | sf33rd   | ✅               |
 | Init_Task_Aload                  | sf33rd/Source/Game/init3rd.c                         | sf33rd   | ✅               |
 | SaveInit                         | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
-| McActInit                        | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   |                 |
+| McActInit                        | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
 | load_data                        | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
 | ADXF_GetFsizeSct                 | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
 | SaveMove                         | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
 | save_sw_get                      | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
 | save_move_init                   | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
 | load_busy_ck                     | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
-| McActMain                        | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   |                 |
-| mc_act_stop                      | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   |                 |
+| McActMain                        | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
+| mc_act_stop                      | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
 | save_msg_trans                   | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
 | Reset_Task                       | sf33rd/Source/Game/Reset.c                           | sf33rd   | ✅               |
 | Check_Reset_IO                   | sf33rd/Source/Game/Reset.c                           | sf33rd   | ✅               |
@@ -836,19 +836,19 @@ Notes:
 | make_env_pkt                     | sf33rd/Source/PS2/mc/knjsub.c                        | sf33rd   |                 |
 | make_pal_pkt                     | sf33rd/Source/PS2/mc/knjsub.c                        | sf33rd   |                 |
 | make_img_pkt                     | sf33rd/Source/PS2/mc/knjsub.c                        | sf33rd   |                 |
-| McActAvailSet                    | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   |                 |
+| McActAvailSet                    | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
 | save_move_aload                  | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
 | auto_load_init                   | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
 | auto_load_load                   | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
 | mc_msg_set                       | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
 | aload_buf_adrs                   | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
-| McActSave0Set                    | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   |                 |
-| McActResult                      | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   |                 |
-| mc_act_save0                     | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   |                 |
-| mc_check_card                    | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   |                 |
-| mc_sync                          | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   |                 |
+| McActSave0Set                    | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
+| McActResult                      | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
+| mc_act_save0                     | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
+| mc_check_card                    | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
+| mc_sync                          | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
 | sceMcGetInfo                     | sdk/libmc/libmc.c                                    | sdk      | –               |
-| mc_act_return                    | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   |                 |
+| mc_act_return                    | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
 | GetMemCardMsg                    | sf33rd/Source/PS2/mc/msgsub.c                        | sf33rd   |                 |
 | KnjSetSize                       | sf33rd/Source/PS2/mc/knjsub.c                        | sf33rd   |                 |
 | KnjSetColor                      | sf33rd/Source/PS2/mc/knjsub.c                        | sf33rd   |                 |
@@ -868,7 +868,7 @@ Notes:
 | str_tag_check                    | sf33rd/Source/PS2/mc/msgsub.c                        | sf33rd   |                 |
 | KnjSetRgb                        | sf33rd/Source/PS2/mc/knjsub.c                        | sf33rd   |                 |
 | mceGetInfoApdx                   | sdk/libmc/libmc.c                                    | sdk      | –               |
-| McActStopSet                     | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   |                 |
+| McActStopSet                     | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
 | auto_load_exit                   | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
 | save_move_exit                   | sf33rd/Source/PS2/mc/savesub.c                       | sf33rd   |                 |
 | KnjFinish                        | sf33rd/Source/PS2/mc/knjsub.c                        | sf33rd   |                 |
