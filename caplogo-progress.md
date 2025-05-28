@@ -793,9 +793,9 @@ Notes:
 | ppgCheckPaletteDataBe            | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
 | Sa_frame_Clear                   | sf33rd/Source/Game/sc_sub.c                          | sf33rd   |                 |
 | effect_work_init                 | sf33rd/Source/Game/EFFECT.c                          | sf33rd   | ✅               |
-| init_pulpul_work                 | sf33rd/Source/Game/PulPul.c                          | sf33rd   |                 |
-| init_pulpul_work2                | sf33rd/Source/Game/PulPul.c                          | sf33rd   |                 |
-| init_pulpul_round2               | sf33rd/Source/Game/PulPul.c                          | sf33rd   |                 |
+| init_pulpul_work                 | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
+| init_pulpul_work2                | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
+| init_pulpul_round2               | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
 | Init_Load_Request_Queue_1st      | sf33rd/Source/Game/GD3rd.c                           | sf33rd   | ✅               |
 | Game_Data_Init                   | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
 | Setup_Default_Game_Option        | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
@@ -804,8 +804,8 @@ Notes:
 | Copy_Check_w                     | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
 | Setup_Difficult_V                | sf33rd/Source/Game/init3rd.c                         | sf33rd   | ✅               |
 | Setup_Limit_Time                 | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
-| pulpul_stop                      | sf33rd/Source/Game/PulPul.c                          | sf33rd   |                 |
-| pulpul_stop2                     | sf33rd/Source/Game/PulPul.c                          | sf33rd   |                 |
+| pulpul_stop                      | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
+| pulpul_stop2                     | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
 | Warning_Init                     | sf33rd/Source/Game/DEMO00.c                          | sf33rd   | ✅               |
 | mmDebWriteTag                    | sf33rd/Source/Common/MemMan.c                        | sf33rd   | ✅               |
 | purge_texture_group              | sf33rd/Source/Game/texgroup.c                        | sf33rd   | ✅               |
@@ -893,9 +893,9 @@ Notes:
 | Ck_Coin                          | sf33rd/Source/Game/Game.c                            | sf33rd   | ✅               |
 | texture_cash_update              | sf33rd/Source/Game/texcash.c                         | sf33rd   |                 |
 | disp_texcash_free_area           | sf33rd/Source/Game/texcash.c                         | sf33rd   |                 |
-| move_pulpul_work                 | sf33rd/Source/Game/PulPul.c                          | sf33rd   |                 |
-| move_pulpul                      | sf33rd/Source/Game/PulPul.c                          | sf33rd   |                 |
-| chkVibUnit                       | sf33rd/Source/Game/PulPul.c                          | sf33rd   |                 |
+| move_pulpul_work                 | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
+| move_pulpul                      | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
+| chkVibUnit                       | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
 | Check_Off_Vib                    | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
 | Check_LDREQ_Queue                | sf33rd/Source/Game/GD3rd.c                           | sf33rd   | ✅               |
 | disp_ldreq_status                | sf33rd/Source/Game/GD3rd.c                           | sf33rd   | ✅               |
