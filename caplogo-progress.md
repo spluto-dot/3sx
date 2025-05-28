@@ -9,7 +9,7 @@ Notes:
 | Module   | Progress   |
 |----------|------------|
 | sf33rd   | 65.87%     |
-| cri      | 50.68%     |
+| cri      | 52.69%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
 |----------------------------------|------------------------------------------------------|----------|-----------------|
@@ -126,7 +126,7 @@ Notes:
 | flPS2PADModuleInit               | sf33rd/AcrSDK/ps2/ps2PAD.c                           | sf33rd   | ✅               |
 | flAdxModuleInit                  | sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX.c             | sf33rd   | ✅               |
 | ADXPS2_SetupVoice                | cri/libadxe/adx_rnap.c                               | cri      |                 |
-| PS2RNA_SetupVoice                | cri/libadxe/ps2_rna.c                                | cri      |                 |
+| PS2RNA_SetupVoice                | cri/libadxe/ps2_rna.c                                | cri      | ✅               |
 | sceGsResetPath                   | sdk/libgraph/graph002.c                              | sdk      | –               |
 | sceDmaReset                      | sdk/libdma/libdma.c                                  | sdk      | –               |
 | memclr                           | sdk/libdma/libdma.c                                  | sdk      | –               |
@@ -523,9 +523,9 @@ Notes:
 | ADXT_ExecRdErrChk                | cri/libadxe/adx_tsvr.c                               | cri      |                 |
 | LSC_GetStat                      | cri/libadxe/lsc.c                                    | cri      | ✅               |
 | ADXRNA_ExecServer                | cri/libadxe/adx_rnap.c                               | cri      |                 |
-| PS2RNA_ExecServer                | cri/libadxe/ps2_rna.c                                | cri      |                 |
+| PS2RNA_ExecServer                | cri/libadxe/ps2_rna.c                                | cri      | ✅               |
 | RNACRS_Lock                      | cri/libadxe/rna_crs.c                                | cri      |                 |
-| PS2RNA_ExecHndl                  | cri/libadxe/ps2_rna.c                                | cri      |                 |
+| PS2RNA_ExecHndl                  | cri/libadxe/ps2_rna.c                                | cri      | ✅               |
 | RNACRS_Unlock                    | cri/libadxe/rna_crs.c                                | cri      |                 |
 | DTR_ExecServer                   | cri/libadxe/dtr.c                                    | cri      |                 |
 | DTR_ExecHndl                     | cri/libadxe/dtr.c                                    | cri      |                 |
@@ -996,17 +996,17 @@ Notes:
 | ADXSJD_GetOutBps                 | cri/libadxe/adx_sjd.c                                | cri      | ✅               |
 | ADXB_GetOutBps                   | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
 | ADXRNA_SetBitPerSmpl             | cri/libadxe/adx_rnap.c                               | cri      |                 |
-| PS2RNA_SetBitPerSmpl             | cri/libadxe/ps2_rna.c                                | cri      |                 |
+| PS2RNA_SetBitPerSmpl             | cri/libadxe/ps2_rna.c                                | cri      | ✅               |
 | ADXRNA_SetSfreq                  | cri/libadxe/adx_rnap.c                               | cri      |                 |
-| PS2RNA_SetSfreq                  | cri/libadxe/ps2_rna.c                                | cri      |                 |
+| PS2RNA_SetSfreq                  | cri/libadxe/ps2_rna.c                                | cri      | ✅               |
 | ADXRNA_SetNumChan                | cri/libadxe/adx_rnap.c                               | cri      |                 |
-| PS2RNA_SetNumChan                | cri/libadxe/ps2_rna.c                                | cri      |                 |
+| PS2RNA_SetNumChan                | cri/libadxe/ps2_rna.c                                | cri      | ✅               |
 | ADXRNA_SetTotalNumSmpl           | cri/libadxe/adx_rnap.c                               | cri      | ✅               |
 | ADXT_GetTranspose                | cri/libadxe/adx_tlk.c                                | cri      | ✅               |
 | adxt_set_outpan                  | cri/libadxe/adx_tsvr.c                               | cri      |                 |
 | ADXSJD_GetDefPan                 | cri/libadxe/adx_sjd.c                                | cri      |                 |
 | ADXRNA_SetOutPan                 | cri/libadxe/adx_rnap.c                               | cri      |                 |
-| PS2RNA_SetOutPan                 | cri/libadxe/ps2_rna.c                                | cri      |                 |
+| PS2RNA_SetOutPan                 | cri/libadxe/ps2_rna.c                                | cri      | ✅               |
 | ADXSJD_GetFormat                 | cri/libadxe/adx_sjd.c                                | cri      |                 |
 | DTR_GetStat                      | cri/libadxe/dtr.c                                    | cri      |                 |
 | SJUNI_GetNumData                 | cri/libadxe/sj_uni.c                                 | cri      | ✅               |
@@ -1041,7 +1041,7 @@ Notes:
 | ADXRNA_GetNumData                | cri/libadxe/adx_rnap.c                               | cri      | ✅               |
 | PS2RNA_GetNumData                | cri/libadxe/ps2_rna.c                                | cri      | ✅               |
 | ADXRNA_GetNumRoom                | cri/libadxe/adx_rnap.c                               | cri      |                 |
-| PS2RNA_GetNumRoom                | cri/libadxe/ps2_rna.c                                | cri      |                 |
+| PS2RNA_GetNumRoom                | cri/libadxe/ps2_rna.c                                | cri      | ✅               |
 | sceSifDmaStat                    | sdk/libkernl/klib.c                                  | sdk      | –               |
 | Go_BGM                           | sf33rd/Source/Game/Sound3rd.c                        | sf33rd   | ✅               |
 | ADXT_GetTime                     | cri/libadxe/adx_tlk.c                                | cri      | ✅               |

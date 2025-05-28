@@ -493,7 +493,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 ### ps2_rna
 
-- [ ] PS2RNA_SetupVoice
+- [x] PS2RNA_SetupVoice
 - [x] ps2rna_init_psj
 - [x] ps2rna_finish_psj
 - [x] ps2rna_get_psj
@@ -510,14 +510,14 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] PS2RNA_SetPlaySw
 - [x] PS2RNA_SetDiscardSw
 - [x] PS2RNA_GetNumData
-- [ ] PS2RNA_GetNumRoom
-- [ ] PS2RNA_ExecHndl
-- [ ] PS2RNA_ExecServer
-- [ ] PS2RNA_SetNumChan
-- [ ] PS2RNA_SetSfreq
+- [x] PS2RNA_GetNumRoom
+- [x] PS2RNA_ExecHndl
+- [x] PS2RNA_ExecServer
+- [x] PS2RNA_SetNumChan
+- [x] PS2RNA_SetSfreq
 - [x] PS2RNA_SetOutVol
-- [ ] PS2RNA_SetOutPan
-- [ ] PS2RNA_SetBitPerSmpl
+- [x] PS2RNA_SetOutPan
+- [x] PS2RNA_SetBitPerSmpl
 
 ### rna_crs
 
