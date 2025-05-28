@@ -6,6 +6,11 @@ Notes:
 - Functions appear in the order that the game first calls them in.
 - There's no need to decompile SDK and zlib functions.
 
+| Module   | Progress   |
+|----------|------------|
+| sf33rd   | 65.87%     |
+| cri      | 50.68%     |
+
 | Function                         | File                                                 | Module   | Is decompiled   |
 |----------------------------------|------------------------------------------------------|----------|-----------------|
 | _InitSys                         | sdk/libkernl/initsys.c                               | sdk      | –               |
