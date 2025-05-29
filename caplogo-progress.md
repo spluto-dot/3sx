@@ -8,8 +8,8 @@ Notes:
 
 | Module   | Progress   |
 |----------|------------|
-| sf33rd   | 71.13%     |
-| cri      | 52.69%     |
+| sf33rd   | 71.11%     |
+| cri      | 52.62%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
 |----------------------------------|------------------------------------------------------|----------|-----------------|
@@ -149,7 +149,7 @@ Notes:
 | mflRetrieve                      | sf33rd/AcrSDK/common/memfound.c                      | sf33rd   | ✅               |
 | plmemRetrieve                    | sf33rd/AcrSDK/common/memmgr.c                        | sf33rd   | ✅               |
 | flPS2VramFullClear               | sf33rd/AcrSDK/ps2/foundaps2.c                        | sf33rd   | ✅               |
-| memzero_1q                       | sf33rd/AcrSDK/ps2/flps2asm.c                         | sf33rd   |                 |
+| flPS2_Clear_Mem16_16A            | sf33rd/AcrSDK/ps2/flps2asm.c                         | sf33rd   |                 |
 | sceGsSetDefLoadImage             | sdk/libgraph/graph015.c                              | sdk      | –               |
 | sceGsExecLoadImage               | sdk/libgraph/graph017.c                              | sdk      | –               |
 | sceGsSyncPath                    | sdk/libgraph/graph012.c                              | sdk      | –               |
@@ -725,7 +725,7 @@ Notes:
 | flPS2CheckDbChangeFlag           | sf33rd/AcrSDK/ps2/foundaps2.c                        | sf33rd   | ✅               |
 | flPS2DmaSend                     | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
 | flPS2DrawPreparation             | sf33rd/AcrSDK/ps2/foundaps2.c                        | sf33rd   | ✅               |
-| memcpy_1q                        | sf33rd/AcrSDK/ps2/flps2asm.c                         | sf33rd   |                 |
+| flPS2_Mem_move16_16A             | sf33rd/AcrSDK/ps2/flps2asm.c                         | sf33rd   |                 |
 | Scrn_Renew                       | sf33rd/Source/Game/bg.c                              | sf33rd   | ✅               |
 | Irl_Family                       | sf33rd/Source/Game/bg.c                              | sf33rd   | ✅               |
 | Irl_Scrn                         | sf33rd/Source/Game/bg.c                              | sf33rd   | ✅               |
