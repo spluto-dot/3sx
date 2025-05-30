@@ -98,19 +98,19 @@ If you don't see a function in this list it doesn't need to be decompiled.
 
 ### adx_fs
 
-- [ ] ADXF_CALC_BYTE2SCT
+- [x] ADXF_CALC_BYTE2SCT
 - [x] adxf_SetCmdHstry
-- [ ] adxf_ChkPrmPt
-- [ ] ADXF_LoadPartitionNw
-- [ ] ADXF_LoadPtNwEx
-- [ ] adxf_LoadPtBothNw
-- [ ] adxf_CloseLdptnwHn
-- [ ] ADXF_GetPtStat
+- [x] adxf_ChkPrmPt
+- [x] ADXF_LoadPartitionNw
+- [x] ADXF_LoadPtNwEx
+- [x] adxf_LoadPtBothNw
+- [x] adxf_CloseLdptnwHn
+- [x] ADXF_GetPtStat
 - [ ] ADXF_GetPtStatEx
 - [x] adxf_AllocAdxFs
 - [x] adxf_CreateAdxFs
 - [ ] adxf_SetFileInfoEx
-- [ ] ADXF_Open
+- [x] ADXF_Open
 - [x] adxf_SetAfsFileInfo
 - [x] ADXF_OpenAfs
 - [x] adxf_CloseSjStm
@@ -120,7 +120,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXF_ReadNw32
 - [x] ADXF_ReadNw
 - [x] ADXF_Stop
-- [ ] ADXF_StopNw
+- [x] ADXF_StopNw
 - [x] adxf_ExecOne
 - [x] ADXF_ExecServer
 - [x] ADXF_GetFsizeSct

@@ -9,7 +9,7 @@ Notes:
 | Module   | Progress   |
 |----------|------------|
 | sf33rd   | 71.11%     |
-| cri      | 52.62%     |
+| cri      | 54.45%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
 |----------------------------------|------------------------------------------------------|----------|-----------------|
@@ -452,11 +452,11 @@ Notes:
 | Init_bgm_work                    | sf33rd/Source/Game/Sound3rd.c                        | sf33rd   | ✅               |
 | work_init_zero                   | sf33rd/Source/Game/EFFECT.c                          | sf33rd   | ✅               |
 | Setup_Directory_Record_Data      | sf33rd/Source/Game/GD3rd.c                           | sf33rd   | ✅               |
-| ADXF_LoadPartitionNw             | cri/libadxe/adx_fs.c                                 | cri      |                 |
-| ADXF_LoadPtNwEx                  | cri/libadxe/adx_fs.c                                 | cri      |                 |
-| adxf_LoadPtBothNw                | cri/libadxe/adx_fs.c                                 | cri      |                 |
-| adxf_ChkPrmPt                    | cri/libadxe/adx_fs.c                                 | cri      |                 |
-| ADXF_Open                        | cri/libadxe/adx_fs.c                                 | cri      |                 |
+| ADXF_LoadPartitionNw             | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
+| ADXF_LoadPtNwEx                  | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
+| adxf_LoadPtBothNw                | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
+| adxf_ChkPrmPt                    | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
+| ADXF_Open                        | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
 | adxf_SetCmdHstry                 | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
 | adxf_CreateAdxFs                 | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
 | adxf_AllocAdxFs                  | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
@@ -506,7 +506,7 @@ Notes:
 | ADXSTM_SetPause                  | cri/libadxe/adx_stmc.c                               | cri      | ✅               |
 | ADXSTM_Start2                    | cri/libadxe/adx_stmc.c                               | cri      | ✅               |
 | adxstm_start_sub                 | cri/libadxe/adx_stmc.c                               | cri      | ✅               |
-| ADXF_GetPtStat                   | cri/libadxe/adx_fs.c                                 | cri      |                 |
+| ADXF_GetPtStat                   | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
 | ADXF_GetPtStatEx                 | cri/libadxe/adx_fs.c                                 | cri      |                 |
 | ADXF_GetStat                     | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
 | adxm_iWakeupThread               | cri/libadxe/adx_mps2.c                               | cri      |                 |
@@ -565,10 +565,10 @@ Notes:
 | SJRBF_UngetChunk                 | cri/libadxe/sj_rbf.c                                 | cri      | ✅               |
 | adxf_CloseSjStm                  | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
 | SJRBF_Destroy                    | cri/libadxe/sj_rbf.c                                 | cri      | ✅               |
-| ADXF_CALC_BYTE2SCT               | cri/libadxe/adx_fs.c                                 | cri      |                 |
+| ADXF_CALC_BYTE2SCT               | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
 | ADXSTM_Stop                      | cri/libadxe/adx_stmc.c                               | cri      | ✅               |
 | ADXSTM_StopNw                    | cri/libadxe/adx_stmc.c                               | cri      | ✅               |
-| adxf_CloseLdptnwHn               | cri/libadxe/adx_fs.c                                 | cri      |                 |
+| adxf_CloseLdptnwHn               | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
 | ADXF_Close                       | cri/libadxe/adx_fs.c                                 | cri      | ✅               |
 | ADXSTM_ReleaseFile               | cri/libadxe/adx_stmc.c                               | cri      | ✅               |
 | ADXSTM_ReleaseFileNw             | cri/libadxe/adx_stmc.c                               | cri      | ✅               |
