@@ -180,9 +180,9 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [ ] ADXPS2_WakeupMainThrd
 - [ ] ADXPS2_SetupThrd
 
-### adx_rnap
+### adx_rnap ✅
 
-- [ ] ADXPS2_SetupVoice
+- [x] ADXPS2_SetupVoice
 - [x] ADXRNA_Init
 - [x] ADXRNA_Finish
 - [x] ADXRNA_EntryErrFunc
@@ -191,13 +191,13 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXRNA_SetTransSw
 - [x] ADXRNA_SetPlaySw
 - [x] ADXRNA_GetNumData
-- [ ] ADXRNA_GetNumRoom
-- [ ] ADXRNA_ExecServer
-- [ ] ADXRNA_SetNumChan
-- [ ] ADXRNA_SetSfreq
+- [x] ADXRNA_GetNumRoom
+- [x] ADXRNA_ExecServer
+- [x] ADXRNA_SetNumChan
+- [x] ADXRNA_SetSfreq
 - [x] ADXRNA_SetOutVol
-- [ ] ADXRNA_SetOutPan
-- [ ] ADXRNA_SetBitPerSmpl
+- [x] ADXRNA_SetOutPan
+- [x] ADXRNA_SetBitPerSmpl
 - [x] ADXRNA_SetTotalNumSmpl
 
 ### adx_sjd
