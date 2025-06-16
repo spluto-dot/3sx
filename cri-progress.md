@@ -610,28 +610,28 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] SJX_Create
 - [x] SJX_Destroy
 
-### svm
+### svm ✅
 
 - [x] svm_lock
 - [x] svm_unlock
 - [x] SVM_Lock
 - [x] SVM_Unlock
-- [ ] SVM_LockVar
+- [x] SVM_LockVar
 - [x] SVM_LockRsc
-- [ ] SVM_UnlockVar
+- [x] SVM_UnlockVar
 - [x] SVM_UnlockRsc
 - [x] SVM_CallErr
 - [x] SVM_CallErr1
 - [x] SVM_SetCbSvr
 - [x] SVM_DelCbSvr
 - [x] SVM_SetCbSvrId
-- [ ] SVM_SetCbBdr
+- [x] SVM_SetCbBdr
 - [x] SVM_SetCbLock
 - [x] SVM_SetCbUnlock
 - [x] SVM_ExecSvrFunc
-- [ ] SVM_ExecSvrVint
-- [ ] SVM_ExecSvrVsync
-- [ ] SVM_ExecSvrFs
+- [x] SVM_ExecSvrVint
+- [x] SVM_ExecSvrVsync
+- [x] SVM_ExecSvrFs
 - [x] SVM_ExecSvrMain
 - [x] svm_reset_variable
 - [x] SVM_Init

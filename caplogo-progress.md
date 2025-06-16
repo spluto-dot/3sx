@@ -9,7 +9,7 @@ Notes:
 | Module   | Progress   |
 |----------|------------|
 | sf33rd   | 79.56%     |
-| cri      | 61.86%     |
+| cri      | 62.25%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
 |----------------------------------|------------------------------------------------------|----------|-----------------|
@@ -181,7 +181,7 @@ Notes:
 | flmwVSyncCallback                | sf33rd/AcrSDK/MiddleWare/PS2/acrmw.c                 | sf33rd   | ✅               |
 | flAdxControll                    | sf33rd/AcrSDK/MiddleWare/PS2/ADX/flADX.c             | sf33rd   | ✅               |
 | ADXPS2_ExecVint                  | cri/libadxe/adx_mps2.c                               | cri      |                 |
-| SVM_ExecSvrVint                  | cri/libadxe/svm.c                                    | cri      |                 |
+| SVM_ExecSvrVint                  | cri/libadxe/svm.c                                    | cri      | ✅               |
 | SVM_ExecSvrFunc                  | cri/libadxe/svm.c                                    | cri      | ✅               |
 | flPS2SwapDBuff                   | sf33rd/AcrSDK/ps2/foundaps2.c                        | sf33rd   | ✅               |
 | sceDmaSend                       | sdk/libdma/libdma.c                                  | sdk      | –               |
@@ -343,12 +343,12 @@ Notes:
 | adxm_vsync_proc                  | cri/libadxe/adx_mps2.c                               | cri      |                 |
 | adxm_IsSetupThrdEx               | cri/libadxe/adx_mps2.c                               | cri      |                 |
 | ADXPS2_WakeupMainThrd            | cri/libadxe/adx_mps2.c                               | cri      |                 |
-| SVM_ExecSvrVsync                 | cri/libadxe/svm.c                                    | cri      |                 |
+| SVM_ExecSvrVsync                 | cri/libadxe/svm.c                                    | cri      | ✅               |
 | adxm_SleepThread                 | cri/libadxe/adx_mps2.c                               | cri      |                 |
 | SleepThread                      | sdk/libkernl/klib.c                                  | sdk      | –               |
 | adxm_fs_proc                     | cri/libadxe/adx_mps2.c                               | cri      |                 |
-| SVM_ExecSvrFs                    | cri/libadxe/svm.c                                    | cri      |                 |
-| SVM_SetCbBdr                     | cri/libadxe/svm.c                                    | cri      |                 |
+| SVM_ExecSvrFs                    | cri/libadxe/svm.c                                    | cri      | ✅               |
+| SVM_SetCbBdr                     | cri/libadxe/svm.c                                    | cri      | ✅               |
 | _adxm_lock                       | cri/libadxe/adx_mps2.c                               | cri      |                 |
 | adxm_ResumeThread                | cri/libadxe/adx_mps2.c                               | cri      |                 |
 | ResumeThread                     | sdk/libkernl/klib.c                                  | sdk      | –               |
@@ -543,9 +543,9 @@ Notes:
 | cvFsReqRd                        | cri/libadxe/cri_cvfs.c                               | cri      | ✅               |
 | dvCiReqRd                        | cri/libadxe/dvci.c                                   | cri      | ✅               |
 | SRD_Create                       | cri/libadxe/cri_srd.c                                | cri      |                 |
-| SVM_LockVar                      | cri/libadxe/svm.c                                    | cri      |                 |
+| SVM_LockVar                      | cri/libadxe/svm.c                                    | cri      | ✅               |
 | srd_reset_obj                    | cri/libadxe/cri_srd.c                                | cri      |                 |
-| SVM_UnlockVar                    | cri/libadxe/svm.c                                    | cri      |                 |
+| SVM_UnlockVar                    | cri/libadxe/svm.c                                    | cri      | ✅               |
 | SRD_ReqRdDvd                     | cri/libadxe/cri_srd.c                                | cri      |                 |
 | SRD_GetStat                      | cri/libadxe/cri_srd.c                                | cri      |                 |
 | srd_exec_dvd                     | cri/libadxe/cri_srd.c                                | cri      | ✅               |
