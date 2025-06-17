@@ -8,7 +8,7 @@ Notes:
 
 | Module   | Progress   |
 |----------|------------|
-| sf33rd   | 79.74%     |
+| sf33rd   | 82.07%     |
 | cri      | 67.00%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
@@ -904,13 +904,13 @@ Notes:
 | Check_Off_Vib                    | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
 | Check_LDREQ_Queue                | sf33rd/Source/Game/GD3rd.c                           | sf33rd   | ✅               |
 | disp_ldreq_status                | sf33rd/Source/Game/GD3rd.c                           | sf33rd   | ✅               |
-| Check_Check_Screen               | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   |                 |
-| Check_Pos_BG                     | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   |                 |
+| Check_Check_Screen               | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   | ✅               |
+| Check_Pos_BG                     | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   | ✅               |
 | Disp_Sound_Code                  | sf33rd/Source/Game/SE.c                              | sf33rd   | ✅               |
-| Debug_Task                       | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   |                 |
-| Debug_Init                       | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   |                 |
-| Disp_Free_work                   | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   |                 |
-| Disp_Random                      | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   |                 |
+| Debug_Task                       | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   | ✅               |
+| Debug_Init                       | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   | ✅               |
+| Disp_Free_work                   | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   | ✅               |
+| Disp_Random                      | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   | ✅               |
 | Basic_Sub                        | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
 | move_effect_work                 | sf33rd/Source/Game/EFFECT.c                          | sf33rd   | ✅               |
 | CAPCOM_Logo                      | sf33rd/Source/Game/DEMO00.c                          | sf33rd   | ✅               |
@@ -919,7 +919,7 @@ Notes:
 | checkSelObjFileLoaded            | sf33rd/Source/Game/texgroup.c                        | sf33rd   | ✅               |
 | Clear_texcash_work               | sf33rd/Source/Game/texcash.c                         | sf33rd   |                 |
 | _clear_texcash_work              | sf33rd/Source/Game/texcash.c                         | sf33rd   |                 |
-| Debug_1st                        | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   |                 |
+| Debug_1st                        | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   | ✅               |
 | Standby_BGM                      | sf33rd/Source/Game/Sound3rd.c                        | sf33rd   | ✅               |
 | remake_sound_code_for_DC         | sf33rd/Source/Game/Sound3rd.c                        | sf33rd   | ✅               |
 | Store_Sound_Code                 | sf33rd/Source/Game/SE.c                              | sf33rd   |                 |
