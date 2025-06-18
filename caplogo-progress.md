@@ -8,7 +8,7 @@ Notes:
 
 | Module   | Progress   |
 |----------|------------|
-| sf33rd   | 82.07%     |
+| sf33rd   | 84.90%     |
 | cri      | 67.00%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
@@ -133,7 +133,7 @@ Notes:
 | sceDmaPutEnv                     | sdk/libdma/libdma.c                                  | sdk      | –               |
 | sceDmaGetChan                    | sdk/libdma/libdma.c                                  | sdk      | –               |
 | sceVpu0Reset                     | sdk/libvu0/libvu0.c                                  | sdk      | –               |
-| flPS2DmaInitControl              | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
+| flPS2DmaInitControl              | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
 | flPS2GetSystemMemoryHandle       | sf33rd/AcrSDK/ps2/flps2etc.c                         | sf33rd   | ✅               |
 | mflRegisterS                     | sf33rd/AcrSDK/common/memfound.c                      | sf33rd   | ✅               |
 | plmemRegisterS                   | sf33rd/AcrSDK/common/memmgr.c                        | sf33rd   | ✅               |
@@ -168,14 +168,14 @@ Notes:
 | flInitPhaseStarted               | sf33rd/AcrSDK/ps2/foundaps2.c                        | sf33rd   | ✅               |
 | flPS2SendRenderState_ALPHA       | sf33rd/AcrSDK/ps2/flps2render.c                      | sf33rd   | ✅               |
 | flPS2GetSystemTmpBuff            | sf33rd/AcrSDK/ps2/flps2etc.c                         | sf33rd   | ✅               |
-| flPS2DmaAddQueue2                | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
+| flPS2DmaAddQueue2                | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
 | flPS2SendRenderState_TEST        | sf33rd/AcrSDK/ps2/flps2render.c                      | sf33rd   | ✅               |
 | flPS2SendRenderState_ZBUF        | sf33rd/AcrSDK/ps2/flps2render.c                      | sf33rd   | ✅               |
 | flPS2SendRenderState_SCISSOR     | sf33rd/AcrSDK/ps2/flps2render.c                      | sf33rd   | ✅               |
 | flPS2SendRenderState_FOGCOL      | sf33rd/AcrSDK/ps2/flps2render.c                      | sf33rd   | ✅               |
 | flPS2SendRenderState_TEX1        | sf33rd/AcrSDK/ps2/flps2render.c                      | sf33rd   | ✅               |
 | flInitPhaseFinished              | sf33rd/AcrSDK/ps2/foundaps2.c                        | sf33rd   | ✅               |
-| flPS2DmaAddEndTag                | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
+| flPS2DmaAddEndTag                | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
 | sceGsSyncVCallback               | sdk/libgraph/graph019.c                              | sdk      | –               |
 | flPS2VSyncCallback               | sf33rd/AcrSDK/ps2/foundaps2.c                        | sf33rd   | ✅               |
 | flmwVSyncCallback                | sf33rd/AcrSDK/MiddleWare/PS2/acrmw.c                 | sf33rd   | ✅               |
@@ -646,14 +646,14 @@ Notes:
 | flPS2PullVramWork                | sf33rd/AcrSDK/ps2/flps2vram.c                        | sf33rd   | ✅               |
 | flPS2ChainVramWork               | sf33rd/AcrSDK/ps2/flps2vram.c                        | sf33rd   | ✅               |
 | flPS2VramTrans                   | sf33rd/AcrSDK/ps2/flps2vram.c                        | sf33rd   | ✅               |
-| flPS2VIF1CalcLoadImageSize       | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
+| flPS2VIF1CalcLoadImageSize       | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
 | flPS2GetVramTransAdrs            | sf33rd/AcrSDK/ps2/flps2vram.c                        | sf33rd   | ✅               |
-| flPS2VIF1MakeLoadImage           | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
-| flPS2DmaAddCntTag                | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
-| flPS2DmaAddRefeTag               | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
-| flPS2VIF1CalcEndLoadImageSize    | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
-| flPS2VIF1MakeEndLoadImage        | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
-| flPS2VIF1CodeAddDirectHL         | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
+| flPS2VIF1MakeLoadImage           | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
+| flPS2DmaAddCntTag                | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
+| flPS2DmaAddRefeTag               | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
+| flPS2VIF1CalcEndLoadImageSize    | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
+| flPS2VIF1MakeEndLoadImage        | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
+| flPS2VIF1CodeAddDirectHL         | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
 | ppgMakeConvTableTexDC            | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
 | appSetupBasePriority             | sf33rd/Source/Game/MTRANS.c                          | sf33rd   |                 |
 | MemcardInit                      | sf33rd/Source/PS2/mc/mcsub.c                         | sf33rd   | ✅               |
@@ -718,12 +718,12 @@ Notes:
 | flReloadTexture                  | sf33rd/AcrSDK/ps2/flps2vram.c                        | sf33rd   | ✅               |
 | flPS2ReloadTexture               | sf33rd/AcrSDK/ps2/flps2vram.c                        | sf33rd   | ✅               |
 | flPS2SetTextureRegister          | sf33rd/AcrSDK/ps2/flps2render.c                      | sf33rd   | ✅               |
-| flPS2DmaWait                     | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
+| flPS2DmaWait                     | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
 | flmwFlip                         | sf33rd/AcrSDK/MiddleWare/PS2/acrmw.c                 | sf33rd   | ✅               |
 | flmwFlipSub                      | sf33rd/AcrSDK/MiddleWare/PS2/acrmw.c                 | sf33rd   | ✅               |
 | iFlushCache                      | sdk/libkernl/klib.c                                  | sdk      | –               |
 | flPS2CheckDbChangeFlag           | sf33rd/AcrSDK/ps2/foundaps2.c                        | sf33rd   | ✅               |
-| flPS2DmaSend                     | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
+| flPS2DmaSend                     | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
 | flPS2DrawPreparation             | sf33rd/AcrSDK/ps2/foundaps2.c                        | sf33rd   | ✅               |
 | flPS2_Mem_move16_16A             | sf33rd/AcrSDK/ps2/flps2asm.c                         | sf33rd   |                 |
 | Scrn_Renew                       | sf33rd/Source/Game/bg.c                              | sf33rd   | ✅               |
@@ -731,7 +731,7 @@ Notes:
 | Irl_Scrn                         | sf33rd/Source/Game/bg.c                              | sf33rd   | ✅               |
 | BGM_Server                       | sf33rd/Source/Game/Sound3rd.c                        | sf33rd   | ✅               |
 | scePad2Read                      | sdk/libpad2/libpad2.c                                | sdk      | –               |
-| flPS2DmaInterrupt                | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
+| flPS2DmaInterrupt                | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
 | Init_Task                        | sf33rd/Source/Game/init3rd.c                         | sf33rd   | ✅               |
 | Init_Task_1st                    | sf33rd/Source/Game/init3rd.c                         | sf33rd   | ✅               |
 | init_texcash_1st                 | sf33rd/Source/Game/texcash.c                         | sf33rd   |                 |
@@ -879,7 +879,7 @@ Notes:
 | TexRelease                       | sf33rd/Source/Game/op_sub.c                          | sf33rd   | ✅               |
 | ppgReleaseTextureHandle          | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
 | flReleaseTextureHandle           | sf33rd/AcrSDK/ps2/flps2vram.c                        | sf33rd   | ✅               |
-| flPS2DmaTerminate                | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   |                 |
+| flPS2DmaTerminate                | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
 | flPS2DeleteVramList              | sf33rd/AcrSDK/ps2/flps2vram.c                        | sf33rd   | ✅               |
 | ppgReleasePaletteHandle          | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
 | flReleasePaletteHandle           | sf33rd/AcrSDK/ps2/flps2vram.c                        | sf33rd   | ✅               |
