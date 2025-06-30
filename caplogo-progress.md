@@ -8,7 +8,7 @@ Notes:
 
 | Module   | Progress   |
 |----------|------------|
-| sf33rd   | 91.22%     |
+| sf33rd   | 91.36%     |
 | cri      | 77.86%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
@@ -804,7 +804,7 @@ Notes:
 | Init_Load_Request_Queue_1st      | sf33rd/Source/Game/GD3rd.c                           | sf33rd   | ✅               |
 | Game_Data_Init                   | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
 | Setup_Default_Game_Option        | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
-| Ranking_Init                     | sf33rd/Source/Game/RANKING.c                         | sf33rd   |                 |
+| Ranking_Init                     | sf33rd/Source/Game/RANKING.c                         | sf33rd   | ✅               |
 | Copy_Save_w                      | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
 | Copy_Check_w                     | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
 | Setup_Difficult_V                | sf33rd/Source/Game/init3rd.c                         | sf33rd   | ✅               |
