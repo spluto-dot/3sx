@@ -8,7 +8,7 @@ Notes:
 
 | Module   | Progress   |
 |----------|------------|
-| sf33rd   | 90.61%     |
+| sf33rd   | 91.05%     |
 | cri      | 77.86%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
@@ -694,7 +694,7 @@ Notes:
 | flBeginRender                    | sf33rd/AcrSDK/ps2/flps2render.c                      | sf33rd   | ✅               |
 | flGetSystemTime                  | sf33rd/AcrSDK/ps2/flps2debug.c                       | sf33rd   | ✅               |
 | njUserMain                       | sf33rd/Source/Game/main.c                            | sf33rd   | ✅               |
-| Check_Replay_Status              | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
+| Check_Replay_Status              | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   | ✅               |
 | cpLoopTask                       | sf33rd/Source/Game/main.c                            | sf33rd   | ✅               |
 | disp_ramcnt_free_area            | sf33rd/Source/Game/RAMCNT.c                          | sf33rd   | ✅               |
 | MaskScreenEdge                   | sf33rd/Source/Game/main.c                            | sf33rd   | ✅               |
@@ -734,10 +734,10 @@ Notes:
 | flPS2DmaInterrupt                | sf33rd/AcrSDK/ps2/flps2dma.c                         | sf33rd   | ✅               |
 | Init_Task                        | sf33rd/Source/Game/init3rd.c                         | sf33rd   | ✅               |
 | Init_Task_1st                    | sf33rd/Source/Game/init3rd.c                         | sf33rd   | ✅               |
-| init_texcash_1st                 | sf33rd/Source/Game/texcash.c                         | sf33rd   |                 |
+| init_texcash_1st                 | sf33rd/Source/Game/texcash.c                         | sf33rd   | ✅               |
 | Init_texgrplds_work              | sf33rd/Source/Game/texgroup.c                        | sf33rd   | ✅               |
 | Init_load_on_memory_data         | sf33rd/Source/Game/aboutspr.c                        | sf33rd   | ✅               |
-| copy_char_base_data              | sf33rd/Source/Game/CHARID.c                          | sf33rd   |                 |
+| copy_char_base_data              | sf33rd/Source/Game/CHARID.c                          | sf33rd   | ✅               |
 | palConvSrcToRam                  | sf33rd/Source/Game/color3rd.c                        | sf33rd   | ✅               |
 | palUpdateGhostCP3                | sf33rd/Source/Game/color3rd.c                        | sf33rd   | ✅               |
 | flLockPalette                    | sf33rd/AcrSDK/ps2/flps2vram.c                        | sf33rd   | ✅               |
