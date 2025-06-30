@@ -8,7 +8,7 @@ Notes:
 
 | Module   | Progress   |
 |----------|------------|
-| sf33rd   | 91.05%     |
+| sf33rd   | 91.22%     |
 | cri      | 77.86%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
@@ -748,13 +748,13 @@ Notes:
 | reservMemKeySelObj               | sf33rd/Source/Game/texgroup.c                        | sf33rd   | ✅               |
 | load_any_texture_patnum          | sf33rd/Source/Game/texgroup.c                        | sf33rd   | ✅               |
 | load_any_texture_grpnum          | sf33rd/Source/Game/texgroup.c                        | sf33rd   | ✅               |
-| Pause_Family_On                  | sf33rd/Source/Game/bg.c                              | sf33rd   |                 |
+| Pause_Family_On                  | sf33rd/Source/Game/bg.c                              | sf33rd   | ✅               |
 | njUnitMatrix                     | sf33rd/Source/Game/DC_Ghost.c                        | sf33rd   | ✅               |
 | sceVu0UnitMatrix                 | sdk/libvu0/libvu0.c                                  | sdk      | –               |
 | njScale                          | sf33rd/Source/Game/DC_Ghost.c                        | sf33rd   | ✅               |
 | njTranslate                      | sf33rd/Source/Game/DC_Ghost.c                        | sf33rd   | ✅               |
 | njGetMatrix                      | sf33rd/Source/Game/DC_Ghost.c                        | sf33rd   | ✅               |
-| Bg_TexInit                       | sf33rd/Source/Game/bg.c                              | sf33rd   |                 |
+| Bg_TexInit                       | sf33rd/Source/Game/bg.c                              | sf33rd   | ✅               |
 | palGetChunkGhostCP3              | sf33rd/Source/Game/color3rd.c                        | sf33rd   | ✅               |
 | Scrscreen_Init                   | sf33rd/Source/Game/sc_sub.c                          | sf33rd   |                 |
 | ppgSetupCurrentDataList          | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
