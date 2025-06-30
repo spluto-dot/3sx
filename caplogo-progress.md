@@ -8,7 +8,7 @@ Notes:
 
 | Module   | Progress   |
 |----------|------------|
-| sf33rd   | 91.36%     |
+| sf33rd   | 92.35%     |
 | cri      | 77.86%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
@@ -802,13 +802,13 @@ Notes:
 | init_pulpul_work2                | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
 | init_pulpul_round2               | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
 | Init_Load_Request_Queue_1st      | sf33rd/Source/Game/GD3rd.c                           | sf33rd   | ✅               |
-| Game_Data_Init                   | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
-| Setup_Default_Game_Option        | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
+| Game_Data_Init                   | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   | ✅               |
+| Setup_Default_Game_Option        | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   | ✅               |
 | Ranking_Init                     | sf33rd/Source/Game/RANKING.c                         | sf33rd   | ✅               |
-| Copy_Save_w                      | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
-| Copy_Check_w                     | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
+| Copy_Save_w                      | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   | ✅               |
+| Copy_Check_w                     | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   | ✅               |
 | Setup_Difficult_V                | sf33rd/Source/Game/init3rd.c                         | sf33rd   | ✅               |
-| Setup_Limit_Time                 | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
+| Setup_Limit_Time                 | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   | ✅               |
 | pulpul_stop                      | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
 | pulpul_stop2                     | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
 | Warning_Init                     | sf33rd/Source/Game/DEMO00.c                          | sf33rd   | ✅               |
@@ -901,7 +901,7 @@ Notes:
 | move_pulpul_work                 | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
 | move_pulpul                      | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
 | chkVibUnit                       | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
-| Check_Off_Vib                    | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
+| Check_Off_Vib                    | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   | ✅               |
 | Check_LDREQ_Queue                | sf33rd/Source/Game/GD3rd.c                           | sf33rd   | ✅               |
 | disp_ldreq_status                | sf33rd/Source/Game/GD3rd.c                           | sf33rd   | ✅               |
 | Check_Check_Screen               | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   | ✅               |
@@ -911,7 +911,7 @@ Notes:
 | Debug_Init                       | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   | ✅               |
 | Disp_Free_work                   | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   | ✅               |
 | Disp_Random                      | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   | ✅               |
-| Basic_Sub                        | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   |                 |
+| Basic_Sub                        | sf33rd/Source/Game/SYS_sub.c                         | sf33rd   | ✅               |
 | move_effect_work                 | sf33rd/Source/Game/EFFECT.c                          | sf33rd   | ✅               |
 | CAPCOM_Logo                      | sf33rd/Source/Game/DEMO00.c                          | sf33rd   | ✅               |
 | checkAdxFileLoaded               | sf33rd/Source/Game/Sound3rd.c                        | sf33rd   | ✅               |
