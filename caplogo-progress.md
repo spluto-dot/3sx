@@ -8,7 +8,7 @@ Notes:
 
 | Module   | Progress   |
 |----------|------------|
-| sf33rd   | 96.37%     |
+| sf33rd   | 99.16%     |
 | cri      | 77.86%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
@@ -756,7 +756,7 @@ Notes:
 | njGetMatrix                      | sf33rd/Source/Game/DC_Ghost.c                        | sf33rd   | ✅               |
 | Bg_TexInit                       | sf33rd/Source/Game/bg.c                              | sf33rd   | ✅               |
 | palGetChunkGhostCP3              | sf33rd/Source/Game/color3rd.c                        | sf33rd   | ✅               |
-| Scrscreen_Init                   | sf33rd/Source/Game/sc_sub.c                          | sf33rd   |                 |
+| Scrscreen_Init                   | sf33rd/Source/Game/sc_sub.c                          | sf33rd   | ✅               |
 | ppgSetupCurrentDataList          | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
 | ppgSetupPalChunk                 | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
 | ppgPullDecBuff                   | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
@@ -796,7 +796,7 @@ Notes:
 | ppgCheckTextureDataBe            | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
 | ppgPalSrcDataReleased            | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
 | ppgCheckPaletteDataBe            | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
-| Sa_frame_Clear                   | sf33rd/Source/Game/sc_sub.c                          | sf33rd   |                 |
+| Sa_frame_Clear                   | sf33rd/Source/Game/sc_sub.c                          | sf33rd   | ✅               |
 | effect_work_init                 | sf33rd/Source/Game/EFFECT.c                          | sf33rd   | ✅               |
 | init_pulpul_work                 | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
 | init_pulpul_work2                | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
@@ -893,11 +893,11 @@ Notes:
 | Entry_00                         | sf33rd/Source/Game/Entry.c                           | sf33rd   | ✅               |
 | Game_Task                        | sf33rd/Source/Game/Game.c                            | sf33rd   | ✅               |
 | init_color_trans_req             | sf33rd/Source/Game/color3rd.c                        | sf33rd   | ✅               |
-| init_texcash_before_process      | sf33rd/Source/Game/texcash.c                         | sf33rd   |                 |
+| init_texcash_before_process      | sf33rd/Source/Game/texcash.c                         | sf33rd   | ✅               |
 | Loop_Demo                        | sf33rd/Source/Game/Game.c                            | sf33rd   | ✅               |
 | Ck_Coin                          | sf33rd/Source/Game/Game.c                            | sf33rd   | ✅               |
-| texture_cash_update              | sf33rd/Source/Game/texcash.c                         | sf33rd   |                 |
-| disp_texcash_free_area           | sf33rd/Source/Game/texcash.c                         | sf33rd   |                 |
+| texture_cash_update              | sf33rd/Source/Game/texcash.c                         | sf33rd   | ✅               |
+| disp_texcash_free_area           | sf33rd/Source/Game/texcash.c                         | sf33rd   | ✅               |
 | move_pulpul_work                 | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
 | move_pulpul                      | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
 | chkVibUnit                       | sf33rd/Source/Game/PulPul.c                          | sf33rd   | ✅               |
@@ -917,8 +917,8 @@ Notes:
 | checkAdxFileLoaded               | sf33rd/Source/Game/Sound3rd.c                        | sf33rd   | ✅               |
 | ppgSetupCmpChunk                 | sf33rd/Source/Common/PPGFile.c                       | sf33rd   | ✅               |
 | checkSelObjFileLoaded            | sf33rd/Source/Game/texgroup.c                        | sf33rd   | ✅               |
-| Clear_texcash_work               | sf33rd/Source/Game/texcash.c                         | sf33rd   |                 |
-| _clear_texcash_work              | sf33rd/Source/Game/texcash.c                         | sf33rd   |                 |
+| Clear_texcash_work               | sf33rd/Source/Game/texcash.c                         | sf33rd   | ✅               |
+| clear_texcash_work               | sf33rd/Source/Game/texcash.c                         | sf33rd   | ✅               |
 | Debug_1st                        | sf33rd/Source/Game/debug/Debug.c                     | sf33rd   | ✅               |
 | Standby_BGM                      | sf33rd/Source/Game/Sound3rd.c                        | sf33rd   | ✅               |
 | remake_sound_code_for_DC         | sf33rd/Source/Game/Sound3rd.c                        | sf33rd   | ✅               |
