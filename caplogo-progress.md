@@ -9,7 +9,7 @@ Notes:
 | Module   | Progress   |
 |----------|------------|
 | sf33rd   | 99.16%     |
-| cri      | 77.86%     |
+| cri      | 79.24%     |
 
 | Function                         | File                                                 | Module   | Is decompiled   |
 |----------------------------------|------------------------------------------------------|----------|-----------------|
@@ -365,7 +365,7 @@ Notes:
 | ADXSTM_Init                      | cri/libadxe/adx_stmc.c                               | cri      | ✅               |
 | ADXSJD_Init                      | cri/libadxe/adx_sjd.c                                | cri      | ✅               |
 | ADXB_Init                        | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
-| ADXPD_Init                       | cri/libadxe/adx_xpnd.c                               | cri      |                 |
+| ADXPD_Init                       | cri/libadxe/adx_xpnd.c                               | cri      | ✅               |
 | SKG_Init                         | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
 | ADXF_Init                        | cri/libadxe/adx_fini.c                               | cri      | ✅               |
 | ADXRNA_Init                      | cri/libadxe/adx_rnap.c                               | cri      | ✅               |
@@ -415,7 +415,7 @@ Notes:
 | SJRBF_GetBufSize                 | cri/libadxe/sj_rbf.c                                 | cri      | ✅               |
 | SJRBF_GetXtrSize                 | cri/libadxe/sj_rbf.c                                 | cri      | ✅               |
 | ADXB_Create                      | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
-| ADXPD_Create                     | cri/libadxe/adx_xpnd.c                               | cri      |                 |
+| ADXPD_Create                     | cri/libadxe/adx_xpnd.c                               | cri      | ✅               |
 | ADX_GetCoefficient               | cri/libadxe/adx_dcd.c                                | cri      |                 |
 | ADXB_EntryGetWrFunc              | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
 | adxsjd_clear                     | cri/libadxe/adx_sjd.c                                | cri      | ✅               |
@@ -939,7 +939,7 @@ Notes:
 | PS2RNA_SetDiscardSw              | cri/libadxe/ps2_rna.c                                | cri      | ✅               |
 | ADXSJD_Stop                      | cri/libadxe/adx_sjd.c                                | cri      | ✅               |
 | ADXB_Stop                        | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
-| ADXPD_Stop                       | cri/libadxe/adx_xpnd.c                               | cri      |                 |
+| ADXPD_Stop                       | cri/libadxe/adx_xpnd.c                               | cri      | ✅               |
 | bgm_seamless_clear               | sf33rd/Source/Game/Sound3rd.c                        | sf33rd   | ✅               |
 | bgm_volume_setup                 | sf33rd/Source/Game/Sound3rd.c                        | sf33rd   | ✅               |
 | ADXT_SetOutVol                   | cri/libadxe/adx_tlk.c                                | cri      | ✅               |
@@ -968,11 +968,11 @@ Notes:
 | ADX_DecodeInfo                   | cri/libadxe/adx_dcd.c                                | cri      | ✅               |
 | ADX_DecodeInfoExVer              | cri/libadxe/adx_dcd.c                                | cri      |                 |
 | adxb_get_key                     | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
-| ADXPD_SetExtPrm                  | cri/libadxe/adx_xpnd.c                               | cri      |                 |
+| ADXPD_SetExtPrm                  | cri/libadxe/adx_xpnd.c                               | cri      | ✅               |
 | ADX_DecodeInfoExADPCM2           | cri/libadxe/adx_dcd.c                                | cri      |                 |
 | ADX_DecodeInfoExIdly             | cri/libadxe/adx_dcd.c                                | cri      |                 |
-| ADXPD_SetCoef                    | cri/libadxe/adx_xpnd.c                               | cri      |                 |
-| ADXPD_SetDly                     | cri/libadxe/adx_xpnd.c                               | cri      |                 |
+| ADXPD_SetCoef                    | cri/libadxe/adx_xpnd.c                               | cri      | ✅               |
+| ADXPD_SetDly                     | cri/libadxe/adx_xpnd.c                               | cri      | ✅               |
 | ADX_DecodeInfoExLoop             | cri/libadxe/adx_dcd.c                                | cri      |                 |
 | ADX_DecodeInfoAinf               | cri/libadxe/adx_dcd.c                                | cri      |                 |
 | ADXB_GetFormat                   | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
@@ -1019,19 +1019,19 @@ Notes:
 | ADXB_Start                       | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
 | ADXB_ExecHndl                    | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
 | ADXB_ExecOneAdx                  | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
-| ADXPD_GetStat                    | cri/libadxe/adx_xpnd.c                               | cri      |                 |
+| ADXPD_GetStat                    | cri/libadxe/adx_xpnd.c                               | cri      | ✅               |
 | adxsjd_get_wr                    | cri/libadxe/adx_sjd.c                                | cri      | ✅               |
 | ADXB_GetPcmBuf                   | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
 | ADXB_EvokeDecode                 | cri/libadxe/adx_bsc.c                                | cri      |                 |
 | ADXB_EvokeExpandSte              | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
-| ADXPD_EntrySte                   | cri/libadxe/adx_xpnd.c                               | cri      |                 |
-| ADXPD_Start                      | cri/libadxe/adx_xpnd.c                               | cri      |                 |
-| ADXPD_ExecHndl                   | cri/libadxe/adx_xpnd.c                               | cri      |                 |
+| ADXPD_EntrySte                   | cri/libadxe/adx_xpnd.c                               | cri      | ✅               |
+| ADXPD_Start                      | cri/libadxe/adx_xpnd.c                               | cri      | ✅               |
+| ADXPD_ExecHndl                   | cri/libadxe/adx_xpnd.c                               | cri      | ✅               |
 | ADX_DecodeSte4                   | cri/libadxe/adx_dcd5.c                               | cri      |                 |
 | ADX_DecodeSte4AsSte              | cri/libadxe/adx_dcd5.c                               | cri      |                 |
 | ADXB_EndDecode                   | cri/libadxe/adx_bsc.c                                | cri      |                 |
-| ADXPD_GetNumBlk                  | cri/libadxe/adx_xpnd.c                               | cri      |                 |
-| ADXPD_Reset                      | cri/libadxe/adx_xpnd.c                               | cri      |                 |
+| ADXPD_GetNumBlk                  | cri/libadxe/adx_xpnd.c                               | cri      | ✅               |
+| ADXPD_Reset                      | cri/libadxe/adx_xpnd.c                               | cri      | ✅               |
 | adxb_DefAddWr                    | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
 | adxsjd_decexec_end               | cri/libadxe/adx_sjd.c                                | cri      |                 |
 | ADXB_GetDecDtLen                 | cri/libadxe/adx_bsc.c                                | cri      | ✅               |
