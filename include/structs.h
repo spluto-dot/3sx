@@ -2731,6 +2731,14 @@ typedef struct {
 } CMST_BUFF;
 
 typedef struct {
+    // total size: 0x8
+    s16 cyerw; // offset 0x0, size 0x2
+    s16 cred;  // offset 0x2, size 0x2
+    s16 ored;  // offset 0x4, size 0x2
+    s8 colnum; // offset 0x6, size 0x1
+} VIT;
+
+typedef struct {
     // total size: 0xA
     s16 cstn;         // offset 0x0, size 0x2
     s8 sflag;         // offset 0x2, size 0x1
