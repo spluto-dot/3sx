@@ -85,6 +85,7 @@
 #include "sf33rd/Source/Game/EFFC2.h"
 #include "sf33rd/Source/Game/EFFC4.h"
 #include "sf33rd/Source/Game/EFFC8.h"
+#include "sf33rd/Source/Game/EFFD7.h"
 #include "sf33rd/Source/Game/EFFE1.h"
 #include "sf33rd/Source/Game/EFFE4.h"
 #include "sf33rd/Source/Game/EFFE5.h"
@@ -101,6 +102,7 @@
 #include "sf33rd/Source/Game/EFFI3.h"
 #include "sf33rd/Source/Game/EFFI4.h"
 #include "sf33rd/Source/Game/EFFI7.h"
+#include "sf33rd/Source/Game/EFFI8.h"
 #include "sf33rd/Source/Game/EFFI9.h"
 #include "sf33rd/Source/Game/EFFJ0.h"
 #include "sf33rd/Source/Game/EFFJ2.h"
@@ -298,7 +300,7 @@ const void (*effmovejptbl[229])() = {
     NULL, // effect_D4_move
     NULL, // effect_D5_move
     NULL, // effect_D6_move
-    NULL, // effect_D7_move
+    effect_D7_move,
     effect_D8_move,
     NULL, // effect_D9_move
     effect_E0_move,
@@ -349,7 +351,7 @@ const void (*effmovejptbl[229])() = {
     effect_dummy_move,
     NULL, // effect_I6_move
     effect_I7_move,
-    NULL, // effect_I8_move
+    effect_I8_move,
     effect_I9_move,
     effect_J0_move,
     effect_dummy_move,
