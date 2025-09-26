@@ -103,8 +103,10 @@
 #include "sf33rd/Source/Game/EFFE7.h"
 #include "sf33rd/Source/Game/EFFE8.h"
 #include "sf33rd/Source/Game/EFFECT.h"
+#include "sf33rd/Source/Game/efff0.h"
 #include "sf33rd/Source/Game/EFFF2.h"
 #include "sf33rd/Source/Game/EFFF4.h"
+#include "sf33rd/Source/Game/EFFF8.h"
 #include "sf33rd/Source/Game/EFFF9.h"
 #include "sf33rd/Source/Game/EFFG6.h"
 #include "sf33rd/Source/Game/EFFG9.h"
@@ -113,6 +115,7 @@
 #include "sf33rd/Source/Game/EFFH2.h"
 #include "sf33rd/Source/Game/EFFH6.h"
 #include "sf33rd/Source/Game/EFFH9.h"
+#include "sf33rd/Source/Game/EFFI0.h"
 #include "sf33rd/Source/Game/EFFI3.h"
 #include "sf33rd/Source/Game/EFFI4.h"
 #include "sf33rd/Source/Game/EFFI7.h"
@@ -347,7 +350,7 @@ const void (*effmovejptbl[229])() = {
     effect_E7_move,
     effect_E8_move,
     effect_E9_move,
-    NULL, // effect_F0_move
+    effect_F0_move,
     effect_dummy_move,
     effect_F2_move,
     effect_dummy_move,
@@ -355,7 +358,7 @@ const void (*effmovejptbl[229])() = {
     effect_F5_move,
     effect_F6_move,
     effect_dummy_move,
-    NULL, // effect_F8_move
+    effect_F8_move,
     effect_F9_move,
     effect_G0_move,
     effect_dummy_move,
@@ -377,7 +380,7 @@ const void (*effmovejptbl[229])() = {
     effect_dummy_move,
     effect_dummy_move,
     effect_H9_move,
-    NULL, // effect_I0_move
+    effect_I0_move,
     effect_dummy_move,
     effect_dummy_move,
     effect_I3_move,
@@ -458,7 +461,7 @@ const s32 (*effinitjptbl[59])() = {
     setup_status_flag,
     reset_extra_bg_flag,
     flip_my_rl_flag,
-    NULL, // effect_F8_init
+    effect_F8_init,
     clear_caution_flag,
     NULL, // effect_G3_init
     NULL, // effect_G4_init
@@ -474,7 +477,7 @@ const s32 (*effinitjptbl[59])() = {
     setup_bg_quake_x,
     setup_bg_quake_y,
     effect_47_init,
-    NULL, // setup_koishi_extra (EFFI0.c)
+    setup_koishi_extra,
     effect_77_init,
     setup_exdm_ix,
     setup_dmv_use_flag,
@@ -491,6 +494,6 @@ const s32 (*effinitjptbl[59])() = {
     NULL, // effect_L7_init
     effect_M2_init,
     NULL, // effect_M8_init
-    NULL, // effect_F0_init
+    effect_F0_init,
 };
 #endif
