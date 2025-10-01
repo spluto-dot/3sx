@@ -98,6 +98,10 @@ ifneq ($(PLATFORM),ps2)
 	CLANG_LINKER_FLAGS += $(shell pkg-config --libs sdl3)
 endif
 
+ifeq ($(PLATFORM),windows)
+	CLANG_LINKER_FLAGS += --for-linker --pdb=$(BUILD_DIR)/sf33rd.pdb -ldbghelp
+endif
+
 # Files
 
 MAIN_TARGET := $(BUILD_DIR)/$(MAIN)
@@ -180,6 +184,7 @@ ifeq ($(PLATFORM),windows)
 	@find build -name '*.o' > $(BUILD_DIR)/objects.txt
 	@echo libco/build/liblibco.a >> $(BUILD_DIR)/objects.txt
 	clang @$(BUILD_DIR)/objects.txt $(CLANG_LINKER_FLAGS) -o $@
+	$(shell cp /mingw64/bin/SDL3.dll $(BUILD_DIR)/SDL3.dll)
 else
 	clang $(ALL_O_FILES) $(CLANG_LINKER_FLAGS) -o $@
 endif
