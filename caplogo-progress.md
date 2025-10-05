@@ -9,15 +9,13 @@ Notes:
 | Module   | Progress   |
 |----------|------------|
 | sf33rd   | 100%       |
-| cri      | 92.91%     |
+| cri      | 93.49%     |
 
 | Function                | File                   |
 |-------------------------|------------------------|
 | dvCiSetRootDir          | cri/libadxe/dvci_sub.c |
 | analysis_flist_003DC6A0 | cri/libadxe/dvci_sub.c |
-| dvCiOptFn1              | cri/libadxe/dvci.c     |
 | ADXF_GetPtStatEx        | cri/libadxe/adx_fs.c   |
 | lsc_ExecHndl            | cri/libadxe/lsc_svr.c  |
 | adxsjd_decexec_start    | cri/libadxe/adx_sjd.c  |
-| ADX_DecodeSte4          | cri/libadxe/adx_dcd5.c |
 | ADX_DecodeSte4AsSte     | cri/libadxe/adx_dcd5.c |

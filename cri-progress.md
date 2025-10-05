@@ -77,7 +77,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 ### adx_dcd5
 
 - [ ] ADX_DecodeSte4AsSte
-- [ ] ADX_DecodeSte4
+- [x] ADX_DecodeSte4
 
 ### adx_errs ✅
 
@@ -281,10 +281,10 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] ADXPS2_SetupDvdFs
 - [x] ADXPS2_LoadFcacheDvd
 
-### adx_suht
+### adx_suht ✅
 
-- [ ] ADXPS2_SetupHostFs
-- [ ] ADXPS2_LoadFcacheHost
+- [x] ADXPS2_SetupHostFs
+- [x] ADXPS2_LoadFcacheHost
 
 ### adx_tlk ✅
 
@@ -418,7 +418,7 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] DTX_CallUrpc
 - [x] DTX_ExecServer
 
-### dvci
+### dvci ✅
 
 - [x] dvCiGetInterface
 - [x] dvci_call_errfn
@@ -442,9 +442,9 @@ If you don't see a function in this list it doesn't need to be decompiled.
 - [x] dvCiGetNumTr
 - [x] dvci_getnumtr_upper
 - [x] dvci_getnumtr_lower
-- [ ] dvci_filesize_upper
-- [ ] dvci_filesize_lower
-- [ ] dvCiOptFn1
+- [x] dvci_filesize_upper
+- [x] dvci_filesize_lower
+- [x] dvCiOptFn1
 
 ### dvci_sub
 
