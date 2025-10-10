@@ -72,7 +72,6 @@ target_compile_options(3sx PRIVATE
     -Wno-incompatible-pointer-types
     -Wno-incompatible-function-pointer-types
     -Wno-pointer-sign
-    -Wno-shift-count-overflow
 )
 
 target_link_libraries(3sx PRIVATE
