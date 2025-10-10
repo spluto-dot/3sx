@@ -320,7 +320,7 @@ u16 Debug_Menu_Shot() {
 void Check_Check_Screen() {
     s16 ix;
 
-    if ((test_flag) || (Debug_w[70] != 240)) {
+    if ((test_flag) || (Debug_w[70] != -16)) {
         return;
     }
 

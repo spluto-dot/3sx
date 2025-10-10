@@ -595,7 +595,7 @@ s16 check_work_position(WORK* p1, WORK* p2) {
 s32 random_32() {
     Random_ix32++;
 
-    if (Debug_w[0x3B] == 0xE0) {
+    if (Debug_w[0x3B] == -32) {
         Random_ix32 = 0;
     }
 
@@ -606,7 +606,7 @@ s32 random_32() {
 s32 random_16() {
     Random_ix16++;
 
-    if (Debug_w[0x3B] == 0xE0) {
+    if (Debug_w[0x3B] == -32) {
         Random_ix16 = 0;
     }
 
@@ -617,7 +617,7 @@ s32 random_16() {
 s32 random_32_ex() {
     Random_ix32_ex++;
 
-    if (Debug_w[0x3B] == 0xE0) {
+    if (Debug_w[0x3B] == -32) {
         Random_ix32_ex = 0;
     }
 
@@ -628,7 +628,7 @@ s32 random_32_ex() {
 s32 random_16_ex() {
     Random_ix16_ex++;
 
-    if (Debug_w[0x3B] == 0xE0) {
+    if (Debug_w[0x3B] == -32) {
         Random_ix16_ex = 0;
     }
 
@@ -643,7 +643,7 @@ s32 random_32_com() {
 
     Random_ix32_com++;
 
-    if (Debug_w[0x3B] == 0xE0) {
+    if (Debug_w[0x3B] == -32) {
         Random_ix32_com = 0;
     }
 
@@ -658,7 +658,7 @@ s32 random_16_com() {
 
     Random_ix16_com++;
 
-    if (Debug_w[0x3B] == 0xE0) {
+    if (Debug_w[0x3B] == -32) {
         Random_ix16_com = 0;
     }
 
@@ -673,7 +673,7 @@ s32 random_32_ex_com() {
 
     Random_ix32_ex_com++;
 
-    if (Debug_w[0x3B] == 0xE0) {
+    if (Debug_w[0x3B] == -32) {
         Random_ix32_ex_com = 0;
     }
 
@@ -688,7 +688,7 @@ s32 random_16_ex_com() {
 
     Random_ix16_ex_com++;
 
-    if (Debug_w[0x3B] == 0xE0) {
+    if (Debug_w[0x3B] == -32) {
         Random_ix16_ex_com = 0;
     }
 
@@ -699,7 +699,7 @@ s32 random_16_ex_com() {
 s32 random_16_bg() {
     Random_ix16_bg++;
 
-    if (Debug_w[0x3B] == 0xE0) {
+    if (Debug_w[0x3B] == -32) {
         Random_ix16_bg = 0;
     }
 

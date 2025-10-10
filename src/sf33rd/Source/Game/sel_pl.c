@@ -152,7 +152,7 @@ s16 Select_Player() {
     Sel_PL();
     Time_Over = 0;
 
-    if (Check_Exit_Check() == 0 && Debug_w[24] == 0xFF) {
+    if (Check_Exit_Check() == 0 && Debug_w[24] == -1) {
         SEL_PL_X = 0;
     }
 
