@@ -437,9 +437,8 @@ void Setup_Name(s16 y) {
     Name_Sub(0, y);
     Name_Sub(1, y);
     Name_Sub(2, y);
-    if (Rank_Type == 0) {
-        Rank_Pos_X;
-    } else {
+
+    if (Rank_Type != 0) {
         Rank_Pos_X += 16;
     }
 

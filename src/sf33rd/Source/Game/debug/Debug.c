@@ -552,8 +552,6 @@ void Disp_Mode(PLW* wk) {
             x = 1;
         }
 
-        "%3d";
-
         flPrintL(x, offset_y + 16, "%3X", Control_Time);
         flPrintL(x + 1, offset_y + 17, cpu_data[CP_No[wk->wu.id][0]]);
         flPrintL(x, offset_y + 18, "%3d", Pattern_Index[wk->wu.id]);

@@ -1248,7 +1248,6 @@ void Flip_2nd(PLW* wk) {
     }
 
     em = (PLW*)wk->wu.target_adrs;
-    wk->player_number << 0;
 
     if (Check_Flip_Attack(wk) != 0) {
         if (Select_Passive(wk) == -1) {

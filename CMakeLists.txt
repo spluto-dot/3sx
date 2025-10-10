@@ -64,7 +64,6 @@ target_compile_options(3sx PRIVATE
     -Wno-tautological-overlap-compare
     -Wno-unknown-pragmas
     -Wno-c2x-extensions
-    -Wno-unused-value
     -Wno-unused-variable
     -Wno-unused-but-set-variable
     -Wno-unused-comparison
