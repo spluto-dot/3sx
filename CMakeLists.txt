@@ -62,7 +62,6 @@ target_compile_options(3sx PRIVATE
     -Wno-macro-redefined
     -Wno-deprecated-non-prototype
     -Wno-tautological-overlap-compare
-    -Wno-unknown-pragmas
     -Wno-c2x-extensions
     -Wno-unused-variable
     -Wno-unused-but-set-variable
