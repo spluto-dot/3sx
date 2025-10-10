@@ -61,7 +61,6 @@ target_compile_options(3sx PRIVATE
     -Wpointer-to-int-cast
     -Wno-macro-redefined
     -Wno-deprecated-non-prototype
-    -Wno-format
     -Wno-tautological-constant-out-of-range-compare
     -Wno-tautological-overlap-compare
     -Wno-gcc-compat

@@ -390,7 +390,7 @@ void KnjInit(u32 type, uintptr_t adrs, u32 disp_max, u32 top_dbp) {
     kw->pack_idx = 0;
     kw->pack_cur = kw->pack_fnt[0];
     kw->mem_size = adrs - kw->font_adrs;
-    printf("KnjInit: adrs=0x%X size=0x%X\n", kw->font_adrs, kw->mem_size);
+    printf("KnjInit: adrs=0x%lX size=0x%X\n", kw->font_adrs, kw->mem_size);
     kw->dispw = kw->fontw;
     kw->disph = kw->fonth;
     kw->x = 0;

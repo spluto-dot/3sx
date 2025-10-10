@@ -101,7 +101,7 @@ static void load_data(s32 fnum, void* adrs) {
     }
 
     nsct = ADXF_GetFsizeSct(save->adxf);
-    printf("load_data: fnum=%d adrs=0x%X size=0x%X\n", fnum, (uintptr_t)adrs, nsct << 11);
+    printf("load_data: fnum=%d adrs=0x%lX size=0x%X\n", fnum, (uintptr_t)adrs, nsct << 11);
     ADXF_ReadNw(save->adxf, nsct, adrs);
 }
 
