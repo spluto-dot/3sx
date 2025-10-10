@@ -66,7 +66,6 @@ target_compile_options(3sx PRIVATE
     -Wno-c2x-extensions
     -Wno-unused-variable
     -Wno-unused-but-set-variable
-    -Wno-unused-comparison
     -Wno-unused-function
     -Wno-int-to-pointer-cast
     -Wno-int-conversion

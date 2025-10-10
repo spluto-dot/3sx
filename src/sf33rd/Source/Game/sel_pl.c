@@ -314,11 +314,10 @@ void Sel_PL_Cont_3rd() {
     S_No[0]++;
     Forbid_Break = 0;
 
-    if (G_No[1] == 1) {
-        return;
+    if (G_No[1] != 1) {
+        // This is a comparison to zero in the decomp. Might be a programmer error
+        Demo_Flag = 0;
     }
-
-    Demo_Flag == 0;
 }
 
 void Sel_PL_Cont_4th() {}
