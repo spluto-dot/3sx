@@ -1,4 +1,9 @@
-#include "sf33rd/Source/Game/end_data.h"
+/**
+ * @file end_data.c
+ * Ending Data
+ */
+
+#include "sf33rd/Source/Game/ending/end_data.h"
 #include "common.h"
 
 // sbss
