@@ -26,14 +26,6 @@ void appViewMatrix() {
         &appView.mtx, appView.prm.x0, appView.prm.y0, appView.prm.x1, appView.prm.y1, appView.prm.ne, appView.prm.fa);
 }
 
-void render_start() {
-    flBeginRender();
-}
-
-void render_end() {
-    flEndRender();
-}
-
 void initRenderState(s32 flag) {
     f32 fogstart = 20000.0f;
     f32 fogend = 30000.0f;

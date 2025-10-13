@@ -32,6 +32,8 @@
 #include <stdarg.h>
 #endif
 
+// FIXME: Remove unused variables
+
 // bss
 FLPS2State flPs2State;
 FLPS2DB flPs2Db[2];
@@ -146,7 +148,6 @@ s32 flInitialize(s32 /* unused */, s32 /* unused */) {
     flPS2InitRenderBuff(4, 2, 1, 0, 1);
     flPS2SwapDBuff(0, 1);
     flPADInitialize();
-    flPS2DebugInit();
 
 #if defined(TARGET_PS2)
     // This loop waits until we're on an even frame
@@ -200,14 +201,6 @@ u32 flPS2CheckDbChangeFlag() {
 }
 
 s32 flFlip(u32 flag) {
-    flDebugTrueTime[2] = DGET_T0_COUNT();
-
-    if (flag == 0) {
-        flPS2DispSystemInfo(2, 0);
-    }
-
-    flPS2DebugStrDisp();
-    flDebugTrueTime[3] = DGET_T0_COUNT();
     flPS2DmaWait();
     flmwFlip(flag);
     DPUT_T0_MODE(0x83);

@@ -174,7 +174,6 @@ static void game_init() {
 
     flInitialize(flPs2State.DispWidth, flPs2State.DispHeight);
     flSetRenderState(FLRENDER_BACKCOLOR, 0);
-    flSetDebugMode(0);
     system_init_level = 0;
     ppgWorkInitializeApprication();
     distributeScratchPadAddress();
@@ -284,7 +283,6 @@ static void game_step_0() {
     }
 
     appCopyKeyData();
-    render_start();
 
     mpp_w.inGame = 0;
 
@@ -299,29 +297,6 @@ static void game_step_0() {
     }
 
     KnjFlush();
-    render_end();
-
-    u32 sysinfodisp = 0;
-
-    if (Debug_w[2] == 2) {
-        sysinfodisp = 3;
-    }
-
-    if (Debug_w[2] == 1) {
-        sysinfodisp = 2;
-    }
-
-    switch (mpp_w.sysStop) {
-    case 2:
-        sysinfodisp = 0;
-        break;
-
-    case 1:
-        sysinfodisp &= ~2;
-        break;
-    }
-
-    flSetDebugMode(sysinfodisp);
     disp_effect_work();
     flFlip(0);
 }

@@ -7,8 +7,6 @@
 #define MIP_TBP_SIZE 6
 #define MIP_DBW_SIZE 6
 
-s32 flBeginRender();
-s32 flEndRender();
 s32 flPS2InitRenderState();
 s32 flSetRenderState(enum _FLSETRENDERSTATE func, u32 value);
 void flAdjustScreen(s32 x, s32 y);

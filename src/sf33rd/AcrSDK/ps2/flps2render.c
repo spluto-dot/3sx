@@ -15,29 +15,6 @@
 void flPS2SetClearColor(u32 col);
 s32 flPS2SendTextureRegister(u32 th);
 
-s32 flBeginRender() {
-    flDebugTrueTime[0] = DGET_T0_COUNT();
-    flLoadNow = flGetSystemTime();
-
-    if (flLoadCount-- == 0) {
-        flLoadCount = 100;
-        flLoadReserve = (f32)flLoadAmount / 100.0f;
-        flLoadAmount = 0;
-    }
-
-    flPs2State.SystemStatus = 1;
-    return 1;
-}
-
-s32 flEndRender() {
-    flDebugTrueTime[1] = DGET_T0_COUNT();
-    flLoadNow = flGetSystemTime() - flLoadNow;
-    flLoadAmount = flLoadAmount + flLoadNow;
-    flPs2State.SystemStatus = 2;
-
-    return 1;
-}
-
 s32 flPS2InitRenderState() {
     s32 wk0;
 
