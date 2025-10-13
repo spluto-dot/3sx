@@ -253,7 +253,6 @@ void flPS2StoreImageB(uintptr_t load_ptr, u32 size, s16 dbp, s16 dbw, s16 dpsm, 
     s16 wk_h;
     FLPS2StoreImageData* store_image;
 
-    flPS2DmaWait();
     count = size / 0x70000;
 
     if ((size % 458752) != 0) {
@@ -592,74 +591,6 @@ s32 flPS2DmaInterrupt(s32 ch) {
     return 0;
 }
 
-void flPS2DmaSend() {
-    FLPS2VIF1Control* dma_ptr;
-    u32* dma_queue;
-    u32 data_adrs;
-    u32 type;
-    s32 dma_index;
-    u32 dma_chcr;
-    sceDmaChan* dma_channel;
-    FLPS2StoreImageData* store_image;
-
-    dma_ptr = &flPs2VIF1Control;
-    dma_index = flPs2State.SystemIndex;
-    flPs2State.SystemIndex = flPs2State.SystemIndex ^ 1;
-    dma_ptr->old_queue_data = 0;
-    dma_ptr->old_endtag = 0;
-
-    if (dma_ptr->queue_ctr[dma_index] != 0) {
-        dma_chcr = *dma_chcr_adrs[dma_ptr->channel_id];
-        dma_channel = flPs2State.DmaChan[dma_ptr->channel_id];
-        dma_queue = (u32*)flPS2GetSystemBuffAdrs(dma_ptr->dma_queue_handle[dma_index]);
-        data_adrs = dma_queue[dma_ptr->queue_ptr1[dma_index]];
-        dma_ptr->now_adrs = data_adrs;
-        type = ((data_adrs & 0xF0000000)) >> 0x1C;
-        data_adrs = data_adrs & 0xFFFFFFF;
-
-        switch (type) {
-        case 0:
-        case 1:
-        case 3:
-        case 4:
-        case 5:
-            dma_channel->chcr.TTE = 1;
-            dma_channel->chcr.TIE = 1;
-            FlushCache(WRITEBACK_DCACHE);
-            sceDmaSend(dma_channel, (u32*)data_adrs);
-            break;
-
-        case 2:
-            store_image = (FLPS2StoreImageData*)data_adrs;
-            flPs2StoreImageAdrs = store_image->data.UI32[0];
-            flPs2StoreImageSize = store_image->data.UI32[1];
-            *GS_CSR = 2;
-            flPs2StoreImageOldIMR = *GS_IMR;
-            *GS_IMR = -0x201;
-            EnableIntc(0);
-            dma_ptr->dma_normal_mode_status |= 1;
-            dma_channel->chcr.TTE = 0;
-            dma_channel->chcr.TIE = 0;
-            FlushCache(WRITEBACK_DCACHE);
-            sceDmaSend(dma_channel, (u32*)data_adrs);
-            break;
-        }
-    }
-}
-
-s32 flPS2DmaWait() {
-    s32 dma_index = flPs2State.SystemIndex ^ 1;
-
-    while (flPs2VIF1Control.queue_ctr[dma_index] != 0) {
-        // Do nothing
-    }
-    while (sceDmaSync(flPs2State.DmaChan[1], 1, 0) != 0) {
-        // Do nothing
-    }
-
-    return 1;
-}
-
 s32 flPS2DmaTerminate() {
     s32 dma_index;
     FLPS2VIF1Control* dma_ptr = &flPs2VIF1Control;
@@ -668,17 +599,11 @@ s32 flPS2DmaTerminate() {
         return 0;
     }
 
-    flPS2DmaWait();
     dma_index = flPs2State.SystemIndex;
 
     if (dma_ptr->queue_ctr[dma_index] == 0) {
         return 0;
     }
-
-    flPS2DmaSend();
-    flPS2DmaWait();
-    flPS2SystemTmpBuffFlush();
-    flPS2FlipCancelFlag = 2;
 
     return 1;
 }

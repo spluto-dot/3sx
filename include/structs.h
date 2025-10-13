@@ -777,38 +777,19 @@ typedef struct {
 } WORK_Other_JUDGE;
 
 typedef struct {
-    u32 VideoMode;
-    u32 InterlaceMode;
     u32 DisplayMode;
     s32 DispWidth;
     s32 DispHeight;
-    u32 MAGH;
-    u32 FrameBitDepth;
-    u32 FrameBuffForm;
-    u32 FrameBuffPageX;
-    u32 FrameBuffPageY;
     u32 ZBuffForm;
     u32 ZBuffPageX;
     u32 ZBuffPageY;
-    u32 ZBuffAdrs;
     f32 ZBuffMax;
     u32 TextureStartAdrs;
-    s32 FrameCount;
-    s32 FrameCountNext;
-    s32 Irq_count;
     s32 Db_change_enable;
     s8 pad64[0xC];
     sceGsDBuffDc Db;
     u32 FrameClearColor;
-    s32 D2dOffsetX;
-    s32 D2dOffsetY;
-    s32 ScreenOffsetX;
-    s32 ScreenOffsetY;
-    s32 ScreenDispX;
-    s32 ScreenDispY;
     sceDmaChan* DmaChan[10];
-    s32 NowVu1Code;
-    s32 NowVu1Size;
     s32 DrawDisable;
     uintptr_t system_memory_start;
     s32 system_memory_size;

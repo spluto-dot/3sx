@@ -131,6 +131,7 @@ s32 flFileLength(s8* filename) {
     return length;
 }
 
+// FIXME: use memset instead
 void flMemset(void* dst, u32 pat, s32 size) {
     s32 i;
     u8* now = dst;
@@ -140,6 +141,7 @@ void flMemset(void* dst, u32 pat, s32 size) {
     }
 }
 
+// FIXME: use memcpy instead
 void flMemcpy(void* dst, void* src, s32 size) {
     s32 i;
     s8* now[2];
@@ -284,7 +286,6 @@ uintptr_t flPS2GetSystemTmpBuff(s32 len, s32 align) {
     new_now = now + len;
 
     if (flPs2State.SystemTmpBuffEndAdrs < new_now) {
-        flPS2DmaWait();
         flPS2SystemError(0, "ERROR flPS2GetSystemTmpBuff flps2etc.c");
         now = flPs2State.SystemTmpBuffStartAdrs;
         new_now = now + len;

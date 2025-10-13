@@ -41,11 +41,9 @@ extern s32 flDebugStrX;                                      // size: 0x4, addre
 extern s32 flDebugStrY;                                      // size: 0x4, address: 0x57AB6C
 extern u32 flDebugStrHan;                                    // size: 0x4, address: 0x57AB70
 extern u32 flhDebugStr;                                      // size: 0x4, address: 0x57AB74
-extern s32 flPS2FlipCancelFlag;                              // size: 0x4, address: 0x57AB78
 extern f32 flPS2FrameTexScaleY;                              // size: 0x4 address: 0x57AB7C
 extern f32 flPS2FrameTexScaleX;                              // size: 0x4, address: 0x57AB80
 extern u32 flPs2FBA;                                         // size: 0x4, address: 0x57AB84
-extern s32 flClayNum;                                        // size: 0x4, address: 0x57AB88
 extern f32 flViewportLY;                                     // size: 0x4, address: 0x57AB8C
 extern f32 flViewportLX;                                     // size: 0x4, address: 0x57AB90
 extern f32 flViewportCY;                                     // size: 0x4, address: 0x57AB94
@@ -69,7 +67,6 @@ extern u32 flMipmapK;                                        // size: 0x4, addre
 extern u32 flMipmapL;                                        // size: 0x4, address: 0x57AE18
 extern s32 flVramStaticNum;                                  // size: 0x4, address: 0x57AE1C
 extern VRAMBlockHeader flVramStatic[VRAM_BLOCK_HEADER_SIZE]; // size: 0x18, address: 0x57AE20
-extern s32 flPTNum;                                          // size: 0x4, address: 0x57AE38
 extern s32 flVramNum;                                        // size: 0x4, address: 0x57AE3C
 extern LPVram* flVramList;                                   // size: 0x4, address: 0x57AE40
 extern s32 flPs2GsHandler;                                   // size: 0x4, address: 0x57AE44
@@ -83,30 +80,20 @@ extern f32 flFogEnd;                                         // size: 0x4, addre
 extern f32 flFogStart;                                       // size: 0x4, address: 0x57AEA4
 extern FL_FMS flFMS;                                         // size: 0x18, address: 0x57AEB0
 extern u32 flSystemRenderOperation;                          // size: 0x4, address: 0x57AEC8
-extern u32 flSystemRenderState;                              // size: 0x4, address: 0x57AECC
-extern u32 flLoadCount;                                      // size: 0x4, address: 0x57AED8
 extern f32 flLoadReserve;                                    // size: 0x4, address: 0x57AEDC
 extern f64 flLoadAmount;                                     // size: 0x8, address: 0x57AEE0
 extern f64 flLoadNow;                                        // size: 0x8, address: 0x57AED0
-extern s32 flFrame;                                          // size: 0x4, address: 0x57AF38
 extern s32 flHeight;                                         // size: 0x4, address: 0x57AF3C
 extern s32 flWidth;                                          // size: 0x4, address: 0x57AF40
-extern s32 flCTNum;                                          // size: 0x4, address: 0x57AF44
-extern u32 flCTH;                                            // size: 0x4, address: 0x57AF48
 
 extern s32 flDebugSysMem[DEBUG_SYS_MEM_SIZE];   // size: 0x4000, address: 0x6C0DD0
-extern MTX flMATRIX[36];                        // size: 0x900, address: 0x6C4DD0
 extern FLTexture flPalette[FL_PALETTE_MAX];     // size: 0xFF00, address: 0x6C56D0
 extern FLTexture flTexture[FL_TEXTURE_MAX];     // size: 0x3C00, address: 0x6D55D0
 extern LPVram flVramControl[VRAM_CONTROL_SIZE]; // size: 0x9300, address: 0x6D91D0
-extern FLPS2DrawStart flPs2DrawStart;           // size: 0x140, address: 0x6E24D0
 extern FLPS2State flPs2State;                   // size: 0x470, address: 0x6E2750
 
 s32 flInitialize();
-u32 flPS2CheckDbChangeFlag();
 s32 flFlip(u32 flag);
 s32 flLogOut(s8* format, ...);
-void flInitPhaseStarted();
-void flInitPhaseFinished();
 
 #endif

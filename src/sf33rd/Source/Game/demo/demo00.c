@@ -305,6 +305,7 @@ void Warning_Init() {
     picon_no = 0;
 }
 
+// FIXME: When is this ever called?
 void Put_Warning(s16 type) {
     Polygon tex[4];
     f32 video_y = 16.0f;

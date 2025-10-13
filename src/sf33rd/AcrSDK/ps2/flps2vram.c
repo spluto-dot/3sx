@@ -101,7 +101,6 @@ u32 flCreateTextureHandle(plContext* bits, u32 flag) {
         }
 
         lpflTexture->mem_handle = flPS2GetSystemMemoryHandle(lpflTexture->size, 2);
-        flCTNum += 1;
     } else {
         flPS2ConvertTextureFromContext(bits, lpflTexture, 0);
         flPS2CreateTextureHandle(th, flag);
@@ -261,7 +260,6 @@ s32 flPS2CreateTextureHandle(u32 th, u32 flag) {
     SDLGameRenderer_CreateTexture(th);
 #endif
 
-    flCTNum += 1;
     return 1;
 }
 
@@ -415,7 +413,6 @@ u32 flCreatePaletteHandle(plContext* lpcontext, u32 flag) {
         }
 
         lpflPalette->mem_handle = flPS2GetSystemMemoryHandle(lpflPalette->size, 2);
-        flPTNum += 1;
     } else {
         if (lpcontext->width == 256) {
             flPS2ConvertTextureFromContext(lpcontext, lpflPalette, 1);
@@ -519,7 +516,6 @@ s32 flPS2CreatePaletteHandle(u32 ph, u32 flag) {
     SDLGameRenderer_CreatePalette(ph);
 #endif
 
-    flPTNum += 1;
     return 1;
 }
 
@@ -558,7 +554,6 @@ s32 flReleaseTextureHandle(u32 texture_handle) {
     }
 
     flMemset(lpflTexture, 0, sizeof(FLTexture));
-    flCTNum -= 1;
     return 1;
 }
 
@@ -581,7 +576,6 @@ s32 flReleasePaletteHandle(u32 palette_handle) {
     }
 
     flMemset(lpflPalette, 0, sizeof(FLTexture));
-    flPTNum -= 1;
     return 1;
 }
 
@@ -1984,7 +1978,6 @@ void BlockConv8to32(u8* p_input, u8* p_output, s32 p_page_w) {
 void flPS2VramInit() {
     s32 i;
 
-    flCTH = 1;
     flVramStaticNum = 0;
 
     for (i = 0; i < VRAM_BLOCK_HEADER_SIZE; i++) {
