@@ -46,26 +46,6 @@ u32 flCreateTextureFromBMP_mem(void* mem, u32 flag);
 u32 flCreateTextureFromPIC(s8* pic_file, u32 flag);
 u32 flCreateTextureFromPIC_mem(void* mem, u32 flag);
 
-void flPS2IopModuleLoad(s8* fname, s32 args, s8* argp, s32 type) {
-    s32 lp0;
-
-    if (type == 0) {
-        do {
-
-        } while (sceSifLoadModule(fname, args, argp) < 0);
-
-        return;
-    }
-
-    for (lp0 = 0; lp0 < type; lp0++) {
-        if (sceSifLoadModule(fname, args, argp) > 0) {
-            return;
-        }
-    }
-
-    printf("Can't load module %s", fname);
-}
-
 s32 flFileRead(s8* filename, void* buf, s32 len) {
     s32 fd;
     s8 temp[2048];

@@ -132,17 +132,6 @@ void sceVu0UnitMatrix(sceVu0FMATRIX m) {
     }
 }
 
-// libdbc
-
-int sceDbcInit() {
-    // Do nothing
-    return 1;
-}
-
-void sceDbcEnd() {
-    not_implemented(__func__);
-}
-
 // eekernel
 
 void FlushCache(int operation) {

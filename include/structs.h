@@ -2080,7 +2080,6 @@ typedef struct {
     u8 vib;         // offset 0x5, size 0x1
     u8 socket_id;   // offset 0x6, size 0x1
     u8 pad_id;      // offset 0x7, size 0x1
-    __int128* buff; // offset 0x8, size 0x4,
     u32 bprofile;   // offset 0xC, size 0x4
     u32 vprofile;   // offset 0x10, size 0x4
     u32 vib_timer;  // offset 0x14, size 0x4
