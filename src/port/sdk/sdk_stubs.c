@@ -1,5 +1,3 @@
-#if !defined(TARGET_PS2)
-
 #include "common.h"
 #include "port/resources.h"
 #include "types.h"
@@ -87,79 +85,11 @@ int sceLseek(int fd, int offset, int whence) {
     return lseek(fd, offset, whence);
 }
 
-long sceLseek64(int fd, long offset, int whence) {
-    not_implemented(__func__);
-}
-
-int sceFsReset(void) {
-    not_implemented(__func__);
-}
-
-int sceIoctl(int fd, int req, void*) {
-    not_implemented(__func__);
-}
-
-void* sceSifAllocIopHeap(unsigned int) {
-    not_implemented(__func__);
-}
-
-int sceSifInitIopHeap(void) {
-    not_implemented(__func__);
-}
-
-int sceSifFreeIopHeap(void*) {
-    not_implemented(__func__);
-}
-
 int sceSifLoadModule(const char* filename, int args, const char* argp) {
     not_implemented(__func__);
 }
 
-int sceSifRebootIop(const char* img) {
-    not_implemented(__func__);
-}
-
-int sceSifSyncIop(void) {
-    not_implemented(__func__);
-}
-
-// sifrpc
-
-void sceSifInitRpc(unsigned int mode) {
-    not_implemented(__func__);
-}
-
-int sceSifBindRpc(sceSifClientData*, unsigned int, unsigned int) {
-    not_implemented(__func__);
-}
-
-int sceSifCallRpc(sceSifClientData*, unsigned int, unsigned int, void*, int, void*, int, sceSifEndFunc, void*) {
-    not_implemented(__func__);
-}
-
-int sceSifCheckStatRpc(sceSifRpcData*) {
-    not_implemented(__func__);
-}
-
-// sif
-
-int sceSifDmaStat(unsigned int id) {
-    not_implemented(__func__);
-}
-
-unsigned int sceSifSetDma(sceSifDmaData* sdd, int len) {
-    not_implemented(__func__);
-}
-
 // libdma
-
-sceDmaChan* sceDmaGetChan(int id) {
-    not_implemented(__func__);
-}
-
-int sceDmaReset(int mode) {
-    not_implemented(__func__);
-}
 
 void sceDmaSend(sceDmaChan* d, void* tag) {
     // printf("[SDK] sceDmaSend(d: %X, tag: %X)\n", d, tag);
@@ -180,10 +110,6 @@ void sceGsResetGraph(short mode, short inter, short omode, short ffmode) {
     // printf("[SDK] sceGsResetGraph(mode: %d, inter: %d, omode: %d, ffmode: %d)\n", mode, inter, omode, ffmode);
 }
 
-void sceGsResetPath() {
-    not_implemented(__func__);
-}
-
 int sceGsSetDefLoadImage(sceGsLoadImage* lp, short dbp, short dbw, short dpsm, short x, short y, short w, short h) {
     not_implemented(__func__);
 }
@@ -196,26 +122,7 @@ int sceGsSyncV(int mode) {
     fatal_error("sceGsSyncV should never be called in ports");
 }
 
-int* sceGsSyncVCallback(int (*func)(int)) {
-    return NULL;
-}
-
-// eekernel
-
-void scePrintf(const char* fmt, ...) {
-    va_list args;
-    va_start(args, fmt);
-
-    vprintf(fmt, args);
-
-    va_end(args);
-}
-
 // libvu0
-
-void sceVpu0Reset() {
-    not_implemented(__func__);
-}
 
 void sceVu0UnitMatrix(sceVu0FMATRIX m) {
     for (int i = 0; i < 4; i++) {
@@ -246,18 +153,6 @@ void iFlushCache(int operation) {
     // printf("[SDK] iFlushCache called (operation: %d)\n", operation);
 }
 
-void InvalidDCache(void* begin, void* end) {
-    // printf("[SDK] InvalidDCache called (begin: %0X, end: %0X)\n", begin, end);
-}
-
-void SyncDCache(void*, void*) {
-    not_implemented(__func__);
-}
-
-int DisableIntc(int) {
-    not_implemented(__func__);
-}
-
 int EnableIntc(int) {
     not_implemented(__func__);
 }
@@ -270,10 +165,6 @@ int iDisableIntc(int) {
     not_implemented(__func__);
 }
 
-int DisableDmac(int) {
-    not_implemented(__func__);
-}
-
 int EnableDmac(int) {
     not_implemented(__func__);
 }
@@ -282,15 +173,7 @@ int AddIntcHandler(int, int (*)(int), int) {
     not_implemented(__func__);
 }
 
-int RemoveIntcHandler(int, int) {
-    not_implemented(__func__);
-}
-
 int AddDmacHandler(int, int (*)(int), int) {
-    not_implemented(__func__);
-}
-
-int RemoveDmacHandler(int, int) {
     not_implemented(__func__);
 }
 
@@ -303,15 +186,3 @@ void ExitHandler() {
 void sceDmaRecvN(sceDmaChan* d, void* addr, int size) {
     not_implemented(__func__);
 }
-
-// eekernel
-
-int DIntr() {
-    not_implemented(__func__);
-}
-
-int EIntr() {
-    not_implemented(__func__);
-}
-
-#endif
