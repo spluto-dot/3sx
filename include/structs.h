@@ -23,39 +23,27 @@ typedef union {
 } Reg32CalPos;
 
 typedef struct {
-    // total size: 0x18
-    f32 x0; // offset 0x0, size 0x4
-    f32 y0; // offset 0x4, size 0x4
-    f32 x1; // offset 0x8, size 0x4
-    f32 y1; // offset 0xC, size 0x4
-    f32 ne; // offset 0x10, size 0x4
-    f32 fa; // offset 0x14, size 0x4
-} VPRM;
-
-typedef struct {
     // total size: 0x8
     u8* pFrame;  // offset 0x0, size 0x4
     s32 heapnum; // offset 0x4, size 0x4
 } FMS_FRAME;
 
 typedef struct {
-    // total size: 0x4C
-    FMS_FRAME fmsFrame;    // offset 0x0, size 0x8
-    u8* ramcntBuff;        // offset 0x8, size 0x4
-    VPRM vprm;             // offset 0xC, size 0x18
-    s8 ds_h[2];            // offset 0x24, size 0x2
-    s8 ds_v[2];            // offset 0x26, size 0x2
-    s8 sysStop;            // offset 0x28, size 0x1
-    s8 initTrainingData;   // offset 0x29, size 0x1
-    s8 inGame;             // offset 0x2A, size 0x1
-    s8 ctrDemo;            // offset 0x2B, size 0x1
-    s8 language;           // offset 0x2C, size 0x1
-    s8 langload;           // offset 0x2D, size 0x1
-    s8 cutAnalogStickData; // offset 0x2E, size 0x1
-    s8 useAnalogStickData; // offset 0x2F, size 0x1
-    s8 pal50Hz;            // offset 0x30, size 0x1
-    u32 hanFbTex;          // offset 0x34, size 0x4
-    u8 useChar[20];        // offset 0x38, size 0x14
+    FMS_FRAME fmsFrame;
+    u8* ramcntBuff;
+    s8 ds_h[2];
+    s8 ds_v[2];
+    s8 sysStop;
+    s8 initTrainingData;
+    s8 inGame;
+    s8 ctrDemo;
+    s8 language;
+    s8 langload;
+    s8 cutAnalogStickData;
+    s8 useAnalogStickData;
+    s8 pal50Hz;
+    u32 hanFbTex;
+    u8 useChar[20];
 } MPP;
 
 typedef struct {
@@ -818,8 +806,6 @@ typedef struct {
     s32 ScreenOffsetY;
     s32 ScreenDispX;
     s32 ScreenDispY;
-    s32 ScreenAdjustX;
-    s32 ScreenAdjustY;
     sceDmaChan* DmaChan[10];
     s32 NowVu1Code;
     s32 NowVu1Size;

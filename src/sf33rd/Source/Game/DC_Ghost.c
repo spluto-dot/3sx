@@ -252,8 +252,6 @@ void njdp2d_draw() {
     Quad prm;
     s32 i;
 
-    setZ_Operation(1);
-
     for (i = njdp2d_w.ix1st; i != -1; i = njdp2d_w.prim[i].next) {
         switch (njdp2d_w.prim[i].type) {
         case 0:

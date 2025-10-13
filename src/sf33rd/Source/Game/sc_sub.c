@@ -209,7 +209,6 @@ void SSPutStr(u16 x, u16 y, u8 atr, const s8* str) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     njColorBlendingMode(0, 1);
     scrscrntex[0].col = scrscrntex[3].col = 0xFFFFFFFF;
     scrscrntex[0].z = scrscrntex[3].z = PrioBase[2];
@@ -239,7 +238,6 @@ s32 SSPutStrPro(u16 flag, u16 x, u16 y, u8 atr, u32 vtxcol, s8* str) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     njColorBlendingMode(0, 1);
     scrscrntex[0].col = scrscrntex[3].col = vtxcol;
     scrscrntex[0].z = scrscrntex[3].z = PrioBase[2];
@@ -309,7 +307,6 @@ void SSPutStr2(u16 x, u16 y, u8 atr, const s8* str) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     njColorBlendingMode(0, 1);
     scrscrntex[0].col = scrscrntex[3].col = -1;
     scrscrntex[0].z = scrscrntex[3].z = PrioBase[1];
@@ -362,7 +359,6 @@ void SSPutStr_Bigger(u16 x, u16 y, u8 atr, s8* str, f32 sc, u8 gr, u16 priority)
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     njColorBlendingMode(0, 1);
 
     for (i = 0; i < 4; i++) {
@@ -404,7 +400,6 @@ void SSPutDec(u16 x, u16 y, u8 atr, u8 dec, u8 size) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     njColorBlendingMode(0, 1);
     scrscrntex[0].col = scrscrntex[3].col = -1;
     scrscrntex[0].z = scrscrntex[3].z = PrioBase[2];
@@ -461,7 +456,6 @@ void SSPutDec3(u16 x, u16 y, u8 atr, s16 dec, u8 size, u8 gr, u16 priority) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     njColorBlendingMode(0, 1);
 
     for (i = 0; i < 4; i++) {
@@ -518,7 +512,6 @@ void scfont_put(u16 x, u16 y, u8 atr, u8 page, u8 cx, u8 cy, u16 priority) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     njColorBlendingMode(0, 1);
     scrscrntex[0].col = scrscrntex[3].col = -1;
     scrscrntex[0].z = scrscrntex[3].z = PrioBase[priority];
@@ -569,7 +562,6 @@ void scfont_sqput(u16 x, u16 y, u8 atr, u8 page, u8 cx1, u8 cy1, u8 cx2, u8 cy2,
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     njColorBlendingMode(0, 1);
 
     scrscrntex[0].col = scrscrntex[3].col = -1;
@@ -642,7 +634,6 @@ void scfont_sqput3(u16 x, u16 y, u8 atr, u8 page, u16 cx1, u16 cy1, u16 cx2, u16
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     njColorBlendingMode(0, 1);
 
     for (i = 0; i < 4; i++) {
@@ -691,7 +682,6 @@ void vital_put(u8 Pl_Num, s8 atr, s16 vital, u8 kind, u16 priority) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
 
     if (vital == -1) {
         vital = 0;
@@ -733,7 +723,6 @@ void silver_vital_put(u8 Pl_Num) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     scrscrntex[0].z = scrscrntex[3].z = PrioBase[2];
     njSetPaletteBankNumG(0, 9);
     scrscrntex[0].u = 224.0f / 256.0f;
@@ -840,7 +829,6 @@ void stun_put(u8 Pl_Num, u8 stun) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     scrscrntex[0].z = scrscrntex[3].z = PrioBase[4];
     njSetPaletteBankNumG(0, 10);
     scrscrntex[0].u = 0.0f;
@@ -1173,7 +1161,6 @@ void SF3_logo(u8 step) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     njColorBlendingMode(0, 1);
     njSetPaletteBankNumG(0, 29);
     pos[0].z = pos[1].z = pos[2].z = pos[3].z = PrioBase[2];
@@ -1433,7 +1420,6 @@ void hnc_set(u8 num, u8 atr) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     scrscrntex[0].z = scrscrntex[3].z = PrioBase[2];
     njSetPaletteBankNumG(1, atr & 0x3F);
     njColorBlendingMode(0, 1);
@@ -1469,7 +1455,6 @@ void hnc_wipeinit(u8 atr) {
     u8 k;
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     Hnc_Num = 0;
     scrscrntex[0].z = scrscrntex[1].z = scrscrntex[2].z = scrscrntex[3].z = PrioBase[2];
     njSetPaletteBankNumG(1, atr & 0x3F);
@@ -1506,8 +1491,7 @@ s32 hnc_wipeout(u8 atr) {
 
     if (!No_Trans) {
         ppgSetupCurrentDataList(&ppgScrList);
-        setFilterMode(0);
-        njSetPaletteBankNumG(1, atr & 0x3F);
+            njSetPaletteBankNumG(1, atr & 0x3F);
         njColorBlendingMode(0, 1);
         vtx[0].z = vtx[1].z = vtx[2].z = vtx[3].z = PrioBase[2];
         vtx[0].col = vtx[1].col = vtx[2].col = vtx[3].col = -1;
@@ -1827,7 +1811,6 @@ void silver_stun_put(u8 Pl_Num, s16 len) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     scrscrntex[0].z = scrscrntex[3].z = PrioBase[3];
     njSetPaletteBankNumG(0, 1);
 
@@ -1862,7 +1845,6 @@ void overwrite_panel(u32 color, u8 priority) {
     }
 
     ppgSetupCurrentDataList(&ppgScrList);
-    setFilterMode(0);
     njColorBlendingMode(0, 1);
     panel_pc.p = panel_p;
     panel_pc.col = panel_col;
@@ -2191,7 +2173,6 @@ void dispButtonImage(s32 px, s32 py, s32 pz, s32 sx, s32 sy, s32 cl, s32 ix) {
         return;
     }
 
-    setFilterMode(0);
     oricol.color = -1;
     oricol.argb.a = (0xFF - cl);
     prm.texCode = ppgGetUsingTextureHandle(&ppgScrTex, 5) | (ppgGetUsingPaletteHandle(&ppgScrPalShot, 0) << 0x10);
@@ -2218,7 +2199,6 @@ void dispButtonImage2(s32 px, s32 py, s32 pz, s32 sx, s32 sy, s32 cl, s32 ix) {
         return;
     }
 
-    setFilterMode(0);
     oricol.color = -1;
     oricol.argb.a = (0xFF - cl);
     prm.texCode = ppgGetUsingTextureHandle(&ppgScrTex, 5) | (ppgGetUsingPaletteHandle(&ppgScrPalShot, 0) << 0x10);
@@ -2247,7 +2227,6 @@ void dispSaveLoadTitle(void* ewk) {
         return;
     }
 
-    setFilterMode(0);
     wk = (WORK*)ewk;
     mlt_obj_matrix(wk, 0);
     oricol.color = -1;

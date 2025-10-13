@@ -212,10 +212,10 @@ void Mtrans_use_trans_mode(WORK* wk, s16 bsy) {
                  wk->my_mts);
         return;
     }
+
     if (!No_Trans) {
-        setTexAdrsMode(1);
-        setFilterMode(0);
         wk->current_colcd &= 0x1FF;
+
         if (wk->my_col_mode & 0x400) {
             wk->my_clear_level = 0x90;
         }

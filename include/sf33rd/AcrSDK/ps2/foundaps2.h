@@ -62,7 +62,6 @@ extern MTX flPS2CLIPPROJ;                                    // size: 0x40, addr
 extern MTX flPS2VIEWPROJ;                                    // size: 0x40, address: 0x57ACF0
 extern MTX flACRVIEWPROJ;                                    // size: 0x40, address: 0x57AD30
 extern MTX flACRVIEWPORT;                                    // size: 0x40, address: 0x57AD70
-extern MTX flPS2INITMATRIX;                                  // size: 0x40, address: 0x57ADB0
 extern f32 flPS2FadeColor[4];                                // size: 0x10, address: 0x57ADF0
 extern f32 flPS2Ambient[4];                                  // size: 0x10, address: 0x57AE00
 extern u32 flTextureStage[1];                                // size: 0x4, address: 0x57AE10

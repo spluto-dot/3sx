@@ -143,8 +143,6 @@ void TITLE_Init() {
 
 s16 TITLE_Move(u16 type) {
     ppgSetupCurrentDataList(&ppgTitleList);
-    setTexAdrsMode(0);
-    setFilterMode(0);
 
     switch (type) {
     case 0:
@@ -289,8 +287,6 @@ void OPBG_Trans() {
         return;
     }
 
-    setTexAdrsMode(1);
-    setFilterMode(0);
     ppgSetupCurrentDataList(&ppgOpnBgList);
     Scrn_Renew();
     Irl_Family();

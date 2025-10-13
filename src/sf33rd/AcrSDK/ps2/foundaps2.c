@@ -76,7 +76,6 @@ u32 flMipmapK;
 u32 flTextureStage[1];
 f32 flPS2Ambient[4];
 f32 flPS2FadeColor[4];
-MTX flPS2INITMATRIX;
 MTX flACRVIEWPORT;
 MTX flACRVIEWPROJ;
 MTX flPS2VIEWPROJ;
@@ -243,8 +242,6 @@ void flPS2InitRenderBuff(u32 fbdepth, u32 zbdepth, u32 inter_mode, u32 video_mod
     flPs2State.VideoMode = video_mode;
     flPs2State.InterlaceMode = inter_mode;
     flPs2State.FrameBitDepth = fbdepth;
-    flPs2State.ScreenAdjustX = 0;
-    flPs2State.ScreenAdjustY = 0;
 
     switch (dispw) {
     default:
