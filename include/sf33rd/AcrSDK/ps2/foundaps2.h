@@ -89,7 +89,6 @@ extern u32 flLoadCount;                                      // size: 0x4, addre
 extern f32 flLoadReserve;                                    // size: 0x4, address: 0x57AEDC
 extern f64 flLoadAmount;                                     // size: 0x8, address: 0x57AEE0
 extern f64 flLoadNow;                                        // size: 0x8, address: 0x57AED0
-extern plContext flFrameBuf;                                 // size: 0x48, address: 0x57AEF0
 extern s32 flFrame;                                          // size: 0x4, address: 0x57AF38
 extern s32 flHeight;                                         // size: 0x4, address: 0x57AF3C
 extern s32 flWidth;                                          // size: 0x4, address: 0x57AF40
@@ -102,7 +101,6 @@ extern FLTexture flPalette[FL_PALETTE_MAX];     // size: 0xFF00, address: 0x6C56
 extern FLTexture flTexture[FL_TEXTURE_MAX];     // size: 0x3C00, address: 0x6D55D0
 extern LPVram flVramControl[VRAM_CONTROL_SIZE]; // size: 0x9300, address: 0x6D91D0
 extern FLPS2DrawStart flPs2DrawStart;           // size: 0x140, address: 0x6E24D0
-extern FLPS2DB flPs2Db[2];                      // size: 0x140, address: 0x6E2610
 extern FLPS2State flPs2State;                   // size: 0x470, address: 0x6E2750
 
 s32 flInitialize();

@@ -233,8 +233,7 @@ void njDrawTexture(Polygon* polygon, s32 /* unused */, s32 tex, s32 /* unused */
 void njDrawSprite(Polygon* polygon, s32 /* unused */, s32 tex, s32 /* unused */) {
     Vertex vtx[4];
 
-    if ((getCP3toFullScreenDrawFlag() != 0) &&
-        ((polygon[0].x >= 384.0f) || (polygon[3].x < 0.0f) || (polygon[0].y >= 224.0f) || (polygon[3].y < 0.0f))) {
+    if ((polygon[0].x >= 384.0f) || (polygon[3].x < 0.0f) || (polygon[0].y >= 224.0f) || (polygon[3].y < 0.0f)) {
         return;
     }
 
@@ -253,7 +252,6 @@ void njdp2d_draw() {
     Quad prm;
     s32 i;
 
-    ps2SeqsRenderQuadInit_B();
     setZ_Operation(1);
 
     for (i = njdp2d_w.ix1st; i != -1; i = njdp2d_w.prim[i].next) {
@@ -274,7 +272,6 @@ void njdp2d_draw() {
     }
 
     njdp2d_init();
-    ps2SeqsRenderQuadEnd();
 }
 
 // `col` needs to be `uintptr_t` because it sometimes stores a pointer to `WORK`

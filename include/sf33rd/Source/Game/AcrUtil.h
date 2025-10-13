@@ -6,7 +6,6 @@
 
 void appViewSetItems(VPRM* prm);
 void appViewGetItems(VPRM* prm);
-void appViewMatrix();
 void initRenderState(s32 flag);
 void setZ_Operation(s32 flag);
 void setBlendMode(s32 ope, s32 src, s32 dst);

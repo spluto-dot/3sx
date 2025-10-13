@@ -21,11 +21,6 @@ void appViewGetItems(VPRM* prm) {
     *prm = appView.prm;
 }
 
-void appViewMatrix() {
-    flmatMakeViewport(
-        &appView.mtx, appView.prm.x0, appView.prm.y0, appView.prm.x1, appView.prm.y1, appView.prm.ne, appView.prm.fa);
-}
-
 void initRenderState(s32 flag) {
     f32 fogstart = 20000.0f;
     f32 fogend = 30000.0f;

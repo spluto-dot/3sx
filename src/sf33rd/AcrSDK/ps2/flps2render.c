@@ -8,9 +8,7 @@
 #include "sf33rd/AcrSDK/ps2/flps2vram.h"
 #include "sf33rd/AcrSDK/ps2/foundaps2.h"
 
-#if !defined(TARGET_PS2)
 #include "port/sdl/sdl_game_renderer.h"
-#endif
 
 void flPS2SetClearColor(u32 col);
 s32 flPS2SendTextureRegister(u32 th);
@@ -1412,38 +1410,6 @@ s32 flPS2SetTextureRegister(u32 th, u64* texA, u64* tex1, u64* tex0, u64* clamp,
     }
 
     return 1;
-}
-
-s16 flPS2ConvScreenX(s16 x) {
-    x -= flPs2State.ScreenOffsetX;
-
-    return x;
-}
-
-s16 flPS2ConvScreenY(s16 y) {
-    y -= flPs2State.ScreenOffsetY;
-
-    if (flPs2State.InterlaceMode == 0) {
-        y >>= 1;
-    }
-
-    return y;
-}
-
-f32 flPS2ConvScreenFX(f32 x) {
-    x -= flPs2State.ScreenOffsetX;
-
-    return x;
-}
-
-f32 flPS2ConvScreenFY(f32 y) {
-    y -= flPs2State.ScreenOffsetY;
-
-    if (flPs2State.InterlaceMode == 0) {
-        y = y * 0.5f;
-    }
-
-    return y;
 }
 
 f32 flPS2ConvScreenFZ(f32 z) {

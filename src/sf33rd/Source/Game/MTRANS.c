@@ -1607,8 +1607,6 @@ void seqsAfterProcess() {
             seqs_w.sprMax = seqs_w.sprTotal;
         }
 
-        ps2SeqsRenderQuadInit_A();
-
         for (i = 0; i < seqs_w.sprTotal; i++) {
             if (seqs_w.up[seqs_w.chip[i].id]) {
                 val = seqs_w.chip[i].texCode;
@@ -1621,8 +1619,6 @@ void seqsAfterProcess() {
                 ps2SeqsRenderQuad_Ax(&seqs_w.chip[i]);
             }
         }
-
-        ps2SeqsRenderQuadEnd();
     }
 }
 

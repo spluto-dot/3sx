@@ -199,7 +199,6 @@ static void game_step_0() {
     mpp_w.vprm.fa = 1.0f;
 
     appViewSetItems(&mpp_w.vprm);
-    appViewMatrix();
     flAdjustScreen(X_Adjust + Correct_X[0], Y_Adjust + Correct_Y[0]);
     setBackGroundColor(0xFF000000);
 
@@ -291,11 +290,6 @@ static void game_step_0() {
     seqsBeforeProcess();
     njdp2d_draw();
     seqsAfterProcess();
-
-    if (Debug_w[6] == 0) {
-        CP3toPS2Draw();
-    }
-
     KnjFlush();
     disp_effect_work();
     flFlip(0);
@@ -395,7 +389,6 @@ void njUserInit() {
     mpp_w.vprm.ne = -1.0f;
     mpp_w.vprm.fa = 1.0f;
     appViewSetItems(&mpp_w.vprm);
-    appViewMatrix();
     mmSystemInitialize();
     flGetFrame(&mpp_w.fmsFrame);
     seqsInitialize(mppMalloc(seqsGetUseMemorySize()));
