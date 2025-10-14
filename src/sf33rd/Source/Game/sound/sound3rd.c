@@ -1,4 +1,9 @@
-#include "sf33rd/Source/Game/Sound3rd.h"
+/**
+ * @file sound3rd.c
+ * Main Sound System Controller
+ */
+
+#include "sf33rd/Source/Game/sound/sound3rd.h"
 #include "common.h"
 #include "port/sdl/sdl_adx_sound.h"
 #include "sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/cse.h"
@@ -9,9 +14,7 @@
 #include "sf33rd/Source/Common/PPGFile.h"
 #include "sf33rd/Source/Game/EFFECT.h"
 #include "sf33rd/Source/Game/RAMCNT.h"
-#include "sf33rd/Source/Game/SE.h"
 #include "sf33rd/Source/Game/SYS_sub.h"
-#include "sf33rd/Source/Game/Se_Data.h"
 #include "sf33rd/Source/Game/WORK_SYS.h"
 #include "sf33rd/Source/Game/color3rd.h"
 #include "sf33rd/Source/Game/debug/Debug.h"
@@ -21,6 +24,8 @@
 #include "structs.h"
 
 #include "sf33rd/Source/Game/io/gd3rd.h"
+#include "sf33rd/Source/Game/sound/se.h"
+#include "sf33rd/Source/Game/sound/se_data.h"
 
 #define ADX_STM_WORK_SIZE 252388
 
