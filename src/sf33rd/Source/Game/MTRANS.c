@@ -1518,13 +1518,6 @@ void mlt_obj_matrix(WORK* wk, s32 base_y) {
 
     if (wk->my_roll_flag) {
         njScale(NULL, 0.6f, 7.0f / 15.0f, 1.0f);
-
-        if (!wk->rl_flag) {
-            njRotateZ(0, -wk->my_roll.now);
-        } else {
-            njRotateZ(0, wk->my_roll.now);
-        }
-
         njScale(NULL, 5.0f / 3.0f, 15.0f / 7.0f, 1.0f);
     }
 }

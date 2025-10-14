@@ -37,7 +37,6 @@ typedef struct {
 NJDP2D_W njdp2d_w;
 MTX cmtx;
 
-#if !defined(TARGET_PS2)
 static void matmul(MTX* dst, const MTX* a, const MTX* b) {
     MTX result;
 
@@ -50,7 +49,6 @@ static void matmul(MTX* dst, const MTX* a, const MTX* b) {
 
     memcpy(dst, &result, sizeof(MTX));
 }
-#endif
 
 void njUnitMatrix(MTX* mtx) {
     if (mtx == NULL) {
@@ -77,40 +75,15 @@ void njSetMatrix(MTX* md, MTX* ms) {
 }
 
 void njScale(MTX* mtx, f32 x, f32 y, f32 z) {
-    f32 v0[4];
-
-    v0[0] = x;
-    v0[1] = y;
-    v0[2] = z;
-    v0[3] = 1.0f;
-
     if (mtx == NULL) {
         mtx = &cmtx;
     }
 
-#if defined(TARGET_PS2)
-    __asm__ __volatile__("lqc2       vf8,  0x0(%0) \n"
-                         "lqc2       $vf4, 0x0(%1) \n"
-                         "lqc2       $vf5, 0x10(%1) \n"
-                         "lqc2       $vf6, 0x20(%1) \n"
-                         "lqc2       $vf7, 0x30(%1) \n"
-                         "vmulx.xyzw $vf4, $vf4, $vf8x \n"
-                         "vmuly.xyzw $vf5, $vf5, $vf8y \n"
-                         "vmulz.xyzw $vf6, $vf6, $vf8z \n"
-                         "sqc2       $vf4, 0x0(%1) \n"
-                         "sqc2       $vf5, 0x10(%1) \n"
-                         "sqc2       $vf6, 0x20(%1) \n"
-                         "sqc2       $vf7, 0x30(%1) \n"
-                         :
-                         : "r"(v0), "r"(mtx)
-                         : "memory");
-#else
     for (int i = 0; i < 4; i++) {
-        mtx->a[0][i] *= v0[0];
-        mtx->a[1][i] *= v0[1];
-        mtx->a[2][i] *= v0[2];
+        mtx->a[0][i] *= x;
+        mtx->a[1][i] *= y;
+        mtx->a[2][i] *= z;
     }
-#endif
 }
 
 void njTranslate(MTX* mtx, f32 x, f32 y, f32 z) {
@@ -118,30 +91,6 @@ void njTranslate(MTX* mtx, f32 x, f32 y, f32 z) {
         mtx = &cmtx;
     }
 
-#if defined(TARGET_PS2)
-    __asm__ __volatile__("mfc1       $t0, %1 \n"
-                         "mfc1       $t1, %3 \n"
-                         "pextlw     $t0, $t1, $t0 \n"
-
-                         "mfc1       $t1, %2 \n"
-                         "pextlw     $t0, $t1, $t0 \n"
-
-                         "qmtc2      $t0, $vf8 \n"
-                         "vmove.w    $vf8, $vf0 \n"
-
-                         "lqc2       $vf4, 0x0(%0) \n"
-                         "lqc2       $vf5, 0x10(%0) \n"
-                         "lqc2       $vf6, 0x20(%0) \n"
-                         "lqc2       $vf7, 0x30(%0) \n"
-                         "vmulax.xyzw $ACC, $vf4, $vf8x \n"
-                         "vmadday.xyzw $ACC, $vf5, $vf8y \n"
-                         "vmaddaz.xyzw $ACC, $vf6, $vf8z \n"
-                         "vmaddw.xyzw $vf9, $vf7, $vf8w \n"
-                         "sqc2       $vf9, 0x30(%0) \n"
-                         :
-                         : "r"(mtx), "f"(x), "f"(y), "f"(z)
-                         : "t0", "t1", "memory");
-#else
     MTX translation_matrix;
 
     njUnitMatrix(&translation_matrix);
@@ -150,7 +99,6 @@ void njTranslate(MTX* mtx, f32 x, f32 y, f32 z) {
     translation_matrix.a[3][2] = z;
 
     matmul(mtx, &translation_matrix, mtx);
-#endif
 }
 
 void njSetBackColor(u32 c0, u32 c1, u32 c2) {
@@ -163,45 +111,18 @@ void njColorBlendingMode(s32 target, s32 mode) {
 }
 
 void njCalcPoint(MTX* mtx, Vec3* ps, Vec3* pd) {
-    f32 v0[4];
-
     if (mtx == NULL) {
         mtx = &cmtx;
     }
 
-#if defined(TARGET_PS2)
-    v0[0] = ps->x;
-    v0[1] = ps->y;
-    v0[2] = ps->z;
-    v0[3] = 1.0f;
-
-    __asm__ __volatile__("lqc2    $vf8, 0(%1) \n"
-                         "lqc2    $vf4, 0(%0) \n"
-                         "lqc2    $vf5, 0x10(%0) \n"
-                         "lqc2    $vf6, 0x20(%0) \n"
-                         "lqc2    $vf7, 0x30(%0) \n"
-                         "vmulax.xyz $ACC, $vf4, $vf8x \n"
-                         "vmadday.xyz $ACC, $vf5, $vf8y \n"
-                         "vmaddaz.xyz $ACC, $vf6, $vf8z \n"
-                         "vmaddw.xyz $vf9, $vf7, $vf8w \n"
-                         "sqc2 $vf9, 0(%1) \n"
-                         :
-                         : "r"(mtx), "r"(v0), "f"(pd)
-                         : "memory");
-
-    pd->x = v0[0];
-    pd->y = v0[1];
-    pd->z = v0[2];
-#else
-    f32 x = ps->x;
-    f32 y = ps->y;
-    f32 z = ps->z;
-    f32 w = 1.0f;
+    const f32 x = ps->x;
+    const f32 y = ps->y;
+    const f32 z = ps->z;
+    const f32 w = 1.0f;
 
     pd->x = x * mtx->a[0][0] + y * mtx->a[1][0] + z * mtx->a[2][0] + w * mtx->a[3][0];
     pd->y = x * mtx->a[0][1] + y * mtx->a[1][1] + z * mtx->a[2][1] + w * mtx->a[3][1];
     pd->z = x * mtx->a[0][2] + y * mtx->a[1][2] + z * mtx->a[2][2] + w * mtx->a[3][2];
-#endif
 }
 
 void njCalcPoints(MTX* mtx, Vec3* ps, Vec3* pd, s32 num) {
@@ -214,10 +135,6 @@ void njCalcPoints(MTX* mtx, Vec3* ps, Vec3* pd, s32 num) {
     for (i = 0; i < num; i++) {
         njCalcPoint(mtx, ps++, pd++);
     }
-}
-
-void njRotateZ(s32 /* unused */, s32 /* unused */) {
-    // Do nothing
 }
 
 void njDrawTexture(Polygon* polygon, s32 /* unused */, s32 tex, s32 /* unused */) {
@@ -280,16 +197,8 @@ void njdp2d_sort(f32* pos, f32 pri, uintptr_t col, s32 flag) {
     s32 prev;
 
     if (ix >= 100) {
-        // Have to write the string as raw bytes here.
-        // Otherwise MWCC removes a single byte for some reason
-        //
-        // Original:
-        // flLogOut("２Ｄポリゴンの表示要求がバッファをオーバーしました\n");
-
         // The 2D polygon display request has exceeded the buffer\n
-        flLogOut(
-            "\x82\x51\x82\x63\x83\x7C\x83\x8A\x83\x53\x83\x93\x82\xCC\x95\x5C\x8E\xA6\x97\x76\x8B\x81\x82\xAA\x83\x6F"
-            "\x83\x62\x83\x74\x83\x40\x82\xF0\x83\x49\x81\x5B\x83\x6F\x81\x5B\x82\xB5\x82\xDC\x82\xB5\x82\xBD\xA");
+        flLogOut("２Ｄポリゴンの表示要求がバッファをオーバーしました\n");
         return;
     }
 
@@ -356,10 +265,6 @@ void njDrawPolygon2D(PAL_CURSOR* p, s32 /* unused */, f32 pri, u32 attr) {
 
 void njSetPaletteBankNumG(u32 globalIndex, s32 bank) {
     ppgSetupCurrentPaletteNumber(0, bank);
-}
-
-void njSetPaletteMode(u32 mode) {
-    // Do nothing
 }
 
 void njSetPaletteData(s32 offset, s32 count, void* data) {
