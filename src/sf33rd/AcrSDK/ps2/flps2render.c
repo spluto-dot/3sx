@@ -1,9 +1,7 @@
 #include "sf33rd/AcrSDK/ps2/flps2render.h"
 #include "common.h"
 #include "sf33rd/AcrSDK/ps2/flps2debug.h"
-#include "sf33rd/AcrSDK/ps2/flps2dma.h"
 #include "sf33rd/AcrSDK/ps2/flps2etc.h"
-#include "sf33rd/AcrSDK/ps2/flps2ps.h"
 #include "sf33rd/AcrSDK/ps2/flps2vram.h"
 #include "sf33rd/AcrSDK/ps2/foundaps2.h"
 
@@ -62,7 +60,6 @@ s32 flPS2SendTextureRegister(u32 th) {
         return 0;
     }
 
-    flPS2psAddQueue((QWORD*)psTexture_data);
     return 1;
 }
 

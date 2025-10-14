@@ -4,7 +4,6 @@
 #include "sf33rd/AcrSDK/common/plcommon.h"
 #include "sf33rd/AcrSDK/common/prilay.h"
 #include "sf33rd/AcrSDK/ps2/flps2debug.h"
-#include "sf33rd/AcrSDK/ps2/flps2dma.h"
 #include "sf33rd/AcrSDK/ps2/flps2etc.h"
 #include "sf33rd/AcrSDK/ps2/foundaps2.h"
 
@@ -336,7 +335,7 @@ s32 flReleasePaletteHandle(u32 palette_handle) {
     }
 
     SDLGameRenderer_DestroyPalette(palette_handle);
-    flPS2DeleteVramList(lpflPalette);  // FIXME: we don't really need to keep track of vram
+    flPS2DeleteVramList(lpflPalette); // FIXME: we don't really need to keep track of vram
 
     if (lpflPalette->mem_handle != 0) {
         flPS2ReleaseSystemMemory(lpflPalette->mem_handle);
@@ -402,15 +401,7 @@ s32 flPS2LockTexture(Rect* /* unused */, FLTexture* lpflTexture, plContext* lpco
         if (lpflTexture->mem_handle == 0) {
             buff_ptr1 = mflTemporaryUse(lpflTexture->size * 2);
             buff_ptr = buff_ptr1 + lpflTexture->size;
-            flPS2StoreImageB((uintptr_t)buff_ptr1,
-                             lpflTexture->size,
-                             lpflTexture->tbp,
-                             lpflTexture->width / 64,
-                             lpflTexture->format,
-                             0,
-                             0,
-                             lpflTexture->width,
-                             lpflTexture->height);
+            // Loading an image from VRAM used to be here
         } else {
             buff_ptr = mflTemporaryUse(lpflTexture->size);
             buff_ptr1 = flPS2GetSystemBuffAdrs(lpflTexture->mem_handle);
@@ -547,15 +538,7 @@ s32 flPS2LockTexture(Rect* /* unused */, FLTexture* lpflTexture, plContext* lpco
         buff_ptr = mflTemporaryUse(lpflTexture->size);
 
         if (lpflTexture->mem_handle == 0) {
-            flPS2StoreImageB((uintptr_t)buff_ptr,
-                             lpflTexture->size,
-                             lpflTexture->tbp,
-                             lpflTexture->width / 64,
-                             lpflTexture->format,
-                             0,
-                             0,
-                             lpflTexture->width,
-                             lpflTexture->height);
+            // Loading an image from VRAM used to be here
         } else {
             buff_ptr1 = flPS2GetSystemBuffAdrs(lpflTexture->mem_handle);
             flMemcpy(buff_ptr, buff_ptr1, lpflTexture->size);
@@ -1015,41 +998,6 @@ s32 flPS2UnlockTexture(FLTexture* lpflTexture) {
             flPS2DeleteVramList(lpflTexture);
             return 1;
         }
-
-        dma_size = flPS2VIF1CalcLoadImageSize(lpflTexture->size);
-        dma_ptr = flPS2GetSystemTmpBuff(dma_size, 0x10);
-
-        if (lpflTexture->dma_type == 0) {
-            last_tag = flPS2VIF1MakeLoadImage(dma_ptr,
-                                              1,
-                                              trans_ptr,
-                                              lpflTexture->size,
-                                              lpflTexture->tbp,
-                                              lpflTexture->width / 64,
-                                              lpflTexture->format,
-                                              0,
-                                              0,
-                                              lpflTexture->width,
-                                              lpflTexture->height);
-        } else {
-            last_tag = flPS2VIF1MakeLoadImage(dma_ptr,
-                                              1,
-                                              trans_ptr,
-                                              lpflTexture->size,
-                                              lpflTexture->tbp,
-                                              lpflTexture->dma_width / 64,
-                                              0,
-                                              0,
-                                              0,
-                                              lpflTexture->dma_width,
-                                              lpflTexture->dma_height);
-        }
-
-        flPS2DmaAddQueue2(0, (dma_ptr & 0xFFFFFFF) | 0x10000000, last_tag, &flPs2VIF1Control);
-        dma_size = flPS2VIF1CalcEndLoadImageSize(lpflTexture->size);
-        dma_ptr = flPS2GetSystemTmpBuff(dma_size, 0x10);
-        flPS2VIF1MakeEndLoadImage(dma_ptr, 1);
-        flPS2DmaAddQueue2(0, dma_ptr & 0xFFFFFFF, dma_ptr, &flPs2VIF1Control);
     }
 
     return 1;

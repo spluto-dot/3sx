@@ -8,7 +8,6 @@
 #include "sf33rd/AcrSDK/common/plpic.h"
 #include "sf33rd/AcrSDK/common/pltim2.h"
 #include "sf33rd/AcrSDK/ps2/flps2debug.h"
-#include "sf33rd/AcrSDK/ps2/flps2dma.h"
 #include "sf33rd/AcrSDK/ps2/flps2vram.h"
 #include "sf33rd/AcrSDK/ps2/foundaps2.h"
 #include "structs.h"
