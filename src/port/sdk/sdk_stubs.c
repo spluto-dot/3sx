@@ -2,15 +2,7 @@
 #include "port/resources.h"
 #include "types.h"
 
-#include <eekernel.h>
-#include <libcdvd.h>
-#include <libdma.h>
-#include <libgraph.h>
-#include <libmc.h>
-#include <libpad2.h>
-#include <libvu0.h>
-#include <sif.h>
-#include <sifrpc.h>
+#include <sifdev.h>
 
 #include <SDL3/SDL.h>
 
@@ -83,95 +75,4 @@ int sceWrite(int fd, const void* buf, int nbyte) {
 
 int sceLseek(int fd, int offset, int whence) {
     return lseek(fd, offset, whence);
-}
-
-int sceSifLoadModule(const char* filename, int args, const char* argp) {
-    not_implemented(__func__);
-}
-
-// libdma
-
-void sceDmaSend(sceDmaChan* d, void* tag) {
-    // printf("[SDK] sceDmaSend(d: %X, tag: %X)\n", d, tag);
-}
-
-int sceDmaSync(sceDmaChan* d, int mode, int timeout) {
-    // printf("[SDK] sceDmaSync(d: %X, mode: %d, timeout: %d)\n", d, mode, timeout);
-    return 0;
-}
-
-// libgraph
-
-int sceGsExecLoadImage(sceGsLoadImage* lp, unsigned int* srcaddr) {
-    not_implemented(__func__);
-}
-
-void sceGsResetGraph(short mode, short inter, short omode, short ffmode) {
-    // printf("[SDK] sceGsResetGraph(mode: %d, inter: %d, omode: %d, ffmode: %d)\n", mode, inter, omode, ffmode);
-}
-
-int sceGsSetDefLoadImage(sceGsLoadImage* lp, short dbp, short dbw, short dpsm, short x, short y, short w, short h) {
-    not_implemented(__func__);
-}
-
-int sceGsSyncPath(int mode, unsigned short timeout) {
-    not_implemented(__func__);
-}
-
-int sceGsSyncV(int mode) {
-    fatal_error("sceGsSyncV should never be called in ports");
-}
-
-// libvu0
-
-void sceVu0UnitMatrix(sceVu0FMATRIX m) {
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            m[i][j] = (i == j);
-        }
-    }
-}
-
-// eekernel
-
-void FlushCache(int operation) {
-    // printf("[SDK] FlushCache called (operation: %d)\n", operation);
-}
-
-void iFlushCache(int operation) {
-    // printf("[SDK] iFlushCache called (operation: %d)\n", operation);
-}
-
-int EnableIntc(int) {
-    not_implemented(__func__);
-}
-
-int iEnableIntc(int) {
-    not_implemented(__func__);
-}
-
-int iDisableIntc(int) {
-    not_implemented(__func__);
-}
-
-int EnableDmac(int) {
-    not_implemented(__func__);
-}
-
-int AddIntcHandler(int, int (*)(int), int) {
-    not_implemented(__func__);
-}
-
-int AddDmacHandler(int, int (*)(int), int) {
-    not_implemented(__func__);
-}
-
-void ExitHandler() {
-    not_implemented(__func__);
-}
-
-// libdma
-
-void sceDmaRecvN(sceDmaChan* d, void* addr, int size) {
-    not_implemented(__func__);
 }

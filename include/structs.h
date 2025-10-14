@@ -3,7 +3,6 @@
 
 #include "sf33rd/AcrSDK/common/plcommon.h"
 #include "types.h"
-#include <libdma.h>
 #include <libgraph.h>
 
 typedef struct {
@@ -789,7 +788,6 @@ typedef struct {
     s8 pad64[0xC];
     sceGsDBuffDc Db;
     u32 FrameClearColor;
-    sceDmaChan* DmaChan[10];
     s32 DrawDisable;
     u32 SystemStatus;
     s32 SystemIndex;

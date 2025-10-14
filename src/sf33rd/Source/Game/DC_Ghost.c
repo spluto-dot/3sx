@@ -8,11 +8,8 @@
 #include "sf33rd/Source/Game/color3rd.h"
 #include "sf33rd/Source/PS2/ps2Quad.h"
 #include "structs.h"
-#include <libvu0.h>
 
-#if !defined(TARGET_PS2)
 #include <string.h>
-#endif
 
 #define NTH_BYTE(value, n) ((((value >> n * 8) & 0xFF) << n * 8))
 
@@ -60,7 +57,11 @@ void njUnitMatrix(MTX* mtx) {
         mtx = &cmtx;
     }
 
-    sceVu0UnitMatrix(mtx->a);
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            mtx->a[i][j] = (i == j);
+        }
+    }
 }
 
 void njGetMatrix(MTX* m) {
