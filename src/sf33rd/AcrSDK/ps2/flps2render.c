@@ -23,7 +23,6 @@ s32 flSetRenderState(enum _FLSETRENDERSTATE func, u32 value) {
         th = value;
 
         if (func == FLRENDER_TEXSTAGE0) {
-            flReloadTexture(1, &th);
             flPS2SendTextureRegister(th);
         }
 

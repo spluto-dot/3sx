@@ -17,7 +17,6 @@
 uintptr_t flPS2DmaAddEndTag(uintptr_t tag, s32 qwc, s32 irq, s32 /* unused */);
 s32 flPS2DmaAddQueue2(s32 type, uintptr_t data_adrs, uintptr_t endtag_adrs, FLPS2VIF1Control* dma_ptr);
 s32 flPS2DmaInterrupt(s32 ch);
-s32 flPS2DmaTerminate();
 u32 flPS2VIF1CalcEndLoadImageSize();
 void flPS2VIF1MakeEndLoadImage(uintptr_t buff_ptr, u32 irq);
 u32 flPS2VIF1CalcLoadImageSize(u32 size);

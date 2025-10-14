@@ -7,7 +7,6 @@
 #include "sf33rd/AcrSDK/common/plcommon.h"
 #include "sf33rd/AcrSDK/common/plpic.h"
 #include "sf33rd/AcrSDK/common/pltim2.h"
-#include "sf33rd/AcrSDK/ps2/flps2d3d.h"
 #include "sf33rd/AcrSDK/ps2/flps2debug.h"
 #include "sf33rd/AcrSDK/ps2/flps2dma.h"
 #include "sf33rd/AcrSDK/ps2/flps2vram.h"
@@ -195,9 +194,7 @@ void* flPS2GetSystemBuffAdrs(u32 handle) {
 }
 
 void flCompact() {
-    flPS2DmaTerminate();
     mflCompact();
-    flPS2ClayRetouchMaterialTag();
 }
 
 void flPS2SystemTmpBuffInit() {

@@ -569,20 +569,3 @@ s32 flPS2DmaInterrupt(s32 ch) {
     ExitHandler();
     return 0;
 }
-
-s32 flPS2DmaTerminate() {
-    s32 dma_index;
-    FLPS2VIF1Control* dma_ptr = &flPs2VIF1Control;
-
-    if ((dma_ptr->queue_ctr[0] == 0) && (dma_ptr->queue_ctr[1] == 0)) {
-        return 0;
-    }
-
-    dma_index = flPs2State.SystemIndex;
-
-    if (dma_ptr->queue_ctr[dma_index] == 0) {
-        return 0;
-    }
-
-    return 1;
-}
