@@ -830,7 +830,7 @@ s32 flPS2UnlockTexture(FLTexture* lpflTexture) {
     plContext src;
     plContext dst;
 
-    trans_ptr = NULL;
+    trans_ptr = (uintptr_t)NULL;
 
     switch (lpflTexture->lock_flag & 3) {
     case 0:
