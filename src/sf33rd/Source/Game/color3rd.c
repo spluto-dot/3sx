@@ -191,7 +191,6 @@ void set_hitmark_color() {
         ColorRAM[23][i] = ColorRAM[31][i] = palConvSrcToRam(hitmark_color[i + 64]);
     }
 
-    njSetPaletteMode(0);
     njSetPaletteData(64, 64, ColorRAM[15]);
     njSetPaletteData(576, 64, ColorRAM[31]);
     palUpdateGhostCP3(7, 1);

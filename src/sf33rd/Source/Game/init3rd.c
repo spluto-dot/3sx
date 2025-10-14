@@ -136,7 +136,6 @@ void Init_Task_1st(struct _TASK* task_ptr) {
     Reset_Status[1] = 0;
     pulpul_stop();
     Warning_Init();
-    CP3toPS2DrawOff();
 }
 
 void Setup_Difficult_V() {
@@ -193,7 +192,6 @@ void Init_Task_2nd(struct _TASK* task_ptr) {
     task_ptr->r_no[0] += 1;
     Setup_Disp_Size(0);
     Screen_Zoom_X = Keep_Zoom_X;
-    CP3toPS2DrawOn();
 }
 
 void Init_Task_End(struct _TASK* task_ptr) {

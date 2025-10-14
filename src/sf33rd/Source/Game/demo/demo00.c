@@ -40,8 +40,6 @@ s16 picon_no;
 f32 picon_level;
 
 s32 Warning() {
-    setTexAdrsMode(0);
-    setFilterMode(1);
     Next_Demo = 0;
 
     switch (D_No[1]) {
@@ -116,8 +114,6 @@ s32 Warning() {
 }
 
 s32 CAPCOM_Logo() {
-    setTexAdrsMode(0);
-    setFilterMode(0);
     ppgSetupCurrentDataList(&ppgCapLogoList);
     Next_Demo = 0;
 
@@ -309,6 +305,7 @@ void Warning_Init() {
     picon_no = 0;
 }
 
+// FIXME: When is this ever called?
 void Put_Warning(s16 type) {
     Polygon tex[4];
     f32 video_y = 16.0f;
