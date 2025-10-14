@@ -48,17 +48,7 @@ static int sce_to_unix_flags(int flags) {
 }
 
 int sceOpen(const char* filename, int flag, ...) {
-    const char expected_path[] = "cdrom0:\\THIRD\\IOP\\FONT8_8.TM2;1";
-
-    if (strcmp(filename, expected_path) != 0) {
-        fatal_error("Unexpected path: %s", filename);
-    }
-
-    char* font_path = Resources_GetPath("FONT8_8.TM2");
-    const int flags = sce_to_unix_flags(flag);
-    const int result = open(font_path, flags, 0644);
-    SDL_free(font_path);
-    return result;
+    fatal_error("Unhandled path: %s", filename);
 }
 
 int sceClose(int fd) {
