@@ -829,9 +829,6 @@ s32 flPS2UnlockTexture(FLTexture* lpflTexture) {
     u8* buff_ptr1;
     plContext src;
     plContext dst;
-    u32 dma_size;
-    uintptr_t dma_ptr;
-    uintptr_t last_tag;
 
     trans_ptr = NULL;
 

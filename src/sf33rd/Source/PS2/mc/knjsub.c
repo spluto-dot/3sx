@@ -581,7 +581,6 @@ void KnjPrintf(const s8* fmt, ...) {
 void KnjFlush() {
     u32* pp;
     u32 psize;
-    uintptr_t ptr;
     _kanji_w* kw = &kanji_w;
 
     if (KnjUseCheck() != 0) {
@@ -1085,7 +1084,6 @@ static u32* make_env_pkt(u32* p, u32 /* unused */, u32 /* unused */) {
 }
 
 static u32* make_img_pkt(u32* p, u32* img, u32 dbp, u32 dbw, u32 dbsm, u32 dsax, u32 dsay, u32 rrw, u32 rrh) {
-    s32 nw;
     s32 pw;
     s32 md;
 

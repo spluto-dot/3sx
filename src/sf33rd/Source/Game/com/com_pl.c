@@ -139,7 +139,6 @@ void Pattern_Insurance(PLW* wk, s16 Kind_Of_Insurance, s16 Forced_Number);
 const u16 Correct_Lv_Data[16] = { 0, 1, 2, 2, 4, 5, 6, 5, 8, 9, 10, 9, 8, 5, 10, 0 };
 
 u16 cpu_algorithm(PLW* wk) {
-    WORK* em = (WORK*)wk->wu.target_adrs;
     u16 sw = CPU_Sub(wk);
 
     if (Play_Mode == 1 && Replay_Status[wk->wu.id] != 99) {
@@ -479,7 +478,6 @@ static s16 Check_Hamari(PLW* wk) {
 
 void Com_Guard_VS_Shell(PLW* wk) {
     WORK_Other* tmw;
-    WORK* em = (WORK*)wk->wu.target_adrs;
 
     if (Check_Caught(wk)) {
         return;

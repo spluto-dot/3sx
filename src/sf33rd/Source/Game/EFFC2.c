@@ -903,7 +903,6 @@ void set_bs2_floor(WORK_Other* wk) {
     void player_hosei_data(WORK_Other * ewk, s32 flag, s16 f2);
 #endif
 
-    PLW* em = (PLW*)((WORK*)wk->my_master)->target_adrs;
     s16* dad;
 
     player_hosei_data(wk, wk->wu.dir_timer, 1);

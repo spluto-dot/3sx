@@ -192,7 +192,6 @@ s32 SaveMove() {
 static void save_sw_get(_save_work* save) {
     u16 i;
     u16 sw;
-    u16 temp_a1;
 
     save->sw = save->tr = save->rp = 0;
 
@@ -2274,7 +2273,6 @@ static void save_slot_trans(_save_work* save) {
 
 static void save_file_trans(_save_work* save) {
     static s8* week_str[] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
-    s8** tbl0 = GetMemCardMsg(1);
     s32 xs;
     s32 ys;
     s32 tx;

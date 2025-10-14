@@ -5593,8 +5593,6 @@ const Term_Tbl_t ETC_Term_Tbl[10] = { ETC_Term_0000, ETC_Term_0001, ETC_Term_000
                                       ETC_Term_0005, ETC_Term_0006, ETC_Term_0007, ETC_Term_0008, ETC_Term_0009 };
 
 void Check_BOSS(PLW* wk, u32 Next_Action, u16 Next_Menu) {
-    WORK* em = (WORK*)wk->wu.target_adrs;
-
     if (Break_Into_CPU == 1) {
         Disposal_Again[wk->wu.id] = 1;
         CP_Index[wk->wu.id][0]++;
@@ -5611,8 +5609,6 @@ void Check_BOSS(PLW* wk, u32 Next_Action, u16 Next_Menu) {
 }
 
 void Check_BOSS_EX(PLW* wk, u32 Next_Action, u16 Next_Menu) {
-    WORK* em = (WORK*)wk->wu.target_adrs;
-
     if (Break_Into_CPU != 1) {
         Disposal_Again[wk->wu.id] = 1;
         CP_Index[wk->wu.id][0]++;

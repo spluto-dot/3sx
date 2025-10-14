@@ -826,8 +826,6 @@ void eff09_12000(WORK_Other* ewk) {
     void set_char_move_init(WORK * wk, s16 koc, s32 index);
 #endif
 
-    WORK* oya_ptr = (WORK*)ewk->my_master;
-
     switch (ewk->wu.routine_no[1]) {
     case 0:
         ewk->wu.routine_no[1]++;
@@ -1637,8 +1635,6 @@ void eff09_25000(WORK_Other* ewk) {
 #if defined(TARGET_PS2)
     void set_char_move_init(WORK * wk, s16 koc, s32 index);
 #endif
-
-    WORK* oya_ptr = (WORK*)ewk->my_master;
 
     switch (ewk->wu.routine_no[1]) {
     case 0:

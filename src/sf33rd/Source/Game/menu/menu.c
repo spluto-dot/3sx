@@ -3161,8 +3161,6 @@ s32 Yes_No_Cursor_Move_Sub(struct _TASK* task_ptr) {
 }
 
 void Button_Config_in_Game(struct _TASK* task_ptr) {
-    s16 ix;
-
     if (Check_Pad_in_Pause(task_ptr) != 0) {
         Order[0x8A] = 3;
         Order_Timer[0x8A] = 1;

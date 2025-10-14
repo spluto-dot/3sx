@@ -16,7 +16,6 @@
 
 // FIXME: reimplement using SDL apis
 s32 flPrintL(s32 posi_x, s32 posi_y, const s8* format, ...) {
-    s8* va_ptr;
     s8 code;
     s8 str[512];
     strlen_t len;
