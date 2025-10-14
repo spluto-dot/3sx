@@ -1292,7 +1292,6 @@ s32 flPS2UnlockTexture(FLTexture* lpflTexture) {
         dma_ptr = flPS2GetSystemTmpBuff(dma_size, 0x10);
         flPS2VIF1MakeEndLoadImage(dma_ptr, 1);
         flPS2DmaAddQueue2(0, dma_ptr & 0xFFFFFFF, dma_ptr, &flPs2VIF1Control);
-        flDebugRTNum += 1;
     }
 
     return 1;
@@ -1356,7 +1355,6 @@ s32 flPS2ReloadTexture(s32 count, u32* texlist) {
                 flPS2VramTrans(lpflTexture);
                 lpflKeep = lpflTexture;
                 trans_ctr += 1;
-                flDebugRTNum += 1;
             }
         }
 #endif
@@ -1984,7 +1982,6 @@ void flPS2VramInit() {
         flMemset(&flVramStatic[i], 0, sizeof(VRAMBlockHeader));
     }
 
-    flVramNum = 0;
     flVramList = NULL;
 
     for (i = 0; i < VRAM_CONTROL_SIZE; i++) {
@@ -2002,7 +1999,6 @@ LPVram* flPS2PullVramWork(LPVram* /* unused */, s32 /* unused */)
 
     for (i = 0; i < VRAM_CONTROL_SIZE; i++) {
         if (flVramControl[i].tbp == 0) {
-            flVramNum += 1;
             return &flVramControl[i];
         }
     }
@@ -2033,7 +2029,6 @@ void flPS2PushVramWork(LPVram* lpVram) {
     }
 
     flMemset(lpVram, 0, sizeof(LPVram));
-    flVramNum -= 1;
 }
 
 void flPS2ChainVramWork(LPVram* lpParent, LPVram* lpVram) {

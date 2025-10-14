@@ -19,103 +19,39 @@
 #include <stdlib.h>
 #include <string.h>
 
-// FIXME: Remove unused variables
-
 FLPS2State flPs2State;
 LPVram flVramControl[VRAM_CONTROL_SIZE];
 FLTexture flTexture[256];
 FLTexture flPalette[1088];
-s32 flDebugSysMem[4096];
 s32 flWidth;
 s32 flHeight;
-f64 flLoadAmount;
-f32 flLoadReserve;
-f64 flLoadNow;
 u32 flSystemRenderOperation;
 FL_FMS flFMS;
-f32 flFogStart;
-f32 flFogEnd;
-u32 flFogColor;
-u32 flAmbient;
-u32 flFadeColor;
-u32 flAlphaRefValue;
-u32 flDebugFlag;
 FLPS2VIF1Control flPs2VIF1Control;
-s32 flPs2GsHandler;
 LPVram* flVramList;
-s32 flVramNum;
 VRAMBlockHeader flVramStatic[3];
 s32 flVramStaticNum;
-u32 flMipmapL;
-u32 flMipmapK;
-u32 flTextureStage[1];
-f32 flPS2Ambient[4];
-f32 flPS2FadeColor[4];
-MTX flACRVIEWPORT;
-MTX flACRVIEWPROJ;
-MTX flPS2VIEWPROJ;
-MTX flPS2CLIPPROJ;
-MTX flPS2VIEWPORT;
-FLMaterial flMATERIAL[1];
-FLLight flLIGHT[1];
-f32 flPS2ATTENUATION1[1];
-f32 flViewportDX;
-f32 flViewportDY;
-f32 flViewportDW;
-f32 flViewportDH;
-f32 flViewportCX;
-f32 flViewportCY;
-f32 flViewportLX;
-f32 flViewportLY;
-u32 flPs2FBA;
-f32 flPS2FrameTexScaleX;
-f32 flPS2FrameTexScaleY;
-u32 flhDebugStr;
 u32 flDebugStrHan;
-s32 flDebugStrX;
-s32 flDebugStrY;
 u32 flDebugStrCol;
 u32 flDebugStrCtr;
-u32 flDebugTrueTime[DEBUG_TRUE_TIME_SIZE];
-u32 flDebugEndRenderTime;
-s32 flDebugECNum;
-s32 flDebugErrECNum;
-s32 flDebugUTNum;
-s32 flDebugRTNum;
-s32 flDebugMCNum;
-s32 flDebugAQNum;
-s32 flDebugDINum;
-s32 flDebugVERTNum;
-s32 flDebugPOLYNum;
-s32 flDebugMATERIALNum;
-u32 flDebugSysMemHandleNum;
-u32 flDebugSysMemEtc;
-u32 flDebugSysMemTexture;
-u32 flDebugSysMemClay;
-u32 flDebugSysMemMotion;
-u32 flDebugTrueTimeFree[DEBUG_TRUE_TIME_SIZE];
-s32 flLoadCheckCtr;
-s32 flLoadCheckTimeOld;
-u32 flLoadCheckTime[LOAD_CHECK_TIME_SIZE];
-u32 flLoadCheckColor[20];
 
 // forward decls
 static s32 system_work_init();
-static void flPS2InitRenderBuff(u32 fbdepth, u32 zbdepth, u32 inter_mode, u32 video_mode, u32 dispw);
+static void flPS2InitRenderBuff();
 
-s32 flInitialize(s32 /* unused */, s32 /* unused */) {
+s32 flInitialize() {
     if (system_work_init() == 0) {
         return 0;
     }
 
     flPS2SystemTmpBuffInit();
-    flPS2InitRenderBuff(4, 2, 1, 0, 1);
+    flPS2InitRenderBuff();
     flPADInitialize();
 
     return 1;
 }
 
-s32 system_work_init() {
+static s32 system_work_init() {
     void* temp;
 
     flMemset(&flPs2State, 0, sizeof(FLPS2State));
@@ -127,10 +63,9 @@ s32 system_work_init() {
     }
 
     fmsInitialize(&flFMS, temp, 0x01800000, 0x40);
-    flPs2State.system_memory_size = 0xA00000;
-    temp = flAllocMemoryS(flPs2State.system_memory_size);
-    flPs2State.system_memory_start = (uintptr_t)temp;
-    mflInit(temp, flPs2State.system_memory_size, 0x40);
+    const int system_memory_size = 0xA00000;
+    temp = flAllocMemoryS(system_memory_size);
+    mflInit(temp, system_memory_size, 0x40);
 
     return 1;
 }
@@ -141,7 +76,7 @@ s32 flFlip(u32 flag) {
     return 1;
 }
 
-void flPS2InitRenderBuff(u32 fbdepth, u32 zbdepth, u32 inter_mode, u32 video_mode, u32 dispw) {
+static void flPS2InitRenderBuff() {
     s32 width;
     s32 height;
     s32 disp_height;

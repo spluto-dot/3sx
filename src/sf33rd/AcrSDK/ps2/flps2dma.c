@@ -391,22 +391,6 @@ static s32 IntGsStoreImageHandler() {
     return 0;
 }
 
-void flPS2DmaInitControl(FLPS2VIF1Control* dma_ptr, u32 queue_size, void* handler) {
-    s32 lp0;
-    dma_ptr->queue_size = queue_size;
-
-    for (lp0 = 0; lp0 < 2; lp0++) {
-        dma_ptr->dma_queue_handle[lp0] = flPS2GetSystemMemoryHandle(queue_size * 4, 1);
-        dma_ptr->queue_ctr[lp0] = 0;
-        dma_ptr->queue_ptr0[lp0] = 0;
-        dma_ptr->queue_ptr1[lp0] = 0;
-    }
-
-    dma_ptr->handleID = AddDmacHandler(dma_ptr->channel_id, handler, 0);
-    dma_ptr->dma_normal_mode_status = 0;
-    EnableDmac(dma_ptr->channel_id);
-    flPs2GsHandler = AddIntcHandler(0, &IntGsStoreImageHandler, 0);
-}
 
 s32 flPS2DmaAddQueue2(s32 type, uintptr_t data_adrs, uintptr_t endtag_adrs, FLPS2VIF1Control* dma_ptr) {
 #if !defined(TARGET_PS2)
@@ -420,8 +404,6 @@ s32 flPS2DmaAddQueue2(s32 type, uintptr_t data_adrs, uintptr_t endtag_adrs, FLPS
     s32 dma_index;
     uintptr_t* old_tag;
     u32 qwc;
-
-    flDebugAQNum += 1;
 
     if (data_adrs == 0) {
         flPS2SystemError(0, "ERROR flPS2DmaAddQueue2 flps2dma.c");
@@ -524,7 +506,6 @@ s32 flPS2DmaInterrupt(s32 ch) {
                 }
             } else if (!(dma_chcr & 0xC) && (dma_ptr->dma_normal_mode_status & 1)) {
             block_11:
-                flDebugDINum += 1;
                 dma_index = flPs2State.SystemIndex ^ 1;
                 dma_queue = (u32*)flPS2GetSystemBuffAdrs(dma_ptr->dma_queue_handle[dma_index]);
                 dma_ptr->queue_ctr[dma_index] -= 1;
@@ -580,8 +561,6 @@ s32 flPS2DmaInterrupt(s32 ch) {
                             break;
                         }
                     }
-                } else {
-                    flDebugEndRenderTime = *T0_COUNT;
                 }
             }
         }

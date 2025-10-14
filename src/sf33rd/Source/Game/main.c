@@ -171,7 +171,7 @@ static void game_init() {
     DebugConfig_Init();
 #endif
 
-    flInitialize(flPs2State.DispWidth, flPs2State.DispHeight);
+    flInitialize();
     flSetRenderState(FLRENDER_BACKCOLOR, 0);
     system_init_level = 0;
     ppgWorkInitializeApprication();

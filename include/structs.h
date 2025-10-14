@@ -791,8 +791,6 @@ typedef struct {
     u32 FrameClearColor;
     sceDmaChan* DmaChan[10];
     s32 DrawDisable;
-    uintptr_t system_memory_start;
-    s32 system_memory_size;
     u32 SystemStatus;
     s32 SystemIndex;
     uintptr_t SystemTmpBuffStartAdrs;

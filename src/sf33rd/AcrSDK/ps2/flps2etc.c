@@ -183,57 +183,10 @@ u32 flPS2GetSystemMemoryHandle(s32 len, s32 type) {
         }
     }
 
-    flDebugSysMem[handle - 1] = type;
-    flDebugSysMemHandleNum += 1;
-
-    switch (type) {
-    case 1:
-        flDebugSysMemEtc += len;
-        break;
-
-    case 2:
-        flDebugSysMemTexture += len;
-        break;
-
-    case 3:
-        flDebugSysMemClay += len;
-        break;
-
-    case 4:
-        flDebugSysMemMotion += len;
-        break;
-    }
-
     return handle;
 }
 
 void flPS2ReleaseSystemMemory(u32 handle) {
-    s32 type;
-    u32 len;
-
-    type = flDebugSysMem[handle - 1];
-    flDebugSysMem[handle - 1] = 0;
-    flDebugSysMemHandleNum -= 1;
-    len = sysmemblock[handle - 1].len;
-
-    switch (type) {
-    case 1:
-        flDebugSysMemEtc -= len;
-        break;
-
-    case 2:
-        flDebugSysMemTexture -= len;
-        break;
-
-    case 3:
-        flDebugSysMemClay -= len;
-        break;
-
-    case 4:
-        flDebugSysMemMotion -= len;
-        break;
-    }
-
     mflRelease(handle);
 }
 

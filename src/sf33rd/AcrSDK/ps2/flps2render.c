@@ -27,7 +27,6 @@ s32 flSetRenderState(enum _FLSETRENDERSTATE func, u32 value) {
             flPS2SendTextureRegister(th);
         }
 
-        flTextureStage[func - 4] = th;
         break;
 
     case FLRENDER_BACKCOLOR:
