@@ -55,7 +55,6 @@ target_compile_options(3sx PRIVATE
     -Wno-deprecated-non-prototype
     -Wno-tautological-overlap-compare
     -Wno-c2x-extensions
-    -Wno-int-to-pointer-cast
     -Wno-int-conversion
     -Wno-incompatible-pointer-types
     -Wno-pointer-sign
