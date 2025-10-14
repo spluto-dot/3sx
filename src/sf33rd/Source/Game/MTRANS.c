@@ -1515,11 +1515,6 @@ void mlt_obj_matrix(WORK* wk, s32 base_y) {
     if (wk->my_mr_flag) {
         njScale(NULL, (1.0f / 64.0f) * (wk->my_mr.size.x + 1), (1.0f / 64.0f) * (wk->my_mr.size.y + 1), 1.0f);
     }
-
-    if (wk->my_roll_flag) {
-        njScale(NULL, 0.6f, 7.0f / 15.0f, 1.0f);
-        njScale(NULL, 5.0f / 3.0f, 15.0f / 7.0f, 1.0f);
-    }
 }
 
 void appSetupBasePriority() {
