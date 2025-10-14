@@ -219,27 +219,11 @@ static void save_sw_get(_save_work* save) {
 }
 
 static void save_move_init(_save_work* save) {
-    s32 knj_type;
     s32 fnum;
 
     switch (save->r_no_1) {
     case 0:
         if (load_busy_ck() != 0) {
-            break;
-        }
-
-        switch (MsgLanguage) {
-        default:
-        case 0:
-            knj_type = 4;
-            break;
-
-        case 1:
-            knj_type = 8;
-            break;
-
-        case 2:
-            knj_type = 12;
             break;
         }
 
@@ -2278,7 +2262,6 @@ static void save_file_trans(_save_work* save) {
     s32 tx;
     s32 ty;
     s32 i;
-    s32 no;
     s32 top;
     s32 max;
     u32 val;
@@ -2305,7 +2288,6 @@ static void save_file_trans(_save_work* save) {
     tx = (xs / 2) * 8;
     ty = 160;
 
-    no = save->sel_slot_no;
     top = save->sel_file_top;
     max = save->sel_file_max;
 

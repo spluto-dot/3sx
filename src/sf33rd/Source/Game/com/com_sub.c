@@ -5051,7 +5051,6 @@ s32 Check_Shell(PLW* wk) {
     WORK* em;
     s16 i;
     s16 xx;
-    s16 zz;
 
     if (Shell_Ignore_Timer[wk->wu.id]) {
         Shell_Ignore_Timer[wk->wu.id]--;
@@ -5083,8 +5082,6 @@ s32 Check_Shell(PLW* wk) {
             }
             if (Check_Ignore_Shell(tmw) == 0) {
                 xx = Compute_Hit_Time(wk, tmw);
-
-                zz = Ck_Distance_XX(wk->wu.xyz[0].disp.pos, tmw->wu.xyz[0].disp.pos);
 
                 if (Decide_Shell_Guard(wk, tmw) != 0) {
                     return 0;

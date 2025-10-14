@@ -384,8 +384,6 @@ void effc2_parts_work_chain_check(s16 flag) {
     WORK* adr2;
     WORK* adr3;
     s16 wix = search_effect_index(1, 0, 0x7B);
-    s16 bff;
-    s16 bhf;
     s16 bf[4];
     s16 bh[4];
 
@@ -428,7 +426,6 @@ jump:
         return;
     }
 
-    bff = bhf = 0;
     adr0 = (WORK*)frw[adr1->before];
     adr3 = (WORK*)frw[adr2->behind];
     bf[1] = adr1->before;
