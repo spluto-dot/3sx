@@ -3,11 +3,10 @@
 #include "sf33rd/Source/Game/CALDIR.h"
 #include "sf33rd/Source/Game/HITCHECK.h"
 #include "sf33rd/Source/Game/PLCNT.h"
-#include "sf33rd/Source/Game/bg.h"
-#include "sf33rd/Source/Game/effect/effect.h"
-#include "sf33rd/Source/Game/workuser.h"
-
 #include "sf33rd/Source/Game/com/com_sub.h"
+#include "sf33rd/Source/Game/effect/effect.h"
+#include "sf33rd/Source/Game/stage/bg.h"
+#include "sf33rd/Source/Game/workuser.h"
 
 // sbss
 JudgeGals judge_gals[2];
