@@ -1,14 +1,19 @@
-#include "sf33rd/Source/Game/texcash.h"
+/**
+ * @file texcash.c
+ * Texture Cache Manager
+ */
+
+#include "sf33rd/Source/Game/rendering/texcash.h"
 #include "common.h"
 #include "sf33rd/AcrSDK/ps2/flps2debug.h"
 #include "sf33rd/Source/Common/PPGFile.h"
-#include "sf33rd/Source/Game/MTRANS.h"
 #include "sf33rd/Source/Game/RAMCNT.h"
 #include "sf33rd/Source/Game/SYS_sub.h"
-#include "sf33rd/Source/Game/aboutspr.h"
-#include "sf33rd/Source/Game/stage/bg.h"
 #include "sf33rd/Source/Game/debug/Debug.h"
 #include "sf33rd/Source/Game/effect/effect.h"
+#include "sf33rd/Source/Game/rendering/aboutspr.h"
+#include "sf33rd/Source/Game/rendering/mtrans.h"
+#include "sf33rd/Source/Game/stage/bg.h"
 #include "structs.h"
 
 typedef struct {
@@ -174,9 +179,6 @@ void init_texcash_1st() {
 }
 
 void init_texcash_before_process() {
-#if defined(TARGET_PS2)
-    void init_texcash_2nd(s32 ix);
-#endif
     s16 i;
 
     for (i = 1; i < 24; i++) {
@@ -235,9 +237,6 @@ void init_texcash_2nd(s16 ix) {
 }
 
 void texture_cash_update() {
-#if defined(TARGET_PS2)
-    void search_texcash_free_area(s32 ix);
-#endif
     s16 i;
     s16 num;
 
@@ -318,10 +317,6 @@ s16 get_my_trans_mode(s16 curr) {
 }
 
 void make_texcash_work(s16 ix) {
-#if defined(TARGET_PS2)
-    void init_texcash_2nd(s32 ix);
-#endif
-
     size_t memreq;
     u8* adrs;
     // For some reason page16 is reused later as a pointer.
@@ -409,9 +404,6 @@ void make_texcash_work(s16 ix) {
 }
 
 void Clear_texcash_work() {
-#if defined(TARGET_PS2)
-    void clear_texcash_work(s32 ix);
-#endif
     s16 i;
 
     for (i = 1; i < 24; i++) {
@@ -420,9 +412,6 @@ void Clear_texcash_work() {
 }
 
 void clear_texcash_work(s16 ix) {
-#if defined(TARGET_PS2)
-    void init_texcash_2nd(s32 ix);
-#endif
     s16 i;
 
     if (((mts_ok[ix].be) != 0) && ((mts_base[ix].mode & 0x20) == 0)) {

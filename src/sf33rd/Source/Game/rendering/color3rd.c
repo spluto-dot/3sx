@@ -1,4 +1,9 @@
-#include "sf33rd/Source/Game/color3rd.h"
+/**
+ * @file color3rd.c
+ * Loading, conversion, and hardware-upload of color palettes
+ */
+
+#include "sf33rd/Source/Game/rendering/color3rd.h"
 #include "common.h"
 #include "sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/cse.h"
 #include "sf33rd/AcrSDK/MiddleWare/PS2/CapSndEng/emlMemMap.h"
@@ -6,11 +11,11 @@
 #include "sf33rd/AcrSDK/common/plcommon.h"
 #include "sf33rd/AcrSDK/ps2/flps2vram.h"
 #include "sf33rd/Source/Common/PPGFile.h"
-#include "sf33rd/Source/Game/DC_Ghost.h"
 #include "sf33rd/Source/Game/RAMCNT.h"
 #include "sf33rd/Source/Game/engine/workuser.h"
 #include "sf33rd/Source/Game/io/gd3rd.h"
-#include "sf33rd/Source/Game/meta_col.h"
+#include "sf33rd/Source/Game/rendering/dc_ghost.h"
+#include "sf33rd/Source/Game/rendering/meta_col.h"
 #include "sf33rd/Source/Game/sound/sound3rd.h"
 
 typedef struct {
@@ -64,10 +69,6 @@ const u16 hitmark_color[128];
 const col_file_data color_file[161];
 
 void q_ldreq_color_data(REQ* curr) {
-#if defined(TARGET_PS2)
-    void init_trans_color_ram(s32 id, s32 key, u32 type, u32 data);
-#endif
-
     col_file_data* cfn;
     s32 err;
 
@@ -167,10 +168,6 @@ void q_ldreq_color_data(REQ* curr) {
 }
 
 void load_any_color(u16 ix, u8 kokey) {
-#if defined(TARGET_PS2)
-    void init_trans_color_ram(s16 id, s32 key, u32 type, u32 data);
-#endif
-
     col_file_data* cfn;
     s16 key;
 
@@ -199,10 +196,6 @@ void set_hitmark_color() {
 }
 
 void init_trans_color_ram(s16 id, s16 key, u8 type, u16 data) {
-#if defined(TARGET_PS2)
-    void metamor_color_store(s32 wkid);
-#endif
-
     u16* ldadrs;
     u16* tradrs;
     s16 i;
