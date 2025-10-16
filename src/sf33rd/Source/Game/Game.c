@@ -140,7 +140,6 @@ void Game_Task(struct _TASK* task_ptr) {
         seqsAfterProcess();
         texture_cash_update();
         move_pulpul_work();
-        Check_Off_Vib();
         Check_LDREQ_Queue();
     }
 
@@ -232,7 +231,7 @@ void Game0_2() {
         G_No[1] = 0xC;
         G_No[2] = 0;
         G_No[3] = 0;
-        cpReadyTask(MENU_TASK_NUM, Menu_Task);
+        cpReadyTask(TASK_MENU, Menu_Task);
         break;
     }
 }
@@ -285,7 +284,7 @@ void Game12_2() {
         Control_Time = 481;
         Cover_Timer = 23;
         effect_work_init();
-        cpExitTask(3);
+        cpExitTask(TASK_MENU);
     }
 }
 
@@ -433,7 +432,7 @@ void Game2_0() {
             }
         }
 
-        cpExitTask(ENTRY_TASK_NUM);
+        cpExitTask(TASK_ENTRY);
         /* fallthrough */
 
     case MODE_NETWORK:
@@ -495,7 +494,7 @@ void Game2_0() {
 }
 
 void Game2_1() {
-    mpp_w.inGame = 1;
+    mpp_w.inGame = true;
 
     if (Game_pause != 0x81) {
         Game_timer += 1;
@@ -734,8 +733,8 @@ void Game03() {
 
             case MODE_REPLAY:
                 G_No[2] = 5;
-                cpReadyTask(MENU_TASK_NUM, Menu_Task);
-                task[3].r_no[0] = 8;
+                cpReadyTask(TASK_MENU, Menu_Task);
+                task[TASK_MENU].r_no[0] = 8;
                 break;
 
             default:
@@ -776,8 +775,8 @@ void Game03() {
             E_No[2] = 2;
             E_No[3] = 0;
             Request_E_No = 0;
-            cpReadyTask(MENU_TASK_NUM, Menu_Task);
-            task[3].r_no[1] = 16;
+            cpReadyTask(TASK_MENU, Menu_Task);
+            task[TASK_MENU].r_no[1] = 16;
             Cursor_Y_Pos[0][0] = 0;
             Cursor_Y_Pos[1][0] = 0;
             G_Timer = 4;
@@ -835,8 +834,8 @@ void Game04() {
         if (Loser_Scene() != 0) {
             if (Mode_Type == 5) {
                 G_No[2] = 5;
-                cpReadyTask(MENU_TASK_NUM, Menu_Task);
-                task[3].r_no[0] = 8;
+                cpReadyTask(TASK_MENU, Menu_Task);
+                task[TASK_MENU].r_no[0] = 8;
             } else {
                 G_No[1] = 7;
                 G_No[2] = 0;
@@ -1021,16 +1020,16 @@ void Game06() {
                     G_No[3] = 0;
                     G_Timer = 4;
                     Pause_ID = Player_id;
-                    cpReadyTask(MENU_TASK_NUM, Menu_Task);
+                    cpReadyTask(TASK_MENU, Menu_Task);
                     System_all_clear_Level_B();
-                    Menu_Init(&task[3]);
-                    task[3].r_no[0] = 9;
-                    task[3].r_no[1] = 0;
+                    Menu_Init(&task[TASK_MENU]);
+                    task[TASK_MENU].r_no[0] = 9;
+                    task[TASK_MENU].r_no[1] = 0;
                     Forbid_Reset = 1;
                     make_texcash_work(12);
                     Unsubstantial_BG[0] = 1;
                     Copy_Check_w();
-                    cpExitTask(SAVER_TASK_NUM);
+                    cpExitTask(TASK_SAVER);
                 } else {
                     G_No[2] = 6;
                 }
@@ -1065,7 +1064,7 @@ void Game06() {
             D_No[3] = 0;
             Get_Demo_Index = 0;
             Combo_Demo_Flag = 0;
-            cpReadyTask(ENTRY_TASK_NUM, Entry_Task);
+            cpReadyTask(TASK_ENTRY, Entry_Task);
             Purge_mmtm_area(5);
             Make_texcash_of_list(5);
             System_all_clear_Level_B();
@@ -1214,8 +1213,8 @@ void Game08() {
         grade_final_grade_bonus();
         WGJ_Score = Continue_Coin[WINNER] + Score[WINNER][0];
         Purge_mmtm_area(6);
-        cpExitTask(MENU_TASK_NUM);
-        cpExitTask(PAUSE_TASK_NUM);
+        cpExitTask(TASK_MENU);
+        cpExitTask(TASK_PAUSE);
         break;
 
     case 1:
@@ -1388,7 +1387,7 @@ void Game09() {
 s16 Bonus_Sub() {
     s16 x;
 
-    mpp_w.inGame = 1;
+    mpp_w.inGame = true;
     Scene_Cut = Cut_Cut_Cut();
     Bonus_Game_Complete = 0;
 
@@ -1742,7 +1741,7 @@ void Next_Title_Sub() {
     Present_Mode = 1;
     Insert_Y = 23;
     Before_Select_Sub();
-    cpReadyTask(ENTRY_TASK_NUM, Entry_Task);
+    cpReadyTask(TASK_ENTRY, Entry_Task);
     setup_pos_remake_key(2);
 }
 
