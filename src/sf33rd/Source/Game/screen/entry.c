@@ -1,6 +1,10 @@
-#include "sf33rd/Source/Game/Entry.h"
+/**
+ * @file entry.c
+ * Manages all the screens
+ */
+
+#include "sf33rd/Source/Game/screen/entry.h"
 #include "common.h"
-#include "sf33rd/Source/Game/RANKING.h"
 #include "sf33rd/Source/Game/Reset.h"
 #include "sf33rd/Source/Game/SYS_sub.h"
 #include "sf33rd/Source/Game/WORK_SYS.h"
@@ -12,8 +16,9 @@
 #include "sf33rd/Source/Game/engine/workuser.h"
 #include "sf33rd/Source/Game/io/gd3rd.h"
 #include "sf33rd/Source/Game/main.h"
-#include "sf33rd/Source/Game/n_input.h"
 #include "sf33rd/Source/Game/sc_sub.h"
+#include "sf33rd/Source/Game/screen/n_input.h"
+#include "sf33rd/Source/Game/screen/ranking.h"
 #include "sf33rd/Source/Game/sound/se.h"
 #include "sf33rd/Source/Game/sound/sound3rd.h"
 #include "structs.h"
@@ -198,10 +203,6 @@ void Entry_01() {
 }
 
 void Entry_01_Sub(s16 PL_id) {
-#if defined(TARGET_PS2)
-    void grade_check_work_1st_init(s32 ix, s32 ix2);
-#endif
-
     E_No[2] += 1;
     Request_G_No = 1;
     plw[PL_id].wu.operator = 1;

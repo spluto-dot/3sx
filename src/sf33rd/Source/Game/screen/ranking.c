@@ -1,4 +1,9 @@
-#include "sf33rd/Source/Game/RANKING.h"
+/**
+ * @file ranking.c
+ * Manages the display of the high-score ranking tables
+ */
+
+#include "sf33rd/Source/Game/screen/ranking.h"
 #include "common.h"
 #include "sf33rd/Source/Game/Game.h"
 #include "sf33rd/Source/Game/SYS_sub.h"

@@ -1,11 +1,14 @@
-#include "sf33rd/Source/Game/sel_pl.h"
+/**
+ * @file sel_pl.c
+ * Character/Super Art selection screen
+ */
+
+#include "sf33rd/Source/Game/screen/sel_pl.h"
 #include "common.h"
 #include "sf33rd/AcrSDK/common/pad.h"
 #include "sf33rd/Source/Game/Com_Data.h"
-#include "sf33rd/Source/Game/Next_CPU.h"
 #include "sf33rd/Source/Game/SYS_sub.h"
 #include "sf33rd/Source/Game/SYS_sub2.h"
-#include "sf33rd/Source/Game/Sel_Data.h"
 #include "sf33rd/Source/Game/SysDir.h"
 #include "sf33rd/Source/Game/WORK_SYS.h"
 #include "sf33rd/Source/Game/debug/Debug.h"
@@ -39,6 +42,8 @@
 #include "sf33rd/Source/Game/rendering/mmtmcnt.h"
 #include "sf33rd/Source/Game/rendering/mtrans.h"
 #include "sf33rd/Source/Game/sc_sub.h"
+#include "sf33rd/Source/Game/screen/next_cpu.h"
+#include "sf33rd/Source/Game/screen/sel_data.h"
 #include "sf33rd/Source/Game/sound/se.h"
 #include "sf33rd/Source/Game/sound/sound3rd.h"
 #include "sf33rd/Source/Game/stage/bg.h"
@@ -940,11 +945,6 @@ void Sel_PL_2nd() {
 }
 
 void Sel_PL_3rd() {
-#if defined(TARGET_PS2)
-    void Push_LDREQ_Queue_Player(s32 id, s16 ix);
-    void grade_check_work_1st_init(s32 ix, s32 ix2);
-#endif
-
     if (Stop_Cursor[ID] != 0 || Face_Move != 0) {
         return;
     }
