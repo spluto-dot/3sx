@@ -20,6 +20,10 @@ typedef struct GameState {
     ZanzouTableEntry zanzou_table[2][48];
 
     SA_WORK super_arts[2];
+
+    /// Stun data
+    PiyoriType piyori_type[2];
+
     AppearanceType appear_type;
 
     /// Player controller routine indices

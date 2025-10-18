@@ -189,7 +189,10 @@ typedef struct {
 
 typedef struct {
     s8 flag;
+
+    /// Maximum stun threshold
     s16 genkai;
+
     s16 time;
     union {
         s32 timer;

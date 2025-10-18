@@ -28,7 +28,6 @@ typedef struct {
 
 extern const s8 plid_data[20];
 
-extern PiyoriType piyori_type[2];
 extern RAMBOD rambod[2];
 extern RAMHAN ramhan[2];
 extern u32 omop_spmv_ng_table[2];
