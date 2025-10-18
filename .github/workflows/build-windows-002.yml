@@ -1,0 +1,74 @@
+name: Build Windows (MSYS2 MinGW64)
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  windows-mingw64:
+    name: Windows (MSYS2 MinGW64)
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup MSYS2 (MinGW64)
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            git
+            make
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-ninja
+            mingw-w64-x86_64-nasm
+            mingw-w64-x86_64-clang
+            mingw-w64-x86_64-headers-git
+
+      - name: Configure (CMake + Ninja + clang)
+        shell: msys2 {0}
+        env:
+          CC: clang
+          CXX: clang++
+        run: |
+          cmake -S . -B build \
+            -G Ninja \
+            -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
+
+      - name: Build
+        shell: msys2 {0}
+        run: cmake --build build --config ${{ env.BUILD_TYPE }} -j
+
+      - name: Show build dir (debug)
+        if: always()
+        shell: msys2 {0}
+        run: |
+          echo "== build/ =="
+          ls -la build || true
+
+      - name: Package
+        shell: msys2 {0}
+        run: |
+          mkdir -p out/windows
+          # ajuste o nome do .exe se necessário:
+          cp -v build/3sx.exe out/windows/ || true
+          7z a 3sx-windows-${{ env.BUILD_TYPE }}.zip ./out/windows/*
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: 3sx-windows-${{ env.BUILD_TYPE }}
+          path: 3sx-windows-${{ env.BUILD_TYPE }}.zip
+          if-no-files-found: warn
