@@ -109,7 +109,7 @@ void check_result_extra() {
 
     assign1 = 0;
 
-    if (ps.plw[0].wu.routine_no[1] == 1 && ps.plw[0].wu.routine_no[3] == 0) {
+    if (gs.plw[0].wu.routine_no[1] == 1 && gs.plw[0].wu.routine_no[3] == 0) {
         assign1 = 1;
     }
 
@@ -117,45 +117,45 @@ void check_result_extra() {
 
     assign2 = 0;
 
-    if (ps.plw[1].wu.routine_no[1] == 1 && ps.plw[1].wu.routine_no[3] == 0) {
+    if (gs.plw[1].wu.routine_no[1] == 1 && gs.plw[1].wu.routine_no[3] == 0) {
         assign2 = 1;
     }
 
     p2state = assign2;
 
     if (p1state & p2state) {
-        dm1p = (WORK_Other*)ps.plw[0].wu.dmg_adrs;
-        dm2p = (WORK_Other*)ps.plw[1].wu.dmg_adrs;
+        dm1p = (WORK_Other*)gs.plw[0].wu.dmg_adrs;
+        dm2p = (WORK_Other*)gs.plw[1].wu.dmg_adrs;
 
         switch ((dm1p->wu.work_id == 1) + ((dm2p->wu.work_id == 1) * 2)) {
         case 3:
             aiuchi_flag = 1;
 
-            if ((hs1 = ps.plw[0].wu.dm_stop) < 0) {
+            if ((hs1 = gs.plw[0].wu.dm_stop) < 0) {
                 hs1 = -hs1;
             }
 
-            if ((hs2 = ps.plw[1].wu.dm_stop) < 0) {
+            if ((hs2 = gs.plw[1].wu.dm_stop) < 0) {
                 hs2 = -hs2;
             }
 
-            qua = ps.plw[0].wu.dm_quake;
+            qua = gs.plw[0].wu.dm_quake;
 
-            if (qua < ps.plw[1].wu.dm_quake) {
-                qua = ps.plw[1].wu.dm_quake;
+            if (qua < gs.plw[1].wu.dm_quake) {
+                qua = gs.plw[1].wu.dm_quake;
             }
 
             if (hs1 > hs2) {
-                ps.plw[0].wu.hit_stop = ps.plw[1].wu.hit_stop = hs1;
-                ps.plw[0].wu.hit_quake = ps.plw[1].wu.hit_quake = qua;
+                gs.plw[0].wu.hit_stop = gs.plw[1].wu.hit_stop = hs1;
+                gs.plw[0].wu.hit_quake = gs.plw[1].wu.hit_quake = qua;
             } else if (hs2) {
-                ps.plw[0].wu.hit_stop = ps.plw[1].wu.hit_stop = hs2;
-                ps.plw[0].wu.hit_quake = ps.plw[1].wu.hit_quake = qua;
+                gs.plw[0].wu.hit_stop = gs.plw[1].wu.hit_stop = hs2;
+                gs.plw[0].wu.hit_quake = gs.plw[1].wu.hit_quake = qua;
             }
 
-            ps.plw[0].wu.dm_stop = ps.plw[1].wu.dm_stop = 0;
-            ps.plw[0].wu.dm_quake = ps.plw[1].wu.dm_quake = 0;
-            ps.plw[0].wu.dm_nodeathattack = ps.plw[1].wu.dm_nodeathattack = 0;
+            gs.plw[0].wu.dm_stop = gs.plw[1].wu.dm_stop = 0;
+            gs.plw[0].wu.dm_quake = gs.plw[1].wu.dm_quake = 0;
+            gs.plw[0].wu.dm_nodeathattack = gs.plw[1].wu.dm_nodeathattack = 0;
         }
 
         return;
@@ -851,7 +851,7 @@ s16 check_dm_att_guard(WORK* as, WORK* ds, s16 kom) {
         curr_id = ((WORK_Other*)as)->master_id;
     }
 
-    if (!(ps.plw[curr_id].spmv_ng_flag & 0x8000)) {
+    if (!(gs.plw[curr_id].spmv_ng_flag & 0x8000)) {
         as->kezuri_pow = 0;
     }
 
@@ -865,7 +865,7 @@ s16 check_dm_att_guard(WORK* as, WORK* ds, s16 kom) {
             }
 
             if (ds->dm_vital > ds->vital_new) {
-                if (as->no_death_attack || (ps.plw[curr_id].spmv_ng_flag2 & 0x10000000)) {
+                if (as->no_death_attack || (gs.plw[curr_id].spmv_ng_flag2 & 0x10000000)) {
                     ds->dm_vital = ds->vital_new;
                 } else {
                     ds->dm_guard_success = ds->routine_no[2];
@@ -1664,7 +1664,7 @@ void attack_hit_check() {
                     }
 
                     if (lp2 == 10) {
-                        if (!(mad->att.dipsw & 64) || sad->kind_of_waza & 0x60 || ps.pcon_dp_flag ||
+                        if (!(mad->att.dipsw & 64) || sad->kind_of_waza & 0x60 || gs.pcon_dp_flag ||
                             sad->pat_status == 0x26) {
                             continue;
                         }

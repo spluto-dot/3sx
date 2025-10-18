@@ -372,21 +372,21 @@ void Game01() {
                 E_No[3] = 0;
             } else {
                 Demo_Time_Stop = 1;
-                ps.plw[0].wu.operator = 0;
+                gs.plw[0].wu.operator = 0;
                 Operator_Status[0] = 0;
-                ps.plw[1].wu.operator = 0;
+                gs.plw[1].wu.operator = 0;
                 Operator_Status[1] = 0;
             }
 
-            if (ps.plw[0].wu.operator != 0) {
+            if (gs.plw[0].wu.operator != 0) {
                 Sel_Arts_Complete[0] = -1;
             }
 
-            if (ps.plw[1].wu.operator != 0) {
+            if (gs.plw[1].wu.operator != 0) {
                 Sel_Arts_Complete[1] = -1;
             }
 
-            if ((ps.plw[0].wu.operator != 0) && (ps.plw[1].wu.operator != 0)) {
+            if ((gs.plw[0].wu.operator != 0) && (gs.plw[1].wu.operator != 0)) {
                 Play_Type = 1;
             } else {
                 Play_Type = 0;
@@ -429,7 +429,7 @@ void Game2_0() {
     case MODE_VERSUS:
         for (ix = 0; ix < 2; ix++) {
             if (save_w[1].Partner_Type[ix]) {
-                ps.plw[ix].wu.operator = 0;
+                gs.plw[ix].wu.operator = 0;
                 Operator_Status[ix] = 0;
             }
         }
@@ -487,7 +487,7 @@ void Game2_0() {
     Time_in_Time = 60;
     init_slow_flag();
     clear_hit_queue();
-    ps.pcon_rno[0] = ps.pcon_rno[1] = ps.pcon_rno[2] = ps.pcon_rno[3] = 0;
+    gs.pcon_rno[0] = gs.pcon_rno[1] = gs.pcon_rno[2] = gs.pcon_rno[3] = 0;
     ca_check_flag = 1;
     bg_work_clear();
     win_lose_work_clear();
@@ -572,7 +572,7 @@ void Game2_2() {
     init_slow_flag();
     effect_work_quick_init();
     clear_hit_queue();
-    ps.pcon_rno[0] = ps.pcon_rno[1] = ps.pcon_rno[2] = ps.pcon_rno[3] = 0;
+    gs.pcon_rno[0] = gs.pcon_rno[1] = gs.pcon_rno[2] = gs.pcon_rno[3] = 0;
     ca_check_flag = 1;
     bg_work_clear();
     win_lose_work_clear();
@@ -625,10 +625,10 @@ void Game2_5() {
         Score[1][2] = 0;
         Suicide[0] = 1;
         Game_pause = 0;
-        ps.pcon_rno[0] = 0;
-        ps.pcon_rno[1] = 0;
-        ps.pcon_rno[2] = 0;
-        ps.pcon_rno[3] = 0;
+        gs.pcon_rno[0] = 0;
+        gs.pcon_rno[1] = 0;
+        gs.pcon_rno[2] = 0;
+        gs.pcon_rno[3] = 0;
         appear_type = 0;
         erase_extra_plef_work();
         compel_bg_init_position();
@@ -1078,7 +1078,7 @@ void Game06() {
 
 void Request_Break_Sub(s16 PL_id) {
     if ((Request_Break[PL_id] != 0) && (Ck_Break_Into(0, 0, PL_id) != 0)) {
-        ps.plw[PL_id].wu.operator = 1;
+        gs.plw[PL_id].wu.operator = 1;
         Operator_Status[PL_id] = 1;
     }
 }
@@ -1244,8 +1244,8 @@ void Game08() {
             E_No[3] = 0;
             Clear_Personal_Data(0);
             Clear_Personal_Data(1);
-            ps.plw[0].wu.operator = 0;
-            ps.plw[1].wu.operator = 0;
+            gs.plw[0].wu.operator = 0;
+            gs.plw[1].wu.operator = 0;
             Operator_Status[0] = 0;
             Operator_Status[1] = 0;
             Last_Player_id = Player_Number = -1;
@@ -1281,7 +1281,7 @@ void Game09() {
         Time_in_Time = 60;
         init_slow_flag();
         clear_hit_queue();
-        ps.pcon_rno[0] = ps.pcon_rno[1] = ps.pcon_rno[2] = ps.pcon_rno[3] = 0;
+        gs.pcon_rno[0] = gs.pcon_rno[1] = gs.pcon_rno[2] = gs.pcon_rno[3] = 0;
         bbbs_com_initialize();
         ca_check_flag = 1;
         Bonus_Game_Work = 20;
@@ -1784,10 +1784,10 @@ s16 Ck_Coin() {
         ToneDown(0xFF, 0);
         Request_LDREQ_Break();
         G_No[3] = 1;
-        ps.plw[PL_id].wu.operator = 1;
+        gs.plw[PL_id].wu.operator = 1;
         Operator_Status[PL_id] = 1;
         Champion = PL_id;
-        ps.plw[PL_id ^ 1].wu.operator = 0;
+        gs.plw[PL_id ^ 1].wu.operator = 0;
         Operator_Status[PL_id ^ 1] = 0;
         return 0;
 

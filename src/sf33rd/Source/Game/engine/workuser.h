@@ -6,7 +6,7 @@
 
 #include <stdbool.h>
 
-typedef struct PlayerState {
+typedef struct GameState {
     PLW plw[2];
 
     /// Afterimage data
@@ -20,9 +20,9 @@ typedef struct PlayerState {
 
     bool pcon_dp_flag;
     u8 win_sp_flag;
-} PlayerState;
+} GameState;
 
-extern PlayerState ps;
+extern GameState gs;
 
 // bss
 extern u8 Order[148];

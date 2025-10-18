@@ -8,7 +8,7 @@
 #include "sf33rd/Source/Game/engine/cmd_data.h"
 #include "structs.h"
 
-PlayerState ps = { 0 };
+GameState gs = { 0 };
 
 // bss
 u8 Order[148];

@@ -175,7 +175,7 @@ void Game_Manage_1st() {
 
     win_pause_go = 0;
     appear_work_clear();
-    ps.win_sp_flag = 0;
+    gs.win_sp_flag = 0;
     BGM_No[1] = 0;
     BGM_No[0] = 0;
     Appear_Q = 0;
@@ -184,12 +184,12 @@ void Game_Manage_1st() {
     Round_Operator[0] = 0;
     Round_Operator[1] = 0;
 
-    if (ps.plw[0].wu.operator) {
+    if (gs.plw[0].wu.operator) {
         Round_Operator[0] = 1;
         Final_Play_Type[0] = Play_Type;
     }
 
-    if (ps.plw[1].wu.operator) {
+    if (gs.plw[1].wu.operator) {
         Round_Operator[1] = 1;
         Final_Play_Type[1] = Play_Type;
     }
@@ -225,7 +225,7 @@ void Game_Manage_1st() {
     if (Mode_Type == MODE_NORMAL_TRAINING || Mode_Type == MODE_PARRY_TRAINING) {
         cpReadyTask(TASK_MENU, Menu_Task);
         task[TASK_MENU].r_no[0] = 7;
-        ps.plw[New_Challenger].wu.operator = 0;
+        gs.plw[New_Challenger].wu.operator = 0;
         Operator_Status[New_Challenger] = 0;
         Lever_LR[0] = 0;
         Lever_LR[1] = 0;
@@ -414,13 +414,13 @@ void Game_Manage_2_3() {
     }
 
     appear_work_clear();
-    ps.win_sp_flag = 0;
+    gs.win_sp_flag = 0;
 
-    if (ps.pcon_rno[0] != 0) {
+    if (gs.pcon_rno[0] != 0) {
         return;
     }
 
-    if (ps.pcon_rno[1] != 1) {
+    if (gs.pcon_rno[1] != 1) {
         return;
     }
 
@@ -447,10 +447,10 @@ void Game_Manage_2_4() {
             Score[0][2] = 0;
             Score[1][2] = 0;
             Game_pause = 0;
-            ps.pcon_rno[0] = 0;
-            ps.pcon_rno[1] = 0;
-            ps.pcon_rno[2] = 0;
-            ps.pcon_rno[3] = 0;
+            gs.pcon_rno[0] = 0;
+            gs.pcon_rno[1] = 0;
+            gs.pcon_rno[2] = 0;
+            gs.pcon_rno[3] = 0;
             appear_type = 0;
             erase_extra_plef_work();
             compel_bg_init_position();
@@ -520,7 +520,7 @@ void Game_Manage_3rd() {
 void setFinishType() {
     if (Play_Type == 0 && Mode_Type == MODE_ARCADE &&
         PL_Wins[Winner_id] >= save_w[Present_Mode].Battle_Number[Play_Type] && VS_Index[Winner_id] > 8 &&
-        ps.plw[Winner_id].wu.operator != 0 && E_Number[Loser_id][0] != 2) {
+        gs.plw[Winner_id].wu.operator != 0 && E_Number[Loser_id][0] != 2) {
         E_Number[Loser_id][0] = 99;
     }
 
@@ -577,7 +577,7 @@ void Game_Manage_4th() {
     default:
         SsRequest(143);
 
-        if (ps.plw[0].wu.vital_new != ps.plw[1].wu.vital_new || Mode_Type == MODE_NORMAL_TRAINING ||
+        if (gs.plw[0].wu.vital_new != gs.plw[1].wu.vital_new || Mode_Type == MODE_NORMAL_TRAINING ||
             Mode_Type == MODE_PARRY_TRAINING) {
             C_No[0] = 6;
             Round_Result |= 1;
@@ -645,10 +645,10 @@ void Game_Manage_5_4() {
         judge_flag = 1;
         effect_J4_init(0xFF);
         compel_bg_init_position();
-        ps.pcon_rno[0] = 0;
-        ps.pcon_rno[1] = 0;
-        ps.pcon_rno[2] = 0;
-        ps.pcon_rno[3] = 0;
+        gs.pcon_rno[0] = 0;
+        gs.pcon_rno[1] = 0;
+        gs.pcon_rno[2] = 0;
+        gs.pcon_rno[3] = 0;
         appear_type = 3;
     }
 }
@@ -658,8 +658,8 @@ void Game_Manage_5_5() {
 
     if (--Cover_Timer == 0) {
         C_No[1]++;
-        ps.pcon_rno[1] = 3;
-        ps.pcon_rno[2] = 1;
+        gs.pcon_rno[1] = 3;
+        gs.pcon_rno[2] = 1;
         Clear_Flash_No();
         Switch_Screen_Init(0);
     }
@@ -708,8 +708,8 @@ void Game_Manage_6th() {
 
         C_No[1]++;
         C_Timer = 60;
-        ps.pcon_rno[1] = 3;
-        ps.pcon_rno[2] = 0;
+        gs.pcon_rno[1] = 3;
+        gs.pcon_rno[2] = 0;
         grade_makeup_round_para_dko();
 
         if (Mode_Type != MODE_NORMAL_TRAINING && Mode_Type != MODE_PARRY_TRAINING && omop_cockpit) {
@@ -1130,10 +1130,10 @@ void Game_Manage_10th() {
             SE_All_Off();
             Check_Naming(0);
             Check_Naming(1);
-            ps.pcon_rno[0] = 0;
-            ps.pcon_rno[1] = 0;
-            ps.pcon_rno[2] = 0;
-            ps.pcon_rno[3] = 0;
+            gs.pcon_rno[0] = 0;
+            gs.pcon_rno[1] = 0;
+            gs.pcon_rno[2] = 0;
+            gs.pcon_rno[3] = 0;
             appear_type = 1;
             Continue_Coin2[WINNER] = 0;
 
@@ -1209,7 +1209,7 @@ s32 Check_Ending() {
         Extra_Break = 0;
         Pause_ID = WINNER;
         End_PL = My_char[WINNER];
-        ps.plw[WINNER].wu.operator = 0;
+        gs.plw[WINNER].wu.operator = 0;
         Operator_Status[WINNER] = 0;
         SsBgmControl(0, 0);
         Control_Time = 481;
@@ -1335,7 +1335,7 @@ void Check_Perfect(s16 PL_id) {
         return;
     }
 
-    if (ps.plw[PL_id].wu.vitality != ps.plw[PL_id].wu.vital_new) {
+    if (gs.plw[PL_id].wu.vitality != gs.plw[PL_id].wu.vital_new) {
         return;
     }
 
@@ -1526,7 +1526,7 @@ void Check_Conclusion_Type() {
         break;
 
     case 2:
-        if (ps.plw[0].wu.vital_new != ps.plw[1].wu.vital_new) {
+        if (gs.plw[0].wu.vital_new != gs.plw[1].wu.vital_new) {
             Stage_Time_Finish[Winner_id]++;
             chkComWins();
         }
@@ -1547,13 +1547,13 @@ void Update_BI_Term() {
         return;
     }
 
-    if (ps.plw[Winner_id].sa_healing) {
+    if (gs.plw[Winner_id].sa_healing) {
         Super_Arts_Finish[Winner_id]++;
         Stage_SA_Finish[Winner_id]++;
         return;
     }
 
-    if (ps.plw[Winner_id].wu.vitality == ps.plw[Winner_id].wu.vital_new) {
+    if (gs.plw[Winner_id].wu.vitality == gs.plw[Winner_id].wu.vital_new) {
         Perfect_Finish[Winner_id]++;
         Stage_Perfect_Finish[Winner_id]++;
 
@@ -1657,11 +1657,11 @@ void Quick_Entry() {
         return;
     }
 
-    if (ps.plw[LOSER].wu.operator) {
+    if (gs.plw[LOSER].wu.operator) {
         Loser_Sub();
 
         if (Mode_Type != MODE_ARCADE) {
-            ps.plw[LOSER].wu.operator = 1;
+            gs.plw[LOSER].wu.operator = 1;
         }
 
         Be_Continue();
@@ -1697,7 +1697,7 @@ s32 Check_Entry_Again() {
 }
 
 void Loser_Sub() {
-    ps.plw[LOSER].wu.operator = 0;
+    gs.plw[LOSER].wu.operator = 0;
     Operator_Status[LOSER] = 0;
     Sel_PL_Complete[LOSER] = 0;
     Sel_Arts_Complete[LOSER] = 0;
@@ -1749,7 +1749,7 @@ void Pool_Score(s16 PL_id) {
         Perfect_Bonus[Winner_id] += 50000;
     }
 
-    Score_Buff = ps.plw[PL_id].wu.vital_new * 100 / Max_vitality;
+    Score_Buff = gs.plw[PL_id].wu.vital_new * 100 / Max_vitality;
     Score_Buff *= 500;
     Vital_Bonus[Winner_id] += Score_Buff;
 
@@ -1962,8 +1962,8 @@ void Game_Manage_12_0() {
 
     Complete_Judgement = 0;
     Music_Fade = 0;
-    Round_Operator[0] = ps.plw[0].wu.operator;
-    Round_Operator[1] = ps.plw[1].wu.operator;
+    Round_Operator[0] = gs.plw[0].wu.operator;
+    Round_Operator[1] = gs.plw[1].wu.operator;
     CP_No[0][0] = 0;
     CP_No[1][0] = 0;
 
