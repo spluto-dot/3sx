@@ -17,6 +17,8 @@ typedef struct PlayerState {
 
     /// `true` if the game has been slowed down at round end
     bool round_slow_flag;
+
+    bool pcon_dp_flag;
 } PlayerState;
 
 extern PlayerState ps;

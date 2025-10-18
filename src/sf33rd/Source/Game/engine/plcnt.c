@@ -78,7 +78,6 @@ void set_scrrrl();
 
 // sbss
 s16 appear_type;
-u8 pcon_dp_flag;
 u8 win_sp_flag;
 char dead_voice_flag;
 SA_WORK super_arts[2];     // FIXME: move to game state (or to PLW?)
@@ -349,7 +348,7 @@ void Player_control() {
         if (Game_pause || EXE_flag) {
             goto end;
         } else {
-            if (pcon_dp_flag == 0) {
+            if (!ps.pcon_dp_flag) {
                 if (--vital_inc_timer > 50) {
                     vital_inc_timer = 50;
                 }
@@ -411,7 +410,7 @@ void init_app_10000() {
     case 0:
         pli_0000();
         ps.pcon_rno[1] = 2;
-        pcon_dp_flag = 0;
+        ps.pcon_dp_flag = false;
         ps.round_slow_flag = false;
         dead_voice_flag = 0;
         another_bg[0] = another_bg[1] = 0;
@@ -465,7 +464,7 @@ void init_app_20000() {
         ps.pcon_rno[1]++;
         ps.round_slow_flag = false;
         dead_voice_flag = 0;
-        pcon_dp_flag = 0;
+        ps.pcon_dp_flag = false;
         another_bg[0] = another_bg[1] = 0;
 
         for (i = 0; i < 8; i++) {
@@ -1041,24 +1040,22 @@ void setup_settle_rno(s16 kos) {
     ps.pcon_rno[1] = kos;
     ps.pcon_rno[2] = 0;
     ca_check_flag = 0;
-    pcon_dp_flag = 1;
+    ps.pcon_dp_flag = true;
 }
 
 void settle_check() {
     while (1) {
         switch ((ps.plw[0].dead_flag) + (ps.plw[1].dead_flag * 2)) {
         case 1:
-            if (1) {
-                Winner_id = 1;
-                Loser_id = 0;
-            } else {
-                /* fallthrough */
+            Winner_id = 1;
+            Loser_id = 0;
+            goto jump;
 
-            case 2:
-                Winner_id = 0;
-                Loser_id = 1;
-            }
+        case 2:
+            Winner_id = 0;
+            Loser_id = 1;
 
+        jump:
             if (check_sa_resurrection(&ps.plw[Loser_id]) == 0) {
                 setup_gouki_wins();
                 Round_Result |= ps.plw[Loser_id].wu.dm_koa;

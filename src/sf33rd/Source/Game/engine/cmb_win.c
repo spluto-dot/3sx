@@ -140,7 +140,7 @@ void combo_control(s8 PL) {
                 return;
             }
 
-            if (pcon_dp_flag == 1 && last_hit_time == 0) {
+            if (ps.pcon_dp_flag && last_hit_time == 0) {
                 super_arts_last_check(PL);
             }
 
@@ -242,7 +242,7 @@ s32 reversal_check(s8 PL) {
         return 0;
     }
 
-    if (ps.plw[PL].wu.routine_no[1] == 4 && ps.plw[PL].wu.old_rno[1] == 1 && pcon_dp_flag == 0 &&
+    if (ps.plw[PL].wu.routine_no[1] == 4 && ps.plw[PL].wu.old_rno[1] == 1 && !ps.pcon_dp_flag &&
         ps.plw[PL].wu.routine_no[2] >= 0x10) {
         rever_attack[PL] = 1;
 

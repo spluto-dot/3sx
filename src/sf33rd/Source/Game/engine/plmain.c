@@ -469,7 +469,7 @@ void mpg_union(PLW* wk) {
     case 2:
         switch (wk->sa->saeff_mp) {
         case -1:
-            if (pcon_dp_flag == 0) {
+            if (!ps.pcon_dp_flag) {
                 wk->sa->store = 0;
                 wk->sa->gauge.i = 0;
             }
@@ -543,7 +543,7 @@ void eag_union(PLW* wk) {
         break;
 
     case 2:
-        if (pcon_dp_flag == 0) {
+        if (!ps.pcon_dp_flag) {
             if (wk->sa->gauge_type == 1 && wk->sa->store == wk->sa->store_max) {
                 wk->sa->gauge.i = 0;
             }
@@ -608,7 +608,7 @@ void sag_union(PLW* wk) {
         case 0:
             switch (wk->sa->saeff_ok) {
             case -1:
-                if (pcon_dp_flag == 0) {
+                if (!ps.pcon_dp_flag) {
                     if (wk->sa->ex4th_exec) {
                         wk->sa->store = 0;
                     } else {
@@ -639,7 +639,7 @@ void sag_union(PLW* wk) {
             case 0:
                 switch (wk->sa->saeff_ok) {
                 case -1:
-                    if (pcon_dp_flag == 0) {
+                    if (!ps.pcon_dp_flag) {
                         if (wk->sa->ex4th_exec) {
                             wk->sa->store = 0;
                         } else {
@@ -838,7 +838,7 @@ const u8 plpdm_mvkind[32] = { 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
 const u8 plpxx_kind[5] = { 0, 1, 0, 1, 0 };
 
 void check_omop_vital(PLW* wk) {
-    if (pcon_dp_flag) {
+    if (ps.pcon_dp_flag) {
         return;
     }
 
