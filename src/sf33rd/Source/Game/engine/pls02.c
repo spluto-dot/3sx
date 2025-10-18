@@ -1144,7 +1144,7 @@ void setup_lvdir_after_autodir(PLW* wk) {
 }
 
 void dead_voice_request() {
-    if (dead_voice_flag) {
+    if (gs.dead_voice_flag) {
         if (gs.plw[0].dead_flag) {
             dead_voice_request2(&gs.plw[0]);
         }
@@ -1154,7 +1154,7 @@ void dead_voice_request() {
         }
     }
 
-    dead_voice_flag = 0;
+    gs.dead_voice_flag = false;
 }
 
 void dead_voice_request2(PLW* wk) {

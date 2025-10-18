@@ -77,7 +77,7 @@ void plcnt_b_init() {
         setup_base_and_other_data();
         gs.pcon_dp_flag = false;
         gs.round_slow_flag = false;
-        dead_voice_flag = 0;
+        gs.dead_voice_flag = false;
         another_bg[0] = another_bg[1] = 0;
         gs.plw[0].scr_pos_set_flag = gs.plw[1].scr_pos_set_flag = 1;
         clear_super_arts_point(&gs.plw[0]);

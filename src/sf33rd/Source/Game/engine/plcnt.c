@@ -78,7 +78,6 @@ void set_scrrrl();
 
 // sbss
 s16 appear_type;
-char dead_voice_flag;
 SA_WORK super_arts[2];     // FIXME: move to game state (or to PLW?)
 PiyoriType piyori_type[2]; // FIXME: move to game state (or to PLW?)
 RAMBOD rambod[2];
@@ -411,7 +410,7 @@ void init_app_10000() {
         gs.pcon_rno[1] = 2;
         gs.pcon_dp_flag = false;
         gs.round_slow_flag = false;
-        dead_voice_flag = 0;
+        gs.dead_voice_flag = false;
         another_bg[0] = another_bg[1] = 0;
         gs.plw[0].scr_pos_set_flag = gs.plw[1].scr_pos_set_flag = 1;
 
@@ -462,7 +461,7 @@ void init_app_20000() {
     case 0:
         gs.pcon_rno[1]++;
         gs.round_slow_flag = false;
-        dead_voice_flag = 0;
+        gs.dead_voice_flag = false;
         gs.pcon_dp_flag = false;
         another_bg[0] = another_bg[1] = 0;
 
@@ -488,7 +487,7 @@ void init_app_30000() {
     case 0:
         gs.pcon_rno[1]++;
         gs.round_slow_flag = false;
-        dead_voice_flag = 0;
+        gs.dead_voice_flag = false;
 
         for (i = 1; i < 8; i++) {
             gs.plw[0].wu.routine_no[i] = gs.plw[1].wu.routine_no[i] = 0;
