@@ -78,7 +78,6 @@ void set_scrrrl();
 
 // sbss
 s16 appear_type;
-u8 win_sp_flag;
 char dead_voice_flag;
 SA_WORK super_arts[2];     // FIXME: move to game state (or to PLW?)
 PiyoriType piyori_type[2]; // FIXME: move to game state (or to PLW?)

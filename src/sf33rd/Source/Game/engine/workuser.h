@@ -19,6 +19,7 @@ typedef struct PlayerState {
     bool round_slow_flag;
 
     bool pcon_dp_flag;
+    u8 win_sp_flag;
 } PlayerState;
 
 extern PlayerState ps;
