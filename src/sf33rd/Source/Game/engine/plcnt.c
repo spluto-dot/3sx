@@ -77,10 +77,10 @@ void clear_super_arts_point(PLW* wk);
 void set_scrrrl();
 
 // sbss
-RAMBOD rambod[2];
-RAMHAN ramhan[2];
-u32 omop_spmv_ng_table[2];
-u32 omop_spmv_ng_table2[2];
+UNK_1 rambod[2];            // FIXME: this is used in effects, might not be serializable
+UNK_2 ramhan[2];            // FIXME: this is used in effects, might not be serializable
+u32 omop_spmv_ng_table[2];  // FIXME: might not be necessary to put in GameState
+u32 omop_spmv_ng_table2[2]; // FIXME: might not be necessary to put in GameState
 u16 vital_inc_timer;
 u16 vital_dec_timer;
 char cmd_sel[2];

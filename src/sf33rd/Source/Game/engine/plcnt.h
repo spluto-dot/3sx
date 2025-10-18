@@ -5,14 +5,6 @@
 #include "types.h"
 
 typedef struct {
-    s16 body_dm[4][4];
-} RAMBOD;
-
-typedef struct {
-    s16 hand_dm[4][4];
-} RAMHAN;
-
-typedef struct {
     u8 nmsa_g_ix;
     u8 exsa_g_ix;
     u8 exs2_g_ix;
@@ -28,8 +20,8 @@ typedef struct {
 
 extern const s8 plid_data[20];
 
-extern RAMBOD rambod[2];
-extern RAMHAN ramhan[2];
+extern UNK_1 rambod[2];
+extern UNK_2 ramhan[2];
 extern u32 omop_spmv_ng_table[2];
 extern u32 omop_spmv_ng_table2[2];
 extern u16 vital_inc_timer;
