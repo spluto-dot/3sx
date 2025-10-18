@@ -42,7 +42,6 @@ jobs:
       - name: Build third-party deps (FFmpeg etc.)
         shell: msys2 {0}
         run: |
-          echo "== Building third-party dependencies (FFmpeg etc.) =="
           bash ./build-deps.sh
 
       - name: Configure (CMake + Ninja + Clang)
@@ -51,9 +50,7 @@ jobs:
           CC: clang
           CXX: clang++
         run: |
-          cmake -S . -B build \
-            -G Ninja \
-            -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
 
       - name: Build 3sx
         shell: msys2 {0}
@@ -64,22 +61,18 @@ jobs:
         if: always()
         shell: msys2 {0}
         run: |
-          echo "== Listing build directory =="
           ls -la build || true
-          echo "== Search for .exe files =="
           find build -maxdepth 2 -type f -name "*.exe" || true
 
-      - name: Package 3sx executable
+      - name: Stage executable
         shell: msys2 {0}
         run: |
           mkdir -p out/windows
           EXE_PATH="$(find build -maxdepth 2 -type f -name "*.exe" | head -n1)"
           if [ -z "$EXE_PATH" ]; then
-            echo "❌ Nenhum executável encontrado"; exit 1
+            echo "Nenhum executável encontrado"; exit 1
           fi
-          echo "✅ Encontrado: $EXE_PATH"
           cp -v "$EXE_PATH" out/windows/
-          7z a 3sx-windows-${{ env.BUILD_TYPE }}.zip ./out/windows/*
 
       - name: Upload build log
         if: always()
@@ -88,9 +81,9 @@ jobs:
           name: build-log
           path: build.log
 
-      - name: Upload Windows artifact
+      - name: Upload Windows artifact (folder)
         uses: actions/upload-artifact@v4
         with:
           name: 3sx-windows-${{ env.BUILD_TYPE }}
-          path: 3sx-windows-${{ env.BUILD_TYPE }}.zip
+          path: out/windows/
           if-no-files-found: error
