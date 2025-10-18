@@ -18,7 +18,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: recursive
@@ -36,8 +36,16 @@ jobs:
             mingw-w64-x86_64-nasm
             mingw-w64-x86_64-clang
             mingw-w64-x86_64-headers-git
+            mingw-w64-x86_64-pkgconf
+            mingw-w64-x86_64-SDL2
 
-      - name: Configure (CMake + Ninja + clang)
+      - name: Build third-party deps (FFmpeg etc.)
+        shell: msys2 {0}
+        run: |
+          echo "== Building third-party dependencies (FFmpeg etc.) =="
+          bash ./build-deps.sh
+
+      - name: Configure (CMake + Ninja + Clang)
         shell: msys2 {0}
         env:
           CC: clang
@@ -47,28 +55,42 @@ jobs:
             -G Ninja \
             -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
 
-      - name: Build
+      - name: Build 3sx
         shell: msys2 {0}
-        run: cmake --build build --config ${{ env.BUILD_TYPE }} -j
+        run: |
+          cmake --build build --config ${{ env.BUILD_TYPE }} -j | tee build.log
 
-      - name: Show build dir (debug)
+      - name: Show build directory (debug)
         if: always()
         shell: msys2 {0}
         run: |
-          echo "== build/ =="
+          echo "== Listing build directory =="
           ls -la build || true
+          echo "== Search for .exe files =="
+          find build -maxdepth 2 -type f -name "*.exe" || true
 
-      - name: Package
+      - name: Package 3sx executable
         shell: msys2 {0}
         run: |
           mkdir -p out/windows
-          # ajuste o nome do .exe se necessário:
-          cp -v build/3sx.exe out/windows/ || true
+          EXE_PATH="$(find build -maxdepth 2 -type f -name "*.exe" | head -n1)"
+          if [ -z "$EXE_PATH" ]; then
+            echo "❌ Nenhum executável encontrado"; exit 1
+          fi
+          echo "✅ Encontrado: $EXE_PATH"
+          cp -v "$EXE_PATH" out/windows/
           7z a 3sx-windows-${{ env.BUILD_TYPE }}.zip ./out/windows/*
 
-      - name: Upload artifact
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
+
+      - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
         with:
           name: 3sx-windows-${{ env.BUILD_TYPE }}
           path: 3sx-windows-${{ env.BUILD_TYPE }}.zip
-          if-no-files-found: warn
+          if-no-files-found: error
