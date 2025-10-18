@@ -11,6 +11,9 @@ typedef struct PlayerState {
 
     /// Afterimage data
     ZanzouTableEntry zanzou_table[2][48];
+
+    /// Player controller routine indices
+    s16 pcon_rno[4];
 } PlayerState;
 
 extern PlayerState ps;

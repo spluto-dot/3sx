@@ -487,7 +487,7 @@ void Game2_0() {
     Time_in_Time = 60;
     init_slow_flag();
     clear_hit_queue();
-    pcon_rno[0] = pcon_rno[1] = pcon_rno[2] = pcon_rno[3] = 0;
+    ps.pcon_rno[0] = ps.pcon_rno[1] = ps.pcon_rno[2] = ps.pcon_rno[3] = 0;
     ca_check_flag = 1;
     bg_work_clear();
     win_lose_work_clear();
@@ -572,7 +572,7 @@ void Game2_2() {
     init_slow_flag();
     effect_work_quick_init();
     clear_hit_queue();
-    pcon_rno[0] = pcon_rno[1] = pcon_rno[2] = pcon_rno[3] = 0;
+    ps.pcon_rno[0] = ps.pcon_rno[1] = ps.pcon_rno[2] = ps.pcon_rno[3] = 0;
     ca_check_flag = 1;
     bg_work_clear();
     win_lose_work_clear();
@@ -625,10 +625,10 @@ void Game2_5() {
         Score[1][2] = 0;
         Suicide[0] = 1;
         Game_pause = 0;
-        pcon_rno[0] = 0;
-        pcon_rno[1] = 0;
-        pcon_rno[2] = 0;
-        pcon_rno[3] = 0;
+        ps.pcon_rno[0] = 0;
+        ps.pcon_rno[1] = 0;
+        ps.pcon_rno[2] = 0;
+        ps.pcon_rno[3] = 0;
         appear_type = 0;
         erase_extra_plef_work();
         compel_bg_init_position();
@@ -1281,7 +1281,7 @@ void Game09() {
         Time_in_Time = 60;
         init_slow_flag();
         clear_hit_queue();
-        pcon_rno[0] = pcon_rno[1] = pcon_rno[2] = pcon_rno[3] = 0;
+        ps.pcon_rno[0] = ps.pcon_rno[1] = ps.pcon_rno[2] = ps.pcon_rno[3] = 0;
         bbbs_com_initialize();
         ca_check_flag = 1;
         Bonus_Game_Work = 20;
