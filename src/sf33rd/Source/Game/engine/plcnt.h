@@ -47,8 +47,6 @@ extern s8 vib_sel[2];
 extern s16 sag_inc_timer[2];
 extern char no_sa[2];
 
-extern ZanzouTableEntry zanzou_table[2][48];
-
 extern const s16** kizetsu_timer_table[];
 
 void Player_control();

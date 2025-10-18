@@ -8,6 +8,9 @@
 
 typedef struct PlayerState {
     PLW plw[2];
+
+    /// Afterimage data
+    ZanzouTableEntry zanzou_table[2][48];
 } PlayerState;
 
 extern PlayerState ps;

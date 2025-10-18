@@ -76,9 +76,6 @@ s16 remake_sa_gauge_len(s16 ix, s16 gauge_len);
 void clear_super_arts_point(PLW* wk);
 void set_scrrrl();
 
-// bss
-ZanzouTableEntry zanzou_table[2][48];
-
 // sbss
 s16 pcon_rno[4];
 s16 appear_type;
@@ -935,20 +932,20 @@ void store_player_after_image_data() {
     s16 i;
 
     for (i = 47; i > 0; i--) {
-        zanzou_table[0][i] = zanzou_table[0][i - 1];
-        zanzou_table[1][i] = zanzou_table[1][i - 1];
+        ps.zanzou_table[0][i] = ps.zanzou_table[0][i - 1];
+        ps.zanzou_table[1][i] = ps.zanzou_table[1][i - 1];
     }
 
     for (i = 0; i < 2; i++) {
-        zanzou_table[i]->pos_x = ps.plw[i].wu.position_x;
-        zanzou_table[i]->pos_y = ps.plw[i].wu.position_y;
-        zanzou_table[i]->pos_z = ps.plw[i].wu.position_z;
-        zanzou_table[i]->cg_num = ps.plw[i].wu.cg_number;
-        zanzou_table[i]->renew = ps.plw[i].wu.renew_attack;
-        zanzou_table[i]->hit_ix = ps.plw[i].wu.cg_hit_ix;
-        zanzou_table[i]->flip = ps.plw[i].wu.rl_flag;
-        zanzou_table[i]->cg_flp = ps.plw[i].wu.cg_flip;
-        zanzou_table[i]->kowaza = ps.plw[i].wu.kind_of_waza;
+        ps.zanzou_table[i]->pos_x = ps.plw[i].wu.position_x;
+        ps.zanzou_table[i]->pos_y = ps.plw[i].wu.position_y;
+        ps.zanzou_table[i]->pos_z = ps.plw[i].wu.position_z;
+        ps.zanzou_table[i]->cg_num = ps.plw[i].wu.cg_number;
+        ps.zanzou_table[i]->renew = ps.plw[i].wu.renew_attack;
+        ps.zanzou_table[i]->hit_ix = ps.plw[i].wu.cg_hit_ix;
+        ps.zanzou_table[i]->flip = ps.plw[i].wu.rl_flag;
+        ps.zanzou_table[i]->cg_flp = ps.plw[i].wu.cg_flip;
+        ps.zanzou_table[i]->kowaza = ps.plw[i].wu.kind_of_waza;
     }
 }
 
