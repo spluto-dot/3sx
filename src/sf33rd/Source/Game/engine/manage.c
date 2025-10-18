@@ -184,12 +184,12 @@ void Game_Manage_1st() {
     Round_Operator[0] = 0;
     Round_Operator[1] = 0;
 
-    if (gs.plw[0].wu.operator) {
+    if (ps.plw[0].wu.operator) {
         Round_Operator[0] = 1;
         Final_Play_Type[0] = Play_Type;
     }
 
-    if (gs.plw[1].wu.operator) {
+    if (ps.plw[1].wu.operator) {
         Round_Operator[1] = 1;
         Final_Play_Type[1] = Play_Type;
     }
@@ -225,7 +225,7 @@ void Game_Manage_1st() {
     if (Mode_Type == MODE_NORMAL_TRAINING || Mode_Type == MODE_PARRY_TRAINING) {
         cpReadyTask(TASK_MENU, Menu_Task);
         task[TASK_MENU].r_no[0] = 7;
-        gs.plw[New_Challenger].wu.operator = 0;
+        ps.plw[New_Challenger].wu.operator = 0;
         Operator_Status[New_Challenger] = 0;
         Lever_LR[0] = 0;
         Lever_LR[1] = 0;
@@ -520,7 +520,7 @@ void Game_Manage_3rd() {
 void setFinishType() {
     if (Play_Type == 0 && Mode_Type == MODE_ARCADE &&
         PL_Wins[Winner_id] >= save_w[Present_Mode].Battle_Number[Play_Type] && VS_Index[Winner_id] > 8 &&
-        gs.plw[Winner_id].wu.operator != 0 && E_Number[Loser_id][0] != 2) {
+        ps.plw[Winner_id].wu.operator != 0 && E_Number[Loser_id][0] != 2) {
         E_Number[Loser_id][0] = 99;
     }
 
@@ -577,7 +577,7 @@ void Game_Manage_4th() {
     default:
         SsRequest(143);
 
-        if (gs.plw[0].wu.vital_new != gs.plw[1].wu.vital_new || Mode_Type == MODE_NORMAL_TRAINING ||
+        if (ps.plw[0].wu.vital_new != ps.plw[1].wu.vital_new || Mode_Type == MODE_NORMAL_TRAINING ||
             Mode_Type == MODE_PARRY_TRAINING) {
             C_No[0] = 6;
             Round_Result |= 1;
@@ -1209,7 +1209,7 @@ s32 Check_Ending() {
         Extra_Break = 0;
         Pause_ID = WINNER;
         End_PL = My_char[WINNER];
-        gs.plw[WINNER].wu.operator = 0;
+        ps.plw[WINNER].wu.operator = 0;
         Operator_Status[WINNER] = 0;
         SsBgmControl(0, 0);
         Control_Time = 481;
@@ -1335,7 +1335,7 @@ void Check_Perfect(s16 PL_id) {
         return;
     }
 
-    if (gs.plw[PL_id].wu.vitality != gs.plw[PL_id].wu.vital_new) {
+    if (ps.plw[PL_id].wu.vitality != ps.plw[PL_id].wu.vital_new) {
         return;
     }
 
@@ -1526,7 +1526,7 @@ void Check_Conclusion_Type() {
         break;
 
     case 2:
-        if (gs.plw[0].wu.vital_new != gs.plw[1].wu.vital_new) {
+        if (ps.plw[0].wu.vital_new != ps.plw[1].wu.vital_new) {
             Stage_Time_Finish[Winner_id]++;
             chkComWins();
         }
@@ -1547,13 +1547,13 @@ void Update_BI_Term() {
         return;
     }
 
-    if (gs.plw[Winner_id].sa_healing) {
+    if (ps.plw[Winner_id].sa_healing) {
         Super_Arts_Finish[Winner_id]++;
         Stage_SA_Finish[Winner_id]++;
         return;
     }
 
-    if (gs.plw[Winner_id].wu.vitality == gs.plw[Winner_id].wu.vital_new) {
+    if (ps.plw[Winner_id].wu.vitality == ps.plw[Winner_id].wu.vital_new) {
         Perfect_Finish[Winner_id]++;
         Stage_Perfect_Finish[Winner_id]++;
 
@@ -1657,11 +1657,11 @@ void Quick_Entry() {
         return;
     }
 
-    if (gs.plw[LOSER].wu.operator) {
+    if (ps.plw[LOSER].wu.operator) {
         Loser_Sub();
 
         if (Mode_Type != MODE_ARCADE) {
-            gs.plw[LOSER].wu.operator = 1;
+            ps.plw[LOSER].wu.operator = 1;
         }
 
         Be_Continue();
@@ -1697,7 +1697,7 @@ s32 Check_Entry_Again() {
 }
 
 void Loser_Sub() {
-    gs.plw[LOSER].wu.operator = 0;
+    ps.plw[LOSER].wu.operator = 0;
     Operator_Status[LOSER] = 0;
     Sel_PL_Complete[LOSER] = 0;
     Sel_Arts_Complete[LOSER] = 0;
@@ -1749,7 +1749,7 @@ void Pool_Score(s16 PL_id) {
         Perfect_Bonus[Winner_id] += 50000;
     }
 
-    Score_Buff = gs.plw[PL_id].wu.vital_new * 100 / Max_vitality;
+    Score_Buff = ps.plw[PL_id].wu.vital_new * 100 / Max_vitality;
     Score_Buff *= 500;
     Vital_Bonus[Winner_id] += Score_Buff;
 
@@ -1962,8 +1962,8 @@ void Game_Manage_12_0() {
 
     Complete_Judgement = 0;
     Music_Fade = 0;
-    Round_Operator[0] = gs.plw[0].wu.operator;
-    Round_Operator[1] = gs.plw[1].wu.operator;
+    Round_Operator[0] = ps.plw[0].wu.operator;
+    Round_Operator[1] = ps.plw[1].wu.operator;
     CP_No[0][0] = 0;
     CP_No[1][0] = 0;
 

@@ -6,11 +6,11 @@
 
 #include <stdbool.h>
 
-typedef struct GameState {
+typedef struct PlayerState {
     PLW plw[2];
-} GameState;
+} PlayerState;
 
-extern GameState gs;
+extern PlayerState ps;
 
 // bss
 extern u8 Order[148];

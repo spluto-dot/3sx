@@ -243,11 +243,11 @@ bool Cut_Cut_Cut() {
         return false;
     }
 
-    if (gs.plw[0].wu.operator && (p1sw_0 & SWK_ATTACKS)) {
+    if (ps.plw[0].wu.operator && (p1sw_0 & SWK_ATTACKS)) {
         return true;
     }
 
-    if (gs.plw[1].wu.operator && (p2sw_0 & SWK_ATTACKS)) {
+    if (ps.plw[1].wu.operator && (p2sw_0 & SWK_ATTACKS)) {
         return true;
     }
 
@@ -276,7 +276,7 @@ void Score_Sub() {
     }
 
     for (PL_id = 0; PL_id < 2; PL_id++) {
-        if ((Mode_Type != MODE_VERSUS && Mode_Type != MODE_REPLAY) && gs.plw[PL_id].wu.operator == 0) {
+        if ((Mode_Type != MODE_VERSUS && Mode_Type != MODE_REPLAY) && ps.plw[PL_id].wu.operator == 0) {
             continue;
         }
 
@@ -432,7 +432,7 @@ s32 Setup_Target_PL() {
         return 0;
     }
 
-    if (gs.plw[0].wu.operator) {
+    if (ps.plw[0].wu.operator) {
         return 0;
     }
 
@@ -956,11 +956,11 @@ s32 Cut_Cut_Sub(s16 xx) {
         return 1;
     }
 
-    if (gs.plw[0].wu.operator && (p1sw_0 & SWK_ATTACKS)) {
+    if (ps.plw[0].wu.operator && (p1sw_0 & SWK_ATTACKS)) {
         return xx;
     }
 
-    if (gs.plw[1].wu.operator && (p2sw_0 & SWK_ATTACKS)) {
+    if (ps.plw[1].wu.operator && (p2sw_0 & SWK_ATTACKS)) {
         return xx;
     }
 
@@ -1042,12 +1042,12 @@ void Check_Replay() {
         Replay_Status[0] = 1;
         Replay_Status[1] = 1;
 
-        if (gs.plw[0].wu.operator == 0) {
+        if (ps.plw[0].wu.operator == 0) {
             Replay_Status[0] = 0;
             CP_No[0][0] = 0;
         }
 
-        if (gs.plw[1].wu.operator == 0) {
+        if (ps.plw[1].wu.operator == 0) {
             Replay_Status[1] = 0;
             CP_No[1][0] = 0;
         }
@@ -1112,7 +1112,7 @@ void Setup_Replay_Header() {
         Rep_Game_Infor[10].player_infor[ix].my_char = My_char[ix];
         Rep_Game_Infor[10].player_infor[ix].sa = Super_Arts[ix];
         Rep_Game_Infor[10].player_infor[ix].color = Player_Color[ix];
-        Rep_Game_Infor[10].player_infor[ix].player_type = gs.plw[ix].wu.operator;
+        Rep_Game_Infor[10].player_infor[ix].player_type = ps.plw[ix].wu.operator;
         Rep_Game_Infor[10].Vital_Handicap[ix] = Vital_Handicap[Present_Mode][ix];
     }
 
@@ -1282,7 +1282,7 @@ void Replay(s16 PL_id) {
         Demo_Timer[PL_id] = buff + 1;
     }
 
-    if (gs.plw[PL_id].wu.operator == 0) {
+    if (ps.plw[PL_id].wu.operator == 0) {
         if (PL_id) {
             p2sw_0 = 0;
         } else {
