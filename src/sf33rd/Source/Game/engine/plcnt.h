@@ -29,7 +29,6 @@ typedef struct {
 extern const s8 plid_data[20];
 
 extern s16 appear_type;
-extern u8 round_slow_flag;
 extern u8 pcon_dp_flag;
 extern u8 win_sp_flag;
 extern char dead_voice_flag;

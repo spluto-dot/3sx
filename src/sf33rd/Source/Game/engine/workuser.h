@@ -14,6 +14,9 @@ typedef struct PlayerState {
 
     /// Player controller routine indices
     s16 pcon_rno[4];
+
+    /// `true` if the game has been slowed down at round end
+    bool round_slow_flag;
 } PlayerState;
 
 extern PlayerState ps;

@@ -76,7 +76,7 @@ void plcnt_b_init() {
         SDL_zeroa(ps.plw);
         setup_base_and_other_data();
         pcon_dp_flag = 0;
-        round_slow_flag = 0;
+        ps.round_slow_flag = false;
         dead_voice_flag = 0;
         another_bg[0] = another_bg[1] = 0;
         ps.plw[0].scr_pos_set_flag = ps.plw[1].scr_pos_set_flag = 1;
