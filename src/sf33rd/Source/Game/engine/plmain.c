@@ -174,8 +174,8 @@ void player_mv_0000(PLW* wk) {
 }
 
 void player_mv_1000(PLW* wk) {
-    switch (appear_type) {
-    case 0:
+    switch (gs.appear_type) {
+    case APPEAR_TYPE_NON_ANIMATED:
         plmv_1010(wk);
 
         if (Combo_Demo_Flag == 0) {
@@ -188,13 +188,13 @@ void player_mv_1000(PLW* wk) {
         Appear_end++;
         break;
 
-    case 3:
+    case APPEAR_TYPE_UNKNOWN_3:
         plmv_1010(wk);
         plmv_1020(wk, 0x80);
         break;
 
-    case 1:
-    case 2:
+    case APPEAR_TYPE_ANIMATED:
+    case APPEAR_TYPE_UNKNOWN_2:
         wk->wu.routine_no[0] = 2;
         wk->wu.routine_no[1] = 0;
         wk->wu.routine_no[2] = 0;

@@ -348,7 +348,7 @@ void Game01() {
         if (Switch_Screen(0) != 0) {
             Game01_Sub();
             Cover_Timer = 5;
-            appear_type = 1;
+            gs.appear_type = APPEAR_TYPE_ANIMATED;
             set_hitmark_color();
 
             if (Debug_w[0x1D]) {
@@ -578,7 +578,7 @@ void Game2_2() {
     win_lose_work_clear();
     player_face_init();
     Game01_Sub();
-    appear_type = 1;
+    gs.appear_type = APPEAR_TYPE_ANIMATED;
     TATE00();
 
     for (i = 0; i < 3; i++) {
@@ -629,7 +629,7 @@ void Game2_5() {
         gs.pcon_rno[1] = 0;
         gs.pcon_rno[2] = 0;
         gs.pcon_rno[3] = 0;
-        appear_type = 0;
+        gs.appear_type = APPEAR_TYPE_NON_ANIMATED;
         erase_extra_plef_work();
         compel_bg_init_position();
         win_lose_work_clear();

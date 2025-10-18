@@ -28,7 +28,6 @@ typedef struct {
 
 extern const s8 plid_data[20];
 
-extern s16 appear_type;
 extern SA_WORK super_arts[2];
 extern PiyoriType piyori_type[2];
 extern RAMBOD rambod[2];
