@@ -175,7 +175,7 @@ void Game_Manage_1st() {
 
     win_pause_go = 0;
     appear_work_clear();
-    win_sp_flag = 0;
+    gs.win_sp_flag = 0;
     BGM_No[1] = 0;
     BGM_No[0] = 0;
     Appear_Q = 0;
@@ -414,13 +414,13 @@ void Game_Manage_2_3() {
     }
 
     appear_work_clear();
-    win_sp_flag = 0;
+    gs.win_sp_flag = 0;
 
-    if (pcon_rno[0] != 0) {
+    if (gs.pcon_rno[0] != 0) {
         return;
     }
 
-    if (pcon_rno[1] != 1) {
+    if (gs.pcon_rno[1] != 1) {
         return;
     }
 
@@ -447,11 +447,11 @@ void Game_Manage_2_4() {
             Score[0][2] = 0;
             Score[1][2] = 0;
             Game_pause = 0;
-            pcon_rno[0] = 0;
-            pcon_rno[1] = 0;
-            pcon_rno[2] = 0;
-            pcon_rno[3] = 0;
-            appear_type = 0;
+            gs.pcon_rno[0] = 0;
+            gs.pcon_rno[1] = 0;
+            gs.pcon_rno[2] = 0;
+            gs.pcon_rno[3] = 0;
+            gs.appear_type = APPEAR_TYPE_NON_ANIMATED;
             erase_extra_plef_work();
             compel_bg_init_position();
             win_lose_work_clear();
@@ -645,11 +645,11 @@ void Game_Manage_5_4() {
         judge_flag = 1;
         effect_J4_init(0xFF);
         compel_bg_init_position();
-        pcon_rno[0] = 0;
-        pcon_rno[1] = 0;
-        pcon_rno[2] = 0;
-        pcon_rno[3] = 0;
-        appear_type = 3;
+        gs.pcon_rno[0] = 0;
+        gs.pcon_rno[1] = 0;
+        gs.pcon_rno[2] = 0;
+        gs.pcon_rno[3] = 0;
+        gs.appear_type = APPEAR_TYPE_UNKNOWN_3;
     }
 }
 
@@ -658,8 +658,8 @@ void Game_Manage_5_5() {
 
     if (--Cover_Timer == 0) {
         C_No[1]++;
-        pcon_rno[1] = 3;
-        pcon_rno[2] = 1;
+        gs.pcon_rno[1] = 3;
+        gs.pcon_rno[2] = 1;
         Clear_Flash_No();
         Switch_Screen_Init(0);
     }
@@ -708,8 +708,8 @@ void Game_Manage_6th() {
 
         C_No[1]++;
         C_Timer = 60;
-        pcon_rno[1] = 3;
-        pcon_rno[2] = 0;
+        gs.pcon_rno[1] = 3;
+        gs.pcon_rno[2] = 0;
         grade_makeup_round_para_dko();
 
         if (Mode_Type != MODE_NORMAL_TRAINING && Mode_Type != MODE_PARRY_TRAINING && omop_cockpit) {
@@ -1130,11 +1130,11 @@ void Game_Manage_10th() {
             SE_All_Off();
             Check_Naming(0);
             Check_Naming(1);
-            pcon_rno[0] = 0;
-            pcon_rno[1] = 0;
-            pcon_rno[2] = 0;
-            pcon_rno[3] = 0;
-            appear_type = 1;
+            gs.pcon_rno[0] = 0;
+            gs.pcon_rno[1] = 0;
+            gs.pcon_rno[2] = 0;
+            gs.pcon_rno[3] = 0;
+            gs.appear_type = APPEAR_TYPE_ANIMATED;
             Continue_Coin2[WINNER] = 0;
 
             if (Mode_Type == MODE_VERSUS || Mode_Type == 5 || Round_Operator[WINNER]) {

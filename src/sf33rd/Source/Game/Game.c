@@ -348,7 +348,7 @@ void Game01() {
         if (Switch_Screen(0) != 0) {
             Game01_Sub();
             Cover_Timer = 5;
-            appear_type = 1;
+            gs.appear_type = APPEAR_TYPE_ANIMATED;
             set_hitmark_color();
 
             if (Debug_w[0x1D]) {
@@ -487,7 +487,7 @@ void Game2_0() {
     Time_in_Time = 60;
     init_slow_flag();
     clear_hit_queue();
-    pcon_rno[0] = pcon_rno[1] = pcon_rno[2] = pcon_rno[3] = 0;
+    gs.pcon_rno[0] = gs.pcon_rno[1] = gs.pcon_rno[2] = gs.pcon_rno[3] = 0;
     ca_check_flag = 1;
     bg_work_clear();
     win_lose_work_clear();
@@ -572,13 +572,13 @@ void Game2_2() {
     init_slow_flag();
     effect_work_quick_init();
     clear_hit_queue();
-    pcon_rno[0] = pcon_rno[1] = pcon_rno[2] = pcon_rno[3] = 0;
+    gs.pcon_rno[0] = gs.pcon_rno[1] = gs.pcon_rno[2] = gs.pcon_rno[3] = 0;
     ca_check_flag = 1;
     bg_work_clear();
     win_lose_work_clear();
     player_face_init();
     Game01_Sub();
-    appear_type = 1;
+    gs.appear_type = APPEAR_TYPE_ANIMATED;
     TATE00();
 
     for (i = 0; i < 3; i++) {
@@ -625,11 +625,11 @@ void Game2_5() {
         Score[1][2] = 0;
         Suicide[0] = 1;
         Game_pause = 0;
-        pcon_rno[0] = 0;
-        pcon_rno[1] = 0;
-        pcon_rno[2] = 0;
-        pcon_rno[3] = 0;
-        appear_type = 0;
+        gs.pcon_rno[0] = 0;
+        gs.pcon_rno[1] = 0;
+        gs.pcon_rno[2] = 0;
+        gs.pcon_rno[3] = 0;
+        gs.appear_type = APPEAR_TYPE_NON_ANIMATED;
         erase_extra_plef_work();
         compel_bg_init_position();
         win_lose_work_clear();
@@ -1281,7 +1281,7 @@ void Game09() {
         Time_in_Time = 60;
         init_slow_flag();
         clear_hit_queue();
-        pcon_rno[0] = pcon_rno[1] = pcon_rno[2] = pcon_rno[3] = 0;
+        gs.pcon_rno[0] = gs.pcon_rno[1] = gs.pcon_rno[2] = gs.pcon_rno[3] = 0;
         bbbs_com_initialize();
         ca_check_flag = 1;
         Bonus_Game_Work = 20;
