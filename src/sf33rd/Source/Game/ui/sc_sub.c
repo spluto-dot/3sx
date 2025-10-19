@@ -1,4 +1,9 @@
-#include "sf33rd/Source/Game/sc_sub.h"
+/**
+ * @file sc_sub.c
+ * HUD elements and screen transitions
+ */
+
+#include "sf33rd/Source/Game/ui/sc_sub.h"
 #include "common.h"
 #include "sf33rd/AcrSDK/ps2/flps2render.h"
 #include "sf33rd/AcrSDK/ps2/foundaps2.h"
@@ -9,23 +14,17 @@
 #include "sf33rd/Source/Game/io/gd3rd.h"
 #include "sf33rd/Source/Game/rendering/dc_ghost.h"
 #include "sf33rd/Source/Game/rendering/mtrans.h"
-#include "sf33rd/Source/Game/sc_data.h"
 #include "sf33rd/Source/Game/stage/bg_data.h"
 #include "sf33rd/Source/Game/system/ramcnt.h"
 #include "sf33rd/Source/Game/system/sysdir.h"
 #include "sf33rd/Source/Game/system/work_sys.h"
+#include "sf33rd/Source/Game/ui/sc_data.h"
 #include "sf33rd/Source/PS2/ps2Quad.h"
 #include "structs.h"
 
-#if defined(TARGET_PS2)
-#define TO_UV_256(val) ((0.5f + (val)) / 256.0f)
-#define TO_UV_256_NEG(val) (((val) - 0.5f) / 256.0f)
-#define TO_UV_128(val) ((0.5f + (val)) / 128.0f)
-#else
 #define TO_UV_256(val) ((val) / 256.0f)
 #define TO_UV_256_NEG(val) (TO_UV_256(val))
 #define TO_UV_128(val) ((val) / 128.0f)
-#endif
 
 typedef struct {
     s16 fade;
@@ -2234,13 +2233,7 @@ void dispSaveLoadTitle(void* ewk) {
     prm.t[3].s = 1.0f;
     prm.t[0].t = TO_UV_128(0.0f);
     prm.t[3].t = TO_UV_128(36.0f);
-
-#if defined(TARGET_PS2)
-    step_t = 36.5f;
-#else
     step_t = 36.0f;
-#endif
-
     pos[0].x = -192.0f;
     pos[0].y = -12.0f;
     pos[1].x = -64.0f;
